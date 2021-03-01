@@ -14,3 +14,12 @@ const rootReactElement = <App />;
 const target = document.getElementById('root');
 // 3. Déclenchement du rendu de React (virtuel) => DOM (page web)
 render(rootReactElement, target);
+
+// a mettre en place en même temps que le store redux
+// const rootReactElement = (
+//   <Provider store={store}>
+//     <Router>
+//       <App />
+//     </Router>
+//   </Provider>
+// );
