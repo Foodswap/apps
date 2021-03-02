@@ -25,3 +25,9 @@ export const LOGIN_ERROR = 'USER_LOGIN_ERROR';
 export const loginError = () => ({
   type: LOGIN_ERROR,
 });
+
+// action pour se déconnecter
+export const USER_LOGOUT = 'USER_LOGOUT';
+export const handleLogout = () => ({
+  type: USER_LOGOUT,
+});

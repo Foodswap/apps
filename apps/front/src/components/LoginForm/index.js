@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './style.css';
+import { userLogout } from '../../actions/user';
 
 const LoginForm = ({
-  email, password, handleLogin, handleInputChange, isLogged, loggedMessage,
+  email, password, handleLogin, handleInputChange, isLogged, loggedMessage, userLogout,
 }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -16,6 +17,7 @@ const LoginForm = ({
       { isLogged && (
         <p className="login-form-message">
           {loggedMessage}
+          <button type="button" onClick={userLogout}> Se déconnecter </button>
         </p>
       )}
       { !isLogged && (
@@ -46,6 +48,10 @@ const LoginForm = ({
             value={password}
           />
           <button className="login-form-submit" type="submit"> Valider </button>
+
+          <p className="login-form-message">
+            {loggedMessage}
+          </p>
 
         </form>
       </div>

@@ -1,4 +1,6 @@
-import { SET_INPUT_VALUE, LOGIN_SUCCESS, LOGIN_ERROR } from '../actions/user';
+import {
+  SET_INPUT_VALUE, LOGIN_SUCCESS, LOGIN_ERROR, USER_LOGOUT,
+} from '../actions/user';
 
 const initialState = {
   email: '',
@@ -30,6 +32,13 @@ export default (state = initialState, action = {}) => {
         },
       };
     case LOGIN_ERROR:
+      return {
+        ...state,
+        isLogged: false,
+        loggedMessage: 'Veuillez réessayer !',
+        infos: {},
+      };
+    case USER_LOGOUT:
       return {
         ...state,
         isLogged: false,
