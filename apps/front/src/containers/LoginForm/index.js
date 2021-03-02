@@ -1,9 +1,10 @@
 import { connect } from 'react-redux';
 import LoginForm from '../../components/LoginForm';
+import { setInputValue, sendLogin } from '../../actions/user';
 
 const mapStateToProps = (state) => ({
-  email: state.userReducer.email,
-  password: state.userReducer.password,
+  email: state.user.email,
+  password: state.user.password,
 });
 
 const mapDispatchToProps = (dispatch) => ({

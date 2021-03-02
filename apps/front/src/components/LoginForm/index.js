@@ -22,7 +22,9 @@ const LoginForm = ({
           type="email"
           name="email"
           placeholder="Votre email"
-          onChange={handleInputChange}
+          onChange={(evt) => {
+            handleInputChange(evt.target.value, evt.target.name);
+          }}
           value={email}
         />
         <input
@@ -30,7 +32,9 @@ const LoginForm = ({
           type="password"
           name="password"
           placeholder="Votre password"
-          onChange={handleInputChange}
+          onChange={(evt) => {
+            handleInputChange(evt.target.value, evt.target.name);
+          }}
           value={password}
         />
         <button className="login-form-submit" type="submit"> Valider </button>

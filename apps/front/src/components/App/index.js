@@ -4,26 +4,17 @@ import React from 'react';
 // == Import
 import reactLogo from './react-logo.svg';
 import './styles.css';
-import LoginForm from '../LoginForm';
+import LoginForm from '../../containers/LoginForm';
 
 // == Composant
-const App = () => {
-  const handleLogin = () => {
-    console.log('handleLogin');
-  };
-  const handleInputChange = (evt) => {
-    const newValue = evt.target.value;
-    console.log(`handleInputChange + value :${newValue}`);
-  };
-  return (
+const App = () => (
 
-    <div className="app">
-      <img src={reactLogo} alt="react logo" />
-      <h1>Composant : App</h1>
-      <LoginForm handleLogin={handleLogin} email="test@gmail.fr" password="pass" handleInputChange={handleInputChange} />
-    </div>
-  );
-};
+  <div className="app">
+    <img src={reactLogo} alt="react logo" />
+    <h1>Composant : App</h1>
+    <LoginForm />
+  </div>
+);
 
 // == Export
 export default App;
