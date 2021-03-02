@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './style.css';
+import './style.scss';
 import { userLogout } from '../../actions/user';
 
 const LoginForm = ({
@@ -16,7 +16,6 @@ const LoginForm = ({
 
       { isLogged && (
         <div className="login-form-message-div">
-
           <p className="login-form-message">
             {loggedMessage}
           </p>
