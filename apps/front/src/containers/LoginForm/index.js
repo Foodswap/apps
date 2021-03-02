@@ -5,6 +5,8 @@ import { setInputValue, sendLogin } from '../../actions/user';
 const mapStateToProps = (state) => ({
   email: state.user.email,
   password: state.user.password,
+  isLogged: state.user.isLogged,
+  loggedMessage: state.user.loggedMessage,
 });
 
 const mapDispatchToProps = (dispatch) => ({

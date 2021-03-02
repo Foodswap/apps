@@ -12,3 +12,16 @@ export const SEND_LOGIN = 'SEND_LOGIN';
 export const sendLogin = () => ({
   type: SEND_LOGIN,
 });
+
+// action quand le login est réussi
+export const LOGIN_SUCCESS = 'USER_LOGIN_SUCCESS';
+export const loginSuccess = (payload) => ({
+  type: LOGIN_SUCCESS,
+  payload,
+});
+
+// action quand le login failed
+export const LOGIN_ERROR = 'USER_LOGIN_ERROR';
+export const loginError = () => ({
+  type: LOGIN_ERROR,
+});
