@@ -25,7 +25,7 @@ export default (state = initialState, action = {}) => {
         email: '',
         password: '',
         isLogged: true,
-        loggedMessage: `Bonjour ${action.payload.pseudo}`,
+        loggedMessage: `Bienvenue ${action.payload.pseudo} ! `,
         infos: {
           pseudo: action.payload.pseudo,
           token: action.payload.token,

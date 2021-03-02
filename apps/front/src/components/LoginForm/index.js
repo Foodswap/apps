@@ -12,17 +12,22 @@ const LoginForm = ({
     handleLogin();
   };
   return (
-    <div>
+    <div className="login-modale">
 
       { isLogged && (
-        <p className="login-form-message">
-          {loggedMessage}
-          <button type="button" onClick={userLogout}> Se déconnecter </button>
-        </p>
+        <div className="login-form-message-div">
+
+          <p className="login-form-message">
+            {loggedMessage}
+          </p>
+          <button className="logout-button" type="button" onClick={userLogout}> Se déconnecter </button>
+        </div>
       )}
       { !isLogged && (
-
       <div className="login-form">
+        <h2 className="login-title">
+          Connectez-vous
+        </h2>
         <form
           className="login-form-element"
           onSubmit={handleSubmit}
@@ -41,7 +46,7 @@ const LoginForm = ({
             className="login-form-input"
             type="password"
             name="password"
-            placeholder="Votre password"
+            placeholder="Votre mot de passe"
             onChange={(evt) => {
               handleInputChange(evt.target.value, evt.target.name);
             }}
