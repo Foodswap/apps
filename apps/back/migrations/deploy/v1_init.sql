@@ -3,7 +3,7 @@
 BEGIN;
 
 CREATE TABLE author (
-    id GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     pseudonym VARCHAR(200) NOT NULL UNIQUE,
     email VARCHAR(200) NOT NULL UNIQUE,
     "password" VARCHAR(200) NOT NULL,
@@ -11,35 +11,43 @@ CREATE TABLE author (
 );
 
 CREATE TABLE category (
-    id GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "type" VARCHAR(64) NOT NULL,
-    "name" VARCHAR(64) NOT NULL,
-    meal_id INT REFERENCES meal(id)
-    
+    "name" VARCHAR(64) NOT NULL
 );
 
 CREATE TABLE meal (
-    id GENERATED ALWAYS AS IDENTITY PRIMARY KEY, 
+    id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY, 
     "name" VARCHAR(200) NOT NULL,
     descritpion TEXT NOT NULL,
+    "date" TIMESTAMPTZ DEFAULT NOW(),
     portion INT NOT NULL,
     "address" VARCHAR(200) NOT NULL,
     "online" BOOLEAN NOT NULL,
-    auhtor_id INT REFERENCES author(id),
-    -- ingredient_id INT REFERENCES ingredient(id)
+    auhtor_id INT REFERENCES author(id)
+);
+
+CREATE TABLE meal_category_associate (
+    id_meal INT REFERENCES meal(id),
+    id_category INT REFERENCES category(id)
 );
 
 CREATE TABLE ingredient (
-    id GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    "name" VARCHAR(64) NOT NULL UNIQUE 
-    meal_id INT REFERENCES meal(id)
+    id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    "name" VARCHAR(64) NOT NULL UNIQUE
+);
+
+CREATE TABLE meal_ingredient_associate (
+    id_meal INT REFERENCES meal(id),
+    id_ingredient INT REFERENCES ingredient(id)
 );
 
 CREATE TABLE swap (
-    id GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "status" INT NOT NULL,
     "date" TIMESTAMPTZ DEFAULT NOW(),
-    requested_meal_id INT 
-)
+    requested_meal_id INT REFERENCES meal(id),
+    offered_meal_id INT REFERENCES meal(id)
+);
 
 COMMIT;

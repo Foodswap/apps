@@ -2,6 +2,18 @@
 
 BEGIN;
 
--- XXX Add DDLs here.
+DROP TABLE swap;
+
+DROP TABLE meal_ingredient_associate;
+
+DROP TABLE ingredient;
+
+DROP TABLE meal_category_associate;
+
+DROP TABLE meal;
+
+DROP TABLE category;
+
+DROP TABLE author;
 
 COMMIT;
