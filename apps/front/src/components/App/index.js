@@ -13,12 +13,7 @@ const App = () => (
 
   <div className="app">
     <img src={reactLogo} alt="react logo" />
-<<<<<<< HEAD
-    <h1>Composant : App</h1>
-    <AppHeader />
-=======
     <LoginForm />
->>>>>>> front-login-form
   </div>
 );
 
