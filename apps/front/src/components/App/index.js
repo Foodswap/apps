@@ -4,16 +4,18 @@ import React from 'react';
 import AppHeader from '../AppHeader';
 
 // == Import
-import reactLogo from './react-logo.svg';
 import './styles.css';
 import LoginForm from '../../containers/LoginForm';
+import SignUp from '../SignUp';
+import Footer from '../Footer';
 
 // == Composant
 const App = () => (
 
   <div className="app">
-    <img src={reactLogo} alt="react logo" />
     <LoginForm />
+    <SignUp />
+    <Footer />
   </div>
 );
 
