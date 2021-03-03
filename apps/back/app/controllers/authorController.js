@@ -1,4 +1,4 @@
-const Auhtor = require('../models/author');
+const Author = require('../models/author');
 
 const authorController = {
     
@@ -9,11 +9,11 @@ const authorController = {
 
         try {
             await author.save();
-
-            response.json(author);
+            author.password = null;
+            response.status(201).json(author);
         } catch(err) {
-            console.trace(err)
-            response.status(403).json(err.message);
+            console.trace(err);
+            response.status(500).json("Une erreur est survenue lors de l'inscription.");
         }
     }
 };

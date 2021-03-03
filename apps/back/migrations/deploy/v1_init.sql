@@ -19,12 +19,12 @@ CREATE TABLE category (
 CREATE TABLE meal (
     id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY, 
     "name" VARCHAR(200) NOT NULL,
-    descritpion TEXT NOT NULL,
-    "date" TIMESTAMPTZ DEFAULT NOW(),
+    "description" TEXT NOT NULL,
+    "created_date" TIMESTAMPTZ DEFAULT NOW(),
     portion INT NOT NULL,
-    "address" VARCHAR(200) NOT NULL,
+    city VARCHAR(200) NOT NULL,
     "online" BOOLEAN NOT NULL,
-    auhtor_id INT REFERENCES author(id)
+    author_id INT REFERENCES author(id)
 );
 
 CREATE TABLE meal_category_associate (
