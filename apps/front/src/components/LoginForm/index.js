@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './style.scss';
-import { userLogout } from '../../actions/user';
 
 const LoginForm = ({
   email,
@@ -83,5 +82,6 @@ LoginForm.propTypes = {
   loggedMessage: PropTypes.string.isRequired,
   userLogout: PropTypes.func.isRequired,
   isLoginOpen: PropTypes.bool.isRequired,
+  loginFormToggle: PropTypes.func.isRequired,
 };
 export default LoginForm;

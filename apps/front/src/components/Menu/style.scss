@@ -1,11 +1,16 @@
 .menu {
-  background-color: rgb(6, 219, 166);
+  background-color: rgb(219, 102, 6);
   display: flex;
   justify-content: space-evenly;
   height: 6vh;
   align-items: center;
+  color: white;
+  padding: 1rem;
 
   &-link {
     padding: 0.5rem;
+  }
+  &-link:hover {
+    font-size: 1.1em;
   }
 }
