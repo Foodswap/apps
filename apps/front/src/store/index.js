@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 
-// import ajaxMiddleware from '../middlewares/ajaxMiddleware';
+import ajaxMiddleware from '../middlewares/ajaxMiddleware';
 
 import reducer from '../reducer';
 
@@ -12,7 +12,7 @@ const enhancers = composeEnhancers(
     // dans l'ordre où je veux les exécuter
     // Je mets tous les middlewares que je veux exécuter
     // dans l'ordre où je veux les exécuter
-    // ajaxMiddleware,
+    ajaxMiddleware,
   ),
 );
 
