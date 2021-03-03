@@ -1,3 +1,10 @@
 .appHeader {
-  background-color: lightskyblue;
+  display: flex;
+  padding-left: 1rem;
+
+  &-logo {
+    width: 15rem;
+    margin-top: 1rem;
+    margin-left: 1rem;
+  }
 }

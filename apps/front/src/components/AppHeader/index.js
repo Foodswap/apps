@@ -8,7 +8,6 @@ const AppHeader = () => (
     <a className="appHeader-link" href="/">
       <img className="appHeader-logo" src={logo} alt="logo de FoodSwap" />
     </a>
-    <div>Je suis le App Header</div>
   </header>
 );
 
