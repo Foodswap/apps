@@ -3,6 +3,8 @@
   width: 500px;
   border-radius: 1rem;
   padding: 1rem;
+  margin: auto;
+  position: relative;
 }
 .signup-title {
   margin: 1rem;
@@ -38,4 +40,16 @@
 
 .signup-form-message {
   color: brown;
+}
+
+.signup-form-button-close {
+  width: 20px;
+  background-color: orangered;
+  color: white;
+  border-radius: 50%;
+  text-align: center;
+  border: none;
+  right: 10px;
+  position: absolute;
+  padding: 0.2rem;
 }

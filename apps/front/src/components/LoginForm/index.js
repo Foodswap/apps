@@ -24,6 +24,7 @@ const LoginForm = ({
       )}
       { !isLogged && (
       <div className="login-form">
+        <button type="button" className="login-form-button-close" onClick={() => console.log('clik')}> X </button>
         <h2 className="login-title">
           Connectez-vous
         </h2>

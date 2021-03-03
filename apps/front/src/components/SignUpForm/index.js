@@ -14,6 +14,7 @@ const SignUp = ({
     <div className="signup-modale">
 
       <div className="signup-form">
+      <button type="button" className="login-form-button-close" onClick={() => console.log('clik')}> X </button>
         <h2 className="signup-title">
           Inscrivez-vous
         </h2>
