@@ -1,0 +1,11 @@
+.menu {
+  background-color: rgb(6, 219, 166);
+  display: flex;
+  justify-content: space-evenly;
+  height: 6vh;
+  align-items: center;
+
+  &-link {
+    padding: 0.5rem;
+  }
+}

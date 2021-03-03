@@ -1,18 +1,19 @@
 // == Import npm
 import React from 'react';
 
-import AppHeader from '../AppHeader';
-
 // == Import
-import reactLogo from './react-logo.svg';
-import './styles.css';
+import AppHeader from '../AppHeader';
+import Menu from '../../containers/Menu';
 import LoginForm from '../../containers/LoginForm';
+
+import './styles.css';
 
 // == Composant
 const App = () => (
 
   <div className="app">
-    <img src={reactLogo} alt="react logo" />
+    <AppHeader />
+    <Menu />
     <LoginForm />
   </div>
 );
