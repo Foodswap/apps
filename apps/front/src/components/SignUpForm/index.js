@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import './style.scss';
 
 const SignUp = ({
-  email, password, pseudo, city, handleInputChange,
+  email, password, pseudo, city, handleInputChange, handleSignUp,
 }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     console.log('handleSubmit');
-    // handleSignUp();
+    handleSignUp();
   };
   return (
 
@@ -71,7 +71,7 @@ SignUp.propTypes = {
   password: PropTypes.string.isRequired,
   pseudo: PropTypes.string.isRequired,
   city: PropTypes.string.isRequired,
-  // handleSignUp: PropTypes.func.isRequired,
+  handleSignUp: PropTypes.func.isRequired,
   handleInputChange: PropTypes.func.isRequired,
 };
 

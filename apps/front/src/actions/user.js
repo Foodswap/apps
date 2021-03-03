@@ -31,3 +31,10 @@ export const USER_LOGOUT = 'USER_LOGOUT';
 export const handleLogout = () => ({
   type: USER_LOGOUT,
 });
+
+// action pour l'envoi du form SignUp
+export const SEND_SIGN_UP = 'SEND_SIGN_UP';
+export const sendSignUp = (payload) => ({
+  type: SEND_SIGN_UP,
+  payload,
+});

@@ -1,5 +1,5 @@
 import {
-  SET_INPUT_VALUE, LOGIN_SUCCESS, LOGIN_ERROR, USER_LOGOUT,
+  SET_INPUT_VALUE, LOGIN_SUCCESS, LOGIN_ERROR, USER_LOGOUT, SEND_SIGN_UP,
 } from '../actions/user';
 
 const initialState = {
@@ -46,6 +46,12 @@ export default (state = initialState, action = {}) => {
         isLogged: false,
         loggedMessage: '',
         infos: {},
+      };
+    case SEND_SIGN_UP:
+      return {
+        ...state,
+        [action.name]: action.value,
+        loggedMessage: 'inscription ok',
       };
     default:
       return state;
