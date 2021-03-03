@@ -10,14 +10,16 @@ export default (store) => (next) => (action) => {
   switch (action.type) {
     case SEND_LOGIN: {
       const { email, password } = store.getState().user;
-      if (email === data.email && password === data.password) {
-        const actionToDispatch = loginSuccess(data);
-        store.dispatch(actionToDispatch);
-      }
-      else {
+
+      data.map((userObj) => {
+        if (email === userObj.email && password === userObj.password) {
+          const actionToDispatch = loginSuccess(userObj);
+          return store.dispatch(actionToDispatch);
+        }
+
         const actionToDispatch = loginError();
-        store.dispatch(actionToDispatch);
-      }
+        return store.dispatch(actionToDispatch);
+      });
     }
       break;
     default:

@@ -6,7 +6,7 @@ import AppHeader from '../AppHeader';
 // == Import
 import './styles.css';
 import LoginForm from '../../containers/LoginForm';
-import SignUp from '../SignUp';
+import SignUpForm from '../../containers/SignUpForm';
 import Footer from '../Footer';
 
 // == Composant
@@ -14,7 +14,7 @@ const App = () => (
 
   <div className="app">
     <LoginForm />
-    <SignUp />
+    <SignUpForm />
     <Footer />
   </div>
 );

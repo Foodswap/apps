@@ -5,6 +5,8 @@ import {
 const initialState = {
   email: '',
   password: '',
+  pseudo: '',
+  city: '',
   isLogged: false,
   loggedMessage: '',
   infos: {
