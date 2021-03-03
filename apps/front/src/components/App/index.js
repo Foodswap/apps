@@ -5,12 +5,11 @@ import React from 'react';
 import AppHeader from '../AppHeader';
 import Menu from '../../containers/Menu';
 import LoginForm from '../../containers/LoginForm';
+import SignUpForm from '../../containers/SignUpForm';
+import Footer from '../Footer';
 
 // == Import
 import './styles.css';
-import LoginForm from '../../containers/LoginForm';
-import SignUpForm from '../../containers/SignUpForm';
-import Footer from '../Footer';
 
 // == Composant
 const App = () => (
