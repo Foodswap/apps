@@ -12,11 +12,6 @@ app.use(express.json());
 
 app.use('/v1', router);
 
-/* Test front-back
-app.get('/', async (req, res) => {
-   res.send('Hello');
-});
-*/
 
 app.listen(port, _ => {
    console.log(`http://localhost:${port}`);
