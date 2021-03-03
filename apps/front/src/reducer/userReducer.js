@@ -1,8 +1,10 @@
 import {
   SET_INPUT_VALUE, LOGIN_SUCCESS, LOGIN_ERROR, USER_LOGOUT, SEND_SIGN_UP,
 } from '../actions/user';
+import { MODAL_LOGIN_TOGGLE } from '../actions/modals';
 
 const initialState = {
+  isLoginOpen: false,
   email: '',
   password: '',
   pseudo: '',
@@ -16,6 +18,11 @@ const initialState = {
 
 export default (state = initialState, action = {}) => {
   switch (action.type) {
+    case MODAL_LOGIN_TOGGLE:
+      return {
+        ...state,
+        isLoginOpen: !state.isLoginOpen,
+      };
     case SET_INPUT_VALUE:
       return {
         ...state,

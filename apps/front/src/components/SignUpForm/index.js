@@ -3,15 +3,17 @@ import PropTypes from 'prop-types';
 import './style.scss';
 
 const SignUp = ({
-  email, password, pseudo, city, handleInputChange, handleSignUp,
+  email, password, pseudo, city, handleInputChange, handleSignUp, isOpen
 }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     console.log('handleSubmit');
     handleSignUp();
   };
+  const classIsOpen = isOpen ? 'signup-modale' : 'signup-modale-close';
+
   return (
-    <div className="signup-modale">
+    <div className={classIsOpen}>
 
       <div className="signup-form">
       <button type="button" className="login-form-button-close" onClick={() => console.log('clik')}> X </button>
@@ -76,6 +78,8 @@ SignUp.propTypes = {
   city: PropTypes.string.isRequired,
   handleSignUp: PropTypes.func.isRequired,
   handleInputChange: PropTypes.func.isRequired,
+  isOpen: PropTypes.bool.isRequired,
+
 };
 
 export default SignUp;

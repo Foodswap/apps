@@ -4,16 +4,24 @@ import { NavLink } from 'react-router-dom';
 
 import './style.scss';
 
-const Menu = ({ isLogged }) => (
+const Menu = ({
+  isLogged, loginFormToggle,
+}) => (
   <nav className="menu">
 
     {!isLogged && (
     <nav>
-      <NavLink className="menu-link" to="/inscription">
+      <NavLink
+        className="menu-link"
+        to=""
+        onClick={() => {
+          console.log('inscription open modale');
+        }}
+      >
         Inscription
       </NavLink>
 
-      <NavLink className="menu-link" to="/connexion">
+      <NavLink className="menu-link" to="" onClick={loginFormToggle}>
         Connexion
       </NavLink>
     </nav>
@@ -47,6 +55,8 @@ const Menu = ({ isLogged }) => (
 
 Menu.propTypes = {
   isLogged: PropTypes.bool.isRequired,
+  // signUpFormToggle: PropTypes.func.isRequired,
+  loginFormToggle: PropTypes.func.isRequired,
 };
 
 export default Menu;

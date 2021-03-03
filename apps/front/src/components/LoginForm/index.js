@@ -4,15 +4,24 @@ import './style.scss';
 import { userLogout } from '../../actions/user';
 
 const LoginForm = ({
-  email, password, handleLogin, handleInputChange, isLogged, loggedMessage, userLogout,
+  email,
+  password,
+  handleLogin,
+  handleInputChange,
+  isLogged,
+  loggedMessage,
+  userLogout,
+  isLoginOpen,
+  loginFormToggle,
 }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     console.log('handleSubmit');
     handleLogin();
   };
+  const classIsOpen = isLoginOpen ? 'login-modale' : 'login-modale-close';
   return (
-    <div className="login-modale">
+    <div className={classIsOpen}>
 
       { isLogged && (
         <div className="login-form-message-div">
@@ -24,7 +33,7 @@ const LoginForm = ({
       )}
       { !isLogged && (
       <div className="login-form">
-        <button type="button" className="login-form-button-close" onClick={() => console.log('clik')}> X </button>
+        <button type="button" className="login-form-button-close" onClick={loginFormToggle}> X </button>
         <h2 className="login-title">
           Connectez-vous
         </h2>
@@ -73,5 +82,6 @@ LoginForm.propTypes = {
   isLogged: PropTypes.bool.isRequired,
   loggedMessage: PropTypes.string.isRequired,
   userLogout: PropTypes.func.isRequired,
+  isLoginOpen: PropTypes.bool.isRequired,
 };
 export default LoginForm;
