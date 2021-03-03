@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 import './style.scss';
 
 const Menu = ({
-  isLogged, loginFormToggle,
+  isLogged, loginFormToggle, signUpFormToggle,
 }) => (
   <nav className="menu">
 
@@ -14,9 +14,7 @@ const Menu = ({
       <NavLink
         className="menu-link"
         to=""
-        onClick={() => {
-          console.log('inscription open modale');
-        }}
+        onClick={signUpFormToggle}
       >
         Inscription
       </NavLink>
@@ -55,8 +53,8 @@ const Menu = ({
 
 Menu.propTypes = {
   isLogged: PropTypes.bool.isRequired,
-  // signUpFormToggle: PropTypes.func.isRequired,
   loginFormToggle: PropTypes.func.isRequired,
+  signUpFormToggle: PropTypes.func.isRequired,
 };
 
 export default Menu;

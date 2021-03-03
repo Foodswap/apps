@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Menu from '../../components/Menu';
-import { modalLoginFormToggle } from '../../actions/modals';
+import { modalLoginFormToggle, modalSignUpFormToggle } from '../../actions/modals';
 
 const mapState = (state) => ({
   isLogged: state.user.isLogged,
@@ -11,7 +11,10 @@ const mapDispatch = (dispatch) => ({
     const action = modalLoginFormToggle();
     dispatch(action);
   },
-  // signUpFormToggle: dispatch(modalsFormToggle()),
+  signUpFormToggle: () => {
+    const action = modalSignUpFormToggle();
+    dispatch(action);
+  },
 });
 
 export default connect(mapState, mapDispatch)(Menu);

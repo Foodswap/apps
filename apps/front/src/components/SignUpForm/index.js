@@ -3,20 +3,20 @@ import PropTypes from 'prop-types';
 import './style.scss';
 
 const SignUp = ({
-  email, password, pseudo, city, handleInputChange, handleSignUp, isOpen
+  email, password, pseudo, city, handleInputChange, handleSignUp, isSignUpOpen, signUpFormToggle,
 }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     console.log('handleSubmit');
     handleSignUp();
   };
-  const classIsOpen = isOpen ? 'signup-modale' : 'signup-modale-close';
+  const classIsOpen = isSignUpOpen ? 'signup-modale' : 'signup-modale-close';
 
   return (
     <div className={classIsOpen}>
 
       <div className="signup-form">
-      <button type="button" className="login-form-button-close" onClick={() => console.log('clik')}> X </button>
+        <button type="button" className="signup-form-button-close" onClick={signUpFormToggle}> X </button>
         <h2 className="signup-title">
           Inscrivez-vous
         </h2>
@@ -78,7 +78,8 @@ SignUp.propTypes = {
   city: PropTypes.string.isRequired,
   handleSignUp: PropTypes.func.isRequired,
   handleInputChange: PropTypes.func.isRequired,
-  isOpen: PropTypes.bool.isRequired,
+  isSignUpOpen: PropTypes.bool.isRequired,
+  signUpFormToggle: PropTypes.func.isRequired,
 
 };
 
