@@ -1,6 +1,12 @@
 .footer{
-  border: 1px black;
-  width: 500px;
+  width: 100%;
   margin: 1em auto;
   text-align: center;
+  background-color: rgb(212, 98, 57);
+  padding: 2rem;
+  color: white;
+
+  &-link {
+    margin-right: 2rem;
+  }
 }
