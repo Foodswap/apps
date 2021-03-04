@@ -7,16 +7,14 @@
 ###
 GET {{baseUrl}}/
 
-
-### 
-GET {{baseUrl}}/incident/1
-
-
 ### 
 
-POST {{baseUrl}}/incident/new
+POST {{baseUrl}}/signup
 Content-Type: application/json
 
 {
-   
+   "username" : "jeanthierry",
+   "email" : "bgdu01@mail.fr",
+   "password" : "jenesuispasencorehaché",
+   "city" : "bordeaux"
 } 
