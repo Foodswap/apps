@@ -6,7 +6,7 @@ const DescriptionHomepage = () => (
   <div className="welcome">
 
     <div className="welcome-title">
-      <h2>Bienvenu sur FoodSwap</h2>
+      <h2>Bienvenue sur FoodSwap</h2>
     </div>
 
     <div className="welcome-blockText">

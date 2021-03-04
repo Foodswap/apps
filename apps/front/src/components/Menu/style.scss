@@ -4,10 +4,15 @@
   justify-content: space-evenly;
   height: 6vh;
   align-items: center;
+  color: white;
+  padding: 1rem;
 
   &-link {
     font-size: 1.3rem;
     padding: 0.5rem;
     color: black;
+  }
+  &-link:hover {
+    font-size: 1.1em;
   }
 }
