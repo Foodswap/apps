@@ -39,8 +39,8 @@ export default (store) => (next) => (action) => {
 
       data.push(userObj);
       console.log(data);
-      const actionToDispatch = signUpSucces();
-      store.dispatch(actionToDispatch);
+
+      // TODO requete GET pour verifier que le mail ou le pseudo n'existe pas, puis POST
       // axios({
       //   method: 'post',
       //   url: 'http://localhost:5000/v1/signup',
@@ -48,6 +48,8 @@ export default (store) => (next) => (action) => {
       // })
       //   .then((response) => {
       //     console.log(`response ok : ${response}`);
+      const actionToDispatch = signUpSucces();
+      store.dispatch(actionToDispatch);
       //   })
       //   .catch((error) => {
       //     console.trace(error);

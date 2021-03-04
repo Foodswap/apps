@@ -29,6 +29,7 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         isSignUpOpen: !state.isSignUpOpen,
+        signUpIsValid: false,
       };
     case SET_INPUT_VALUE:
       return {
@@ -39,6 +40,10 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         signUpIsValid: true,
+        email: '',
+        password: '',
+        pseudonym: '',
+        city: '',
       };
     case LOGIN_SUCCESS:
       return {
