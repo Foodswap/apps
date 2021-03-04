@@ -7,13 +7,11 @@ import Menu from '../../containers/Menu';
 import DescriptionHomepage from '../DescriptionHomepage';
 import LoginForm from '../../containers/LoginForm';
 import SignUpForm from '../../containers/SignUpForm';
-import MyDishes from '../MyDishes';
+import MyDishes from '../../containers/MyDishes';
 import Footer from '../Footer';
 
 // == Import
 import './styles.css';
-
-import data from '../../../data-userDishes';
 
 // == Composant
 const App = () => (
@@ -24,7 +22,7 @@ const App = () => (
     <DescriptionHomepage />
     <LoginForm />
     <SignUpForm />
-    <MyDishes userDishes={data} />
+    <MyDishes />
     <Footer />
   </div>
 );

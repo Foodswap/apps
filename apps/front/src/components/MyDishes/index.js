@@ -20,7 +20,7 @@ const MyDishes = ({ userDishes }) => (
 
           <div className="myDishes-allButton">
             <div className="myDishes-buttonContent">
-              <button type="button" className="myDishes-button">Éditer</button>
+              <a href="/edit" className="myDishes-button">Éditer</a>
             </div>
 
             <div className="myDishes-buttonContent">

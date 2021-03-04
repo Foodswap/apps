@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
 import Menu from '../../components/Menu';
 
-const mapState = (state) => ({
+const mapStateToProps = (state) => ({
   isLogged: state.user.isLogged,
 });
 
-const mapDispatch = {};
+const mapDispatchToProps = {};
 
-export default connect(mapState, mapDispatch)(Menu);
+export default connect(mapStateToProps, mapDispatchToProps)(Menu);
