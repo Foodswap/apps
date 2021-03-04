@@ -1,0 +1,31 @@
+.welcome {
+  border: 0.2rem solid #f39508;
+  border-radius: .9rem;
+  padding: 1rem 4.5rem 1rem;
+  width: max-content;
+  display: inline-block;
+  margin: 1rem 0;
+
+  &-title {
+    font-size: xx-large;
+    color: #eb5e00;
+    margin: 1rem 0 3rem;
+  }
+
+  &-blockText {
+    margin: 1.8rem 0 0.2rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &-paragraph {
+    margin-bottom: 1.4rem;
+  }
+
+  &-text {
+    color: #471d00;
+    margin-bottom: 0.3rem;
+    display: flex;
+    justify-content: center;
+  }
+}
