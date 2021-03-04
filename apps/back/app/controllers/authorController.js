@@ -17,6 +17,8 @@ const authorController = {
             response.status(500).json("Une erreur est survenue lors de l'inscription.");
         }
     },
+
+     
 };
 
 module.exports = authorController;
