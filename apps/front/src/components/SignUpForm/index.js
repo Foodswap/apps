@@ -47,7 +47,7 @@ const SignUp = ({
           <input
             className="signup-form-input"
             type="pseudo"
-            name="pseudo"
+            name="pseudonym"
             placeholder="pseudo"
             onChange={(evt) => {
               handleInputChange(evt.target.value, evt.target.name);

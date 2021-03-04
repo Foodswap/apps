@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 import './style.scss';
 
 const Menu = ({
-  isLogged, loginFormToggle, signUpFormToggle,
+  isLogged, loginFormToggle, signUpFormToggle, userLogout,
 }) => (
   <nav className="menu">
 
@@ -46,6 +46,7 @@ const Menu = ({
         <NavLink className="menu-link" to="/mesInformation">
           Mes informations
         </NavLink>
+        <button className="logout-button" type="button" onClick={userLogout}> Se déconnecter </button>
       </nav>
     )}
   </nav>

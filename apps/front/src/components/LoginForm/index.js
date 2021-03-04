@@ -21,6 +21,7 @@ const LoginForm = ({
   const classIsOpen = isLoginOpen ? 'login-modale' : 'login-modale-close';
   return (
     <div className={classIsOpen}>
+      <button type="button" className="login-form-button-close" onClick={loginFormToggle}> X </button>
 
       { isLogged && (
         <div className="login-form-message-div">
@@ -32,7 +33,6 @@ const LoginForm = ({
       )}
       { !isLogged && (
       <div className="login-form">
-        <button type="button" className="login-form-button-close" onClick={loginFormToggle}> X </button>
         <h2 className="login-title">
           Connectez-vous
         </h2>

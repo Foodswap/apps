@@ -8,7 +8,7 @@ const initialState = {
   isSignUpOpen: false,
   email: '',
   password: '',
-  pseudo: '',
+  pseudonym: '',
   city: '',
   isLogged: false,
   loggedMessage: '',
@@ -40,9 +40,10 @@ export default (state = initialState, action = {}) => {
         email: '',
         password: '',
         isLogged: true,
-        loggedMessage: `Bienvenue ${action.payload.pseudo} ! `,
+        isLoginOpen: false,
+        loggedMessage: `Bienvenue ${action.payload.pseudonym} ! `,
         infos: {
-          pseudo: action.payload.pseudo,
+          pseudonym: action.payload.pseudonym,
           token: action.payload.token,
         },
       };
