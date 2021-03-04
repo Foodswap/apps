@@ -1,0 +1,55 @@
+.myDishes {
+
+  &-title {
+    color: orangered;
+    font-size: xx-large;
+  }
+
+  &-oneDish {
+    align-items: center;
+    border: solid 0.1rem #f39508;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: inherit;
+    justify-content: space-between;
+    margin: 1.5rem 12rem;
+    padding: 0.8rem;
+  }
+
+  &-dishImg {
+    height: 10vh;
+    width: 9%;
+  }
+
+  &-dishText {
+    width: 32rem;
+  }
+
+  &-dishTitle {
+    font-size: 1.6rem;
+    color: coral;
+    margin-bottom: 1.5rem;
+  }
+
+  &-dishDescription {
+
+  }
+
+  &-allButton {
+    display: flex;
+  }
+
+  &-buttonContent {
+    margin-right: 1rem;
+  }
+
+  &-button {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+    background-color: orangered;
+    color: white;
+    border: none;
+    border-radius: 0.2rem;
+  }
+
+}
