@@ -38,3 +38,10 @@ export const sendSignUp = (payload) => ({
   type: SEND_SIGN_UP,
   payload,
 });
+
+// action signUp succes
+export const SIGNUP_SUCCES = 'SIGNUP_SUCCES';
+export const signUpSucces = (payload) => ({
+  type: SIGNUP_SUCCES,
+  payload,
+});

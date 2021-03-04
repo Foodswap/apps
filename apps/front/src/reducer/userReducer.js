@@ -1,5 +1,5 @@
 import {
-  SET_INPUT_VALUE, LOGIN_SUCCESS, LOGIN_ERROR, USER_LOGOUT, SEND_SIGN_UP,
+  SET_INPUT_VALUE, LOGIN_SUCCESS, LOGIN_ERROR, USER_LOGOUT, SEND_SIGN_UP, SIGNUP_SUCCES,
 } from '../actions/user';
 import { MODAL_LOGIN_TOGGLE, MODAL_SIGN_UP_TOGGLE } from '../actions/modals';
 
@@ -11,6 +11,7 @@ const initialState = {
   pseudonym: '',
   city: '',
   isLogged: false,
+  signUpIsValid: false,
   loggedMessage: '',
   infos: {
     token: localStorage.getItem('token'),
@@ -33,6 +34,11 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         [action.name]: action.value,
+      };
+    case SIGNUP_SUCCES:
+      return {
+        ...state,
+        signUpIsValid: true,
       };
     case LOGIN_SUCCESS:
       return {

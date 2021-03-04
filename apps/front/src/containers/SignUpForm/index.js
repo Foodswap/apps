@@ -6,10 +6,12 @@ import { modalSignUpFormToggle } from '../../actions/modals';
 const mapStateToProps = (state) => ({
   email: state.user.email,
   password: state.user.password,
-  pseudo: state.user.pseudo,
+  pseudonym: state.user.pseudonym,
   city: state.user.city,
   // loggedMessage: state.user.loggedMessage,
   isSignUpOpen: state.user.isSignUpOpen,
+  signUpSuccesMessage: state.user.signUpSuccesMessage,
+  signUpIsValid: state.user.signUpIsValid,
 });
 
 const mapDispatchToProps = (dispatch) => ({
