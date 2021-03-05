@@ -13,8 +13,8 @@ POST {{baseUrl}}/signup
 Content-Type: application/json
 
 {
-   "username" : "jeanthibault",
-   "email" : "bgdsfdfsdfsu08@mail.fr",
+   "username" : "jeanmarie",
+   "email" : "bgdsfdfsdfsu93@mail.fr",
    "password" : "jenesuispasencorehaché",
    "city" : "bordeaux"
 } 
