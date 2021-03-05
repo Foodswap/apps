@@ -64,3 +64,20 @@
   position: absolute;
   padding: 0.2rem;
 }
+
+.signup-succes-message {
+  color: white;
+  text-align: center;
+  width: 100%;
+}
+
+.signup-succes-link {
+  text-decoration: underline;
+  color: rgb(247, 245, 244);
+  font-size: 1.1em;
+}
+
+.signup-succes-link:hover {
+  font-size: 1.2em;
+  color: blue;
+}
