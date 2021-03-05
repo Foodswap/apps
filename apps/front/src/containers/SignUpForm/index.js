@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import SignUpForm from '../../components/SignUpForm';
 import { setInputValue, sendSignUp } from '../../actions/user';
-import { modalSignUpFormToggle } from '../../actions/modals';
+import { modalSignUpFormToggle, modalLoginFormToggle } from '../../actions/modals';
 
 const mapStateToProps = (state) => ({
   email: state.user.email,
@@ -19,6 +19,10 @@ const mapDispatchToProps = (dispatch) => ({
   handleSignUp: (value, name) => dispatch(sendSignUp(value, name)),
   signUpFormToggle: () => {
     const action = modalSignUpFormToggle();
+    dispatch(action);
+  },
+  loginFormToggle: () => {
+    const action = modalLoginFormToggle();
     dispatch(action);
   },
 });

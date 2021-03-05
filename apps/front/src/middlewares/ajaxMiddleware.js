@@ -30,9 +30,9 @@ export default (store) => (next) => (action) => {
       } = store.getState().user;
       // push dans le tableau un nouvel obj avec les info entrées dans le input
       const userObj = {
+        username: pseudonym,
         email,
         password,
-        pseudonym,
         city,
       };
       console.log(userObj);
@@ -41,22 +41,42 @@ export default (store) => (next) => (action) => {
       console.log(data);
 
       // TODO requete GET pour verifier que le mail ou le pseudo n'existe pas, puis POST
+
       // axios({
-      //   method: 'post',
-      //   url: 'http://localhost:5000/v1/signup',
-      //   data: userObj,
+      //   method: 'get',
+      //   url: 'http://localhost:5000/users',
       // })
       //   .then((response) => {
-      //     console.log(`response ok : ${response}`);
+      //     console.log(response);
+      //     const result = response.find(((user) => user.mail === userObj.email));
+
+      //     if (!result) {
+
+      // s'il le mail n'existe pas je lance la req post
+      // axios({
+      //   method: 'POST',
+      //   url: 'http://ec2-54-145-80-6.compute-1.amazonaws.com/v1/signup',
+      //   data: userObj,
+      // })
+      //   .then((res) => {
+      //     console.log(`response ok : ${res}`);
       const actionToDispatch = signUpSucces();
       store.dispatch(actionToDispatch);
       //   })
       //   .catch((error) => {
-      //     console.trace(error);
+      //     console.trace(`${error} erreur au post`);
       //   })
       //   .finally(() => {
-      //     console.log('finally');
+      //     console.log(userObj);
       //   });
+      // }
+      // })
+      // .catch((error) => {
+      //   console.trace(error);
+      // })
+      // .finally(() => {
+      //   console.log('finally');
+      // });
     }
       break;
     default:

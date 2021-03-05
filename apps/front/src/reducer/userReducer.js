@@ -23,12 +23,14 @@ export default (state = initialState, action = {}) => {
     case MODAL_LOGIN_TOGGLE:
       return {
         ...state,
+        isSignUpOpen: false,
         isLoginOpen: !state.isLoginOpen,
       };
     case MODAL_SIGN_UP_TOGGLE:
       return {
         ...state,
         isSignUpOpen: !state.isSignUpOpen,
+        isLoginOpen: false,
         signUpIsValid: false,
       };
     case SET_INPUT_VALUE:

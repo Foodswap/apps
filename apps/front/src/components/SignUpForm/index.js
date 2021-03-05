@@ -12,6 +12,7 @@ const SignUp = ({
   isSignUpOpen,
   signUpFormToggle,
   signUpIsValid,
+  loginFormToggle,
 }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -26,7 +27,17 @@ const SignUp = ({
       { signUpIsValid && (
         <div className="signup-succes-message">
           <p> Bienvenue sur FoodSwap ! </p>
-          <p> Vous pouvez maintenant vous connecter </p>
+          <p> Vous pouvez maintenant vous
+            <a
+              className="signup-succes-link"
+              href=""
+              onClick={(evt) => {
+                evt.preventDefault();
+                loginFormToggle();
+              }}
+            > connecter
+            </a>
+          </p>
         </div>
       )}
 
@@ -49,6 +60,7 @@ const SignUp = ({
                 handleInputChange(evt.target.value, evt.target.name);
               }}
               value={email}
+              required
             />
             <input
               className="signup-form-input"
@@ -59,6 +71,7 @@ const SignUp = ({
                 handleInputChange(evt.target.value, evt.target.name);
               }}
               value={password}
+              required
             />
             <input
               className="signup-form-input"
@@ -69,6 +82,7 @@ const SignUp = ({
                 handleInputChange(evt.target.value, evt.target.name);
               }}
               value={pseudonym}
+              required
             />
             <input
               className="signup-form-input"
@@ -79,6 +93,7 @@ const SignUp = ({
                 handleInputChange(evt.target.value, evt.target.name);
               }}
               value={city}
+              required
             />
             <button className="signup-form-submit" type="submit"> Valider </button>
           </form>
@@ -97,6 +112,7 @@ SignUp.propTypes = {
   handleInputChange: PropTypes.func.isRequired,
   isSignUpOpen: PropTypes.bool.isRequired,
   signUpFormToggle: PropTypes.func.isRequired,
+  loginFormToggle: PropTypes.func.isRequired,
   signUpIsValid: PropTypes.bool.isRequired,
 };
 
