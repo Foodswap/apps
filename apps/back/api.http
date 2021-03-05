@@ -20,6 +20,17 @@ Content-Type: application/json
 } 
 ###
 
+POST {{baseUrl}}/login
+Content-Type: application/json
+
+{
+   "username" : "jeanmarie",
+   "email" : "bgdsfdfsdfsu93@mail.fr",
+   "password" : "jenesuispasencorehaché",
+   "city" : "bordeaux"
+} 
+###
+
 POST http://ec2-54-145-80-6.compute-1.amazonaws.com/v1/signup
 Content-Type: application/json
 
