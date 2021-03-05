@@ -53,22 +53,22 @@ export default (store) => (next) => (action) => {
       //     if (!result) {
 
       // s'il le mail n'existe pas je lance la req post
-      // axios({
-      //   method: 'POST',
-      //   url: 'http://ec2-54-145-80-6.compute-1.amazonaws.com/v1/signup',
-      //   data: userObj,
-      // })
-      //   .then((res) => {
-      //     console.log(`response ok : ${res}`);
-      const actionToDispatch = signUpSucces();
-      store.dispatch(actionToDispatch);
-      //   })
-      //   .catch((error) => {
-      //     console.trace(`${error} erreur au post`);
-      //   })
-      //   .finally(() => {
-      //     console.log(userObj);
-      //   });
+      axios({
+        method: 'post',
+        url: 'http://localhost:5000/v1/signup',
+        data: userObj,
+      })
+        .then((res) => {
+          console.log(`response ok : ${res}`);
+          const actionToDispatch = signUpSucces();
+          store.dispatch(actionToDispatch);
+        })
+        .catch((error) => {
+          console.trace(`${error} erreur au post`);
+        })
+        .finally(() => {
+          console.log(userObj);
+        });
       // }
       // })
       // .catch((error) => {
