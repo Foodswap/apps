@@ -1,3 +1,4 @@
+const bcrypt = require('bcrypt');
 const Author = require('../models/author');
 
 const authorController = {
@@ -8,7 +9,8 @@ const authorController = {
             const userEmail = await Author.findOne({where:{email:request.body.email}});
             if(userEmail) {
                 response.status(409).json("Une erreur est survenue : email déjà enregistré.");
-            }
+            };
+            author.password = bcrypt.hashSync(request.body.password, 10);
             await author.save();
             author.password = null;
             response.status(201).json(author);
