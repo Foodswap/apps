@@ -1,13 +1,17 @@
 import {
-  SET_INPUT_VALUE, LOGIN_SUCCESS, LOGIN_ERROR, USER_LOGOUT, SEND_SIGN_UP,
+  SET_INPUT_VALUE, LOGIN_SUCCESS, LOGIN_ERROR, USER_LOGOUT, SEND_SIGN_UP, SIGNUP_SUCCES, SIGNUP_ERROR,
 } from '../actions/user';
+import { MODAL_LOGIN_TOGGLE, MODAL_SIGN_UP_TOGGLE } from '../actions/modals';
 
 const initialState = {
+  isLoginOpen: false,
+  isSignUpOpen: false,
   email: '',
   password: '',
-  pseudo: '',
+  pseudonym: '',
   city: '',
   isLogged: false,
+  signUpIsValid: false,
   loggedMessage: '',
   infos: {
     token: localStorage.getItem('token'),
@@ -16,10 +20,32 @@ const initialState = {
 
 export default (state = initialState, action = {}) => {
   switch (action.type) {
+    case MODAL_LOGIN_TOGGLE:
+      return {
+        ...state,
+        isSignUpOpen: false,
+        isLoginOpen: !state.isLoginOpen,
+      };
+    case MODAL_SIGN_UP_TOGGLE:
+      return {
+        ...state,
+        isSignUpOpen: !state.isSignUpOpen,
+        isLoginOpen: false,
+        signUpIsValid: false,
+      };
     case SET_INPUT_VALUE:
       return {
         ...state,
         [action.name]: action.value,
+      };
+    case SIGNUP_SUCCES:
+      return {
+        ...state,
+        signUpIsValid: true,
+        email: '',
+        password: '',
+        pseudonym: '',
+        city: '',
       };
     case LOGIN_SUCCESS:
       return {
@@ -27,9 +53,10 @@ export default (state = initialState, action = {}) => {
         email: '',
         password: '',
         isLogged: true,
-        loggedMessage: `Bienvenue ${action.payload.pseudo} ! `,
+        isLoginOpen: false,
+        loggedMessage: `Bienvenue ${action.payload.pseudonym} ! `,
         infos: {
-          pseudo: action.payload.pseudo,
+          pseudonym: action.payload.pseudonym,
           token: action.payload.token,
         },
       };
@@ -38,6 +65,12 @@ export default (state = initialState, action = {}) => {
         ...state,
         isLogged: false,
         loggedMessage: 'Veuillez réessayer !',
+        infos: {},
+      };
+    case SIGNUP_ERROR:
+      return {
+        ...state,
+        loggedMessage: 'Un compte existe déjà avec cet email !',
         infos: {},
       };
     case USER_LOGOUT:

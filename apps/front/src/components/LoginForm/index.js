@@ -1,18 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './style.scss';
-import { userLogout } from '../../actions/user';
 
 const LoginForm = ({
-  email, password, handleLogin, handleInputChange, isLogged, loggedMessage, userLogout,
+  email,
+  password,
+  handleLogin,
+  handleInputChange,
+  isLogged,
+  loggedMessage,
+  userLogout,
+  isLoginOpen,
+  loginFormToggle,
 }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     console.log('handleSubmit');
     handleLogin();
   };
+  const classIsOpen = isLoginOpen ? 'login-modale' : 'login-modale-close';
   return (
-    <div className="login-modale">
+    <div className={classIsOpen}>
+      <button type="button" className="login-form-button-close" onClick={loginFormToggle}> X </button>
 
       { isLogged && (
         <div className="login-form-message-div">
@@ -72,5 +81,7 @@ LoginForm.propTypes = {
   isLogged: PropTypes.bool.isRequired,
   loggedMessage: PropTypes.string.isRequired,
   userLogout: PropTypes.func.isRequired,
+  isLoginOpen: PropTypes.bool.isRequired,
+  loginFormToggle: PropTypes.func.isRequired,
 };
 export default LoginForm;

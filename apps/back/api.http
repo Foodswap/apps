@@ -13,8 +13,19 @@ POST {{baseUrl}}/signup
 Content-Type: application/json
 
 {
-   "username" : "jeanthierry",
-   "email" : "bgdu01@mail.fr",
+   "username" : "jeanmarie",
+   "email" : "bgdsfdfsdfsu93@mail.fr",
    "password" : "jenesuispasencorehaché",
    "city" : "bordeaux"
 } 
+###
+
+POST http://ec2-54-145-80-6.compute-1.amazonaws.com/v1/signup
+Content-Type: application/json
+
+{
+    "username": "jeanthibault",
+    "email": "bgdsfdfsdfsu08@mail.fr",
+    "password": "jenesuispasencorehaché",
+    "city": "bordeaux"
+}
