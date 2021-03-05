@@ -5,7 +5,7 @@
 @baseUrl = {{protocol}}://{{domainname}}:{{port}}/{{path}}
 
 ###
-GET {{baseUrl}}/
+GET {{baseUrl}}
 
 ### 
 
