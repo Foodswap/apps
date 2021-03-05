@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 
 import './style.scss';
 
-const MyDishes = ({ userDishes }) => (
+const MyDishes = ({ userDishes, deleteDish, deleteMessage }) => (
   <div className="myDishes">
     <h1 className="myDishes-title">Mes Plats</h1>
-
+    {deleteMessage}
     <section className="myDishes-container">
       { userDishes.map((dish) => (
         <article key={dish.id} className="myDishes-oneDish">
@@ -24,7 +24,13 @@ const MyDishes = ({ userDishes }) => (
             </div>
 
             <div className="myDishes-buttonContent">
-              <button type="button" className="myDishes-button">Supprimer</button>
+              <button
+                type="button"
+                className="myDishes-button"
+                onClick={() => deleteDish(dish.id)}
+              >
+                Supprimer
+              </button>
             </div>
           </div>
 
@@ -45,6 +51,8 @@ MyDishes.propTypes = {
       online: PropTypes.bool.isRequired,
     }),
   ).isRequired,
+  deleteDish: PropTypes.func.isRequired,
+  deleteMessage: PropTypes.string.isRequired,
 };
 
 export default MyDishes;

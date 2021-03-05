@@ -1,6 +1,11 @@
 // export const initialState = {};
 
+import {
+  DELETE_ONE_DISH, DELETE_ONE_DISH_SUCCESS, DELETE_ONE_DISH_ERROR,
+} from '../actions/dishes';
+
 const initialState = {
+  deleteMessage: '',
   userDishes: [
     {
       id: 1,
@@ -58,6 +63,19 @@ const initialState = {
 
 export default (state = initialState, action = {}) => {
   switch (action.type) {
+    case DELETE_ONE_DISH: return {
+      ...state,
+    };
+    case DELETE_ONE_DISH_SUCCESS: return {
+      ...state,
+      userDishes: [...action.payload],
+      deleteMessage: 'votre fiche de plat a bien été supprimée',
+    };
+    case DELETE_ONE_DISH_ERROR: return {
+      ...state,
+      deleteMessage: 'il y a eu un problème, votre fine n\'a pas pu être supprimé',
+    };
+
     default:
       return state;
   }
