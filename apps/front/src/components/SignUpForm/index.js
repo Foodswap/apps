@@ -116,6 +116,7 @@ SignUp.propTypes = {
   signUpFormToggle: PropTypes.func.isRequired,
   loginFormToggle: PropTypes.func.isRequired,
   signUpIsValid: PropTypes.bool.isRequired,
+  loggedMessage: PropTypes.string.isRequired,
 };
 
 export default SignUp;
