@@ -1,5 +1,5 @@
 import {
-  SET_INPUT_VALUE, LOGIN_SUCCESS, LOGIN_ERROR, USER_LOGOUT, SEND_SIGN_UP, SIGNUP_SUCCES,
+  SET_INPUT_VALUE, LOGIN_SUCCESS, LOGIN_ERROR, USER_LOGOUT, SEND_SIGN_UP, SIGNUP_SUCCES, SIGNUP_ERROR,
 } from '../actions/user';
 import { MODAL_LOGIN_TOGGLE, MODAL_SIGN_UP_TOGGLE } from '../actions/modals';
 
@@ -65,6 +65,12 @@ export default (state = initialState, action = {}) => {
         ...state,
         isLogged: false,
         loggedMessage: 'Veuillez réessayer !',
+        infos: {},
+      };
+    case SIGNUP_ERROR:
+      return {
+        ...state,
+        loggedMessage: 'Un compte existe déjà avec cet email !',
         infos: {},
       };
     case USER_LOGOUT:

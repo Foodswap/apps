@@ -13,6 +13,7 @@ const SignUp = ({
   signUpFormToggle,
   signUpIsValid,
   loginFormToggle,
+  loggedMessage,
 }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -47,6 +48,7 @@ const SignUp = ({
           <h2 className="signup-title">
             Inscrivez-vous
           </h2>
+          <p>{loggedMessage}</p>
           <form
             className="signup-form-element"
             onSubmit={handleSubmit}

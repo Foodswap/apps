@@ -3,7 +3,7 @@ import axios from 'axios';
 import data from '../../dataUser';
 
 import {
-  SEND_LOGIN, loginSuccess, loginError, SEND_SIGN_UP, signUpSucces,
+  SEND_LOGIN, loginSuccess, loginError, SEND_SIGN_UP, signUpSucces, signUpError,
 } from '../actions/user';
 
 // ! Pour le moment je test ici le login avec des données en durs, pas de reqûete axios
@@ -65,6 +65,8 @@ export default (store) => (next) => (action) => {
         })
         .catch((error) => {
           console.trace(`${error} erreur au post`);
+          const actionToDispatch = signUpError();
+          store.dispatch(actionToDispatch);
         })
         .finally(() => {
           console.log(userObj);

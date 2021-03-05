@@ -45,3 +45,9 @@ export const signUpSucces = (payload) => ({
   type: SIGNUP_SUCCES,
   payload,
 });
+
+export const SIGNUP_ERROR = 'SIGNUP_ERROR';
+export const signUpError = (payload) => ({
+  type: SIGNUP_ERROR,
+  payload,
+});
