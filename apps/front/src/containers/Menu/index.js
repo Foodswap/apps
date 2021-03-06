@@ -3,11 +3,11 @@ import Menu from '../../components/Menu';
 import { modalLoginFormToggle, modalSignUpFormToggle } from '../../actions/modals';
 import { handleLogout } from '../../actions/user';
 
-const mapState = (state) => ({
+const mapStateToProps = (state) => ({
   isLogged: state.user.isLogged,
 });
 
-const mapDispatch = (dispatch) => ({
+const mapDispatchToProps = (dispatch) => ({
   loginFormToggle: () => {
     const action = modalLoginFormToggle();
     dispatch(action);
@@ -19,4 +19,4 @@ const mapDispatch = (dispatch) => ({
   userLogout: () => dispatch(handleLogout()),
 });
 
-export default connect(mapState, mapDispatch)(Menu);
+export default connect(mapStateToProps, mapDispatchToProps)(Menu);

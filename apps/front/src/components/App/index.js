@@ -7,6 +7,7 @@ import Menu from '../../containers/Menu';
 import DescriptionHomepage from '../DescriptionHomepage';
 import LoginForm from '../../containers/LoginForm';
 import SignUpForm from '../../containers/SignUpForm';
+import MyDishes from '../../containers/MyDishes';
 import Footer from '../Footer';
 
 // == Import
@@ -21,6 +22,7 @@ const App = () => (
     <DescriptionHomepage />
     <LoginForm />
     <SignUpForm />
+    <MyDishes />
     <Footer />
   </div>
 );
