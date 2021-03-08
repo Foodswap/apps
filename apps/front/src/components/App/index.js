@@ -12,6 +12,7 @@ import LastDishes from '../LastDishes';
 
 // == Import
 import './styles.css';
+import dishes from '../../../dataDishes';
 
 // == Composant
 const App = () => (
@@ -20,7 +21,7 @@ const App = () => (
     <AppHeader />
     <Menu />
     <DescriptionHomepage />
-    <LastDishes />
+    <LastDishes dishes={dishes} />
     <LoginForm />
     <SignUpForm />
     <Footer />
