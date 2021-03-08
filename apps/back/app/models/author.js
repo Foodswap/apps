@@ -4,7 +4,7 @@ const { Model, DataTypes } = require('sequelize');
 class Author extends Model {
     
     toString() {
-        return `L'user s'appelle ${this.pseudonym}, son mail est ${this.email} et son password est ${this.password} et il habite à ${this.address}`
+        return `L'user s'appelle ${this.username}, son mail est ${this.email} et son password est ${this.password} et il habite à ${this.address}`
     }
 
 }
