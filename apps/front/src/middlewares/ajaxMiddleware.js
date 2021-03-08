@@ -55,7 +55,7 @@ export default (store) => (next) => (action) => {
       // s'il le mail n'existe pas je lance la req post
       axios({
         method: 'post',
-        url: 'http://localhost:5000/v1/signup',
+        url: 'http://ec2-54-145-80-6.compute-1.amazonaws.com/v1/signup',
         data: userObj,
       })
         .then((res) => {

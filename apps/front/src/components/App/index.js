@@ -9,9 +9,11 @@ import LoginForm from '../../containers/LoginForm';
 import SignUpForm from '../../containers/SignUpForm';
 import MyDishes from '../../containers/MyDishes';
 import Footer from '../Footer';
+import LastDishes from '../LastDishes';
 
 // == Import
 import './styles.css';
+import dishes from '../../../dataDishes';
 
 // == Composant
 const App = () => (
@@ -20,6 +22,7 @@ const App = () => (
     <AppHeader />
     <Menu />
     <DescriptionHomepage />
+    <LastDishes dishes={dishes} />
     <LoginForm />
     <SignUpForm />
     <MyDishes />
