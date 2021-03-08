@@ -8,6 +8,8 @@ const app = express();
 
 const bodyParser = require('body-parser');
 
+const jwt = require('jsonwebtoken');
+
 app.use(cors());
 
 app.use(bodyParser.json());
