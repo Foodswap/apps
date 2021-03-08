@@ -11,16 +11,25 @@ export default (store) => (next) => (action) => {
   console.log('ajax middleware');
   switch (action.type) {
     case SEND_LOGIN: {
-      const { email, password } = store.getState().user;
+      // const { email, password } = store.getState().user;
 
-      data.map((userObj) => {
-        if (email === userObj.email && password === userObj.password) {
-          const actionToDispatch = loginSuccess(userObj);
-          return store.dispatch(actionToDispatch);
-        }
-
+      axios({
+        method: 'post',
+        url: 'http://ec2-54-145-80-6.compute-1.amazonaws.com/v1/login',
+        data: store.getState().user,
+      })
+      .then((res) => {
+        console.log(`response ok : ${res}`);
+        const actionToDispatch = loginSucces();
+        store.dispatch(actionToDispatch);
+      })
+      .catch((error) => {
+        console.trace(`${error} erreur au post login`);
         const actionToDispatch = loginError();
-        return store.dispatch(actionToDispatch);
+        store.dispatch(actionToDispatch);
+      })
+      .finally(() => {
+        console.log("login done");
       });
     }
       break;
