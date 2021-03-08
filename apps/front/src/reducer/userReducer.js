@@ -1,5 +1,5 @@
 import {
-  SET_INPUT_VALUE, LOGIN_SUCCESS, LOGIN_ERROR, USER_LOGOUT, SEND_SIGN_UP, SIGNUP_SUCCES, SIGNUP_ERROR,
+  SET_INPUT_VALUE, LOGIN_SUCCES, LOGIN_ERROR, USER_LOGOUT, SEND_SIGN_UP, SIGNUP_SUCCES, SIGNUP_ERROR,
 } from '../actions/user';
 import { MODAL_LOGIN_TOGGLE, MODAL_SIGN_UP_TOGGLE } from '../actions/modals';
 
@@ -47,7 +47,7 @@ export default (state = initialState, action = {}) => {
         pseudonym: '',
         city: '',
       };
-    case LOGIN_SUCCESS:
+    case LOGIN_SUCCES:
       return {
         ...state,
         email: '',

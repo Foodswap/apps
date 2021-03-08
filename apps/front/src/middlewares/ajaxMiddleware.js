@@ -3,7 +3,7 @@ import axios from 'axios';
 import data from '../../dataUser';
 
 import {
-  SEND_LOGIN, loginSuccess, loginError, SEND_SIGN_UP, signUpSucces, signUpError,
+  SEND_LOGIN, loginSucces, loginError, SEND_SIGN_UP, signUpSucces, signUpError,
 } from '../actions/user';
 
 // ! Pour le moment je test ici le login avec des données en durs, pas de reqûete axios
@@ -11,20 +11,22 @@ export default (store) => (next) => (action) => {
   console.log('ajax middleware');
   switch (action.type) {
     case SEND_LOGIN: {
-      // const { email, password } = store.getState().user;
+      const { email, password } = store.getState().user;
 
       axios({
         method: 'post',
         url: 'http://ec2-54-145-80-6.compute-1.amazonaws.com/v1/login',
-        data: store.getState().user,
+        data: {
+          email, password
+        },
       })
       .then((res) => {
         console.log(`response ok : ${res}`);
-        const actionToDispatch = loginSucces();
+        const actionToDispatch = loginSucces(res);
         store.dispatch(actionToDispatch);
       })
       .catch((error) => {
-        console.trace(`${error} erreur au post login`);
+        console.log(`${error} erreur au post login`);
         const actionToDispatch = loginError();
         store.dispatch(actionToDispatch);
       })
@@ -46,7 +48,7 @@ export default (store) => (next) => (action) => {
       };
       console.log(userObj);
 
-      data.push(userObj);
+      // data.push(userObj);
       console.log(data);
 
       // TODO requete GET pour verifier que le mail ou le pseudo n'existe pas, puis POST

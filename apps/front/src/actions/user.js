@@ -14,9 +14,9 @@ export const sendLogin = () => ({
 });
 
 // action quand le login est réussi
-export const LOGIN_SUCCESS = 'USER_LOGIN_SUCCESS';
-export const loginSuccess = (payload) => ({
-  type: LOGIN_SUCCESS,
+export const LOGIN_SUCCES = 'USER_LOGIN_SUCCESS';
+export const loginSucces = (payload) => ({
+  type: LOGIN_SUCCES,
   payload,
 });
 
