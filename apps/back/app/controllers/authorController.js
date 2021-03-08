@@ -11,7 +11,7 @@ const authorController = {
             if(userEmail) {
                 response.status(409).json("Email déjà enregistré.");
             };
-            const userName = await Author.findOne({where:{usename:request.body.username}});
+            const userName = await Author.findOne({where:{username:request.body.username}});
             if(userName) {
                 response.status(409).json("Nom utilisateur déjà enregistré.");
             };
