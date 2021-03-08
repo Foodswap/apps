@@ -1,5 +1,6 @@
 // == Import npm
 import React from 'react';
+import { Route } from 'react-router-dom';
 
 // == Import
 import AppHeader from '../AppHeader';
@@ -10,6 +11,7 @@ import SignUpForm from '../../containers/SignUpForm';
 import MyDishes from '../../containers/MyDishes';
 import Footer from '../Footer';
 import LastDishes from '../LastDishes';
+import Faces from '../Faces';
 
 // == Import
 import './styles.css';
@@ -20,12 +22,19 @@ const App = () => (
 
   <div className="app">
     <AppHeader />
-    <Menu />
-    <DescriptionHomepage />
-    <LastDishes dishes={dishes} />
-    <LoginForm />
-    <SignUpForm />
-    <MyDishes />
+    <Route exact path="/">
+      <Menu />
+      <DescriptionHomepage />
+      <LastDishes dishes={dishes} />
+      <LoginForm />
+      <SignUpForm />
+    </Route>
+    <Route exact path="/v1/meals">
+      <MyDishes />
+    </Route>
+    <Route exact path="/v1/Qui sommes nous">
+      <Faces />
+    </Route>
     <Footer />
   </div>
 );

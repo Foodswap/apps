@@ -12,6 +12,7 @@ const Menu = ({
     {!isLogged && (
     <nav>
       <NavLink
+        exact
         className="menu-link"
         to=""
         onClick={signUpFormToggle}
@@ -19,7 +20,7 @@ const Menu = ({
         Inscription
       </NavLink>
 
-      <NavLink className="menu-link" to="" onClick={loginFormToggle}>
+      <NavLink exact className="menu-link" to="" onClick={loginFormToggle}>
         Connexion
       </NavLink>
     </nav>
@@ -27,23 +28,23 @@ const Menu = ({
 
     { isLogged && (
       <nav>
-        <NavLink className="menu-link" to="/">
+        <NavLink exact className="menu-link" to="/">
           Accueil
         </NavLink>
 
-        <NavLink className="menu-link" to="/mesPlats">
+        <NavLink exact className="menu-link" to="/v1/meals">
           Mes plats
         </NavLink>
 
-        <NavLink className="menu-link" to="/creerFicheDePlat">
+        <NavLink exact className="menu-link" to="/v1/meal/:id">
           Créer une nouvelle fiche de plat
         </NavLink>
 
-        <NavLink className="menu-link" to="/suiviEchange">
+        <NavLink exact className="menu-link" to="/suiviEchange">
           Suivi d'échange
         </NavLink>
 
-        <NavLink className="menu-link" to="/mesInformation">
+        <NavLink exact className="menu-link" to="/v1/user/:id">
           Mes informations
         </NavLink>
         <button className="logout-button" type="button" onClick={userLogout}> Se déconnecter </button>

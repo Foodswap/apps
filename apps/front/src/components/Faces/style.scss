@@ -1,0 +1,33 @@
+
+section
+{
+    display: flex;
+    justify-content: space-between;  
+}
+figure 
+{
+    margin: auto;
+    text-align: center;
+}
+figure img
+{
+    border-radius: 100px;
+    border: solid 1px;
+    -webkit-transform: scale(1);
+	transform: scale(1);
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+}
+.face-image{
+  
+       color: black;
+       font-weight: bold;
+       height: 200px;
+  
+}
+
+figure img:hover 
+{
+    -webkit-transform: scale(1.3);
+	transform: scale(1.3);
+}

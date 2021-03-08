@@ -4,10 +4,14 @@ import './style.scss';
 
 const Footer = () => (
 
-  <div className="footer">
-    <a className="footer-link" href="/Qui sommes-nous?">Qui sommes-nous ?</a>
-    <a className="footer-mention" href="/Mentions legales">Mentions légales</a>
-  </div>
+  <nav className="footer">
+    <NavLink className="footer-link" to="/v1/Qui sommes nous">
+      Qui sommes-nous ?
+    </NavLink>
+    <a className="footer-mention" href="/v1/Mentions legales">
+      Mentions légales
+    </a>
+  </nav>
 
 );
 
