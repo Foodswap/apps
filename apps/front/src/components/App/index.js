@@ -8,6 +8,7 @@ import DescriptionHomepage from '../DescriptionHomepage';
 import LoginForm from '../../containers/LoginForm';
 import SignUpForm from '../../containers/SignUpForm';
 import Footer from '../Footer';
+import LastDishes from '../LastDishes';
 
 // == Import
 import './styles.css';
@@ -19,6 +20,7 @@ const App = () => (
     <AppHeader />
     <Menu />
     <DescriptionHomepage />
+    <LastDishes />
     <LoginForm />
     <SignUpForm />
     <Footer />
