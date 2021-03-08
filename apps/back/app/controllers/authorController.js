@@ -1,4 +1,5 @@
 const bcrypt = require('bcrypt');
+const { response } = require('express');
 const Author = require('../models/author');
 
 const authorController = {
@@ -19,6 +20,8 @@ const authorController = {
             response.status(500).json("Une erreur est survenue lors de l'inscription.");
         }
     },
+
+
 
      
 };
