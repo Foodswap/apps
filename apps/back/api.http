@@ -11,7 +11,7 @@ GET {{baseUrl}}
 
 ###
 GET {{baseUrl}}/author
-Authentication: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImplYW52YWxqZWFuamVhbiIsImlhdCI6MTYxNTIxOTc5MX0.CawG4o_fVj6FQ-iV9Jdj1ri9LTi43LHyfLI2jL9TrtI
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImplYW5sZXZhbGplYW4iLCJpYXQiOjE2MTUyMjM0NzF9.zYa87SGBOr1CV4FjGirspUflWYI-ey56MdXyASM9dC8
 
 
 ### 
@@ -20,8 +20,8 @@ POST {{baseUrl}}/signup
 Content-Type: application/json
 
 {
-   "username" : "jeanmarie",
-   "email" : "bgdsfdfsdfsu93@mail.fr",
+   "username" : "jeanlevaljean",
+   "email" : "bgdu100@mail.fr",
    "password" : "jenesuispasencorehaché",
    "city" : "bordeaux"
 } 
@@ -31,7 +31,7 @@ POST {{baseUrl}}/login
 Content-Type: application/json
 
 {
-   "email" : "bgdu79@mail.fr",
+   "email" : "bgdu100@mail.fr",
    "password" : "jenesuispasencorehaché"
 } 
 ###

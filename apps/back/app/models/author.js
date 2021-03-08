@@ -2,10 +2,6 @@ const sequelize = require('../database');
 const { Model, DataTypes } = require('sequelize');
 
 class Author extends Model {
-    
-    toString() {
-        return `L'user s'appelle ${this.username}, son mail est ${this.email} et son password est ${this.password} et il habite à ${this.address}`
-    }
 
 }
 

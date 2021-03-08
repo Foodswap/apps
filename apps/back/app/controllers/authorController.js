@@ -34,20 +34,16 @@ const authorController = {
                     email:request.body.email
                 }
             });
-            if(!author) {
+            if(!author || !bcrypt.compareSync(request.body.password, author.password)) {
+                
                 response.status(401).json("Email ou mdp non valide.");
-                return;
-            };
-            if(!bcrypt.compareSync(request.body.password, author.password)) {
-                response.status(401).json("Email ou mdp non valide.")
-                return;
-            };
-            if(author) {
+    
+            } else {
                 const accessToken = "Bearer "+ jwt.sign({username: author.username}, accessTokenSecret);
 
                 response.set("Authorization", accessToken).json({
                     accessToken
-                });
+                })
             };
         } catch(err) {
             console.log(err);
