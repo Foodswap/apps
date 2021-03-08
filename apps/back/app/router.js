@@ -6,6 +6,6 @@ const schemas = require('./middlewares/validation/schemas');
 const middlewareValidation = require('./middlewares/validation/validation'); 
 
 router.post('/signup', middlewareValidation(schemas.signup), authorController.signup);
-router.post('/login', authorController.login);
+router.post('/login', middlewareValidation(schemas.login), authorController.login);
 
 module.exports = router;

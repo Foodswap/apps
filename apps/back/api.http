@@ -24,10 +24,8 @@ POST {{baseUrl}}/login
 Content-Type: application/json
 
 {
-   "username" : "jeanmarie",
-   "email" : "bgdsfdfsdfsu93@mail.fr",
-   "password" : "jenesuispasencorehaché",
-   "city" : "bordeaux"
+   "email" : "bgdu79@mail.fr",
+   "password" : "jenesuispasencorehaché"
 } 
 ###
 

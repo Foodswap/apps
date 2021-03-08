@@ -9,7 +9,11 @@ const authorController = {
         try {
             const userEmail = await Author.findOne({where:{email:request.body.email}});
             if(userEmail) {
-                response.status(409).json("Une erreur est survenue : email déjà enregistré.");
+                response.status(409).json("Email déjà enregistré.");
+            };
+            const userName = await Author.findOne({where:{usename:request.body.username}});
+            if(userName) {
+                response.status(409).json("Nom utilisateur déjà enregistré.");
             };
             author.password = bcrypt.hashSync(request.body.password, 10);
             await author.save();
@@ -18,34 +22,36 @@ const authorController = {
         } catch(err) {
             console.trace(err);
             response.status(500).json("Une erreur est survenue lors de l'inscription.");
-        }
+        };
     },
 
     
     login: async (request, response) => {
-        const accessTokenSecret = 'foodswaptokensecret'
-        const author = new Author(request.body);
+        const accessTokenSecret = process.env.ACCESS_TOKEN_SECRET;
         try {
-            const authorConnect = await Author.findOne({
+            const author = await Author.findOne({
                 where:{
                     email:request.body.email
                 }
             });
-            if(!authorConnect) {
-                response.status(401).json("Une erreur est survenue : email ou mdp non valide.")
+            if(!author) {
+                response.status(401).json("Email ou mdp non valide.");
+                return;
             };
             if(!bcrypt.compareSync(request.body.password, author.password)) {
-                response.status(401).json("Une erreur est survenue : email ou mdp non valide.")
+                response.status(401).json("Email ou mdp non valide.")
+                return;
             };
-            if(authorConnect) {
-                const accessToken = jwt.sign({username: author.username}, accessTokenSecret);
+            if(author) {
+                const accessToken = "Bearer "+ jwt.sign({username: author.username}, accessTokenSecret);
 
-                response.json({
+                response.set("Authorization", accessToken).json({
                     accessToken
                 });
-            }
+            };
         } catch(err) {
             console.log(err);
+            response.status(500).json("Une erreur est survenue lors de l'authentification.")
         };
     },
      
