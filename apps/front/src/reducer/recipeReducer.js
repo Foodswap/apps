@@ -10,7 +10,7 @@ const initialState = {
       picture: 'https://lh3.google.com/u/0/d/1lll7XWtpAM_tWXcCuHgWfncuFULfwg10=w842-h770-iv1',
       name: 'Buddha bowl',
       description: [
-        'une basse riz.',
+        'une base riz.',
         ' Sur le dessus il y a du saumon, avocat, carotte, choux rouge',
       ],
       created_date: '12.03.2021',
@@ -27,7 +27,7 @@ const initialState = {
       picture: 'https://lh3.google.com/u/0/d/1BZu0wwMKsAsSwxuob8idG-RgMOpLUy9d=w275-h786-iv2',
       name: 'Kimbap et bibimbap',
       description: [
-        'une basse riz.',
+        'une base riz.',
         ' Sur le dessus il y a du boeuf haché, épinard, carotte, oeuf',
       ],
       created_date: '12.03.2021',
@@ -44,7 +44,7 @@ const initialState = {
       picture: 'https://lh3.google.com/u/0/d/1X167WvnTUO-8g7Yu5OpSY5tJNQrawiLi=w275-h786-iv1',
       name: 'Number cake',
       description: [
-        'une basse génoise, fouré d\'une ganache monté chocolat blanc et fraise.',
+        'une base génoise, fouré d\'une ganache monté chocolat blanc et fraise.',
         ' Sur le dessus il y a de la crème chantilly, macaron, fraise et fleures en sucre',
       ],
       created_date: '09.03.2021',
