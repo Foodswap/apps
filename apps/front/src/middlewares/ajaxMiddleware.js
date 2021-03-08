@@ -22,8 +22,10 @@ export default (store) => (next) => (action) => {
       })
       .then((res) => {
         console.log(`response ok : ${res}`);
-        const actionToDispatch = loginSucces(res);
+        const actionToDispatch = loginSucces(res.data);
         store.dispatch(actionToDispatch);
+        console.log(res.data.name);
+        console.log(store.getState().user.infos)
       })
       .catch((error) => {
         console.log(`${error} erreur au post login`);

@@ -14,7 +14,7 @@ const initialState = {
   signUpIsValid: false,
   loggedMessage: '',
   infos: {
-    token: localStorage.getItem('token'),
+    accesToken: localStorage.getItem('token'),
   },
 };
 
@@ -54,10 +54,8 @@ export default (state = initialState, action = {}) => {
         password: '',
         isLogged: true,
         isLoginOpen: false,
-        loggedMessage: `Bienvenue ${action.payload.pseudonym} ! `,
         infos: {
-          pseudonym: action.payload.pseudonym,
-          token: action.payload.token,
+          token: action.payload.accessToken,
         },
       };
     case LOGIN_ERROR:
