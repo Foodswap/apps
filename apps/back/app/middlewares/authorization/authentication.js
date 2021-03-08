@@ -16,7 +16,7 @@ const authenticateJWT = (request, response, next) => {
             next();
         });
     } else {
-        res.sendStatus(401);
+        response.sendStatus(401);
     }
 };
 

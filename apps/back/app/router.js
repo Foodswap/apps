@@ -9,6 +9,6 @@ const middlewareAuthentification = require('./middlewares/authorization/authenti
 router.post('/signup', middlewareValidation(schemas.signup), authorController.signup);
 router.post('/login', middlewareValidation(schemas.login), authorController.login);
 
-router.get('/author', middlewareAuthentification(authenticateJWT), (request, response) => {response.json('Je suis connecté et j\'accède à la page author')});
+router.get('/author', middlewareAuthentification, (request, response) => {response.json('Je suis connecté et j\'accède à la page author')});
 
 module.exports = router;
