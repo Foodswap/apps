@@ -5,7 +5,7 @@
 @baseUrl = {{protocol}}://{{domainname}}:{{port}}/{{path}}
 
 ###
-GET {{baseUrl}}/
+GET {{baseUrl}}
 
 ### 
 
@@ -17,6 +17,15 @@ Content-Type: application/json
    "email" : "bgdsfdfsdfsu93@mail.fr",
    "password" : "jenesuispasencorehaché",
    "city" : "bordeaux"
+} 
+###
+
+POST {{baseUrl}}/login
+Content-Type: application/json
+
+{
+   "email" : "bgdu79@mail.fr",
+   "password" : "jenesuispasencorehaché"
 } 
 ###
 
