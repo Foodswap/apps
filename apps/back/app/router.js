@@ -7,6 +7,7 @@ const schemas = require('./middlewares/validation/schemas');
 const middlewareValidation = require('./middlewares/validation/validation'); 
 const middlewareAuthentication = require('./middlewares/authorization/authentication')
 
+
 router.post('/signup', middlewareValidation(schemas.signup), authorController.signup);
 router.post('/login', middlewareValidation(schemas.login), authorController.login);
 

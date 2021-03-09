@@ -11,7 +11,7 @@ GET {{baseUrl}}
 
 ###
 GET {{baseUrl}}/author
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImplYW5sZXZhbGplYW4iLCJpYXQiOjE2MTUyMjM0NzF9.zYa87SGBOr1CV4FjGirspUflWYI-ey56MdXyASM9dC8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImplYW5sZXZhbGplYW4iLCJpYXQiOjE2MTUyODYyODF9.7gAKhnEe5egQ3xkilsy1bxqO3pTaOGtoHm_JBNZeu2s
 
 
 ### 
