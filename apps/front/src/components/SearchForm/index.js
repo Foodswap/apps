@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import './style.scss';
 const SearchForm = ({handleInputChange, city, handleSearch, kitchen, dish, isSearching, handleSelectDish}) => {
@@ -35,7 +36,12 @@ const SearchForm = ({handleInputChange, city, handleSearch, kitchen, dish, isSea
           }}>
               
         </input>
-        <button type="submit"> Valider </button>
+        <Link to="/results">
+          <button type="submit" onSubmit={(evt) => {
+            evt.preventDefault();
+            <Redirect to="/results" />
+          }}> Valider </button>
+        </Link>
       </form>
     </div>
   
