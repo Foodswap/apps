@@ -12,7 +12,8 @@ import MyDishes from '../../containers/MyDishes';
 import Footer from '../Footer';
 import LastDishes from '../LastDishes';
 import Faces from '../Faces';
-import SearchForm from '../SearchForm';
+import SearchForm from '../../containers/SearchForm';
+
 // == Import
 import './styles.css';
 import dishes from '../../../dataDishes';

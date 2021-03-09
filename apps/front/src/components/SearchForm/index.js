@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './style.scss';
-const SearchForm = () => {
+const SearchForm = ({handleInputChange, city}) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     console.log("submit")
@@ -18,11 +18,19 @@ const SearchForm = () => {
         </select>
         <select name="catogery-kitchen">
           <option value="">Type de cuisine</option>
-          <option value="asiatique" name="entree">Asiatique</option>
-          <option value="mexicaine" name="plats">Mexicaine</option>
-          <option value="orientale" name="dessert">Orientale</option>
+          <option value="asiatique" name="asiatique">Asiatique</option>
+          <option value="mexicaine" name="mexicaine">Mexicaine</option>
+          <option value="orientale" name="orientale">Orientale</option>
         </select>
-        <input className="search-form-input" type="text" name="input-city" value="city" placeholder="Ville"></input>
+        <input 
+          className="search-form-input" 
+          type="text" name="city"
+          value={city} placeholder="Ville" 
+          onChange={(evt) => {
+                handleInputChange(evt.target.value, evt.target.name);
+          }}>
+              
+        </input>
         <button type="submit"> Valider </button>
       </form>
     </div>
