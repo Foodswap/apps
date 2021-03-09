@@ -8,7 +8,6 @@ import {
 
 // ! Pour le moment je test ici le login avec des données en durs, pas de reqûete axios
 export default (store) => (next) => (action) => {
-  console.log('ajax middleware');
   switch (action.type) {
     case SEND_LOGIN: {
       const { email, password } = store.getState().user;
@@ -17,24 +16,24 @@ export default (store) => (next) => (action) => {
         method: 'post',
         url: 'http://ec2-54-145-80-6.compute-1.amazonaws.com/v1/login',
         data: {
-          email, password
+          email, password,
         },
       })
-      .then((res) => {
-        console.log(`response ok : ${res}`);
-        const actionToDispatch = loginSucces(res.data);
-        store.dispatch(actionToDispatch);
-        console.log(res.data.name);
-        console.log(store.getState().user.infos)
-      })
-      .catch((error) => {
-        console.log(`${error} erreur au post login`);
-        const actionToDispatch = loginError();
-        store.dispatch(actionToDispatch);
-      })
-      .finally(() => {
-        console.log("login done");
-      });
+        .then((res) => {
+          console.log(`response ok : ${res}`);
+          const actionToDispatch = loginSucces(res.data);
+          store.dispatch(actionToDispatch);
+          console.log(res.data.name);
+          console.log(store.getState().user.infos);
+        })
+        .catch((error) => {
+          console.log(`${error} erreur au post login`);
+          const actionToDispatch = loginError();
+          store.dispatch(actionToDispatch);
+        })
+        .finally(() => {
+          console.log('login done');
+        });
     }
       break;
     case SEND_SIGN_UP: {

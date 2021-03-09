@@ -1,35 +1,58 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import './style.scss';
 
-const LastDishes = ({ dishes }) => (
+const LastDishes = ({ dishes, getListDishes }) => {
+  useEffect(() => getListDishes(), []);
 
-  <div className="last-dishes">
+  return (
+    <div className="last-dishes">
+      <h2 className="last-dishes-title">Les derniers plats ajoutés</h2>
 
-    <h2 className="last-dishes-title">Les derniers plats ajoutés</h2>
-    <div className="last-dishes-cards">
-      {
-      dishes.map((dish) => {
-        const linkUrl = `/dish/${dish.id}`;
-        return (
+      <div className="last-dishes-cards">
+        { dishes && (
+          dishes.map((dish) => {
+            const linkUrl = `/v1/dish/${dish.id}`;
 
-          <div className="last-dishes-card" key={dish.id}>
-            <img className="last-dishes-card-img" src={dish.picture} alt="" />
-            <h3 className="last-dishes-card-name">{dish.name}</h3>
-            <p className="last-dishes-card-potion">{dish.portion} part(s)</p>
-            <p className="last-dishes-card-author"> Fait par {dish.author.pseudonym}</p>
-            <p className="last-dishes-card-city">{dish.city}</p>
-            <Link to={linkUrl} className="last-dishes-card-seemore"> Voir plus </Link>
-          </div>
-        );
-      })
-    }
+            return (
+              <div className="last-dishes-card" key={dish.id}>
+                <img className="last-dishes-card-img" src={dish.picture} alt="" />
+                <h3 className="last-dishes-card-name">{dish.name}</h3>
+                <p className="last-dishes-card-potion">{dish.portion} part(s)</p>
+                <p className="last-dishes-card-author"> Fait par {dish.author.pseudonym}</p>
+                <p className="last-dishes-card-city">{dish.city}</p>
+                <Link to={linkUrl} className="last-dishes-card-seemore">Voir plus</Link>
+              </div>
+            );
+          })
+        )}
+      </div>
     </div>
-  </div>
+  );
+};
 
-);
+LastDishes.propTypes = {
+  dishes: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      picture: PropTypes.string,
+      name: PropTypes.string,
+      description: PropTypes.string,
+      ingredients: PropTypes.array,
+      portion: PropTypes.string,
+      city: PropTypes.string,
+      author: PropTypes.shape({
+        id: PropTypes.number,
+        pseudonym: PropTypes.string,
+      }),
+    }),
+  ),
+  getListDishes: PropTypes.func.isRequired,
+};
 
-LastDishes.propTypes = {};
+LastDishes.defaultProps = {
+  dishes: null,
+};
 
 export default LastDishes;

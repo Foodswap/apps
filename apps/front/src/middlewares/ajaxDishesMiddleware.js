@@ -1,7 +1,15 @@
-/* import DataUserDishes from '../../data-userDishes'; */
+import axios from 'axios';
 
 import {
-  DELETE_ONE_DISH, deleteOneDishSuccess, deleteOneDishError, oneDishSelect, ONE_DISH_SELECT, DISH_EXCHANGE, dishExchange,
+  DELETE_ONE_DISH,
+  deleteOneDishSuccess,
+  deleteOneDishError,
+  updateSElectedDish,
+  ONE_DISH_SELECT,
+  DISH_EXCHANGE,
+  dishExchange,
+  GET_LIST_OF_DISHES,
+  updateListOfDishes,
 } from '../actions/dishes';
 
 export default (store) => (next) => (action) => {
@@ -24,13 +32,41 @@ export default (store) => (next) => (action) => {
       const actionToDispatch = deleteOneDishError();
       return store.dispatch(actionToDispatch);
     }
+    // eslint-disable-next-line no-lone-blocks
     case ONE_DISH_SELECT: {
-      const { userDishes } = store.getState().recipes;
-      const findADish = userDishes.find((dish) => dish.id === action.payload);
-      if (findADish) {
-        const actionToDispatch = oneDishSelect(findADish);
-        return store.dispatch(actionToDispatch);
-      }
+      axios({
+        method: 'get',
+        url: `http://localhost:3000/dishes/${action.payload}`,
+      })
+        .then((res) => {
+          console.log(`response ok : ${res}`);
+          const actionToDispatch = updateSElectedDish(res.data);
+          return store.dispatch(actionToDispatch);
+        })
+        .catch((error) => {
+          console.log(`${error} error on get one dish`);
+        })
+        .finally(() => {
+          console.log('login done');
+        });
+    } break;
+    // eslint-disable-next-line no-lone-blocks
+    case GET_LIST_OF_DISHES: {
+      axios({
+        method: 'get',
+        url: 'http://localhost:3000/dishes',
+      })
+        .then((res) => {
+          console.log(`response ok : ${res}`);
+          const actionToDispatch = updateListOfDishes(res.data);
+          return store.dispatch(actionToDispatch);
+        })
+        .catch((error) => {
+          console.log(`${error} error on get one dish`);
+        })
+        .finally(() => {
+          console.log('login done');
+        });
     } break;
     case DISH_EXCHANGE: {
       const { userDishes } = store.getState().recipes;

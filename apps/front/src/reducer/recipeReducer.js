@@ -1,8 +1,14 @@
 import {
-  DELETE_ONE_DISH, DELETE_ONE_DISH_SUCCESS, DELETE_ONE_DISH_ERROR, ONE_DISH_SELECT, DISH_EXCHANGE,
+  DELETE_ONE_DISH,
+  DELETE_ONE_DISH_SUCCESS,
+  DELETE_ONE_DISH_ERROR,
+  UPDATE_SELECTED_DISH,
+  UPDATE_LIST_OF_DISHES,
+  DISH_EXCHANGE,
 } from '../actions/dishes';
 
 const initialState = {
+  lastDishes: null,
   deleteMessage: '',
   userDishes: [
     {
@@ -159,10 +165,11 @@ const initialState = {
       },
     },
   ],
-  dishSelect: {},
+  dishSelect: null,
 };
 
 export default (state = initialState, action = {}) => {
+  console.log(action);
   switch (action.type) {
     case DELETE_ONE_DISH: return {
       ...state,
@@ -176,9 +183,13 @@ export default (state = initialState, action = {}) => {
       ...state,
       deleteMessage: 'il y a eu un problème, votre fine n\'a pas pu être supprimé',
     };
-    case ONE_DISH_SELECT: return {
+    case UPDATE_SELECTED_DISH: return {
       ...state,
       dishSelect: action.payload,
+    };
+    case UPDATE_LIST_OF_DISHES: return {
+      ...state,
+      lastDishes: action.payload,
     };
     case DISH_EXCHANGE: return {
       ...state,

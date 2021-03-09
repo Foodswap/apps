@@ -1,46 +1,52 @@
-// == Import npm
+// Vendors
 import React from 'react';
 import { Route } from 'react-router-dom';
 
-// == Import
+// Dumb components
 import AppHeader from '../AppHeader';
+import Footer from '../Footer';
+import Faces from '../Faces';
+
+// Container components
 import Menu from '../../containers/Menu';
 import DescriptionHomepage from '../DescriptionHomepage';
 import LoginForm from '../../containers/LoginForm';
 import SignUpForm from '../../containers/SignUpForm';
 import MyDishes from '../../containers/MyDishes';
-// import DisplayADish from '../../containers/DisplayADish';
-import Footer from '../Footer';
-import LastDishes from '../LastDishes';
-import Faces from '../Faces';
+import DisplayADish from '../../containers/DisplayADish';
+import LastDishes from '../../containers/LastDishes';
 import SearchForm from '../../containers/SearchForm';
 
-// == Import
+// Style
 import './styles.css';
-import dishes from '../../../dataDishes';
 
-// import Data from '../../../data-userDishes';
-// == Composant
+/**
+ * App component
+ * Application Layout
+ */
 const App = () => (
-
   <div className="app">
     <AppHeader />
     <Menu />
+
     <Route exact path="/">
       <DescriptionHomepage />
       <SearchForm />
-      <LastDishes dishes={dishes} />
+      <LastDishes />
       <LoginForm />
       <SignUpForm />
     </Route>
+
+    <Route exact path="/v1/dish/:id" component={DisplayADish} />
+
     <Route exact path="/v1/meals">
       <MyDishes />
     </Route>
-    <Route exact path="/v1/Qui sommes nous">
+
+    <Route exact path="/v1/qui-sommes-nous">
       <Faces />
     </Route>
 
-    {/* <DisplayADish />  a relier sur une route */}
     <Footer />
   </div>
 );
