@@ -2,31 +2,32 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './style.scss';
 import image from '../../assets/images/logo-fooswap.png';
-import { cancelFormRecipe, sendFormRecipeUp } from '../../actions/DishesForm';
+import { cancelFormRecipe, sendFormRecipeUp } from '../../actions/dishesForm';
 const DishesForm = ({
-  dataFormMeal,
-  picture,
-  name,
-  portion,
-  city,
-  author,
-  ingredients,
-  description,
-  // inputValue,
+  // picture,
+  // name,
+  // portion,
+  // city,
+  // author,
+  // ingredients,
+  // description,
+  inputValue,
   onInputChange,
   onFormSubmit,
 }) => (
   <div className="meal-page">
     <div className="meal-form">
       <div className="meal-image">
+      <label className="picture">Importez votre photo de plat:</label>
         <input
+          id="picture"
           type="file"
           name="picture"
           onChange={(evt) => {
             const text = evt.target.value;
             onInputChange(text, evt.target.name);
           }}
-          value={picture}
+          value={inputValue}
         />
         <img
           src={image}
@@ -54,7 +55,7 @@ const DishesForm = ({
             const text = evt.target.value;
             onInputChange(text, evt.target.name);
           }}
-          value={name}
+          value={inputValue}
         />
         <input
           required
@@ -68,7 +69,7 @@ const DishesForm = ({
             const text = evt.target.value;
             onInputChange(text, evt.target.name);
           }}
-          value={portion}
+          value={inputValue}
         />
         <input
           required
@@ -80,7 +81,7 @@ const DishesForm = ({
             const text = evt.target.value;
             onInputChange(text, evt.target.name);
           }}
-          value={city}
+          value={inputValue}
         />
         <p
           className="meal-madeBy"
@@ -96,7 +97,7 @@ const DishesForm = ({
               const text = evt.target.value;
               onInputChange(text, evt.target.name);
             }}
-            value={author}
+            value={inputValue}
           />
         </p>
         <textarea
@@ -109,7 +110,7 @@ const DishesForm = ({
             const text = evt.target.value;
             onInputChange(text, evt.target.name);
           }}
-          value={ingredients}
+          value={inputValue}
         />
         <textarea
           required
@@ -121,43 +122,41 @@ const DishesForm = ({
             const text = evt.target.value;
             onInputChange(text, evt.target.name);
           }}
-          value={description}
+          value={inputValue}
 
         />
-
-        <select name="meal-category" className="meal-category">
-          { dataFormMeal.map((meal) => (
-            <option key={meal.id} value="Française">{meal.name}</option>
-          ))}
-        </select>
         <select className="meal-category">
           <option value="">Type d'assiete</option>
-          <option value="Entrée">Entrée</option>
-          <option value="Plat">Plat</option>
-          <option value="Dessert">Dessert</option>
+          <option value="entrée" name="entrée">Entrée</option>
+          <option value="plat" name="plat">Plat</option>
+          <option value="dessert" name="dessert">Dessert</option>
         </select>
+        <select className="meal-category">
+          <option value="">Type de cuisine</option>
+          <option value="française" name="française">Française</option>
+          <option value="asiatique" name="asiatique">Asiatique</option>
+          <option value="orientale" name="orientale">Orientale</option>
+          <option value="italienne" name="italienne">Italienne</option>
+          <option value="greque" name="greque">Greque</option>
+          <option value="indienne" name="indienne">Indienne</option>
+          <option value="japonaise" name="japonaise">Japonaise</option>
+        </select>
+        </form>
         <button className="mealForm-form-submit" type="submit" onClick={() => sendFormRecipeUp()}> Valider </button>
         <button className="mealForm-form-submit" type="button" onClick={() => cancelFormRecipe()}> Annuler </button>
-      </form>
     </div>
   </div>
 );
 DishesForm.propTypes = {
-  picture: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  portion: PropTypes.string.isRequired,
-  city: PropTypes.string.isRequired,
-  author: PropTypes.string.isRequired,
-  ingredients: PropTypes.array.isRequired,
-  description: PropTypes.array.isRequired,
-  // inputValue: PropTypes.string.isRequired,
+  // picture: PropTypes.string.isRequired,
+  // name: PropTypes.string.isRequired,
+  // portion: PropTypes.string.isRequired,
+  // city: PropTypes.string.isRequired,
+  // author: PropTypes.string.isRequired,
+  // ingredients: PropTypes.array.isRequired,
+  // description: PropTypes.array.isRequired,
+  inputValue: PropTypes.string.isRequired,
   onFormSubmit: PropTypes.func.isRequired,
   onInputChange: PropTypes.func.isRequired,
-  dataFormMeal: PropTypes.arrayOf(
-    PropTypes.shape({
-      type: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-    }),
-  ).isRequired,
 };
 export default DishesForm;

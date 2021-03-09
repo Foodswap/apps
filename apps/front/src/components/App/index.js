@@ -9,6 +9,7 @@ import DescriptionHomepage from '../DescriptionHomepage';
 import LoginForm from '../../containers/LoginForm';
 import SignUpForm from '../../containers/SignUpForm';
 import MyDishes from '../../containers/MyDishes';
+import DishesForm from '../../containers/DishesForm';
 import Footer from '../Footer';
 import LastDishes from '../LastDishes';
 import Faces from '../Faces';
@@ -31,6 +32,9 @@ const App = () => (
     </Route>
     <Route exact path="/v1/meals">
       <MyDishes />
+    </Route>
+    <Route exact path="/v1/meal/:id">
+    <DishesForm />
     </Route>
     <Route exact path="/v1/Qui sommes nous">
       <Faces />
