@@ -8,7 +8,7 @@ const multer = require('multer');
     
     const storage = multer.diskStorage({
       destination: (req, file, callback) => {
-        callback(null, '/home/etudiant/Bureau/Utilisateur');
+        callback(null, process.env.PATH_PICTURE);
       },
       filename: (req, file, callback) => {
         const name = file.originalname.split(' ').join('_');
@@ -19,4 +19,4 @@ const multer = require('multer');
     
 
 
-module.exports = multer({storage: storage}).single('image');
+module.exports = multer({storage: storage}).single('picture');
