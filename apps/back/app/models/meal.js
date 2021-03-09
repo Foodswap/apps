@@ -10,6 +10,7 @@ Meal.init(
         name: DataTypes.STRING,
         description: DataTypes.STRING,
         portion: DataTypes.INTEGER,
+        picture_url: DataTypes.STRING,
         city: DataTypes.STRING,
         online: DataTypes.BOOLEAN
     },
