@@ -8,11 +8,13 @@ import DescriptionHomepage from '../DescriptionHomepage';
 import LoginForm from '../../containers/LoginForm';
 import SignUpForm from '../../containers/SignUpForm';
 import MyDishes from '../../containers/MyDishes';
+// import DisplayADish from '../../containers/DisplayADish';
 import Footer from '../Footer';
 
 // == Import
 import './styles.css';
 
+// import Data from '../../../data-userDishes';
 // == Composant
 const App = () => (
 
@@ -23,6 +25,7 @@ const App = () => (
     <LoginForm />
     <SignUpForm />
     <MyDishes />
+    {/* <DisplayADish />  a relier sur une route */}
     <Footer />
   </div>
 );

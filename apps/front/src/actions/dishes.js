@@ -18,3 +18,10 @@ export const deleteOneDishError = (payload) => ({
   type: DELETE_ONE_DISH_ERROR,
   payload,
 });
+
+// Action pour sélectionné un plat (par son id)
+export const ONE_DISH_SELECT = 'ONE_DISH_SELECT';
+export const oneDishSelect = (payload) => ({
+  type: ONE_DISH_SELECT,
+  payload,
+});
