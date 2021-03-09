@@ -47,7 +47,7 @@ MyDishes.propTypes = {
       id: PropTypes.number.isRequired,
       picture: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
-      description: PropTypes.array.isRequired,
+      description: PropTypes.string.isRequired,
       online: PropTypes.bool.isRequired,
     }),
   ).isRequired,
