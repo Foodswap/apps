@@ -1,8 +1,30 @@
 
-section
-{
+.face{
+
+  &-container{
     display: flex;
     justify-content: space-between;  
+  }
+
+  &-image{
+    color: black;
+       font-weight: bold;
+       height: 200px;
+  }
+
+  &-page{
+    padding: 200px 200px 400px;
+  }
+
+  &-titre-image{
+    font-size: x-large;
+    padding-top: 2rem;
+  }
+
+  &-title{
+    font-size: xx-large;
+    margin:40px;
+  }
 }
 figure 
 {
@@ -12,18 +34,11 @@ figure
 figure img
 {
     border-radius: 100px;
-    border: solid 1px;
+    border: solid 6px orange;
     -webkit-transform: scale(1);
 	transform: scale(1);
 	-webkit-transition: .3s ease-in-out;
 	transition: .3s ease-in-out;
-}
-.face-image{
-  
-       color: black;
-       font-weight: bold;
-       height: 200px;
-  
 }
 
 figure img:hover 

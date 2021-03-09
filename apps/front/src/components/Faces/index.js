@@ -10,26 +10,26 @@ const Faces = () => (
 
   <div className="face-page">
     <div className="face-title">Qui sommes-nous ?</div>
-    <section>
+    <section className="face-container">
       <figure>
         <img className="face-image" src={image1} alt="Plia" />
-        <figcaption className="titre-image">Plia Product Owner</figcaption>
+        <figcaption className="face-titre-image">Plia Product Owner</figcaption>
       </figure>
       <figure>
         <img className="face-image" src={image} alt="Marie" />
-        <figcaption className="titre-image">Marie Scrum Master</figcaption>
+        <figcaption className="face-titre-image">Marie Scrum Master</figcaption>
       </figure>
       <figure>
         <img className="face-image" src={image4} alt="Cyril" />
-        <figcaption className="titre-image">Cyril Lead Dev Front</figcaption>
+        <figcaption className="face-titre-image">Cyril Lead Dev Front</figcaption>
       </figure>
       <figure>
         <img className="face-image" src={image3} alt="Edouard" />
-        <figcaption className="titre-image">Edouard Lead dev back</figcaption>
+        <figcaption className="face-titre-image">Edouard Lead dev back</figcaption>
       </figure>
       <figure>
         <img className="face-image" src={image2} alt="Florian" />
-        <figcaption className="titre-image">Florian Git Master</figcaption>
+        <figcaption className="face-titre-image">Florian Git Master</figcaption>
       </figure>
     </section>
 
