@@ -15,6 +15,7 @@ import SignUpForm from '../../containers/SignUpForm';
 import MyDishes from '../../containers/MyDishes';
 import DisplayADish from '../../containers/DisplayADish';
 import LastDishes from '../../containers/LastDishes';
+import SearchForm from '../../containers/SearchForm';
 
 // Style
 import './styles.css';
@@ -30,6 +31,7 @@ const App = () => (
 
     <Route exact path="/">
       <DescriptionHomepage />
+      <SearchForm />
       <LastDishes />
       <LoginForm />
       <SignUpForm />
