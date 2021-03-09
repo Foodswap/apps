@@ -12,7 +12,7 @@ const SearchForm = ({handleInputChange, city, handleSearch, kitchen, dish, isSea
     <div className="search-form-div"> 
     <h2 className="search-form-title">Cherchez un bon petit plat</h2>
     
-      <p> Vous recherchez un(e) {dish}, de type de cuisine {kitchen}, à {city}</p>
+      <p className="welcome-text"> Vous recherchez un(e) {dish}, de type de cuisine {kitchen}, à {city}</p>
     
       <form className="search-form-form" onSubmit={handleSubmit}>
         <select name="dish" onChange={(evt) => handleSelectDish(evt.target.value, evt.target.name)}>
@@ -37,7 +37,7 @@ const SearchForm = ({handleInputChange, city, handleSearch, kitchen, dish, isSea
               
         </input>
         <Link to="/results">
-          <button type="submit" onSubmit={(evt) => {
+          <button className="search-form-button" type="submit" onSubmit={(evt) => {
             evt.preventDefault();
             <Redirect to="/results" />
           }}> Valider </button>
