@@ -1,6 +1,8 @@
 /* import DataUserDishes from '../../data-userDishes'; */
 
-import { DELETE_ONE_DISH, deleteOneDishSuccess, deleteOneDishError } from '../actions/dishes';
+import {
+  DELETE_ONE_DISH, deleteOneDishSuccess, deleteOneDishError, oneDishSelect, ONE_DISH_SELECT,
+} from '../actions/dishes';
 
 export default (store) => (next) => (action) => {
   switch (action.type) {
@@ -22,7 +24,14 @@ export default (store) => (next) => (action) => {
       const actionToDispatch = deleteOneDishError();
       return store.dispatch(actionToDispatch);
     }
-
+    case ONE_DISH_SELECT: {
+      const { userDishes } = store.getState().recipes;
+      const findADish = userDishes.find((dish) => dish.id === action.payload);
+      if (findADish) {
+        const actionToDispatch = oneDishSelect(findADish);
+        return store.dispatch(actionToDispatch);
+      }
+    } break;
     default:
       return next(action);
   }
