@@ -18,6 +18,7 @@ import SearchForm from '../../containers/SearchForm';
 // == Import
 import './styles.css';
 import dishes from '../../../dataDishes';
+import Results from '../Results';
 
 // import Data from '../../../data-userDishes';
 // == Composant
@@ -38,6 +39,9 @@ const App = () => (
     </Route>
     <Route exact path="/v1/Qui sommes nous">
       <Faces />
+    </Route>
+    <Route exact path="/results">
+      <Results dishes={dishes} />
     </Route>
 
     {/* <DisplayADish />  a relier sur une route */}
