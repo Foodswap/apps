@@ -1,11 +1,11 @@
 import { connect } from 'react-redux';
-import MealForm from '../../components/MealForm';
-import { setInputValue } from '../../actions/formRecipe';
+import DishesForm from '../../components/DishesForm';
+import { setInputValue } from '../../actions/dishesForm';
 
 const mapStateToProps = (state) => ({
-  dataFormMeal: state.formRecipe.dataFormMeal,
-  isLogged: state.formRecipe.isLogged,
-  loggedMessage: state.formRecipe.loggedMessage,
+  dataFormMeal: state.dishes.dataFormMeal,
+  isLogged: state.dishes.isLogged,
+  loggedMessage: state.dishes.loggedMessage,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -16,4 +16,4 @@ const mapDispatchToProps = (dispatch) => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(MealForm);
+)(DishesForm);

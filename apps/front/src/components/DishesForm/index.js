@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './style.scss';
 import image from '../../assets/images/logo-fooswap.png';
-import { cancelFormRecipe, sendFormRecipeUp } from '../../actions/formRecipe';
-const MealForm = ({
+import { cancelFormRecipe, sendFormRecipeUp } from '../../actions/DishesForm';
+const DishesForm = ({
   dataFormMeal,
   picture,
   name,
@@ -142,7 +142,7 @@ const MealForm = ({
     </div>
   </div>
 );
-MealForm.propTypes = {
+DishesForm.propTypes = {
   picture: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   portion: PropTypes.string.isRequired,
@@ -160,4 +160,4 @@ MealForm.propTypes = {
     }),
   ).isRequired,
 };
-export default MealForm;
+export default DishesForm;
