@@ -1,7 +1,7 @@
 // export const initialState = {};
 
 import {
-  DELETE_ONE_DISH, DELETE_ONE_DISH_SUCCESS, DELETE_ONE_DISH_ERROR, ONE_DISH_SELECT,
+  DELETE_ONE_DISH, DELETE_ONE_DISH_SUCCESS, DELETE_ONE_DISH_ERROR, ONE_DISH_SELECT, DISH_EXCHANGE,
 } from '../actions/dishes';
 
 const initialState = {
@@ -181,6 +181,9 @@ export default (state = initialState, action = {}) => {
     case ONE_DISH_SELECT: return {
       ...state,
       dishSelect: action.payload,
+    };
+    case DISH_EXCHANGE: return {
+      ...state,
     };
 
     default:

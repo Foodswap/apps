@@ -25,3 +25,9 @@ export const oneDishSelect = (payload) => ({
   type: ONE_DISH_SELECT,
   payload,
 });
+
+// Action pour cliqué sur le bouton swap pour affiché part la suite la modale
+export const DISH_EXCHANGE = 'DISH_SWAP';
+export const dishExchange = () => ({
+  type: DISH_EXCHANGE,
+});

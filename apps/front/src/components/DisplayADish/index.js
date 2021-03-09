@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import './style.scss';
 
-const DisplayADish = ({ dish }) => (
+const DisplayADish = ({ dish, dishSwap }) => (
   <div className="displayADish">
     <div key={dish.id} className="displayADish-container">
       <header className="displayADish-headerDish">
@@ -33,7 +33,7 @@ const DisplayADish = ({ dish }) => (
           <p className="displayADish-description-text">{dish.description}</p>
         </div>
       </div>
-      <button type="button" className="displayADish-button">Swap</button>
+      <button type="button" className="displayADish-button" onClick={dishSwap}>Swap</button>
     </div>
   </div>
 );
@@ -52,6 +52,7 @@ DisplayADish.propTypes = {
       pseudonym: PropTypes.string.isRequired,
     },
   }).isRequired,
+  dishSwap: PropTypes.func.isRequired,
 };
 
 export default DisplayADish;

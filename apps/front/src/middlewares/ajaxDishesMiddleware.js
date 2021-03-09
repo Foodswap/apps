@@ -1,7 +1,7 @@
 /* import DataUserDishes from '../../data-userDishes'; */
 
 import {
-  DELETE_ONE_DISH, deleteOneDishSuccess, deleteOneDishError, oneDishSelect, ONE_DISH_SELECT,
+  DELETE_ONE_DISH, deleteOneDishSuccess, deleteOneDishError, oneDishSelect, ONE_DISH_SELECT, DISH_EXCHANGE, dishExchange,
 } from '../actions/dishes';
 
 export default (store) => (next) => (action) => {
@@ -32,6 +32,11 @@ export default (store) => (next) => (action) => {
         return store.dispatch(actionToDispatch);
       }
     } break;
+    case DISH_EXCHANGE: {
+      const { userDishes } = store.getState().recipes;
+      const actionToDispatch = dishExchange(userDishes);
+      return store.dispatch(actionToDispatch);
+    }
     default:
       return next(action);
   }
