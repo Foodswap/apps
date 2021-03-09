@@ -12,7 +12,7 @@ import MyDishes from '../../containers/MyDishes';
 import Footer from '../Footer';
 import LastDishes from '../LastDishes';
 import Faces from '../Faces';
-
+import SearchForm from '../SearchForm';
 // == Import
 import './styles.css';
 import dishes from '../../../dataDishes';
@@ -22,9 +22,10 @@ const App = () => (
 
   <div className="app">
     <AppHeader />
+    <Menu />
     <Route exact path="/">
-      <Menu />
       <DescriptionHomepage />
+      <SearchForm />
       <LastDishes dishes={dishes} />
       <LoginForm />
       <SignUpForm />
