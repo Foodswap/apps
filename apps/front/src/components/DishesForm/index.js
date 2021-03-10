@@ -12,34 +12,53 @@ const DishesForm = ({
   // author,
   // ingredients,
   // description,
+  imageHandler,
   inputValue,
   onInputChange,
   onFormSubmit,
-}) => (
+}) => {
+  imageHandler = (evt) =>{
+    const reader = new FileReader();
+    reader.onload = () => {
+      if(reader.readyState === 2){
+        this.setState({dataFormMeal:reader.result})
+      }
+    }
+    reader.readAsDataURL(evt.target.files[0])
+  };
+  return(
   <div className="meal-page">
     <div className="meal-form">
     { dataFormMeal.map((meal) => (
        
        
       <div key={meal.id} className="meal-image">
-      <label className="picture">Importez votre photo de plat:</label>
+      <p className="picture">Créez votre fiche de plat:</p>
+      <img
+          src={meal.picture}
+          alt=""
+          id="img"
+          className="meal-img"
+          onChange={imageHandler}
+        />
         <input
           id="picture"
           type="file"
           name="picture"
+          accept="image/*"
           onChange={(evt) => {
             const text = evt.target.value;
             onInputChange(text, evt.target.name);
           }}
           value={inputValue}
         />
-        <img
-          src={meal.picture}
-          alt=""
-          id="img"
-          className="img"
-        />
-      
+        <div className="meal-label">
+          <label htmlFor="input" className="meal-upload">
+            <i className="material-icons"></i>
+            Choisissez une photo de votre plat
+          </label>
+        </div>
+
       </div>
     ))}
       <form
@@ -154,11 +173,12 @@ const DishesForm = ({
         <button className="mealForm-form-submit" type="button" onClick={() => cancelFormRecipe()}> Annuler </button>
     </div>
   </div>
-);
+  );
+};
 DishesForm.propTypes = {
   dataFormMeal: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number.isRequired,
+      id: PropTypes.string.isRequired,
       picture: PropTypes.string.isRequired,
     }),
   ).isRequired,
@@ -168,8 +188,9 @@ DishesForm.propTypes = {
   // author: PropTypes.string.isRequired,
   // ingredients: PropTypes.array.isRequired,
   // description: PropTypes.array.isRequired,
-  inputValue: PropTypes.string.isRequired,
-  onFormSubmit: PropTypes.func.isRequired,
+  // inputValue: PropTypes.string.isRequired,
+  // onFormSubmit: PropTypes.func.isRequired,
+  imageHandler: PropTypes.func.isRequired,
   onInputChange: PropTypes.func.isRequired,
 };
 export default DishesForm;

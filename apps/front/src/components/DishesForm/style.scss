@@ -63,14 +63,35 @@ input:checked + .slider:before {
 .meal {
 
   &-page{
-    border: 3px solid #f39508;
-    width: 700px;
-    border-radius: 1rem;
-    padding: 1rem;
-    margin: auto;
-    height: 800px;
-    margin-bottom: 200px;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    height: 75vh;
   }
+  &-form{
+    
+    border: 3px solid #f39508;
+    border-radius: 1rem;
+    padding: 2rem;
+  }
+  &-image{
+    display: flex;
+    flex-direction: column;
+    
+  }
+  &-img{
+    margin: 1rem;
+    border:1px solid orange;
+    border-radius: 5px;
+    object-fit: cover;
+  }
+  &-label{
+    width: 100%;
+    display: flex;
+    justify-content:center;
+  }
+  
+  
 
   &-form-input{
     width: 90%;
@@ -126,6 +147,9 @@ input:checked + .slider:before {
     display: flex;
     flex-direction: column;
   }
+}
+#input[id="picture"]{
+  display: none;
 }
 
 .mealForm-form-submit {
