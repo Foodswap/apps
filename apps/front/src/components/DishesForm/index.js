@@ -54,7 +54,6 @@ const DishesForm = ({
         />
         <div className="meal-label">
           <label htmlFor="input" className="meal-upload">
-            <i className="material-icons"></i>
             Choisissez une photo de votre plat
           </label>
         </div>
