@@ -33,6 +33,7 @@ export default (state = initialState, action = {}) => {
     case FETCH_RESULTS_SUCCES: 
       return {
         ...state,
+        isSearching: false,
         resultDishes: action.payload,
       }
       default:

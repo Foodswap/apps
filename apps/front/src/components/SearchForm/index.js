@@ -1,8 +1,12 @@
 import React from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link, Redirect, useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import './style.scss';
+
+// !! TODO : propTypes 
+
 const SearchForm = ({handleInputChange, city, handleSearch, kitchen, dish, isSearching, handleSelectDish}) => {
+  const history = useHistory();
   const handleSubmit = (evt) => {
     evt.preventDefault();
     console.log("submit");
@@ -35,13 +39,17 @@ const SearchForm = ({handleInputChange, city, handleSearch, kitchen, dish, isSea
           onChange={(evt) => {
                 handleInputChange(evt.target.value, evt.target.name);
           }}>
-              
         </input>
-        <Link to={`/results/${kitchen}/${dish}/${city}`}>
           <button className="search-form-button" type="submit" onSubmit={(evt) => {
             evt.preventDefault();
+            // history.push(`/results/${kitchen}/${dish}/${city}`);
+            handleSubmit();
           }}> Valider </button>
-        </Link>
+         {
+           isSearching && (
+             <Redirect to={`/results/${kitchen}/${dish}/${city}`} />
+           )
+         } 
       </form>
     </div>
   
