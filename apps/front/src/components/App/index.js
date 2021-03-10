@@ -6,6 +6,7 @@ import { Route } from 'react-router-dom';
 import AppHeader from '../AppHeader';
 import Footer from '../Footer';
 import Faces from '../Faces';
+import MyInformation from '../../containers/MyInformation';
 
 // Container components
 import Menu from '../../containers/Menu';
@@ -28,7 +29,7 @@ const App = () => (
   <div className="app">
     <AppHeader />
     <Menu />
-
+    <MyInformation />
     <Route exact path="/">
       <DescriptionHomepage />
       <SearchForm />
