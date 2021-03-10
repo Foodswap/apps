@@ -19,6 +19,8 @@ import SearchForm from '../../containers/SearchForm';
 
 // Style
 import './styles.css';
+import dishes from '../../../dataDishes';
+import Results from '../Results';
 
 /**
  * App component
@@ -39,6 +41,9 @@ const App = () => (
 
     <Route exact path="/v1/dish/:id" component={DisplayADish} />
 
+    <Route exact path="/results">
+      <Results dishes={dishes} />
+    </Route>
     <Route exact path="/v1/meals">
       <MyDishes />
     </Route>
@@ -46,6 +51,7 @@ const App = () => (
     <Route exact path="/v1/qui-sommes-nous">
       <Faces />
     </Route>
+ 
 
     <Footer />
   </div>

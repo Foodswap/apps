@@ -1,21 +1,25 @@
 .welcome {
-  border: 0.2rem solid #f39508;
-  border-radius: .9rem;
   padding: 1rem 4.5rem 1rem;
-  width: max-content;
-  display: inline-block;
-  margin: 1rem 0;
+  background-image: url("https://cdn.pixabay.com/photo/2017/12/09/08/18/pizza-3007395_960_720.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 700px;
 
   &-title {
-    font-size: xx-large;
-    color: #eb5e00;
+    font-size: 3.5rem;
+    color: #f8f7f6;
     margin: 1rem 0 3rem;
   }
 
   &-blockText {
     margin: 1.8rem 0 0.2rem;
-    display: flex;
-    flex-direction: column;
+    background-color: rgba(39, 35, 35, 0.705);
+    width: 850px;
+    text-align: center;
+    border-radius: 20px;
+    padding: 2rem;
+    margin:auto;
+
   }
 
   &-paragraph {
@@ -23,9 +27,10 @@
   }
 
   &-text {
-    color: #471d00;
+    color: #eee5df;
     margin-bottom: 0.3rem;
     display: flex;
     justify-content: center;
+    font-size: 1.5rem;
   }
 }
