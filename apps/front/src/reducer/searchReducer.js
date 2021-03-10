@@ -2,13 +2,14 @@ import {
   SET_INPUT_VALUE
 } from '../actions/user';
 
-import { SEND_SEARCH_FORM, SET_SELECT_VALUE } from '../actions/search';
+import { SEND_SEARCH_FORM, SET_SELECT_VALUE, FETCH_RESULTS_SUCCES } from '../actions/search';
 
 const initialState = {
   dish: "",
   kitchen: "",
   city: "",
   isSearching: false,
+  resultDishes: null,
 };
 
 export default (state = initialState, action = {}) => {
@@ -29,6 +30,11 @@ export default (state = initialState, action = {}) => {
         ...state,
         [action.name]: action.value,
       };
+    case FETCH_RESULTS_SUCCES: 
+      return {
+        ...state,
+        resultDishes: action.payload,
+      }
       default:
         return state;
   }

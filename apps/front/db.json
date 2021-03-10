@@ -37,11 +37,21 @@
       ],
       "created_date": "12.03.2021",
       "portion": "1",
-      "city": "Paris",
+      "city": "marseille",
       "online": true,
       "author": {
         "id": 8,
-        "pseudonym": "Paulette"
+        "username": "Paulette"
+      },
+      "kitchenType": {
+        "id": 1,
+        "type": "kitchen",
+        "name": "asiatique"
+      },
+      "dishType": {
+        "id": 1,
+        "type": "dish",
+        "name": "plat"
       }
     },
     {
@@ -81,11 +91,21 @@
       ],
       "created_date": "12.03.2021",
       "portion": "3",
-      "city": "Paris",
+      "city": "Bordeaux",
       "online": true,
       "author": {
         "id": 8,
-        "pseudonym": "Paulette"
+        "username": "Paulette"
+      },
+      "kitchenType": {
+        "id": 1,
+        "type": "kitchen",
+        "name": "asiatique"
+      },
+      "dishType": {
+        "id": 1,
+        "type": "dish",
+        "name": "plat"
       }
     },
     {
@@ -129,7 +149,17 @@
       "online": false,
       "author": {
         "id": 8,
-        "pseudonym": "Paulette"
+        "username": "Paulette"
+      },
+      "kitchenType": {
+        "id": 1,
+        "type": "kitchen",
+        "name": "asiatique"
+      },
+      "dishType": {
+        "id": 1,
+        "type": "dish",
+        "name": "plat"
       }
     },
     {
@@ -173,7 +203,17 @@
       "online": false,
       "author": {
         "id": 8,
-        "pseudonym": "Paulette"
+        "username": "Paulette"
+      },
+      "kitchenType": {
+        "id": 1,
+        "type": "kitchen",
+        "name": "oriental"
+      },
+      "dishType": {
+        "id": 1,
+        "type": "dish",
+        "name": "plat"
       }
     },
     {
@@ -217,41 +257,48 @@
       "online": true,
       "author": {
         "id": 8,
-        "pseudonym": "Paulette"
+        "username": "Paulette"
+      },
+      "kitchenType": {
+        "id": 1,
+        "type": "kitchen",
+        "name": "indien"
+      },
+      "dishType": {
+        "id": 1,
+        "type": "dish",
+        "name": "plat"
       }
     }
   ],
-  "categories": [
+  "category": [
     {
       "id": 1,
-      "name": "Entrée"
+      "type_kitchen": "asiatique",
+      "type_dish": "plat"
     },
     {
       "id": 2,
-      "name": "Plat"
+      "type_kitchen": "asiatique",
+      "type_dish": "plat"
     },
     {
       "id": 3,
-      "name": "Déssert"
-    }
-  ],
-  "kitchens": [
-    {
-      "id": 1,
-      "name": "francaise"
-    },
-    {
-      "id": 2,
-      "name": "italienne"
-    },
-    {
-      "id": 3,
-      "name": "asiatique"
+      "type_kitchen": "francaise",
+      "type_dish": "dessert"
     },
     {
       "id": 4,
-      "name": "orientale"
+      "type_kitchen": "indien",
+      "type_dish": "plat"
+    },
+    {
+      "id": 5,
+      "type_kitchen": "asiatique",
+      "type_dish": "entrée"
     }
+
+
   ],
   "users": [
     [
@@ -274,5 +321,148 @@
         "city": "Paris"
       }
     ]
+  ],
+  "ingredients": [
+    
+      {
+        "id": 1,
+        "name": "riz"
+      },
+      {
+        "id": 2,
+        "name": "saumon"
+      },
+      {
+        "id": 3,
+        "name": "carotte"
+      },
+      {
+        "id": 4,
+        "name": "avocat"
+      },
+      {
+        "id": 5,
+        "name": "graine de sésame"
+      },
+      {
+        "id": 6,
+        "name": "choux rouge"
+      },
+      {
+        "id": 7,
+        "name": "citron"
+      },
+      {
+        "id": 9,
+        "name": "riz"
+      },
+      {
+        "id": 10,
+        "name": "boeuf haché"
+      },
+      {
+        "id": 11,
+        "name": "carotte"
+      },
+      {
+        "id": 12,
+        "name": "épinard"
+      },
+      {
+        "id": 13,
+        "name": "graine de sésame"
+      },
+      {
+        "id": 14,
+        "name": "oeuf"
+      },
+      {
+        "id": 15,
+        "name": "oignon"
+      },
+      {
+        "id": 16,
+        "name": "farine"
+      },
+      {
+        "id": 17,
+        "name": "sucre"
+      },
+      {
+        "id": 18,
+        "name": "crème liquide"
+      },
+      {
+        "id": 19,
+        "name": "oeuf"
+      },
+      {
+        "id": 20,
+        "name": "fix chantilly"
+      },
+      {
+        "id": 21,
+        "name": "fraise"
+      },
+      {
+        "id": 22,
+        "name": "maizena"
+      },
+      {
+        "id": 23,
+        "name": "vermicelle"
+      },
+      {
+        "id": 24,
+        "name": "viande de porc haché"
+      },
+      {
+        "id": 25,
+        "name": "carotte"
+      },
+      {
+        "id": 26,
+        "name": "champignon noir"
+      },
+      {
+        "id": 27,
+        "name": "fécule de pomme de terre"
+      },
+      {
+        "id": 28,
+        "name": "fécule de pomme de terre"
+      },
+      {
+        "id": 29,
+        "name": "feuilles de samoussa"
+      },
+      {
+        "id": 30,
+        "name": "vermicelle"
+      },
+      {
+        "id": 31,
+        "name": "crevette"
+      },
+      {
+        "id": 32,
+        "name": "raviolis frit"
+      },
+      {
+        "id": 33,
+        "name": "champignon shiitake"
+      },
+      {
+        "id": 34,
+        "name": "lait de coco"
+      },
+      {
+        "id": 35,
+        "name": "pate de curry rouge"
+      },
+      {
+        "id": 36,
+        "name": "oignon rouge"
+      }
   ]
 }

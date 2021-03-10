@@ -11,6 +11,7 @@ import {
   GET_LIST_OF_DISHES,
   updateListOfDishes,
 } from '../actions/dishes';
+import { SEND_SEARCH_FORM, FETCH_RESULTS, fetchResultsSucces } from '../actions/search';
 
 export default (store) => (next) => (action) => {
   switch (action.type) {
@@ -72,6 +73,21 @@ export default (store) => (next) => (action) => {
       const { userDishes } = store.getState().recipes;
       const actionToDispatch = dishExchange(userDishes);
       return store.dispatch(actionToDispatch);
+    };
+    case FETCH_RESULTS: {
+      console.log(action.payload);
+      axios({
+        method: 'get',
+        url: `http://localhost:3000/dishes?kitchenType.name=${action.payload.kitchenParam.toLowerCase()}&dishType.name=${action.payload.dishParam.toLowerCase()}&city=${action.payload.cityParam.toLowerCase()}`,
+      })
+      .then((res) => {
+        console.log("ok send search " + res.data);
+        const actionToDispatch = fetchResultsSucces(res.data);
+        return store.dispatch(actionToDispatch);
+      })
+      .catch((error) => {
+        console.log(error)
+      });
     }
     default:
       return next(action);

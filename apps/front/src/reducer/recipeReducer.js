@@ -169,7 +169,6 @@ const initialState = {
 };
 
 export default (state = initialState, action = {}) => {
-  console.log(action);
   switch (action.type) {
     case DELETE_ONE_DISH: return {
       ...state,
@@ -181,7 +180,7 @@ export default (state = initialState, action = {}) => {
     };
     case DELETE_ONE_DISH_ERROR: return {
       ...state,
-      deleteMessage: 'il y a eu un problème, votre fine n\'a pas pu être supprimé',
+      deleteMessage: 'il y a eu un problème, votre fiche n\'a pas pu être supprimé',
     };
     case UPDATE_SELECTED_DISH: return {
       ...state,
