@@ -31,14 +31,16 @@ Meal.belongsToMany(Ingredient, {
     foreignKey: 'id_meal',
     otherKey: 'id_ingredient',
     through: 'meal_ingredient_associate',
-    as: 'ingredients'
+    as: 'ingredients',
+    timestamps: false
 });
 
 Ingredient.belongsToMany(Meal, {
     foreignKey: 'id_ingredient',
     otherKey: 'id_meal',
     through: 'meal_ingredient_associate',
-    as: 'meals'
+    as: 'meals',
+    timestamps: false
 });
 
 module.exports = {

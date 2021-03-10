@@ -1,12 +1,26 @@
-const Meal = require('../models/meal');
+const { Meal } = require('../models');
 
 
 const mealController = {
+
         createMeal: async (request, response) => {
-        const meal = new Meal(request.body);
+
+        const data = request.body;
+        if (!data.name) {
+            return response.status(400).json({
+                error: `You must provide a name`
+            });
+        }
+
+        if (data.portion && isNaN(Number(data.portion))) {
+            return response.status(400).json({
+                error: `portion must be a number`
+            });
+        }
+
         try {
-            meal.picture_path = `${process.env.PATH_PICTURE}/${request.file.filename}`
-            await meal.save();
+            data.picture_path = `${process.env.PATH_PICTURE}/${request.file.filename}`
+            const meal = await Meal.create(data);
             meal.picture_path = null;
             response.status(200).json(meal);
         } catch(error) {
