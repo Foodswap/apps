@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './style.scss';
-import image from '../../assets/images/logo-fooswap.png';
-import { cancelFormRecipe, sendFormRecipeUp } from '../../actions/dishesForm';
+// import image from '../../assets/images/logo-fooswap.png';
+import { cancelFormRecipe, sendFormRecipeUp, setInputValue } from '../../actions/dishesForm';
 const DishesForm = ({
   // picture,
+  dataFormMeal,
   // name,
   // portion,
   // city,
@@ -17,7 +18,10 @@ const DishesForm = ({
 }) => (
   <div className="meal-page">
     <div className="meal-form">
-      <div className="meal-image">
+    { dataFormMeal.map((meal) => (
+       
+       
+      <div key={meal.id} className="meal-image">
       <label className="picture">Importez votre photo de plat:</label>
         <input
           id="picture"
@@ -30,10 +34,14 @@ const DishesForm = ({
           value={inputValue}
         />
         <img
-          src={image}
-          alt="logo FoodSwap"
+          src={meal.picture}
+          alt=""
+          id="img"
+          className="img"
         />
+      
       </div>
+    ))}
       <form
         className="meal-form-element"
         onSubmit={(evt) => {
@@ -148,7 +156,12 @@ const DishesForm = ({
   </div>
 );
 DishesForm.propTypes = {
-  // picture: PropTypes.string.isRequired,
+  dataFormMeal: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      picture: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
   // name: PropTypes.string.isRequired,
   // portion: PropTypes.string.isRequired,
   // city: PropTypes.string.isRequired,

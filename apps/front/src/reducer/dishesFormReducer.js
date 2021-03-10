@@ -9,11 +9,12 @@ import {
 // export const initialState = {};
 
 const initialState = {
+
   cancelMessage: '',
   dataFormMeal: [
     {
-      id: '',
-      picture: '',
+      id: '1',
+      picture: 'https://img.icons8.com/carbon-copy/2x/meal.png',
       name: '',
       description: [
         '',
