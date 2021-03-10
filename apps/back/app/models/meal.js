@@ -1,21 +1,32 @@
-const sequelize = require('../database');
+const connection = require('../database');
 const { Model, DataTypes } = require('sequelize');
 
 class Meal extends Model {
 
 }
 
-Meal.init(
-    {
-        name: DataTypes.STRING,
-        description: DataTypes.STRING,
-        portion: DataTypes.INTEGER,
-        picture_path: DataTypes.STRING,
-        city: DataTypes.STRING,
-        online: DataTypes.BOOLEAN
+Meal.init({
+    name: {
+      type: DataTypes.TEXT
     },
+    description: {
+      type: DataTypes.TEXT
+    },
+    portion: {
+      type: DataTypes.INTEGER
+    },
+    city: {
+      type: DataTypes.TEXT
+    },
+    online: {
+        type: DataTypes.BOOLEAN
+      },
+    picture_path: {
+        type: DataTypes.TEXT
+      }
+  },
     {
-        sequelize,
+        sequelize: connection,
         tableName: 'meal'
         
     });
