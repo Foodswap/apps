@@ -16,6 +16,7 @@ import MyDishes from '../../containers/MyDishes';
 import DisplayADish from '../../containers/DisplayADish';
 import LastDishes from '../../containers/LastDishes';
 import SearchForm from '../../containers/SearchForm';
+import DishesForm from '../../containers/DishesForm';
 
 // Style
 import './styles.css';
@@ -47,8 +48,10 @@ const App = () => (
     <Route exact path="/v1/meals">
       <MyDishes />
     </Route>
-
-    <Route exact path="/v1/qui-sommes-nous">
+    <Route exact path="/v1/meal/:id">
+    <DishesForm />
+    </Route>
+    <Route exact path="/v1/Qui sommes nous">
       <Faces />
     </Route>
  
