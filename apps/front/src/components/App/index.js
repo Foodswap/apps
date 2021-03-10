@@ -34,15 +34,16 @@ const App = () => (
       <LoginForm />
       <SignUpForm />
     </Route>
+    <Route exact path="/results">
+      <Results dishes={dishes} />
+    </Route>
     <Route exact path="/v1/meals">
       <MyDishes />
     </Route>
     <Route exact path="/v1/Qui sommes nous">
       <Faces />
     </Route>
-    <Route exact path="/results">
-      <Results dishes={dishes} />
-    </Route>
+ 
 
     {/* <DisplayADish />  a relier sur une route */}
     <Footer />
