@@ -47,7 +47,8 @@ const SearchForm = ({handleInputChange, city, handleSearch, kitchen, dish, isSea
           }}> Valider </button>
          {
            isSearching && (
-             <Redirect to={`/results/${kitchen}/${dish}/${city}`} />
+             location.href=`/results/${kitchen}/${dish}/${city}`
+             // <Redirect to={`/results/${kitchen}/${dish}/${city}`} />
            )
          } 
       </form>
