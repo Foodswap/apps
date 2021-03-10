@@ -18,11 +18,12 @@ const initialState = {
       name: '',
       description: [
         '',
-        '',
       ],
       ingredients: [
-        '',
-        '',
+        {
+          id: '',
+          name: '',
+        },
       ],
       created_date: '',
       portion: '',
@@ -30,11 +31,12 @@ const initialState = {
       online: true,
       author: {
         id: '',
-        pseudonym: '',
+        username: '',
       },
       category: {
-        type: 'Type de cuisine',
-        name: 'Française',
+        id: 1,
+        type_kitchen: '',
+        type_dish: '',
       },
       isLogged: false,
       loggedMessage: '',

@@ -11,6 +11,21 @@ export const sendFormRecipeUp = (payload) => ({
   type: SEND_FORM_RECIPE_UP,
   payload,
 });
+
+// Action  pour la réussite de l'envoi
+export const SEND_FORM_RECIPE_UP_SUCCESS = 'SEND_FORM_RECIPE_UP_SUCCESS';
+export const senFormRecipeUpSuccess = (payload) => ({
+  type: SEND_FORM_RECIPE_UP_SUCCESS,
+  payload,
+});
+
+// Action pour l' echec de l'envoi
+export const SEND_FORM_RECIPE_UP_ERROR = 'SEND_FORM_RECIPE_UP_ERROR';
+export const senFormRecipeUpError = (payload) => ({
+  type: SEND_FORM_RECIPE_UP_ERROR,
+  payload,
+});
+
 // action pour annuler le form de creation de plat
 export const CANCEL_FORM_RECIPE = 'CANCEL_FORM_RECIPE';
 export const cancelFormRecipe = () => ({

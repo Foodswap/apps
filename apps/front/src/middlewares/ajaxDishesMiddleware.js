@@ -12,6 +12,12 @@ import {
   updateListOfDishes,
 } from '../actions/dishes';
 
+import {
+  SEND_FORM_RECIPE_UP,
+  senFormRecipeUpSuccess,
+  senFormRecipeUpError,
+} from '../actions/dishesForm';
+
 export default (store) => (next) => (action) => {
   switch (action.type) {
     case DELETE_ONE_DISH: {
@@ -72,7 +78,29 @@ export default (store) => (next) => (action) => {
       const { userDishes } = store.getState().recipes;
       const actionToDispatch = dishExchange(userDishes);
       return store.dispatch(actionToDispatch);
+    } 
+    case SEND_FORM_RECIPE_UP:{
+      axios({
+        method: 'post',
+        url: 'http://localhost:3000/dishes',
+      })
+      .then((res) => {
+        console.log(`response ok : ${res}`);
+        const actionToDispatch = senFormRecipeUpSuccess(res.data);
+        store.dispatch(actionToDispatch);
+        console.log(res.data.name);
+        console.log(store.getState().user.infos);
+      })
+      .catch((error) => {
+        console.log(`${error} erreur au post du formulaire`);
+        const actionToDispatch = senFormRecipeUpError();
+        store.dispatch(actionToDispatch);
+      })
+      .finally(() => {
+        console.log('post form done');
+      });
     }
+    break;
     default:
       return next(action);
   }
