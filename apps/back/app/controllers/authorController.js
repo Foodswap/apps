@@ -11,7 +11,7 @@ const authorController = {
             response.status(200).json(author);
         } catch (err) {
             console.trace(err);
-            response.status(404).json("User not found. Please verify what comes first, the chicken or the egg.");
+            response.status(404).json("User not found.");
         }
     },
     

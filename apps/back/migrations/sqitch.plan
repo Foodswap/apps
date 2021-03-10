@@ -3,3 +3,4 @@
 
 v1_init 2021-03-02T13:24:15Z florian martin <martinflorian2@gmail.com> # creation v1 database
 v1_updateName 2021-03-03T16:50:00Z Edouard Laffont <edouard.laffont@live.com> # update name of table author and column pseudonym/address
+v1_updateMealPics 2021-03-10T09:53:28Z florian martin <martinflorian2@gmail.com> # added field picture to meal table
