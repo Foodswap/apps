@@ -14,7 +14,7 @@ Meal.init(
         portion: DataTypes.INTEGER,
         city: DataTypes.STRING,
         online: DataTypes.BOOLEAN,
-        picture: DataTypes.BLOB,
+        picture_path: DataTypes.TEXT,
         created_date: DataTypes.TIME,
     },
 

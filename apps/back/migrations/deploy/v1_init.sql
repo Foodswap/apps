@@ -2,6 +2,14 @@
 
 BEGIN;
 
+DROP TABLE IF EXISTS "author",
+"category",
+"meal",
+"meal_category_associate",
+"ingredient",
+"meal_ingredient_associate",
+"swap";
+
 CREATE TABLE author (
     id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     pseudonym VARCHAR(200) NOT NULL UNIQUE,
