@@ -1,8 +1,19 @@
 const bcrypt = require('bcrypt');
+const { request, response } = require('express');
 const jwt = require('jsonwebtoken');
 const Author = require('../models/author');
 
 const authorController = {
+
+    getOneAuthor: async (request, response) => {
+        try {
+            const author = await Author.findByPk(Number(request.params.id));
+            response.status(200).json(author);
+        } catch (err) {
+            console.trace(err);
+            response.status(404).json("User not found.");
+        }
+    },
     
     signup: async (request, response) => {
         const author = new Author(request.body);

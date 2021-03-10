@@ -9,30 +9,59 @@ GET {{baseUrl}}
 
 ### 
 
+// récupère un usilisateur avec son id
 ###
+<<<<<<< HEAD
 GET {{baseUrl}}/author
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImplYW5sZWJvbmplYW4iLCJpYXQiOjE2MTUzNjY0NzJ9.RXdne4eFl018b7N2yFYC5PTvUk3X7uP1vHDz07FDebc
+=======
+GET {{baseUrl}}/meal/1
 
+### 
+>>>>>>> b3672a08dacd8cba355339b4628ce2d62a1a804b
+
+// récupère un usilisateur avec son id
+###
+GET {{baseUrl}}/author/1
 
 ### 
 
+// affiche le profile d'un utilisateur ?
+###
+GET {{baseUrl}}/author
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImplYW5sZXZhbGplYW4iLCJpYXQiOjE2MTUyMjM0NzF9.zYa87SGBOr1CV4FjGirspUflWYI-ey56MdXyASM9dC8
+
+// envoi les données inserées dans le formulaire d'inscription
+### 
 POST {{baseUrl}}/signup
 Content-Type: application/json
 
 {
+<<<<<<< HEAD
    "username" : "jeanlebonjean",
    "email" : "pgmdu01@mail.fr",
    "password" : "jenesuispasencorehaché",
+=======
+   "username" : "jeanrenoir01",
+   "email" : "jeanrenoir01@mail.fr",
+   "password" : "jeanrenoir",
+>>>>>>> b3672a08dacd8cba355339b4628ce2d62a1a804b
    "city" : "bordeaux"
 } 
 ###
 
+// eenvoi les données inserées dans le formulaire de connexion
 POST {{baseUrl}}/login
 Content-Type: application/json
 
 {
+<<<<<<< HEAD
    "email" : "pgmdu01@mail.fr",
    "password" : "jenesuispasencorehaché"
+=======
+   "email" : "jeanrenoir@mail.fr",
+   "password" : "jeanrenoir",
+>>>>>>> b3672a08dacd8cba355339b4628ce2d62a1a804b
 } 
 ###
 

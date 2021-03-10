@@ -1,0 +1,1 @@
+Pour démarrer la fake-api, se mettre dans le dossier `apps/front` et lancer `yarn run start-fake-api`
