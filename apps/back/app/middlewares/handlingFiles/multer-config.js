@@ -11,9 +11,8 @@ const multer = require('multer');
         callback(null, process.env.PATH_PICTURE);
       },
       filename: (req, file, callback) => {
-        const name = file.originalname.split(' ').join('_');
         const extension = MIME_TYPES[file.mimetype];
-        callback(null, /*name + Date.now()*/ 'test' + '.' + extension);
+        callback(null, Date.now() + Math.floor(Math.random() * 100) + '.' + extension);
       }
     });
     

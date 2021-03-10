@@ -32,7 +32,8 @@ Meal.belongsToMany(Ingredient, {
     otherKey: 'id_ingredient',
     through: 'meal_ingredient_associate',
     as: 'ingredients',
-    timestamps: false
+    timestamps: false,
+    hooks: true
 });
 
 Ingredient.belongsToMany(Meal, {
@@ -40,7 +41,8 @@ Ingredient.belongsToMany(Meal, {
     otherKey: 'id_meal',
     through: 'meal_ingredient_associate',
     as: 'meals',
-    timestamps: false
+    timestamps: false,
+    hooks: true
 });
 
 module.exports = {

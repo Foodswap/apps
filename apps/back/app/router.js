@@ -1,7 +1,6 @@
 const { Router } = require('express');
 const authorController = require('./controllers/authorController');
 const mealController = require('./controllers/mealController');
-const ingredientController = require('./controllers/ingredientController');
 
 const router = Router();
 const schemas = require('./middlewares/validation/schemas'); 
@@ -14,13 +13,8 @@ router.post('/signup', middlewareValidation(schemas.signup), authorController.si
 router.post('/login', middlewareValidation(schemas.login), authorController.login);
 
 //Meal
-router.post('/meals', middlewareHandlingFiles, mealController.createMeal);
-
-//Ingredient
-router.post('/ingredients', ingredientController.createIngredient);
-router.post('/meals/:id/ingredients', ingredientController.addIngredientToMeal);
-
-//route de test de connexion
-router.get('/author', middlewareAuthentication, (request, response) => {response.json('Je suis connecté et j\'accède à la page author')});
+router.get('/meals/:id', middlewareAuthentication, mealController.getOneMeal)
+router.get('/meals/:id/picture', mealController.getPicture)
+router.post('/meals', middlewareAuthentication, middlewareHandlingFiles, mealController.createMeal);
 
 module.exports = router;

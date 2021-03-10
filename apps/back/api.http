@@ -15,15 +15,15 @@ GET {{baseUrl}}/author
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImplYW5sZWJvbmplYW4iLCJpYXQiOjE2MTUzNjY0NzJ9.RXdne4eFl018b7N2yFYC5PTvUk3X7uP1vHDz07FDebc
 
 ###
-GET {{baseUrl}}/author/1
+GET {{baseUrl}}/meals/4
 
 ###  Local - route pour tester l'inscription
 POST {{baseUrl}}/signup
 Content-Type: application/json
 
 {
-   "username" : "jeanlebonjean",
-   "email" : "pgmdu01@mail.fr",
+   "username" : "jeanlegrosjean",
+   "email" : "pgmdu02@mail.fr",
    "password" : "jenesuispasencorehaché",
    "city" : "bordeaux"
 } 
