@@ -14,102 +14,108 @@ const ExchangeTracking = ({
   useEffect(() => getExchangeList(), []);
 
   return (
-    <div>
+    <div className="exchangeTracking">
       <p>Suivi d'échange</p>
 
-      <div>
-        <ul>
-          <li onClick={() => getActiveTab('received')}>Mes Propositions</li>
-          <li onClick={() => getActiveTab('asked')}>Mes Demandes</li>
+      <div className="exchangeTracking-menuContainer">
+        <ul className="exchangeTracking-menuContent">
+          <li className="exchangeTracking-tab" onClick={() => getActiveTab('received')}>Mes Demandes</li>
+          <li className="exchangeTracking-tab" onClick={() => getActiveTab('asked')}>Mes Propositions</li>
         </ul>
       </div>
 
-      <div className={activeTab === 'received' ? 'panel active' : 'panel'}>
-        {receivedPropositions && (
-          receivedPropositions.map((receivedProposition) => (
-            <div className="line">
-              <div className="description">
-                <img
-                  src={receivedProposition.receiver.dish_picture}
-                  alt={receivedProposition.receiver.dish_name}
-                />
+      <div className="exchangeTracking-body">
+        <div className={activeTab === 'received' ? 'exchangeTracking-panel active' : 'exchangeTracking-panel'}>
+          {receivedPropositions && (
+            receivedPropositions.map((receivedProposition) => (
+              <div className="exchangeTracking-line">
+                <div className="exchangeTracking-description">
+                  <img
+                    className="exchangeTracking-img"
+                    src={receivedProposition.receiver.dish_picture}
+                    alt={receivedProposition.receiver.dish_name}
+                  />
 
-                <p>
-                  {receivedProposition.receiver.dish_name}
-                  <span> en échange de </span>
-                  {receivedProposition.asker.dish_name}
-                </p>
+                  <p className="exchangeTracking-textContainer">
+                    {receivedProposition.receiver.dish_name}
+                    <span className="exchangeTracking-textContainer-text"> en échange de </span>
+                    {receivedProposition.asker.dish_name}
+                  </p>
 
-                <img
-                  src={receivedProposition.asker.dish_picture}
-                  alt={receivedProposition.asker.dish_name}
-                />
-              </div>
-
-              <div className="actions">
-                {receivedProposition.status === 0 && (
-                  <div>
-                    <button type="button">Accepter</button>
-                    <button type="button">Refuser</button>
-                  </div>
-                )}
-                {receivedProposition.status === 1 && (
-                  <div>
-                    <p>Vous avez accepté cet échange</p>
-                    <button type="button">Contact</button>
-                  </div>
-                )}
-                {receivedProposition.status === 2 && (
-                  <div>
-                    <p>Vous avez refusé cet échange</p>
-                  </div>
-                )}
-              </div>
-            </div>
-          ))
-        )}
-      </div>
-
-      <div className={activeTab === 'asked' ? 'panel active' : 'panel'}>
-        {askedPropositions && (
-          askedPropositions.map((askedProposition) => (
-            <div className="line">
-              <div className="description">
-                <img
-                  src={askedProposition.asker.dish_picture}
-                  alt={askedProposition.asker.dish_name}
-                />
-
-                <p>
-                  {askedProposition.asker.dish_name}
-                  <span> en échange de </span>
-                  {askedProposition.receiver.dish_name}
-                </p>
-
-                <img
-                  src={askedProposition.receiver.dish_picture}
-                  alt={askedProposition.receiver.dish_name}
-                />
-              </div>
-
-              <div className="actions">
-                <div>
-                  {askedProposition.status === 0 && (
-                    <p>En attente</p>
-                  )}
-                  { askedProposition.status === 1 && (
-                    <p>{askedProposition.receiver.user_username} à accepté cet échange</p>
-                  )}
-                  {askedProposition.status === 2 && (
-                    <p>{askedProposition.receiver.user_username} à refusé cet échange</p>
-                  )}
+                  <img
+                    className="exchangeTracking-img"
+                    src={receivedProposition.asker.dish_picture}
+                    alt={receivedProposition.asker.dish_name}
+                  />
                 </div>
 
-                <p>{format(new Date(askedProposition.createdAt), 'dd-MM-yyyy')}</p>
+                <div className="exchangeTracking-actions">
+                  {receivedProposition.status === 0 && (
+                    <div className="exchangeTracking-actions-container">
+                      <button type="button" className="exchangeTracking-actions-buttonAccept">Accepter</button>
+                      <button type="button" className="exchangeTracking-actions-buttonRefuse">Refuser</button>
+                    </div>
+                  )}
+                  {receivedProposition.status === 1 && (
+                    <div className="exchangeTracking-actions-container">
+                      <p className="exchangeTracking-actions-textAccept">Vous avez accepté cet échange</p>
+                      <button type="button" className="exchangeTracking-actions-buttonContact">Contact</button>
+                    </div>
+                  )}
+                  {receivedProposition.status === 2 && (
+                    <div className="exchangeTracking-actions-container">
+                      <p className="exchangeTracking-actions-textRefuse">Vous avez refusé cet échange</p>
+                    </div>
+                  )}
+                </div>
               </div>
-            </div>
-          ))
-        )}
+            ))
+          )}
+        </div>
+
+        <div className={activeTab === 'asked' ? 'exchangeTracking-panel active' : 'exchangeTracking-panel'}>
+          {askedPropositions && (
+            askedPropositions.map((askedProposition) => (
+              <div className="exchangeTracking-line">
+                <div className="exchangeTracking-description">
+                  <img
+                    className="exchangeTracking-img"
+                    src={askedProposition.asker.dish_picture}
+                    alt={askedProposition.asker.dish_name}
+                  />
+
+                  <p className="exchangeTracking-textContainer">
+                    {askedProposition.asker.dish_name}
+                    <span className="exchangeTracking-textContainer-text"> en échange de </span>
+                    {askedProposition.receiver.dish_name}
+                  </p>
+
+                  <img
+                    className="exchangeTracking-img"
+                    src={askedProposition.receiver.dish_picture}
+                    alt={askedProposition.receiver.dish_name}
+                  />
+                </div>
+
+                <div className="exchangeTracking-actions">
+                  <div className="exchangeTracking-actions-container">
+                    {askedProposition.status === 0 && (
+                      <p>En attente</p>
+                    )}
+                    { askedProposition.status === 1 && (
+                      <p>{askedProposition.receiver.user_username} à accepté cet échange</p>
+                    )}
+                    {askedProposition.status === 2 && (
+                      <p>{askedProposition.receiver.user_username} à refusé cet échange</p>
+                    )}
+                  </div>
+
+                  <p>{format(new Date(askedProposition.createdAt), 'dd-MM-yyyy')}</p>
+                </div>
+              </div>
+            ))
+          )}
+        </div>
       </div>
     </div>
   );

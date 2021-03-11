@@ -40,7 +40,7 @@ const Menu = ({
           Créer une nouvelle fiche de plat
         </NavLink>
 
-        <NavLink exact className="menu-link" to="/suiviEchange">
+        <NavLink exact className="menu-link" to="/v1/exchange-tracking">
           Suivi d'échange
         </NavLink>
 
