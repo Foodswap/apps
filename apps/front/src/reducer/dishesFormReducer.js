@@ -4,7 +4,10 @@ import {
   SEND_FORM_RECIPE_UP,
   CANCEL_FORM_RECIPE_SUCCESS,
   CANCEL_FORM_RECIPE_ERROR,
-  SET_CATEGORY_SELECT
+  SET_CATEGORY_SELECT,
+  SEND_FORM_RECIPE_UP_SUCCESS,
+  SEND_FORM_RECIPE_UP_ERROR,
+  CHANGE_STATUS
 } from '../actions/dishesForm';
 
 // export const initialState = {};
@@ -22,6 +25,8 @@ const initialState = {
   dish: '',
   kitchen: '',
   online: false,
+  isSucces: false,
+  isError: false,
   // imgIcon: 'https://img.icons8.com/carbon-copy/2x/meal.png',
   // dataFormMeal: [
     
@@ -91,6 +96,21 @@ export default (state = initialState, action = {}) => {
         [action.name]: action.value,
         loggedMessage: 'Votre plat a été crée',
       };
+    case SEND_FORM_RECIPE_UP_SUCCESS: 
+      return {
+        ...state,
+        isSucces: true,
+      };
+      case SEND_FORM_RECIPE_UP_ERROR: 
+      return {
+        ...state,
+        isError: true,
+      };
+    case CHANGE_STATUS:
+      return {
+        ...state,
+        online: !state.online,
+      }
     default:
       return state;
   }

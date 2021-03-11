@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { useState } from "react";
 import './style.scss';
@@ -16,7 +17,10 @@ const DishesForm = ({
   kitchen,
   handleInputChange,
   onFormSubmit,
-  onSetCategorySelect
+  onSetCategorySelect,
+  isSucces,
+  isError,
+  changeOnline
 }) => {
   const imageHandler = (evt) =>{
     const reader = new FileReader();
@@ -69,7 +73,7 @@ const DishesForm = ({
 
       
         <label className="switch">
-          <input name="online" type="checkbox" onChange={() => console.log(" créer action qui change le booleen ")}/>
+          <input name="online" type="checkbox" onChange={changeOnline}/>
           <span className="slider round" />
         </label>
         <input
@@ -166,6 +170,17 @@ const DishesForm = ({
           <option value="orientale" name="orientale">Orientale</option>
           <option value="italienne" name="italienne">Italienne</option>
         </select>
+
+        { isSucces && 
+          <Redirect to="/v1/mydishes" />
+        }
+
+        { isError && (
+
+          <p>Erreur sur votre formulaire </p>
+        )
+        }
+
         <button className="mealForm-form-submit" type="submit" onClick={() => sendFormRecipeUp()}> Valider </button>
         <button className="mealForm-form-submit" type="button" onClick={() => cancelFormRecipe()}> Annuler </button>
         </form>

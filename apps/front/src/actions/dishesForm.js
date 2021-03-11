@@ -14,14 +14,13 @@ export const sendFormRecipeUp = (payload) => ({
 
 // Action  pour la réussite de l'envoi
 export const SEND_FORM_RECIPE_UP_SUCCESS = 'SEND_FORM_RECIPE_UP_SUCCESS';
-export const senFormRecipeUpSuccess = (payload) => ({
+export const sendFormRecipeUpSuccess = () => ({
   type: SEND_FORM_RECIPE_UP_SUCCESS,
-  payload,
 });
 
 // Action pour l' echec de l'envoi
 export const SEND_FORM_RECIPE_UP_ERROR = 'SEND_FORM_RECIPE_UP_ERROR';
-export const senFormRecipeUpError = (payload) => ({
+export const sendFormRecipeUpError = (payload) => ({
   type: SEND_FORM_RECIPE_UP_ERROR,
   payload,
 });
@@ -54,5 +53,11 @@ export const setCategorySelect = (value, name) => ({
   type: SET_CATEGORY_SELECT,
   name, 
   value
+})
+
+// action pour changer le mode en ligne / hors ligne
+export const CHANGE_STATUS = "CHANGE_STATUS";
+export const changeStatus = () => ({
+  type: CHANGE_STATUS,
 })
 

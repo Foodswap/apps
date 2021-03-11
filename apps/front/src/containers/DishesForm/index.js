@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import DishesForm from '../../components/DishesForm';
-import { setInputValue, sendFormRecipeUp, setCategorySelect } from '../../actions/dishesForm';
+import { setInputValue, sendFormRecipeUp, setCategorySelect, changeStatus } from '../../actions/dishesForm';
 
 const mapStateToProps = (state) => ({
   dataFormMeal: state.dishes.dataFormMeal,
@@ -16,12 +16,15 @@ const mapStateToProps = (state) => ({
   dish: state.dishes.dish,
   kitchen: state.dishes.kitchen,
   online: state.dishes.online,
+  isSucces: state.dishes.isSucces,
+  isError: state.dishes.isError
 });
 
 const mapDispatchToProps = (dispatch) => ({
   handleInputChange: (value, name) => dispatch(setInputValue(value, name)),
   onFormSubmit: (value, name) => dispatch(sendFormRecipeUp(value, name)),
   onSetCategorySelect: (value, name) => dispatch(setCategorySelect(value, name)),
+  changeOnline: () => dispatch(changeStatus()),
 
 });
 

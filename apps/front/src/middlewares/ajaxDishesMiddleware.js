@@ -14,8 +14,8 @@ import {
 
 import {
   SEND_FORM_RECIPE_UP,
-  senFormRecipeUpSuccess,
-  senFormRecipeUpError,
+  sendFormRecipeUpSuccess,
+  sendFormRecipeUpError,
 } from '../actions/dishesForm';
 
 export default (store) => (next) => (action) => {
@@ -88,9 +88,11 @@ export default (store) => (next) => (action) => {
         city,
         author,
         dish,
-        kitchen
+        kitchen,
+        online
       } = store.getState().dishes;
       console.log("send form middleware");
+
       console.log(picture,
         name,
         description,
@@ -99,39 +101,55 @@ export default (store) => (next) => (action) => {
         city,
         author,
         dish,
-        kitchen);
-      // axios({
-      //   method: 'post',
-      //   url: 'http://localhost:3000/dishes',
-      //   data: {
-      //     picture,
-      //     name,
-      //     description,
-      //     ingredients,
-      //     portion,
-      //     city,
-      //     author,
-      //     category,
-      //   },
-      // })
-      // .then((res) => {
-      //   console.log(`response ok : ${res}`);
-      //   const actionToDispatch = senFormRecipeUpSuccess(res.data);
-      //   store.dispatch(actionToDispatch);
-      //   console.log(res.data.name);
-      //   console.log(store.getState().dishes);
-      // })
-      // .catch((error) => {
-      //   console.log(`${error} erreur au post du formulaire`);
-      //   const actionToDispatch = senFormRecipeUpError();
-      //   store.dispatch(actionToDispatch);
-      // })
-      // .finally(() => {
-      //   console.log('post form done');
-      // });
+        kitchen,
+        online
+        );
+
+      axios({
+        method: 'post',
+        url: 'http://localhost:3000/dishes',
+        data: {
+          picture,
+          name,
+          description,
+          ingredients: [{
+            name: ingredients
+          }],
+          portion,
+          city,
+          author: {
+            id: 2,
+            username: author,
+          },
+          dishType: {
+            type: "dish",
+            name: dish,
+          },
+          kitchenType: {
+            type: "kitchen",
+            name: kitchen,
+          },
+          online,
+        },
+      })
+      .then((res) => {
+        console.log(`response ok : ${res}`);
+        const actionToDispatch = sendFormRecipeUpSuccess();
+        store.dispatch(actionToDispatch);
+        console.log(res.data);
+      })
+      .catch((error) => {
+        console.log(`${error} erreur au post du formulaire`);
+        const actionToDispatch = sendFormRecipeUpError();
+        store.dispatch(actionToDispatch);
+      })
+      .finally(() => {
+        console.log('post form done');
+      });
     }
     break;
     default:
       return next(action);
   }
 };
+

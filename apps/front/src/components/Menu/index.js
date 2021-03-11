@@ -32,7 +32,7 @@ const Menu = ({
           Accueil
         </NavLink>
 
-        <NavLink exact className="menu-link" to="/v1/meals">
+        <NavLink exact className="menu-link" to="/v1/mydishes">
           Mes plats
         </NavLink>
 

@@ -269,6 +269,457 @@
         "type": "dish",
         "name": "plat"
       }
+    },
+    {
+      "picture": "https://img.icons8.com/carbon-copy/2x/meal.png",
+      "name": "nouilles",
+      "description": "Un plat savoureux",
+      "ingredients": [
+        {
+          "name": "sel; poivre, pates, soyo"
+        }
+      ],
+      "portion": "4",
+      "city": "Paris",
+      "author": {
+        "id": 2,
+        "username": "Cycy"
+      },
+      "dishType": {
+        "type": "dish",
+        "name": "plat"
+      },
+      "kitchenType": {
+        "type": "kitchen",
+        "name": "asiatique"
+      },
+      "id": 6
+    },
+    {
+      "picture": "https://img.icons8.com/carbon-copy/2x/meal.png",
+      "name": "nouilles",
+      "description": "Un plat savoureux",
+      "ingredients": [
+        {
+          "name": "sel; poivre, pates, soyo"
+        }
+      ],
+      "portion": "4",
+      "city": "Paris",
+      "author": {
+        "id": 2,
+        "username": "Cycy"
+      },
+      "dishType": {
+        "type": "dish",
+        "name": "plat"
+      },
+      "kitchenType": {
+        "type": "kitchen",
+        "name": "asiatique"
+      },
+      "id": 7
+    },
+    {
+      "picture": "https://img.icons8.com/carbon-copy/2x/meal.png",
+      "name": "nouille",
+      "description": "un delicieux plat de nouille",
+      "ingredients": [
+        {
+          "name": "pates , sel, poivre , "
+        }
+      ],
+      "portion": "3",
+      "city": "tarbes",
+      "author": {
+        "id": 2,
+        "username": "Cycy"
+      },
+      "dishType": {
+        "type": "dish",
+        "name": "plat"
+      },
+      "kitchenType": {
+        "type": "kitchen",
+        "name": "asiatique"
+      },
+      "id": 8
+    },
+    {
+      "picture": "https://img.icons8.com/carbon-copy/2x/meal.png",
+      "name": "riz coco",
+      "description": "riz coco ",
+      "ingredients": [
+        {
+          "name": "riz"
+        }
+      ],
+      "portion": "1",
+      "city": "paris",
+      "author": {
+        "id": 2,
+        "username": "marie"
+      },
+      "dishType": {
+        "type": "dish",
+        "name": "plat"
+      },
+      "kitchenType": {
+        "type": "kitchen",
+        "name": "asiatique"
+      },
+      "id": 9
+    },
+    {
+      "picture": "https://img.icons8.com/carbon-copy/2x/meal.png",
+      "name": "riz coco",
+      "description": "riz coco ",
+      "ingredients": [
+        {
+          "name": "riz"
+        }
+      ],
+      "portion": "1",
+      "city": "paris",
+      "author": {
+        "id": 2,
+        "username": "marie"
+      },
+      "dishType": {
+        "type": "dish",
+        "name": "plat"
+      },
+      "kitchenType": {
+        "type": "kitchen",
+        "name": "asiatique"
+      },
+      "id": 10
+    },
+    {
+      "picture": "https://img.icons8.com/carbon-copy/2x/meal.png",
+      "name": "e",
+      "description": "e",
+      "ingredients": [
+        {
+          "name": "e"
+        }
+      ],
+      "portion": "1",
+      "city": "e",
+      "author": {
+        "id": 2,
+        "username": "e"
+      },
+      "dishType": {
+        "type": "dish",
+        "name": "plat"
+      },
+      "kitchenType": {
+        "type": "kitchen",
+        "name": "francaise"
+      },
+      "id": 11
+    },
+    {
+      "picture": "https://img.icons8.com/carbon-copy/2x/meal.png",
+      "name": "e",
+      "description": "e",
+      "ingredients": [
+        {
+          "name": "e"
+        }
+      ],
+      "portion": "1",
+      "city": "e",
+      "author": {
+        "id": 2,
+        "username": "e"
+      },
+      "dishType": {
+        "type": "dish",
+        "name": "entrée"
+      },
+      "kitchenType": {
+        "type": "kitchen",
+        "name": "francaise"
+      },
+      "id": 12
+    },
+    {
+      "picture": "https://img.icons8.com/carbon-copy/2x/meal.png",
+      "name": "xd",
+      "description": "sd",
+      "ingredients": [
+        {
+          "name": "sd"
+        }
+      ],
+      "portion": "1",
+      "city": "sd",
+      "author": {
+        "id": 2,
+        "username": "sdf"
+      },
+      "dishType": {
+        "type": "dish",
+        "name": "entrée"
+      },
+      "kitchenType": {
+        "type": "kitchen",
+        "name": "asiatique"
+      },
+      "id": 13
+    },
+    {
+      "picture": "https://img.icons8.com/carbon-copy/2x/meal.png",
+      "name": "sdf",
+      "description": "sdf",
+      "ingredients": [
+        {
+          "name": "sdf"
+        }
+      ],
+      "portion": "1",
+      "city": "sdf",
+      "author": {
+        "id": 2,
+        "username": "sdf"
+      },
+      "dishType": {
+        "type": "dish",
+        "name": "entrée"
+      },
+      "kitchenType": {
+        "type": "kitchen",
+        "name": "asiatique"
+      },
+      "id": 14
+    },
+    {
+      "picture": "https://img.icons8.com/carbon-copy/2x/meal.png",
+      "name": "sfd",
+      "description": "dsf",
+      "ingredients": [
+        {
+          "name": "sdf"
+        }
+      ],
+      "portion": "1",
+      "city": "dsf",
+      "author": {
+        "id": 2,
+        "username": "sdf"
+      },
+      "dishType": {
+        "type": "dish",
+        "name": "entrée"
+      },
+      "kitchenType": {
+        "type": "kitchen",
+        "name": "asiatique"
+      },
+      "id": 15
+    },
+    {
+      "picture": "https://img.icons8.com/carbon-copy/2x/meal.png",
+      "name": "f",
+      "description": "df",
+      "ingredients": [
+        {
+          "name": "df"
+        }
+      ],
+      "portion": "1",
+      "city": "df",
+      "author": {
+        "id": 2,
+        "username": "fd"
+      },
+      "dishType": {
+        "type": "dish",
+        "name": "plat"
+      },
+      "kitchenType": {
+        "type": "kitchen",
+        "name": "asiatique"
+      },
+      "id": 16
+    },
+    {
+      "picture": "https://img.icons8.com/carbon-copy/2x/meal.png",
+      "name": "riz coco",
+      "description": "riz au lait de coco",
+      "ingredients": [
+        {
+          "name": "riz "
+        }
+      ],
+      "portion": "1",
+      "city": "paris",
+      "author": {
+        "id": 2,
+        "username": "marie"
+      },
+      "dishType": {
+        "type": "dish",
+        "name": "plat"
+      },
+      "kitchenType": {
+        "type": "kitchen",
+        "name": "asiatique"
+      },
+      "id": 17
+    },
+    {
+      "picture": "https://img.icons8.com/carbon-copy/2x/meal.png",
+      "name": "xcw",
+      "description": "sdc",
+      "ingredients": [
+        {
+          "name": "sdc"
+        }
+      ],
+      "portion": "1",
+      "city": "dcs",
+      "author": {
+        "id": 2,
+        "username": "sdc"
+      },
+      "dishType": {
+        "type": "dish",
+        "name": "entrée"
+      },
+      "kitchenType": {
+        "type": "kitchen",
+        "name": "asiatique"
+      },
+      "id": 18
+    },
+    {
+      "picture": "https://img.icons8.com/carbon-copy/2x/meal.png",
+      "name": "gdg",
+      "description": "dfg",
+      "ingredients": [
+        {
+          "name": "dfg"
+        }
+      ],
+      "portion": "1",
+      "city": "dgf",
+      "author": {
+        "id": 2,
+        "username": "dfg"
+      },
+      "dishType": {
+        "type": "dish",
+        "name": "entrée"
+      },
+      "kitchenType": {
+        "type": "kitchen",
+        "name": "asiatique"
+      },
+      "id": 19
+    },
+    {
+      "picture": "https://img.icons8.com/carbon-copy/2x/meal.png",
+      "name": "test",
+      "description": "l",
+      "ingredients": [
+        {
+          "name": "riz"
+        }
+      ],
+      "portion": "1",
+      "city": "paris",
+      "author": {
+        "id": 2,
+        "username": "marie"
+      },
+      "dishType": {
+        "type": "dish",
+        "name": "plat"
+      },
+      "kitchenType": {
+        "type": "kitchen",
+        "name": "asiatique"
+      },
+      "id": 20
+    },
+    {
+      "picture": "https://img.icons8.com/carbon-copy/2x/meal.png",
+      "name": "qds",
+      "description": "qsd",
+      "ingredients": [
+        {
+          "name": "qsd"
+        }
+      ],
+      "portion": "2",
+      "city": "qsd",
+      "author": {
+        "id": 2,
+        "username": "qsd"
+      },
+      "dishType": {
+        "type": "dish",
+        "name": "entrée"
+      },
+      "kitchenType": {
+        "type": "kitchen",
+        "name": "asiatique"
+      },
+      "id": 21
+    },
+    {
+      "picture": "https://img.icons8.com/carbon-copy/2x/meal.png",
+      "name": "nouille",
+      "description": "c est bon",
+      "ingredients": [
+        {
+          "name": "sel poivre"
+        }
+      ],
+      "portion": "2",
+      "city": "paris",
+      "author": {
+        "id": 2,
+        "username": "cycy"
+      },
+      "dishType": {
+        "type": "dish",
+        "name": "entrée"
+      },
+      "kitchenType": {
+        "type": "kitchen",
+        "name": "francaise"
+      },
+      "id": 22
+    },
+    {
+      "picture": "https://img.icons8.com/carbon-copy/2x/meal.png",
+      "name": "nouille",
+      "description": "un plat de nouille",
+      "ingredients": [
+        {
+          "name": "sel poivre pates "
+        }
+      ],
+      "portion": "9",
+      "city": "Noumea",
+      "author": {
+        "id": 2,
+        "username": "Cyril"
+      },
+      "dishType": {
+        "type": "dish",
+        "name": "plat"
+      },
+      "kitchenType": {
+        "type": "kitchen",
+        "name": "asiatique"
+      },
+      "online": true,
+      "id": 23
     }
   ],
   "category": [
@@ -307,12 +758,10 @@
       "type": "dish",
       "name": "dessert"
     }
-
-
   ],
   "author": [
     [
-      { 
+      {
         "id": 3,
         "email": "test@test.fr",
         "password": "$2y$10$Tm1OVsYJO7pNmQv9u7HeoeorTt2BAiUDbRYIXiO4ihND9uOFZZpK6",
@@ -326,7 +775,7 @@
         "username": "cookie",
         "city": "Lyon"
       },
-      { 
+      {
         "id": 1,
         "email": "hello@test.fr",
         "password": "$2y$10$Tm1OVsYJO7pNmQv9u7HeoeorTt2BAiUDbRYIXiO4ihND9uOFZZpK6",
@@ -342,146 +791,145 @@
     ]
   ],
   "ingredients": [
-    
-      {
-        "id": 1,
-        "name": "riz"
-      },
-      {
-        "id": 2,
-        "name": "saumon"
-      },
-      {
-        "id": 3,
-        "name": "carotte"
-      },
-      {
-        "id": 4,
-        "name": "avocat"
-      },
-      {
-        "id": 5,
-        "name": "graine de sésame"
-      },
-      {
-        "id": 6,
-        "name": "choux rouge"
-      },
-      {
-        "id": 7,
-        "name": "citron"
-      },
-      {
-        "id": 9,
-        "name": "riz"
-      },
-      {
-        "id": 10,
-        "name": "boeuf haché"
-      },
-      {
-        "id": 11,
-        "name": "carotte"
-      },
-      {
-        "id": 12,
-        "name": "épinard"
-      },
-      {
-        "id": 13,
-        "name": "graine de sésame"
-      },
-      {
-        "id": 14,
-        "name": "oeuf"
-      },
-      {
-        "id": 15,
-        "name": "oignon"
-      },
-      {
-        "id": 16,
-        "name": "farine"
-      },
-      {
-        "id": 17,
-        "name": "sucre"
-      },
-      {
-        "id": 18,
-        "name": "crème liquide"
-      },
-      {
-        "id": 19,
-        "name": "oeuf"
-      },
-      {
-        "id": 20,
-        "name": "fix chantilly"
-      },
-      {
-        "id": 21,
-        "name": "fraise"
-      },
-      {
-        "id": 22,
-        "name": "maizena"
-      },
-      {
-        "id": 23,
-        "name": "vermicelle"
-      },
-      {
-        "id": 24,
-        "name": "viande de porc haché"
-      },
-      {
-        "id": 25,
-        "name": "carotte"
-      },
-      {
-        "id": 26,
-        "name": "champignon noir"
-      },
-      {
-        "id": 27,
-        "name": "fécule de pomme de terre"
-      },
-      {
-        "id": 28,
-        "name": "fécule de pomme de terre"
-      },
-      {
-        "id": 29,
-        "name": "feuilles de samoussa"
-      },
-      {
-        "id": 30,
-        "name": "vermicelle"
-      },
-      {
-        "id": 31,
-        "name": "crevette"
-      },
-      {
-        "id": 32,
-        "name": "raviolis frit"
-      },
-      {
-        "id": 33,
-        "name": "champignon shiitake"
-      },
-      {
-        "id": 34,
-        "name": "lait de coco"
-      },
-      {
-        "id": 35,
-        "name": "pate de curry rouge"
-      },
-      {
-        "id": 36,
-        "name": "oignon rouge"
-      }
+    {
+      "id": 1,
+      "name": "riz"
+    },
+    {
+      "id": 2,
+      "name": "saumon"
+    },
+    {
+      "id": 3,
+      "name": "carotte"
+    },
+    {
+      "id": 4,
+      "name": "avocat"
+    },
+    {
+      "id": 5,
+      "name": "graine de sésame"
+    },
+    {
+      "id": 6,
+      "name": "choux rouge"
+    },
+    {
+      "id": 7,
+      "name": "citron"
+    },
+    {
+      "id": 9,
+      "name": "riz"
+    },
+    {
+      "id": 10,
+      "name": "boeuf haché"
+    },
+    {
+      "id": 11,
+      "name": "carotte"
+    },
+    {
+      "id": 12,
+      "name": "épinard"
+    },
+    {
+      "id": 13,
+      "name": "graine de sésame"
+    },
+    {
+      "id": 14,
+      "name": "oeuf"
+    },
+    {
+      "id": 15,
+      "name": "oignon"
+    },
+    {
+      "id": 16,
+      "name": "farine"
+    },
+    {
+      "id": 17,
+      "name": "sucre"
+    },
+    {
+      "id": 18,
+      "name": "crème liquide"
+    },
+    {
+      "id": 19,
+      "name": "oeuf"
+    },
+    {
+      "id": 20,
+      "name": "fix chantilly"
+    },
+    {
+      "id": 21,
+      "name": "fraise"
+    },
+    {
+      "id": 22,
+      "name": "maizena"
+    },
+    {
+      "id": 23,
+      "name": "vermicelle"
+    },
+    {
+      "id": 24,
+      "name": "viande de porc haché"
+    },
+    {
+      "id": 25,
+      "name": "carotte"
+    },
+    {
+      "id": 26,
+      "name": "champignon noir"
+    },
+    {
+      "id": 27,
+      "name": "fécule de pomme de terre"
+    },
+    {
+      "id": 28,
+      "name": "fécule de pomme de terre"
+    },
+    {
+      "id": 29,
+      "name": "feuilles de samoussa"
+    },
+    {
+      "id": 30,
+      "name": "vermicelle"
+    },
+    {
+      "id": 31,
+      "name": "crevette"
+    },
+    {
+      "id": 32,
+      "name": "raviolis frit"
+    },
+    {
+      "id": 33,
+      "name": "champignon shiitake"
+    },
+    {
+      "id": 34,
+      "name": "lait de coco"
+    },
+    {
+      "id": 35,
+      "name": "pate de curry rouge"
+    },
+    {
+      "id": 36,
+      "name": "oignon rouge"
+    }
   ]
 }

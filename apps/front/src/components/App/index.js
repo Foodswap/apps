@@ -45,7 +45,7 @@ const App = () => (
     <Route exact path="/results">
       <Results dishes={dishes} />
     </Route>
-    <Route exact path="/v1/meals">
+    <Route exact path="/v1/mydishes">
       <MyDishes />
     </Route>
     <Route exact path="/v1/createMeal">
