@@ -10,12 +10,12 @@ GET {{baseUrl}}
 ### 
 
 
-### Local - route sécurisé pour tester la connexion
-GET {{baseUrl}}/author
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImplYW5sZWJvbmplYW4iLCJpYXQiOjE2MTUzNjY0NzJ9.RXdne4eFl018b7N2yFYC5PTvUk3X7uP1vHDz07FDebc
+### Local - route pour récupérer les plats d'un author
+GET {{baseUrl}}//meals/author/49
+
 
 ###
-GET {{baseUrl}}/meals/4
+GET {{baseUrl}}/meals/42
 
 ###  Local - route pour tester l'inscription
 POST {{baseUrl}}/signup

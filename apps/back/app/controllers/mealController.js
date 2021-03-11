@@ -12,19 +12,21 @@ const mealController = {
         try {
 
             mealToCreate.picture_path = request.file.filename
-            Meal.create(mealToCreate).then(createdMeal => {
-                meal.addIngredients(JSON.parse(mealToCreate.ingredients)).then(() => {
-                    Meal.findByPk(Number(createdMeal.id), {
-                        attributes: {
-                            exclude: ['picture_path']
-                        },
-                        include: ['ingredients', 'author']
-                    }).then((meal) => {
-                        response.status(201).json(meal);
-                    })
-                })
+            const createdMeal = await Meal.create(mealToCreate)
+            await createdMeal.addIngredients(JSON.parse(mealToCreate.ingredients)) 
+            await createdMeal.addCategories(JSON.parse(mealToCreate.categories))
+        
+            Meal.findByPk(Number(createdMeal.id), {
+                attributes: {
+                    exclude: ['picture_path']
+                },
+                include: ['ingredients', 'categories', 'author']
+            }).then((meal) => {
+                meal.author.password = null;
+                response.status(201).json(meal);
+                
             })
-
+            
         } catch (error) {
             console.log(error);
             response.status(500);
@@ -37,12 +39,23 @@ const mealController = {
                 attributes: {
                     exclude: ['picture_path']
                 },
-                include: ['ingredients', 'author']
+                include: ['ingredients', 'categories', 'author']
             });
+            meal.author.password = null;
             response.status(200).json(meal);
         } catch (err) {
             console.trace(err);
-            response.status(404).json("Plat non trouvé");
+            response.status(500);
+        }
+    },
+
+    getMealsByAuthor: async (request, response) => {
+        try {
+            const mealsByAuthor = await Meal.findAll({where:{author_id:request.params.author_id}});
+            response.status(200).json(mealsByAuthor)
+        } catch(error) {
+            console.log(error);
+            response.status(500);
         }
     },
 

@@ -1,5 +1,4 @@
 const bcrypt = require('bcrypt');
-//const { request, response } = require('express');
 const jwt = require('jsonwebtoken');
 const Author = require('../models/author');
 

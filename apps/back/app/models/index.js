@@ -2,6 +2,7 @@ const Author = require('./author');
 const Category = require('./category');
 const Ingredient = require('./ingredient');
 const Meal = require('./meal');
+const Swap = require('./swap');
 
 Author.hasMany(Meal, {
     foreignKey: 'author_id',
@@ -11,6 +12,26 @@ Author.hasMany(Meal, {
 Meal.belongsTo(Author, {
     foreignKey: 'author_id',
     as: 'author'
+});
+
+Meal.hasMany(Swap, {
+    foreignKey: 'requested_meal_id',
+    as: 'swapsRequest'
+});
+
+Meal.hasMany(Swap, {
+    foreignKey: 'offered_meal_id',
+    as: 'swapsOffer'
+});
+
+Swap.belongsTo(Meal, {
+    foreignKey: 'requested_meal_id',
+    as: 'mealRequest'
+});
+
+Swap.belongsTo(Meal, {
+    foreignKey: 'offered_meal_id',
+    as: 'mealOffer'
 });
 
 Meal.belongsToMany(Category, {
@@ -44,6 +65,7 @@ Ingredient.belongsToMany(Meal, {
     timestamps: false,
     hooks: true
 });
+
 
 module.exports = {
     Author,
