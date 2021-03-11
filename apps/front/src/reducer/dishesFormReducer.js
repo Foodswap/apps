@@ -7,7 +7,8 @@ import {
   SET_CATEGORY_SELECT,
   SEND_FORM_RECIPE_UP_SUCCESS,
   SEND_FORM_RECIPE_UP_ERROR,
-  CHANGE_STATUS
+  CHANGE_STATUS,
+  FETCH_INGREDIENTS_SUCCES
 } from '../actions/dishesForm';
 
 // export const initialState = {};
@@ -27,6 +28,7 @@ const initialState = {
   online: false,
   isSucces: false,
   isError: false,
+  ingredientsData: null,
   // imgIcon: 'https://img.icons8.com/carbon-copy/2x/meal.png',
   // dataFormMeal: [
     
@@ -110,6 +112,11 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         online: !state.online,
+      };
+    case FETCH_INGREDIENTS_SUCCES: 
+      return {
+        ...state,
+        ingredientsData: action.payload.name,
       }
     default:
       return state;

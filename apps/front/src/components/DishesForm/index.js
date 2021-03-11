@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { useState } from "react";
+// import SelectInputIngredient from '../SelectInputIngredients';
+
 import './style.scss';
 // import image from '../../assets/images/logo-fooswap.png';
 import { cancelFormRecipe, sendFormRecipeUp, setInputValue } from '../../actions/dishesForm';
@@ -20,8 +22,15 @@ const DishesForm = ({
   onSetCategorySelect,
   isSucces,
   isError,
-  changeOnline
+  changeOnline,
+  getIngredients,
+  ingredientsData,
 }) => {
+
+  useEffect(() => {
+    getIngredients();
+  }, [])
+  ;
   const imageHandler = (evt) =>{
     const reader = new FileReader();
     reader.onload = () => {
@@ -127,6 +136,7 @@ const DishesForm = ({
             value={author}
           />
         </p>
+        
         <textarea
           required
           className="meal-form-ingredients"

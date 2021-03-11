@@ -43,16 +43,16 @@
         "id": 8,
         "username": "Paulette"
       },
-      "kitchenType": {
-        "id": 1,
-        "type": "kitchen",
-        "name": "asiatique"
-      },
-      "dishType": {
-        "id": 1,
-        "type": "dish",
-        "name": "plat"
-      }
+      "categories": [
+        {
+          "type": "kitchen",
+          "name": "asiatique"
+        },
+        {
+          "type": "dish",
+          "name": "plat"
+        }
+      ]
     },
     {
       "id": 2,
@@ -97,16 +97,16 @@
         "id": 8,
         "username": "Paulette"
       },
-      "kitchenType": {
-        "id": 1,
-        "type": "kitchen",
-        "name": "asiatique"
-      },
-      "dishType": {
-        "id": 1,
-        "type": "dish",
-        "name": "plat"
-      }
+      "categories": [
+        {
+          "type": "kitchen",
+          "name": "asiatique"
+        },
+        {
+          "type": "dish",
+          "name": "plat"
+        }
+      ]
     },
     {
       "id": 3,
@@ -151,16 +151,16 @@
         "id": 8,
         "username": "Paulette"
       },
-      "kitchenType": {
-        "id": 1,
-        "type": "kitchen",
-        "name": "asiatique"
-      },
-      "dishType": {
-        "id": 1,
-        "type": "dish",
-        "name": "plat"
-      }
+      "categories": [
+        {
+          "type": "kitchen",
+          "name": "asiatique"
+        },
+        {
+          "type": "dish",
+          "name": "plat"
+        }
+      ]
     },
     {
       "id": 4,
@@ -205,16 +205,16 @@
         "id": 8,
         "username": "Paulette"
       },
-      "kitchenType": {
-        "id": 1,
-        "type": "kitchen",
-        "name": "oriental"
-      },
-      "dishType": {
-        "id": 1,
-        "type": "dish",
-        "name": "plat"
-      }
+      "categories": [
+        {
+          "type": "kitchen",
+          "name": "asiatique"
+        },
+        {
+          "type": "dish",
+          "name": "plat"
+        }
+      ]
     },
     {
       "id": 5,
@@ -259,216 +259,16 @@
         "id": 8,
         "username": "Paulette"
       },
-      "kitchenType": {
-        "id": 1,
-        "type": "kitchen",
-        "name": "indien"
-      },
-      "dishType": {
-        "id": 1,
-        "type": "dish",
-        "name": "plat"
-      }
-    },
-    {
-      "picture": "https://img.icons8.com/carbon-copy/2x/meal.png",
-      "name": "nouilles",
-      "description": "Un plat savoureux",
-      "ingredients": [
+      "categories": [
         {
-          "name": "sel; poivre, pates, soyo"
-        }
-      ],
-      "portion": "4",
-      "city": "Paris",
-      "author": {
-        "id": 2,
-        "username": "Cycy"
-      },
-      "dishType": {
-        "type": "dish",
-        "name": "plat"
-      },
-      "kitchenType": {
-        "type": "kitchen",
-        "name": "asiatique"
-      },
-      "id": 6
-    },
-    {
-      "picture": "https://img.icons8.com/carbon-copy/2x/meal.png",
-      "name": "nouilles",
-      "description": "Un plat savoureux",
-      "ingredients": [
+          "type": "kitchen",
+          "name": "francaise"
+        },
         {
-          "name": "sel; poivre, pates, soyo"
+          "type": "dish",
+          "name": "plat"
         }
-      ],
-      "portion": "4",
-      "city": "Paris",
-      "author": {
-        "id": 2,
-        "username": "Cycy"
-      },
-      "dishType": {
-        "type": "dish",
-        "name": "plat"
-      },
-      "kitchenType": {
-        "type": "kitchen",
-        "name": "asiatique"
-      },
-      "id": 7
-    },
-    {
-      "picture": "https://img.icons8.com/carbon-copy/2x/meal.png",
-      "name": "nouille",
-      "description": "un delicieux plat de nouille",
-      "ingredients": [
-        {
-          "name": "pates , sel, poivre , "
-        }
-      ],
-      "portion": "3",
-      "city": "tarbes",
-      "author": {
-        "id": 2,
-        "username": "Cycy"
-      },
-      "dishType": {
-        "type": "dish",
-        "name": "plat"
-      },
-      "kitchenType": {
-        "type": "kitchen",
-        "name": "asiatique"
-      },
-      "id": 8
-    },
-    {
-      "picture": "https://img.icons8.com/carbon-copy/2x/meal.png",
-      "name": "riz coco",
-      "description": "riz coco ",
-      "ingredients": [
-        {
-          "name": "riz"
-        }
-      ],
-      "portion": "1",
-      "city": "paris",
-      "author": {
-        "id": 2,
-        "username": "marie"
-      },
-      "dishType": {
-        "type": "dish",
-        "name": "plat"
-      },
-      "kitchenType": {
-        "type": "kitchen",
-        "name": "asiatique"
-      },
-      "id": 9
-    },
-    {
-      "picture": "https://img.icons8.com/carbon-copy/2x/meal.png",
-      "name": "riz coco",
-      "description": "riz coco ",
-      "ingredients": [
-        {
-          "name": "riz"
-        }
-      ],
-      "portion": "1",
-      "city": "paris",
-      "author": {
-        "id": 2,
-        "username": "marie"
-      },
-      "dishType": {
-        "type": "dish",
-        "name": "plat"
-      },
-      "kitchenType": {
-        "type": "kitchen",
-        "name": "asiatique"
-      },
-      "id": 10
-    },
-    {
-      "picture": "https://img.icons8.com/carbon-copy/2x/meal.png",
-      "name": "e",
-      "description": "e",
-      "ingredients": [
-        {
-          "name": "e"
-        }
-      ],
-      "portion": "1",
-      "city": "e",
-      "author": {
-        "id": 2,
-        "username": "e"
-      },
-      "dishType": {
-        "type": "dish",
-        "name": "plat"
-      },
-      "kitchenType": {
-        "type": "kitchen",
-        "name": "francaise"
-      },
-      "id": 11
-    },
-    {
-      "picture": "https://img.icons8.com/carbon-copy/2x/meal.png",
-      "name": "e",
-      "description": "e",
-      "ingredients": [
-        {
-          "name": "e"
-        }
-      ],
-      "portion": "1",
-      "city": "e",
-      "author": {
-        "id": 2,
-        "username": "e"
-      },
-      "dishType": {
-        "type": "dish",
-        "name": "entrée"
-      },
-      "kitchenType": {
-        "type": "kitchen",
-        "name": "francaise"
-      },
-      "id": 12
-    },
-    {
-      "picture": "https://img.icons8.com/carbon-copy/2x/meal.png",
-      "name": "xd",
-      "description": "sd",
-      "ingredients": [
-        {
-          "name": "sd"
-        }
-      ],
-      "portion": "1",
-      "city": "sd",
-      "author": {
-        "id": 2,
-        "username": "sdf"
-      },
-      "dishType": {
-        "type": "dish",
-        "name": "entrée"
-      },
-      "kitchenType": {
-        "type": "kitchen",
-        "name": "asiatique"
-      },
-      "id": 13
+      ]
     },
     {
       "picture": "https://img.icons8.com/carbon-copy/2x/meal.png",
@@ -479,247 +279,24 @@
           "name": "sdf"
         }
       ],
-      "portion": "1",
+      "portion": "2",
       "city": "sdf",
       "author": {
         "id": 2,
         "username": "sdf"
       },
-      "dishType": {
-        "type": "dish",
-        "name": "entrée"
-      },
-      "kitchenType": {
-        "type": "kitchen",
-        "name": "asiatique"
-      },
-      "id": 14
-    },
-    {
-      "picture": "https://img.icons8.com/carbon-copy/2x/meal.png",
-      "name": "sfd",
-      "description": "dsf",
-      "ingredients": [
+      "categories": [
         {
-          "name": "sdf"
+          "type": "kitchen",
+          "name": "orientale"
+        },
+        {
+          "type": "dish",
+          "name": "plat"
         }
       ],
-      "portion": "1",
-      "city": "dsf",
-      "author": {
-        "id": 2,
-        "username": "sdf"
-      },
-      "dishType": {
-        "type": "dish",
-        "name": "entrée"
-      },
-      "kitchenType": {
-        "type": "kitchen",
-        "name": "asiatique"
-      },
-      "id": 15
-    },
-    {
-      "picture": "https://img.icons8.com/carbon-copy/2x/meal.png",
-      "name": "f",
-      "description": "df",
-      "ingredients": [
-        {
-          "name": "df"
-        }
-      ],
-      "portion": "1",
-      "city": "df",
-      "author": {
-        "id": 2,
-        "username": "fd"
-      },
-      "dishType": {
-        "type": "dish",
-        "name": "plat"
-      },
-      "kitchenType": {
-        "type": "kitchen",
-        "name": "asiatique"
-      },
-      "id": 16
-    },
-    {
-      "picture": "https://img.icons8.com/carbon-copy/2x/meal.png",
-      "name": "riz coco",
-      "description": "riz au lait de coco",
-      "ingredients": [
-        {
-          "name": "riz "
-        }
-      ],
-      "portion": "1",
-      "city": "paris",
-      "author": {
-        "id": 2,
-        "username": "marie"
-      },
-      "dishType": {
-        "type": "dish",
-        "name": "plat"
-      },
-      "kitchenType": {
-        "type": "kitchen",
-        "name": "asiatique"
-      },
-      "id": 17
-    },
-    {
-      "picture": "https://img.icons8.com/carbon-copy/2x/meal.png",
-      "name": "xcw",
-      "description": "sdc",
-      "ingredients": [
-        {
-          "name": "sdc"
-        }
-      ],
-      "portion": "1",
-      "city": "dcs",
-      "author": {
-        "id": 2,
-        "username": "sdc"
-      },
-      "dishType": {
-        "type": "dish",
-        "name": "entrée"
-      },
-      "kitchenType": {
-        "type": "kitchen",
-        "name": "asiatique"
-      },
-      "id": 18
-    },
-    {
-      "picture": "https://img.icons8.com/carbon-copy/2x/meal.png",
-      "name": "gdg",
-      "description": "dfg",
-      "ingredients": [
-        {
-          "name": "dfg"
-        }
-      ],
-      "portion": "1",
-      "city": "dgf",
-      "author": {
-        "id": 2,
-        "username": "dfg"
-      },
-      "dishType": {
-        "type": "dish",
-        "name": "entrée"
-      },
-      "kitchenType": {
-        "type": "kitchen",
-        "name": "asiatique"
-      },
-      "id": 19
-    },
-    {
-      "picture": "https://img.icons8.com/carbon-copy/2x/meal.png",
-      "name": "test",
-      "description": "l",
-      "ingredients": [
-        {
-          "name": "riz"
-        }
-      ],
-      "portion": "1",
-      "city": "paris",
-      "author": {
-        "id": 2,
-        "username": "marie"
-      },
-      "dishType": {
-        "type": "dish",
-        "name": "plat"
-      },
-      "kitchenType": {
-        "type": "kitchen",
-        "name": "asiatique"
-      },
-      "id": 20
-    },
-    {
-      "picture": "https://img.icons8.com/carbon-copy/2x/meal.png",
-      "name": "qds",
-      "description": "qsd",
-      "ingredients": [
-        {
-          "name": "qsd"
-        }
-      ],
-      "portion": "2",
-      "city": "qsd",
-      "author": {
-        "id": 2,
-        "username": "qsd"
-      },
-      "dishType": {
-        "type": "dish",
-        "name": "entrée"
-      },
-      "kitchenType": {
-        "type": "kitchen",
-        "name": "asiatique"
-      },
-      "id": 21
-    },
-    {
-      "picture": "https://img.icons8.com/carbon-copy/2x/meal.png",
-      "name": "nouille",
-      "description": "c est bon",
-      "ingredients": [
-        {
-          "name": "sel poivre"
-        }
-      ],
-      "portion": "2",
-      "city": "paris",
-      "author": {
-        "id": 2,
-        "username": "cycy"
-      },
-      "dishType": {
-        "type": "dish",
-        "name": "entrée"
-      },
-      "kitchenType": {
-        "type": "kitchen",
-        "name": "francaise"
-      },
-      "id": 22
-    },
-    {
-      "picture": "https://img.icons8.com/carbon-copy/2x/meal.png",
-      "name": "nouille",
-      "description": "un plat de nouille",
-      "ingredients": [
-        {
-          "name": "sel poivre pates "
-        }
-      ],
-      "portion": "9",
-      "city": "Noumea",
-      "author": {
-        "id": 2,
-        "username": "Cyril"
-      },
-      "dishType": {
-        "type": "dish",
-        "name": "plat"
-      },
-      "kitchenType": {
-        "type": "kitchen",
-        "name": "asiatique"
-      },
       "online": true,
-      "id": 23
+      "id": 6
     }
   ],
   "category": [

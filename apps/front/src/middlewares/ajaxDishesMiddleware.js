@@ -16,6 +16,9 @@ import {
   SEND_FORM_RECIPE_UP,
   sendFormRecipeUpSuccess,
   sendFormRecipeUpError,
+  fetchIngredientsSucces,
+  fetchIngredientsError,
+  FETCH_INGREDIENTS
 } from '../actions/dishesForm';
 
 export default (store) => (next) => (action) => {
@@ -107,6 +110,7 @@ export default (store) => (next) => (action) => {
 
       axios({
         method: 'post',
+        // url: 'http://ec2-54-145-80-6.compute-1.amazonaws.com/v1/meals',
         url: 'http://localhost:3000/dishes',
         data: {
           picture,
@@ -121,14 +125,16 @@ export default (store) => (next) => (action) => {
             id: 2,
             username: author,
           },
-          dishType: {
-            type: "dish",
-            name: dish,
-          },
-          kitchenType: {
-            type: "kitchen",
-            name: kitchen,
-          },
+          categories: [
+            {
+              type: "kitchen",
+              name: kitchen,
+            }, 
+            {
+              type: "dish",
+              name: dish,
+            }
+          ],
           online,
         },
       })
@@ -148,6 +154,22 @@ export default (store) => (next) => (action) => {
       });
     }
     break;
+    case FETCH_INGREDIENTS: {
+      axios({
+        method: 'get',
+        url: `http://localhost:3000/ingredients`,
+      })
+      .then((res) => {
+        console.log("ok send search ingredients " + res.data);
+        const actionToDispatch = fetchIngredientsSucces(res.data);
+        return store.dispatch(actionToDispatch);
+      })
+      .catch((error) => {
+        console.log(error);
+        const actionToDispatch = fetchIngredientsError();
+        return store.dispatch(actionToDispatch);
+      });
+    }
     default:
       return next(action);
   }
