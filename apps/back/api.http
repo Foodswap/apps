@@ -59,6 +59,7 @@ Content-Type: application/json
 } 
 ### AWS - route sécurisé pour tester la connexion
 GET http://ec2-54-145-80-6.compute-1.amazonaws.com/v1/author
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImplYW5ldXN0YWNoZSIsImlhdCI6MTYxNTIyMDA1N30.E9w8mPhJnLm0FST_qsK8r68JK6rHzVRVrydwwQ5j1UI
 
-### 
+
+### Local - route pour récupérer les plats d'un author
+GET {{baseUrl}}/meals/author/49
