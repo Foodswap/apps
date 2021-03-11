@@ -19,8 +19,8 @@ const user = localStorage.getItem('user')
 const initialState = {
   isLoginOpen: false,
   isSignUpOpen: false,
-  email: 'bgdu99@mail.fr',
-  password: 'jenesuispasencorehaché',
+  email: '',
+  password: '',
   pseudonym: user.username || '',
   city: user.city || '',
   isLogged: !!localStorage.getItem('token'),
