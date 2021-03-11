@@ -147,9 +147,8 @@ const DishesForm = ({
 
         />
         <select 
-        value={dish}
         name="dish"
-        onChange={(evt) => onSetCategorySelect(evt.target.value)}
+        onChange={(evt) => onSetCategorySelect(evt.target.value, evt.target.name)}
          className="meal-category">
 
           <option value="">Type d'assiete</option>
@@ -158,9 +157,8 @@ const DishesForm = ({
           <option value="dessert" name="dessert">Dessert</option>
         </select>
         <select
-          value={kitchen}
           name="kitchen"
-          onChange={(evt) => onSetCategorySelect(evt.target.value)}
+          onChange={(evt) => onSetCategorySelect(evt.target.value, evt.target.name)}
           className="meal-category">
           <option value="">Type de cuisine</option>
           <option value="francaise" name="francaise">Francaise</option>

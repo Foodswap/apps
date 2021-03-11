@@ -80,35 +80,55 @@ export default (store) => (next) => (action) => {
       return store.dispatch(actionToDispatch);
     } 
     case SEND_FORM_RECIPE_UP:{
-      axios({
-        method: 'post',
-        url: 'http://localhost:3000/dishes',
-        data: {
-          picture,
-          name,
-          description,
-          ingredients,
-          portion,
-          city,
-          author,
-          category,
-        },
-      })
-      .then((res) => {
-        console.log(`response ok : ${res}`);
-        const actionToDispatch = senFormRecipeUpSuccess(res.data);
-        store.dispatch(actionToDispatch);
-        console.log(res.data.name);
-        console.log(store.getState().user.infos);
-      })
-      .catch((error) => {
-        console.log(`${error} erreur au post du formulaire`);
-        const actionToDispatch = senFormRecipeUpError();
-        store.dispatch(actionToDispatch);
-      })
-      .finally(() => {
-        console.log('post form done');
-      });
+      const { picture,
+        name,
+        description,
+        ingredients,
+        portion,
+        city,
+        author,
+        dish,
+        kitchen
+      } = store.getState().dishes;
+      console.log("send form middleware");
+      console.log(picture,
+        name,
+        description,
+        ingredients,
+        portion,
+        city,
+        author,
+        dish,
+        kitchen);
+      // axios({
+      //   method: 'post',
+      //   url: 'http://localhost:3000/dishes',
+      //   data: {
+      //     picture,
+      //     name,
+      //     description,
+      //     ingredients,
+      //     portion,
+      //     city,
+      //     author,
+      //     category,
+      //   },
+      // })
+      // .then((res) => {
+      //   console.log(`response ok : ${res}`);
+      //   const actionToDispatch = senFormRecipeUpSuccess(res.data);
+      //   store.dispatch(actionToDispatch);
+      //   console.log(res.data.name);
+      //   console.log(store.getState().dishes);
+      // })
+      // .catch((error) => {
+      //   console.log(`${error} erreur au post du formulaire`);
+      //   const actionToDispatch = senFormRecipeUpError();
+      //   store.dispatch(actionToDispatch);
+      // })
+      // .finally(() => {
+      //   console.log('post form done');
+      // });
     }
     break;
     default:
