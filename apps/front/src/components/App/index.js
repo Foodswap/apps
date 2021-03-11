@@ -6,10 +6,10 @@ import { Route } from 'react-router-dom';
 import AppHeader from '../AppHeader';
 import Footer from '../Footer';
 import Faces from '../Faces';
-
-// Container components
 import Menu from '../../containers/Menu';
 import DescriptionHomepage from '../DescriptionHomepage';
+
+// Container components
 import LoginForm from '../../containers/LoginForm';
 import SignUpForm from '../../containers/SignUpForm';
 import MyDishes from '../../containers/MyDishes';
@@ -48,13 +48,12 @@ const App = () => (
     <Route exact path="/v1/mydishes">
       <MyDishes />
     </Route>
-    <Route exact path="/v1/createMeal">
-    <DishesForm />
+    <Route exact path="/v1/meal/:id">
+      <DishesForm />
     </Route>
     <Route exact path="/v1/Qui sommes nous">
       <Faces />
     </Route>
- 
 
     <Footer />
   </div>

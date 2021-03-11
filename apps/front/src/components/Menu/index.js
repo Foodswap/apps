@@ -57,6 +57,7 @@ Menu.propTypes = {
   isLogged: PropTypes.bool.isRequired,
   loginFormToggle: PropTypes.func.isRequired,
   signUpFormToggle: PropTypes.func.isRequired,
+  userLogout: PropTypes.func.isRequired,
 };
 
 export default Menu;

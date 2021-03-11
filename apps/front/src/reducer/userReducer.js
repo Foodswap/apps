@@ -1,20 +1,34 @@
 import {
-  SET_INPUT_VALUE, LOGIN_SUCCES, LOGIN_ERROR, USER_LOGOUT, SEND_SIGN_UP, SIGNUP_SUCCES, SIGNUP_ERROR,
+  SET_INPUT_VALUE,
+  LOGIN_SUCCES,
+  LOGIN_ERROR,
+  USER_LOGOUT_SUCCESS,
+  SEND_SIGN_UP,
+  SIGNUP_SUCCES,
+  SIGNUP_ERROR,
 } from '../actions/user';
-import { MODAL_LOGIN_TOGGLE, MODAL_SIGN_UP_TOGGLE } from '../actions/modals';
 
+import {
+  MODAL_LOGIN_TOGGLE,
+  MODAL_SIGN_UP_TOGGLE,
+} from '../actions/modals';
+
+const user = localStorage.getItem('user')
+  ? JSON.parse(localStorage.getItem('user'))
+  : {};
 const initialState = {
   isLoginOpen: false,
   isSignUpOpen: false,
   email: '',
   password: '',
-  pseudonym: '',
-  city: '',
-  isLogged: false,
+  pseudonym: user.username || '',
+  city: user.city || '',
+  isLogged: !!localStorage.getItem('token'),
   signUpIsValid: false,
   loggedMessage: '',
   infos: {
     accesToken: localStorage.getItem('token'),
+    id: user.id || '',
   },
 };
 
@@ -42,10 +56,10 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         signUpIsValid: true,
-        email: '',
-        password: '',
-        pseudonym: '',
-        city: '',
+        email: action.payload.email,
+        password: action.payload.password,
+        pseudonym: action.payload.username,
+        city: action.payload.city,
       };
     case LOGIN_SUCCES:
       return {
@@ -71,7 +85,7 @@ export default (state = initialState, action = {}) => {
         loggedMessage: 'Un compte existe déjà avec cet email !',
         infos: {},
       };
-    case USER_LOGOUT:
+    case USER_LOGOUT_SUCCESS:
       return {
         ...state,
         isLogged: false,

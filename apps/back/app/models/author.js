@@ -1,19 +1,26 @@
-const sequelize = require('../database');
+const connection = require('../database');
 const { Model, DataTypes } = require('sequelize');
 
 class Author extends Model {
 
 }
 
-Author.init(
-    {
-        username: DataTypes.STRING,
-        email: DataTypes.STRING,
-        password: DataTypes.STRING,
-        city: DataTypes.STRING
+Author.init({
+    username: {
+      type: DataTypes.TEXT
     },
+    email: {
+      type: DataTypes.TEXT
+    },
+    password: {
+      type: DataTypes.TEXT
+    },
+    city: {
+      type: DataTypes.TEXT
+    }
+  },
     {
-        sequelize,
+        sequelize: connection,
         tableName: 'author'
         
     });
