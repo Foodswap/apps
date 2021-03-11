@@ -274,52 +274,71 @@
   "category": [
     {
       "id": 1,
-      "type_kitchen": "asiatique",
-      "type_dish": "plat"
+      "type": "kitchen",
+      "name": "asiatique"
     },
     {
       "id": 2,
-      "type_kitchen": "asiatique",
-      "type_dish": "plat"
+      "type": "kitchen",
+      "name": "francaise"
     },
     {
       "id": 3,
-      "type_kitchen": "francaise",
-      "type_dish": "dessert"
+      "type": "kitchen",
+      "name": "orientale"
     },
     {
       "id": 4,
-      "type_kitchen": "indien",
-      "type_dish": "plat"
+      "type": "kitchen",
+      "name": "indien"
     },
     {
       "id": 5,
-      "type_kitchen": "asiatique",
-      "type_dish": "entrée"
+      "type": "dish",
+      "name": "entrée"
+    },
+    {
+      "id": 6,
+      "type": "dish",
+      "name": "plat"
+    },
+    {
+      "id": 7,
+      "type": "dish",
+      "name": "dessert"
     }
 
 
   ],
-  "users": [
+  "author": [
     [
-      {
+      { 
+        "id": 3,
         "email": "test@test.fr",
         "password": "$2y$10$Tm1OVsYJO7pNmQv9u7HeoeorTt2BAiUDbRYIXiO4ihND9uOFZZpK6",
-        "pseudo": "cuistotDu93",
+        "username": "cuistotDu93",
         "city": "Paris"
       },
       {
+        "id": 2,
         "email": "cookie@test.fr",
         "password": "$2y$10$Tm1OVsYJO7pNmQv9u7HeoeorTt2BAiUDbRYIXiO4ihND9uOFZZpK6",
-        "pseudo": "cookie",
+        "username": "cookie",
         "city": "Lyon"
       },
-      {
+      { 
+        "id": 1,
         "email": "hello@test.fr",
         "password": "$2y$10$Tm1OVsYJO7pNmQv9u7HeoeorTt2BAiUDbRYIXiO4ihND9uOFZZpK6",
-        "pseudo": "hello",
+        "username": "hello",
         "city": "Paris"
-      }
+      },
+      {
+        "id": 8,
+        "email": "paulette@mail.fr",
+        "password": "mdp",
+        "username": "Paulette"
+      },
     ]
   ],
   "ingredients": [

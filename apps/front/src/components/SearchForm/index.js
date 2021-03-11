@@ -9,6 +9,7 @@ const SearchForm = ({handleInputChange, city, handleSearch, kitchen, dish, isSea
   const history = useHistory();
   const handleSubmit = (evt) => {
     evt.preventDefault();
+    location.href=`/results/${kitchen}/${dish}/${city}`;
     console.log("submit");
     handleSearch();
   }
@@ -45,12 +46,7 @@ const SearchForm = ({handleInputChange, city, handleSearch, kitchen, dish, isSea
             // history.push(`/results/${kitchen}/${dish}/${city}`);
             handleSubmit();
           }}> Valider </button>
-         {
-           isSearching && (
-             location.href=`/results/${kitchen}/${dish}/${city}`
-             // <Redirect to={`/results/${kitchen}/${dish}/${city}`} />
-           )
-         } 
+         
       </form>
     </div>
   
