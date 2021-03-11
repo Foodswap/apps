@@ -145,6 +145,9 @@ export default (store) => (next) => (action) => {
         console.log(`response ok : ${res}`);
         const actionToDispatch = sendFormRecipeUpSuccess();
         store.dispatch(actionToDispatch);
+        setTimeout(() => {
+          location.href="/v1/mydishes";
+        }, 500);
         console.log(res.data);
       })
       .catch((error) => {

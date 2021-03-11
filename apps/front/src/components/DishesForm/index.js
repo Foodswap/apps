@@ -191,9 +191,9 @@ const DishesForm = ({
           <option value="italienne" name="italienne">Italienne</option>
         </select>
 
-        { isSucces && 
+        {/* { isSucces && 
           <Redirect to="/v1/mydishes" />
-        }
+        } */}
 
         { isError && (
 
