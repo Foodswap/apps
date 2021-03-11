@@ -2,6 +2,7 @@ const { Router } = require('express');
 const authorController = require('./controllers/authorController');
 const mealController = require('./controllers/mealController');
 const swapController = require('./controllers/swapController');
+const categoryController = require('./controllers/categoryController');
 
 const router = Router();
 const schemas = require('./middlewares/validation/schemas'); 
@@ -20,6 +21,9 @@ router.get('/meals/:id/picture', mealController.getPicture);
 router.get('/meals/author/:author_id', mealController.getMealsByAuthor);
 router.get('/meals');
 router.post('/meals', middlewareHandlingFiles, mealController.createMeal);
+
+//Category
+router.get('/categories/:type', categoryController.getCategories);
 
 //Swap
 router.post('/swaps', middlewareValidation(schemas.swaps), swapController.swapProposal)

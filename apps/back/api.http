@@ -14,8 +14,11 @@ GET {{baseUrl}}
 GET {{baseUrl}}//meals/author/49
 
 
-###
+### Local - route pour récupérer un plat
 GET {{baseUrl}}/meals/42
+
+### Local - route pour récupérer les categories
+GET {{baseUrl}}/categories/kitchen
 
 ###  Local - route pour tester l'inscription
 POST {{baseUrl}}/signup
