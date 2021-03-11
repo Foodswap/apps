@@ -113,7 +113,7 @@ export default (store) => (next) => (action) => {
         // url: 'http://ec2-54-145-80-6.compute-1.amazonaws.com/v1/meals',
         url: 'http://localhost:3000/dishes',
         data: {
-          picture,
+          file: picture,
           name,
           description,
           ingredients: [{
@@ -137,6 +137,9 @@ export default (store) => (next) => (action) => {
           ],
           online,
         },
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
       })
       .then((res) => {
         console.log(`response ok : ${res}`);

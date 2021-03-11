@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, Component } from 'react';
+import Select from 'react-select'
 import { Link, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { useState } from "react";
@@ -66,12 +67,16 @@ const DishesForm = ({
         <input  
           id="picture"
           type="file"
-          name="pictureFile"
+          name="picture"
           accept="image/*"
+          onChange={(evt) => {
+            handleInputChange(evt.target.files[0], evt.target.name);
+            }
+          }
         />
-        <input type="submit" name="picture" value={picture} onChange={(evt) => {
+        {/* <input type="submit" name="picture" value={picture} onChange={(evt) => {
             handleInputChange(evt.target.value, evt.target.name);
-          }} />
+          }} /> */}
         <div className="meal-label">
           <label htmlFor="input" className="meal-upload">
             Choisissez une photo de votre plat
@@ -148,6 +153,7 @@ const DishesForm = ({
           }}
           value={ingredients}
         />
+       
         <textarea
           required
           className="meal-form-description"
