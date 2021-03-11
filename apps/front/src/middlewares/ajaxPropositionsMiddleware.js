@@ -6,16 +6,13 @@ import {
   updateOfExchangeListReceived,
 } from '../actions/exchangeTracking';
 
-// change that for the real user id, connected (via token decode)
-const userId = '8';
-
 export default (store) => (next) => (action) => {
   switch (action.type) {
     // eslint-disable-next-line no-lone-blocks
     case GET_OF_EXCHANGE_LIST: {
       axios({
         method: 'get',
-        url: `http://localhost:3000/propositions?asker.user_id=${userId}`,
+        url: `http://localhost:3000/propositions?asker.user_id=${action.payload}`,
       })
         .then((res) => {
           console.log(`response ok : ${res}`);
@@ -31,7 +28,7 @@ export default (store) => (next) => (action) => {
 
       axios({
         method: 'get',
-        url: `http://localhost:3000/propositions?receiver.user_id=${userId}`,
+        url: `http://localhost:3000/propositions?receiver.user_id=${action.payload}`,
       })
         .then((res) => {
           console.log(`response ok : ${res}`);

@@ -10,8 +10,9 @@ const ExchangeTracking = ({
   getExchangeList,
   getActiveTab,
   activeTab,
+  userId,
 }) => {
-  useEffect(() => getExchangeList(), []);
+  useEffect(() => getExchangeList(userId), []);
 
   return (
     <div className="exchangeTracking">
@@ -167,6 +168,7 @@ ExchangeTracking.propTypes = {
   getExchangeList: PropTypes.func.isRequired,
   getActiveTab: PropTypes.func.isRequired,
   activeTab: PropTypes.string.isRequired,
+  userId: PropTypes.number.isRequired,
 };
 
 ExchangeTracking.defaultProps = {

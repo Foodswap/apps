@@ -40,7 +40,7 @@
       "city": "Marseille",
       "online": true,
       "author": {
-        "id": 8,
+        "id": 72,
         "username": "Paulette"
       },
       "category": {
@@ -469,7 +469,7 @@
       },
       "receiver": {
         "user_username": "Toto",
-        "user_id": 8,
+        "user_id": 72,
         "dish_id": 3,
         "dish_name": "Number cake",
         "dish_picture": "https://lh3.google.com/u/0/d/1X167WvnTUO-8g7Yu5OpSY5tJNQrawiLi=w275-h786-iv1"
@@ -481,7 +481,7 @@
       "createdAt": "2021-03-13T14:56:28.000Z",
       "asker": {
         "user_username": "Toto",
-        "user_id": 5,
+        "user_id": 72,
         "dish_id": 3,
         "dish_name": "Number cake",
         "dish_picture": "https://lh3.google.com/u/0/d/1X167WvnTUO-8g7Yu5OpSY5tJNQrawiLi=w275-h786-iv1"

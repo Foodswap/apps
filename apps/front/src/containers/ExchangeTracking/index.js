@@ -7,11 +7,12 @@ const mapStateToProps = (state) => ({
   askedPropositions: state.propositions.askedPropositions,
   receivedPropositions: state.propositions.receivedPropositions,
   activeTab: state.propositions.activeTab,
+  userId: state.user.infos.id,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  getExchangeList: () => {
-    const action = getOfExchangeList();
+  getExchangeList: (userId) => {
+    const action = getOfExchangeList(userId);
     dispatch(action);
   },
   getActiveTab: (activeTab) => {
