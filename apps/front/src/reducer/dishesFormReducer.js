@@ -4,6 +4,7 @@ import {
   SEND_FORM_RECIPE_UP,
   CANCEL_FORM_RECIPE_SUCCESS,
   CANCEL_FORM_RECIPE_ERROR,
+  SET_CATEGORY_SELECT
 } from '../actions/dishesForm';
 
 // export const initialState = {};
@@ -11,40 +12,51 @@ import {
 const initialState = {
 
   cancelMessage: '',
-  dataFormMeal: [
-    {
-      id: '1',
-      picture: 'https://img.icons8.com/carbon-copy/2x/meal.png',
-      name: '',
-      description: [
-        '',
-      ],
-      ingredients: [
-        {
-          id: '',
-          name: '',
-        },
-      ],
-      created_date: '',
-      portion: '',
-      city: '',
-      online: true,
-      author: {
-        id: '',
-        username: '',
-      },
-      category: {
-        id: 1,
-        type_kitchen: '',
-        type_dish: '',
-      },
-      isLogged: false,
-      loggedMessage: '',
-      infos: {
-        token: localStorage.getItem('token'),
-      },
-    },
-  ],
+  picture: 'https://img.icons8.com/carbon-copy/2x/meal.png',
+  name : '',
+  portion: '',
+  description: '',
+  city: '',
+  author: '',
+  ingredients: '',
+  dish: '',
+  kitchen: '',
+  online: false,
+  // imgIcon: 'https://img.icons8.com/carbon-copy/2x/meal.png',
+  // dataFormMeal: [
+    
+  //     id: '1',
+  //     picture: 'https://img.icons8.com/carbon-copy/2x/meal.png',
+  //     name: '',
+  //     description: [
+  //       '',
+  //     ],
+  //     ingredients: [
+  //       {
+  //         id: '',
+  //         name: '',
+  //       },
+  //     ],
+  //     created_date: '',
+  //     portion: '',
+  //     city: '',
+  //     online: true,
+  //     author: {
+  //       id: '',
+  //       username: '',
+  //     },
+  //     category: {
+  //       id: 1,
+  //       type_kitchen: '',
+  //       type_dish: '',
+  //     },
+  //     isLogged: false,
+  //     loggedMessage: '',
+  //     infos: {
+  //       token: localStorage.getItem('token'),
+  //     },
+  //   },
+  // ],
 };
 export default (state = initialState, action = {}) => {
   switch (action.type) {
@@ -53,6 +65,11 @@ export default (state = initialState, action = {}) => {
         ...state,
         [action.name]: action.value,
       };
+    case SET_CATEGORY_SELECT: 
+      return {
+        ...state,
+        [action.name]: action.value,
+      }
     case CANCEL_FORM_RECIPE:
       return {
         ...state,

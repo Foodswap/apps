@@ -47,3 +47,12 @@ export const cancelFormRecipeError = (payload) => ({
   type: CANCEL_FORM_RECIPE_ERROR,
   payload,
 });
+
+// action pour envoyer dans le state la valeur des select
+export const SET_CATEGORY_SELECT = 'SET_CATEGORY_SELECT';
+export const setCategorySelect = (value, name) => ({
+  type: SET_CATEGORY_SELECT,
+  name, 
+  value
+})
+

@@ -36,7 +36,7 @@ const Menu = ({
           Mes plats
         </NavLink>
 
-        <NavLink exact className="menu-link" to="/v1/meal/:id">
+        <NavLink exact className="menu-link" to="/v1/createMeal">
           Créer une nouvelle fiche de plat
         </NavLink>
 

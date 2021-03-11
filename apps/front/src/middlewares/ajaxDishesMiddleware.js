@@ -83,6 +83,16 @@ export default (store) => (next) => (action) => {
       axios({
         method: 'post',
         url: 'http://localhost:3000/dishes',
+        data: {
+          picture,
+          name,
+          description,
+          ingredients,
+          portion,
+          city,
+          author,
+          category,
+        },
       })
       .then((res) => {
         console.log(`response ok : ${res}`);

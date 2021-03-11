@@ -1,23 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useState } from "react";
 import './style.scss';
 // import image from '../../assets/images/logo-fooswap.png';
 import { cancelFormRecipe, sendFormRecipeUp, setInputValue } from '../../actions/dishesForm';
 const DishesForm = ({
-  // picture,
-  dataFormMeal,
-  // name,
-  // portion,
-  // city,
-  // author,
-  // ingredients,
-  // description,
-  imageHandler,
-  inputValue,
-  onInputChange,
+  picture,
+  name,
+  description,
+  ingredients,
+  portion,
+  city,
+  author,
+  dish,
+  kitchen,
+  handleInputChange,
   onFormSubmit,
+  onSetCategorySelect
 }) => {
-  imageHandler = (evt) =>{
+  const imageHandler = (evt) =>{
     const reader = new FileReader();
     reader.onload = () => {
       if(reader.readyState === 2){
@@ -25,33 +26,39 @@ const DishesForm = ({
       }
     }
     reader.readAsDataURL(evt.target.files[0])
+  }
+    const handleSubmit = (evt) => {
+      evt.preventDefault();
+      onFormSubmit();
+      console.log('handleSubmit');
   };
   return(
+    
   <div className="meal-page">
     <div className="meal-form">
-    { dataFormMeal.map((meal) => (
-       
-       
-      <div key={meal.id} className="meal-image">
+    <form
+        className="meal-form-element"
+        onSubmit={handleSubmit}
+      >
+    
+      <div className="meal-image">
       <p className="picture">Créez votre fiche de plat:</p>
       <img
-          src={meal.picture}
+          src={picture}
           alt=""
           id="img"
           className="meal-img"
           onChange={imageHandler}
         />
-        <input
+        <input  
           id="picture"
           type="file"
-          name="picture"
+          name="pictureFile"
           accept="image/*"
-          onChange={(evt) => {
-            const text = evt.target.value;
-            onInputChange(text, evt.target.name);
-          }}
-          value={inputValue}
         />
+        <input type="submit" name="picture" value={picture} onChange={(evt) => {
+            handleInputChange(evt.target.value, evt.target.name);
+          }} />
         <div className="meal-label">
           <label htmlFor="input" className="meal-upload">
             Choisissez une photo de votre plat
@@ -59,16 +66,10 @@ const DishesForm = ({
         </div>
 
       </div>
-    ))}
-      <form
-        className="meal-form-element"
-        onSubmit={(evt) => {
-          evt.preventDefault();
-          onFormSubmit();
-        }}
-      >
+
+      
         <label className="switch">
-          <input type="checkbox" />
+          <input name="online" type="checkbox" onChange={() => console.log(" créer action qui change le booleen ")}/>
           <span className="slider round" />
         </label>
         <input
@@ -78,10 +79,9 @@ const DishesForm = ({
           name="name"
           placeholder="Ajoutez le nom de votre plat"
           onChange={(evt) => {
-            const text = evt.target.value;
-            onInputChange(text, evt.target.name);
+            handleInputChange(evt.target.value, evt.target.name);
           }}
-          value={inputValue}
+          value={name}
         />
         <input
           required
@@ -92,10 +92,9 @@ const DishesForm = ({
           name="portion"
           placeholder="Nombre de part"
           onChange={(evt) => {
-            const text = evt.target.value;
-            onInputChange(text, evt.target.name);
+            handleInputChange(evt.target.value, evt.target.name);
           }}
-          value={inputValue}
+          value={portion}
         />
         <input
           required
@@ -104,10 +103,9 @@ const DishesForm = ({
           name="city"
           placeholder="Ville"
           onChange={(evt) => {
-            const text = evt.target.value;
-            onInputChange(text, evt.target.name);
+            handleInputChange(evt.target.value, evt.target.name);
           }}
-          value={inputValue}
+          value={city}
         />
         <p
           className="meal-madeBy"
@@ -120,10 +118,9 @@ const DishesForm = ({
             name="author"
             placeholder="Pseudo"
             onChange={(evt) => {
-              const text = evt.target.value;
-              onInputChange(text, evt.target.name);
+              handleInputChange(evt.target.value, evt.target.name);
             }}
-            value={inputValue}
+            value={author}
           />
         </p>
         <textarea
@@ -133,10 +130,9 @@ const DishesForm = ({
           name="ingredients"
           placeholder="Ajouter les ingrédients"
           onChange={(evt) => {
-            const text = evt.target.value;
-            onInputChange(text, evt.target.name);
+            handleInputChange(evt.target.value, evt.target.name);
           }}
-          value={inputValue}
+          value={ingredients}
         />
         <textarea
           required
@@ -145,51 +141,55 @@ const DishesForm = ({
           name="description"
           placeholder="Description du plat"
           onChange={(evt) => {
-            const text = evt.target.value;
-            onInputChange(text, evt.target.name);
+            handleInputChange(evt.target.value, evt.target.name);
           }}
-          value={inputValue}
+          value={description}
 
         />
-        <select className="meal-category">
+        <select 
+        value={dish}
+        name="dish"
+        onChange={(evt) => onSetCategorySelect(evt.target.value)}
+         className="meal-category">
+
           <option value="">Type d'assiete</option>
           <option value="entrée" name="entrée">Entrée</option>
           <option value="plat" name="plat">Plat</option>
           <option value="dessert" name="dessert">Dessert</option>
         </select>
-        <select className="meal-category">
+        <select
+          value={kitchen}
+          name="kitchen"
+          onChange={(evt) => onSetCategorySelect(evt.target.value)}
+          className="meal-category">
           <option value="">Type de cuisine</option>
-          <option value="française" name="française">Française</option>
+          <option value="francaise" name="francaise">Francaise</option>
           <option value="asiatique" name="asiatique">Asiatique</option>
           <option value="orientale" name="orientale">Orientale</option>
           <option value="italienne" name="italienne">Italienne</option>
-          <option value="greque" name="greque">Greque</option>
-          <option value="indienne" name="indienne">Indienne</option>
-          <option value="japonaise" name="japonaise">Japonaise</option>
         </select>
-        </form>
         <button className="mealForm-form-submit" type="submit" onClick={() => sendFormRecipeUp()}> Valider </button>
         <button className="mealForm-form-submit" type="button" onClick={() => cancelFormRecipe()}> Annuler </button>
+        </form>
     </div>
   </div>
   );
 };
 DishesForm.propTypes = {
-  dataFormMeal: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      picture: PropTypes.string.isRequired,
-    }),
-  ).isRequired,
-  // name: PropTypes.string.isRequired,
-  // portion: PropTypes.string.isRequired,
-  // city: PropTypes.string.isRequired,
-  // author: PropTypes.string.isRequired,
-  // ingredients: PropTypes.array.isRequired,
-  // description: PropTypes.array.isRequired,
-  // inputValue: PropTypes.string.isRequired,
-  // onFormSubmit: PropTypes.func.isRequired,
-  imageHandler: PropTypes.func.isRequired,
-  onInputChange: PropTypes.func.isRequired,
+  
+  picture: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  ingredients: PropTypes.string.isRequired,
+  portion: PropTypes.string.isRequired,
+  city: PropTypes.string.isRequired,
+  online: PropTypes.bool.isRequired,
+  author: PropTypes.string.isRequired,
+  dish: PropTypes.string.isRequired,
+  kitchen: PropTypes.string.isRequired,
+  onFormSubmit: PropTypes.func.isRequired,
+  handleInputChange: PropTypes.func.isRequired,
+  onSetCategorySelect: PropTypes.func.isRequired,
 };
 export default DishesForm;
+
