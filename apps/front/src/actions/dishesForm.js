@@ -78,3 +78,15 @@ export const FETCH_INGREDIENTS_ERROR = "FETCH_INGREDIENTS_ERROR";
 export const fetchIngredientsError = () => ({
   type: FETCH_INGREDIENTS_ERROR,
 });
+
+export const HANDLE_MULTI_SELECT = "HANDLE_MULTI_SELECT";
+export const handleMultiSelectChange = (payload) => ({ 
+  type: HANDLE_MULTI_SELECT,
+  payload
+})
+
+export const SET_INGREDIENT = 'SET_INGREDIENT';
+export const setIngredient = (payload) => ({
+  type: SET_INGREDIENT,
+  payload
+})

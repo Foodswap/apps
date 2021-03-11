@@ -8,7 +8,9 @@ import {
   SEND_FORM_RECIPE_UP_SUCCESS,
   SEND_FORM_RECIPE_UP_ERROR,
   CHANGE_STATUS,
-  FETCH_INGREDIENTS_SUCCES
+  FETCH_INGREDIENTS_SUCCES,
+  HANDLE_MULTI_SELECT,
+  SET_INGREDIENT
 } from '../actions/dishesForm';
 
 // export const initialState = {};
@@ -22,7 +24,7 @@ const initialState = {
   description: '',
   city: '',
   author: '',
-  ingredients: '',
+  ingredients: [],
   dish: '',
   kitchen: '',
   online: false,
@@ -84,6 +86,11 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         ingredientsData: action.payload,
+      }
+    case SET_INGREDIENT: 
+      return {
+        ...state,
+        ingredients: action.payload,
       }
     default:
       return state;

@@ -26,6 +26,7 @@ const DishesForm = ({
   changeOnline,
   getIngredients,
   ingredientsData,
+  handleMultiSelectChange
 }) => {
 
   useEffect(() => {
@@ -59,11 +60,7 @@ const DishesForm = ({
       });
   })
   )}
-  { options.length && (
-
-    <Select options={options} />
-  )
-  }
+  
     <div className="meal-form">
     <form
         className="meal-form-element"
@@ -157,7 +154,17 @@ const DishesForm = ({
           />
         </p>
         
-        <textarea
+        { options.length && (
+
+          <Select 
+          name="ingredients" 
+          options={options} 
+          isMulti 
+          onChange={(selection, action) => handleMultiSelectChange(selection, action)}
+          />
+        )
+        }
+        {/* <textarea
           required
           className="meal-form-ingredients"
           type="text"
@@ -167,7 +174,7 @@ const DishesForm = ({
             handleInputChange(evt.target.value, evt.target.name);
           }}
           value={ingredients}
-        />
+        /> */}
        
         <textarea
           required
@@ -224,7 +231,7 @@ DishesForm.propTypes = {
   picture: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  ingredients: PropTypes.string.isRequired,
+  // ingredients: PropTypes.string.isRequired,
   portion: PropTypes.string.isRequired,
   city: PropTypes.string.isRequired,
   online: PropTypes.bool.isRequired,
