@@ -164,6 +164,7 @@ export default (store) => (next) => (action) => {
       })
       .then((res) => {
         console.log("ok send search ingredients " + res.data);
+        console.dir(res.data);
         const actionToDispatch = fetchIngredientsSucces(res.data);
         return store.dispatch(actionToDispatch);
       })

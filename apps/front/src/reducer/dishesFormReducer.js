@@ -30,40 +30,7 @@ const initialState = {
   isError: false,
   ingredientsData: null,
   // imgIcon: 'https://img.icons8.com/carbon-copy/2x/meal.png',
-  // dataFormMeal: [
-    
-  //     id: '1',
-  //     picture: 'https://img.icons8.com/carbon-copy/2x/meal.png',
-  //     name: '',
-  //     description: [
-  //       '',
-  //     ],
-  //     ingredients: [
-  //       {
-  //         id: '',
-  //         name: '',
-  //       },
-  //     ],
-  //     created_date: '',
-  //     portion: '',
-  //     city: '',
-  //     online: true,
-  //     author: {
-  //       id: '',
-  //       username: '',
-  //     },
-  //     category: {
-  //       id: 1,
-  //       type_kitchen: '',
-  //       type_dish: '',
-  //     },
-  //     isLogged: false,
-  //     loggedMessage: '',
-  //     infos: {
-  //       token: localStorage.getItem('token'),
-  //     },
-  //   },
-  // ],
+  
 };
 export default (state = initialState, action = {}) => {
   switch (action.type) {
@@ -116,7 +83,7 @@ export default (state = initialState, action = {}) => {
     case FETCH_INGREDIENTS_SUCCES: 
       return {
         ...state,
-        ingredientsData: action.payload.name,
+        ingredientsData: action.payload,
       }
     default:
       return state;

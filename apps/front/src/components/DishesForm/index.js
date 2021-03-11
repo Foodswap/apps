@@ -1,5 +1,5 @@
 import React, { useEffect, Component } from 'react';
-import Select from 'react-select'
+import Select from 'react-select';
 import { Link, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { useState } from "react";
@@ -30,6 +30,7 @@ const DishesForm = ({
 
   useEffect(() => {
     getIngredients();
+    console.log("ingredient data " + ingredientsData)
   }, [])
   ;
   const imageHandler = (evt) =>{
@@ -46,9 +47,23 @@ const DishesForm = ({
       onFormSubmit();
       console.log('handleSubmit');
   };
+  let options = [];
+  
   return(
     
   <div className="meal-page">
+  { ingredientsData && (
+     ingredientsData.map((ingredientObj) => {
+       options.push({
+        value: ingredientObj.id, label: ingredientObj.name
+      });
+  })
+  )}
+  { options.length && (
+
+    <Select options={options} />
+  )
+  }
     <div className="meal-form">
     <form
         className="meal-form-element"

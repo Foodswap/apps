@@ -63,8 +63,9 @@ export const changeStatus = () => ({
 
 // action pour recuperer les ingredients
 export const FETCH_INGREDIENTS = "FETCH_INGREDIENTS";
-export const fetchIngredients = () => ({
+export const fetchIngredients = (payload) => ({
   type: FETCH_INGREDIENTS,
+  payload,
 });
 
 export const FETCH_INGREDIENTS_SUCCES = "FETCH_INGREDIENTS_SUCCES";
