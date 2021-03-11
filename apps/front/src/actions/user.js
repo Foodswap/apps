@@ -32,6 +32,12 @@ export const handleLogout = () => ({
   type: USER_LOGOUT,
 });
 
+// action pour se déconnecter
+export const USER_LOGOUT_SUCCESS = 'USER_LOGOUT_SUCCESS';
+export const handleLogoutSuccess = () => ({
+  type: USER_LOGOUT_SUCCESS,
+});
+
 // action pour l'envoi du form SignUp
 export const SEND_SIGN_UP = 'SEND_SIGN_UP';
 export const sendSignUp = (payload) => ({
