@@ -1,5 +1,5 @@
-const { DataTypes, Model } = require('sequelize');
 const connection = require('../database');
+const { Model, DataTypes } = require('sequelize');
 
 class Ingredient extends Model {}
 

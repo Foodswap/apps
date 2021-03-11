@@ -9,6 +9,9 @@ GET {{baseUrl}}
 
 ### 
 
+### Local - route pour récupérer les ingredients
+GET {{baseUrl}}/ingredient/1
+
 
 ### Local - route pour récupérer les plats d'un author
 GET {{baseUrl}}//meals/author/49
