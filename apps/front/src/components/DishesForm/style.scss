@@ -61,26 +61,33 @@ input:checked + .slider:before {
 }
 
 .meal {
-
+  &-title {
+    margin-top: 1rem;
+    font-size: 1.3rem;
+  }
   &-page{
     // display: flex;
     // align-items: center;
     // justify-content:center;
     // height: 75vh;
     margin: 5em 10em;
+    border: 3px solid #f39508;
   }
   &-form{
     
-    border: 3px solid #f39508;
     border-radius: 1rem;
     padding: 2rem;
     display: flex;
     justify-content:center;
+    position: relative;
   }
-  &-image{
+  &-image-div {
     display: flex;
     flex-direction: column;
-    
+    height: 300px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
   }
   &-img{
     margin: 1rem;

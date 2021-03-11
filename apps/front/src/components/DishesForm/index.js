@@ -61,14 +61,14 @@ const DishesForm = ({
   })
   )}
   
+    <h2 className="meal-title">Ajoutez votre bon petit plat </h2>
     <div className="meal-form">
     <form
         className="meal-form-element"
         onSubmit={handleSubmit}
       >
     
-      <div className="meal-image">
-      <p className="picture">Créez votre fiche de plat:</p>
+      <div className="meal-image-div">
       <img
           src={picture}
           alt=""
@@ -89,19 +89,17 @@ const DishesForm = ({
         {/* <input type="submit" name="picture" value={picture} onChange={(evt) => {
             handleInputChange(evt.target.value, evt.target.name);
           }} /> */}
-        <div className="meal-label">
-          <label htmlFor="input" className="meal-upload">
-            Choisissez une photo de votre plat
-          </label>
-        </div>
+
 
       </div>
 
       
+         
         <label className="switch">
           <input name="online" type="checkbox" onChange={changeOnline}/>
-          <span className="slider round" />
+          <span className="slider round" /> 
         </label>
+        <span>En ligne ?</span>
         <input
           required
           className="meal-form-input"
@@ -117,7 +115,7 @@ const DishesForm = ({
           required
           min="1"
           max="50"
-          className="meal-portion-input"
+          className="meal-input"
           type="number"
           name="portion"
           placeholder="Nombre de part"
@@ -128,7 +126,7 @@ const DishesForm = ({
         />
         <input
           required
-          className="meal-city-input"
+          className="meal-input"
           type="text"
           name="city"
           placeholder="Ville"
@@ -137,22 +135,6 @@ const DishesForm = ({
           }}
           value={city}
         />
-        <p
-          className="meal-madeBy"
-        >
-          Fait par
-          <input
-            required
-            className="meal-pseudo-input"
-            type="text"
-            name="author"
-            placeholder="Pseudo"
-            onChange={(evt) => {
-              handleInputChange(evt.target.value, evt.target.name);
-            }}
-            value={author}
-          />
-        </p>
         
         { options.length && (
 

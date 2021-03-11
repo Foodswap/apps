@@ -2,7 +2,7 @@
   "dishes": [
     {
       "id": 1,
-      "picture": "https://lh3.google.com/u/0/d/1lll7XWtpAM_tWXcCuHgWfncuFULfwg10=w842-h770-iv1",
+      "file": "https://lh3.google.com/u/0/d/1lll7XWtpAM_tWXcCuHgWfncuFULfwg10=w842-h770-iv1",
       "name": "Buddha bowl",
       "description": "une basse riz.\n        Sur le dessus il y a du saumon, avocat, carotte, choux rouge",
       "ingredients": [
@@ -56,7 +56,7 @@
     },
     {
       "id": 2,
-      "picture": "https://lh3.google.com/u/0/d/1BZu0wwMKsAsSwxuob8idG-RgMOpLUy9d=w275-h786-iv2",
+      "file": "https://lh3.google.com/u/0/d/1BZu0wwMKsAsSwxuob8idG-RgMOpLUy9d=w275-h786-iv2",
       "name": "Kimbap et bibimbap",
       "description": "une basse riz.',\n      ' Sur le dessus il y a du boeuf haché, épinard, carotte, oeuf",
       "ingredients": [
@@ -110,7 +110,7 @@
     },
     {
       "id": 3,
-      "picture": "https://lh3.google.com/u/0/d/1X167WvnTUO-8g7Yu5OpSY5tJNQrawiLi=w275-h786-iv1",
+      "file": "https://lh3.google.com/u/0/d/1X167WvnTUO-8g7Yu5OpSY5tJNQrawiLi=w275-h786-iv1",
       "name": "Number cake",
       "description": "une basse génoise, fouré d'une ganache monté chocolat blanc et fraise.\n      Sur le dessus il y a de la crème chantilly, macaron, fraise et fleures en sucre",
       "ingredients": [
@@ -164,7 +164,7 @@
     },
     {
       "id": 4,
-      "picture": "https://lh3.google.com/u/0/d/17KI1SHK9GJYZkoesZ9KQmy4e6DLIXXnb=w275-h786-iv1",
+      "file": "https://lh3.google.com/u/0/d/17KI1SHK9GJYZkoesZ9KQmy4e6DLIXXnb=w275-h786-iv1",
       "name": "Nems",
       "description": " une basse feuille pour nems.\n       A l'intéreur on retrouve une farce porc haché, carotte, champignon noir et vermicelle",
       "ingredients": [
@@ -218,7 +218,7 @@
     },
     {
       "id": 5,
-      "picture": "https://lh3.google.com/u/0/d/1xYWT2_iv_KwkvON_b2r0M69HrT3BHSDB=w275-h786-iv1",
+      "file": "https://lh3.google.com/u/0/d/1xYWT2_iv_KwkvON_b2r0M69HrT3BHSDB=w275-h786-iv1",
       "name": "Soupe thai",
       "description": "une basse de nouille et un bouillon lait de coco curry rouge.\n       Sur le dessus on retrouve des raviolis frits, des crevettes, des champignons shiitake et oignon rouge",
       "ingredients": [
@@ -271,7 +271,7 @@
       ]
     },
     {
-      "picture": "https://img.icons8.com/carbon-copy/2x/meal.png",
+      "file": "https://img.icons8.com/carbon-copy/2x/meal.png",
       "name": "sdf",
       "description": "sdf",
       "ingredients": [
@@ -299,9 +299,69 @@
       "id": 6
     },
     {
+      "file": "https://img.icons8.com/carbon-copy/2x/meal.png",
+      "author": {
+        "accesToken": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImplYW5ldXN0YWNoZSIsImlhdCI6MTYxNTQ5OTU1Nn0.t-3wha_9BjtrzC-u8wOOLEFOuuB0sGq5yNHsTIWEg8M",
+        "id": 50
+      },
+      "name": "test",
+      "description": "ppp",
+      "ingredients": [
+        {
+          "value": 5,
+          "label": "graine de sésame"
+        },
+        {
+          "value": 26,
+          "label": "champignon noir"
+        }
+      ],
+      "portion": "1",
+      "city": "paris",
+      "categories": [
+        {
+          "type": "kitchen",
+          "name": "orientale"
+        },
+        {
+          "type": "dish",
+          "name": "entrée"
+        }
+      ],
+      "online": true,
       "id": 7
     },
     {
+      "file": "https://img.icons8.com/carbon-copy/2x/meal.png",
+      "author": {
+        "id": 50,
+        "username": "jeaneustache"
+      },
+      "name": "avocado toast",
+      "description": "avocado toast",
+      "ingredients": [
+        {
+          "value": 3,
+          "label": "carotte"
+        },
+        {
+          "value": 4,
+          "label": "avocat"
+        }
+      ],
+      "portion": "1",
+      "city": "paname",
+      "categories": [
+        {
+          "type": "kitchen",
+          "name": "orientale"
+        },
+        {
+          "type": "dish",
+          "name": "entrée"
+        }
+      ],
+      "online": true,
       "id": 8
     }
   ],

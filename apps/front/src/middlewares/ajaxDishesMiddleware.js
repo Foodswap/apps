@@ -94,6 +94,8 @@ export default (store) => (next) => (action) => {
         kitchen,
         online
       } = store.getState().dishes;
+
+      const { infos, pseudonym } = store.getState().user;
       console.log("send form middleware");
 
       console.log(picture,
@@ -114,17 +116,15 @@ export default (store) => (next) => (action) => {
         url: 'http://localhost:3000/dishes',
         data: {
           file: picture,
+          author: {
+            id: infos.id,
+            username: pseudonym,
+          },
           name,
           description,
-          ingredients: [{
-            name: ingredients
-          }],
+          ingredients,
           portion,
           city,
-          author: {
-            id: 2,
-            username: author,
-          },
           categories: [
             {
               type: "kitchen",
@@ -137,9 +137,9 @@ export default (store) => (next) => (action) => {
           ],
           online,
         },
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
+        // headers: {
+        //   'Content-Type': 'multipart/form-data'
+        // }
       })
       .then((res) => {
         console.log(`response ok : ${res}`);
