@@ -11,7 +11,7 @@ import {
   GET_LIST_OF_DISHES,
   updateListOfDishes,
 } from '../actions/dishes';
-import { SEND_SEARCH_FORM, FETCH_RESULTS, fetchResultsSucces } from '../actions/search';
+import { SEND_SEARCH_FORM, FETCH_RESULTS, fetchResultsSucces, FETCH_CATEGORIES, fetchCategoriesSucces } from '../actions/search';
 
 export default (store) => (next) => (action) => {
   switch (action.type) {
@@ -75,7 +75,6 @@ export default (store) => (next) => (action) => {
       return store.dispatch(actionToDispatch);
     };
     case FETCH_RESULTS: {
-      console.log(action.payload);
       axios({
         method: 'get',
         url: `http://localhost:3000/dishes?kitchenType.name=${action.payload.kitchenParam.toLowerCase()}&dishType.name=${action.payload.dishParam.toLowerCase()}&city=${action.payload.cityParam.toLowerCase()}`,
@@ -88,7 +87,23 @@ export default (store) => (next) => (action) => {
       .catch((error) => {
         console.log(error)
       });
+    };
+    case FETCH_CATEGORIES: {
+      console.log("action payload " + action.payload);
+      axios({
+        method: 'get',
+        url: `http://localhost:3000/category`,
+      })
+      .then((res) => {
+        console.log("ok send search category " + res.data);
+        const actionToDispatch = fetchCategoriesSucces(res.data);
+        return store.dispatch(actionToDispatch);
+      })
+      .catch((error) => {
+        console.log(error)
+      });
     }
+
     default:
       return next(action);
   }

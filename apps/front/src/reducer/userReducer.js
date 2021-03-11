@@ -56,6 +56,7 @@ export default (state = initialState, action = {}) => {
         isLoginOpen: false,
         infos: {
           token: action.payload.accessToken,
+          
         },
       };
     case LOGIN_ERROR:

@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link, Redirect, useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import './style.scss';
 
 // !! TODO : propTypes 
 
-const SearchForm = ({handleInputChange, city, handleSearch, kitchen, dish, isSearching, handleSelectDish}) => {
-  const history = useHistory();
+const SearchForm = ({handleInputChange, city, handleSearch, kitchen, dish, isSearching, handleSelectDish, getCategories, typeKitchen, typeDish}) => {
+  useEffect(() => {
+    getCategories();
+  }, [])
+  ;
   const handleSubmit = (evt) => {
     evt.preventDefault();
     location.href=`/results/${kitchen}/${dish}/${city}`;
@@ -14,9 +17,10 @@ const SearchForm = ({handleInputChange, city, handleSearch, kitchen, dish, isSea
     handleSearch();
   }
   return (
+    
     <div className="search-form-div"> 
     <h2 className="search-form-title">Cherchez un bon petit plat</h2>
-    
+    <p> { console.log(typeKitchen)}</p>
       <p className="test-text"> Vous recherchez un(e) {dish}, de type de cuisine {kitchen}, à {city}</p>
     
       <form className="search-form-form" onSubmit={handleSubmit}>

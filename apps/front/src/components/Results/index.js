@@ -4,6 +4,7 @@ import './style.scss';
 import SearchForm from '../../containers/SearchForm';
 import { Link } from 'react-router-dom';
 
+// !! TODO proptypes
 
 const Results = ({dishes, getResults, kitchenParam, dishParam, cityParam, }) => {
 
