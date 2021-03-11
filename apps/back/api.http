@@ -37,21 +37,6 @@ Content-Type: application/json
    "password" : "jenesuispasencorehaché"
 } 
 
-### Local - route pour ajouter un ingredient
-POST {{baseUrl}}/ingredients
-Content-Type: application/json
-
-{
-   "name" : "pommes de terre"
-}
-
-### Local - route pour associé un ingredient à un plat
-POST {{baseUrl}}/meals/4/ingredients
-Content-Type: application/json
-
-{
-   "id_ingredient" : 4
-}
 
 ### AWS - route pour tester l'inscription
 POST http://ec2-54-145-80-6.compute-1.amazonaws.com/v1/signup
