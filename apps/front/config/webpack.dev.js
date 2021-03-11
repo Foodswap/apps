@@ -1,6 +1,6 @@
-const paths = require('./paths');
 const webpack = require('webpack');
 const { merge } = require('webpack-merge');
+const paths = require('./paths');
 const common = require('./webpack.common.js');
 
 const port = 8080;
@@ -33,6 +33,18 @@ module.exports = merge(common, {
             options: {
               sourceMap: true,
               implementation: require('sass'),
+            },
+          },
+        ],
+      },
+      {
+        test: /\.mp4$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'video',
             },
           },
         ],
