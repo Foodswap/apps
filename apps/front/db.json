@@ -458,11 +458,12 @@
   "propositions": [
     {
       "id": 20,
-      "status": 0,
+      "status": 1,
       "createdAt": "2021-03-10T14:56:28.000Z",
       "asker": {
         "user_username": "Paulette",
         "user_id": 5,
+        "user_email": "test@test.fr",
         "dish_id": 1,
         "dish_name": "Buddha bowl",
         "dish_picture": "https://lh3.google.com/u/0/d/1lll7XWtpAM_tWXcCuHgWfncuFULfwg10=w842-h770-iv1"
@@ -471,6 +472,7 @@
         "user_username": "Toto",
         "user_id": 72,
         "dish_id": 3,
+        "user_email": "test@test.fr",
         "dish_name": "Number cake",
         "dish_picture": "https://lh3.google.com/u/0/d/1X167WvnTUO-8g7Yu5OpSY5tJNQrawiLi=w275-h786-iv1"
       }
@@ -482,6 +484,7 @@
       "asker": {
         "user_username": "Toto",
         "user_id": 72,
+        "user_email": "test@test.fr",
         "dish_id": 3,
         "dish_name": "Number cake",
         "dish_picture": "https://lh3.google.com/u/0/d/1X167WvnTUO-8g7Yu5OpSY5tJNQrawiLi=w275-h786-iv1"
@@ -489,6 +492,7 @@
       "receiver": {
         "user_username": "Paulette",
         "user_id": 8,
+        "user_email": "test@test.fr",
         "dish_id": 1,
         "dish_name": "Buddha bowl",
         "dish_picture": "https://lh3.google.com/u/0/d/1lll7XWtpAM_tWXcCuHgWfncuFULfwg10=w842-h770-iv1"
@@ -501,13 +505,15 @@
       "asker": {
         "user_username": "Paulette",
         "user_id": 8,
+        "user_email": "test@test.fr",
         "dish_id": 1,
         "dish_name": "Buddha bowl",
         "dish_picture": "https://lh3.google.com/u/0/d/1lll7XWtpAM_tWXcCuHgWfncuFULfwg10=w842-h770-iv1"
       },
       "receiver": {
         "user_username": "Toto",
-        "user_id": 5,
+        "user_id": 72,
+        "user_email": "test@test.fr",
         "dish_id": 3,
         "dish_name": "Number cake",
         "dish_picture": "https://lh3.google.com/u/0/d/1X167WvnTUO-8g7Yu5OpSY5tJNQrawiLi=w275-h786-iv1"

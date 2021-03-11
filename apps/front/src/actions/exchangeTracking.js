@@ -25,3 +25,21 @@ export const updateActiveTab = (payload) => ({
   type: UPDATE_ACTIVE_TAB,
   payload,
 });
+
+// Action pour cliqué sur le bouton accepter
+export const GET_CLICK_ON_ACCEPT = 'GET_CLICK_ON_ACCEPT';
+export const getClickOnAccept = (propositionId, userId) => ({
+  type: GET_CLICK_ON_ACCEPT,
+  payload: {
+    propositionId, userId,
+  },
+});
+
+// Action pour cliqué sur le bouton refuser
+export const GET_CLICK_ON_REFUSE = 'GET_CLICK_ON_REFUSE';
+export const getClickOnRefuse = (propositionId, userId) => ({
+  type: GET_CLICK_ON_REFUSE,
+  payload: {
+    propositionId, userId,
+  },
+});

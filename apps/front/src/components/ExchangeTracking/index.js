@@ -11,6 +11,8 @@ const ExchangeTracking = ({
   getActiveTab,
   activeTab,
   userId,
+  getClickAccept,
+  getClickRefuse,
 }) => {
   useEffect(() => getExchangeList(userId), []);
 
@@ -53,14 +55,14 @@ const ExchangeTracking = ({
                 <div className="exchangeTracking-actions">
                   {receivedProposition.status === 0 && (
                     <div className="exchangeTracking-actions-container">
-                      <button type="button" className="exchangeTracking-actions-buttonAccept">Accepter</button>
-                      <button type="button" className="exchangeTracking-actions-buttonRefuse">Refuser</button>
+                      <button type="button" className="exchangeTracking-actions-buttonAccept" onClick={() => getClickAccept(receivedProposition.id, userId)}>Accepter</button>
+                      <button type="button" className="exchangeTracking-actions-buttonRefuse" onClick={() => getClickRefuse(receivedProposition.id, userId)}>Refuser</button>
                     </div>
                   )}
                   {receivedProposition.status === 1 && (
                     <div className="exchangeTracking-actions-container">
                       <p className="exchangeTracking-actions-textAccept">Vous avez accepté cet échange</p>
-                      <button type="button" className="exchangeTracking-actions-buttonContact">Contact</button>
+                      <a href={`mailto:${receivedProposition.asker.user_email}`} className="exchangeTracking-actions-buttonContact">Contact</a>
                     </div>
                   )}
                   {receivedProposition.status === 2 && (
@@ -169,6 +171,8 @@ ExchangeTracking.propTypes = {
   getActiveTab: PropTypes.func.isRequired,
   activeTab: PropTypes.string.isRequired,
   userId: PropTypes.number.isRequired,
+  getClickAccept: PropTypes.func.isRequired,
+  getClickRefuse: PropTypes.func.isRequired,
 };
 
 ExchangeTracking.defaultProps = {

@@ -1,7 +1,12 @@
 import { connect } from 'react-redux';
 import ExchangeTracking from '../../components/ExchangeTracking';
 
-import { getOfExchangeList, updateActiveTab } from '../../actions/exchangeTracking';
+import {
+  getOfExchangeList,
+  updateActiveTab,
+  getClickOnAccept,
+  getClickOnRefuse,
+} from '../../actions/exchangeTracking';
 
 const mapStateToProps = (state) => ({
   askedPropositions: state.propositions.askedPropositions,
@@ -17,6 +22,14 @@ const mapDispatchToProps = (dispatch) => ({
   },
   getActiveTab: (activeTab) => {
     const action = updateActiveTab(activeTab);
+    dispatch(action);
+  },
+  getClickAccept: (propositionId, userId) => {
+    const action = getClickOnAccept(propositionId, userId);
+    dispatch(action);
+  },
+  getClickRefuse: (propositionId, userId) => {
+    const action = getClickOnRefuse(propositionId, userId);
     dispatch(action);
   },
 });
