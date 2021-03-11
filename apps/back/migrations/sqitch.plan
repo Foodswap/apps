@@ -5,3 +5,5 @@ v1_init 2021-03-02T13:24:15Z florian martin <martinflorian2@gmail.com> # creatio
 v1_updateName 2021-03-03T16:50:00Z Edouard Laffont <edouard.laffont@live.com> # update name of table author and column pseudonym/address
 v1_updateTableMeal 2021-03-10T08:15:19Z Edouard Laffont <edouard.laffont@live.com> # new column picture_path in table Meal
 v1_updateTableAssociate 2021-03-10T09:41:20Z Edouard Laffont <edouard.laffont@live.com> # drop tables associate and create them with PK
+v1_uploadData 2021-03-10T19:45:12Z Edouard Laffont <edouard.laffont@live.com> # upload fake data -category- in database
+v1_uploadDataIngredient 2021-03-11T12:26:53Z Edouard Laffont <edouard.laffont@live.com> # upload ingredient data

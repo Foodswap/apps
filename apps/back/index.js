@@ -6,20 +6,23 @@ const cors = require('cors');
 
 const app = express();
 
-//const path = require('path');
+const corsOption = {
+   "origin": "*",
+  "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+  "preflightContinue": false,
+  "optionsSuccessStatus": 204,
+  "exposedHeaders": "Authorization"
+}
 
-app.use(cors());
+app.use(cors(corsOption));
 
 const port = process.env.PORT || 3000;
 
-const router = require('./app/router');
-
 app.use(express.json());
 
+const router = require('./app/router');
+
 app.use('/v1', router);
-
-//app.use('/pictures', express.static(path.join(__dirname, 'pictures')));
-
 
 app.listen(port, _ => {
    console.log(`http://localhost:${port}`);
