@@ -10,9 +10,9 @@ app.use(cors());
 
 const port = process.env.PORT || 3000;
 
-const router = require('./app/router');
-
 app.use(express.json());
+
+const router = require('./app/router');
 
 app.use('/v1', router);
 

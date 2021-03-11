@@ -22,7 +22,7 @@ router.get('/meals');
 router.post('/meals', middlewareHandlingFiles, mealController.createMeal);
 
 //Swap
-router.post('/swaps', swapController.swapProposal)
+router.post('/swaps', middlewareValidation(schemas.swaps), swapController.swapProposal)
 router.get('/swaps', swapController.swapProposal)
 
 module.exports = router;
