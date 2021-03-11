@@ -14,16 +14,16 @@ const authorController = {
         }
     },
     
-    signup: async (request, response) => {
+    signup: async (request, response, next) => {
         const author = new Author(request.body);
         try {
             const userEmail = await Author.findOne({where:{email:request.body.email}});
             if(userEmail) {
-                response.status(409).json("Email déjà enregistré");
+                return response.status(409).json("Email déjà enregistré");
             };
             const userName = await Author.findOne({where:{username:request.body.username}});
             if(userName) {
-                response.status(409).json("Nom utilisateur déjà enregistré");
+                return response.status(409).json("Nom utilisateur déjà enregistré");
             };
             author.password = bcrypt.hashSync(request.body.password, 10);
             await author.save();

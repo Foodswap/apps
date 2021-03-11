@@ -23,7 +23,7 @@ Content-Type: application/json
 
 {
    "username" : "jeananne",
-   "email" : "pgmdu03@mail.fr",
+   "email" : "pgmdu04@mail.fr",
    "password" : "jenesuispasencorehaché",
    "city" : "bordeaux"
 } 
@@ -43,8 +43,8 @@ POST http://ec2-54-145-80-6.compute-1.amazonaws.com/v1/signup
 Content-Type: application/json
 
 {
-    "username": "jeaneustache",
-    "email": "bgdu99@mail.fr",
+    "username": "jeanbonjour",
+    "email": "pgmdu10@mail.fr",
     "password": "jenesuispasencorehaché",
     "city": "bordeaux"
 }
