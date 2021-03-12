@@ -104,7 +104,7 @@ export const fetchTypeDishSucces = (payload) => ({
 
 export const FETCH_TYPE_KITCHEN = 'FETCH_TYPE_KITCHEN';
 export const fetchTypeKitchen = () => ({
-  type: FETCH_TYPE_DISH,
+  type: FETCH_TYPE_KITCHEN,
 })
 
 export const FETCH_TYPE_KITCHEN_SUCCES = 'FETCH_TYPE_KITCHEN_SUCCES';

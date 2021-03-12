@@ -213,10 +213,6 @@ export default (store) => (next) => (action) => {
         const actionToDispatch = fetchTypeDishSucces(res.data);
         return store.dispatch(actionToDispatch);
       })
-        .then((res) => {
-          const actionToDispatch = fetchTypeDishSucces(res.data);
-          return store.dispatch(actionToDispatch);
-        })
         .catch((error) => {
           console.log(error);
         });

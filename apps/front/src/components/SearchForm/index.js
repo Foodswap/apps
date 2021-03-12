@@ -5,9 +5,22 @@ import './style.scss';
 
 // !! TODO : propTypes 
 
-const SearchForm = ({handleInputChange, city, handleSearch, kitchen, dish, isSearching, handleSelectDish, getCategories, typeKitchen, typeDish}) => {
+const SearchForm = ({
+  handleInputChange, 
+  city, 
+  handleSearch, 
+  kitchen, 
+  dish, 
+  isSearching, 
+  handleSelectDish,
+  dishData,
+  kitchenData,
+  fetchTypeDish,
+  fetchTypeKitchen
+}) => {
   useEffect(() => {
-    getCategories();
+    fetchTypeDish();
+    fetchTypeKitchen();
   }, [])
   ;
   const handleSubmit = (evt) => {
@@ -20,21 +33,31 @@ const SearchForm = ({handleInputChange, city, handleSearch, kitchen, dish, isSea
     
     <div className="search-form-div"> 
     <h2 className="search-form-title">Cherchez un bon petit plat</h2>
-    <p> { console.log(typeKitchen)}</p>
       <p className="test-text"> Vous recherchez un(e) {dish}, de type de cuisine {kitchen}, à {city}</p>
     
       <form className="search-form-form" onSubmit={handleSubmit}>
         <select required name="dish" onChange={(evt) => handleSelectDish(evt.target.value, evt.target.name)}>
-          <option value="">Type d'assiette</option>
-          <option value="entree" name="entree">Entrée</option>
-          <option value="plat" name="plat">Plat</option>
-          <option value="dessert" name="dessert">Dessert</option>
+        { console.log("dishData : " + dishData)}
+            <option value="">Type d'assiette</option>
+            { dishData && (
+              dishData.map((dishObj) => {
+                return (
+                  <option value={dishObj.id} name={dishObj.name}>{dishObj.name}</option>
+                )
+              }
+              ))
+            }
         </select>
         <select required name="kitchen" onChange={(evt) => handleSelectDish(evt.target.value, evt.target.name)}>
-          <option value="">Type de cuisine</option>
-          <option value="asiatique" name="asiatique">Asiatique</option>
-          <option value="mexicaine" name="mexicaine">Mexicaine</option>
-          <option value="orientale" name="orientale">Orientale</option>
+        <option value="">Type de cuisine</option>
+
+        { kitchenData && (
+              kitchenData.map((kitchenObj) => {
+                return (
+                  <option value={kitchenObj.id} name={kitchenObj.name}>{kitchenObj.name}</option>
+                )
+              })
+          )}
         </select>
         <input 
           required 

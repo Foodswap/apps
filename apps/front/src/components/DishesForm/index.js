@@ -169,7 +169,7 @@ const DishesForm = ({
           className="meal-category">
 
           { console.log("dishData : " + dishData)}
-            <option value="">Type d'assiete</option>
+            <option value="">Type d'assiette</option>
             { dishData && (
               dishData.map((dishObj) => {
                 return (

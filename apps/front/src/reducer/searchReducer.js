@@ -2,7 +2,8 @@ import {
   SET_INPUT_VALUE
 } from '../actions/user';
 
-import { SEND_SEARCH_FORM, SET_SELECT_VALUE, FETCH_RESULTS_SUCCES, FETCH_CATEGORIES_SUCCES } from '../actions/search';
+import { SEND_SEARCH_FORM, SET_SELECT_VALUE, FETCH_RESULTS_SUCCES } from '../actions/search';
+import { FETCH_TYPE_DISH_SUCCES, FETCH_TYPE_KITCHEN_SUCCES } from '../actions/dishesForm';
 
 const initialState = {
   dish: "",
@@ -10,11 +11,8 @@ const initialState = {
   city: "",
   isSearching: false,
   resultDishes: null,
-  categories: {
-    typeKitchen: null,
-    typeDish: null
-  }
-    
+  dishData: null,
+  kitchenData: null,
 };
 
 export default (state = initialState, action = {}) => {
@@ -41,11 +39,15 @@ export default (state = initialState, action = {}) => {
         isSearching: false,
         resultDishes: action.payload,
       };
-    case FETCH_CATEGORIES_SUCCES: 
+    case FETCH_TYPE_DISH_SUCCES : 
       return {
         ...state,
-        categories: action.payload,
-
+        dishData: action.payload,
+      };
+    case FETCH_TYPE_KITCHEN_SUCCES: 
+      return {
+        ...state,
+        kitchenData: action.payload,
       }
       default:
         return state;
