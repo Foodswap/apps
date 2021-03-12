@@ -3,7 +3,11 @@ import PropTypes from 'prop-types';
 
 import './style.scss';
 
-const MyDishes = ({ userDishes, deleteDish, deleteMessage }) => (
+const MyDishes = ({
+  userDishes,
+  deleteDish,
+  deleteMessage,
+}) => (
   <div className="myDishes">
     <h1 className="myDishes-title">Mes Plats</h1>
     {deleteMessage}
