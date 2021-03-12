@@ -7,3 +7,4 @@ v1_updateTableMeal 2021-03-10T08:15:19Z Edouard Laffont <edouard.laffont@live.co
 v1_updateTableAssociate 2021-03-10T09:41:20Z Edouard Laffont <edouard.laffont@live.com> # drop tables associate and create them with PK
 v1_uploadData 2021-03-10T19:45:12Z Edouard Laffont <edouard.laffont@live.com> # upload fake data -category- in database
 v1_uploadDataIngredient 2021-03-11T12:26:53Z Edouard Laffont <edouard.laffont@live.com> # upload ingredient data
+v1_uploadDataCategories 2021-03-11T20:05:38Z Edouard Laffont <edouard.laffont@live.com> # add categories in database
