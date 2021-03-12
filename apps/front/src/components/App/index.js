@@ -38,7 +38,8 @@ const App = () => (
   <div className="app">
     <AppHeader />
     <Menu />
-    <MyInformation />
+
+    <Route exact path="/v1/my-information" component={MyInformation} />
 
     <Route exact path="/v1/exchange-tracking" component={Exchangetracking} />
 

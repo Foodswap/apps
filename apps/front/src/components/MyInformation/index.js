@@ -6,10 +6,25 @@ import './style.scss';
 const MyInformation = ({
   username, email, city,
 }) => (
-  <div>
-    <div>Nom {username}</div>
-    <div>Email {email}</div>
-    <div>Ville {city}</div>
+  <div className="information">
+    <h1 className="information-title">Mes informations</h1>
+
+    <div className="information-container">
+      <div className="information-content">
+        <div className="information-field">Nom</div>
+        <div className="information-value">{username}</div>
+      </div>
+
+      <div className="information-content">
+        <div className="information-field">Email</div>
+        <div className="information-value">{email}</div>
+      </div>
+
+      <div className="information-content">
+        <div className="information-field">Ville</div>
+        <div className="information-value">{city}</div>
+      </div>
+    </div>
   </div>
 );
 

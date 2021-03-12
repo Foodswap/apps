@@ -1,0 +1,32 @@
+.information {
+  display: flex;
+  flex-direction: column;
+
+  &-container {
+    display: flex;
+    flex-direction: column;
+    border: 0.1rem solid;
+    margin-left: 7rem;
+    margin-right: 7rem;
+    text-align: initial;
+    font-size: 1rem;
+    padding: 1rem;
+    background-color: antiquewhite;
+    border-radius: 0.6em;
+  }
+
+  &-content {
+    margin-bottom: 1rem;
+  }
+
+  &-field {
+    margin-bottom: 0.6rem;
+    font-size: 1.4rem;
+    color: orangered;
+  }
+
+  &-title {
+    font-size: xx-large;
+    margin: 1em 0;
+  }
+}
