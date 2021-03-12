@@ -4,7 +4,7 @@ export default [
     name: "entree",
   },
   {
-    id: 2
+    id: 2,
     name: "plat",
   },
   {

@@ -3,10 +3,16 @@ import axios from 'axios';
 import data from '../../dataUser';
 
 import {
-  SEND_LOGIN, loginSucces, loginError, SEND_SIGN_UP, signUpSucces, signUpError,
+  SEND_LOGIN,
+  USER_LOGOUT,
+  SEND_SIGN_UP,
+  loginSucces,
+  loginError,
+  signUpSucces,
+  signUpError,
+  handleLogoutSuccess,
 } from '../actions/user';
 
-// ! Pour le moment je test ici le login avec des données en durs, pas de reqûete axios
 export default (store) => (next) => (action) => {
   switch (action.type) {
     case SEND_LOGIN: {
@@ -14,17 +20,23 @@ export default (store) => (next) => (action) => {
 
       axios({
         method: 'post',
-        url: 'http://ec2-54-145-80-6.compute-1.amazonaws.com/v1/login',
+        url: `${process.env.API_URL}/login`,
         data: {
           email, password,
         },
       })
         .then((res) => {
           console.log(`response ok : ${res}`);
-          const actionToDispatch = loginSucces(res.data);
+
+          const token = res.headers.authorization;
+          const user = res.data.author;
+
+          console.log(res.headers);
+          localStorage.setItem('token', token);
+          localStorage.setItem('user', JSON.stringify(user));
+
+          const actionToDispatch = loginSucces({ user, token });
           store.dispatch(actionToDispatch);
-          console.log(res.data.name);
-          console.log(store.getState().user.infos);
         })
         .catch((error) => {
           console.log(`${error} erreur au post login`);
@@ -67,7 +79,7 @@ export default (store) => (next) => (action) => {
       // s'il le mail n'existe pas je lance la req post
       axios({
         method: 'post',
-        url: 'http://ec2-54-145-80-6.compute-1.amazonaws.com/v1/signup',
+        url: `${process.env.API_URL}/signup`,
         data: userObj,
       })
         .then((res) => {
@@ -91,8 +103,19 @@ export default (store) => (next) => (action) => {
       // .finally(() => {
       //   console.log('finally');
       // });
-    }
-      break;
+    } break;
+    case USER_LOGOUT: {
+      localStorage.removeItem('user');
+      localStorage.removeItem('token');
+
+      const actionToDispatch = handleLogoutSuccess();
+      store.dispatch(actionToDispatch);
+
+      setTimeout(() => {
+        // eslint-disable-next-line no-restricted-globals
+        location.href = '/';
+      }, 100);
+    } break;
     default:
       return next(action);
   }

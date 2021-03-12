@@ -1,20 +1,34 @@
 import {
-  SET_INPUT_VALUE, LOGIN_SUCCES, LOGIN_ERROR, USER_LOGOUT, SEND_SIGN_UP, SIGNUP_SUCCES, SIGNUP_ERROR,
+  SET_INPUT_VALUE,
+  LOGIN_SUCCES,
+  LOGIN_ERROR,
+  USER_LOGOUT_SUCCESS,
+  SEND_SIGN_UP,
+  SIGNUP_SUCCES,
+  SIGNUP_ERROR,
 } from '../actions/user';
-import { MODAL_LOGIN_TOGGLE, MODAL_SIGN_UP_TOGGLE } from '../actions/modals';
 
+import {
+  MODAL_LOGIN_TOGGLE,
+  MODAL_SIGN_UP_TOGGLE,
+} from '../actions/modals';
+
+const user = localStorage.getItem('user')
+  ? JSON.parse(localStorage.getItem('user'))
+  : {};
 const initialState = {
   isLoginOpen: false,
   isSignUpOpen: false,
-  email: '',
+  email: user.email || '',
   password: '',
-  pseudonym: '',
-  city: '',
-  isLogged: false,
+  pseudonym: user.username || '',
+  city: user.city || '',
+  isLogged: !!localStorage.getItem('token'),
   signUpIsValid: false,
   loggedMessage: '',
   infos: {
     accesToken: localStorage.getItem('token'),
+    id: user.id || '',
   },
 };
 
@@ -42,21 +56,22 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         signUpIsValid: true,
-        email: '',
-        password: '',
-        pseudonym: '',
-        city: '',
+        email: action.payload.email,
+        password: action.payload.password,
+        pseudonym: action.payload.username,
+        city: action.payload.city,
       };
     case LOGIN_SUCCES:
       return {
         ...state,
-        email: '',
+        email: action.payload.user.email,
+        pseudonym: action.payload.user.username,
+        city: action.payload.user.city,
         password: '',
         isLogged: true,
         isLoginOpen: false,
         infos: {
-          token: action.payload.accessToken,
-          
+          token: action.payload.token,
         },
       };
     case LOGIN_ERROR:
@@ -64,20 +79,32 @@ export default (state = initialState, action = {}) => {
         ...state,
         isLogged: false,
         loggedMessage: 'Veuillez réessayer !',
-        infos: {},
+        infos: {
+          accesToken: '',
+          id: '',
+        },
       };
     case SIGNUP_ERROR:
       return {
         ...state,
         loggedMessage: 'Un compte existe déjà avec cet email !',
-        infos: {},
+        infos: {
+          accesToken: '',
+          id: '',
+        },
       };
-    case USER_LOGOUT:
+    case USER_LOGOUT_SUCCESS:
       return {
         ...state,
+        email: '',
+        pseudonym: '',
+        city: '',
         isLogged: false,
         loggedMessage: '',
-        infos: {},
+        infos: {
+          accesToken: '',
+          id: '',
+        },
       };
     case SEND_SIGN_UP:
       return {
