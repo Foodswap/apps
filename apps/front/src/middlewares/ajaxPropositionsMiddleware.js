@@ -16,7 +16,7 @@ export default (store) => (next) => (action) => {
     case GET_OF_EXCHANGE_LIST: {
       axios({
         method: 'get',
-        url: `http://localhost:3000/propositions?asker.user_id=${action.payload}`,
+        url: `${process.env.FAKE_API_URL}/propositions?asker.user_id=${action.payload}`,
       })
         .then((res) => {
           console.log(`response ok : ${res}`);
@@ -32,7 +32,7 @@ export default (store) => (next) => (action) => {
 
       axios({
         method: 'get',
-        url: `http://localhost:3000/propositions?receiver.user_id=${action.payload}`,
+        url: `${process.env.FAKE_API_URL}/propositions?receiver.user_id=${action.payload}`,
       })
         .then((res) => {
           console.log(`response ok : ${res}`);
@@ -49,7 +49,7 @@ export default (store) => (next) => (action) => {
     case GET_CLICK_ON_ACCEPT: {
       axios({
         method: 'patch',
-        url: `http://localhost:3000/propositions/${action.payload.propositionId}`,
+        url: `${process.env.FAKE_API_URL}/propositions/${action.payload.propositionId}`,
         data: { status: 1 },
       })
         .then((res) => {
@@ -67,7 +67,7 @@ export default (store) => (next) => (action) => {
     case GET_CLICK_ON_REFUSE: {
       axios({
         method: 'patch',
-        url: `http://localhost:3000/propositions/${action.payload.propositionId}`,
+        url: `${process.env.FAKE_API_URL}/propositions/${action.payload.propositionId}`,
         data: { status: 2 },
       })
         .then((res) => {
