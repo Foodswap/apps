@@ -3,6 +3,7 @@ import recipeReducer from './recipeReducer';
 import userReducer from './userReducer';
 import searchReducer from './searchReducer';
 import dishesFormReducer from './dishesFormReducer';
+import propositionsReducer from './propositionsReducer';
 // exporter le resultat du combineReducer pour l'utiliser
 // dans le createStore
 
@@ -11,4 +12,5 @@ export default combineReducers({
   user: userReducer,
   search: searchReducer,
   dishes: dishesFormReducer,
+  propositions: propositionsReducer,
 });

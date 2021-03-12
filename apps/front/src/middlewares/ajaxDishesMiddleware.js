@@ -12,6 +12,19 @@ import {
   updateListOfDishes,
 } from '../actions/dishes';
 
+import {
+  SEND_FORM_RECIPE_UP,
+  sendFormRecipeUpSuccess,
+  sendFormRecipeUpError,
+  fetchIngredientsSucces,
+  fetchIngredientsError,
+  FETCH_INGREDIENTS,
+  FETCH_TYPE_DISH,
+  fetchTypeDishSucces,
+  FETCH_TYPE_KITCHEN,
+  fetchTypeKitchenSucces
+} from '../actions/dishesForm';
+
 export default (store) => (next) => (action) => {
   switch (action.type) {
     case DELETE_ONE_DISH: {
@@ -72,8 +85,132 @@ export default (store) => (next) => (action) => {
       const { userDishes } = store.getState().recipes;
       const actionToDispatch = dishExchange(userDishes);
       return store.dispatch(actionToDispatch);
+    } 
+    case SEND_FORM_RECIPE_UP:{
+      const { picture,
+        name,
+        description,
+        ingredients,
+        portion,
+        city,
+        author,
+        dish,
+        kitchen,
+        online
+      } = store.getState().dishes;
+
+      const { infos, pseudonym } = store.getState().user;
+      console.log("send form middleware");
+
+      console.log(picture,
+        name,
+        description,
+        ingredients,
+        portion,
+        city,
+        author,
+        dish,
+        kitchen,
+        online
+        );
+
+      axios({
+        method: 'post',
+        // url: 'http://ec2-54-145-80-6.compute-1.amazonaws.com/v1/meals',
+        url: 'http://localhost:3000/dishes',
+        data: {
+          file: picture,
+          author: {
+            id: infos.id,
+            username: pseudonym,
+          },
+          name,
+          description,
+          ingredients,
+          portion,
+          city,
+          categories: [
+            {
+              type: "kitchen",
+              name: kitchen,
+            }, 
+            {
+              type: "dish",
+              name: dish,
+            }
+          ],
+          online,
+        },
+        // headers: {
+        //   'Content-Type': 'multipart/form-data'
+        // }
+      })
+      .then((res) => {
+        console.log(`response ok : ${res}`);
+        const actionToDispatch = sendFormRecipeUpSuccess();
+        store.dispatch(actionToDispatch);
+        setTimeout(() => {
+          location.href="/v1/mydishes";
+        }, 500);
+        console.log(res.data);
+      })
+      .catch((error) => {
+        console.log(`${error} erreur au post du formulaire`);
+        const actionToDispatch = sendFormRecipeUpError();
+        store.dispatch(actionToDispatch);
+      })
+      .finally(() => {
+        console.log('post form done');
+      });
+    }
+    break;
+    case FETCH_INGREDIENTS: {
+      axios({
+        method: 'get',
+        url: `http://localhost:3000/ingredients`,
+      })
+      .then((res) => {
+        // console.log("ok send search ingredients " + res.data);
+        // console.dir(res.data);
+        const actionToDispatch = fetchIngredientsSucces(res.data);
+        return store.dispatch(actionToDispatch);
+      })
+      .catch((error) => {
+        console.log(error);
+        const actionToDispatch = fetchIngredientsError();
+        return store.dispatch(actionToDispatch);
+      });
+    }
+    case FETCH_TYPE_DISH: {
+      axios({
+        method: 'get',
+        url: "http://localhost:3000/category?type=dish"
+      })
+      .then ((res) => {
+        console.log(res.data)
+        const actionToDispatch = fetchTypeDishSucces(res.data);
+        return store.dispatch(actionToDispatch);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    };
+    case FETCH_TYPE_KITCHEN: {
+      axios({
+        method: 'get',
+        url: "http://localhost:3000/category?type=kitchen"
+      })
+      .then ((res) => {
+        console.log(res.data)
+        const actionToDispatch = fetchTypeKitchenSucces(res.data);
+        return store.dispatch(actionToDispatch);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
     }
     default:
       return next(action);
   }
 };
+

@@ -6,8 +6,12 @@ import { Route } from 'react-router-dom';
 import AppHeader from '../AppHeader';
 import Footer from '../Footer';
 import Faces from '../Faces';
-import Menu from '../../containers/Menu';
+import Results from '../Results';
 import DescriptionHomepage from '../DescriptionHomepage';
+
+// Container components
+import Menu from '../../containers/Menu';
+import Exchangetracking from '../../containers/ExchangeTracking';
 
 // Container components
 import LoginForm from '../../containers/LoginForm';
@@ -20,8 +24,9 @@ import DishesForm from '../../containers/DishesForm';
 
 // Style
 import './styles.css';
+
+// Fake data from file
 import dishes from '../../../dataDishes';
-import Results from '../Results';
 
 /**
  * App component
@@ -31,6 +36,8 @@ const App = () => (
   <div className="app">
     <AppHeader />
     <Menu />
+
+    <Route exact path="/v1/exchange-tracking" component={Exchangetracking} />
 
     <Route exact path="/">
       <DescriptionHomepage />
@@ -45,10 +52,10 @@ const App = () => (
     <Route exact path="/results">
       <Results dishes={dishes} />
     </Route>
-    <Route exact path="/v1/meals">
+    <Route exact path="/v1/mydishes">
       <MyDishes />
     </Route>
-    <Route exact path="/v1/meal/:id">
+    <Route exact path="/v1/createdish">
       <DishesForm />
     </Route>
     <Route exact path="/v1/Qui sommes nous">

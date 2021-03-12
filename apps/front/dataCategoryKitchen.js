@@ -4,7 +4,7 @@ export default [
     name: "francaise",
   },
   {
-    id: 2
+    id: 2,
     name: "italienne",
   },
   {
