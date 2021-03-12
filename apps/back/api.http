@@ -10,6 +10,9 @@ GET {{baseUrl}}
 ### 
 
 ### Local - route pour récupérer les ingredients
+GET {{baseUrl}}/ingredients
+
+### Local - route pour récupérer les ingredients
 GET {{baseUrl}}/ingredient/1
 
 
