@@ -180,12 +180,10 @@ export default (store) => (next) => (action) => {
         url : `${process.env.API_URL}/categories/dish`,
       })
       .then ((res) => {
-        console.log(res.data)
         const actionToDispatch = fetchTypeDishSucces(res.data);
         return store.dispatch(actionToDispatch);
       })
         .then((res) => {
-          console.log(res.data);
           const actionToDispatch = fetchTypeDishSucces(res.data);
           return store.dispatch(actionToDispatch);
         })
@@ -200,7 +198,6 @@ export default (store) => (next) => (action) => {
         url: `${process.env.API_URL}/categories/kitchen`,
       })
         .then((res) => {
-          console.log(res.data);
           const actionToDispatch = fetchTypeKitchenSucces(res.data);
           return store.dispatch(actionToDispatch);
         })
