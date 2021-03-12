@@ -28,5 +28,6 @@ router.get('/swaps', swapController.swapProposal)
 
 // Ingredient
 router.get('/ingredient/:id', ingredientController.getIngredients);
+router.get('/ingredients', ingredientController.getAllIngredient);
 
 module.exports = router;
