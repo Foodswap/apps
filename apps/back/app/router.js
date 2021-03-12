@@ -21,6 +21,7 @@ router.get('/meals/:id', mealController.getOneMeal);
 router.get('/meals/:id/picture', mealController.getPicture);
 router.get('/meals/author/:author_id', mealController.getMealsByAuthor);
 router.get('/meals');
+router.get('/sixMeals', mealController.getSixMeals);
 router.post('/meals', middlewareHandlingFiles, mealController.createMeal);
 
 //Category
@@ -32,5 +33,6 @@ router.get('/swaps', swapController.swapProposal)
 
 // Ingredient
 router.get('/ingredient/:id', ingredientController.getIngredients);
+router.get('/ingredients', ingredientController.getAllIngredient);
 
 module.exports = router;
