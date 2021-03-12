@@ -1,5 +1,6 @@
 import React, { useEffect, Component } from 'react';
 import Select from 'react-select';
+import makeAnimated from 'react-select/animated';
 import { Link, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { useState } from "react";
@@ -26,14 +27,18 @@ const DishesForm = ({
   changeOnline,
   getIngredients,
   ingredientsData,
-  handleMultiSelectChange
+  handleMultiSelectChange,
+  fetchTypeDish,
+  dishData
 }) => {
 
   useEffect(() => {
     getIngredients();
+    fetchTypeDish();
     console.log("ingredient data " + ingredientsData)
   }, [])
   ;
+  const animatedSelect = makeAnimated();
   const imageHandler = (evt) =>{
     const reader = new FileReader();
     reader.onload = () => {
@@ -62,7 +67,6 @@ const DishesForm = ({
   )}
   
     <h2 className="meal-title">Ajoutez votre bon petit plat </h2>
-    <div className="meal-form">
     <form
         className="meal-form-element"
         onSubmit={handleSubmit}
@@ -86,15 +90,7 @@ const DishesForm = ({
             }
           }
         />
-        {/* <input type="submit" name="picture" value={picture} onChange={(evt) => {
-            handleInputChange(evt.target.value, evt.target.name);
-          }} /> */}
-
-
       </div>
-
-      
-         
         <label className="switch">
           <input name="online" type="checkbox" onChange={changeOnline}/>
           <span className="slider round" /> 
@@ -102,7 +98,7 @@ const DishesForm = ({
         <span>En ligne ?</span>
         <input
           required
-          className="meal-form-input"
+          className="meal-input"
           type="text"
           name="name"
           placeholder="Ajoutez le nom de votre plat"
@@ -129,7 +125,7 @@ const DishesForm = ({
           className="meal-input"
           type="text"
           name="city"
-          placeholder="Ville"
+          placeholder="Votre ville"
           onChange={(evt) => {
             handleInputChange(evt.target.value, evt.target.name);
           }}
@@ -140,27 +136,18 @@ const DishesForm = ({
 
           <Select 
           name="ingredients" 
+          components={animatedSelect}
           options={options} 
           isMulti 
           onChange={(selection, action) => handleMultiSelectChange(selection, action)}
           />
         )
         }
-        {/* <textarea
-          required
-          className="meal-form-ingredients"
-          type="text"
-          name="ingredients"
-          placeholder="Ajouter les ingrédients"
-          onChange={(evt) => {
-            handleInputChange(evt.target.value, evt.target.name);
-          }}
-          value={ingredients}
-        /> */}
        
-        <textarea
+        <input 
+          type="text"
           required
-          className="meal-form-description"
+          className="meal-input"
           type="text"
           name="description"
           placeholder="Description du plat"
@@ -170,26 +157,37 @@ const DishesForm = ({
           value={description}
 
         />
-        <select 
-        name="dish"
-        onChange={(evt) => onSetCategorySelect(evt.target.value, evt.target.name)}
-         className="meal-category">
+        <div className="meal-form-select">
 
-          <option value="">Type d'assiete</option>
-          <option value="entrée" name="entrée">Entrée</option>
-          <option value="plat" name="plat">Plat</option>
-          <option value="dessert" name="dessert">Dessert</option>
-        </select>
-        <select
-          name="kitchen"
+          <select 
+          name="dish"
           onChange={(evt) => onSetCategorySelect(evt.target.value, evt.target.name)}
           className="meal-category">
-          <option value="">Type de cuisine</option>
-          <option value="francaise" name="francaise">Francaise</option>
-          <option value="asiatique" name="asiatique">Asiatique</option>
-          <option value="orientale" name="orientale">Orientale</option>
-          <option value="italienne" name="italienne">Italienne</option>
-        </select>
+
+          { console.log("dishData : " + dishData)}
+            <option value="">Type d'assiete</option>
+            { dishData && (
+              dishData.map((dishObj) => {
+                return (
+                  <option value={dishObj.name} name={dishObj.name}>{dishObj.name}</option>
+                )
+              }
+              ))
+            }
+          </select>
+          <select
+            name="kitchen"
+            onChange={(evt) => onSetCategorySelect(evt.target.value, evt.target.name)}
+            className="meal-category">
+            <option value="">Type de cuisine</option>
+            { dishData && (
+              dishData.map((dishObj) => {
+              <option value={dishObj.name} name={dishObj.name}>Francaise</option>
+              })
+
+            )}
+          </select>
+        </div>
 
         {/* { isSucces && 
           <Redirect to="/v1/mydishes" />
@@ -200,12 +198,12 @@ const DishesForm = ({
           <p>Erreur sur votre formulaire </p>
         )
         }
-
-        <button className="mealForm-form-submit" type="submit" onClick={() => sendFormRecipeUp()}> Valider </button>
-        <button className="mealForm-form-submit" type="button" onClick={() => cancelFormRecipe()}> Annuler </button>
+        <div className="meal-form-buttons">
+          <button className="meal-form-cancel" type="button" onClick={() => cancelFormRecipe()}> Annuler </button>
+          <button className="meal-form-submit" type="submit" onClick={() => sendFormRecipeUp()}> Valider </button>
+        </div>
         </form>
     </div>
-  </div>
   );
 };
 DishesForm.propTypes = {

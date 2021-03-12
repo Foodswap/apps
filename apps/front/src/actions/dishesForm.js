@@ -90,3 +90,14 @@ export const setIngredient = (payload) => ({
   type: SET_INGREDIENT,
   payload
 })
+
+export const FETCH_TYPE_DISH = 'FETCH_TYPE_DISH';
+export const fetchTypeDish = () => ({
+  type: FETCH_TYPE_DISH,
+})
+
+export const FETCH_TYPE_DISH_SUCCES = 'FETCH_TYPE_DISH_SUCCES';
+export const fetchTypeDishSucces = (payload) => ({
+  type: FETCH_TYPE_DISH_SUCCES,
+  payload
+})

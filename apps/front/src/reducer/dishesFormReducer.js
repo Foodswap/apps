@@ -10,7 +10,8 @@ import {
   CHANGE_STATUS,
   FETCH_INGREDIENTS_SUCCES,
   HANDLE_MULTI_SELECT,
-  SET_INGREDIENT
+  SET_INGREDIENT,
+  FETCH_TYPE_DISH_SUCCES
 } from '../actions/dishesForm';
 
 // export const initialState = {};
@@ -31,6 +32,7 @@ const initialState = {
   isSucces: false,
   isError: false,
   ingredientsData: null,
+  dishData: null,
   // imgIcon: 'https://img.icons8.com/carbon-copy/2x/meal.png',
   
 };
@@ -92,6 +94,12 @@ export default (state = initialState, action = {}) => {
         ...state,
         ingredients: action.payload,
       }
+    case FETCH_TYPE_DISH_SUCCES: 
+      return {
+        ...state,
+        dishData: action.payload,
+      }
+
     default:
       return state;
   }

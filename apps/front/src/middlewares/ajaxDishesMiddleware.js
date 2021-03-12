@@ -18,7 +18,9 @@ import {
   sendFormRecipeUpError,
   fetchIngredientsSucces,
   fetchIngredientsError,
-  FETCH_INGREDIENTS
+  FETCH_INGREDIENTS,
+  FETCH_TYPE_DISH,
+  fetchTypeDishSucces
 } from '../actions/dishesForm';
 
 export default (store) => (next) => (action) => {
@@ -166,8 +168,8 @@ export default (store) => (next) => (action) => {
         url: `http://localhost:3000/ingredients`,
       })
       .then((res) => {
-        console.log("ok send search ingredients " + res.data);
-        console.dir(res.data);
+        // console.log("ok send search ingredients " + res.data);
+        // console.dir(res.data);
         const actionToDispatch = fetchIngredientsSucces(res.data);
         return store.dispatch(actionToDispatch);
       })
@@ -175,6 +177,20 @@ export default (store) => (next) => (action) => {
         console.log(error);
         const actionToDispatch = fetchIngredientsError();
         return store.dispatch(actionToDispatch);
+      });
+    }
+    case FETCH_TYPE_DISH: {
+      axios({
+        method: 'get',
+        url: "http://localhost:3000/category?type=dish"
+      })
+      .then ((res) => {
+        console.log(res.data)
+        const actionToDispatch = fetchTypeDishSucces(res.data);
+        return store.dispatch(actionToDispatch);
+      })
+      .catch((error) => {
+        console.log(error);
       });
     }
     default:
