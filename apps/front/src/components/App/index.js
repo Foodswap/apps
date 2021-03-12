@@ -22,6 +22,8 @@ import LastDishes from '../../containers/LastDishes';
 import SearchForm from '../../containers/SearchForm';
 import DishesForm from '../../containers/DishesForm';
 
+import MyInformation from '../../containers/MyInformation';
+
 // Style
 import './styles.css';
 
@@ -36,6 +38,8 @@ const App = () => (
   <div className="app">
     <AppHeader />
     <Menu />
+
+    <Route exact path="/v1/my-information" component={MyInformation} />
 
     <Route exact path="/v1/exchange-tracking" component={Exchangetracking} />
 

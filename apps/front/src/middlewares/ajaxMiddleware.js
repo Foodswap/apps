@@ -36,7 +36,7 @@ export default (store) => (next) => (action) => {
           localStorage.setItem('token', token);
           localStorage.setItem('user', JSON.stringify(user));
 
-          const actionToDispatch = loginSucces(user);
+          const actionToDispatch = loginSucces({ user, token });
           store.dispatch(actionToDispatch);
         })
         .catch((error) => {
@@ -111,6 +111,11 @@ export default (store) => (next) => (action) => {
 
       const actionToDispatch = handleLogoutSuccess();
       store.dispatch(actionToDispatch);
+
+      setTimeout(() => {
+        // eslint-disable-next-line no-restricted-globals
+        location.href = '/';
+      }, 100);
     } break;
     default:
       return next(action);
