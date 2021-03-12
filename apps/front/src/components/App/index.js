@@ -6,7 +6,6 @@ import { Route } from 'react-router-dom';
 import AppHeader from '../AppHeader';
 import Footer from '../Footer';
 import Faces from '../Faces';
-import ExchangeTracking from '../ExchangeTracking';
 import Results from '../Results';
 import DescriptionHomepage from '../DescriptionHomepage';
 
@@ -40,7 +39,6 @@ const App = () => (
     <AppHeader />
     <Menu />
     <MyInformation />
-    <ExchangeTracking />
 
     <Route exact path="/v1/exchange-tracking" component={Exchangetracking} />
 
