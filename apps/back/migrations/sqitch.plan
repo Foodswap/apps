@@ -8,3 +8,4 @@ v1_updateTableAssociate 2021-03-10T09:41:20Z Edouard Laffont <edouard.laffont@li
 v1_uploadData 2021-03-10T19:45:12Z Edouard Laffont <edouard.laffont@live.com> # upload fake data -category- in database
 v1_uploadDataIngredient 2021-03-11T12:26:53Z Edouard Laffont <edouard.laffont@live.com> # upload ingredient data
 v1_uploadDataCategories 2021-03-11T20:05:38Z Edouard Laffont <edouard.laffont@live.com> # add categories in database
+v1_uploadDataIngredient2 2021-03-12T08:37:46Z Edouard Laffont <edouard.laffont@live.com> # upload more ingredient in database
