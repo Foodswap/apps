@@ -14,7 +14,7 @@ GET {{baseUrl}}/ingredient/1
 
 
 ### Local - route pour récupérer les plats d'un author
-GET {{baseUrl}}//meals/author/49
+GET {{baseUrl}}/meals/author/49
 
 
 ### Local - route pour récupérer un plat
