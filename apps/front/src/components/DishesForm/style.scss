@@ -61,76 +61,53 @@ input:checked + .slider:before {
 }
 
 .meal {
-
+  &-title {
+    margin-top: 1rem;
+    font-size: 28px;
+    font-weight: 600;
+  }
   &-page{
-    display: flex;
-    align-items: center;
-    justify-content:center;
-    height: 75vh;
+    background: rgb(247, 209, 139);
+    display: grid;
+    grid-template-areas: "." ".";
+    width: 900px;
+    margin: auto;
   }
   &-form{
     
-    border: 3px solid #f39508;
+    color: rgb(46, 12, 12);
+    margin:auto;
     border-radius: 1rem;
     padding: 2rem;
-  }
-  &-image{
-    display: flex;
-    flex-direction: column;
-    
-  }
-  &-img{
-    margin: 1rem;
-    border:1px solid orange;
-    border-radius: 5px;
-    object-fit: cover;
-  }
-  &-label{
-    width: 100%;
     display: flex;
     justify-content:center;
   }
+  &-input {
+    border-radius: 4px;
+    height: 38px;
+    line-height: 38px;
+    padding-left: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    margin: 0.5rem;
+    width: 360px;
+  }
+  &-image-div {
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+  }
+  &-img{
+    margin: 1rem;
+    border:1px solid rgb(247, 191, 107);
+    border-radius: 5px;
+    object-fit: cover;
+  }
   
   
-
-  &-form-input{
-    width: 90%;
-  border-radius: 5px;
-  border: 1px solid rgba(255, 68, 0, 0.295);
-  padding: 0.5rem;
-  margin-bottom: 0.5rem;
-  }
-
-  &-portion-input{
-    width: 30%;
-  border-radius: 5px;
-  border: 1px solid rgba(255, 68, 0, 0.295);
-  padding: 0.5rem;
-  margin-bottom: 0.5rem;
-  }
-
-  &-city-input{
-    width: 60%;
-  border-radius: 5px;
-  border: 1px solid rgba(255, 68, 0, 0.295);
-  padding: 0.5rem;
-  margin-bottom: 0.5rem;
-  }
-
-  &-form-ingredients{
-    width: 80%;
-  border-radius: 5px;
-  border: 1px solid rgba(255, 68, 0, 0.295);
-  padding: 0.5rem;
-  margin-bottom: 0.5rem;
-  }
-
-  &-form-description{
-    width: 80%;
-  border-radius: 5px;
-  border: 1px solid rgba(255, 68, 0, 0.295);
-  padding: 0.5rem;
-  margin-bottom: 0.5rem;
+  &-form-labels {
+    width: 176px;
+    display: block;
+    margin-bottom: 5px;
   }
 
   &-category{
@@ -146,17 +123,47 @@ input:checked + .slider:before {
   &-form-element{
     display: flex;
     flex-direction: column;
+    padding: 3rem;
   }
+  &-form-submit {
+    padding: 0.65em;
+    background-color: rgb(117, 69, 51);
+    color: white;
+    border-radius: 5px;
+    border: none;
+    width: 108px;
+
+  }
+  &-form-cancel {
+    padding: 0.65em;
+    background-color: rgb(224, 169, 149);
+    color: white;
+    border-radius: 5px;
+    border: none;
+    width: 88px;
+
+  }
+
+  &-form-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+  }
+
+  &-form-select {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+  }
+
+  &-category {
+    background-color: rgb(167, 94, 46);
+    margin: 10px 10px;
+  }
+
 }
 #input[id="picture"]{
   display: none;
 }
 
-.mealForm-form-submit {
-  padding: 0.65em;
-  background-color: orangered;
-  color: white;
-  border-radius: 5px;
-  border: none;
-  margin: 2rem ;
-}
+

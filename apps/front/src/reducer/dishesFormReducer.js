@@ -4,6 +4,15 @@ import {
   SEND_FORM_RECIPE_UP,
   CANCEL_FORM_RECIPE_SUCCESS,
   CANCEL_FORM_RECIPE_ERROR,
+  SET_CATEGORY_SELECT,
+  SEND_FORM_RECIPE_UP_SUCCESS,
+  SEND_FORM_RECIPE_UP_ERROR,
+  CHANGE_STATUS,
+  FETCH_INGREDIENTS_SUCCES,
+  HANDLE_MULTI_SELECT,
+  SET_INGREDIENT,
+  FETCH_TYPE_DISH_SUCCES,
+  FETCH_TYPE_KITCHEN_SUCCES
 } from '../actions/dishesForm';
 
 // export const initialState = {};
@@ -11,38 +20,23 @@ import {
 const initialState = {
 
   cancelMessage: '',
-  dataFormMeal: [
-    {
-      id: '1',
-      picture: 'https://img.icons8.com/carbon-copy/2x/meal.png',
-      name: '',
-      description: [
-        '',
-        '',
-      ],
-      ingredients: [
-        '',
-        '',
-      ],
-      created_date: '',
-      portion: '',
-      city: '',
-      online: true,
-      author: {
-        id: '',
-        pseudonym: '',
-      },
-      category: {
-        type: 'Type de cuisine',
-        name: 'Française',
-      },
-      isLogged: false,
-      loggedMessage: '',
-      infos: {
-        token: localStorage.getItem('token'),
-      },
-    },
-  ],
+  picture: 'https://img.icons8.com/carbon-copy/2x/meal.png',
+  name : '',
+  portion: '',
+  description: '',
+  city: '',
+  author: '',
+  ingredients: [],
+  dish: '',
+  kitchen: '',
+  online: false,
+  isSucces: false,
+  isError: false,
+  ingredientsData: null,
+  dishData: null,
+  kitchenData: null,
+  // imgIcon: 'https://img.icons8.com/carbon-copy/2x/meal.png',
+  
 };
 export default (state = initialState, action = {}) => {
   switch (action.type) {
@@ -51,6 +45,11 @@ export default (state = initialState, action = {}) => {
         ...state,
         [action.name]: action.value,
       };
+    case SET_CATEGORY_SELECT: 
+      return {
+        ...state,
+        [action.name]: action.value,
+      }
     case CANCEL_FORM_RECIPE:
       return {
         ...state,
@@ -72,6 +71,42 @@ export default (state = initialState, action = {}) => {
         [action.name]: action.value,
         loggedMessage: 'Votre plat a été crée',
       };
+    case SEND_FORM_RECIPE_UP_SUCCESS: 
+      return {
+        ...state,
+        isSucces: true,
+      };
+      case SEND_FORM_RECIPE_UP_ERROR: 
+      return {
+        ...state,
+        isError: true,
+      };
+    case CHANGE_STATUS:
+      return {
+        ...state,
+        online: !state.online,
+      };
+    case FETCH_INGREDIENTS_SUCCES: 
+      return {
+        ...state,
+        ingredientsData: action.payload,
+      }
+    case SET_INGREDIENT: 
+      return {
+        ...state,
+        ingredients: action.payload,
+      }
+    case FETCH_TYPE_DISH_SUCCES: 
+      return {
+        ...state,
+        dishData: action.payload,
+      }
+    case FETCH_TYPE_KITCHEN_SUCCES: 
+      return {
+        ...state,
+        kitchenData: action.payload,
+      }
+
     default:
       return state;
   }
