@@ -1,3 +1,4 @@
+const { response, request } = require('express');
 const {
     Meal
 } = require('../models');
@@ -70,6 +71,16 @@ const mealController = {
         } catch (err) {
             console.trace(err);
             response.status(404).json("Plat non trouvé");
+        }
+    }, 
+
+    getSixMeals: async (request, response) => {
+        try {
+            const sixMeals = await Meal.findAll({orderBy:'created_date' ,limit:6});
+            response.status(200).json(sixMeals);
+        } catch (error) {
+            console.trace(error);
+            response.status(404).json("Couldn't find six or less meals.")
         }
     }
 };
