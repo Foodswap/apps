@@ -32,15 +32,15 @@ const Menu = ({
           Accueil
         </NavLink>
 
-        <NavLink exact className="menu-link" to="/v1/meals">
+        <NavLink exact className="menu-link" to="/v1/mydishes">
           Mes plats
         </NavLink>
 
-        <NavLink exact className="menu-link" to="/v1/meal/:id">
+        <NavLink exact className="menu-link" to="/v1/createdish">
           Créer une nouvelle fiche de plat
         </NavLink>
 
-        <NavLink exact className="menu-link" to="/suiviEchange">
+        <NavLink exact className="menu-link" to="/v1/exchange-tracking">
           Suivi d'échange
         </NavLink>
 
@@ -57,6 +57,7 @@ Menu.propTypes = {
   isLogged: PropTypes.bool.isRequired,
   loginFormToggle: PropTypes.func.isRequired,
   signUpFormToggle: PropTypes.func.isRequired,
+  userLogout: PropTypes.func.isRequired,
 };
 
 export default Menu;

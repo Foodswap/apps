@@ -6,16 +6,23 @@ const cors = require('cors');
 
 const app = express();
 
-app.use(cors());
+const corsOption = {
+   "origin": "*",
+  "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+  "preflightContinue": false,
+  "optionsSuccessStatus": 204,
+  "exposedHeaders": "Authorization"
+}
+
+app.use(cors(corsOption));
 
 const port = process.env.PORT || 3000;
 
-const router = require('./app/router');
-
 app.use(express.json());
 
-app.use('/v1', router);
+const router = require('./app/router');
 
+app.use('/v1', router);
 
 app.listen(port, _ => {
    console.log(`http://localhost:${port}`);

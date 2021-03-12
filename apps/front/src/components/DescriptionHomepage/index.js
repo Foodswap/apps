@@ -1,13 +1,13 @@
 import React from 'react';
 
 import './style.scss';
+import video from '../../assets/videos/home.mp4';
 
 const DescriptionHomepage = () => (
   <div className="welcome">
-
-    <div className="welcome-title">
-      <h2>Bienvenue sur FoodSwap</h2>
-    </div>
+    <video loop autoPlay muted>
+      <source src={video} type="video/mp4" />
+    </video>
 
     <div className="welcome-blockText">
       <div className="welcome-paragraph">

@@ -12,13 +12,13 @@ const SearchForm = ({handleInputChange, city, handleSearch, kitchen, dish, isSea
     <div className="search-form-div"> 
     <h2 className="search-form-title">Cherchez un bon petit plat</h2>
     
-      <p className="welcome-text"> Vous recherchez un(e) {dish}, de type de cuisine {kitchen}, à {city}</p>
+      <p className="test-text"> Vous recherchez un(e) {dish}, de type de cuisine {kitchen}, à {city}</p>
     
       <form className="search-form-form" onSubmit={handleSubmit}>
         <select name="dish" onChange={(evt) => handleSelectDish(evt.target.value, evt.target.name)}>
           <option value="">Type d'assiette</option>
           <option value="entree" name="entree">Entrée</option>
-          <option value="plats" name="plats">Plats</option>
+          <option value="plat" name="plat">Plat</option>
           <option value="dessert" name="dessert">Dessert</option>
         </select>
         <select name="kitchen" onChange={(evt) => handleSelectDish(evt.target.value, evt.target.name)}>

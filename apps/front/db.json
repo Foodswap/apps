@@ -2,7 +2,7 @@
   "dishes": [
     {
       "id": 1,
-      "picture": "https://lh3.google.com/u/0/d/1lll7XWtpAM_tWXcCuHgWfncuFULfwg10=w842-h770-iv1",
+      "file": "https://lh3.google.com/u/0/d/1lll7XWtpAM_tWXcCuHgWfncuFULfwg10=w842-h770-iv1",
       "name": "Buddha bowl",
       "description": "une basse riz.\n        Sur le dessus il y a du saumon, avocat, carotte, choux rouge",
       "ingredients": [
@@ -37,21 +37,26 @@
       ],
       "created_date": "12.03.2021",
       "portion": "1",
-      "city": "Marseille",
+      "city": "marseille",
       "online": true,
       "author": {
         "id": 8,
         "username": "Paulette"
       },
-      "category": {
-        "id": 1,
-        "type_kitchen": "asiatique",
-        "type_dish": "plat"
-      }
+      "categories": [
+        {
+          "type": "kitchen",
+          "name": "asiatique"
+        },
+        {
+          "type": "dish",
+          "name": "plat"
+        }
+      ]
     },
     {
       "id": 2,
-      "picture": "https://lh3.google.com/u/0/d/1BZu0wwMKsAsSwxuob8idG-RgMOpLUy9d=w275-h786-iv2",
+      "file": "https://lh3.google.com/u/0/d/1BZu0wwMKsAsSwxuob8idG-RgMOpLUy9d=w275-h786-iv2",
       "name": "Kimbap et bibimbap",
       "description": "une basse riz.',\n      ' Sur le dessus il y a du boeuf haché, épinard, carotte, oeuf",
       "ingredients": [
@@ -86,21 +91,26 @@
       ],
       "created_date": "12.03.2021",
       "portion": "3",
-      "city": "Bordeaux",
+      "city": "paris",
       "online": true,
       "author": {
         "id": 8,
         "username": "Paulette"
       },
-      "category": {
-        "id": 2,
-        "type_kitchen": "asiatique",
-        "type_dish": "plat"
-      }
+      "categories": [
+        {
+          "type": "kitchen",
+          "name": "asiatique"
+        },
+        {
+          "type": "dish",
+          "name": "plat"
+        }
+      ]
     },
     {
       "id": 3,
-      "picture": "https://lh3.google.com/u/0/d/1X167WvnTUO-8g7Yu5OpSY5tJNQrawiLi=w275-h786-iv1",
+      "file": "https://lh3.google.com/u/0/d/1X167WvnTUO-8g7Yu5OpSY5tJNQrawiLi=w275-h786-iv1",
       "name": "Number cake",
       "description": "une basse génoise, fouré d'une ganache monté chocolat blanc et fraise.\n      Sur le dessus il y a de la crème chantilly, macaron, fraise et fleures en sucre",
       "ingredients": [
@@ -141,18 +151,23 @@
         "id": 8,
         "username": "Paulette"
       },
-      "category": {
-        "id": 3,
-        "type_kitchen": "francaise",
-        "type_dish": "dessert"
-      }
+      "categories": [
+        {
+          "type": "kitchen",
+          "name": "asiatique"
+        },
+        {
+          "type": "dish",
+          "name": "plat"
+        }
+      ]
     },
     {
       "id": 4,
-      "picture": "https://lh3.google.com/u/0/d/17KI1SHK9GJYZkoesZ9KQmy4e6DLIXXnb=w275-h786-iv1",
+      "file": "https://lh3.google.com/u/0/d/17KI1SHK9GJYZkoesZ9KQmy4e6DLIXXnb=w275-h786-iv1",
       "name": "Nems",
       "description": " une basse feuille pour nems.\n       A l'intéreur on retrouve une farce porc haché, carotte, champignon noir et vermicelle",
-      "ingredientss": [
+      "ingredients": [
         {
           "id": 23,
           "name": "vermicelle"
@@ -190,15 +205,20 @@
         "id": 8,
         "username": "Paulette"
       },
-      "category": {
-        "id": 4,
-        "type_kitchen": "indien",
-        "type_dish": "plat"
-      }
+      "categories": [
+        {
+          "type": "kitchen",
+          "name": "asiatique"
+        },
+        {
+          "type": "dish",
+          "name": "plat"
+        }
+      ]
     },
     {
       "id": 5,
-      "picture": "https://lh3.google.com/u/0/d/1xYWT2_iv_KwkvON_b2r0M69HrT3BHSDB=w275-h786-iv1",
+      "file": "https://lh3.google.com/u/0/d/1xYWT2_iv_KwkvON_b2r0M69HrT3BHSDB=w275-h786-iv1",
       "name": "Soupe thai",
       "description": "une basse de nouille et un bouillon lait de coco curry rouge.\n       Sur le dessus on retrouve des raviolis frits, des crevettes, des champignons shiitake et oignon rouge",
       "ingredients": [
@@ -239,77 +259,369 @@
         "id": 8,
         "username": "Paulette"
       },
-      "category": {
-        "id": 5,
-        "type_kitchen": "asiatique",
-        "type_dish": "entrée"
-      }
+      "categories": [
+        {
+          "type": "kitchen",
+          "name": "francaise"
+        },
+        {
+          "type": "dish",
+          "name": "plat"
+        }
+      ]
+    },
+    {
+      "file": "https://img.icons8.com/carbon-copy/2x/meal.png",
+      "name": "sdf",
+      "description": "sdf",
+      "ingredients": [
+        {
+          "name": "sdf"
+        }
+      ],
+      "portion": "2",
+      "city": "sdf",
+      "author": {
+        "id": 2,
+        "username": "sdf"
+      },
+      "categories": [
+        {
+          "type": "kitchen",
+          "name": "orientale"
+        },
+        {
+          "type": "dish",
+          "name": "plat"
+        }
+      ],
+      "online": true,
+      "id": 6
+    },
+    {
+      "file": "https://img.icons8.com/carbon-copy/2x/meal.png",
+      "author": {
+        "accesToken": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImplYW5ldXN0YWNoZSIsImlhdCI6MTYxNTQ5OTU1Nn0.t-3wha_9BjtrzC-u8wOOLEFOuuB0sGq5yNHsTIWEg8M",
+        "id": 50
+      },
+      "name": "test",
+      "description": "ppp",
+      "ingredients": [
+        {
+          "value": 5,
+          "label": "graine de sésame"
+        },
+        {
+          "value": 26,
+          "label": "champignon noir"
+        }
+      ],
+      "portion": "1",
+      "city": "paris",
+      "categories": [
+        {
+          "type": "kitchen",
+          "name": "orientale"
+        },
+        {
+          "type": "dish",
+          "name": "entrée"
+        }
+      ],
+      "online": true,
+      "id": 7
+    },
+    {
+      "file": "https://img.icons8.com/carbon-copy/2x/meal.png",
+      "author": {
+        "id": 50,
+        "username": "jeaneustache"
+      },
+      "name": "avocado toast",
+      "description": "avocado toast",
+      "ingredients": [
+        {
+          "value": 3,
+          "label": "carotte"
+        },
+        {
+          "value": 4,
+          "label": "avocat"
+        }
+      ],
+      "portion": "1",
+      "city": "paname",
+      "categories": [
+        {
+          "type": "kitchen",
+          "name": "orientale"
+        },
+        {
+          "type": "dish",
+          "name": "entrée"
+        }
+      ],
+      "online": true,
+      "id": 8
+    },
+    {
+      "file": "https://img.icons8.com/carbon-copy/2x/meal.png",
+      "author": {
+        "id": 50,
+        "username": "jeaneustache"
+      },
+      "name": "ll",
+      "description": "p",
+      "ingredients": [
+        {
+          "value": 4,
+          "label": "avocat"
+        }
+      ],
+      "portion": "1",
+      "city": "paris",
+      "categories": [
+        {
+          "type": "kitchen",
+          "name": "asiatique"
+        },
+        {
+          "type": "dish",
+          "name": "dessert"
+        }
+      ],
+      "online": true,
+      "id": 9
+    },
+    {
+      "file": "https://img.icons8.com/carbon-copy/2x/meal.png",
+      "author": {
+        "id": "",
+        "username": ""
+      },
+      "name": "Burger",
+      "description": "burger vegan",
+      "ingredients": [
+        {
+          "value": 6,
+          "label": "choux rouge"
+        },
+        {
+          "value": 5,
+          "label": "graine de sésame"
+        },
+        {
+          "value": 1,
+          "label": "riz"
+        },
+        {
+          "value": 34,
+          "label": "lait de coco"
+        }
+      ],
+      "portion": "1",
+      "city": "paris",
+      "categories": [
+        {
+          "type": "kitchen",
+          "name": "francaise"
+        },
+        {
+          "type": "dish",
+          "name": "plat"
+        }
+      ],
+      "online": true,
+      "id": 10
+    },
+    {
+      "file": "https://img.icons8.com/carbon-copy/2x/meal.png",
+      "author": {
+        "id": "",
+        "username": ""
+      },
+      "name": "Curry coco",
+      "description": "curry coco",
+      "ingredients": [
+        {
+          "value": 1,
+          "label": "riz"
+        },
+        {
+          "value": 34,
+          "label": "lait de coco"
+        }
+      ],
+      "portion": "1",
+      "city": "paris",
+      "categories": [
+        {
+          "type": "kitchen",
+          "name": "asiatique"
+        },
+        {
+          "type": "dish",
+          "name": "plat"
+        }
+      ],
+      "online": true,
+      "id": 11
+    },
+    {
+      "file": "https://img.icons8.com/carbon-copy/2x/meal.png",
+      "author": {
+        "username": ""
+      },
+      "name": "burger",
+      "description": "burger boeuf",
+      "ingredients": [
+        {
+          "value": 1,
+          "label": "riz"
+        },
+        {
+          "value": 6,
+          "label": "choux rouge"
+        },
+        {
+          "value": 4,
+          "label": "avocat"
+        },
+        {
+          "value": 34,
+          "label": "lait de coco"
+        },
+        {
+          "value": 18,
+          "label": "crème liquide"
+        },
+        {
+          "value": 12,
+          "label": "épinard"
+        },
+        {
+          "value": 5,
+          "label": "graine de sésame"
+        },
+        {
+          "value": 11,
+          "label": "carotte"
+        },
+        {
+          "value": 13,
+          "label": "graine de sésame"
+        }
+      ],
+      "portion": "1",
+      "city": "paris",
+      "categories": [
+        {
+          "type": "kitchen",
+          "name": "orientale"
+        },
+        {
+          "type": "dish",
+          "name": "plat"
+        }
+      ],
+      "online": true,
+      "id": 12
+    },
+    {
+      "file": "https://img.icons8.com/carbon-copy/2x/meal.png",
+      "author": {
+        "id": 50,
+        "username": "jeaneustache"
+      },
+      "name": "test",
+      "description": "test",
+      "ingredients": [
+        {
+          "value": 4,
+          "label": "avocat"
+        }
+      ],
+      "portion": "1",
+      "city": "paris",
+      "categories": [
+        {
+          "type": "kitchen",
+          "name": "orientale"
+        },
+        {
+          "type": "dish",
+          "name": "entrée"
+        }
+      ],
+      "online": false,
+      "id": 13
     }
   ],
-  "categories": [
+  "category": [
     {
       "id": 1,
-      "type_kitchen": "asiatique",
-      "type_dish": "plat"
-    },
-    {
-      "id": 2,
-      "type_kitchen": "asiatique",
-      "type_dish": "plat"
-    },
-    {
-      "id": 3,
-      "type_kitchen": "francaise",
-      "type_dish": "dessert"
-    },
-    {
-      "id": 4,
-      "type_kitchen": "indien",
-      "type_dish": "plat"
-    },
-    {
-      "id": 5,
-      "type_kitchen": "asiatique",
-      "type_dish": "entrée"
-    }
-  ],
-  "kitchens": [
-    {
-      "id": 1,
-      "name": "francaise"
-    },
-    {
-      "id": 2,
-      "name": "italienne"
-    },
-    {
-      "id": 3,
+      "type": "kitchen",
       "name": "asiatique"
     },
     {
-      "id": 4,
+      "id": 2,
+      "type": "kitchen",
+      "name": "francaise"
+    },
+    {
+      "id": 3,
+      "type": "kitchen",
       "name": "orientale"
+    },
+    {
+      "id": 4,
+      "type": "kitchen",
+      "name": "indien"
+    },
+    {
+      "id": 5,
+      "type": "dish",
+      "name": "entrée"
+    },
+    {
+      "id": 6,
+      "type": "dish",
+      "name": "plat"
+    },
+    {
+      "id": 7,
+      "type": "dish",
+      "name": "dessert"
     }
   ],
-  "users": [
+  "author": [
     [
       {
+        "id": 3,
         "email": "test@test.fr",
         "password": "$2y$10$Tm1OVsYJO7pNmQv9u7HeoeorTt2BAiUDbRYIXiO4ihND9uOFZZpK6",
         "username": "cuistotDu93",
         "city": "Paris"
       },
       {
+        "id": 2,
         "email": "cookie@test.fr",
         "password": "$2y$10$Tm1OVsYJO7pNmQv9u7HeoeorTt2BAiUDbRYIXiO4ihND9uOFZZpK6",
         "username": "cookie",
         "city": "Lyon"
       },
       {
+        "id": 1,
         "email": "hello@test.fr",
         "password": "$2y$10$Tm1OVsYJO7pNmQv9u7HeoeorTt2BAiUDbRYIXiO4ihND9uOFZZpK6",
         "username": "hello",
         "city": "Paris"
+      },
+      {
+        "id": 8,
+        "email": "paulette@mail.fr",
+        "password": "mdp",
+        "username": "Paulette"
       }
     ]
   ],
@@ -453,6 +765,71 @@
     {
       "id": 36,
       "name": "oignon rouge"
+    }
+  ],
+  "propositions": [
+    {
+      "id": 20,
+      "status": 2,
+      "createdAt": "2021-03-10T14:56:28.000Z",
+      "asker": {
+        "user_username": "Paulette",
+        "user_id": 5,
+        "user_email": "test@test.fr",
+        "dish_id": 1,
+        "dish_name": "Buddha bowl",
+        "dish_picture": "https://lh3.google.com/u/0/d/1lll7XWtpAM_tWXcCuHgWfncuFULfwg10=w842-h770-iv1"
+      },
+      "receiver": {
+        "user_username": "Toto",
+        "user_id": 72,
+        "dish_id": 3,
+        "user_email": "test@test.fr",
+        "dish_name": "Number cake",
+        "dish_picture": "https://lh3.google.com/u/0/d/1X167WvnTUO-8g7Yu5OpSY5tJNQrawiLi=w275-h786-iv1"
+      }
+    },
+    {
+      "id": 30,
+      "status": 1,
+      "createdAt": "2021-03-13T14:56:28.000Z",
+      "asker": {
+        "user_username": "Toto",
+        "user_id": 72,
+        "user_email": "test@test.fr",
+        "dish_id": 3,
+        "dish_name": "Number cake",
+        "dish_picture": "https://lh3.google.com/u/0/d/1X167WvnTUO-8g7Yu5OpSY5tJNQrawiLi=w275-h786-iv1"
+      },
+      "receiver": {
+        "user_username": "Paulette",
+        "user_id": 8,
+        "user_email": "test@test.fr",
+        "dish_id": 1,
+        "dish_name": "Buddha bowl",
+        "dish_picture": "https://lh3.google.com/u/0/d/1lll7XWtpAM_tWXcCuHgWfncuFULfwg10=w842-h770-iv1"
+      }
+    },
+    {
+      "id": 40,
+      "status": 1,
+      "createdAt": "2021-03-23T14:56:28.000Z",
+      "asker": {
+        "user_username": "Paulette",
+        "user_id": 8,
+        "user_email": "test@test.fr",
+        "dish_id": 1,
+        "dish_name": "Buddha bowl",
+        "dish_picture": "https://lh3.google.com/u/0/d/1lll7XWtpAM_tWXcCuHgWfncuFULfwg10=w842-h770-iv1"
+      },
+      "receiver": {
+        "user_username": "Toto",
+        "user_id": 72,
+        "user_email": "test@test.fr",
+        "dish_id": 3,
+        "dish_name": "Number cake",
+        "dish_picture": "https://lh3.google.com/u/0/d/1X167WvnTUO-8g7Yu5OpSY5tJNQrawiLi=w275-h786-iv1"
+      }
     }
   ]
 }
