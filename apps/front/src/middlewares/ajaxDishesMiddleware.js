@@ -64,7 +64,7 @@ export default (store) => (next) => (action) => {
         });
     } break;
     // eslint-disable-next-line no-lone-blocks
-    // recuperer les 6 derniers plats
+    // get last 6 dishes 
     case GET_LIST_OF_DISHES: {
       axios({
         method: 'get',
