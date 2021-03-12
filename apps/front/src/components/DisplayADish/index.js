@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import SwapModal from '../SwapModal';
+import UseModal from '../UseModale';
 
 import './style.scss';
 
@@ -7,6 +9,7 @@ const DisplayADish = ({
   dish, dishSwap, dishId, getOneDish,
 }) => {
   useEffect(() => getOneDish(dishId), []);
+  const {isShowing, toggle} = UseModal();
 
   return (
     <div className="displayADish">
@@ -39,7 +42,11 @@ const DisplayADish = ({
               <p className="displayADish-description-text">{dish.description}</p>
             </div>
           </div>
-          <button type="button" className="displayADish-button" onClick={dishSwap}>Swap</button>
+          <button type="button" className="displayADish-button" onClick={toggle}>Swap</button>
+          <SwapModal
+          isShowing={isShowing}
+        hide={toggle}
+      />
         </div>
       )}
     </div>
