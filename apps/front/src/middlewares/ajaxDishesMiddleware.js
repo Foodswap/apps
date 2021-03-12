@@ -20,7 +20,9 @@ import {
   fetchIngredientsError,
   FETCH_INGREDIENTS,
   FETCH_TYPE_DISH,
-  fetchTypeDishSucces
+  fetchTypeDishSucces,
+  FETCH_TYPE_KITCHEN,
+  fetchTypeKitchenSucces
 } from '../actions/dishesForm';
 
 export default (store) => (next) => (action) => {
@@ -187,6 +189,20 @@ export default (store) => (next) => (action) => {
       .then ((res) => {
         console.log(res.data)
         const actionToDispatch = fetchTypeDishSucces(res.data);
+        return store.dispatch(actionToDispatch);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    };
+    case FETCH_TYPE_KITCHEN: {
+      axios({
+        method: 'get',
+        url: "http://localhost:3000/category?type=kitchen"
+      })
+      .then ((res) => {
+        console.log(res.data)
+        const actionToDispatch = fetchTypeKitchenSucces(res.data);
         return store.dispatch(actionToDispatch);
       })
       .catch((error) => {

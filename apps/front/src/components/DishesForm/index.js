@@ -29,12 +29,15 @@ const DishesForm = ({
   ingredientsData,
   handleMultiSelectChange,
   fetchTypeDish,
-  dishData
+  dishData,
+  kitchenData,
+  fetchTypeKitchen
 }) => {
 
   useEffect(() => {
     getIngredients();
     fetchTypeDish();
+    fetchTypeKitchen();
     console.log("ingredient data " + ingredientsData)
   }, [])
   ;
@@ -180,11 +183,12 @@ const DishesForm = ({
             onChange={(evt) => onSetCategorySelect(evt.target.value, evt.target.name)}
             className="meal-category">
             <option value="">Type de cuisine</option>
-            { dishData && (
-              dishData.map((dishObj) => {
-              <option value={dishObj.name} name={dishObj.name}>Francaise</option>
+            { kitchenData && (
+              kitchenData.map((kitchenObj) => {
+                return (
+                  <option value={kitchenObj.name} name={kitchenObj.name}>{kitchenObj.name}</option>
+                )
               })
-
             )}
           </select>
         </div>

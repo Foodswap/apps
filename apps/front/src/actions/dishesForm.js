@@ -101,3 +101,14 @@ export const fetchTypeDishSucces = (payload) => ({
   type: FETCH_TYPE_DISH_SUCCES,
   payload
 })
+
+export const FETCH_TYPE_KITCHEN = 'FETCH_TYPE_KITCHEN';
+export const fetchTypeKitchen = () => ({
+  type: FETCH_TYPE_DISH,
+})
+
+export const FETCH_TYPE_KITCHEN_SUCCES = 'FETCH_TYPE_KITCHEN_SUCCES';
+export const fetchTypeKitchenSucces = (payload) => ({
+  type: FETCH_TYPE_KITCHEN_SUCCES,
+  payload
+})
