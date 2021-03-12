@@ -2,6 +2,6 @@
 
 BEGIN;
 
-INSERT INTO ingredient ("name") VALUES ('sel'), ('poivre'), ('huile'), ('pommes de terre'), ('graisse de canard');
+INSERT INTO ingredient ("name") VALUES ('Sel'), ('Poivre'), ('Huile'), ('Pommes de terre'), ('Graisse de canard');
 
 COMMIT;

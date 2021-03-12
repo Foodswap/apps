@@ -13,7 +13,6 @@ import {
   handleLogoutSuccess,
 } from '../actions/user';
 
-// ! Pour le moment je test ici le login avec des données en durs, pas de reqûete axios
 export default (store) => (next) => (action) => {
   switch (action.type) {
     case SEND_LOGIN: {
@@ -21,7 +20,7 @@ export default (store) => (next) => (action) => {
 
       axios({
         method: 'post',
-        url: 'http://ec2-54-145-80-6.compute-1.amazonaws.com/v1/login',
+        url: `${process.env.API_URL}/login`,
         data: {
           email, password,
         },
@@ -36,7 +35,7 @@ export default (store) => (next) => (action) => {
           localStorage.setItem('token', token);
           localStorage.setItem('user', JSON.stringify(user));
 
-          const actionToDispatch = loginSucces(user);
+          const actionToDispatch = loginSucces({ user, token });
           store.dispatch(actionToDispatch);
         })
         .catch((error) => {
@@ -80,7 +79,7 @@ export default (store) => (next) => (action) => {
       // s'il le mail n'existe pas je lance la req post
       axios({
         method: 'post',
-        url: 'http://ec2-54-145-80-6.compute-1.amazonaws.com/v1/signup',
+        url: `${process.env.API_URL}/signup`,
         data: userObj,
       })
         .then((res) => {
@@ -111,6 +110,11 @@ export default (store) => (next) => (action) => {
 
       const actionToDispatch = handleLogoutSuccess();
       store.dispatch(actionToDispatch);
+
+      setTimeout(() => {
+        // eslint-disable-next-line no-restricted-globals
+        location.href = '/';
+      }, 100);
     } break;
     default:
       return next(action);

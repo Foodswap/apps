@@ -1,3 +1,4 @@
+const { response, request } = require('express');
 const {
     Meal
 } = require('../models');
@@ -14,8 +15,8 @@ const mealController = {
 
             mealToCreate.picture_path = request.file.filename
             const createdMeal = await Meal.create(mealToCreate)
-            await createdMeal.addIngredients(JSON.parse(mealToCreate.ingredients)) 
-            await createdMeal.addCategories(JSON.parse(mealToCreate.categories))
+            await createdMeal.addIngredients(mealToCreate.ingredients.split(','));
+            await createdMeal.addCategories(mealToCreate.categories.split(','));
         
             Meal.findByPk(Number(createdMeal.id), {
                 attributes: {
@@ -70,6 +71,16 @@ const mealController = {
         } catch (err) {
             console.trace(err);
             response.status(404).json("Plat non trouvé");
+        }
+    }, 
+
+    getSixMeals: async (request, response) => {
+        try {
+            const sixMeals = await Meal.findAll({orderBy:'created_date' ,limit:6});
+            response.status(200).json(sixMeals);
+        } catch (error) {
+            console.trace(error);
+            response.status(404).json("Couldn't find six or less meals.")
         }
     }
 };

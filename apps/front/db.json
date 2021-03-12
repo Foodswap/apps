@@ -815,7 +815,7 @@
   "propositions": [
     {
       "id": 20,
-      "status": 1,
+      "status": 2,
       "createdAt": "2021-03-10T14:56:28.000Z",
       "asker": {
         "user_username": "Paulette",
@@ -857,7 +857,7 @@
     },
     {
       "id": 40,
-      "status": 2,
+      "status": 1,
       "createdAt": "2021-03-23T14:56:28.000Z",
       "asker": {
         "user_username": "Paulette",
