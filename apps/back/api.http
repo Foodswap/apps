@@ -61,6 +61,10 @@ Content-Type: application/json
    "password" : "jenesuispasencorehaché"
 } 
 
+### Local - route pour récupérer les swap
+GEt {{baseUrl}}/swaps/49
+Content-Type: application/json
+
 
 ### AWS - route pour tester l'inscription
 POST http://ec2-54-145-80-6.compute-1.amazonaws.com/v1/signup
