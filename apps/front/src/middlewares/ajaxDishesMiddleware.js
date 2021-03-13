@@ -22,7 +22,9 @@ import {
   FETCH_TYPE_DISH,
   fetchTypeDishSucces,
   FETCH_TYPE_KITCHEN,
-  fetchTypeKitchenSucces
+  fetchTypeKitchenSucces,
+  FETCH_MY_DISHES_SWAP,
+  fetchMyDishesSwapSucces,
 } from '../actions/dishesForm';
 
 export default (store) => (next) => (action) => {
@@ -207,6 +209,24 @@ export default (store) => (next) => (action) => {
       })
       .catch((error) => {
         console.log(error);
+      });
+    }
+    break;
+    case FETCH_MY_DISHES_SWAP: {
+      axios({
+        method: 'get',
+        url: `http://localhost:3000/dishes?author.id=${authorId}`
+      })
+      .then ((res) => {
+        console.log(res.data)
+        const actionToDispatch = fetchMyDishesSwapSucces(res.data);
+        return store.dispatch(actionToDispatch);
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+      .finally(() => {
+        console.log('fetch dishes swap done');
       });
     }
     default:

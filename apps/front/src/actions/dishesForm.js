@@ -112,3 +112,20 @@ export const fetchTypeKitchenSucces = (payload) => ({
   type: FETCH_TYPE_KITCHEN_SUCCES,
   payload
 })
+
+// action pour recuperer le / les plats dans le SWAP
+
+export const FETCH_MY_DISHES_SWAP = 'FETCH_MY_DISHES_SWAP';
+export const fetchMyDishesSwap = (payload) => ({
+  type: FETCH_MY_DISHES_SWAP,
+  payloead,
+})
+
+// Action en cas de succes de recup du form
+
+export const FETCH_MY_DISHES_SWAP_SUCCES = 'FETCH_MY_DISHES_SWAP_SUCCES';
+export const fetchMyDishesSwapSucces = (payload) => ({
+  type: FETCH_MY_DISHES_SWAP_SUCCES,
+  payload,
+})
+

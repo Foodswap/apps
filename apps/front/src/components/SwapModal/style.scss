@@ -1,56 +1,69 @@
 // style des cartes dans la modale du swap
 
 
-.last-dishes {
-  margin: 3rem auto;
-  border-radius: 5px;
-  padding: 1rem;
-  width: 80%;
-  background-color: #3a3635;
+.App {
+  text-align: center;
+  padding-top: 2rem;
 }
 
-.last-dishes-title {
-  font-size: 2em;
-  padding: 1rem;
-  color: white;
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1040;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000;
+  opacity: .5;
 }
 
-.last-dishes-cards {
-  display: flex;
-  flex-wrap: wrap;
-  margin-left: 250px;
+.modal-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1050;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  outline: 0;
 }
 
-.last-dishes-card {
-  line-height: 1.5;
-  border-radius: 10px;
-  width: 25%;
-  margin: 1rem;
+.modal {
+  z-index: 100;
+  background: white;
+  position: relative;
+  margin: 1.75rem auto;
+  border-radius: 3px;
+  max-width: 500px;
   padding: 2rem;
-  background-color: white;
-  transition: box-shadow 0.1s linear;
 }
 
-.last-dishes-card:hover {
-  box-shadow: 0px 0px 0px 5px #f3a488;
+.modal-header {
+  display: flex;
+  justify-content: flex-end;
 }
 
-.last-dishes-card-img {
-  width: auto;
-  height: 150px;
+.modal-close-button {
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1;
+  color: #000;
+  opacity: .3;
+  cursor: pointer;
+  border: none;
 }
 
-.last-dishes-card-name {
-  margin: 0.5em 0;
-  font-size: 1.2em;
-  color: orangered;
+button {
+  font-size: .9rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 3px;
+  padding: .3rem 1rem;
+  margin-left: .5rem;
 }
 
-.last-dishes-card-seemore {
-  display: block;
-  background-color: #7D5C50;
-  border-radius: 10px;
-  color: white;
-  padding: 0.7rem;
-  margin-top: 1rem;
+.button-default {
+  background: #247BA0;
+  color: #fff;
 }
