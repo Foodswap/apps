@@ -22,7 +22,7 @@ import {
   FETCH_TYPE_DISH,
   fetchTypeDishSucces,
   FETCH_TYPE_KITCHEN,
-  fetchTypeKitchenSucces
+  fetchTypeKitchenSucces,
 } from '../actions/dishesForm';
 
 export default (store) => (next) => (action) => {
@@ -49,7 +49,7 @@ export default (store) => (next) => (action) => {
     case ONE_DISH_SELECT: {
       axios({
         method: 'get',
-        url: `http://localhost:3000/dishes/${action.payload}`,
+        url: `${process.env.API_URL}/dishes/${action.payload}`,
       })
         .then((res) => {
           console.log(`response ok : ${res}`);
@@ -64,10 +64,11 @@ export default (store) => (next) => (action) => {
         });
     } break;
     // eslint-disable-next-line no-lone-blocks
+    // get last 6 dishes 
     case GET_LIST_OF_DISHES: {
       axios({
         method: 'get',
-        url: 'http://localhost:3000/dishes',
+        url: `${process.env.API_URL}/sixmeals`,
       })
         .then((res) => {
           console.log(`response ok : ${res}`);
@@ -85,9 +86,10 @@ export default (store) => (next) => (action) => {
       const { userDishes } = store.getState().recipes;
       const actionToDispatch = dishExchange(userDishes);
       return store.dispatch(actionToDispatch);
-    } 
-    case SEND_FORM_RECIPE_UP:{
-      const { picture,
+    }
+    case SEND_FORM_RECIPE_UP: {
+      const {
+        picture,
         name,
         description,
         ingredients,
@@ -96,11 +98,11 @@ export default (store) => (next) => (action) => {
         author,
         dish,
         kitchen,
-        online
+        online,
       } = store.getState().dishes;
 
       const { infos, pseudonym } = store.getState().user;
-      console.log("send form middleware");
+      console.log('send form middleware');
 
       console.log(picture,
         name,
@@ -113,104 +115,97 @@ export default (store) => (next) => (action) => {
         kitchen,
         online
         );
+      
+      const formData = new FormData();
+      formData.append("picture", picture);
+      formData.append("author_id", infos.id);
+      formData.append("name", name);
+      formData.append("description", description);
+      formData.append("ingredients", ingredients.map(ingredient => ingredient.value).join(','));
+      formData.append("portion", portion);
+      formData.append("city", city);
+      formData.append("categories", `${kitchen},${dish}`);
+      formData.append("online", online);
 
       axios({
         method: 'post',
-        // url: 'http://ec2-54-145-80-6.compute-1.amazonaws.com/v1/meals',
-        url: 'http://localhost:3000/dishes',
-        data: {
-          file: picture,
-          author: {
-            id: infos.id,
-            username: pseudonym,
-          },
-          name,
-          description,
-          ingredients,
-          portion,
-          city,
-          categories: [
-            {
-              type: "kitchen",
-              name: kitchen,
-            }, 
-            {
-              type: "dish",
-              name: dish,
-            }
-          ],
-          online,
-        },
-        // headers: {
-        //   'Content-Type': 'multipart/form-data'
-        // }
+        url: `${process.env.API_URL}/meals`,
+        data: formData,
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
       })
-      .then((res) => {
-        console.log(`response ok : ${res}`);
-        const actionToDispatch = sendFormRecipeUpSuccess();
-        store.dispatch(actionToDispatch);
-        setTimeout(() => {
-          location.href="/v1/mydishes";
-        }, 500);
-        console.log(res.data);
-      })
-      .catch((error) => {
-        console.log(`${error} erreur au post du formulaire`);
-        const actionToDispatch = sendFormRecipeUpError();
-        store.dispatch(actionToDispatch);
-      })
-      .finally(() => {
-        console.log('post form done');
-      });
+        .then((res) => {
+          console.log(`response ok : ${res}`);
+          const actionToDispatch = sendFormRecipeUpSuccess();
+          store.dispatch(actionToDispatch);
+          setTimeout(() => {
+            // eslint-disable-next-line no-restricted-globals
+            location.href = '/v1/mydishes';
+          }, 500);
+          console.log(res.data);
+        })
+        .catch((error) => {
+          console.log(`${error} erreur au post du formulaire`);
+          const actionToDispatch = sendFormRecipeUpError();
+          store.dispatch(actionToDispatch);
+        })
+        .finally(() => {
+          console.log('post form done');
+        });
     }
-    break;
+      break;
+    // eslint-disable-next-line no-lone-blocks
     case FETCH_INGREDIENTS: {
       axios({
         method: 'get',
-        url: `http://localhost:3000/ingredients`,
+        url: `${process.env.API_URL}/ingredients`,
       })
-      .then((res) => {
+        .then((res) => {
         // console.log("ok send search ingredients " + res.data);
         // console.dir(res.data);
-        const actionToDispatch = fetchIngredientsSucces(res.data);
-        return store.dispatch(actionToDispatch);
-      })
-      .catch((error) => {
-        console.log(error);
-        const actionToDispatch = fetchIngredientsError();
-        return store.dispatch(actionToDispatch);
-      });
-    }
+          const actionToDispatch = fetchIngredientsSucces(res.data);
+          return store.dispatch(actionToDispatch);
+        })
+        .catch((error) => {
+          console.log(error);
+          const actionToDispatch = fetchIngredientsError();
+          return store.dispatch(actionToDispatch);
+        });
+    } break;
+    // eslint-disable-next-line no-lone-blocks
     case FETCH_TYPE_DISH: {
       axios({
         method: 'get',
-        url: "http://localhost:3000/category?type=dish"
+        url : `${process.env.API_URL}/categories/dish`,
       })
       .then ((res) => {
-        console.log(res.data)
         const actionToDispatch = fetchTypeDishSucces(res.data);
         return store.dispatch(actionToDispatch);
       })
-      .catch((error) => {
-        console.log(error);
-      });
-    };
+        .then((res) => {
+          const actionToDispatch = fetchTypeDishSucces(res.data);
+          return store.dispatch(actionToDispatch);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } break;
+    // eslint-disable-next-line no-lone-blocks
     case FETCH_TYPE_KITCHEN: {
       axios({
         method: 'get',
-        url: "http://localhost:3000/category?type=kitchen"
+        url: `${process.env.API_URL}/categories/kitchen`,
       })
-      .then ((res) => {
-        console.log(res.data)
-        const actionToDispatch = fetchTypeKitchenSucces(res.data);
-        return store.dispatch(actionToDispatch);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    }
+        .then((res) => {
+          const actionToDispatch = fetchTypeKitchenSucces(res.data);
+          return store.dispatch(actionToDispatch);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } break;
     default:
       return next(action);
   }
 };
-

@@ -13,9 +13,9 @@ const mealController = {
 
             mealToCreate.picture_path = request.file.filename
             const createdMeal = await Meal.create(mealToCreate)
-            await createdMeal.addIngredients(JSON.parse(mealToCreate.ingredients))
-            await createdMeal.addCategories(JSON.parse(mealToCreate.categories))
-
+            await createdMeal.addIngredients(mealToCreate.ingredients.split(','));
+            await createdMeal.addCategories(mealToCreate.categories.split(','));
+        
             Meal.findByPk(Number(createdMeal.id), {
                 attributes: {
                     exclude: ['picture_path']

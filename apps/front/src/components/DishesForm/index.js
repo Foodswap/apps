@@ -63,6 +63,7 @@ const DishesForm = ({
   <div className="meal-page">
   { ingredientsData && (
      ingredientsData.map((ingredientObj) => {
+       // console.log("ing id" +ingredientObj.id);
        options.push({
         value: ingredientObj.id, label: ingredientObj.name
       });
@@ -172,7 +173,7 @@ const DishesForm = ({
             { dishData && (
               dishData.map((dishObj) => {
                 return (
-                  <option value={dishObj.name} name={dishObj.name}>{dishObj.name}</option>
+                  <option value={dishObj.id} name={dishObj.name}>{dishObj.name}</option>
                 )
               }
               ))
@@ -186,7 +187,7 @@ const DishesForm = ({
             { kitchenData && (
               kitchenData.map((kitchenObj) => {
                 return (
-                  <option value={kitchenObj.name} name={kitchenObj.name}>{kitchenObj.name}</option>
+                  <option value={kitchenObj.id} name={kitchenObj.name}>{kitchenObj.name}</option>
                 )
               })
             )}
@@ -212,7 +213,7 @@ const DishesForm = ({
 };
 DishesForm.propTypes = {
   
-  picture: PropTypes.string.isRequired,
+  // picture: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   // ingredients: PropTypes.string.isRequired,

@@ -44,7 +44,7 @@ const Menu = ({
           Suivi d'échange
         </NavLink>
 
-        <NavLink exact className="menu-link" to="/v1/user/:id">
+        <NavLink exact className="menu-link" to="/v1/my-information">
           Mes informations
         </NavLink>
         <button className="logout-button" type="button" onClick={userLogout}> Se déconnecter </button>
