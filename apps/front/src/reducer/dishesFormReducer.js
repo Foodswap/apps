@@ -12,7 +12,8 @@ import {
   HANDLE_MULTI_SELECT,
   SET_INGREDIENT,
   FETCH_TYPE_DISH_SUCCES,
-  FETCH_TYPE_KITCHEN_SUCCES
+  FETCH_TYPE_KITCHEN_SUCCES,
+  FETCH_MY_DISHES_SWAP_SUCCES,
 } from '../actions/dishesForm';
 
 // export const initialState = {};
@@ -35,6 +36,7 @@ const initialState = {
   ingredientsData: null,
   dishData: null,
   kitchenData: null,
+  myDishesOnline: null,
   // imgIcon: 'https://img.icons8.com/carbon-copy/2x/meal.png',
   
 };
@@ -106,6 +108,14 @@ export default (state = initialState, action = {}) => {
         ...state,
         kitchenData: action.payload,
       }
+      // En cas de success, je recupere mes props dont j'ai besoin
+
+    case FETCH_MY_DISHES_SWAP_SUCCES:
+      return {
+        ...state,
+        myDishesOnline:action.payload,
+          
+        }
 
     default:
       return state;

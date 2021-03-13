@@ -118,7 +118,7 @@ export const fetchTypeKitchenSucces = (payload) => ({
 export const FETCH_MY_DISHES_SWAP = 'FETCH_MY_DISHES_SWAP';
 export const fetchMyDishesSwap = (payload) => ({
   type: FETCH_MY_DISHES_SWAP,
-  payloead,
+  payload,
 })
 
 // Action en cas de succes de recup du form

@@ -213,9 +213,12 @@ export default (store) => (next) => (action) => {
     }
     break;
     case FETCH_MY_DISHES_SWAP: {
+      const { picture, name } = store.getState().dishes;
+      const { infos, pseudonym } = store.getState().user;
       axios({
         method: 'get',
-        url: `http://localhost:3000/dishes?author.id=${authorId}`
+        url: `http://localhost:3000/dishes?author.id=${infos.id}/online=true`,
+       
       })
       .then ((res) => {
         console.log(res.data)

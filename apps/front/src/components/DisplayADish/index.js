@@ -6,9 +6,10 @@ import UseModal from '../UseModale';
 import './style.scss';
 
 const DisplayADish = ({
-  dish, dishSwap, dishId, getOneDish,
+  dish, dishSwap, dishId, getOneDish, fetchMyDishesSwap
 }) => {
   useEffect(() => getOneDish(dishId), []);
+  // useEffect(() => fetchMyDishesSwap(author.id), []);
   const {isShowing, toggle} = UseModal();
 
   return (
@@ -43,6 +44,8 @@ const DisplayADish = ({
             </div>
           </div>
           <button type="button" className="displayADish-button" onClick={toggle}>Swap</button>
+          {/* <button type="button" className="displayADish-button" onClick={(event) => { toggle(event); fetchMyDishesSwap(event);}}>Swap</button> */}
+          
           <SwapModal
           isShowing={isShowing}
         hide={toggle}
@@ -70,6 +73,7 @@ DisplayADish.propTypes = {
   dishSwap: PropTypes.func.isRequired,
   dishId: PropTypes.string.isRequired,
   getOneDish: PropTypes.func.isRequired,
+  // fetchMyDishesSwap: PropTypes.func.isRequired,
 };
 
 DisplayADish.defaultProps = {

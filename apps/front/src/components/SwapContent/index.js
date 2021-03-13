@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 // import { Link } from 'react-router-dom';
 import './styles.scss';
 
-const SwapContent = ({ dishes, getListDishes }) => {
-  useEffect(() => getListDishes(), []);
+const SwapContent = ({ dishes, fetchMyDishesSwap }) => {
+  useEffect(() => fetchMyDishesSwap(), []);
 
   return (
     <div className="last-dishesxx">
@@ -49,7 +49,7 @@ SwapContent.propTypes = {
       }),
     }),
   ),
-  getListDishes: PropTypes.func.isRequired,
+  fetchMyDishesSwap: PropTypes.func.isRequired,
 };
 
 SwapContent.defaultProps = {

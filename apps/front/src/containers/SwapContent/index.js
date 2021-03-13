@@ -1,15 +1,15 @@
 import { connect } from 'react-redux';
 import SwapContent from '../../components/SwapContent';
 
-import { getListOfDishes } from '../../actions/dishes';
+import { fetchMyDishesSwap } from '../../actions/dishesForm';
 
 const mapStateToProps = (state) => ({
-  dishes: state.recipes.lastDishes,
+  dishes: state.recipes.myDishesOnline,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  getListDishes: () => {
-    const action = getListOfDishes();
+  fetchMyDishesSwap: () => {
+    const action = fetchMyDishesSwap();
     dispatch(action);
   },
 });
