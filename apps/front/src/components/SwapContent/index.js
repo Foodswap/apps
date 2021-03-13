@@ -1,29 +1,29 @@
 import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import './styles.scss';
 
 const SwapContent = ({ dishes, getListDishes }) => {
   useEffect(() => getListDishes(), []);
 
   return (
-    <div className="last-dishes">
-      <h2 className="last-dishes-title">Les derniers plats ajoutés</h2>
+    <div className="last-dishesxx">
+      <h2 className="last-dishes-titlexx">Selectionnez un plat parmis votre liste</h2>
 
-      <div className="last-dishes-cards">
+      <div className="last-dishes-cardsxx">
         { dishes && (
           dishes.map((dish) => {
             const linkUrl = `/v1/dish/${dish.id}`;
 
             return (
-              <div className="last-dishes-card" key={dish.id}>
-                <img className="last-dishes-card-img" src={dish.picture} alt="" />
-                <h3 className="last-dishes-card-name">{dish.name}</h3>
-                <p className="last-dishes-card-potion">{dish.portion} part(s)</p>
-                <p className="last-dishes-card-author"> Fait par {dish.author.pseudonym}</p>
-                <p className="last-dishes-card-city">{dish.city}</p>
-                <Link to={linkUrl} className="last-dishes-card-seemore">Voir plus</Link>
+              <div className="last-dishes-cardxx" key={dish.id}>
+                <img className="last-dishes-card-imgxx" src={dish.picture} alt="" />
+                <h3 className="last-dishes-card-namexx">{dish.name}</h3>
+                {/* <p className="last-dishes-card-potionxx">{dish.portion} part(s)</p>
+                <p className="last-dishes-card-authorxx"> Fait par {dish.author.pseudonym}</p>
+                <p className="last-dishes-card-cityxx">{dish.city}</p> */}
+                {/* <Link to={linkUrl} className="last-dishes-card-seemorexx">Voir plus</Link> */}
               </div>
             );
           })

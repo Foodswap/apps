@@ -1,24 +1,28 @@
-.last-dishes {
+.last-dishesxx {
+  // display: flex;
   margin: 3rem auto;
   border-radius: 5px;
   padding: 1rem;
-  width: 80%;
+  width: 90%;
+  height:auto;
   background-color: #3a3635;
 }
 
-.last-dishes-title {
+.last-dishes-titlexx {
+  text-align: center;
   font-size: 2em;
   padding: 1rem;
   color: white;
 }
 
-.last-dishes-cards {
+.last-dishes-cardsxx {
   display: flex;
   flex-wrap: wrap;
-  margin-left: 250px;
+  margin: auto;
+  justify-content: space-around;
 }
 
-.last-dishes-card {
+.last-dishes-cardxx {
   line-height: 1.5;
   border-radius: 10px;
   width: 25%;
@@ -28,22 +32,25 @@
   transition: box-shadow 0.1s linear;
 }
 
-.last-dishes-card:hover {
+.last-dishes-cardxx:hover {
   box-shadow: 0px 0px 0px 5px #f3a488;
 }
 
-.last-dishes-card-img {
+.last-dishes-card-imgxx {
+  
   width: auto;
   height: 150px;
+  border: solid 1px grey;
 }
 
-.last-dishes-card-name {
+.last-dishes-card-namexx {
   margin: 0.5em 0;
   font-size: 1.2em;
   color: orangered;
+  text-align: center;
 }
 
-.last-dishes-card-seemore {
+.last-dishes-card-seemorexx {
   display: block;
   background-color: #7D5C50;
   border-radius: 10px;
