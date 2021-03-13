@@ -50,7 +50,7 @@ export default (store) => (next) => (action) => {
     case ONE_DISH_SELECT: {
       axios({
         method: 'get',
-        url: `${process.env.API_URL}/dishes/${action.payload}`,
+        url: `${process.env.API_URL}/meals/${action.payload}`,
       })
         .then((res) => {
           console.log(`response ok : ${res}`);
@@ -89,6 +89,7 @@ export default (store) => (next) => (action) => {
       return store.dispatch(actionToDispatch);
     };
     case FETCH_RESULTS: {
+      
       axios({
         method: 'get',
         url: `http://localhost:3000/dishes?kitchenType.name=${action.payload.kitchenParam.toLowerCase()}&dishType.name=${action.payload.dishParam.toLowerCase()}&city=${action.payload.cityParam.toLowerCase()}`,

@@ -45,10 +45,12 @@
       },
       "categories": [
         {
+          "id": 1,
           "type": "kitchen",
           "name": "asiatique"
         },
         {
+          "id": 2,
           "type": "dish",
           "name": "plat"
         }
@@ -99,10 +101,12 @@
       },
       "categories": [
         {
+          "id": 1,
           "type": "kitchen",
           "name": "asiatique"
         },
         {
+          "id": 2,
           "type": "dish",
           "name": "plat"
         }
@@ -153,12 +157,14 @@
       },
       "categories": [
         {
+          "id": 3,
           "type": "kitchen",
-          "name": "asiatique"
+          "name": "orientale"
         },
         {
+          "id": 5,
           "type": "dish",
-          "name": "plat"
+          "name": "entree"
         }
       ]
     },
@@ -207,12 +213,14 @@
       },
       "categories": [
         {
+          "id": 1,
           "type": "kitchen",
           "name": "asiatique"
         },
         {
+          "id": 5,
           "type": "dish",
-          "name": "plat"
+          "name": "entree"
         }
       ]
     },
@@ -261,10 +269,12 @@
       },
       "categories": [
         {
+          "id": 6,
           "type": "kitchen",
           "name": "francaise"
         },
         {
+          "id": 2,
           "type": "dish",
           "name": "plat"
         }
@@ -287,10 +297,12 @@
       },
       "categories": [
         {
+          "id": 3,
           "type": "kitchen",
           "name": "orientale"
         },
         {
+          "id": 2,
           "type": "dish",
           "name": "plat"
         }
@@ -325,7 +337,7 @@
         },
         {
           "type": "dish",
-          "name": "entrée"
+          "name": "entree"
         }
       ],
       "online": true,
@@ -358,7 +370,7 @@
         },
         {
           "type": "dish",
-          "name": "entrée"
+          "name": "entree"
         }
       ],
       "online": true,
@@ -550,7 +562,7 @@
         },
         {
           "type": "dish",
-          "name": "entrée"
+          "name": "entree"
         }
       ],
       "online": false,
@@ -602,14 +614,14 @@
       "id": 14
     }
   ],
-  "category": [
+  "categories": [
     {
       "id": 1,
       "type": "kitchen",
       "name": "asiatique"
     },
     {
-      "id": 2,
+      "id": 8,
       "type": "kitchen",
       "name": "francaise"
     },
@@ -619,22 +631,22 @@
       "name": "orientale"
     },
     {
-      "id": 4,
+      "id": 9,
       "type": "kitchen",
       "name": "indien"
     },
     {
       "id": 5,
       "type": "dish",
-      "name": "entrée"
+      "name": "entree"
     },
     {
-      "id": 6,
+      "id": 2,
       "type": "dish",
       "name": "plat"
     },
     {
-      "id": 7,
+      "id": 10,
       "type": "dish",
       "name": "dessert"
     }
