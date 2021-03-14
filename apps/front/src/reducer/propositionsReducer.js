@@ -3,7 +3,8 @@ import {
   UPDATE_OF_EXCHANGE_LIST_ASKED,
   UPDATE_OF_EXCHANGE_LIST_RECEIVED,
   UPDATE_ACTIVE_TAB,
-  GET_ASKER_DISH_ID
+  GET_ASKER_DISH_ID,
+  SEND_PROPOSITION_SUCCES
 } from '../actions/exchangeTracking';
 
 const initialState = {
@@ -13,6 +14,7 @@ const initialState = {
   myDishesOnline: null,
   askerDishId: null,
   isSelected: false,
+  succesPropositionMsg: ""
 };
 
 export default (state = initialState, action = {}) => {
@@ -38,6 +40,10 @@ export default (state = initialState, action = {}) => {
       ...state,
       askerDishId: action.payload,
       isSelected: true,
+    }
+    case SEND_PROPOSITION_SUCCES: return {
+      ...state,
+      succesPropositionMsg: "Votre proposition à bien été envoyée !"
     }
     default:
       return state;

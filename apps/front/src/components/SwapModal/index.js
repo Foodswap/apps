@@ -25,13 +25,13 @@ const SwapModal = ({ isShowing, hide }) => isShowing ? ReactDOM.createPortal(
 
      <SwapContent />
 
-        <div className="modal-button-container">
+        {/* <div className="modal-button-container">
         <button
         type="button"
         className="modal-send-swap-button">
           Envoyer l'échange
         </button>
-        </div>
+        </div> */}
       </div>
     </div>
 

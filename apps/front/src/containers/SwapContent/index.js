@@ -2,12 +2,13 @@ import { connect } from 'react-redux';
 import SwapContent from '../../components/SwapContent';
 
 import { fetchMyDishesSwap } from '../../actions/dishesForm';
-import { getAskerDishId } from '../../actions/exchangeTracking';
+import { getAskerDishId, sendProposition } from '../../actions/exchangeTracking';
 
 const mapStateToProps = (state) => ({
   dishes: state.propositions.myDishesOnline,
   userLogged: state.user.infos.id,
-  isSelected: state.propositions.isSelected
+  isSelected: state.propositions.isSelected,
+  succesPropositionMsg: state.propositions.succesPropositionMsg,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -17,6 +18,10 @@ const mapDispatchToProps = (dispatch) => ({
   },
   getAskerDishId: (id) => {
     const action = getAskerDishId(id);
+    dispatch(action);
+  },
+  sendProposition: () => {
+    const action = sendProposition();
     dispatch(action);
   }
 });

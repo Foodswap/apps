@@ -4,15 +4,16 @@ import PropTypes from 'prop-types';
 // import { Link } from 'react-router-dom';
 import './styles.scss';
 
-const SwapContent = ({ dishes, fetchMyDishesSwap, userLogged, getAskerDishId, isSelected }) => {
+const SwapContent = ({ dishes, fetchMyDishesSwap, userLogged, getAskerDishId, isSelected, sendProposition, succesPropositionMsg }) => {
   useEffect(() => fetchMyDishesSwap(), []);
   const styleSelected = isSelected ? "last-dishes-cardsxx-selected" : "last-dishes-cardsxx";
 
   return (
+
     <div className="last-dishesxx">
+    <p>{succesPropositionMsg}</p>
       { !userLogged && (
         <p>Vous devez vous connecter pour proposer un échange</p>
-
       )}
     { userLogged && (
       <div>
@@ -40,6 +41,17 @@ const SwapContent = ({ dishes, fetchMyDishesSwap, userLogged, getAskerDishId, is
         { !dishes && (
           <p>Vous n'avez pas de plats à proposer :`(` </p>
         )}
+        <div className="modal-button-container">
+        <button
+        type="button"
+        className="modal-send-swap-button"
+        onSubmit={(evt) => {
+          evt.preventDefault();
+          sendProposition();
+        }}>
+          Envoyer l'échange
+        </button>
+        </div>
       </div>
     )}
     </div>
