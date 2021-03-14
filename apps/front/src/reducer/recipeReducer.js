@@ -5,6 +5,7 @@ import {
   UPDATE_SELECTED_DISH,
   UPDATE_LIST_OF_DISHES,
   DISH_EXCHANGE,
+  UPDATE_ALL_DISHES_FROM_A_USER,
 } from '../actions/dishes';
 
 const initialState = {
@@ -39,6 +40,10 @@ export default (state = initialState, action = {}) => {
     };
     case DISH_EXCHANGE: return {
       ...state,
+    };
+    case UPDATE_ALL_DISHES_FROM_A_USER: return {
+      ...state,
+      userDishes: action.payload,
     };
 
     default:

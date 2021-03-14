@@ -1,27 +1,30 @@
+/* eslint-disable no-lone-blocks */
 import axios from 'axios';
 
 import {
   DELETE_ONE_DISH,
+  ONE_DISH_SELECT,
+  DISH_EXCHANGE,
+  GET_LIST_OF_DISHES,
+  GET_ALL_DISHES_FROM_A_USER,
   deleteOneDishSuccess,
   deleteOneDishError,
   updateSElectedDish,
-  ONE_DISH_SELECT,
-  DISH_EXCHANGE,
-  dishExchange,
-  GET_LIST_OF_DISHES,
   updateListOfDishes,
+  dishExchange,
+  updateAllDishesFromAUser,
 } from '../actions/dishes';
 
 import {
   SEND_FORM_RECIPE_UP,
+  FETCH_INGREDIENTS,
+  FETCH_TYPE_KITCHEN,
+  FETCH_TYPE_DISH,
   sendFormRecipeUpSuccess,
   sendFormRecipeUpError,
   fetchIngredientsSucces,
   fetchIngredientsError,
-  FETCH_INGREDIENTS,
-  FETCH_TYPE_DISH,
   fetchTypeDishSucces,
-  FETCH_TYPE_KITCHEN,
   fetchTypeKitchenSucces,
 } from '../actions/dishesForm';
 
@@ -207,6 +210,21 @@ export default (store) => (next) => (action) => {
         .then((res) => {
           console.log(res.data);
           const actionToDispatch = fetchTypeKitchenSucces(res.data);
+          return store.dispatch(actionToDispatch);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } break;
+    case GET_ALL_DISHES_FROM_A_USER: {
+      axios({
+        method: 'get',
+        url: `${process.env.API_URL}/meals/author/${action.payload}`,
+      })
+        .then((res) => {
+          console.log(action.payload);
+          console.log(res.data);
+          const actionToDispatch = updateAllDishesFromAUser(res.data);
           return store.dispatch(actionToDispatch);
         })
         .catch((error) => {

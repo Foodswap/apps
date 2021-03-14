@@ -72,6 +72,7 @@ export default (state = initialState, action = {}) => {
         isLoginOpen: false,
         infos: {
           token: action.payload.token,
+          id: action.payload.user.id,
         },
       };
     case LOGIN_ERROR:
