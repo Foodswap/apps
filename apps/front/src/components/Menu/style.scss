@@ -1,21 +1,31 @@
+@import url(https://fonts.googleapis.com/css?family=Gudea:400,700);
 .menu {
   background-color: #262835;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   height: 6vh;
   align-items: center;
   color: white;
   padding: 3em 1.8rem;
-  font-weight: bold;
   box-shadow: #f8a587a9 0.5px 3px 3px 2px;
-  vertical-align: text-bottom;
+  position: relative;
 
+  &-links {
+    position: absolute;
+    bottom: 15px;
+    left: 25%;
+  }
   &-link {
     font-size: 1.3rem;
     padding: 0.5rem;
     color: rgb(247, 243, 243);
+    margin-right: 5em;
+    font-family: 'Gudea', sans-serif;
+    letter-spacing: 0.1em;
+
   }
   &-link:hover {
     color: #f1bdb0;
+    padding-bottom: 1em;
   }
 }

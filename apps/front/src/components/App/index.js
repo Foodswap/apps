@@ -36,7 +36,7 @@ import dishes from '../../../dataDishes';
  */
 const App = () => (
   <div className="app">
-    <AppHeader />
+    {/* <AppHeader /> */}
     <Menu />
 
     <Route exact path="/v1/my-information" component={MyInformation} />
