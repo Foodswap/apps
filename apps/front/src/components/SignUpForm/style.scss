@@ -72,9 +72,21 @@
 }
 
 .signup-form-message {
-  color: brown;
+  margin-top: 1em;
+  font-size: 1.5em;
+  color: #d5d8e2;
 }
 
+.signup-succes-message{
+  padding: 3em;
+  line-height: 3em;
+  color: white;
+  font-size: 1.5em;
+}
+
+.signup-succes-link {
+  text-decoration: underline;
+}
 .signup-form-button-close {
   width: 20px;
   background-color: #f8a587;
@@ -82,7 +94,8 @@
   border-radius: 50%;
   text-align: center;
   border: none;
-  right: 10px;
+  right: 15px;
+  top: 15px;
   position: absolute;
   padding: 0.2rem;
 }

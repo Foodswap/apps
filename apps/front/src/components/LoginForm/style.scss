@@ -92,7 +92,8 @@ input:placeholder{
 }
 
 .login-form-message {
-  color: brown;
+  font-size: 1.5em;
+  color: #d5d8e2;
 }
 
 .login-form-button-close {
@@ -102,7 +103,8 @@ input:placeholder{
   border-radius: 50%;
   text-align: center;
   border: none;
-  right: 10px;
+  right: 15px;
+  top: 15px;
   position: absolute;
   padding: 0.2rem;
 }
