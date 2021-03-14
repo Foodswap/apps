@@ -113,7 +113,7 @@ export default (state = initialState, action = {}) => {
     case FETCH_MY_DISHES_SWAP_SUCCES:
       return {
         ...state,
-        myDishesOnline:action.payload,
+        myDishesOnline: action.payload,
           
         }
 

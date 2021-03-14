@@ -26,7 +26,8 @@ import {
   fetchIngredientsError,
   fetchTypeDishSucces,
   fetchTypeKitchenSucces,
-  FETCH_MY_DISHES_SWAP
+  FETCH_MY_DISHES_SWAP,
+  fetchMyDishesSwapSucces
 } from '../actions/dishesForm';
 
 export default (store) => (next) => (action) => {
@@ -209,7 +210,9 @@ export default (store) => (next) => (action) => {
       const { infos, pseudonym } = store.getState().user;
       axios({
         method: 'get',
-        url: `http://localhost:3000/dishes?author.id=${infos.id}/online=true`,
+        // url: `http://localhost:3000/dishes?author.id=${infos.id}`,
+        url: `${process.env.API_URL}/meals/author/${infos.id}`,
+
        
       })
       .then ((res) => {
