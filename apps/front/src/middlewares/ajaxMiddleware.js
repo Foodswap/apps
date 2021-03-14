@@ -84,7 +84,7 @@ export default (store) => (next) => (action) => {
       })
         .then((res) => {
           console.log(`response ok : ${res}`);
-          const actionToDispatch = signUpSucces();
+          const actionToDispatch = signUpSucces(res.data);
           store.dispatch(actionToDispatch);
         })
         .catch((error) => {
