@@ -11,7 +11,9 @@ const SwapContent = ({ dishes, fetchMyDishesSwap, userLogged, getAskerDishId, is
   return (
 
     <div className="last-dishesxx">
+    
     <p>{succesPropositionMsg}</p>
+
       { !userLogged && (
         <p>Vous devez vous connecter pour proposer un échange</p>
       )}

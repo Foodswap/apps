@@ -9,7 +9,8 @@ import {
   updateOfExchangeListReceived,
   getOfExchangeList,
   SEND_PROPOSITION,
-  sendPropositionError
+  sendPropositionError,
+  sendPropositionSucces 
 } from '../actions/exchangeTracking';
 
 export default (store) => (next) => (action) => {
@@ -80,9 +81,6 @@ export default (store) => (next) => (action) => {
         .catch((error) => {
           console.log(`${error} error on get one dish`);
         })
-        .finally(() => {
-          console.log('login done');
-        });
     } break;
     case SEND_PROPOSITION: {
 
@@ -101,6 +99,14 @@ export default (store) => (next) => (action) => {
               dish_id: 2,
             }
           }
+        })
+        .then((res) => {
+          console.log(`response ok : ${res}`);
+          const actionToDispatch = sendPropositionSucces();
+          return store.dispatch(actionToDispatch);
+        })
+        .catch((error) => {
+          console.log(`${error} error on send proposition`);
         })
       } else {
         const actionToDispatch = (sendPropositionError());

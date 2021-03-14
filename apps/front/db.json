@@ -915,6 +915,26 @@
         "dish_id": 2
       },
       "id": 44
+    },
+    {
+      "status": 0,
+      "asker": {
+        "dish_id": 12
+      },
+      "receiver": {
+        "dish_id": 2
+      },
+      "id": 45
+    },
+    {
+      "status": 0,
+      "asker": {
+        "dish_id": 12
+      },
+      "receiver": {
+        "dish_id": 2
+      },
+      "id": 46
     }
   ]
 }
