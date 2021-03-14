@@ -7,6 +7,7 @@ import AppHeader from '../AppHeader';
 import Footer from '../Footer';
 import Faces from '../Faces';
 import Results from '../Results';
+import Error from '../Error';
 import DescriptionHomepage from '../DescriptionHomepage';
 
 // Container components
@@ -64,6 +65,9 @@ const App = () => (
     </Route>
     <Route exact path="/v1/Qui sommes nous">
       <Faces />
+    </Route>
+    <Route>
+      <Error />
     </Route>
 
     <Footer />
