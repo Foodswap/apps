@@ -50,7 +50,7 @@ export default (store) => (next) => (action) => {
     case ONE_DISH_SELECT: {
       axios({
         method: 'get',
-        url: `${process.env.API_URL}/dishes/${action.payload}`,
+        url: `${process.env.API_URL}/meals/${action.payload}`,
       })
         .then((res) => {
           console.log(`response ok : ${res}`);
