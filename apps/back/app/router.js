@@ -28,7 +28,7 @@ router.post('/meals', middlewareHandlingFiles, mealController.createMeal);
 router.get('/categories/:type', categoryController.getCategories);
 
 //Swap
-router.post('/swaps', middlewareValidation(schemas.swaps), swapController.swapProposal)
+router.post('/swaps', middlewareValidation(schemas.swaps), swapController.swapProposal);
 router.get('/swaps', swapController.swapProposal)
 
 // Ingredient

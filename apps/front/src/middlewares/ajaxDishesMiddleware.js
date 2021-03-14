@@ -52,7 +52,7 @@ export default (store) => (next) => (action) => {
     case ONE_DISH_SELECT: {
       axios({
         method: 'get',
-        url: `${process.env.FAKE_API_URL}/dishes/${action.payload}`,
+        url: `${process.env.API_URL}/dishes/${action.payload}`,
       })
         .then((res) => {
           console.log(`response ok : ${res}`);
@@ -67,10 +67,11 @@ export default (store) => (next) => (action) => {
         });
     } break;
     // eslint-disable-next-line no-lone-blocks
+    // get last 6 dishes 
     case GET_LIST_OF_DISHES: {
       axios({
         method: 'get',
-        url: `${process.env.FAKE_API_URL}/dishes`,
+        url: `${process.env.API_URL}/sixmeals`,
       })
         .then((res) => {
           console.log(`response ok : ${res}`);
@@ -115,38 +116,27 @@ export default (store) => (next) => (action) => {
         author,
         dish,
         kitchen,
-        online);
+        online
+        );
+      
+      const formData = new FormData();
+      formData.append("picture", picture);
+      formData.append("author_id", infos.id);
+      formData.append("name", name);
+      formData.append("description", description);
+      formData.append("ingredients", ingredients.map(ingredient => ingredient.value).join(','));
+      formData.append("portion", portion);
+      formData.append("city", city);
+      formData.append("categories", `${kitchen},${dish}`);
+      formData.append("online", online);
 
       axios({
         method: 'post',
-        // url: 'http://ec2-54-145-80-6.compute-1.amazonaws.com/v1/meals',
-        url: `${process.env.FAKE_API_URL}/dishes`,
-        data: {
-          file: picture,
-          author: {
-            id: infos.id,
-            username: pseudonym,
-          },
-          name,
-          description,
-          ingredients,
-          portion,
-          city,
-          categories: [
-            {
-              type: 'kitchen',
-              name: kitchen,
-            },
-            {
-              type: 'dish',
-              name: dish,
-            },
-          ],
-          online,
-        },
-        // headers: {
-        //   'Content-Type': 'multipart/form-data'
-        // }
+        url: `${process.env.API_URL}/meals`,
+        data: formData,
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
       })
         .then((res) => {
           console.log(`response ok : ${res}`);
@@ -172,7 +162,7 @@ export default (store) => (next) => (action) => {
     case FETCH_INGREDIENTS: {
       axios({
         method: 'get',
-        url: `${process.env.FAKE_API_URL}/ingredients`,
+        url: `${process.env.API_URL}/ingredients`,
       })
         .then((res) => {
         // console.log("ok send search ingredients " + res.data);
@@ -190,10 +180,13 @@ export default (store) => (next) => (action) => {
     case FETCH_TYPE_DISH: {
       axios({
         method: 'get',
-        url: `${process.env.FAKE_API_URL}/category?type=dish`,
+        url : `${process.env.API_URL}/categories/dish`,
+      })
+      .then ((res) => {
+        const actionToDispatch = fetchTypeDishSucces(res.data);
+        return store.dispatch(actionToDispatch);
       })
         .then((res) => {
-          console.log(res.data);
           const actionToDispatch = fetchTypeDishSucces(res.data);
           return store.dispatch(actionToDispatch);
         })
@@ -205,10 +198,9 @@ export default (store) => (next) => (action) => {
     case FETCH_TYPE_KITCHEN: {
       axios({
         method: 'get',
-        url: `${process.env.FAKE_API_URL}/category?type=kitchen`,
+        url: `${process.env.API_URL}/categories/kitchen`,
       })
         .then((res) => {
-          console.log(res.data);
           const actionToDispatch = fetchTypeKitchenSucces(res.data);
           return store.dispatch(actionToDispatch);
         })
