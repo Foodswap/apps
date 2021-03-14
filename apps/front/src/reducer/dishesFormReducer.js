@@ -110,13 +110,6 @@ export default (state = initialState, action = {}) => {
       }
       // En cas de success, je recupere mes props dont j'ai besoin
 
-    case FETCH_MY_DISHES_SWAP_SUCCES:
-      return {
-        ...state,
-        myDishesOnline: action.payload,
-          
-        }
-
     default:
       return state;
   }

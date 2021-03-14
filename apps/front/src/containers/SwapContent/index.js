@@ -4,7 +4,7 @@ import SwapContent from '../../components/SwapContent';
 import { fetchMyDishesSwap } from '../../actions/dishesForm';
 
 const mapStateToProps = (state) => ({
-  dishes: state.dishes.myDishesOnline,
+  dishes: state.propositions.myDishesOnline,
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -1,3 +1,4 @@
+import { FETCH_MY_DISHES_SWAP_SUCCES } from '../actions/dishesForm';
 import {
   UPDATE_OF_EXCHANGE_LIST_ASKED,
   UPDATE_OF_EXCHANGE_LIST_RECEIVED,
@@ -8,6 +9,7 @@ const initialState = {
   askedPropositions: null,
   receivedPropositions: null,
   activeTab: 'received',
+  myDishesOnline: null,
 };
 
 export default (state = initialState, action = {}) => {
@@ -24,6 +26,12 @@ export default (state = initialState, action = {}) => {
       ...state,
       activeTab: action.payload,
     };
+    case FETCH_MY_DISHES_SWAP_SUCCES:
+      return {
+        ...state,
+        myDishesOnline: action.payload,
+          
+        }
     default:
       return state;
   }
