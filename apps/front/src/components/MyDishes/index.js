@@ -20,7 +20,7 @@ const MyDishes = ({
         { userDishes && userDishes.map((dish) => (
           <article key={dish.id} className="myDishes-oneDish">
 
-            <img className="myDishes-dishImg" src={dish.picture} alt={dish.name} />
+            <img className="myDishes-dishImg" src={`http://ec2-54-145-80-6.compute-1.amazonaws.com/v1/meals/${dish.id}/picture`} alt={dish.name} />
 
             <div className="myDishes-dishText">
               <h2 className="myDishes-dishTitle">{dish.name}</h2>

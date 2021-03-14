@@ -26,6 +26,8 @@ import {
   fetchIngredientsError,
   fetchTypeDishSucces,
   fetchTypeKitchenSucces,
+  FETCH_MY_DISHES_SWAP,
+  fetchMyDishesSwapSucces
 } from '../actions/dishesForm';
 
 export default (store) => (next) => (action) => {
@@ -52,7 +54,7 @@ export default (store) => (next) => (action) => {
     case ONE_DISH_SELECT: {
       axios({
         method: 'get',
-        url: `${process.env.API_URL}/dishes/${action.payload}`,
+        url: `${process.env.API_URL}/meals/${action.payload}`,
       })
         .then((res) => {
           console.log(`response ok : ${res}`);
@@ -79,11 +81,8 @@ export default (store) => (next) => (action) => {
           return store.dispatch(actionToDispatch);
         })
         .catch((error) => {
-          console.log(`${error} error on get one dish`);
+          console.log(`${error} error on get last dishes`);
         })
-        .finally(() => {
-          console.log('login done');
-        });
     } break;
     case DISH_EXCHANGE: {
       const { userDishes } = store.getState().recipes;
@@ -124,7 +123,7 @@ export default (store) => (next) => (action) => {
       formData.append("author_id", infos.id);
       formData.append("name", name);
       formData.append("description", description);
-      formData.append("ingredients", ingredients.map(ingredient => ingredient.value).join(','));
+      formData.append("ingredients", ingredients.map(ingredient => ingredient.value).join(',')); 
       formData.append("portion", portion);
       formData.append("city", city);
       formData.append("categories", `${kitchen},${dish}`);
@@ -186,10 +185,6 @@ export default (store) => (next) => (action) => {
         const actionToDispatch = fetchTypeDishSucces(res.data);
         return store.dispatch(actionToDispatch);
       })
-        .then((res) => {
-          const actionToDispatch = fetchTypeDishSucces(res.data);
-          return store.dispatch(actionToDispatch);
-        })
         .catch((error) => {
           console.log(error);
         });
@@ -200,14 +195,37 @@ export default (store) => (next) => (action) => {
         method: 'get',
         url: `${process.env.API_URL}/categories/kitchen`,
       })
-        .then((res) => {
-          const actionToDispatch = fetchTypeKitchenSucces(res.data);
-          return store.dispatch(actionToDispatch);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    } break;
+      .then ((res) => {
+        console.log(res.data)
+        const actionToDispatch = fetchTypeKitchenSucces(res.data);
+        return store.dispatch(actionToDispatch);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    }
+    break;
+    case FETCH_MY_DISHES_SWAP: {
+      const { picture, name } = store.getState().dishes;
+      const { infos, pseudonym } = store.getState().user;
+      axios({
+        method: 'get',
+        // url: `http://localhost:3000/dishes?author.id=${infos.id}`,
+        url: `${process.env.API_URL}/meals/author/${infos.id}`,
+      })
+      .then ((res) => {
+        console.log(res.data)
+        const actionToDispatch = fetchMyDishesSwapSucces(res.data);
+        return store.dispatch(actionToDispatch);
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+      .finally(() => {
+        console.log('fetch dishes swap done');
+      });
+    }  
+     break;
     case GET_ALL_DISHES_FROM_A_USER: {
       axios({
         method: 'get',

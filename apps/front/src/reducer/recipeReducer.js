@@ -42,13 +42,13 @@ export default (state = initialState, action = {}) => {
     case DISH_EXCHANGE: return {
       ...state,
     };
+    // case GET_LIST_OF_DISHES: return {
+    //   ...state,
+    //   lastDishes: action.payload,
+    // }
     case UPDATE_ALL_DISHES_FROM_A_USER: return {
       ...state,
       userDishes: action.payload,
-    };
-    case GET_LIST_OF_DISHES: return {
-      ...state,
-      lastDishes: action.payload,
     };
 
     default:

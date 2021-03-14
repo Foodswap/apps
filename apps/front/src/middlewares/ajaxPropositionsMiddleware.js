@@ -8,6 +8,9 @@ import {
   updateOfExchangeListAsked,
   updateOfExchangeListReceived,
   getOfExchangeList,
+  SEND_PROPOSITION,
+  sendPropositionError,
+  sendPropositionSucces 
 } from '../actions/exchangeTracking';
 
 export default (store) => (next) => (action) => {
@@ -78,10 +81,38 @@ export default (store) => (next) => (action) => {
         .catch((error) => {
           console.log(`${error} error on get one dish`);
         })
-        .finally(() => {
-          console.log('login done');
-        });
     } break;
+    case SEND_PROPOSITION: {
+
+      const { askerDishId } = store.getState().propositions;
+
+      if (askerDishId) {
+        axios({
+          method: 'post',
+          url: `http://localhost:3000/propositions`,
+          data: { 
+            status: 0,
+            asker: {
+              dish_id: askerDishId,
+            },
+            receiver: { 
+              dish_id: 2,
+            }
+          }
+        })
+        .then((res) => {
+          console.log(`response ok : ${res}`);
+          const actionToDispatch = sendPropositionSucces();
+          return store.dispatch(actionToDispatch);
+        })
+        .catch((error) => {
+          console.log(`${error} error on send proposition`);
+        })
+      } else {
+        const actionToDispatch = (sendPropositionError());
+        return store.dispatch(actionToDispatch);
+      }
+    }
 
     default:
       return next(action);
