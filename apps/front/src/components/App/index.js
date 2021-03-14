@@ -6,6 +6,7 @@ import { Route } from 'react-router-dom';
 import AppHeader from '../AppHeader';
 import Footer from '../Footer';
 import Faces from '../Faces';
+import PrivacyPolicy from '../PrivacyPolicy';
 import Results from '../Results';
 import DescriptionHomepage from '../DescriptionHomepage';
 
@@ -62,8 +63,11 @@ const App = () => (
     <Route exact path="/v1/createdish">
       <DishesForm />
     </Route>
-    <Route exact path="/v1/Qui sommes nous">
+    <Route exact path="/v1/Qui-sommes-nous">
       <Faces />
+    </Route>
+    <Route exact path="/v1/privicy-policy">
+      <PrivacyPolicy />
     </Route>
 
     <Footer />
