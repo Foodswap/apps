@@ -20,13 +20,11 @@ const swapController = {
         }
     },
 
-    getSwap: async (request, response) => {
+    getSwapAsker: async (request, response) => {
         const mealAttributes = ['id', 'name'];
         const authorAttributes = ['id', 'username'];
         try {
-            console.log(request.params.id)
             const swapOffer = await Swap.findAll(
-                
              {
                 attributes: ['id', 'status', 'date'],
                 include: ['mealOffer', {
@@ -47,8 +45,37 @@ const swapController = {
 
                 }]
             })
+            response.status(200).json(swapOffer)
+        } catch (err) {
+            console.log(err);
+            response.status(500);
+        }
+    },
+    getSwapReceiver: async (request, response) => {
+        const mealAttributes = ['id', 'name'];
+        const authorAttributes = ['id', 'username'];
+        try {
+            const swapOffer = await Swap.findAll(
+             {
+                attributes: ['id', 'status', 'date'],
+                include: ['mealOffer', {
+                    association: 'mealOffer',
+                    attributes: mealAttributes,
+                    include: ['asker', {
+                        association: 'asker',
+                        attributes: authorAttributes
+                    }]
+                }, 'mealRequest', {
+                    association: 'mealRequest',
+                    where:{author_id: request.params.id},
+                    attributes: mealAttributes,
+                    include: ['receiver', {
+                        association: 'receiver',
+                        attributes: authorAttributes
+                    }]
 
-
+                }]
+            })
             response.status(200).json(swapOffer)
         } catch (err) {
             console.log(err);

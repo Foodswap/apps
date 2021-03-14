@@ -62,7 +62,8 @@ Content-Type: application/json
 } 
 
 ### Local - route pour récupérer les swap
-GEt {{baseUrl}}/swaps/49
+GEt {{baseUrl}}/swaps/authorReceiver/49
+
 Content-Type: application/json
 
 

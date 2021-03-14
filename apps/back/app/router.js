@@ -29,7 +29,8 @@ router.get('/categories/:type', categoryController.getCategories);
 
 //Swap
 router.post('/swaps', middlewareValidation(schemas.swaps), swapController.swapProposal);
-router.get('/swaps/:id', swapController.getSwap);
+router.get('/swaps/authorAsker/:id', swapController.getSwapAsker);
+router.get('/swaps/authorReceiver/:id', swapController.getSwapReceiver);
 
 // Ingredient
 router.get('/ingredient/:id', ingredientController.getIngredients);
