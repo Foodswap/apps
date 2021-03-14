@@ -10,15 +10,33 @@ GET {{baseUrl}}
 ### 
 
 ### Local - route pour récupérer les ingredients
+GET {{baseUrl}}/ingredients
+
+### Local - route pour récupérer les ingredients
 GET {{baseUrl}}/ingredient/1
 
+### Local - route pour publier un plat
+POST {{baseUrl}}//meals
+Content-Type: application/json
+{
+   "name" : "donner",
+   "description" : "i am not cheap",
+   "portion" : 1,
+   "city" : "istanbul",
+   "online" : true,
+   "picture_path" : "/path/pics"
+} 
 
 ### Local - route pour récupérer les plats d'un author
-GET {{baseUrl}}//meals/author/49
+GET {{baseUrl}}/meals/author/49
 
 
 ### Local - route pour récupérer un plat
 GET {{baseUrl}}/meals/42
+
+
+### Local - route pour afficher les six derniers plats publier
+GET {{baseUrl}}/sixMeals
 
 ### Local - route pour récupérer les categories
 GET {{baseUrl}}/categories/kitchen
@@ -28,10 +46,10 @@ POST {{baseUrl}}/signup
 Content-Type: application/json
 
 {
-   "username" : "jeananne",
-   "email" : "pgmdu04@mail.fr",
-   "password" : "jenesuispasencorehaché",
-   "city" : "bordeaux"
+   "username" : "johndoe",
+   "email" : "jd@mail.fr",
+   "password" : "doyouknowme",
+   "city" : "nowhere"
 } 
 
 ### Local - route pour se connecter

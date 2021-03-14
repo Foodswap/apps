@@ -20,7 +20,7 @@ const DisplayADish = ({
             <div className="displayADish-headerDish-container">
               <h1 className="displayADish-headerDish-title">{dish.name}</h1>
               <div className="displayADish-headerDish-content">
-                <span className="displayADish-headerDish-author">Fait par {dish.author.pseudonym}</span>
+                <span className="displayADish-headerDish-author">Fait par {dish.author.username}</span>
                 <span className="displayADish-headerDish-portion">{dish.portion} Parts</span>
               </div>
               <p className="displayADish-headerDish-city">{dish.city}</p>

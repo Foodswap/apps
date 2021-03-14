@@ -1,6 +1,5 @@
-const {
-    Meal
-} = require('../models');
+// const { response, request } = require('express');
+const { Meal, Author } = require('../models');
 
 
 const mealController = {
@@ -14,8 +13,8 @@ const mealController = {
 
             mealToCreate.picture_path = request.file.filename
             const createdMeal = await Meal.create(mealToCreate)
-            await createdMeal.addIngredients(JSON.parse(mealToCreate.ingredients)) 
-            await createdMeal.addCategories(JSON.parse(mealToCreate.categories))
+            await createdMeal.addIngredients(mealToCreate.ingredients.split(','));
+            await createdMeal.addCategories(mealToCreate.categories.split(','));
         
             Meal.findByPk(Number(createdMeal.id), {
                 attributes: {
@@ -25,9 +24,9 @@ const mealController = {
             }).then((meal) => {
                 meal.author.password = null;
                 response.status(201).json(meal);
-                
+
             })
-            
+
         } catch (error) {
             console.log(error);
             response.status(500);
@@ -52,9 +51,9 @@ const mealController = {
 
     getMealsByAuthor: async (request, response) => {
         try {
-            const mealsByAuthor = await Meal.findAll({where:{author_id:request.params.author_id}});
+            const mealsByAuthor = await Meal.findAll({ where: { author_id: request.params.author_id } });
             response.status(200).json(mealsByAuthor)
-        } catch(error) {
+        } catch (error) {
             console.log(error);
             response.status(500);
         }
@@ -70,6 +69,18 @@ const mealController = {
         } catch (err) {
             console.trace(err);
             response.status(404).json("Plat non trouvé");
+        }
+    },
+
+    getSixMeals: async (request, response) => {
+        try {
+            const sixMeals = await Meal.findAll({include: {
+                model: Author, as: 'author'
+            }, limit: 6, order: [['created_date', 'DESC']]});
+            response.status(200).json(sixMeals);
+        } catch (error) {
+            console.trace(error);
+            response.status(404).json("Couldn't find six or less meals.")
         }
     }
 };
