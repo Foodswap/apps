@@ -3,6 +3,7 @@ import {
   UPDATE_OF_EXCHANGE_LIST_ASKED,
   UPDATE_OF_EXCHANGE_LIST_RECEIVED,
   UPDATE_ACTIVE_TAB,
+  GET_ASKER_DISH_ID
 } from '../actions/exchangeTracking';
 
 const initialState = {
@@ -10,6 +11,8 @@ const initialState = {
   receivedPropositions: null,
   activeTab: 'received',
   myDishesOnline: null,
+  askerDishId: null,
+  isSelected: false,
 };
 
 export default (state = initialState, action = {}) => {
@@ -30,8 +33,12 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         myDishesOnline: action.payload,
-          
         }
+    case GET_ASKER_DISH_ID: return {
+      ...state,
+      askerDishId: action.payload,
+      isSelected: true,
+    }
     default:
       return state;
   }

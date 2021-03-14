@@ -43,3 +43,10 @@ export const getClickOnRefuse = (propositionId, userId) => ({
     propositionId, userId,
   },
 });
+
+// get dish id of asker (when he selects his dish in swap modal)
+export const GET_ASKER_DISH_ID = 'GET_ASKER_DISH_ID';
+export const getAskerDishId = (payload) => ({
+  type: GET_ASKER_DISH_ID,
+  payload
+})

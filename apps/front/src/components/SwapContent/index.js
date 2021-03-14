@@ -4,8 +4,9 @@ import PropTypes from 'prop-types';
 // import { Link } from 'react-router-dom';
 import './styles.scss';
 
-const SwapContent = ({ dishes, fetchMyDishesSwap, userLogged }) => {
+const SwapContent = ({ dishes, fetchMyDishesSwap, userLogged, getAskerDishId, isSelected }) => {
   useEffect(() => fetchMyDishesSwap(), []);
+  const styleSelected = isSelected ? "last-dishes-cardsxx-selected" : "last-dishes-cardsxx";
 
   return (
     <div className="last-dishesxx">
@@ -22,7 +23,9 @@ const SwapContent = ({ dishes, fetchMyDishesSwap, userLogged }) => {
             dishes.map((dish) => {
               const linkUrl = `/v1/dish/${dish.id}`;
               return (
-                <div className="last-dishes-cardxx" key={dish.id}>
+                <div className={styleSelected} key={dish.id} onClick={(evt) => {
+                  getAskerDishId(dish.id);
+                }}>
                   <img className="last-dishes-card-imgxx" src={dish.picture} alt="" />
                   <h3 className="last-dishes-card-namexx">{dish.name}</h3>
                   {/* <p className="last-dishes-card-potionxx">{dish.portion} part(s)</p>
