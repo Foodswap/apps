@@ -9,6 +9,7 @@ const mapStateToProps = (state) => ({
   userLogged: state.user.infos.id,
   isSelected: state.propositions.isSelected,
   succesPropositionMsg: state.propositions.succesPropositionMsg,
+  errorPropositionMsg: state.propositions.errorPropositionMsg,
 });
 
 const mapDispatchToProps = (dispatch) => ({

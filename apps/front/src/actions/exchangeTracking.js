@@ -60,3 +60,7 @@ export const SEND_PROPOSITION_SUCCES = 'SEND_PROPOSITION_SUCCES';
 export const sendPropositionSucces = () => ({
   type: SEND_PROPOSITION_SUCCES,
 })
+export const SEND_PROPOSITION_ERROR = 'SEND_PROPOSITION_ERROR';
+export const sendPropositionError = () => ({
+  type: SEND_PROPOSITION_ERROR,
+})

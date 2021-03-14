@@ -25,7 +25,7 @@ const DisplayADish = ({
               </div>
               <p className="displayADish-headerDish-city">{dish.city}</p>
             </div>
-            <img src={dish.picture} alt={dish.name} className="displayADish-headerDish-img" />
+            <img src={`http://ec2-54-145-80-6.compute-1.amazonaws.com/v1/meals/${dish.id}/picture`} alt={dish.name} className="displayADish-headerDish-img" />
           </header>
           <div className="displayADish-ingredients">
             <ul className="displayADish-ingredients-container">

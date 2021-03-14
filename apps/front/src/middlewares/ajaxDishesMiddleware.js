@@ -123,7 +123,7 @@ export default (store) => (next) => (action) => {
       formData.append("author_id", infos.id);
       formData.append("name", name);
       formData.append("description", description);
-      formData.append("ingredients", ingredients.map(ingredient => ingredient.value).join(','));
+      formData.append("ingredients", ingredients.map(ingredient => ingredient.value).join(',')); 
       formData.append("portion", portion);
       formData.append("city", city);
       formData.append("categories", `${kitchen},${dish}`);
@@ -212,8 +212,6 @@ export default (store) => (next) => (action) => {
         method: 'get',
         // url: `http://localhost:3000/dishes?author.id=${infos.id}`,
         url: `${process.env.API_URL}/meals/author/${infos.id}`,
-
-       
       })
       .then ((res) => {
         console.log(res.data)

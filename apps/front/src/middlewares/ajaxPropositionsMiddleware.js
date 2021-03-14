@@ -8,6 +8,8 @@ import {
   updateOfExchangeListAsked,
   updateOfExchangeListReceived,
   getOfExchangeList,
+  SEND_PROPOSITION,
+  sendPropositionError
 } from '../actions/exchangeTracking';
 
 export default (store) => (next) => (action) => {
@@ -82,6 +84,29 @@ export default (store) => (next) => (action) => {
           console.log('login done');
         });
     } break;
+    case SEND_PROPOSITION: {
+
+      const { askerDishId } = store.getState().propositions;
+
+      if (askerDishId) {
+        axios({
+          method: 'post',
+          url: `http://localhost:3000/propositions`,
+          data: { 
+            status: 0,
+            asker: {
+              dish_id: askerDishId,
+            },
+            receiver: { 
+              dish_id: 2,
+            }
+          }
+        })
+      } else {
+        const actionToDispatch = (sendPropositionError());
+        return store.dispatch(actionToDispatch);
+      }
+    }
 
     default:
       return next(action);
