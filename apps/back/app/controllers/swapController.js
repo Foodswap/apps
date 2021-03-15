@@ -81,6 +81,29 @@ const swapController = {
             console.log(err);
             response.status(500);
         }
+    },
+
+    updateSwap : async (request, response, next) => {
+        const id = Number(request.params.id);
+        const data = request.body;
+        try {
+            const swap = await Swap.findByPk(id);
+            if (!swap) {
+                next();
+            }
+            for (const field in data) {
+                if (typeof swap[field] !== 'undefined') {
+                
+                    swap[field] = data[field];
+                }
+            };
+            await swap.save();
+            response.status(200).json(swap);
+
+        } catch (error) {
+            console.log(err);
+            response.status(500);
+        }
     }
 }
 
