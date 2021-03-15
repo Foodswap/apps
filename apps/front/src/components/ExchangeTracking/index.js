@@ -22,34 +22,35 @@ const ExchangeTracking = ({
 
       <div className="exchangeTracking-menuContainer">
         <ul className="exchangeTracking-menuContent">
-          <li className="exchangeTracking-tab" onClick={() => getActiveTab('received')}>Mes Demandes</li>
-          <li className="exchangeTracking-tab" onClick={() => getActiveTab('asked')}>Mes Propositions</li>
+          <li className="exchangeTracking-tab" onClick={() => getActiveTab('received')}>Mes demandes envoyés </li>
+          <li className="exchangeTracking-tab" onClick={() => getActiveTab('asked')}>Mes propositions reçues</li>
         </ul>
       </div>
 
       <div className="exchangeTracking-body">
-        <div className={activeTab === 'received' ? 'exchangeTracking-panel active' : 'exchangeTracking-panel'}>
+        <div className={activeTab === 'asked' ? 'exchangeTracking-panel active' : 'exchangeTracking-panel'}>
           {receivedPropositions && (
             receivedPropositions.map((receivedProposition) => (
-              <div className="exchangeTracking-line">
+              <div className="exchangeTracking-line" key={receivedProposition.id}>
+             { console.log("received swaps :" + receivedProposition)}
                 <div className="exchangeTracking-description">
-                  {/* <img
+                  <img
                     className="exchangeTracking-img"
-                    src={receivedProposition.receiver.dish_picture}
-                    alt={receivedProposition.receiver.dish_name}
-                  /> */}
+                    src={`http://ec2-54-145-80-6.compute-1.amazonaws.com/v1/meals/${receivedProposition.mealOffer.id}/picture`}
+                    alt={receivedProposition.mealOffer.name}
+                  />
 
                   <p className="exchangeTracking-textContainer">
-                    {receivedProposition.receiver.dish_name}
+                    {receivedProposition.mealOffer.name}
                     <span className="exchangeTracking-textContainer-text"> en échange de </span>
-                    {receivedProposition.asker.dish_name}
+                    {receivedProposition.mealRequest.name}
                   </p>
 
-                  {/* <img
+                  <img
                     className="exchangeTracking-img"
-                    src={receivedProposition.asker.dish_picture}
-                    alt={receivedProposition.asker.dish_name}
-                  /> */}
+                    src={`http://ec2-54-145-80-6.compute-1.amazonaws.com/v1/meals/${receivedProposition.mealRequest.id}/picture`}
+                    alt={receivedProposition.mealRequest.name}
+                  />
                 </div>
 
                 <div className="exchangeTracking-actions">
@@ -76,28 +77,32 @@ const ExchangeTracking = ({
           )}
         </div>
 
-        <div className={activeTab === 'asked' ? 'exchangeTracking-panel active' : 'exchangeTracking-panel'}>
+        <div className={activeTab === 'received' ? 'exchangeTracking-panel active' : 'exchangeTracking-panel'}>
+        
           {askedPropositions && (
             askedPropositions.map((askedProposition) => (
-              <div className="exchangeTracking-line">
+              
+              <div className="exchangeTracking-line" key={askedProposition.id}>
+              { console.log("asked swaps: " + askedProposition.mealOffer.name)}
+
                 <div className="exchangeTracking-description">
-                  {/* <img
+                  <img
                     className="exchangeTracking-img"
-                    src={askedProposition.asker.dish_picture}
-                    alt={askedProposition.asker.dish_name}
+                    src={`http://ec2-54-145-80-6.compute-1.amazonaws.com/v1/meals/${askedProposition.mealOffer.id}/picture`}
+                    alt={askedProposition.mealOffer.name}
                   />
 
                   <p className="exchangeTracking-textContainer">
-                    {askedProposition.asker.dish_name}
+                    {askedProposition.mealOffer.name}
                     <span className="exchangeTracking-textContainer-text"> en échange de </span>
-                    {askedProposition.receiver.dish_name}
+                    {askedProposition.mealRequest.name}
                   </p>
 
                   <img
                     className="exchangeTracking-img"
-                    src={askedProposition.receiver.dish_picture}
-                    alt={askedProposition.receiver.dish_name}
-                  /> */}
+                    src={`http://ec2-54-145-80-6.compute-1.amazonaws.com/v1/meals/${askedProposition.mealRequest.id}/picture`}
+                    alt={askedProposition.mealRequest.name}
+                  />
                 </div>
 
                 <div className="exchangeTracking-actions">

@@ -22,12 +22,12 @@ export default (store) => (next) => (action) => {
         url: `${process.env.API_URL}/swaps/authorAsker/${action.payload}`,
       })
         .then((res) => {
-          console.log(`response ok : ${res}`);
+          console.log(`response asked swaps : ${res.data}`);
           const actionToDispatch = updateOfExchangeListAsked(res.data);
           return store.dispatch(actionToDispatch);
         })
         .catch((error) => {
-          console.log(`${error} error on get one dish`);
+          console.log(`${error} error on get swap asked`);
         })
         .finally(() => {
           console.log('login done');
@@ -38,7 +38,7 @@ export default (store) => (next) => (action) => {
         url: `${process.env.API_URL}/swaps/authorReceiver/${action.payload}`,
       })
         .then((res) => {
-          console.log(`response ok : ${res}`);
+          console.log(`response get received : ${res.data}`);
           const actionToDispatch = updateOfExchangeListReceived(res.data);
           return store.dispatch(actionToDispatch);
         })
