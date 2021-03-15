@@ -1,12 +1,14 @@
 // Vendors
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 // Dumb components
 import AppHeader from '../AppHeader';
 import Footer from '../Footer';
 import Faces from '../Faces';
+import PrivacyPolicy from '../PrivacyPolicy';
 import Results from '../Results';
+import Error from '../Error';
 import DescriptionHomepage from '../DescriptionHomepage';
 
 // Container components
@@ -38,7 +40,7 @@ const App = () => (
   <div className="app">
     <AppHeader />
     <Menu />
-
+<Switch>
     <Route exact path="/v1/my-information" component={MyInformation} />
 
     <Route exact path="/v1/exchange-tracking" component={Exchangetracking} />
@@ -62,9 +64,16 @@ const App = () => (
     <Route exact path="/v1/createdish">
       <DishesForm />
     </Route>
-    <Route exact path="/v1/Qui sommes nous">
+    <Route exact path="/v1/Qui-sommes-nous">
       <Faces />
     </Route>
+    <Route exact path="/v1/privacy-policy">
+      <PrivacyPolicy />
+    </Route>
+    <Route component={Error} />
+      
+    </Switch>
+    
 
     <Footer />
   </div>
