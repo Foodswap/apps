@@ -1,19 +1,12 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 import './style.scss';
-import video from '../../assets/videos/home.mp4';
 
-const DescriptionHomepage = ({ isLoginOpen, isSignUpOpen}) => {
-  const isAppBlur = isLoginOpen || isSignUpOpen ? "welcome welcome-blur" : "welcome";
+const Description = () => (
 
-  return (
-  
-  <div className={isAppBlur}>
-    <video loop autoPlay muted>
-      <source src={video} type="video/mp4" />
-    </video>
-    <h1 className="big-title">Prêts à vous régaler ?</h1>
-    {/* <div className="welcome-blockText">
+  <div className="welcome-container">
+
+   <div className="welcome-blockText">
       <div className="welcome-paragraph">
         <p className="welcome-text">
           FoodSwap vous permet d’échanger des plats faits maison entre particuliers,
@@ -42,9 +35,8 @@ const DescriptionHomepage = ({ isLoginOpen, isSignUpOpen}) => {
         <p className="welcome-text">
           Trouvez dès maintenant des plats juste à côté en renseignant la ville ou vous vous trouvez.</p>
       </div>
-    </div> */}
+    </div>
   </div>
-  )}
-;
-
-export default DescriptionHomepage;
+)
+Description.propTypes = {};
+export default Description;

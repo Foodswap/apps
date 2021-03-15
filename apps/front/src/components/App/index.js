@@ -9,6 +9,7 @@ import Faces from '../Faces';
 import PrivacyPolicy from '../PrivacyPolicy';
 import Results from '../Results';
 import Error from '../Error';
+import Description from '../Description'
 
 // Container components
 import Menu from '../../containers/Menu';
@@ -47,6 +48,7 @@ const App = () => (
 
     <Route exact path="/">
       <DescriptionHomepage />
+      <Description />
       <SearchForm />
       <LastDishes />
       <LoginForm />

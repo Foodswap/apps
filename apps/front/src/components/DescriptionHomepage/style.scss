@@ -1,5 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=PT+Sans&family=Ranchers&display=swap');
 
+
+.big-title {
+	text-align: center;
+	text-transform: uppercase;
+	position: absolute;
+  top: 30%;
+  left: 20%;
+  z-index: 11;
+  letter-spacing: 25px;
+  color: #fff;
+  font: 900 80px Montserrat;
+  text-shadow: 0 10px 25px rgba(0, 0, 0, 0.945);
+  margin-left: auto;
+
+}
 .welcome {
   background-image: url("https://cdn.pixabay.com/photo/2017/12/09/08/18/pizza-3007395_960_720.jpg");
   background-repeat: no-repeat;
@@ -17,43 +32,7 @@
     z-index: 10;
   }
 
-  &-title {
-    position: relative;
-    font-size: 3.5rem;
-    margin: 1rem 0 3rem;
-    z-index: 11;
-  }
-
-  &-blockText {
-    position: relative;
-    margin: auto;
-    background-color: rgba(28, 37, 48, 0.788);
-    width: 850px;
-    text-align: left;
-    padding: 2rem;
-    z-index: 11;
-    font-family: 'PT Sans', cursive;
-    letter-spacing: 0.2em;
-    line-height: 1.8em;
-    color: white;
-    font-size: 1.3em;
-    width: 32%;
-    transition: 3s;
-    border-radius: 15px;
-
-  }
-
-  &-paragraph {
-    position: relative;
-    margin-bottom: 1.4rem;
-    z-index: 11;
-  }
-
-}
-
-.welcome-blockText:hover {
-  background-color: rgba(28, 37, 48, 0.897);
-  transition: 3s;
+  
 }
 
 .welcome-blur {

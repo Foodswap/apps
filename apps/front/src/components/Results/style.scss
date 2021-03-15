@@ -2,14 +2,17 @@
 @use 'sass:color';
 @import url(https://fonts.googleapis.com/css?family=Gudea:400,700);
 
+.results-section {
+  background: #262835;
+  padding-bottom: 4em;
+}
 .results {
-  margin: 3rem auto;
+  margin: auto;
   border-radius: 5px;
   padding: 1rem;
   width: 80%;
   background-color: #262835;
   box-shadow: 0 12px 15px 0 #18181ab4, 0 17px 50px #060607b4;
-
 }
 
 .results-title {
