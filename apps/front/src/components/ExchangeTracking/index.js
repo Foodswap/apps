@@ -33,11 +33,11 @@ const ExchangeTracking = ({
             receivedPropositions.map((receivedProposition) => (
               <div className="exchangeTracking-line">
                 <div className="exchangeTracking-description">
-                  <img
+                  {/* <img
                     className="exchangeTracking-img"
                     src={receivedProposition.receiver.dish_picture}
                     alt={receivedProposition.receiver.dish_name}
-                  />
+                  /> */}
 
                   <p className="exchangeTracking-textContainer">
                     {receivedProposition.receiver.dish_name}
@@ -45,11 +45,11 @@ const ExchangeTracking = ({
                     {receivedProposition.asker.dish_name}
                   </p>
 
-                  <img
+                  {/* <img
                     className="exchangeTracking-img"
                     src={receivedProposition.asker.dish_picture}
                     alt={receivedProposition.asker.dish_name}
-                  />
+                  /> */}
                 </div>
 
                 <div className="exchangeTracking-actions">
@@ -81,7 +81,7 @@ const ExchangeTracking = ({
             askedPropositions.map((askedProposition) => (
               <div className="exchangeTracking-line">
                 <div className="exchangeTracking-description">
-                  <img
+                  {/* <img
                     className="exchangeTracking-img"
                     src={askedProposition.asker.dish_picture}
                     alt={askedProposition.asker.dish_name}
@@ -97,7 +97,7 @@ const ExchangeTracking = ({
                     className="exchangeTracking-img"
                     src={askedProposition.receiver.dish_picture}
                     alt={askedProposition.receiver.dish_name}
-                  />
+                  /> */}
                 </div>
 
                 <div className="exchangeTracking-actions">
@@ -113,7 +113,7 @@ const ExchangeTracking = ({
                     )}
                   </div>
 
-                  <p>{format(new Date(askedProposition.createdAt), 'dd-MM-yyyy')}</p>
+                  {/* <p>{format(new Date(askedProposition.createdAt), 'dd-MM-yyyy')}</p> */}
                 </div>
               </div>
             ))
