@@ -18,16 +18,17 @@ router.post('/login', middlewareValidation(schemas.login), authorController.logi
 
 // Meal
 router.get('/meals/:id', mealController.getOneMeal);
+router.get('/meals/:kitchenName/:city', mealController.searchMeal);
 router.get('/meals/:id/picture', mealController.getPicture);
 router.get('/meals/author/:author_id', mealController.getMealsByAuthor);
 router.get('/meals');
 router.get('/sixMeals', mealController.getSixMeals);
 router.post('/meals', middlewareHandlingFiles, mealController.createMeal);
 
-//Category
+// Category
 router.get('/categories/:type', categoryController.getCategories);
 
-//Swap
+// Swap
 router.post('/swaps', middlewareValidation(schemas.swaps), swapController.swapProposal);
 router.get('/swaps', swapController.swapProposal)
 

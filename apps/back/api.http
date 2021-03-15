@@ -15,6 +15,9 @@ GET {{baseUrl}}/ingredients
 ### Local - route pour récupérer les ingredients
 GET {{baseUrl}}/ingredient/1
 
+### Local - route recherche un plat
+GET {{baseUrl}}/meals/asiatique/sydney
+
 ### Local - route pour publier un plat
 POST {{baseUrl}}//meals
 Content-Type: application/json
