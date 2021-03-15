@@ -73,7 +73,7 @@ export default (store) => (next) => (action) => {
     case GET_LIST_OF_DISHES: {
       axios({
         method: 'get',
-        url: `${process.env.API_URL}/sixmeals`,
+        url: `${process.env.API_URL}/sixMeals`,
       })
         .then((res) => {
           console.log(`response ok : ${res}`);
