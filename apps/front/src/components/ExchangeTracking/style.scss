@@ -71,7 +71,7 @@
 
   &-img {
     height: 50px;
-    width: 50px;
+    width: auto;
   }
 
   &-line {
@@ -106,16 +106,50 @@
       margin-left: 1rem;
     }
 
-    &-textAccept {
+    &-text-accept {
+      display: flex;
+      align-items: baseline;
+      margin-left: 20px;
+    }
 
+    &-div-contact {
+      display: flex;
+      flex-direction: row;
     }
 
     &-buttonContact {
-      margin-top: 1rem;
+      display: block;
+      margin: 3em;
+      border-radius: 50px;
+      background: transparent;
+      padding: 1.2em 50px;
+      border: 2px solid #f8a587;
+      color: #f8a587;
+      text-transform: uppercase;
+      font-size: 11px;
+      transition-property: background, color;
+      transition-duration: 0.2s;
     }
 
-    &-textRefuse {
+    &-buttonContact:hover {
+      color:black;
+      background:#f8a587 ;
+      cursor:pointer;
+      transition-property:background,color;
+      transition-duration:.2s;
+    }
 
+    &-waiting {
+      animation: color-change 3s infinite ease-out forwards;
+      margin-left: 15px;
+    }
+
+    @keyframes color-change {
+      0% { color: linear-gradient(#f7f2f1, #{vars.$coral});}
+      50% {color: #f3cabb}
+      100%{ color: linear-gradient(#f7f2f1, #{vars.$coral});}
+        
     }
   }
 }
+

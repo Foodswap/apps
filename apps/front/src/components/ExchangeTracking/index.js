@@ -58,8 +58,6 @@ const ExchangeTracking = ({
                       alt={receivedProposition.mealRequest.name}
                     />
                   </div>
-
-                  <div className="exchangeTracking-actions">
                     {receivedProposition.status === 0 && (
                       <div className="exchangeTracking-actions-container">
                         <button type="button" className="exchangeTracking-actions-buttonAccept" onClick={() => getClickAccept(receivedProposition.id, userId)}>Accepter</button>
@@ -68,8 +66,9 @@ const ExchangeTracking = ({
                     )}
                     {receivedProposition.status === 1 && (
                       <div className="exchangeTracking-actions-container">
-                        <p className="exchangeTracking-actions-textAccept">Vous avez accepté cet échange</p>
-                        {/* <a href={`mailto:${receivedProposition.asker.user_email}`} className="exchangeTracking-actions-buttonContact">Contact</a> */}
+                        <p className="exchangeTracking-actions-text-accept">Vous avez accepté cet échange
+                          <a href={`mailto:"test@mail.fr"`} className="exchangeTracking-actions-buttonContact">Contact</a>
+                        </p>
                       </div>
                     )}
                     {receivedProposition.status === 2 && (
@@ -78,7 +77,6 @@ const ExchangeTracking = ({
                       </div>
                     )}
                   </div>
-                </div>
               ))
             )}
 
@@ -116,23 +114,26 @@ const ExchangeTracking = ({
                       src={`http://ec2-54-145-80-6.compute-1.amazonaws.com/v1/meals/${askedProposition.mealRequest.id}/picture`}
                       alt={askedProposition.mealRequest.name}
                     />
+                    
+                        {askedProposition.status === 0 && (
+                          <p className="exchangeTracking-actions-waiting">En attente</p>
+                        )}
+                        { askedProposition.status === 1 && (
+                          <div> 
+                            <p className="exchangeTracking-actions-text-accept">{askedProposition.mealRequest.receiver.username} à accepté cet échange
+                              <a href={`mailto:"test@mail.fr"`} className="exchangeTracking-actions-buttonContact">Contact</a>
+                            </p>
+                          </div>
+                        )}
+                        {askedProposition.status === 2 && (
+                          <p>{askedProposition.mealOffer.asker.username} à refusé cet échange</p>
+                        )}
+                     
                   </div>
 
-                  <div className="exchangeTracking-actions">
-                    <div className="exchangeTracking-actions-container">
-                      {askedProposition.status === 0 && (
-                        <p>En attente</p>
-                      )}
-                      { askedProposition.status === 1 && (
-                        <p>{askedProposition.mealRequest.receiver.username} à accepté cet échange</p>
-                      )}
-                      {askedProposition.status === 2 && (
-                        <p>{askedProposition.mealOffer.asker.username} à refusé cet échange</p>
-                      )}
-                    </div>
 
                     {/* <p>{format(new Date(askedProposition.createdAt), 'dd-MM-yyyy')}</p> */}
-                  </div>
+    
                 </div>
               ))
             )}
