@@ -2,7 +2,10 @@
 @use 'sass:color';
 @import url(https://fonts.googleapis.com/css?family=Gudea:400,700);
 
-
+.pin-icon {
+  width: 20px;
+  height: auto;
+}
 .last-dishes-section {
   background: #262835;
   padding-bottom: 155px;

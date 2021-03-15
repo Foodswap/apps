@@ -22,7 +22,9 @@ const LastDishes = ({ dishes, getListDishes }) => {
                   <h3 className="last-dishes-card-name">{dish.name}</h3>
                   <p className="last-dishes-card-potion">{dish.portion} part(s)</p>
                   {/* <p className="last-dishes-card-author"> Fait par {dish.author.username}</p> */}
-                  <p className="last-dishes-card-city">{dish.city}</p>
+                  <p className="last-dishes-card-city">
+                    {dish.city}
+                  </p>
                   <Link to={linkUrl} className="last-dishes-card-seemore">Voir plus</Link>
                 </div>
               );
