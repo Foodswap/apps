@@ -1,7 +1,4 @@
-const { response } = require('express');
-const {
-    Meal
-} = require('../models');
+const { Meal } = require('../models');
 
 
 const mealController = {
