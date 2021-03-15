@@ -14,6 +14,7 @@
   display: flex;
   flex-direction: column;
   font-family: 'Gudea', sans-serif;
+  font-size: 1.2em;
 
   // &-container {
   //   margin-left: auto;
@@ -66,12 +67,14 @@
     justify-content: center;
     border-radius: 1rem;
     background-color: #{vars.$darkBlue};
-    width: 80%;
+    width: 100%;
   }
 
   &-img {
-    height: 50px;
+    height: 150px;
     width: auto;
+    border-radius: 5px;
+    box-shadow: #242130 1px 3px;
   }
 
   &-line {
@@ -80,6 +83,11 @@
     border-bottom: 1px solid #242130;
     background-color: #{vars.$darkBlue};
     color: white;
+  }
+  
+  &-textContainer {
+    text-transform: capitalize;
+    
   }
 
   &-line, &-description, &-actions {
@@ -102,14 +110,48 @@
       padding: 1rem;
     }
 
+    &-buttonAccept {
+      border-radius: 50px;
+      background: transparent;
+      padding: 1.2em 50px;
+      border: 2px solid #f8a587;
+      text-transform: uppercase;
+      font-size: 11px;
+      color:black;
+      background:#f8a587 ;
+      cursor:pointer;
+      transition-property:background,color;
+      transition-duration:.5s;
+    }
+
+    &-buttonAccept:hover {
+      border-radius: 50px;
+      background: transparent;
+      padding: 1.2em 50px;
+      border: 2px solid #f8a587;
+      color: #f8a587;
+      transition-property: background, color;
+      transition-duration: 0.2s;
+    }
+
     &-buttonRefuse {
       margin-left: 1rem;
+      border-radius: 50px;
+      background: transparent;
+      padding: 1.2em 50px;
+      border: 2px solid #f8a587;
+      color: #f8a587;
+      text-transform: uppercase;
+      font-size: 11px;
+      transition-property: background, color;
+      transition-duration: 0.2s;
     }
 
     &-text-accept {
       display: flex;
       align-items: baseline;
       margin-left: 20px;
+      
     }
 
     &-div-contact {
