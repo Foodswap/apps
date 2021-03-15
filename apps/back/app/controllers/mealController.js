@@ -1,5 +1,6 @@
-// const { response, request } = require('express');
-const { Meal, Author } = require('../models');
+const {
+    Meal
+} = require('../models');
 
 
 const mealController = {
