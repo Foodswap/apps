@@ -3,8 +3,12 @@ import React from 'react';
 import './style.scss';
 import video from '../../assets/videos/home.mp4';
 
-const DescriptionHomepage = () => (
-  <div className="welcome">
+const DescriptionHomepage = ({ isLoginOpen, isSignUpOpen}) => {
+  const isAppBlur = isLoginOpen || isSignUpOpen ? "welcome welcome-blur" : "welcome";
+
+  return (
+  
+  <div className={isAppBlur}>
     <video loop autoPlay muted>
       <source src={video} type="video/mp4" />
     </video>
@@ -40,6 +44,7 @@ const DescriptionHomepage = () => (
       </div>
     </div>
   </div>
-);
+  )}
+;
 
 export default DescriptionHomepage;
