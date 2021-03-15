@@ -40,40 +40,44 @@ const App = () => (
   <div className="app">
     <AppHeader />
     <Menu />
-<Switch>
-    <Route exact path="/v1/my-information" component={MyInformation} />
+    <Switch>
+      <Route exact path="/v1/my-information" component={MyInformation} />
 
-    <Route exact path="/v1/exchange-tracking" component={Exchangetracking} />
+      <Route exact path="/v1/exchange-tracking" component={Exchangetracking} />
 
-    <Route exact path="/">
-      <DescriptionHomepage />
-      <SearchForm />
-      <LastDishes />
-      <LoginForm />
-      <SignUpForm />
-    </Route>
+      <Route exact path="/">
+        <DescriptionHomepage />
+        <SearchForm />
+        <LastDishes />
+        <LoginForm />
+        <SignUpForm />
+      </Route>
 
-    <Route exact path="/v1/dish/:id" component={DisplayADish} />
+      <Route exact path="/v1/dish/:id" component={DisplayADish} />
 
-    <Route exact path="/results">
-      <Results dishes={dishes} />
-    </Route>
-    <Route exact path="/v1/mydishes">
-      <MyDishes />
-    </Route>
-    <Route exact path="/v1/createdish">
-      <DishesForm />
-    </Route>
-    <Route exact path="/v1/Qui-sommes-nous">
-      <Faces />
-    </Route>
-    <Route exact path="/v1/privacy-policy">
-      <PrivacyPolicy />
-    </Route>
-    <Route component={Error} />
-      
+      <Route exact path="/v1/meals/edit/:id" component={DishesForm} />
+
+      <Route exact path="/results">
+        <Results dishes={dishes} />
+      </Route>
+
+      <Route exact path="/v1/mydishes">
+        <MyDishes />
+      </Route>
+
+      <Route exact path="/v1/createdish" render={(props) => <DishesForm {...props} key={Date.now()} />} />
+
+      <Route exact path="/v1/Qui-sommes-nous">
+        <Faces />
+      </Route>
+
+      <Route exact path="/v1/privacy-policy">
+        <PrivacyPolicy />
+      </Route>
+
+      <Route component={Error} />
+
     </Switch>
-    
 
     <Footer />
   </div>

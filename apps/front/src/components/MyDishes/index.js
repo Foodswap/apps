@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import './style.scss';
@@ -9,6 +10,7 @@ const MyDishes = ({
   userDishes,
   deleteDish,
   deleteMessage,
+  clearDishInformations,
 }) => {
   useEffect(() => getAListAllDishes(userId), []);
 
@@ -29,7 +31,13 @@ const MyDishes = ({
 
             <div className="myDishes-allButton">
               <div className="myDishes-buttonContent">
-                <a href="/edit" className="myDishes-button">Éditer</a>
+                <Link
+                  to={`/v1/meals/edit/${dish.id}`}
+                  className="myDishes-button"
+                  onClick={() => clearDishInformations()}
+                >
+                  Éditer
+                </Link>
               </div>
 
               <div className="myDishes-buttonContent">
@@ -65,6 +73,7 @@ MyDishes.propTypes = {
   deleteMessage: PropTypes.string.isRequired,
   getAListAllDishes: PropTypes.func.isRequired,
   userId: PropTypes.number,
+  clearDishInformations: PropTypes.func.isRequired,
 };
 
 MyDishes.defaultProps = {

@@ -1,15 +1,17 @@
-import React, { useEffect, Component } from 'react';
+import React, { useEffect, Component, useState } from 'react';
 import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
 import { Link, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { useState } from "react";
+
 // import SelectInputIngredient from '../SelectInputIngredients';
 
 import './style.scss';
 // import image from '../../assets/images/logo-fooswap.png';
 import { cancelFormRecipe, sendFormRecipeUp, setInputValue } from '../../actions/dishesForm';
+
 const DishesForm = ({
+  dishId,
   picture,
   name,
   description,
@@ -31,75 +33,71 @@ const DishesForm = ({
   fetchTypeDish,
   dishData,
   kitchenData,
-  fetchTypeKitchen
+  fetchTypeKitchen,
+  getADish,
+  selectedIngredients,
 }) => {
-
   useEffect(() => {
+    console.log('CMP', dishId);
+    getADish(dishId);
     getIngredients();
     fetchTypeDish();
     fetchTypeKitchen();
-    console.log("ingredient data " + ingredientsData)
-  }, [])
-  ;
+    console.log(`ingredient data ${ingredientsData}`);
+  }, []);
   const animatedSelect = makeAnimated();
-  const imageHandler = (evt) =>{
+  const imageHandler = (evt) => {
     const reader = new FileReader();
     reader.onload = () => {
-      if(reader.readyState === 2){
-        this.setState({dataFormMeal:reader.result})
+      if (reader.readyState === 2) {
+        this.setState({ dataFormMeal: reader.result });
       }
-    }
-    reader.readAsDataURL(evt.target.files[0])
-  }
-    const handleSubmit = (evt) => {
-      evt.preventDefault();
-      onFormSubmit();
-      console.log('handleSubmit');
+    };
+    reader.readAsDataURL(evt.target.files[0]);
   };
-  let options = [];
-  
-  return(
-    
-  <div className="meal-page">
-  { ingredientsData && (
-     ingredientsData.map((ingredientObj) => {
-       // console.log("ing id" +ingredientObj.id);
-       options.push({
-        value: ingredientObj.id, label: ingredientObj.name
-      });
-  })
-  )}
-  
-    <h2 className="meal-title">Ajoutez votre bon petit plat </h2>
-    <form
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    onFormSubmit();
+    console.log('handleSubmit');
+  };
+
+  return (
+    <div className="meal-page">
+      <h2 className="meal-title">Ajoutez votre bon petit plat </h2>
+      <form
         className="meal-form-element"
         onSubmit={handleSubmit}
       >
-    
-      <div className="meal-image-div">
-      <img
-          src={picture}
-          alt=""
-          id="img"
-          className="meal-img"
-          onChange={imageHandler}
-        />
-        <input  
-          id="picture"
-          type="file"
-          name="picture"
-          accept="image/*"
-          onChange={(evt) => {
-            handleInputChange(evt.target.files[0], evt.target.name);
-            }
-          }
-        />
-      </div>
-        <label className="switch">
-          <input name="online" type="checkbox" onChange={changeOnline}/>
-          <span className="slider round" /> 
-        </label>
-        <span>En ligne ?</span>
+        <div className="meal-image-div">
+          <img
+            src={picture}
+            alt=""
+            id="img"
+            className="meal-img"
+            onChange={imageHandler}
+          />
+          <input
+            id="picture"
+            type="file"
+            name="picture"
+            accept="image/*"
+            onChange={(evt) => {
+              handleInputChange(evt.target.files[0], evt.target.name);
+            }}
+          />
+        </div>
+
+        <div className="meal-online-switch">
+          <span>Hors ligne</span>
+
+          <label className="switch">
+            <input name="online" type="checkbox" onChange={changeOnline} />
+            <span className="slider round" />
+          </label>
+
+          <span>En ligne </span>
+        </div>
+
         <input
           required
           className="meal-input"
@@ -135,84 +133,92 @@ const DishesForm = ({
           }}
           value={city}
         />
-        
-        { options.length && (
 
-          <Select 
-          name="ingredients" 
-          components={animatedSelect}
-          options={options} 
-          isMulti 
-          onChange={(selection, action) => handleMultiSelectChange(selection, action)}
+        { ((!dishId && ingredientsData.length) || (dishId && ingredientsData.length && selectedIngredients.length)) && (
+          <Select
+            name="ingredients"
+            components={animatedSelect}
+            options={ingredientsData}
+            isMulti
+            defaultValue={selectedIngredients}
+            onChange={(selection, action) => handleMultiSelectChange(selection, action)}
           />
-        )
-        }
-       
-        <input 
+        )}
+
+        <input
           type="text"
           required
           className="meal-input"
-          type="text"
           name="description"
           placeholder="Description du plat"
           onChange={(evt) => {
             handleInputChange(evt.target.value, evt.target.name);
           }}
           value={description}
-
         />
+
         <div className="meal-form-select">
-
-          <select 
-          name="dish"
-          onChange={(evt) => onSetCategorySelect(evt.target.value, evt.target.name)}
-          className="meal-category">
-
-          { console.log("dishData : " + dishData)}
-            <option value="">Type d'assiete</option>
-            { dishData && (
-              dishData.map((dishObj) => {
-                return (
-                  <option value={dishObj.id} name={dishObj.name}>{dishObj.name}</option>
-                )
-              }
-              ))
-            }
+          { ((dishId && dish && dishData) || dishData) && (
+          <select
+            name="dish"
+            onChange={(evt) => onSetCategorySelect(evt.target.value, evt.target.name)}
+            className="meal-category"
+            defaultValue={dish || ''}
+          >
+            <option>Type d'assiete</option>
+            { dishData && dishData.map((dishObj) => (
+              <option
+                value={dishObj.id}
+                name={dishObj.name}
+                key={`dish${dishObj.id}`}
+              >
+                {dishObj.name}
+              </option>
+            ))}
           </select>
+          )}
+
+          {((dishId && kitchen && kitchenData) || kitchenData) && (
           <select
             name="kitchen"
             onChange={(evt) => onSetCategorySelect(evt.target.value, evt.target.name)}
-            className="meal-category">
-            <option value="">Type de cuisine</option>
+            className="meal-category"
+            value={kitchen || ''}
+          >
+            <option>Type de cuisine</option>
             { kitchenData && (
-              kitchenData.map((kitchenObj) => {
-                return (
-                  <option value={kitchenObj.id} name={kitchenObj.name}>{kitchenObj.name}</option>
-                )
-              })
+              kitchenData.map((kitchenObj) => (
+                <option
+                  value={kitchenObj.id}
+                  name={kitchenObj.name}
+                  key={`kitchen${kitchenObj.id}`}
+
+                >
+                  {kitchenObj.name}
+                </option>
+              ))
             )}
           </select>
+          )}
         </div>
 
-        {/* { isSucces && 
+        {/* { isSucces &&
           <Redirect to="/v1/mydishes" />
         } */}
 
         { isError && (
 
-          <p>Erreur sur votre formulaire </p>
-        )
-        }
+        <p>Erreur sur votre formulaire </p>
+        )}
         <div className="meal-form-buttons">
           <button className="meal-form-cancel" type="button" onClick={() => cancelFormRecipe()}> Annuler </button>
           <button className="meal-form-submit" type="submit" onClick={() => sendFormRecipeUp()}> Valider </button>
         </div>
-        </form>
+      </form>
     </div>
   );
 };
 DishesForm.propTypes = {
-  
   // picture: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
@@ -220,12 +226,27 @@ DishesForm.propTypes = {
   portion: PropTypes.string.isRequired,
   city: PropTypes.string.isRequired,
   online: PropTypes.bool.isRequired,
-  author: PropTypes.string.isRequired,
-  dish: PropTypes.string.isRequired,
-  kitchen: PropTypes.string.isRequired,
+  author: PropTypes.number,
+  // : PropTypes.string.isRequired,
+  kitchen: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]),
+  dish: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]),
   onFormSubmit: PropTypes.func.isRequired,
   handleInputChange: PropTypes.func.isRequired,
   onSetCategorySelect: PropTypes.func.isRequired,
+  getADish: PropTypes.func.isRequired,
+  dishId: PropTypes.number,
+};
+
+DishesForm.defaultProps = {
+  dishId: null,
+  author: null,
+  kitchen: null,
+  dish: null,
 };
 export default DishesForm;
-

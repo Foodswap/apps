@@ -166,4 +166,10 @@ input:checked + .slider:before {
   display: none;
 }
 
-
+.meal-online-switch {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 215px;
+  margin: 15px auto;
+}
