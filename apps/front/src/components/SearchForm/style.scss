@@ -1,9 +1,14 @@
+@use 'src/styles/vars';
+@use 'sass:color';
+@import url(https://fonts.googleapis.com/css?family=Gudea:400,700);
+
+
 .search-form-div {
-  background-color: #262835;
-  background: linear-gradient(45deg, #35394a 0%, #1f222e 100%);
+  background: #262835;
   height: 200px;
   margin: auto;
-  padding: 2rem;
+  padding: 3rem;
+  font-family: 'Gudea', sans-serif;
 }
 
 .test-text {
@@ -12,11 +17,14 @@
   color: white;
 }
 .search-form-title {
-  font-size: 2.5em;
+  font-size: 2em;
   color: white;
   margin-bottom: 1.5rem;
 }
 
+.search-form-form {
+  padding-bottom: 2em;
+}
 .search-form-form select{
   font-size: 1.2rem;
   width: 300px;
@@ -38,16 +46,20 @@
 }
 
 .search-form-button {
-  font-size: 1.2rem;
-  width: 200px;
-  margin-right: 3rem;
-  background-color: rgb(248, 165, 135);
-  border: none;
-  border-radius: 5px;
-  padding: 0.5rem;
+  background: transparent;
+  padding: 0.8em 30px;
+  border: 2px solid #f8a587;
+  color: #f8a587;
+  text-transform: uppercase;
+  transition-property: background, color;
+  transition-duration: 0.2s;
 }
 
 .search-form-button:hover {
-  background-color: rgb(245, 137, 98);
+  color:black;
+  background:#f8a587 ;
+  cursor:pointer;
+  transition-property:background,color;
+  transition-duration:.2s;
 
 }

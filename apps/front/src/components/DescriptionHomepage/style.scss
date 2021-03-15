@@ -27,7 +27,7 @@
   &-blockText {
     position: relative;
     margin: auto;
-    background-color: rgba(41, 55, 71, 0.692);
+    background-color: rgba(28, 37, 48, 0.788);
     width: 850px;
     text-align: left;
     padding: 2rem;
@@ -38,6 +38,9 @@
     color: white;
     font-size: 1.3em;
     width: 32%;
+    transition: 3s;
+    border-radius: 15px;
+
   }
 
   &-paragraph {
@@ -46,6 +49,11 @@
     z-index: 11;
   }
 
+}
+
+.welcome-blockText:hover {
+  background-color: rgba(28, 37, 48, 0.897);
+  transition: 3s;
 }
 
 .welcome-blur {

@@ -1,9 +1,15 @@
+@use 'src/styles/vars';
+@use 'sass:color';
+@import url(https://fonts.googleapis.com/css?family=Gudea:400,700);
+
 .results {
   margin: 3rem auto;
   border-radius: 5px;
   padding: 1rem;
   width: 80%;
   background-color: #262835;
+  box-shadow: 0 12px 15px 0 #18181ab4, 0 17px 50px #060607b4;
+
 }
 
 .results-title {
@@ -26,31 +32,47 @@
   margin: 1rem;
   padding: 2rem;
   background-color: white;
-  transition: box-shadow 0.1s linear;
+  transition: box-shadow 0.3s;
+  box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24);
 }
 
 .results-card:hover {
-  box-shadow: 0px 0px 0px 5px #f3a488;
+  box-shadow: 0 12px 15px 0 #18181ab4, 0 17px 50px #060607b4;
 }
 
 .results-card-img {
-  width: auto;
-  height: 150px;
+  width: 100%;
+  height: auto;
+  border-radius: 15px;
 }
 
 .results-card-name {
   margin: 0.5em 0;
   font-size: 1.2em;
-  color: orangered;
+  color: #{vars.$darkBlue};
+  text-transform: uppercase;
 }
 
+.results-card-city {
+  text-transform: capitalize;
+}
 .results-card-seemore {
   display: block;
-  background-color: #7D5C50;
-  border-radius: 10px;
-  color: white;
-  padding: 0.7rem;
+  border-radius: 50px;
+  background: transparent;
+  padding: 0.8em 30px;
+  text-transform: uppercase;
+  font-size: 11px;
+  color:black;
+  background:#f8a587 ;
+  cursor:pointer;
+  transition-property:background,color;
+  transition-duration:.5s;
   margin-top: 1rem;
+  font-size: 0.9em;
 }
 
-
+.results-card-seemore:hover {
+  background: transparentize(#f8a587, 0.2);
+	transition: all 0.3s ease-in;
+}

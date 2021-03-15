@@ -1,0 +1,58 @@
+.error{
+
+  &-container{ 
+    display: flex;
+    justify-content:center;
+    // font-family: Georgia, 'Times New Roman', Times, serif;
+    background-image: linear-gradient(125deg,rgb(85, 85, 85) ,rgb(143, 140, 140));
+  }
+
+  &-page{
+   
+margin:150px;
+color:white;
+
+  }
+
+  &-title{
+font-size: 3rem;
+margin-bottom: 5rem;
+  }
+
+  &-mention{
+font-size:400px;
+font-weight: 900;
+letter-spacing: 30px;
+color:rgb(247, 161, 129);
+margin-bottom: 3rem;
+padding: 1rem 1rem;
+border-radius: 15px;
+// box-shadow: coral 2px 5px 2px;
+// background-image:url(../../assets/images/image.png) center no-repeat;
+// -webkit-text-fill-color: transparent;
+// -webkit-background-clip: text;
+
+
+  }
+
+  &-paragraph{
+font-size:2rem;
+
+  }
+
+  &-link{
+    text-decoration: none;
+    background: coral;
+    color: white;
+    padding: 12px 24px;
+    margin-top: 1rem;
+    display: inline-block;
+    border-radius: 25px;
+    font-size:24px;
+    text-transform: uppercase;
+    transition: 0.4s;;
+  }
+  &-link:hover{
+    background:rgb(247, 161, 129);
+  }
+}

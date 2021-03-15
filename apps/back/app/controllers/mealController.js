@@ -1,5 +1,4 @@
-// const { response, request } = require('express');
-const { Meal, Author } = require('../models');
+const { Meal } = require('../models');
 
 
 const mealController = {
@@ -15,7 +14,7 @@ const mealController = {
             const createdMeal = await Meal.create(mealToCreate)
             await createdMeal.addIngredients(mealToCreate.ingredients.split(','));
             await createdMeal.addCategories(mealToCreate.categories.split(','));
-        
+
             Meal.findByPk(Number(createdMeal.id), {
                 attributes: {
                     exclude: ['picture_path']
@@ -74,13 +73,36 @@ const mealController = {
 
     getSixMeals: async (request, response) => {
         try {
-            const sixMeals = await Meal.findAll({include: {
-                model: Author, as: 'author'
-            }, limit: 6, order: [['created_date', 'DESC']]});
+            const sixMeals = await Meal.findAll({
+                include: 'author', limit: 6, order: [['created_date', 'DESC']]
+            });
             response.status(200).json(sixMeals);
         } catch (error) {
             console.trace(error);
             response.status(404).json("Couldn't find six or less meals.")
+        }
+    },
+
+    searchMeal: async (request, response) => {
+        const dishName = request.params.dishName;
+        const kitchen = request.params.kitchenName;
+        const cityName = request.params.city;
+        try {
+            const mealSearch = await Meal.findAll({
+                where: { city: cityName },
+                include: ['ingredients', 'categories', {
+                    association: 'categories', 
+                    where: {
+                        name: kitchen
+                    }
+                },
+                 'author']
+            }
+            );
+            response.status(200).json(mealSearch);
+        } catch (error) {
+            console.trace(error);
+            response.status(404).json("No match found.")
         }
     }
 };

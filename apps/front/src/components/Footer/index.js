@@ -5,12 +5,12 @@ import './style.scss';
 const Footer = () => (
 
   <nav className="footer">
-    <NavLink className="footer-link" to="/v1/Qui sommes nous">
+    <NavLink className="footer-link" to="/v1/Qui-sommes-nous">
       Qui sommes-nous ?
     </NavLink>
-    <a className="footer-mention" href="/v1/Mentions legales">
+    <NavLink className="footer-mention" to="/v1/privacy-policy">
       Mentions légales
-    </a>
+    </NavLink>
   </nav>
 
 );

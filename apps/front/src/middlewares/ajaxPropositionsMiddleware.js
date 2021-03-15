@@ -19,15 +19,15 @@ export default (store) => (next) => (action) => {
     case GET_OF_EXCHANGE_LIST: {
       axios({
         method: 'get',
-        url: `${process.env.FAKE_API_URL}/propositions?asker.user_id=${action.payload}`,
+        url: `${process.env.API_URL}/swaps/authorAsker/${action.payload}`,
       })
         .then((res) => {
-          console.log(`response ok : ${res}`);
+          console.log(`response asked swaps : ${res.data}`);
           const actionToDispatch = updateOfExchangeListAsked(res.data);
           return store.dispatch(actionToDispatch);
         })
         .catch((error) => {
-          console.log(`${error} error on get one dish`);
+          console.log(`${error} error on get swap asked`);
         })
         .finally(() => {
           console.log('login done');
@@ -35,15 +35,15 @@ export default (store) => (next) => (action) => {
 
       axios({
         method: 'get',
-        url: `${process.env.FAKE_API_URL}/propositions?receiver.user_id=${action.payload}`,
+        url: `${process.env.API_URL}/swaps/authorReceiver/${action.payload}`,
       })
         .then((res) => {
-          console.log(`response ok : ${res}`);
+          console.log(`response get received : ${res.data}`);
           const actionToDispatch = updateOfExchangeListReceived(res.data);
           return store.dispatch(actionToDispatch);
         })
         .catch((error) => {
-          console.log(`${error} error on get one dish`);
+          console.log(`${error} error on get received propositions`);
         })
         .finally(() => {
           console.log('login done');
@@ -51,8 +51,8 @@ export default (store) => (next) => (action) => {
     } break;
     case GET_CLICK_ON_ACCEPT: {
       axios({
-        method: 'patch',
-        url: `${process.env.FAKE_API_URL}/propositions/${action.payload.propositionId}`,
+        method: 'put',
+        url: `${process.env.API_URL}/swaps/${action.payload.propositionId}`,
         data: { status: 1 },
       })
         .then((res) => {
@@ -61,7 +61,7 @@ export default (store) => (next) => (action) => {
           return store.dispatch(actionToDispatch);
         })
         .catch((error) => {
-          console.log(`${error} error on get one dish`);
+          console.log(`${error} error on get asked propositions`);
         })
         .finally(() => {
           console.log('login done');
@@ -69,8 +69,8 @@ export default (store) => (next) => (action) => {
     } break;
     case GET_CLICK_ON_REFUSE: {
       axios({
-        method: 'patch',
-        url: `${process.env.FAKE_API_URL}/propositions/${action.payload.propositionId}`,
+        method: 'put',
+        url: `${process.env.API_URL}/swaps/${action.payload.propositionId}`,
         data: { status: 2 },
       })
         .then((res) => {
@@ -85,19 +85,15 @@ export default (store) => (next) => (action) => {
     case SEND_PROPOSITION: {
 
       const { askerDishId } = store.getState().propositions;
-
+      const { dishSelect } = store.getState().recipes;
+      // ! TODO recuperer l'id dans l'url du plat requested 
       if (askerDishId) {
         axios({
           method: 'post',
-          url: `http://localhost:3000/propositions`,
+          url: `${process.env.API_URL}/swaps`,
           data: { 
-            status: 0,
-            asker: {
-              dish_id: askerDishId,
-            },
-            receiver: { 
-              dish_id: 2,
-            }
+            offered_meal_id: askerDishId,
+            requested_meal_id: dishSelect.id,
           }
         })
         .then((res) => {

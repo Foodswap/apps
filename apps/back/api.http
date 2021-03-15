@@ -15,6 +15,9 @@ GET {{baseUrl}}/ingredients
 ### Local - route pour récupérer les ingredients
 GET {{baseUrl}}/ingredient/1
 
+### Local - route recherche un plat
+GET {{baseUrl}}/meals/asiatique/bordeaux
+
 ### Local - route pour publier un plat
 POST {{baseUrl}}//meals
 Content-Type: application/json
@@ -28,7 +31,7 @@ Content-Type: application/json
 } 
 
 ### Local - route pour récupérer les plats d'un author
-GET {{baseUrl}}/meals/author/49
+GET {{baseUrl}}/meals/author/47
 
 
 ### Local - route pour récupérer un plat
@@ -60,6 +63,11 @@ Content-Type: application/json
    "email" : "pgmdu03@mail.fr",
    "password" : "jenesuispasencorehaché"
 } 
+
+### Local - route pour récupérer les swap
+GEt {{baseUrl}}/swaps/authorReceiver/49
+
+Content-Type: application/json
 
 
 ### AWS - route pour tester l'inscription

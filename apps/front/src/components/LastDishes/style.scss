@@ -1,24 +1,35 @@
+@use 'src/styles/vars';
+@use 'sass:color';
+@import url(https://fonts.googleapis.com/css?family=Gudea:400,700);
+
+
 .last-dishes-section {
-  background-color: #f8a587a9;
+  background: #262835;
+  padding-bottom: 4em;
+
 }
 .last-dishes {
-  margin: 3rem auto;
+  margin: auto;
   border-radius: 5px;
   padding: 1rem;
-  width: 80%;
+  width: 70%;
   background-color: #262835;
+  font-family: 'Gudea', sans-serif;
+  box-shadow: 0 12px 15px 0 #18181ab4, 0 17px 50px #060607b4;
 }
 
 .last-dishes-title {
   font-size: 2em;
   padding: 1rem;
   color: white;
+  text-transform: uppercase;
 }
 
 .last-dishes-cards {
   display: flex;
   flex-wrap: wrap;
   margin-left: 250px;
+
 }
 
 .last-dishes-card {
@@ -28,31 +39,49 @@
   margin: 1rem;
   padding: 2rem;
   background-color: white;
-  transition: box-shadow 0.1s linear;
+  transition: box-shadow 0.3s;
+  box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24);
+
 }
 
 .last-dishes-card:hover {
-  box-shadow: 0px 0px 0px 5px #f3a488;
+  box-shadow: 0 12px 15px 0 #18181ab4, 0 17px 50px #060607b4;
 }
 
 .last-dishes-card-img {
-  width: auto;
-  height: 150px;
+  width: 100%;
+  height: auto;
+  border-radius: 15px;
 }
 
 .last-dishes-card-name {
   margin: 0.5em 0;
   font-size: 1.2em;
-  color: orangered;
+  color: #{vars.$darkBlue};
+  text-transform: uppercase;
 }
 
+.last-dishes-card-city {
+  text-transform: capitalize;
+}
 .last-dishes-card-seemore {
   display: block;
-  background-color: #7D5C50;
-  border-radius: 10px;
-  color: white;
-  padding: 0.7rem;
+  border-radius: 50px;
+  background: transparent;
+  padding: 0.8em 30px;
+  text-transform: uppercase;
+  font-size: 11px;
+  color:black;
+  background:#f8a587 ;
+  cursor:pointer;
+  transition-property:background,color;
+  transition-duration:.5s;
   margin-top: 1rem;
+  font-size: 0.9em;
 }
 
+.last-dishes-card-seemore:hover {
+  background: transparentize(#f8a587, 0.2);
+	transition: all 0.3s ease-in;
+}
 

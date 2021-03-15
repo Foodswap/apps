@@ -14,6 +14,16 @@ Meal.belongsTo(Author, {
     as: 'author'
 });
 
+Meal.belongsTo(Author, {
+    foreignKey: 'author_id',
+    as: 'receiver'
+});
+
+Meal.belongsTo(Author, {
+    foreignKey: 'author_id',
+    as: 'asker'
+});
+
 Meal.hasMany(Swap, {
     foreignKey: 'requested_meal_id',
     as: 'swapsRequest'
