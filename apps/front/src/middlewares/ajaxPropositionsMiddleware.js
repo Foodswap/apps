@@ -51,8 +51,8 @@ export default (store) => (next) => (action) => {
     } break;
     case GET_CLICK_ON_ACCEPT: {
       axios({
-        method: 'patch',
-        url: `${process.env.FAKE_API_URL}/propositions/${action.payload.propositionId}`,
+        method: 'put',
+        url: `${process.env.API_URL}/swaps/${action.payload.propositionId}`,
         data: { status: 1 },
       })
         .then((res) => {
@@ -69,8 +69,8 @@ export default (store) => (next) => (action) => {
     } break;
     case GET_CLICK_ON_REFUSE: {
       axios({
-        method: 'patch',
-        url: `${process.env.FAKE_API_URL}/propositions/${action.payload.propositionId}`,
+        method: 'put',
+        url: `${process.env.API_URL}/swaps/${action.payload.propositionId}`,
         data: { status: 2 },
       })
         .then((res) => {
