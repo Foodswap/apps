@@ -19,7 +19,7 @@ export default (store) => (next) => (action) => {
     case GET_OF_EXCHANGE_LIST: {
       axios({
         method: 'get',
-        url: `${process.env.FAKE_API_URL}/propositions?asker.user_id=${action.payload}`,
+        url: `${process.env.API_URL}/swaps/authorAsker/${action.payload}`,
       })
         .then((res) => {
           console.log(`response ok : ${res}`);
@@ -35,7 +35,7 @@ export default (store) => (next) => (action) => {
 
       axios({
         method: 'get',
-        url: `${process.env.FAKE_API_URL}/propositions?receiver.user_id=${action.payload}`,
+        url: `${process.env.API_URL}/swaps/authorReceiver/${action.payload}`,
       })
         .then((res) => {
           console.log(`response ok : ${res}`);
@@ -43,7 +43,7 @@ export default (store) => (next) => (action) => {
           return store.dispatch(actionToDispatch);
         })
         .catch((error) => {
-          console.log(`${error} error on get one dish`);
+          console.log(`${error} error on get received propositions`);
         })
         .finally(() => {
           console.log('login done');
@@ -61,7 +61,7 @@ export default (store) => (next) => (action) => {
           return store.dispatch(actionToDispatch);
         })
         .catch((error) => {
-          console.log(`${error} error on get one dish`);
+          console.log(`${error} error on get asked propositions`);
         })
         .finally(() => {
           console.log('login done');
