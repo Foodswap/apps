@@ -1,8 +1,20 @@
 import { connect } from 'react-redux';
 import DishesForm from '../../components/DishesForm';
-import { setIngredient, setInputValue, sendFormRecipeUp, setCategorySelect, changeStatus, fetchIngredients, handleMultiSelectChange, fetchTypeDish, fetchTypeKitchen } from '../../actions/dishesForm';
+import {
+  setIngredient,
+  setInputValue,
+  sendFormRecipeUp,
+  setCategorySelect,
+  changeStatus,
+  fetchIngredients,
+  handleMultiSelectChange,
+  fetchTypeDish,
+  fetchTypeKitchen,
+  getADishToEdit,
+} from '../../actions/dishesForm';
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state, ownProps) => ({
+  dishId: ownProps.match ? +ownProps.match.params.id : null,
   dataFormMeal: state.dishes.dataFormMeal,
   isLogged: state.dishes.isLogged,
   loggedMessage: state.dishes.loggedMessage,
@@ -21,26 +33,38 @@ const mapStateToProps = (state) => ({
   ingredientsData: state.dishes.ingredientsData,
   dishData: state.dishes.dishData,
   kitchenData: state.dishes.kitchenData,
+  selectedIngredients: state.dishes.selectedIngredients,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   handleInputChange: (value, name) => dispatch(setInputValue(value, name)),
+
   onFormSubmit: (value, name) => dispatch(sendFormRecipeUp(value, name)),
+
   onSetCategorySelect: (value, name) => dispatch(setCategorySelect(value, name)),
+
   changeOnline: () => dispatch(changeStatus()),
+
   getIngredients: () => dispatch(fetchIngredients()),
   handleMultiSelectChange: (ingredients, { action }) => {
-    console.log("ingredient : " + ingredients + "action : " + action);
-    console.log(ingredients);
+    console.log(action);
     switch (action) {
-      case 'select-option': 
-      case 'remove-value' :
+      case 'select-option':
+      case 'remove-value':
         dispatch(setIngredient(ingredients));
-      return;
+        break;
+      default:
     }
   },
+
   fetchTypeDish: () => dispatch(fetchTypeDish()),
+
   fetchTypeKitchen: () => dispatch(fetchTypeKitchen()),
+
+  getADish: (dishId) => {
+    const action = getADishToEdit(dishId);
+    dispatch(action);
+  },
 });
 
 export default connect(

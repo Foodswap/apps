@@ -14,31 +14,33 @@ import {
   FETCH_TYPE_DISH_SUCCES,
   FETCH_TYPE_KITCHEN_SUCCES,
   FETCH_MY_DISHES_SWAP_SUCCES,
+  UPDATE_A_DISH_TO_EDIT,
+  CLEAR_DISH_INFORMATIONS,
 } from '../actions/dishesForm';
 
 // export const initialState = {};
 
 const initialState = {
-
+  dishId: null,
   cancelMessage: '',
   picture: 'https://img.icons8.com/carbon-copy/2x/meal.png',
-  name : '',
+  name: '',
   portion: '',
   description: '',
   city: '',
-  author: '',
+  author: null,
   ingredients: [],
-  dish: '',
-  kitchen: '',
+  dish: null,
+  kitchen: null,
   online: false,
   isSucces: false,
   isError: false,
-  ingredientsData: null,
+  ingredientsData: [],
   dishData: null,
   kitchenData: null,
   myDishesOnline: null,
+  selectedIngredients: [],
   // imgIcon: 'https://img.icons8.com/carbon-copy/2x/meal.png',
-  
 };
 export default (state = initialState, action = {}) => {
   switch (action.type) {
@@ -47,11 +49,11 @@ export default (state = initialState, action = {}) => {
         ...state,
         [action.name]: action.value,
       };
-    case SET_CATEGORY_SELECT: 
+    case SET_CATEGORY_SELECT:
       return {
         ...state,
         [action.name]: action.value,
-      }
+      };
     case CANCEL_FORM_RECIPE:
       return {
         ...state,
@@ -73,12 +75,12 @@ export default (state = initialState, action = {}) => {
         [action.name]: action.value,
         loggedMessage: 'Votre plat a été crée',
       };
-    case SEND_FORM_RECIPE_UP_SUCCESS: 
+    case SEND_FORM_RECIPE_UP_SUCCESS:
       return {
         ...state,
         isSucces: true,
       };
-      case SEND_FORM_RECIPE_UP_ERROR: 
+    case SEND_FORM_RECIPE_UP_ERROR:
       return {
         ...state,
         isError: true,
@@ -88,28 +90,68 @@ export default (state = initialState, action = {}) => {
         ...state,
         online: !state.online,
       };
-    case FETCH_INGREDIENTS_SUCCES: 
+    case FETCH_INGREDIENTS_SUCCES:
       return {
         ...state,
-        ingredientsData: action.payload,
-      }
-    case SET_INGREDIENT: 
+        ingredientsData: action.payload.map((ingredient) => ({ ...ingredient, label: ingredient.name, value: ingredient.id })),
+      };
+    case SET_INGREDIENT:
       return {
         ...state,
         ingredients: action.payload,
-      }
-    case FETCH_TYPE_DISH_SUCCES: 
+      };
+    case FETCH_TYPE_DISH_SUCCES:
       return {
         ...state,
         dishData: action.payload,
-      }
-    case FETCH_TYPE_KITCHEN_SUCCES: 
+      };
+    case FETCH_TYPE_KITCHEN_SUCCES:
       return {
         ...state,
         kitchenData: action.payload,
-      }
+      };
       // En cas de success, je recupere mes props dont j'ai besoin
-
+    case UPDATE_A_DISH_TO_EDIT:
+      return {
+        ...state,
+        dishId: action.payload.id,
+        picture: action.payload.picture,
+        name: action.payload.name,
+        portion: action.payload.portion,
+        description: action.payload.description,
+        city: action.payload.city,
+        author: action.payload.author.id,
+        ingredients: action.payload.ingredients,
+        dish: action.payload.categories.find((category) => category.type === 'dish').id,
+        kitchen: action.payload.categories.find((category) => category.type === 'kitchen').id,
+        dishData: action.payload.dishData,
+        kitchenData: action.payload.kitchenData,
+        online: action.payload.online,
+        myDishesOnline: action.payload.myDishesOnline,
+        selectedIngredients: action.payload.ingredients.map((ingredient) => ({ ...ingredient, label: ingredient.name, value: ingredient.id })),
+      };
+    case CLEAR_DISH_INFORMATIONS: return {
+      ...state,
+      dishId: null,
+      cancelMessage: '',
+      picture: 'https://img.icons8.com/carbon-copy/2x/meal.png',
+      name: '',
+      portion: '',
+      description: '',
+      city: '',
+      author: null,
+      ingredients: [],
+      dish: null,
+      kitchen: null,
+      online: false,
+      isSucces: false,
+      isError: false,
+      ingredientsData: [],
+      dishData: null,
+      kitchenData: null,
+      myDishesOnline: null,
+      selectedIngredients: [],
+    };
     default:
       return state;
   }
