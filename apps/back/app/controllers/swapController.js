@@ -1,6 +1,3 @@
-const {
-    Author
-} = require('../models');
 const Swap = require('../models/swap');
 
 
@@ -22,7 +19,7 @@ const swapController = {
 
     getSwapAsker: async (request, response) => {
         const mealAttributes = ['id', 'name'];
-        const authorAttributes = ['id', 'username'];
+        const authorAttributes = ['id', 'username', 'email'];
         try {
             const swapOffer = await Swap.findAll(
              {
