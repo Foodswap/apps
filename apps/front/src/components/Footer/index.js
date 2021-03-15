@@ -8,7 +8,7 @@ const Footer = () => (
     <NavLink className="footer-link" to="/v1/Qui-sommes-nous">
       Qui sommes-nous ?
     </NavLink>
-    <NavLink className="footer-mention" to="/v1/privicy-policy">
+    <NavLink className="footer-mention" to="/v1/privacy-policy">
       Mentions légales
     </NavLink>
   </nav>

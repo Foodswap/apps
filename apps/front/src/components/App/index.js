@@ -67,6 +67,9 @@ const App = () => (
     <Route exact path="/v1/Qui-sommes-nous">
       <Faces />
     </Route>
+    <Route exact path="/v1/privacy-policy">
+      <PrivacyPolicy />
+    </Route>
     <Route component={Error} />
       
     </Switch>
