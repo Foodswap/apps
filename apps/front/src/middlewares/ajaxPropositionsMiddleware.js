@@ -85,19 +85,15 @@ export default (store) => (next) => (action) => {
     case SEND_PROPOSITION: {
 
       const { askerDishId } = store.getState().propositions;
-
+      const { dishSelect } = store.getState().recipes;
+      // ! TODO recuperer l'id dans l'url du plat requested 
       if (askerDishId) {
         axios({
           method: 'post',
-          url: `http://localhost:3000/propositions`,
+          url: `${process.env.API_URL}/swaps`,
           data: { 
-            status: 0,
-            asker: {
-              dish_id: askerDishId,
-            },
-            receiver: { 
-              dish_id: 2,
-            }
+            offered_meal_id: askerDishId,
+            requested_meal_id: dishSelect.id,
           }
         })
         .then((res) => {

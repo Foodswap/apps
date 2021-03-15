@@ -4,12 +4,13 @@ import SwapContent from '../../components/SwapContent';
 import { fetchMyDishesSwap } from '../../actions/dishesForm';
 import { getAskerDishId, sendProposition } from '../../actions/exchangeTracking';
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state, ownProps) => ({
   dishes: state.propositions.myDishesOnline,
   userLogged: state.user.infos.id,
   isSelected: state.propositions.isSelected,
   succesPropositionMsg: state.propositions.succesPropositionMsg,
   errorPropositionMsg: state.propositions.errorPropositionMsg,
+  // requested_meal_id: ownProps.match.params.id,
 });
 
 const mapDispatchToProps = (dispatch) => ({

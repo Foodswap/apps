@@ -63,7 +63,7 @@ DisplayADish.propTypes = {
     name: PropTypes.string,
     description: PropTypes.string,
     ingredients: PropTypes.array,
-    portion: PropTypes.string,
+    portion: PropTypes.number,
     city: PropTypes.string,
     author: PropTypes.shape({
       id: PropTypes.number,
