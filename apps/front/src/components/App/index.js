@@ -1,6 +1,6 @@
 // Vendors
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 // Dumb components
 import AppHeader from '../AppHeader';
@@ -39,7 +39,7 @@ const App = () => (
   <div className="app">
     <AppHeader />
     <Menu />
-
+<Switch>
     <Route exact path="/v1/my-information" component={MyInformation} />
 
     <Route exact path="/v1/exchange-tracking" component={Exchangetracking} />
@@ -66,9 +66,10 @@ const App = () => (
     <Route exact path="/v1/Qui sommes nous">
       <Faces />
     </Route>
-    <Route>
-      <Error />
-    </Route>
+    <Route component={Error} />
+      
+    </Switch>
+    
 
     <Footer />
   </div>
