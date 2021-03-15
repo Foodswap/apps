@@ -13,7 +13,7 @@ const Results = ({dishes}) => (
     <div className="results-cards">
       {
       dishes.map((dish) => {
-        const linkUrl = `/dish/${dish.id}`;
+        const linkUrl = `/v1/dish/${dish.id}`;
         return (
 
           <div className="results-card" key={dish.id}>

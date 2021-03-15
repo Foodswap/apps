@@ -8,6 +8,9 @@ import {
   updateOfExchangeListAsked,
   updateOfExchangeListReceived,
   getOfExchangeList,
+  SEND_PROPOSITION,
+  sendPropositionError,
+  sendPropositionSucces 
 } from '../actions/exchangeTracking';
 
 export default (store) => (next) => (action) => {
@@ -16,7 +19,7 @@ export default (store) => (next) => (action) => {
     case GET_OF_EXCHANGE_LIST: {
       axios({
         method: 'get',
-        url: `http://localhost:3000/propositions?asker.user_id=${action.payload}`,
+        url: `${process.env.FAKE_API_URL}/propositions?asker.user_id=${action.payload}`,
       })
         .then((res) => {
           console.log(`response ok : ${res}`);
@@ -32,7 +35,7 @@ export default (store) => (next) => (action) => {
 
       axios({
         method: 'get',
-        url: `http://localhost:3000/propositions?receiver.user_id=${action.payload}`,
+        url: `${process.env.FAKE_API_URL}/propositions?receiver.user_id=${action.payload}`,
       })
         .then((res) => {
           console.log(`response ok : ${res}`);
@@ -49,7 +52,7 @@ export default (store) => (next) => (action) => {
     case GET_CLICK_ON_ACCEPT: {
       axios({
         method: 'patch',
-        url: `http://localhost:3000/propositions/${action.payload.propositionId}`,
+        url: `${process.env.FAKE_API_URL}/propositions/${action.payload.propositionId}`,
         data: { status: 1 },
       })
         .then((res) => {
@@ -67,7 +70,7 @@ export default (store) => (next) => (action) => {
     case GET_CLICK_ON_REFUSE: {
       axios({
         method: 'patch',
-        url: `http://localhost:3000/propositions/${action.payload.propositionId}`,
+        url: `${process.env.FAKE_API_URL}/propositions/${action.payload.propositionId}`,
         data: { status: 2 },
       })
         .then((res) => {
@@ -78,10 +81,38 @@ export default (store) => (next) => (action) => {
         .catch((error) => {
           console.log(`${error} error on get one dish`);
         })
-        .finally(() => {
-          console.log('login done');
-        });
     } break;
+    case SEND_PROPOSITION: {
+
+      const { askerDishId } = store.getState().propositions;
+
+      if (askerDishId) {
+        axios({
+          method: 'post',
+          url: `http://localhost:3000/propositions`,
+          data: { 
+            status: 0,
+            asker: {
+              dish_id: askerDishId,
+            },
+            receiver: { 
+              dish_id: 2,
+            }
+          }
+        })
+        .then((res) => {
+          console.log(`response ok : ${res}`);
+          const actionToDispatch = sendPropositionSucces();
+          return store.dispatch(actionToDispatch);
+        })
+        .catch((error) => {
+          console.log(`${error} error on send proposition`);
+        })
+      } else {
+        const actionToDispatch = (sendPropositionError());
+        return store.dispatch(actionToDispatch);
+      }
+    }
 
     default:
       return next(action);

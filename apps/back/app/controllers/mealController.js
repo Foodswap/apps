@@ -25,9 +25,9 @@ const mealController = {
             }).then((meal) => {
                 meal.author.password = null;
                 response.status(201).json(meal);
-                
+
             })
-            
+
         } catch (error) {
             console.log(error);
             response.status(500);
@@ -52,9 +52,9 @@ const mealController = {
 
     getMealsByAuthor: async (request, response) => {
         try {
-            const mealsByAuthor = await Meal.findAll({where:{author_id:request.params.author_id}});
+            const mealsByAuthor = await Meal.findAll({ where: { author_id: request.params.author_id } });
             response.status(200).json(mealsByAuthor)
-        } catch(error) {
+        } catch (error) {
             console.log(error);
             response.status(500);
         }
@@ -71,11 +71,13 @@ const mealController = {
             console.trace(err);
             response.status(404).json("Plat non trouvé");
         }
-    }, 
+    },
 
     getSixMeals: async (request, response) => {
         try {
-            const sixMeals = await Meal.findAll({orderBy:'created_date' ,limit:6});
+            const sixMeals = await Meal.findAll({include: {
+                model: Author, as: 'author'
+            }, limit: 6, order: [['created_date', 'DESC']]});
             response.status(200).json(sixMeals);
         } catch (error) {
             console.trace(error);

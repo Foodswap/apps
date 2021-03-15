@@ -32,6 +32,7 @@ router.post('/swaps', middlewareValidation(schemas.swaps), swapController.swapPr
 router.get('/swaps/authorAsker/:id', swapController.getSwapAsker);
 router.get('/swaps/authorReceiver/:id', swapController.getSwapReceiver);
 
+
 // Ingredient
 router.get('/ingredient/:id', ingredientController.getIngredients);
 router.get('/ingredients', ingredientController.getAllIngredient);

@@ -19,7 +19,7 @@ const user = localStorage.getItem('user')
 const initialState = {
   isLoginOpen: false,
   isSignUpOpen: false,
-  email: '',
+  email: user.email || '',
   password: '',
   pseudonym: user.username || '',
   city: user.city || '',
@@ -64,12 +64,15 @@ export default (state = initialState, action = {}) => {
     case LOGIN_SUCCES:
       return {
         ...state,
-        email: '',
+        email: action.payload.user.email,
+        pseudonym: action.payload.user.username,
+        city: action.payload.user.city,
         password: '',
         isLogged: true,
         isLoginOpen: false,
         infos: {
-          token: action.payload.accessToken,
+          token: action.payload.token,
+          id: action.payload.user.id,
         },
       };
     case LOGIN_ERROR:
@@ -77,20 +80,32 @@ export default (state = initialState, action = {}) => {
         ...state,
         isLogged: false,
         loggedMessage: 'Veuillez réessayer !',
-        infos: {},
+        infos: {
+          accesToken: '',
+          id: '',
+        },
       };
     case SIGNUP_ERROR:
       return {
         ...state,
         loggedMessage: 'Un compte existe déjà avec cet email !',
-        infos: {},
+        infos: {
+          accesToken: '',
+          id: '',
+        },
       };
     case USER_LOGOUT_SUCCESS:
       return {
         ...state,
+        email: '',
+        pseudonym: '',
+        city: '',
         isLogged: false,
         loggedMessage: '',
-        infos: {},
+        infos: {
+          accesToken: '',
+          id: '',
+        },
       };
     case SEND_SIGN_UP:
       return {

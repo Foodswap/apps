@@ -35,10 +35,10 @@ POST {{baseUrl}}/signup
 Content-Type: application/json
 
 {
-   "username" : "jeananne",
-   "email" : "pgmdu04@mail.fr",
-   "password" : "jenesuispasencorehaché",
-   "city" : "bordeaux"
+   "username" : "johndoe",
+   "email" : "jd@mail.fr",
+   "password" : "doyouknowme",
+   "city" : "nowhere"
 } 
 
 ### Local - route pour se connecter

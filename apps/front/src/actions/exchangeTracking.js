@@ -43,3 +43,24 @@ export const getClickOnRefuse = (propositionId, userId) => ({
     propositionId, userId,
   },
 });
+
+// get dish id of asker (when he selects his dish in swap modal)
+export const GET_ASKER_DISH_ID = 'GET_ASKER_DISH_ID';
+export const getAskerDishId = (payload) => ({
+  type: GET_ASKER_DISH_ID,
+  payload
+})
+
+export const SEND_PROPOSITION = 'SEND_PROPOSITION';
+export const sendProposition = () => ({
+  type: SEND_PROPOSITION,
+})
+
+export const SEND_PROPOSITION_SUCCES = 'SEND_PROPOSITION_SUCCES';
+export const sendPropositionSucces = () => ({
+  type: SEND_PROPOSITION_SUCCES,
+})
+export const SEND_PROPOSITION_ERROR = 'SEND_PROPOSITION_ERROR';
+export const sendPropositionError = () => ({
+  type: SEND_PROPOSITION_ERROR,
+})

@@ -1,12 +1,16 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import SwapModal from '../SwapModal';
+import UseModal from '../UseModale';
 
 import './style.scss';
 
 const DisplayADish = ({
-  dish, dishSwap, dishId, getOneDish,
+  dish, dishSwap, dishId, getOneDish, fetchMyDishesSwap
 }) => {
   useEffect(() => getOneDish(dishId), []);
+  // useEffect(() => fetchMyDishesSwap(author.id), []);
+  const {isShowing, toggle} = UseModal();
 
   return (
     <div className="displayADish">
@@ -16,12 +20,12 @@ const DisplayADish = ({
             <div className="displayADish-headerDish-container">
               <h1 className="displayADish-headerDish-title">{dish.name}</h1>
               <div className="displayADish-headerDish-content">
-                <span className="displayADish-headerDish-author">Fait par {dish.author.pseudonym}</span>
+                <span className="displayADish-headerDish-author">Fait par {dish.author.username}</span>
                 <span className="displayADish-headerDish-portion">{dish.portion} Parts</span>
               </div>
               <p className="displayADish-headerDish-city">{dish.city}</p>
             </div>
-            <img src={dish.picture} alt={dish.name} className="displayADish-headerDish-img" />
+            <img src={`http://ec2-54-145-80-6.compute-1.amazonaws.com/v1/meals/${dish.id}/picture`} alt={dish.name} className="displayADish-headerDish-img" />
           </header>
           <div className="displayADish-ingredients">
             <ul className="displayADish-ingredients-container">
@@ -39,7 +43,13 @@ const DisplayADish = ({
               <p className="displayADish-description-text">{dish.description}</p>
             </div>
           </div>
-          <button type="button" className="displayADish-button" onClick={dishSwap}>Swap</button>
+          <button type="button" className="displayADish-button" onClick={toggle}>Swap</button>
+          {/* <button type="button" className="displayADish-button" onClick={(event) => { toggle(event); fetchMyDishesSwap(event);}}>Swap</button> */}
+          
+          <SwapModal
+          isShowing={isShowing}
+        hide={toggle}
+      />
         </div>
       )}
     </div>
@@ -63,6 +73,7 @@ DisplayADish.propTypes = {
   dishSwap: PropTypes.func.isRequired,
   dishId: PropTypes.string.isRequired,
   getOneDish: PropTypes.func.isRequired,
+  // fetchMyDishesSwap: PropTypes.func.isRequired,
 };
 
 DisplayADish.defaultProps = {
