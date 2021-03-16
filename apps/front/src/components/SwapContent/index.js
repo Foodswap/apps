@@ -29,7 +29,7 @@ const SwapContent = ({ dishes, fetchMyDishesSwap, userLogged, getAskerDishId, is
                 <div className={styleSelected} key={dish.id} onClick={(evt) => {
                   getAskerDishId(dish.id);
                 }}>
-                  <img className="last-dishes-card-imgxx" src={dish.picture} alt="" />
+                  <img className="last-dishes-card-imgxx" src={`http://ec2-54-145-80-6.compute-1.amazonaws.com/v1/meals/${dish.id}/picture`} alt="" />
                   <h3 className="last-dishes-card-namexx">{dish.name}</h3>
                   {/* <p className="last-dishes-card-potionxx">{dish.portion} part(s)</p>
                   <p className="last-dishes-card-authorxx"> Fait par {dish.author.pseudonym}</p>
