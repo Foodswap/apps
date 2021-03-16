@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import MyDishes from '../../components/MyDishes';
 import { deleteOneDish, getAllDishesFromAUser } from '../../actions/dishes';
+import { clearDishInformations } from '../../actions/dishesForm';
 
 const mapStateToProps = (state) => ({
   userDishes: state.recipes.userDishes,
@@ -15,6 +16,10 @@ const mapDispatchToProps = (dispatch) => ({
   },
   getAListAllDishes: (userId) => {
     const action = getAllDishesFromAUser(userId);
+    dispatch(action);
+  },
+  clearDishInformations: () => {
+    const action = clearDishInformations();
     dispatch(action);
   },
 });

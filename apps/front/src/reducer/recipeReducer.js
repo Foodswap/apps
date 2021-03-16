@@ -39,9 +39,9 @@ export default (state = initialState, action = {}) => {
       ...state,
       lastDishes: action.payload,
     };
-    case DISH_EXCHANGE: return {
-      ...state,
-    };
+    // case DISH_EXCHANGE: return {
+    //   ...state,
+    // };
     // case GET_LIST_OF_DISHES: return {
     //   ...state,
     //   lastDishes: action.payload,
@@ -50,7 +50,6 @@ export default (state = initialState, action = {}) => {
       ...state,
       userDishes: action.payload,
     };
-
     default:
       return state;
   }

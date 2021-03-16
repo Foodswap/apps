@@ -72,7 +72,7 @@ export const updateListOfDishes = (payload) => ({
 
 // Action utiliser dans le fichier displayADish
 // Action pour cliqué sur le bouton swap pour affiché part la suite la modale
-export const DISH_EXCHANGE = 'DISH_SWAP';
-export const dishExchange = () => ({
-  type: DISH_EXCHANGE,
-});
+// export const DISH_EXCHANGE = 'DISH_SWAP';
+// export const dishExchange = () => ({
+//   type: DISH_EXCHANGE,
+// });

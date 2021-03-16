@@ -51,67 +51,67 @@ export const cancelFormRecipeError = (payload) => ({
 export const SET_CATEGORY_SELECT = 'SET_CATEGORY_SELECT';
 export const setCategorySelect = (value, name) => ({
   type: SET_CATEGORY_SELECT,
-  name, 
-  value
-})
+  name,
+  value,
+});
 
 // action pour changer le mode en ligne / hors ligne
-export const CHANGE_STATUS = "CHANGE_STATUS";
+export const CHANGE_STATUS = 'CHANGE_STATUS';
 export const changeStatus = () => ({
   type: CHANGE_STATUS,
-})
+});
 
 // action pour recuperer les ingredients
-export const FETCH_INGREDIENTS = "FETCH_INGREDIENTS";
+export const FETCH_INGREDIENTS = 'FETCH_INGREDIENTS';
 export const fetchIngredients = (payload) => ({
   type: FETCH_INGREDIENTS,
   payload,
 });
 
-export const FETCH_INGREDIENTS_SUCCES = "FETCH_INGREDIENTS_SUCCES";
+export const FETCH_INGREDIENTS_SUCCES = 'FETCH_INGREDIENTS_SUCCES';
 export const fetchIngredientsSucces = (payload) => ({
   type: FETCH_INGREDIENTS_SUCCES,
   payload,
 });
 
-export const FETCH_INGREDIENTS_ERROR = "FETCH_INGREDIENTS_ERROR";
+export const FETCH_INGREDIENTS_ERROR = 'FETCH_INGREDIENTS_ERROR';
 export const fetchIngredientsError = () => ({
   type: FETCH_INGREDIENTS_ERROR,
 });
 
-export const HANDLE_MULTI_SELECT = "HANDLE_MULTI_SELECT";
-export const handleMultiSelectChange = (payload) => ({ 
+export const HANDLE_MULTI_SELECT = 'HANDLE_MULTI_SELECT';
+export const handleMultiSelectChange = (payload) => ({
   type: HANDLE_MULTI_SELECT,
-  payload
-})
+  payload,
+});
 
 export const SET_INGREDIENT = 'SET_INGREDIENT';
 export const setIngredient = (payload) => ({
   type: SET_INGREDIENT,
-  payload
-})
+  payload,
+});
 
 export const FETCH_TYPE_DISH = 'FETCH_TYPE_DISH';
 export const fetchTypeDish = () => ({
   type: FETCH_TYPE_DISH,
-})
+});
 
 export const FETCH_TYPE_DISH_SUCCES = 'FETCH_TYPE_DISH_SUCCES';
 export const fetchTypeDishSucces = (payload) => ({
   type: FETCH_TYPE_DISH_SUCCES,
-  payload
-})
+  payload,
+});
 
 export const FETCH_TYPE_KITCHEN = 'FETCH_TYPE_KITCHEN';
 export const fetchTypeKitchen = () => ({
   type: FETCH_TYPE_KITCHEN,
-})
+});
 
 export const FETCH_TYPE_KITCHEN_SUCCES = 'FETCH_TYPE_KITCHEN_SUCCES';
 export const fetchTypeKitchenSucces = (payload) => ({
   type: FETCH_TYPE_KITCHEN_SUCCES,
-  payload
-})
+  payload,
+});
 
 // action pour recuperer le / les plats dans le SWAP
 
@@ -119,7 +119,7 @@ export const FETCH_MY_DISHES_SWAP = 'FETCH_MY_DISHES_SWAP';
 export const fetchMyDishesSwap = (payload) => ({
   type: FETCH_MY_DISHES_SWAP,
   payload,
-})
+});
 
 // Action en cas de succes de recup du form
 
@@ -127,5 +127,28 @@ export const FETCH_MY_DISHES_SWAP_SUCCES = 'FETCH_MY_DISHES_SWAP_SUCCES';
 export const fetchMyDishesSwapSucces = (payload) => ({
   type: FETCH_MY_DISHES_SWAP_SUCCES,
   payload,
-})
+});
 
+// Action utiliser dans le fichier MyDishes (boutton Editer)
+// Action pour séléctionné l'id du plat à éditer
+export const GET_A_DISH_TO_EDIT = 'GET_A_DISH_TO_EDIT';
+export const getADishToEdit = (payload) => ({
+  type: GET_A_DISH_TO_EDIT,
+  payload,
+});
+
+// Action utiliser dans le fichier MyDishes (boutton Editer)
+// Action pour mettre à jour l'id du plat à éditer
+export const UPDATE_A_DISH_TO_EDIT = 'UPDATE_A_DISH_TO_EDIT';
+export const updateADishToEdit = (payload) => ({
+  type: UPDATE_A_DISH_TO_EDIT,
+  payload,
+});
+
+// Action utiliser dans le fichier dishMiddleware
+// Action pour vder les champs du formulaire
+export const CLEAR_DISH_INFORMATIONS = 'CLEAR_DISH_INFORMATIONS';
+export const clearDishInformations = (payload) => ({
+  type: CLEAR_DISH_INFORMATIONS,
+  payload,
+});

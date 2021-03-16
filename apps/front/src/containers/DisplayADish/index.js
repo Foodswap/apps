@@ -13,10 +13,10 @@ const mapDispatchToProps = (dispatch) => ({
     const action = oneDishSelect(id);
     dispatch(action);
   },
-  dishSwap: () => {
+/*   dishSwap: () => {
     const action = dishExchange();
     dispatch(action);
-  },
+  }, */
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(DisplayADish);

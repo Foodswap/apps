@@ -1,17 +1,19 @@
 /* eslint-disable no-lone-blocks */
 import axios from 'axios';
+import { set } from 'date-fns';
+import { resetWarningCache } from 'prop-types';
 
 import {
   DELETE_ONE_DISH,
   ONE_DISH_SELECT,
-  DISH_EXCHANGE,
+  // DISH_EXCHANGE,
   GET_LIST_OF_DISHES,
   GET_ALL_DISHES_FROM_A_USER,
   deleteOneDishSuccess,
   deleteOneDishError,
   updateSElectedDish,
   updateListOfDishes,
-  dishExchange,
+  // dishExchange,
   updateAllDishesFromAUser,
 } from '../actions/dishes';
 
@@ -27,7 +29,10 @@ import {
   fetchTypeDishSucces,
   fetchTypeKitchenSucces,
   FETCH_MY_DISHES_SWAP,
-  fetchMyDishesSwapSucces
+  fetchMyDishesSwapSucces,
+  GET_A_DISH_TO_EDIT,
+  updateADishToEdit,
+  clearDishInformations,
 } from '../actions/dishesForm';
 
 export default (store) => (next) => (action) => {
@@ -69,7 +74,7 @@ export default (store) => (next) => (action) => {
         });
     } break;
     // eslint-disable-next-line no-lone-blocks
-    // get last 6 dishes 
+    // get last 6 dishes
     case GET_LIST_OF_DISHES: {
       axios({
         method: 'get',
@@ -82,15 +87,16 @@ export default (store) => (next) => (action) => {
         })
         .catch((error) => {
           console.log(`${error} error on get last dishes`);
-        })
+        });
     } break;
-    case DISH_EXCHANGE: {
-      const { userDishes } = store.getState().recipes;
-      const actionToDispatch = dishExchange(userDishes);
-      return store.dispatch(actionToDispatch);
-    }
+    // case DISH_EXCHANGE: {
+    //   const { userDishes } = store.getState().recipes;
+    //   const actionToDispatch = dishExchange(userDishes);
+    //   return store.dispatch(actionToDispatch);
+    // }
     case SEND_FORM_RECIPE_UP: {
       const {
+        dishId,
         picture,
         name,
         description,
@@ -103,7 +109,7 @@ export default (store) => (next) => (action) => {
         online,
       } = store.getState().dishes;
 
-      const { infos, pseudonym } = store.getState().user;
+      const { infos } = store.getState().user;
       console.log('send form middleware');
 
       console.log(picture,
@@ -115,27 +121,28 @@ export default (store) => (next) => (action) => {
         author,
         dish,
         kitchen,
-        online
-        );
-      
+        online);
+
       const formData = new FormData();
-      formData.append("picture", picture);
-      formData.append("author_id", infos.id);
-      formData.append("name", name);
-      formData.append("description", description);
-      formData.append("ingredients", ingredients.map(ingredient => ingredient.value).join(',')); 
-      formData.append("portion", portion);
-      formData.append("city", city);
-      formData.append("categories", `${kitchen},${dish}`);
-      formData.append("online", online);
+      formData.append('picture', picture);
+      formData.append('author_id', infos.id);
+      formData.append('name', name);
+      formData.append('description', description);
+      formData.append('ingredients', ingredients.map((ingredient) => ingredient.value || ingredient.id).join(','));
+      formData.append('portion', portion);
+      formData.append('city', city);
+      formData.append('categories', `${kitchen},${dish}`);
+      formData.append('online', online);
 
       axios({
-        method: 'post',
-        url: `${process.env.API_URL}/meals`,
+        method: dishId ? 'put' : 'post',
+        url: dishId ? `${process.env.API_URL}/meals/${dishId}` : `${process.env.API_URL}/meals`,
+        //! \\ Fake API
+        // url: dishId ? `http://localhost:3000/dishes/${dishId}` : `${process.env.API_URL}/meals`,
         data: formData,
         headers: {
-          'Content-Type': 'multipart/form-data'
-        }
+          'Content-Type': 'multipart/form-data',
+        },
       })
         .then((res) => {
           console.log(`response ok : ${res}`);
@@ -179,12 +186,12 @@ export default (store) => (next) => (action) => {
     case FETCH_TYPE_DISH: {
       axios({
         method: 'get',
-        url : `${process.env.API_URL}/categories/dish`,
+        url: `${process.env.API_URL}/categories/dish`,
       })
-      .then ((res) => {
-        const actionToDispatch = fetchTypeDishSucces(res.data);
-        return store.dispatch(actionToDispatch);
-      })
+        .then((res) => {
+          const actionToDispatch = fetchTypeDishSucces(res.data);
+          return store.dispatch(actionToDispatch);
+        })
         .catch((error) => {
           console.log(error);
         });
@@ -195,16 +202,16 @@ export default (store) => (next) => (action) => {
         method: 'get',
         url: `${process.env.API_URL}/categories/kitchen`,
       })
-      .then ((res) => {
-        console.log(res.data)
-        const actionToDispatch = fetchTypeKitchenSucces(res.data);
-        return store.dispatch(actionToDispatch);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+        .then((res) => {
+          console.log(res.data);
+          const actionToDispatch = fetchTypeKitchenSucces(res.data);
+          return store.dispatch(actionToDispatch);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     }
-    break;
+      break;
     case FETCH_MY_DISHES_SWAP: {
       const { picture, name } = store.getState().dishes;
       const { infos, pseudonym } = store.getState().user;
@@ -213,23 +220,25 @@ export default (store) => (next) => (action) => {
         // url: `http://localhost:3000/dishes?author.id=${infos.id}`,
         url: `${process.env.API_URL}/meals/author/${infos.id}`,
       })
-      .then ((res) => {
-        console.log(res.data)
-        const actionToDispatch = fetchMyDishesSwapSucces(res.data);
-        return store.dispatch(actionToDispatch);
-      })
-      .catch((error) => {
-        console.log(error);
-      })
-      .finally(() => {
-        console.log('fetch dishes swap done');
-      });
-    }  
-     break;
+        .then((res) => {
+          console.log(res.data);
+          const actionToDispatch = fetchMyDishesSwapSucces(res.data);
+          return store.dispatch(actionToDispatch);
+        })
+        .catch((error) => {
+          console.log(error);
+        })
+        .finally(() => {
+          console.log('fetch dishes swap done');
+        });
+    }
+      break;
     case GET_ALL_DISHES_FROM_A_USER: {
+      //! \\ sur fake API
       axios({
         method: 'get',
         url: `${process.env.API_URL}/meals/author/${action.payload}`,
+        // url: `http://localhost:3000/dishes?author.id=${action.payload}`,
       })
         .then((res) => {
           console.log(action.payload);
@@ -240,6 +249,30 @@ export default (store) => (next) => (action) => {
         .catch((error) => {
           console.log(error);
         });
+    } break;
+    case GET_A_DISH_TO_EDIT: {
+      const dishId = action.payload;
+      //! \\ sur fake API
+      if (dishId) {
+        axios({
+          method: 'get',
+          url: `${process.env.API_URL}/meals/${action.payload}`,
+          // url: `http://localhost:3000/dishes?id=${dishId}`,
+        })
+          .then((res) => {
+            console.log(action.payload);
+            console.log(res.data);
+            const actionToDispatch = updateADishToEdit(res.data);
+            return store.dispatch(actionToDispatch);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
+      else {
+        const actionToDispatch = clearDishInformations();
+        return store.dispatch(actionToDispatch);
+      }
     } break;
     default:
       return next(action);
