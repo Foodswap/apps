@@ -126,7 +126,7 @@ const ExchangeTracking = ({
                           </div>
                         )}
                         {askedProposition.status === 2 && (
-                          <p>{askedProposition.mealOffer.asker.username} à refusé cet échange</p>
+                          <p>{askedProposition.mealOffer.receiver.username} à refusé cet échange</p>
                         )}
                      
                   </div>
