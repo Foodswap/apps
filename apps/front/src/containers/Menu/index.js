@@ -5,6 +5,7 @@ import { handleLogout } from '../../actions/user';
 
 const mapStateToProps = (state) => ({
   isLogged: state.user.isLogged,
+  username: state.user.pseudonym,
 });
 
 const mapDispatchToProps = (dispatch) => ({

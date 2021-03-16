@@ -3,29 +3,59 @@
   background-color: #262835;
   display: flex;
   justify-content: center;
-  height: 6vh;
+  height: 100px;
   align-items: center;
   color: white;
-  padding: 3em 1.8rem;
   box-shadow: #f8a587a9 0.5px 3px 3px 2px;
   position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &-username {
+    display: flex;
+    align-items: center;
+  }
+
+  &-userLogo {
+    width: 2rem;
+    margin: 0 0.7rem 0 0;
+  }
+
+  &-textForUser {
+    margin: 0 2rem 0 0;
+    font-size: 1.4rem;
+    font-family: Gudea,sans-serif;
+  }
 
   &-links {
-    position: absolute;
-    bottom: 15px;
-    left: 25%;
+    display: flex;
+    align-items: center;
+    width: 80%;
+    justify-content: space-around;
+    padding: 0 2rem;
+
+    &-logout {
+      padding-right: 6rem;
+    }
   }
+
   &-link {
     font-size: 1.3rem;
     padding: 0.5rem;
     color: rgb(247, 243, 243);
-    margin-right: 5em;
+    margin: 0 1em;
     font-family: 'Gudea', sans-serif;
     letter-spacing: 0.1em;
-
   }
+
   &-link:hover {
     color: #f1bdb0;
-    padding-bottom: 1em;
   }
 }
