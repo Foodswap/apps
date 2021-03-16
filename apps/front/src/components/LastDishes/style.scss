@@ -8,12 +8,12 @@
 }
 .last-dishes-section {
   background: #262835;
-  padding-bottom: 155px;
+  padding: 100px 0 155px 0;
 }
 .last-dishes {
   margin: auto;
   border-radius: 5px;
-  padding: 1rem;
+  padding: 3rem 1em 5rem 1em;
   width: 70%;
   background-color: #262835;
   font-family: 'Gudea', sans-serif;
@@ -40,13 +40,15 @@
   margin: 1rem;
   padding: 2rem;
   background-color: white;
-  transition: box-shadow 0.3s;
-  box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24);
+  transition: transform 0.4s;
+  box-shadow: 0 12px 15px 0 rgb(0, 0, 0);
 
 }
 
 .last-dishes-card:hover {
-  box-shadow: 0 12px 15px 0 #18181ab4, 0 17px 50px #060607b4;
+  box-shadow: 0 12px 15px 0 #030303fa, 0 17px 50px #070707f1;
+  transform: scale(1.1, 1.1);
+  transition: transform 0.4s;
 }
 
 .last-dishes-card-img {
