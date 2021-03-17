@@ -26,7 +26,7 @@
     left: 0;
     z-index: 1050;
     width: 100%;
-    height: auto;
+    height: 80vh;
     overflow-x: hidden;
     overflow-y: auto;
     outline: 0;
@@ -52,7 +52,7 @@
     background: #{vars.$darkBlue};
     position: relative;
     border-radius: 3px;
-    margin: auto;
+    margin: 20px auto;
     max-width: 1000px;
     transition-duration: 0.8s;
     box-shadow: 0 12px 15px 0 #03030396, 0 17px 50px #0707079a;
@@ -62,7 +62,7 @@
 
   @keyframes modalSlide {
     from {
-      transform: scale(0.7);
+      transform: scale(0.3);
       opacity: 0;
     }
   
@@ -72,47 +72,22 @@
     }
   }
 
-  &-header {
-    display: flex;
-    justify-content: flex-end;
-  }
-
   &-close-button {
     font-size: 1.4rem;
     font-weight: 700;
     line-height: 1;
-    color: #000;
-    opacity: .3;
+    background-color: #{vars.$coral};
     cursor: pointer;
     border: none;
+    position: absolute;
+    right: 10px;
+    top: 10px;
   }
   &-button-container{
     display: flex;
     justify-content:center;
     
   }
-  &-send-swap-button{
-    
-    align-items: center;
-    width: 200px;
-    height:60px;
+
   }
 
-  
-  }
-
-
-
-button {
-  font-size: .9rem;
-  font-weight: 700;
-  border: none;
-  border-radius: 3px;
-  padding: .3rem 1rem;
-  margin-left: .5rem;
-}
-
-.button-default {
-  background: #247BA0;
-  color: #fff;
-}
