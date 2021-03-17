@@ -67,17 +67,15 @@ const DishesForm = ({
       ...provided,
       borderBottom: '1px dotted pink',
       //color: state.isSelected ? 'red' : 'blue',
-      padding: 20,
     }),
     control: () => ({
       // none of react-select's styles are passed to <Control />
-      width: "100%",
-      // backgroundColor: '#f0f',
+      // width: "100%",
+      backgroundColor: 'white',
     }),
     singleValue: (provided, state) => {
       const opacity = state.isDisabled ? 0.5 : 1;
       const transition = 'opacity 300ms';
-  
       return { ...provided, opacity, transition };
     }
   }
@@ -107,136 +105,139 @@ const DishesForm = ({
                 handleInputChange(evt.target.files[0], evt.target.name);
               }}
             />
+            <div className="meal-online-switch">
+              <span>Hors ligne</span>
+
+              <label className="switch">
+                <input name="online" type="checkbox" onChange={changeOnline} />
+                <span className="slider round" />
+              </label>
+
+              <span>En ligne </span>
+            </div>
           </div>
 
-          <div className="meal-online-switch">
-            <span>Hors ligne</span>
+          
+          <div className="meal-form-right">
 
-            <label className="switch">
-              <input name="online" type="checkbox" onChange={changeOnline} />
-              <span className="slider round" />
-            </label>
-
-            <span>En ligne </span>
-          </div>
-
-          <input
-            required
-            className="meal-input"
-            type="text"
-            name="name"
-            placeholder="Ajoutez le nom de votre plat"
-            onChange={(evt) => {
-              handleInputChange(evt.target.value, evt.target.name);
-            }}
-            value={name}
-          />
-          <input
-            required
-            min="1"
-            max="50"
-            className="meal-input"
-            type="number"
-            name="portion"
-            placeholder="Nombre de part"
-            onChange={(evt) => {
-              handleInputChange(evt.target.value, evt.target.name);
-            }}
-            value={portion}
-          />
-          <input
-            required
-            className="meal-input"
-            type="text"
-            name="city"
-            placeholder="Votre ville"
-            onChange={(evt) => {
-              handleInputChange(evt.target.value, evt.target.name);
-            }}
-            value={city}
-          />
-
-          { ((!dishId && ingredientsData.length) || (dishId && ingredientsData.length && selectedIngredients.length)) && (
-            <Select
-              name="ingredients"
-              placeholder="Ingrédients"
-              styles={customStyles}
-              components={animatedSelect}
-              options={ingredientsData}
-              isMulti
-              defaultValue={selectedIngredients}
-              onChange={(selection, action) => handleMultiSelectChange(selection, action)}
+            <input
+              required
+              className="meal-input"
+              type="text"
+              name="name"
+              placeholder="Ajoutez le nom de votre plat"
+              onChange={(evt) => {
+                handleInputChange(evt.target.value, evt.target.name);
+              }}
+              value={name}
             />
-          )}
+            <input
+              required
+              min="1"
+              max="50"
+              className="meal-input"
+              type="number"
+              name="portion"
+              placeholder="Nombre de part"
+              onChange={(evt) => {
+                handleInputChange(evt.target.value, evt.target.name);
+              }}
+              value={portion}
+            />
+            <input
+              required
+              className="meal-input"
+              type="text"
+              name="city"
+              placeholder="Votre ville"
+              onChange={(evt) => {
+                handleInputChange(evt.target.value, evt.target.name);
+              }}
+              value={city}
+            />
 
-          <input
-            type="text"
-            required
-            className="meal-input"
-            name="description"
-            placeholder="Description du plat"
-            onChange={(evt) => {
-              handleInputChange(evt.target.value, evt.target.name);
-            }}
-            value={description}
-          />
-
-          <div className="meal-form-select">
-            { ((dishId && dish && dishData) || dishData) && (
-            <select
-              name="dish"
-              onChange={(evt) => onSetCategorySelect(evt.target.value, evt.target.name)}
-              className="meal-category"
-              defaultValue={dish || ''}
-            >
-              <option>Type d'assiete</option>
-              { dishData && dishData.map((dishObj) => (
-                <option
-                  value={dishObj.id}
-                  name={dishObj.name}
-                  key={`dish${dishObj.id}`}
-                >
-                  {dishObj.name}
-                </option>
-              ))}
-            </select>
+            { ((!dishId && ingredientsData.length) || (dishId && ingredientsData.length && selectedIngredients.length)) && (
+              <Select
+                name="ingredients"
+                placeholder="Ingrédients"
+                // styles={customStyles}
+                components={animatedSelect}
+                options={ingredientsData}
+                isMulti
+                defaultValue={selectedIngredients}
+                onChange={(selection, action) => handleMultiSelectChange(selection, action)}
+              />
             )}
 
-            {((dishId && kitchen && kitchenData) || kitchenData) && (
-            <select
-              name="kitchen"
-              onChange={(evt) => onSetCategorySelect(evt.target.value, evt.target.name)}
-              className="meal-category"
-              value={kitchen || ''}
-            >
-              <option>Type de cuisine</option>
-              { kitchenData && (
-                kitchenData.map((kitchenObj) => (
+            <input
+              type="text"
+              required
+              className="meal-input"
+              name="description"
+              placeholder="Description du plat"
+              onChange={(evt) => {
+                handleInputChange(evt.target.value, evt.target.name);
+              }}
+              value={description}
+            />
+
+            <div className="meal-form-select">
+              { ((dishId && dish && dishData) || dishData) && (
+              <select
+                name="dish"
+                onChange={(evt) => onSetCategorySelect(evt.target.value, evt.target.name)}
+                className="meal-category"
+                defaultValue={dish || ''}
+              >
+                <option>Type d'assiete</option>
+                { dishData && dishData.map((dishObj) => (
                   <option
-                    value={kitchenObj.id}
-                    name={kitchenObj.name}
-                    key={`kitchen${kitchenObj.id}`}
-
+                    value={dishObj.id}
+                    name={dishObj.name}
+                    key={`dish${dishObj.id}`}
                   >
-                    {kitchenObj.name}
+                    {dishObj.name}
                   </option>
-                ))
+                ))}
+              </select>
               )}
-            </select>
+
+              {((dishId && kitchen && kitchenData) || kitchenData) && (
+              <select
+                name="kitchen"
+                onChange={(evt) => onSetCategorySelect(evt.target.value, evt.target.name)}
+                className="meal-category"
+                value={kitchen || ''}
+              >
+                <option>Type de cuisine</option>
+                { kitchenData && (
+                  kitchenData.map((kitchenObj) => (
+                    <option
+                      value={kitchenObj.id}
+                      name={kitchenObj.name}
+                      key={`kitchen${kitchenObj.id}`}
+
+                    >
+                      {kitchenObj.name}
+                    </option>
+                  ))
+                )}
+              </select>
+              )}
+            </div>
+
+            {/* { isSucces &&
+              <Redirect to="/v1/mydishes" />
+            } */}
+
+            { isError && (
+
+            <p>Erreur sur votre formulaire </p>
             )}
-          </div>
-
-          {/* { isSucces &&
-            <Redirect to="/v1/mydishes" />
-          } */}
-
-          { isError && (
-
-          <p>Erreur sur votre formulaire </p>
-          )}
-          <div className="meal-form-buttons">
-            <button className="meal-form-cancel" type="button" onClick={() => cancelFormRecipe()}> Annuler </button>
-            <button className="meal-form-submit" type="submit" onClick={() => sendFormRecipeUp()}> Valider </button>
+            <div className="meal-form-buttons">
+              {/* <button className="meal-form-cancel" type="button" onClick={() => cancelFormRecipe()}> Annuler </button> */}
+              <button className="meal-form-submit" type="submit" onClick={() => sendFormRecipeUp()}> Valider </button>
+            </div>
           </div>
         </form>
       </div>
