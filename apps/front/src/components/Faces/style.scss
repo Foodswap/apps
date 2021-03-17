@@ -1,7 +1,13 @@
 
 
+// CSS normal
+
 @use 'src/styles/vars';
 @use 'sass:color';
+* {
+  margin: 0;
+  padding: 0;
+}
 
 .face{
 
@@ -69,6 +75,9 @@
   // 
 
 }
+.name{
+  padding:1rem 1rem ;
+}
 
 .grid {
   position: relative;
@@ -82,6 +91,7 @@
 /* Common style */
 .grid figure {
   position: relative;
+  
   float: left;
   overflow: hidden;
   margin: 10px 1%;
@@ -89,9 +99,13 @@
   max-width: 480px;
   max-height: 360px;
   width: 48%;
-  // background: #3085a3;
+  background: #000000;
   text-align: center;
   cursor: pointer;
+  opacity: 1;
+  box-shadow: 3px 3px #0f1014, -1em 0 0.5em #17181f;
+  border-radius: 5px;
+  
 }
 
 .grid figure img {
@@ -99,14 +113,30 @@
   display: flex;
   min-height: 100%;
   max-width: 100%;
-  opacity: 0.8;
+  // opacity: 0.8;
+  -moz-transition: opacity 0.9s;
+  -webkit-transition: opacity 0.9s;
+  -o-transition: opacity 0.9s;
+  transition: opacity 0.9s;
+  vertical-align:top;
+  
+ 
 }
 
+
+.grid figure img:hover {
+
+  opacity:0.3;  
+}
+ 
+
+
+
 .grid figure figcaption {
-  padding: 2em;
+  padding: 1em;
   color: #fff;
   text-transform: uppercase;
-  font-size: 1.25em;
+  font-size: 1.2em;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }
@@ -147,6 +177,7 @@
 .grid figure h2,
 .grid figure p {
   margin: 0;
+  
 }
 
 .grid figure p {
@@ -183,13 +214,14 @@ figure.effect-zoe figcaption {
   top: auto;
   bottom: 0;
   padding: 1em;
-  height: 3.75em;
+  height: 4.20em;
   background: #fff;
   color: #3c4a50;
   -webkit-transition: -webkit-transform 0.35s;
   transition: transform 0.35s;
   -webkit-transform: translate3d(0,100%,0);
   transform: translate3d(0,100%,0);
+  
 }
 
 figure.effect-zoe h2 {
@@ -226,6 +258,7 @@ figure.effect-zoe p.icon-links a {
   transition: transform 0.35s;
   -webkit-transform: translate3d(0,200%,0);
   transform: translate3d(0,200%,0);
+  
 }
 
 figure.effect-zoe p.icon-links a span::before {
@@ -237,19 +270,20 @@ figure.effect-zoe p.icon-links a span::before {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-git::before {
+.icon-git {
+  color:darkblue;
   
 }
 
-.icon-js::before {
-  
+.icon-js{
+  color:rgb(97, 97, 0);
 }
 
-.icon-react::before {
-  
+.icon-react{
+  color:rgb(0, 247, 255);
 }
-.icon-sql::before {
-  
+.icon-sql{
+  color:black;
 }
 
 figure.effect-zoe h2 {
@@ -265,11 +299,13 @@ figure.effect-zoe:hover h2,
 figure.effect-zoe:hover p.icon-links a {
   -webkit-transform: translate3d(0,0,0);
   transform: translate3d(0,0,0);
+  
 }
 
 figure.effect-zoe:hover h2 {
   -webkit-transition-delay: 0.05s;
   transition-delay: 0.05s;
+  
 }
 
 figure.effect-zoe:hover p.icon-links a:nth-child(3) {
@@ -315,24 +351,27 @@ section {
   text-align: center;
 }
 
-.content {
-  margin: 20rem auto;
-  max-width: 500px;
-  
- 
-}
 .bigcontent {
 
   display: flex;
+  flex-wrap: wrap;
+  //justify-content:space-between;
+  margin:0;
 }
+
+.content {
+  margin: 2rem auto;
+  max-width: 500px;
+}
+
 
 .content > h2 {
   clear: both;
   // margin: 0;
   padding: 1em 7% 0;
-  color: rgb(248, 179, 153);
+  color: #f8a587;
   background-color: transparent;
-  border: solid 1px rgb(245, 193, 174);
+  border: solid 1px #f8a587;
   border-radius: 10px;
   margin: 1rem 5rem;
   font-weight: 800;
@@ -340,7 +379,7 @@ section {
 }
 
 .content > h2:first-child {
-  padding-top: 0em;
+  padding: 0.5em;
 }
 
 
@@ -352,3 +391,107 @@ section {
 //     display: none;
 //   }
 // }
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) {
+
+
+  .face{
+
+    &-page{
+      background-color: #262835;
+      border-bottom: 50px solid #18181a62;
+      border-top: 50px solid #18181a60;
+      width: 100vh;
+    }
+  
+    &-container{
+      margin: auto;
+      width: 100%;
+      text-align: center;
+      padding: 3rem;
+      z-index: 11;
+      font-family: 'PT Sans', cursive;
+      letter-spacing: 0.1em;
+      line-height: 1em;
+      color: white;
+      font-size: 1.3em;
+      transition: 3s;
+      border-radius: 15px;
+  
+    }
+  
+    &-paragraph{
+  
+      margin:1rem;
+    }
+    &-paragraph_p{
+  
+      margin:1rem;
+      font-weight: bold;
+    }
+    &-title{
+        font-size: xx-large;
+        margin:20px;
+      }
+    }
+    .bigcontent {
+
+      display: flex;
+      flex-wrap: wrap;
+      justify-content:space-between;
+      margin:0;
+    }
+
+
+}
+@media only screen and (min-device-width: 320px) and (max-device-width: 375px) {
+
+
+  .face{
+
+    &-page{
+      background-color: #262835;
+      border-bottom: 20px solid #18181a62;
+      border-top: 20px solid #18181a60;
+      width: 100vh;
+    }
+  
+    &-container{
+      margin: auto;
+      width: 100%;
+      text-align: center;
+      padding: 3rem;
+      z-index: 11;
+      font-family: 'PT Sans', cursive;
+      letter-spacing: 0.1em;
+      line-height: 1em;
+      color: white;
+      font-size: 1em;
+      transition: 3s;
+      border-radius: 15px;
+  
+    }
+  
+    &-paragraph{
+  
+      margin:1rem;
+    }
+    &-paragraph_p{
+  
+      margin:1rem;
+      font-weight: bold;
+    }
+    &-title{
+        font-size: xx-large;
+        margin:20px;
+      }
+    }
+    .bigcontent {
+
+      display: flex;
+      flex-wrap: wrap;
+      justify-content:space-between;
+      margin:0;
+    }
+
+
+}

@@ -49,7 +49,7 @@ const Faces = () => (
       </section> */}
       <div className="bigcontent">
       <div className="content">
-      <h2>Edouard</h2>
+      <h2 className="name">Edouard</h2>
         <div className="grid">
           <figure className="effect-zoe">
             <img src={image3} alt="Edouard"/>
@@ -58,7 +58,7 @@ const Faces = () => (
               <p className="icon-links">
                 <a href="#"><span className="icon-git"></span><FaGithub /></a>
                 <a href="#"><span className="icon-js"><SiJavascript /></span></a>
-                <a href="#"><span className="icon-sql-clip"><SiPostgresql /></span></a>
+                <a href="#"><span className="icon-sql"><SiPostgresql /></span></a>
               </p>
               <p className="description">Edouard, Lead-Dev Back est un codeur hors pair ! Sa bonne humeur ajoute à cette équipe un parfait équilibre.</p>
               
@@ -75,7 +75,7 @@ const Faces = () => (
           <figure className="effect-zoe">
             <img src={image1} alt="Plia"/>
             <figcaption>
-              <h2>Front-end <span>Product Owner</span></h2>
+              <h2>Front-end  <span>Product Owner</span></h2>
               <p className="icon-links">
                 <a href="#"><span className="icon-react"><FaReact /></span></a>
                 <a href="#"><span className="icon-git"><FaGithub /></span></a>
@@ -119,7 +119,7 @@ const Faces = () => (
               <p className="icon-links">
                 <a href="#"><span className="icon-git"><FaGithub /></span></a>
                 <a href="#"><span className="icon-js"><SiJavascript /></span></a>
-                <a href="#"><span className="icon-sql-clip"><SiPostgresql /></span></a>
+                <a href="#"><span className="icon-sql"><SiPostgresql /></span></a>
               </p>
               <p className="description">Florian est un maître dans la maîtrise de Git. Il faut un sang-froid démeusuré pour gérer la lourde responsabilité des merges. Un pilier !</p>
             </figcaption>     
