@@ -6,7 +6,7 @@
 
   background-color: #{vars.$darkBlue};
   margin: 0;
-  padding: 5% 0;
+  padding: 7% 0;
   height: 80vh;
   text-align: left;
   font-size: 1.2em;
@@ -98,7 +98,7 @@
     color: #f8a587;
     text-transform: uppercase;
     transition-property: background, color;
-    transition-duration: 0.2s;
+    transition-duration: 0.8s;
     margin-top: 3em;
   }
 
@@ -107,9 +107,10 @@
     background:#f8a587 ;
     cursor:pointer;
     transition-property:background,color;
-    transition-duration:.2s;
+    transition-duration:.8s;
   }
 }
+
 
 
 // style de la modale swap

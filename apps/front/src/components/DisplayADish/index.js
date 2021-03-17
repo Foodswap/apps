@@ -39,7 +39,8 @@ const DisplayADish = ({
                 <h1 className="displayADish-description-title">Description du plat :</h1>
                 <p className="displayADish-description-text">{dish.description}</p>
             </div>
-            <button type="button" className="displayADish-button" onClick={toggle}>Swap</button>
+            <button type="button" className="displayADish-button" onClick={toggle}>Proposer un échange</button>
+            <i></i>
             {/* <button type="button" className="displayADish-button" onClick={(event) => { toggle(event); fetchMyDishesSwap(event);}}>Swap</button> */}
           </div>  
           <SwapModal
