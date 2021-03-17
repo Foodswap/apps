@@ -17,11 +17,10 @@ router.post('/signup', middlewareValidation(schemas.signup), authorController.si
 router.post('/login', middlewareValidation(schemas.login), authorController.login);
 
 // Meal
-router.get('/meals/:id', mealController.getOneMeal);
-//router.get('/meals/:kitchenName/:city', mealController.searchMeal);
+//router.get('/meals/:id', mealController.getOneMeal);
 router.get('/meals/:id/picture', mealController.getPicture);
 router.get('/meals/author/:author_id', mealController.getMealsByAuthor);
-router.get('/meals');
+router.get('/meals/:dishId/:kitchenId/:city', mealController.searchMeal);
 router.get('/sixMeals', mealController.getSixMeals);
 router.post('/meals', middlewareHandlingFiles, mealController.createMeal);
 
