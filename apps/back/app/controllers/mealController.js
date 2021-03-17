@@ -1,4 +1,4 @@
-const { Meal } = require('../models');
+const { Meal, Author } = require('../models');
 
 
 const mealController = {
@@ -91,18 +91,53 @@ const mealController = {
             const mealSearch = await Meal.findAll({
                 where: { city: cityName },
                 include: ['ingredients', 'categories', {
-                    association: 'categories', 
+                    association: 'categories',
                     where: {
                         name: kitchen
                     }
                 },
-                 'author']
+                    'author']
             }
             );
             response.status(200).json(mealSearch);
         } catch (error) {
             console.trace(error);
             response.status(404).json("No match found.")
+        }
+    },
+
+    // SQL version : select * from author inner join meal on author.id = meal.author_id where author_id=1 and meal.online=true;
+    // userMealsOnline: async (request, response) => {
+    //     const authorId = request.params.author_id;
+    //     try {
+    //         const meal = await Author.findByPk(Number(authorId),
+    //             { 
+    //                 // where: { online: true },
+                
+    //                 include: ['meals', {
+    //                     association: 'meals',
+    //                     where: { 'meal'.author_id = authorId }, 
+    //                     and: [meal.online = true]
+
+    //                 }]
+    //             });
+    //         response.status(200).json(meal);
+    //     } catch (error) {
+    //         console.trace(error);
+    //         response.status(500).json("This user doesn't have any meals yet.")
+    //     }
+    // }
+    userMealsOnline: async (request, response) => {
+        try {
+            const meal = await Meal.findAll(
+                { where: { online: true, author_id: request.params.author_id}
+
+                    // include: ['author'] salut
+        });
+            response.status(200).json(meal);
+        } catch (error) {
+            console.trace(error);
+            response.status(500).json("This user doesn't have any meals yet.")
         }
     }
 };

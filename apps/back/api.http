@@ -15,6 +15,9 @@ GET {{baseUrl}}/ingredients
 ### Local - route pour récupérer les ingredients
 GET {{baseUrl}}/ingredient/1
 
+### Local - route afficher les plats en ligne d'un utilisateur
+GET {{baseUrl}}/meals/online/1
+
 ### Local - route recherche un plat
 GET {{baseUrl}}/meals/asiatique/bordeaux
 

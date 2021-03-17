@@ -18,6 +18,7 @@ router.post('/login', middlewareValidation(schemas.login), authorController.logi
 
 // Meal
 router.get('/meals/:id', mealController.getOneMeal);
+router.get('/meals/online/:author_id', mealController.userMealsOnline);
 //router.get('/meals/:kitchenName/:city', mealController.searchMeal);
 router.get('/meals/:id/picture', mealController.getPicture);
 router.get('/meals/author/:author_id', mealController.getMealsByAuthor);
