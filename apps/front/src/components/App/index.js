@@ -2,6 +2,7 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
+
 // Dumb components
 import AppHeader from '../AppHeader';
 import Footer from '../Footer';
