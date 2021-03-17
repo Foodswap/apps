@@ -45,7 +45,6 @@ const mealController = {
                 response.status(201).json(meal);
 
             })
-            11
         } catch (error) {
             console.log(error);
             response.status(500);
@@ -141,8 +140,31 @@ const mealController = {
             if (!meal) {
                 next();
             }
+            for (const field in mealToUpdate) {
+                if (typeof meal[field] !== 'undefined') {
+                
+                    meal[field] = mealToUpdate[field];
+                }
+            };
+            meal.picture_path = request.file.filename
+            await meal.setIngredients(mealToUpdate.ingredients.split(','));
+            await meal.setCategories(mealToUpdate.categories.split(','));
+           
+            await meal.save();
+           Meal.findByPk(Number(meal.id), {
+            attributes: {
+                exclude: ['picture_path']
+            },
+            include: ['ingredients', 'categories', 'author']
+        }).then((meal) => {
+            meal.author.password = null;
+            response.status(201).json(meal);
 
-        } catch {
+        })
+
+        } catch(error) {
+            console.log(error);
+            response.status(500);
 
         }
     }

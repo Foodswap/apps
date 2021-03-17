@@ -86,7 +86,7 @@ const swapController = {
             response.status(200).json(swap);
 
         } catch (error) {
-            console.log(err);
+            console.log(error);
             response.status(500);
         }
     }

@@ -22,6 +22,7 @@ router.get('/meals/:id/picture', mealController.getPicture);
 router.get('/meals/author/:author_id', mealController.getMealsByAuthor);
 router.get('/meals/:dishId/:kitchenId/:city', mealController.searchMeal);
 router.get('/sixMeals', mealController.getSixMeals);
+router.put('/meals/:id', middlewareHandlingFiles, mealController.updateMeal);
 router.post('/meals', middlewareHandlingFiles, mealController.createMeal);
 
 // Category
