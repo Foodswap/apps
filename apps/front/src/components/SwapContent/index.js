@@ -21,7 +21,7 @@ const SwapContent = ({ dishes, fetchMyDishesSwap, userLogged, getAskerDishId, is
     // arrows: true,
     // draggable: true,
     // focusOnSelect: true,
-    infinite: true,
+    //infinite: true,
     // swipeToSlide: true,
     dots: true
   };

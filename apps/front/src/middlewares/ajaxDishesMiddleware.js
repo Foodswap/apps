@@ -152,7 +152,6 @@ export default (store) => (next) => (action) => {
             // eslint-disable-next-line no-restricted-globals
             location.href = '/v1/mydishes';
           }, 500);
-          console.log(res.data);
         })
         .catch((error) => {
           console.log(`${error} erreur au post du formulaire`);
