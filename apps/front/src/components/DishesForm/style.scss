@@ -1,3 +1,7 @@
+@use 'src/styles/vars';
+@use 'sass:color';
+@import url(https://fonts.googleapis.com/css?family=Gudea:400,700);
+
 .switch {
   position: relative;
   display: inline-block;
@@ -61,27 +65,27 @@ input:checked + .slider:before {
 }
 
 .meal {
+
+  &-page {
+    background-color: #{vars.$coral};
+    height: 100%;
+    display: flex;
+
+  }
+
+  &-form-div {
+    width: 60%;
+    background-color: white;
+    border-radius: 15px;
+    margin: 1rem auto;
+    box-shadow: 0 12px 15px 0 #03030396, 0 17px 50px #0707079a;
+
+  }
   &-title {
-    margin-top: 1rem;
     font-size: 28px;
     font-weight: 600;
   }
-  &-page{
-    background: rgb(247, 209, 139);
-    display: grid;
-    grid-template-areas: "." ".";
-    width: 900px;
-    margin: auto;
-  }
-  &-form{
-    
-    color: rgb(46, 12, 12);
-    margin:auto;
-    border-radius: 1rem;
-    padding: 2rem;
-    display: flex;
-    justify-content:center;
-  }
+
   &-input {
     border-radius: 4px;
     height: 38px;
@@ -103,7 +107,6 @@ input:checked + .slider:before {
     object-fit: cover;
   }
   
-  
   &-form-labels {
     width: 176px;
     display: block;
@@ -124,6 +127,8 @@ input:checked + .slider:before {
     display: flex;
     flex-direction: column;
     padding: 3rem;
+    margin: 1em;
+
   }
   &-form-submit {
     padding: 0.65em;
@@ -173,3 +178,5 @@ input:checked + .slider:before {
   width: 215px;
   margin: 15px auto;
 }
+
+
