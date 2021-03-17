@@ -1,12 +1,30 @@
 import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
 // import { Link } from 'react-router-dom';
 import './styles.scss';
 
 const SwapContent = ({ dishes, fetchMyDishesSwap, userLogged, getAskerDishId, isSelected, sendProposition, succesPropositionMsg, errorPropositionMsg }) => {
   useEffect(() => fetchMyDishesSwap(), []);
   const styleSelected = isSelected ? "swap-card swap-card-selected" : "swap-card";
+
+  const settings = {
+    className: "center",
+    centerMode: true,
+    centerPadding: "60px",
+    slidesToShow: 1,
+    // speed: 500,
+    // arrows: true,
+    // draggable: true,
+    // focusOnSelect: true,
+    infinite: true,
+    // swipeToSlide: true,
+    dots: true
+  };
 
   return (
 
@@ -20,41 +38,45 @@ const SwapContent = ({ dishes, fetchMyDishesSwap, userLogged, getAskerDishId, is
     { userLogged && (
       <div>
         <h2 className="swap-title">Selectionnez un plat parmi votre liste</h2>
-        <div className="swap-cards">
 
+        <Slider {...settings}>
+          {/* <div className="swap-cards"> */}
           { dishes && (
             dishes.map((dish) => {
               const linkUrl = `/v1/dish/${dish.id}`;
               return (
-                <div className={styleSelected} key={dish.id} onClick={(evt) => {
-                  getAskerDishId(dish.id);
-                }}>
-                  <img className="swap-card-img" src={`http://ec2-54-145-80-6.compute-1.amazonaws.com/v1/meals/${dish.id}/picture`} alt="" />
-                  <h3 className="swap-card-name">{dish.name}</h3>
-                  {/* <p className="swap-card-potionxx">{dish.portion} part(s)</p>
-                  <p className="swap-card-authorxx"> Fait par {dish.author.pseudonym}</p>
-                  <p className="swap-card-cityxx">{dish.city}</p> */}
-                  {/* <Link to={linkUrl} className="swap-card-seemorexx">Voir plus</Link> */}
-                </div>
+
+                  <div className={styleSelected} key={dish.id} onClick={(evt) => {
+                    console.log(dish.id);
+                    getAskerDishId(dish.id);
+                  }}>
+                    <img className="swap-card-img" src={`http://ec2-54-145-80-6.compute-1.amazonaws.com/v1/meals/${dish.id}/picture`} alt="" />
+                    <h3 className="swap-card-name">{dish.name}</h3>
+                    {/* <p className="swap-card-potionxx">{dish.portion} part(s)</p>
+                    <p className="swap-card-authorxx"> Fait par {dish.author.pseudonym}</p>
+                    <p className="swap-card-cityxx">{dish.city}</p> */}
+                    {/* <Link to={linkUrl} className="swap-card-seemorexx">Voir plus</Link> */}
+                  </div>
               );
             })
           )}
-        </div>
+          {/* </div> */}
+        </Slider>
         { !dishes && (
           <p>Vous n'avez pas de plats à proposer :`(` </p>
         )}
 
         <p> { errorPropositionMsg} </p>
         <div className="swap-button-container">
-        <button
-        type="button"
-        className="swap-button-send"
-        onClick={(evt) => {
-          evt.preventDefault();
-          sendProposition();
-        }}>
-          Envoyer l'échange
-        </button>
+          <button
+          type="button"
+          className="swap-button-send"
+          onClick={(evt) => {
+            evt.preventDefault();
+            sendProposition();
+          }}>
+            Envoyer l'échange
+          </button>
         </div>
       </div>
     )}
