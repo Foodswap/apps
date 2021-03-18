@@ -99,7 +99,11 @@ export default (store) => (next) => (action) => {
         .then((res) => {
           console.log(`response ok : ${res}`);
           const actionToDispatch = sendPropositionSucces();
-          return store.dispatch(actionToDispatch);
+          store.dispatch(actionToDispatch);
+          setTimeout(() => {
+            // eslint-disable-next-line no-restricted-globals
+            location.href = '/v1/exchange-tracking';
+          }, 800);
         })
         .catch((error) => {
           console.log(`${error} error on send proposition`);

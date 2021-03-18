@@ -1,3 +1,7 @@
+@use 'src/styles/vars';
+@use 'sass:color';
+@import url(https://fonts.googleapis.com/css?family=Gudea:400,700);
+
 .switch {
   position: relative;
   display: inline-block;
@@ -38,11 +42,11 @@
 }
 
 input:checked + .slider {
-  background-color: rgb(33, 243, 33);
+  background-color: #{vars.$coral};
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px rgb(33, 243, 33);
+  box-shadow: 0 0 1px #{vars.$coral};
 }
 
 input:checked + .slider:before {
@@ -61,53 +65,70 @@ input:checked + .slider:before {
 }
 
 .meal {
+
+  &-page {
+    background-color: #{vars.$coral};
+    height: 80vh;
+    display: flex;
+    font-size: 1.2rem;
+  }
+
+  &-form-div {
+    width: auto;
+    background-color: #{vars.$darkBlue};
+    border-radius: 15px;
+    margin: 1rem auto;
+    box-shadow: 0 12px 15px 0 #03030396, 0 17px 50px #0707079a;
+  }
   &-title {
-    margin-top: 1rem;
     font-size: 28px;
     font-weight: 600;
+    margin-top: 2rem;
+    color: white;
+    font-family: 'Gudea', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 5px;
   }
-  &-page{
-    background: rgb(247, 209, 139);
-    display: grid;
-    grid-template-areas: "." ".";
-    width: 900px;
-    margin: auto;
-  }
-  &-form{
-    
-    color: rgb(46, 12, 12);
-    margin:auto;
-    border-radius: 1rem;
-    padding: 2rem;
+
+  &-form-right {
     display: flex;
-    justify-content:center;
+    flex-direction: column;
+    align-items: center;
+    border-left: 2px solid #{vars.$coral};
+    padding-left: 3em;
+
   }
   &-input {
     border-radius: 4px;
     height: 38px;
     line-height: 38px;
-    padding-left: 5px;
+    padding-left: 0.5em;
     border: 1px solid rgba(0, 0, 0, 0.1);
-    margin: 0.5rem;
-    width: 360px;
+    margin-bottom: 0.5rem;
+    width: 560px;
+    font-size: 1.1rem;
   }
+
+  &-input:focus {
+    border: none;
+    background-color: #facfc0;
+  }
+
   &-image-div {
     display: flex;
     flex-direction: column;
     height: 300px;
+    padding-right: 3em;
   }
   &-img{
     margin: 1rem;
-    border:1px solid rgb(247, 191, 107);
     border-radius: 5px;
     object-fit: cover;
   }
   
-  
   &-form-labels {
     width: 176px;
     display: block;
-    margin-bottom: 5px;
   }
 
   &-category{
@@ -122,26 +143,43 @@ input:checked + .slider:before {
 
   &-form-element{
     display: flex;
-    flex-direction: column;
     padding: 3rem;
+    margin: 1em;
+
   }
   &-form-submit {
-    padding: 0.65em;
-    background-color: rgb(117, 69, 51);
-    color: white;
-    border-radius: 5px;
+    display: block;
+    border-radius: 50px;
+    background: transparent;
+    padding: 0.8em 30px;
+    text-transform: uppercase;
+    color:black;
+    background:#f8a587 ;
+    cursor:pointer;
+    transition-property:background,color;
+    transition-duration:.5s;
+    margin-top: 4rem;
+    font-size: 0.9em;
     border: none;
-    width: 108px;
+    width: 150px;
+
+  }
+  &-form-submit:hover {
+    background: transparent;
+    border: 2px solid #f8a587;
+    color: #f8a587;
+    transition-duration:.5s;
+    transition-property:background,color;
 
   }
   &-form-cancel {
-    padding: 0.65em;
-    background-color: rgb(224, 169, 149);
-    color: white;
-    border-radius: 5px;
-    border: none;
-    width: 88px;
-
+    border-radius: 50px;
+    background: transparent;
+    padding: 0.8em 30px;
+    border: 2px solid #f8a587;
+    color: #f8a587;
+    width: 100px;
+    text-align: center;
   }
 
   &-form-buttons {
@@ -152,18 +190,19 @@ input:checked + .slider:before {
 
   &-form-select {
     display: flex;
-    justify-content: space-between;
     margin: 10px 0;
   }
 
   &-category {
-    background-color: rgb(167, 94, 46);
+    background-color: #{vars.$coral};
     margin: 10px 10px;
+    width: 250px;
+    color: black;
   }
 
 }
-#input[id="picture"]{
-  display: none;
+input#picture {
+  background-color: #{vars.$coral};
 }
 
 .meal-online-switch {
@@ -171,5 +210,15 @@ input:checked + .slider:before {
   justify-content: space-between;
   align-items: center;
   width: 215px;
-  margin: 15px auto;
+  margin: 5em auto;
+  color: white;
 }
+
+// select ingredients Input
+.css-2b097c-container {
+  width: 560px;
+  border: none;
+  margin-bottom: 0.5rem;
+}
+
+
