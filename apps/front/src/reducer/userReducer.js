@@ -1,4 +1,5 @@
 import {
+  UPDATE_MENU_BURGER_STATUS,
   SET_INPUT_VALUE,
   LOGIN_SUCCES,
   LOGIN_ERROR,
@@ -19,6 +20,7 @@ const user = localStorage.getItem('user')
 const initialState = {
   isLoginOpen: false,
   isSignUpOpen: false,
+  menuIsOpen: false,
   email: user.email || '',
   password: '',
   pseudonym: user.username || '',
@@ -113,6 +115,10 @@ export default (state = initialState, action = {}) => {
         [action.name]: action.value,
         loggedMessage: 'inscription ok',
       };
+    case UPDATE_MENU_BURGER_STATUS: return {
+      ...state,
+      menuIsOpen: action.payload,
+    };
     default:
       return state;
   }

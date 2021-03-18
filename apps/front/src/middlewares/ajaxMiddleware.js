@@ -3,6 +3,7 @@ import axios from 'axios';
 import data from '../../dataUser';
 
 import {
+  OPEN_OR_CLOSE_MENU_BURGER,
   SEND_LOGIN,
   USER_LOGOUT,
   SEND_SIGN_UP,
@@ -11,6 +12,7 @@ import {
   signUpSucces,
   signUpError,
   handleLogoutSuccess,
+  updateMenuBurgerStatus,
 } from '../actions/user';
 
 export default (store) => (next) => (action) => {
@@ -116,6 +118,12 @@ export default (store) => (next) => (action) => {
         location.href = '/';
       }, 100);
     } break;
+    case OPEN_OR_CLOSE_MENU_BURGER: {
+      const { menuIsOpen } = store.getState().user;
+
+      const actionToDispatch = updateMenuBurgerStatus(!menuIsOpen);
+      return store.dispatch(actionToDispatch);
+    }
     default:
       return next(action);
   }

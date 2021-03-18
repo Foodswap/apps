@@ -1,16 +1,34 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
+
+// import logo and icon
 import logo from '../../assets/images/logo-fooswap.png';
 import userLogo from '../../assets/images/user-connected.png';
+import menuBurger from '../../assets/images/menuBurger/menuBurger.svg';
+import closeMenuBurger from '../../assets/images/menuBurger/closeMenu.svg';
 
 import './style.scss';
 
 const Menu = ({
-  isLogged, loginFormToggle, signUpFormToggle, userLogout, username,
+  isLogged,
+  loginFormToggle,
+  signUpFormToggle,
+  userLogout,
+  username,
+  menuIsOpen,
+  openOrCloseMenuBurger,
 }) => (
-
   <nav className="menu">
+    <div className="menu-burger" onClick={() => openOrCloseMenuBurger(menuIsOpen)}>
+      {!menuIsOpen && (
+        <img className="menu-burger-open icon" src={menuBurger} alt="burger icon" />
+      )}
+      {menuIsOpen && (
+        <img className="menu-burger-close icon" src={closeMenuBurger} alt="croix de fermeture" />
+      )}
+    </div>
+
     <div className="menu-logo">
       <a className="appHeader-link" href="/">
         <img className="appHeader-logo" src={logo} alt="logo de FoodSwap" />
@@ -36,26 +54,27 @@ const Menu = ({
 
     { isLogged && (
       <nav className="menu-links">
-        <div className="menu-content">
-          <NavLink exact className="menu-link" to="/">
+        <div className={menuIsOpen ? 'menu-content open' : 'menu-content'}>
+          <NavLink exact className="menu-link" to="/" onClick={() => openOrCloseMenuBurger(menuIsOpen)}>
             Accueil
           </NavLink>
 
-          <NavLink exact className="menu-link" to="/v1/mydishes">
+          <NavLink exact className="menu-link" to="/v1/mydishes" onClick={() => openOrCloseMenuBurger(menuIsOpen)}>
             Mes plats
           </NavLink>
 
-          <NavLink exact className="menu-link" to="/v1/createdish">
+          <NavLink exact className="menu-link" to="/v1/createdish" onClick={() => openOrCloseMenuBurger(menuIsOpen)}>
             Créer un plat
           </NavLink>
 
-          <NavLink exact className="menu-link" to="/v1/exchange-tracking">
+          <NavLink exact className="menu-link" to="/v1/exchange-tracking" onClick={() => openOrCloseMenuBurger(menuIsOpen)}>
             Suivi d'échange
           </NavLink>
 
-          <NavLink exact className="menu-link" to="/v1/my-information">
+          <NavLink exact className="menu-link" to="/v1/my-information" onClick={() => openOrCloseMenuBurger(menuIsOpen)}>
             Mes informations
           </NavLink>
+          <button className="menu-logoutButton" type="button" onClick={() => userLogout() && openOrCloseMenuBurger(menuIsOpen)}> Se déconnecter </button>
         </div>
 
         <div className="menu-username">
@@ -74,6 +93,8 @@ Menu.propTypes = {
   signUpFormToggle: PropTypes.func.isRequired,
   userLogout: PropTypes.func.isRequired,
   username: PropTypes.string.isRequired,
+  menuIsOpen: PropTypes.bool.isRequired,
+  openOrCloseMenuBurger: PropTypes.func.isRequired,
 };
 
 export default Menu;

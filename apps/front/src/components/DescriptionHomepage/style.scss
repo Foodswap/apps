@@ -1,47 +1,104 @@
-@import url('https://fonts.googleapis.com/css2?family=PT+Sans&family=Ranchers&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=PT+Sans&family=Ranchers&display=swap');
 
-
-.big-title {
-	text-align: center;
-	text-transform: uppercase;
-	position: absolute;
-  top: 30%;
-  left: 20%;
-  z-index: 11;
-  letter-spacing: 25px;
-  color: #fff;
-  font: 900 80px Montserrat;
-  text-shadow: 0 10px 25px rgba(0, 0, 0, 0.945);
-  margin-left: auto;
-
-}
-.welcome {
-  background-image: url("https://cdn.pixabay.com/photo/2017/12/09/08/18/pizza-3007395_960_720.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 70vh;
-  position: relative;
-  overflow: hidden;
-  display: flex;
-
-  video {
-    width: 100vw;
+@media only screen and (min-device-width: 668px) {
+  .big-title {
+    text-align: center;
+    text-transform: uppercase;
     position: absolute;
-    left: 0;
-    top: -100px;
-    z-index: 10;
+    top: 39%;
+    left: 4.7%;
+    z-index: 11;
+    letter-spacing: 0.3rem;
+    color: #fff;
+    font: 900 1.3rem Montserrat;
+    text-shadow: 0 10px 25px rgba(0,0,0,.945);
+    margin-left: auto;
+
+  }
+  .welcome {
+    // background-image: url("https://cdn.pixabay.com/photo/2017/12/09/08/18/pizza-3007395_960_720.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+
+
+    .videoHomePage {
+      width: 100vw;
+      position: absolute;
+      left: 0;
+      top: -100px;
+    }
+
+    .imgHomePage {
+      filter: brightness(50%);
+      width: 100vw;
+    }
   }
 
-  
+  .welcome-blur {
+    filter: brightness(0.4) saturate(0.5) contrast(1.2) blur(10px);
+    position: relative;
+    // background-image: url("https://cdn.pixabay.com/photo/2017/12/09/08/18/pizza-3007395_960_720.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 80vh;
+    overflow: hidden;
+    display: flex;
+  }
 }
 
-.welcome-blur {
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) {
+  .big-title {
+    text-align: center;
+    text-transform: uppercase;
+    position: absolute;
+    top: 39%;
+    left: 4.7%;
+    z-index: 11;
+    letter-spacing: 0.3rem;
+    color: #fff;
+    font: 900 1.3rem Montserrat;
+    text-shadow: 0 10px 25px rgba(0,0,0,.945);
+    margin-left: auto;
+
+  }
+  .welcome {
+    // background-image: url("https://cdn.pixabay.com/photo/2017/12/09/08/18/pizza-3007395_960_720.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    height: 25vh;
+
+    video {
+      width: 521px;
+      position: absolute;
+      left: -50px;
+      top: -50px;
+      z-index: 10;
+    }
+
+    .imgHomePage {
+      filter: brightness(50%);
+      width: 100vw;
+    }
+  }
+
+  .welcome-blur {
     filter: brightness(0.4) saturate(0.5) contrast(1.2) blur(10px);
-  position: relative;
-  background-image: url("https://cdn.pixabay.com/photo/2017/12/09/08/18/pizza-3007395_960_720.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 80vh;
-  overflow: hidden;
-  display: flex;
+    position: relative;
+    // background-image: url("https://cdn.pixabay.com/photo/2017/12/09/08/18/pizza-3007395_960_720.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 80vh;
+    overflow: hidden;
+    display: flex;
+  }
+
+  .welcome-container {
+    
+  }
 }
