@@ -1,6 +1,9 @@
 // Vendors
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import  'react-toastify/dist/ReactToastify.css';
+
 
 
 // Dumb components
@@ -41,6 +44,7 @@ import dishes from '../../../dataDishes';
 const App = () => (
   <div className="app">
     {/* <AppHeader /> */}
+    
     <Menu />
     <Switch>
       <Route exact path="/v1/my-information" component={MyInformation} />
@@ -81,9 +85,21 @@ const App = () => (
       <Route component={Error} />
 
     </Switch>
+    <ToastContainer 
+      position="top-right"
+      autoClose={3000}
+      hideProgressBar
+      newestOnTop={false}
+      closeOnClick={false}
+      rtl={false}
+      pauseOnFocusLoss={false}
+      draggable={false}
+      pauseOnHover={false}
+    />
 
     <Footer />
   </div>
+  
 );
 
 // == Export
