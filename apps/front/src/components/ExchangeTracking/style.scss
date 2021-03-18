@@ -8,9 +8,8 @@
   background: #{vars.$gradientDarkBlue};
   border-radius: 1rem;
   padding: 0.8rem;
-  margin: 2em auto;
+  margin: auto;
   width: 70%;
-  height: 100vh;
   display: flex;
   flex-direction: column;
   font-family: 'Gudea', sans-serif;
@@ -19,6 +18,9 @@
   // &-container {
   //   margin-left: auto;
   // }
+  &-page {
+    background-color: #{vars.$coral};
+  }
   &-panel {
     display: none;
   
@@ -71,7 +73,7 @@
   }
 
   &-img {
-    height: 150px;
+    height: 100px;
     width: auto;
     border-radius: 5px;
     box-shadow: #242130 1px 3px;
