@@ -16,7 +16,7 @@ const MyDishes = ({
 
   return (
     <div className="myDishes">
-      <h1 className="myDishes-title">Mes Plats</h1>
+      <h1 className="myDishes-title">Mes bons petits plats</h1>
       {deleteMessage}
       <section className="myDishes-container">
         { userDishes && userDishes.map((dish) => (
@@ -41,13 +41,12 @@ const MyDishes = ({
               </div>
 
               <div className="myDishes-buttonContent">
-                <button
-                  type="button"
+                <Link
                   className="myDishes-button"
                   onClick={() => deleteDish(dish.id)}
                 >
                   Supprimer
-                </button>
+                </Link>
               </div>
             </div>
 
