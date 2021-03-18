@@ -61,6 +61,11 @@
   list-style: none;
   text-align: center;
 }
+.name-profil{
+  padding:0.9em;
+  font-weight: 200;
+  color: rgb(37, 35, 35);
+}
 
 /* Common style */
 .grid figure {
@@ -172,7 +177,8 @@ figure.effect-zoe h2 {
 }
 
 figure.effect-zoe p.icon-links a {
-  float: right;
+  float:right;
+  padding:0.4em;
   color: #3c4a50;
   font-size: 1.4em;
 }
@@ -185,7 +191,7 @@ figure.effect-zoe:hover p.icon-links a:focus {
 figure.effect-zoe p.description {
   position: absolute;
   bottom: 8em;
-  padding: 2em;
+  padding: 1.5em;
   color: #fff;
   text-transform: none;
   font-size: 90%;
@@ -269,29 +275,29 @@ figure.effect-zoe:hover p.icon-links a:first-child {
 .clearfix:before, .clearfix:after { display: table; content: ''; }
 .clearfix:after { clear: both; }
 
-body {
+// body {
 
-  background: #2f3238;
+//   background: #2f3238;
 
-  font-weight: 400;
-  font-size: 1em;
-  font-family: 'Raleway', Arial, sans-serif;
-}
+//   font-weight: 400;
+//   font-size: 1em;
+//   font-family: 'Raleway', Arial, sans-serif;
+// }
 
-a {
-  outline: none;
-  color: white;
-  text-decoration: none;
-}
+// a {
+//   outline: none;
+//   color: white;
+//   text-decoration: none;
+// }
 
-a:hover, a:focus {
-  color: white;
-}
+// a:hover, a:focus {
+//   color: white;
+// }
 
-section {
-  padding: 1em;
-  text-align: center;
-}
+// section {
+//   padding: 1em;
+//   text-align: center;
+// }
 
 .bigcontent {
 
