@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import './style.scss';
 
 const Footer = () => (
-<div className="footer-container">
+
   
   <div className="footer">
     <div>
@@ -37,7 +37,7 @@ const Footer = () => (
     </div>
 
   </div>
-</div> 
+
 
 );
 
