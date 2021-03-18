@@ -3,6 +3,8 @@ import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
 import { Link, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { toast } from 'react-toastify';
+import  'react-toastify/dist/ReactToastify.css';
 
 // import SelectInputIngredient from '../SelectInputIngredients';
 
@@ -10,6 +12,7 @@ import './style.scss';
 // import image from '../../assets/images/logo-fooswap.png';
 import { cancelFormRecipe, sendFormRecipeUp, setInputValue } from '../../actions/dishesForm';
 
+toast.configure()
 const DishesForm = ({
   dishId,
   picture,
@@ -61,6 +64,16 @@ const DishesForm = ({
     onFormSubmit();
     console.log('handleSubmit');
   };
+  const notify = () => {
+    toast.success('Votre plat a bien été créé',
+    {position: "top-right",
+    autoClose: 1000,
+    hideProgressBar: false,
+    closeOnClick: false,
+    pauseOnHover: false,
+    draggable: false,
+    progress: undefined,})
+  }
 
   const customStyles = {
     option: (provided, state) => ({

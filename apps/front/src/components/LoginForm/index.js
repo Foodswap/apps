@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import './style.scss';
 
 const LoginForm = ({
@@ -28,6 +29,7 @@ const LoginForm = ({
           <p className="login-form-message">
             {loggedMessage}
           </p>
+        
           <button className="logout-button" type="button" onClick={userLogout}> Se déconnecter </button>
         </div>
       )}
