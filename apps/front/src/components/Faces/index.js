@@ -26,7 +26,7 @@ const Faces = () => (
       <p className="face-paragraph">Ce site est le fruit d'un travail cuisant durant 5 mois d'apprentissage et d'aventure humaine intense.</p>
       <p className="face-paragraph_p">Nos principaux ingrédients ?</p>
       <p className="face-paragraph">Une touche de Node.JS aux petits oignons pour le back-end et une pinçée de gros sel chez React pour le front-end. </p>
-      <p className="face-paragraph">Ajoutez un soupçon de matière grise venant d'une brigade sur-motivées, et vous obtenez ce merveilleux projet d'apothéose !</p>
+      <p className="face-paragraph">Ajoutez un soupçon de matière grise venant d'une brigade sur-motivée, et vous obtenez ce merveilleux projet d'apothéose !</p>
    </div>
     
     
