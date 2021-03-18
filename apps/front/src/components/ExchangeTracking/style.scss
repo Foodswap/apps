@@ -20,6 +20,7 @@
   // }
   &-page {
     background-color: #{vars.$coral};
+    // min-height: 80vh;
   }
   &-panel {
     display: none;
@@ -64,13 +65,13 @@
     transition: 0.1s;
   }
 
-  &-body {
-    display: flex;
-    justify-content: center;
-    border-radius: 1rem;
-    background-color: #{vars.$darkBlue};
-    width: 100%;
-  }
+  // &-body {
+  //   display: flex;
+  //   justify-content: center;
+  //   border-radius: 1rem;
+  //   background-color: #{vars.$darkBlue};
+  //   width: 100%;
+  // }
 
   &-img {
     height: 100px;

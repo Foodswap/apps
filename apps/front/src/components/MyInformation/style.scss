@@ -1,32 +1,45 @@
+@use 'src/styles/vars';
+@use 'sass:color';
+@import url(https://fonts.googleapis.com/css?family=Gudea:400,700);
+
 .information {
-  display: flex;
-  flex-direction: column;
+  background-color: #{vars.$coral};
+  height: 80vh;
 
   &-container {
     display: flex;
     flex-direction: column;
-    border: 0.1rem solid;
-    margin-left: 7rem;
-    margin-right: 7rem;
+    margin: auto;
     text-align: initial;
     font-size: 1rem;
-    padding: 1rem;
-    background-color: antiquewhite;
+    padding: 2rem;
     border-radius: 0.6em;
+    width: 50%;
+    background-color: #{vars.$darkBlue};
+    box-shadow: 0 12px 15px 0 #18181ab4, 0 17px 50px #060607b4;
   }
 
   &-content {
     margin-bottom: 1rem;
+    color: white;
+    font-size: 1.3rem;
   }
 
   &-field {
     margin-bottom: 0.6rem;
     font-size: 1.4rem;
-    color: orangered;
+    color: #{vars.$coral};
+    font-size: 1.5rem;
   }
 
   &-title {
-    font-size: xx-large;
-    margin: 1em 0;
+    color: #{vars.$darkBlue};
+    font-weight: 700;
+    font-size: 2em;
+    padding: 2rem 0 0 0.2rem;
+    text-transform: uppercase;
+    font-family: 'Gudea', sans-serif;
+    letter-spacing: 5px;
+    margin-bottom: 5rem;
   }
 }
