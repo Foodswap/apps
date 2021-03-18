@@ -4,8 +4,9 @@
 import React from 'react';
 import { FaReact, FaGithub } from 'react-icons/fa';
 import { SiPostgresql, SiJavascript } from 'react-icons/si';
-import './style.scss';
 import './reset.scss';
+import './style.scss';
+
 import cyril from '../../assets/images/cyril.png';
 import plia from '../../assets/images/plia.png';
 import flo from '../../assets/images/flo.png';
