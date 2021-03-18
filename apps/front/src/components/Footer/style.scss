@@ -19,16 +19,17 @@
 
 
 
-@media only screen and (min-device-width: 375px) and (max-device-width: 768px) {
+@media only screen and (max-device-width: 768px) {
 
   .footer{
       display: flex;
       justify-content:space-evenly;
       margin: auto;
-      width: 100vh;
+      font-size: 0.8rem;
+      //width: 100vh;
       text-align: center;
       background-color: #262835;
-      padding: 2rem;
+      // padding: 2rem;
       color: white;
       border-top: 1px solid #191a20;
     
@@ -41,23 +42,13 @@
   
 
 
-@media only screen and (min-device-width: 320px) and (max-device-width: 375px) {
+@media only screen and (max-device-width: 375px) {
 
 .footer{
-    display: flex;
-    justify-content:space-evenly;
-    margin: auto;
-    width: 100vh;
-    text-align: center;
-    background-color: #262835;
-    padding: 2rem;
-    color: white;
-    border-top: 1px solid #191a20;
-  
-    &-link {
-      margin-right: 2rem;
-    
-  }
+  flex-wrap: wrap;
+  font-size: 0.6rem;
+  flex-direction: column;
+  align-items: center;
 }
 }
 

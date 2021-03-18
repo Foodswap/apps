@@ -6,7 +6,7 @@
 .myDishes {
 
   background-color: #{vars.$coral};
-  height: 80vh; 
+  height: 100vh; 
 
   &-title {
     color: #{vars.$darkBlue};
@@ -85,4 +85,51 @@
   }
 
 }
+
+
+@media only screen and (min-device-width: 1500px) and (max-device-width: 2200px){
+
+  .myDishes{
+
+    &-allButton {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &-buttonContent{
+      padding: 2rem 0rem;
+    }
+    &-oneDish{
+      width: 70%;
+    }
+  
+  }
+  
+
+}
+
+@media only screen and (min-device-width: 1000px) and (max-device-width: 1500px){
+
+  .myDishes{
+
+    width: 100%;
+
+    &-allButton {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &-buttonContent{
+      padding: 2rem 0rem;
+    }
+
+    &-oneDish{
+      width: 70%;
+      
+    }
+  }
+
+
+}
+
 
