@@ -1,13 +1,13 @@
 
 
-// CSS normal
-
 @use 'src/styles/vars';
 @use 'sass:color';
-* {
-  margin: 0;
-  padding: 0;
-}
+
+
+
+// CSS normal
+
+
 
 .face{
 
@@ -360,7 +360,7 @@ section {
 }
 
 .content {
-  margin: 2rem auto;
+  margin: auto;
   max-width: 500px;
 }
 
@@ -373,7 +373,8 @@ section {
   background-color: transparent;
   border: solid 1px #f8a587;
   border-radius: 10px;
-  margin: 1rem 5rem;
+  // margin: 1rem 5rem;
+  margin: 1rem 4rem 1rem 6rem;
   font-weight: 800;
   font-size: 1.5em;
 }

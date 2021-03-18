@@ -5,11 +5,12 @@ import React from 'react';
 import { FaReact, FaGithub } from 'react-icons/fa';
 import { SiPostgresql, SiJavascript } from 'react-icons/si';
 import './style.scss';
-import image from '../../assets/images/image.png';
-import image1 from '../../assets/images/image (1).png';
-import image2 from '../../assets/images/image (2).png';
-import image3 from '../../assets/images/image (3).png';
-import image4 from '../../assets/images/image (4).png';
+import './reset.scss';
+import cyril from '../../assets/images/cyril.png';
+import plia from '../../assets/images/plia.png';
+import flo from '../../assets/images/flo.png';
+import marie from '../../assets/images/marie.png';
+import edouard from '../../assets/images/edouard.png';
 
 const Faces = () => (
 
@@ -52,7 +53,7 @@ const Faces = () => (
       <h2 className="name">Edouard</h2>
         <div className="grid">
           <figure className="effect-zoe">
-            <img src={image3} alt="Edouard"/>
+            <img src={edouard} alt="Edouard"/>
             <figcaption>
               <h2>Back-end <span>Lead dev Back</span></h2>
               <p className="icon-links">
@@ -73,7 +74,7 @@ const Faces = () => (
       <h2>Plia</h2>
         <div className="grid">
           <figure className="effect-zoe">
-            <img src={image1} alt="Plia"/>
+            <img src={plia} alt="Plia"/>
             <figcaption>
               <h2>Front-end  <span>Product Owner</span></h2>
               <p className="icon-links">
@@ -93,7 +94,7 @@ const Faces = () => (
       <h2>Marie</h2>
         <div className="grid">
           <figure className="effect-zoe">
-            <img src={image} alt="Marie"/>
+            <img src={marie} alt="Marie"/>
             <figcaption>
               <h2>Front-end <span>Scrum Master</span></h2>
               <p className="icon-links">
@@ -113,7 +114,7 @@ const Faces = () => (
       <h2>Florian</h2>
         <div className="grid">
           <figure className="effect-zoe">
-            <img src={image2} alt="Florian"/>
+            <img src={flo} alt="Florian"/>
             <figcaption>
               <h2>Back-end <span>Git Master</span></h2>
               <p className="icon-links">
@@ -132,7 +133,7 @@ const Faces = () => (
           <h2>Cyril</h2>
             <div className="grid">
               <figure className="effect-zoe">
-                <img src={image4} alt="Cyril"/>
+                <img src={cyril} alt="Cyril"/>
                <figcaption>
                  <h2>Front-end <span>Lead Dev Front</span></h2>
                   <p className="icon-links">
