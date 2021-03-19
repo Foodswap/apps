@@ -15,8 +15,11 @@ GET {{baseUrl}}/ingredients
 ### Local - route pour récupérer les ingredients
 GET {{baseUrl}}/ingredient/1
 
+### Local - route afficher les plats en ligne d'un utilisateur
+GET {{baseUrl}}/meals/online/1
+
 ### Local - route recherche un plat
-GET {{baseUrl}}/meals/asiatique/bordeaux
+GET {{baseUrl}}/meals/?kitchenId=5&city=bordeaux&dishId=2
 
 ### Local - route pour publier un plat
 POST {{baseUrl}}//meals
@@ -35,7 +38,7 @@ GET {{baseUrl}}/meals/author/47
 
 
 ### Local - route pour récupérer un plat
-GET {{baseUrl}}/meals/42
+GET {{baseUrl}}/meals/5/2/bordeaux
 
 
 ### Local - route pour afficher les six derniers plats publier
@@ -75,9 +78,9 @@ POST http://ec2-54-145-80-6.compute-1.amazonaws.com/v1/signup
 Content-Type: application/json
 
 {
-    "username": "jeanbonjour",
-    "email": "pgmdu10@mail.fr",
-    "password": "jenesuispasencorehaché",
+    "username": "edouard",
+    "email": "edouard@mail.fr",
+    "password": "test",
     "city": "bordeaux"
 }
 
@@ -99,3 +102,6 @@ GET http://ec2-54-145-80-6.compute-1.amazonaws.com/v1/meals/3/picture
 
 ### AWS - route pour récupérer les plats d'un author
 GET http://ec2-54-145-80-6.compute-1.amazonaws.com/v1/meals/author/66
+
+### AWS - route pour récupérer les plats d'un author
+GET http://ec2-54-145-80-6.compute-1.amazonaws.com/v1/meals/?city=bordeaux

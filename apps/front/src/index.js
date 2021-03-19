@@ -10,6 +10,7 @@ import {
 
 import store from './store';
 import App from './components/App';
+import  'react-toastify/dist/ReactToastify.css';
 
 const rootReactElement = (
   <Provider store={store}>

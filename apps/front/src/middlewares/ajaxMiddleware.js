@@ -1,6 +1,8 @@
 import axios from 'axios';
 // // import { APP_INIT } from '../actions';
 import data from '../../dataUser';
+import { toast } from 'react-toastify';
+
 
 import {
   OPEN_OR_CLOSE_MENU_BURGER,
@@ -32,8 +34,10 @@ export default (store) => (next) => (action) => {
 
           const token = res.headers.authorization;
           const user = res.data.author;
+          const pseudo = res.data.author.username;
 
           console.log(res.headers);
+          toast.success(`Content de vous revoir ${pseudo} !`),
           localStorage.setItem('token', token);
           localStorage.setItem('user', JSON.stringify(user));
 
@@ -86,6 +90,7 @@ export default (store) => (next) => (action) => {
       })
         .then((res) => {
           console.log(`response ok : ${res}`);
+          toast.success('Inscription réussie !');
           const actionToDispatch = signUpSucces(res.data);
           store.dispatch(actionToDispatch);
         })
@@ -107,16 +112,17 @@ export default (store) => (next) => (action) => {
       // });
     } break;
     case USER_LOGOUT: {
+
+      
       localStorage.removeItem('user');
       localStorage.removeItem('token');
-
       const actionToDispatch = handleLogoutSuccess();
       store.dispatch(actionToDispatch);
-
       setTimeout(() => {
         // eslint-disable-next-line no-restricted-globals
         location.href = '/';
-      }, 100);
+      }, 1000);
+      toast.success(`À bientôt !`);
     } break;
     case OPEN_OR_CLOSE_MENU_BURGER: {
       const { menuIsOpen } = store.getState().user;

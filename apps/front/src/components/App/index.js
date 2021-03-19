@@ -2,6 +2,8 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // Dumb components
 import AppHeader from '../AppHeader';
@@ -44,6 +46,7 @@ const App = ({ isLoginOpen, isSignUpOpen }) => (
       <div className="backdrop" />
     )}
     {/* <AppHeader /> */}
+
     <Menu />
     <Switch>
       <Route exact path="/v1/my-information" component={MyInformation} />
@@ -84,6 +87,17 @@ const App = ({ isLoginOpen, isSignUpOpen }) => (
       <Route component={Error} />
 
     </Switch>
+    <ToastContainer
+      position="top-right"
+      autoClose={3000}
+      hideProgressBar
+      newestOnTop={false}
+      closeOnClick={false}
+      rtl={false}
+      pauseOnFocusLoss={false}
+      draggable={false}
+      pauseOnHover={false}
+    />
 
     <Footer />
   </div>

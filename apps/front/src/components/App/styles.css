@@ -18,3 +18,27 @@
 /* .app img {
   max-width: 150px;
 } */
+.Toastify__toast {
+
+  /* border-radius: 255px 25px 225px 25px/25px 225px 25px 255px;
+  text-decoration: none; */
+  text-decoration: none;
+  border-radius: 50px;
+}
+
+.Toastify__toast--info {
+}
+.Toastify__toast--success {
+
+  /* color: white;
+  border-color: #28a745; */
+  
+  background: #262835;
+  padding: 0.8em ;
+  font-size: 1rem;
+  border: 2px solid #f8a587;
+  color: #f8a587;
+  
+}
+.Toastify__toast--error {
+}

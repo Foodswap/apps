@@ -1,48 +1,433 @@
 
+
+@use 'src/styles/vars';
+@use 'sass:color';
+
+
+
+// CSS normal
+
+
+
 .face{
 
-  &-container{
-    display: flex;
-    justify-content: space-between;  
-  }
-
-  &-image{
-    color: black;
-       font-weight: bold;
-       height: 200px;
-  }
-
   &-page{
-    padding: 200px 200px 400px;
+    background-color: #262835;
+    // border-bottom: 50px solid #262835;
+    // border-top: 50px solid #262835;
+    border:0;
   }
 
-  &-titre-image{
-    font-size: x-large;
-    padding-top: 2rem;
-  }
-
-  &-title{
-    font-size: xx-large;
-    margin:40px;
-  }
-}
-figure 
-{
+  &-container{
     margin: auto;
+    width: 100%;
     text-align: center;
+    padding: 3rem;
+    z-index: 11;
+    font-family: 'PT Sans', cursive;
+    letter-spacing: 0.2em;
+    line-height: 1.8em;
+    color: white;
+    font-size: 1.3em;
+    transition: 3s;
+    border-radius: 15px;
+
+  }
+
+  &-paragraph{
+
+    margin:2rem;
+  }
+  &-paragraph_p{
+
+    margin:2rem;
+    font-weight: bold;
+  }
+  &-title{
+      font-size: xx-large;
+      margin:40px;
+    }
+
 }
-figure img
-{
-    border-radius: 100px;
-    border: solid 6px orange;
-    -webkit-transform: scale(1);
-	transform: scale(1);
-	-webkit-transition: .3s ease-in-out;
-	transition: .3s ease-in-out;
+.name{
+  padding:1rem 1rem ;
 }
 
-figure img:hover 
-{
-    -webkit-transform: scale(1.3);
-	transform: scale(1.3);
+.grid {
+  position: relative;
+  margin: 0 auto;
+  padding: 1em 0 4em;
+  max-width: 300px;
+  list-style: none;
+  text-align: center;
+}
+.name-profil{
+  padding:0.9em;
+  font-weight: 200;
+  color: rgb(37, 35, 35);
+}
+
+/* Common style */
+.grid figure {
+  position: relative;
+  
+  float: left;
+  overflow: hidden;
+  margin: 10px 1%;
+  min-width: 320px;
+  max-width: 480px;
+  max-height: 360px;
+  width: 48%;
+  background: #000000;
+  text-align: center;
+  cursor: pointer;
+  opacity: 1;
+  box-shadow: 0 12px 15px 0 #03030396, 0 17px 50px #0707079a;
+  border-radius: 5px;
+  
+}
+
+.grid figure img {
+  position: relative;
+  display: flex;
+  min-height: 100%;
+  max-width: 100%;
+  -moz-transition: opacity 0.9s;
+  -webkit-transition: opacity 0.9s;
+  -o-transition: opacity 0.9s;
+  transition: opacity 0.9s;
+  vertical-align:top;
+}
+
+.grid figure img:hover {
+
+  opacity:0.3;  
+}
+
+.grid figure figcaption {
+  padding: 1em;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 1.2em;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.grid figure figcaption::before,
+.grid figure figcaption::after {
+  pointer-events: none;
+}
+
+.grid figure figcaption,
+.grid figure figcaption > a {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Anchor will cover the whole item by default */
+/* For some effects it will show as a button */
+.grid figure figcaption > a {
+  z-index: 1000;
+  text-indent: 200%;
+  white-space: nowrap;
+  font-size: 0;
+  opacity: 0;
+}
+
+.grid figure h2 {
+  word-spacing: -0.15em;
+  font-weight: 300;
+}
+
+.grid figure h2 span {
+  font-weight: 800;
+}
+
+.grid figure h2,
+.grid figure p {
+  margin: 0;
+  
+}
+
+.grid figure p {
+  letter-spacing: 1px;
+  font-size: 68.5%;
+}
+
+
+figure.effect-zoe figcaption {
+  top: auto;
+  bottom: 0;
+  padding: 1em;
+  height: 4.20em;
+  background: #fff;
+  color: #3c4a50;
+  -webkit-transition: -webkit-transform 0.35s;
+  transition: transform 0.35s;
+  -webkit-transform: translate3d(0,100%,0);
+  transform: translate3d(0,100%,0);
+  
+}
+
+figure.effect-zoe h2 {
+  float: left;
+}
+
+figure.effect-zoe p.icon-links a {
+  float:right;
+  padding:0.4em;
+  color: #3c4a50;
+  font-size: 1.4em;
+}
+
+figure.effect-zoe:hover p.icon-links a:hover,
+figure.effect-zoe:hover p.icon-links a:focus {
+  color: #252d31;
+}
+
+figure.effect-zoe p.description {
+  position: absolute;
+  bottom: 8em;
+  padding: 1.5em;
+  color: #fff;
+  text-transform: none;
+  font-size: 90%;
+  opacity: 0;
+  -webkit-transition: opacity 0.35s;
+  transition: opacity 0.35s;
+  -webkit-backface-visibility: hidden; /* Fix for Chrome 37.0.2062.120 (Mac) */
+}
+
+figure.effect-zoe h2,
+figure.effect-zoe p.icon-links a {
+  -webkit-transition: -webkit-transform 0.35s;
+  transition: transform 0.35s;
+  -webkit-transform: translate3d(0,200%,0);
+  transform: translate3d(0,200%,0);
+  
+}
+
+figure.effect-zoe p.icon-links a span::before {
+  display: inline-block;
+  padding: 8px 10px;
+  font-family: 'feathericons';
+  // speak: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-git {
+  color:darkblue;
+  
+}
+
+.icon-js{
+  color:rgb(97, 97, 0);
+}
+
+.icon-react{
+  color:rgb(0, 247, 255);
+}
+.icon-sql{
+  color:black;
+}
+
+figure.effect-zoe h2 {
+  display: inline-block;
+}
+
+figure.effect-zoe:hover p.description {
+  opacity: 1;
+}
+
+figure.effect-zoe:hover figcaption,
+figure.effect-zoe:hover h2,
+figure.effect-zoe:hover p.icon-links a {
+  -webkit-transform: translate3d(0,0,0);
+  transform: translate3d(0,0,0);
+  
+}
+
+figure.effect-zoe:hover h2 {
+  -webkit-transition-delay: 0.05s;
+  transition-delay: 0.05s;
+  
+}
+
+figure.effect-zoe:hover p.icon-links a:nth-child(3) {
+  -webkit-transition-delay: 0.1s;
+  transition-delay: 0.1s;
+}
+
+figure.effect-zoe:hover p.icon-links a:nth-child(2) {
+  -webkit-transition-delay: 0.15s;
+  transition-delay: 0.15s;
+}
+
+figure.effect-zoe:hover p.icon-links a:first-child {
+  -webkit-transition-delay: 0.2s;
+  transition-delay: 0.2s;
+}
+*, *:after, *:before { -webkit-box-sizing: border-box; box-sizing: border-box; }
+.clearfix:before, .clearfix:after { display: table; content: ''; }
+.clearfix:after { clear: both; }
+
+
+// body {
+
+//   background: #2f3238;
+
+//   font-weight: 400;
+//   font-size: 1em;
+//   font-family: 'Raleway', Arial, sans-serif;
+// }
+
+// a {
+//   outline: none;
+//   color: white;
+//   text-decoration: none;
+// }
+
+// a:hover, a:focus {
+//   color: white;
+// }
+
+// section {
+//   padding: 1em;
+//   text-align: center;
+// }
+
+
+.bigcontent {
+
+  display: flex;
+  flex-wrap: wrap;
+  margin:0;
+}
+
+.content {
+  margin: auto;
+  max-width: 500px;
+}
+
+
+.content > h2 {
+  clear: both;
+  padding: 1em 7% 0;
+  color: #f8a587;
+  background-color: transparent;
+  border: solid 1px #f8a587;
+  border-radius: 10px;
+  margin: 1rem 4rem 1rem 6rem;
+  font-weight: 800;
+  font-size: 1.5em;
+}
+
+.content > h2:first-child {
+  padding: 0.5em;
+}
+
+
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) {
+
+
+  .face{
+
+    &-page{
+      background-color: #262835;
+      width: 100vh;
+    }
+  
+    &-container{
+      margin: auto;
+      width: 100%;
+      text-align: center;
+      padding: 3rem;
+      z-index: 11;
+      font-family: 'PT Sans', cursive;
+      letter-spacing: 0.1em;
+      line-height: 1em;
+      color: white;
+      font-size: 1.3em;
+      transition: 3s;
+      border-radius: 15px;
+  
+    }
+  
+    &-paragraph{
+  
+      margin:1rem;
+    }
+    &-paragraph_p{
+  
+      margin:1rem;
+      font-weight: bold;
+    }
+    &-title{
+        font-size: xx-large;
+        margin:20px;
+      }
+    }
+    .bigcontent {
+
+      display: flex;
+      flex-wrap: wrap;
+      justify-content:space-between;
+      margin:0;
+    }
+
+
+}
+@media only screen and (min-device-width: 320px) and (max-device-width: 375px) {
+
+
+  .face{
+
+    &-page{
+      background-color: #262835;
+      width: 100vh;
+    }
+  
+    &-container{
+      margin: auto;
+      width: 100%;
+      text-align: center;
+      padding: 3rem;
+      z-index: 11;
+      font-family: 'PT Sans', cursive;
+      letter-spacing: 0.1em;
+      line-height: 1em;
+      color: white;
+      font-size: 1em;
+      transition: 3s;
+      border-radius: 15px;
+  
+    }
+  
+    &-paragraph{
+  
+      margin:1rem;
+    }
+    &-paragraph_p{
+  
+      margin:1rem;
+      font-weight: bold;
+    }
+    &-title{
+        font-size: xx-large;
+        margin:20px;
+      }
+    }
+    .bigcontent {
+
+      display: flex;
+      flex-wrap: wrap;
+      justify-content:space-between;
+      margin:0;
+    }
+
+
 }

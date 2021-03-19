@@ -2,6 +2,7 @@
 import axios from 'axios';
 import { set } from 'date-fns';
 import { resetWarningCache } from 'prop-types';
+import { toast } from 'react-toastify';
 
 import {
   DELETE_ONE_DISH,
@@ -151,8 +152,9 @@ export default (store) => (next) => (action) => {
           setTimeout(() => {
             // eslint-disable-next-line no-restricted-globals
             location.href = '/v1/mydishes';
-          }, 500);
+          }, 200);
           console.log(res.data);
+          toast.success('Votre plat a bien été créé');
         })
         .catch((error) => {
           console.log(`${error} erreur au post du formulaire`);
