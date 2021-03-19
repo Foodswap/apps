@@ -17,7 +17,7 @@
   perspective: 850px;
   height: 60vh;
   font-family: 'Gudea', sans-serif;
-  box-shadow: #f8a587a9 0.5px 1px 2px 1px;
+  box-shadow: black 0 2px 25px 3px;
 }
 
 .signup-modale-close {
@@ -88,14 +88,119 @@
   text-decoration: underline;
 }
 .signup-form-button-close {
-  width: 20px;
+  width: 35px;
   background-color: #f8a587;
-  color: white;
+  color: #fff;
   border-radius: 50%;
   text-align: center;
   border: none;
   right: 15px;
   top: 15px;
   position: absolute;
-  padding: 0.2rem;
+  padding: .2rem;
+  height: 35px;
+  font-size: 1rem;
+}
+
+@media only screen and (max-width: 415px) {
+  .signup-modale {
+    display: flex;
+    position: fixed;
+    background: linear-gradient(45deg,#35394a,#1f222e);
+    overflow: hidden;
+    top: -18px;
+    left: 0;
+    margin-top: 20px;
+    z-index: 9999;
+    -webkit-box-pack: center;
+    justify-content: center;
+    perspective: 850px;
+    height: 100vh;
+    font-family: Gudea,sans-serif;
+    width: 100vw;
+    margin-left: 0;
+    border-radius: 0;
+  }
+
+  .signup-modale-close {
+    display: none;
+  } 
+
+  .signup-title {
+    margin: 4em 1rem 1em 1.5em;
+    text-align: left;
+    font-size: 1.5rem;
+    color: white;
+  }
+
+  .signup-form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .signup-form-input {
+    width: 100%;
+    border: 1px solid rgba(44, 40, 54, 0.295);
+    padding: 1.5em 2.5rem;
+    cursor: text;
+    color: #f8a587;
+    background-color: #32364a;
+    outline: none;
+    font-family: "Gudea", sans-serif;
+    box-shadow: none;
+    font-size: 1.1em;
+  }
+
+
+  .signup-form-submit{
+    margin: 3em 0 5em 0;
+    border-radius: 50px;
+    background: transparent;
+    padding: 1.2em 50px;
+    border: 2px solid #f8a587;
+    color: #f8a587;
+    text-transform: uppercase;
+    font-size: 11px;
+    transition-property: background, color;
+    transition-duration: 0.2s;
+  }
+
+  .signup-form-submit:hover{
+    color:black;
+    background:#f8a587 ;
+    cursor:pointer;
+    transition-property:background,color;
+    transition-duration:.2s;
+  }
+
+  .signup-form-message {
+    margin-top: 1em;
+    font-size: 1.5em;
+    color: #d5d8e2;
+  }
+
+  .signup-succes-message{
+    padding: 3em;
+    line-height: 3em;
+    color: white;
+    font-size: 1.5em;
+  }
+
+  .signup-succes-link {
+    text-decoration: underline;
+  }
+  .signup-form-button-close {
+    width: 50px;
+    background-color: #f8a587;
+    color: #fff;
+    border-radius: 50%;
+    text-align: center;
+    border: none;
+    right: 15px;
+    top: 15px;
+    position: absolute;
+    padding: .2rem;
+    height: 50px;
+    font-size: 1.5rem;
+  }
 }

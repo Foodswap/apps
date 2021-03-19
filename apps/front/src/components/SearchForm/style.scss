@@ -3,64 +3,135 @@
 @import url(https://fonts.googleapis.com/css?family=Gudea:400,700);
 
 
-.search-form-div {
-  background: #262835;
-  height: 200px;
-  margin: auto;
-  padding: 3rem;
-  font-family: 'Gudea', sans-serif;
-}
+  .search-form-div {
+    background: #262835;
+    height: 200px;
+    margin: auto;
+    padding: 3rem;
+    font-family: 'Gudea', sans-serif;
+  }
 
-.test-text {
-  padding-bottom: 0.5rem;
-  font-size: 1.2rem;
-  color: white;
-}
-.search-form-title {
-  font-size: 2em;
-  color: white;
-  margin-bottom: 1.5rem;
-}
+  .test-text {
+    padding-bottom: 0.5rem;
+    font-size: 1.2rem;
+    color: white;
+  }
+  .search-form-title {
+    font-size: 2.3em;
+    color: white;
+    margin-bottom: 1.5rem;
+  }
 
-.search-form-form {
-  padding-bottom: 2em;
-}
-.search-form-form select{
-  font-size: 1.2rem;
-  width: 300px;
-  margin-right: 3rem;
-  background-color: rgb(252, 196, 176);
-  border: none;
-  border-radius: 5px;
-  padding: 0.5rem;
-}
+  .search-form-form {
+    padding-bottom: 2em;
+  }
+  .search-form-form select{
+    font-size: 1.2rem;
+    width: 300px;
+    margin-right: 3rem;
+    background-color: rgb(252, 196, 176);
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem;
+  }
 
 
-.search-form-input {
-  font-size: 1.2rem;
-  width: 300px;
-  margin-right: 3rem;
-  background-color: rgb(252, 196, 176);
-  border: none;
-  border-radius: 5px;
-  padding: 0.5rem;
-}
+  .search-form-input {
+    font-size: 1.2rem;
+    width: 300px;
+    margin-right: 3rem;
+    background-color: rgb(252, 196, 176);
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem;
+  }
 
-.search-form-button {
-  background: transparent;
-  padding: 0.8em 30px;
-  border: 2px solid #f8a587;
-  color: #f8a587;
-  text-transform: uppercase;
-  transition-property: background, color;
-  transition-duration: 0.2s;
-}
+  .search-form-button {
+    background: transparent;
+    padding: 0.8em 30px;
+    border: 2px solid #f8a587;
+    color: #f8a587;
+    text-transform: uppercase;
+    transition-property: background, color;
+    transition-duration: 0.2s;
+  }
 
-.search-form-button:hover {
-  color:black;
-  background:#f8a587 ;
-  cursor:pointer;
-  transition-property:background,color;
-  transition-duration:.2s;
+  .search-form-button:hover {
+    color:black;
+    background:#f8a587 ;
+    cursor:pointer;
+    transition-property:background,color;
+    transition-duration:.2s;
 
+  }
+
+
+  @media only screen and (max-width: 415px) {
+  .search-form-div {
+    background: #262835;
+    height: 23rem;
+    margin: auto;
+    font-family: Gudea,sans-serif;
+    padding: 1.8rem 1.4rem;
+  }
+
+  .test-text {
+    padding-bottom: .7rem;
+    font-size: 1rem;
+    color: #fff;
+  }
+  .search-form-title {
+    font-size: 1.8em;
+    color: #fff;
+    margin-bottom: 1rem;
+
+  }
+
+  .search-form-form {
+    padding-bottom: 2em;
+    width: 91vw;
+  }
+  .search-form-form select{
+    margin-bottom: 0.6rem;
+    background-color: #fcc4b0;
+    border: none;
+    border-radius: 5px;
+    width: 80%;
+    padding: 0.9rem 0.9rem 0.9rem 0.6rem;
+    margin-right: 0;
+  }
+
+
+  .search-form-input {
+    font-size: 1.1rem;
+    width: 80%;
+    background-color: rgb(252, 196, 176);
+    border: none;
+    border-radius: 5px;
+    padding: 0.9rem;
+    margin-right: 0;
+  }
+
+  .search-form-button {
+    background: transparent;
+    padding: 0.5em;
+    margin: .9em 0;
+    border: 0.1em solid #f8a587;
+    color: #f8a587;
+    text-transform: uppercase;
+    width: 11rem;
+    height: 7.7vh;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-radius: 1rem;
+  }
+
+  .search-form-button:hover {
+    color:black;
+    background:#f8a587 ;
+    cursor:pointer;
+    transition-property:background,color;
+    transition-duration:.2s;
+
+  }
 }
