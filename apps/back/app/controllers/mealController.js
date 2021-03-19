@@ -97,41 +97,16 @@ const mealController = {
 
 
     searchMeal: async (request, response, next) => {
-        const dishId = request.query.dishId;
-        const kitchenId = request.query.kitchenId;
-        const cityName = request.query.city;
+        const dishId = request.params.dishId;
+        const kitchenId = request.params.kitchenId;
+        const cityName = request.params.city;
         const sqlRequest = { where: {online: true, city: cityName, [Op.and]: [
             sequelize.literal(`(EXISTS(SELECT 1 FROM meal_category_associate WHERE id_meal = "Meal".id AND id_category = ${dishId}))`),
             sequelize.literal(`(EXISTS(SELECT 1 FROM meal_category_associate WHERE id_meal = "Meal".id AND id_category = ${kitchenId}))`)
         ]}
       
         }  
-
-        if(cityName) {
-            sqlRequest.where = {online: true, city: cityName}
-        } 
-        if (kitchenId) {
-            sqlRequest.where = {online: true, [Op.and]: [
-                sequelize.literal(`(EXISTS(SELECT 1 FROM meal_category_associate WHERE id_meal = "Meal".id AND id_category = ${kitchenId}))`)]
-        }}
-        if (dishId) {
-            sqlRequest.where = {online: true, [Op.and]: [
-                sequelize.literal(`(EXISTS(SELECT 1 FROM meal_category_associate WHERE id_meal = "Meal".id AND id_category = ${dishId}))`)]
-        }}
-        if (cityName, kitchenId) {
-            sqlRequest.where = {online: true, city: cityName, [Op.and]: [
-                sequelize.literal(`(EXISTS(SELECT 1 FROM meal_category_associate WHERE id_meal = "Meal".id AND id_category = ${kitchenId}))`)
-        ]}}
-        if (cityName, dishId) {
-            sqlRequest.where = {online: true, city: cityName, [Op.and]: [
-                sequelize.literal(`(EXISTS(SELECT 1 FROM meal_category_associate WHERE id_meal = "Meal".id AND id_category = ${dishId}))`)
-        ]}}
-        if (kitchenId, dishId) {
-            sqlRequest.where = {online: true, [Op.and]: [
-                sequelize.literal(`(EXISTS(SELECT 1 FROM meal_category_associate WHERE id_meal = "Meal".id AND id_category = ${dishId}))`)
-        ]}}
         
-
         try { 
             const mealSearch =  await Meal.findAll(sqlRequest)
           response.status(200).json(mealSearch);
