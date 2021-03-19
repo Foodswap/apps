@@ -16,7 +16,7 @@ GET {{baseUrl}}/ingredients
 GET {{baseUrl}}/ingredient/1
 
 ### Local - route recherche un plat
-GET {{baseUrl}}/meals/2/5/bordeaux
+GET {{baseUrl}}/meals/?kitchenId=5&city=bordeaux&dishId=2
 
 ### Local - route pour publier un plat
 POST {{baseUrl}}//meals

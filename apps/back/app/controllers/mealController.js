@@ -4,22 +4,6 @@ const {
 const { Op } = require('sequelize');
 const sequelize = require('../database');
 
-const mealService = {
-    builRequest: (dishId, kitchenId, city) => {
-        let request = { 
-            where: {city: city, online: true,
-                [Op.and]: [
-                    sequelize.literal(`(EXISTS(SELECT 1 FROM meal_category_associate WHERE id_meal = "Meal".id AND id_category = ${dishId}))`),
-                    sequelize.literal(`(EXISTS(SELECT 1 FROM meal_category_associate WHERE id_meal = "Meal".id AND id_category = ${kitchenId}))`)
-                ]
-            }
-        }
-
-        return request;
-        
-    }
-};
-
 
 const mealController = {
 
@@ -110,22 +94,45 @@ const mealController = {
         }
     },
 
-    searchMeal: async (request, response) => {
-        const dishId = request.params.dishId;
-        const kitchenId = request.params.kitchenId;
-        const cityName = request.params.city;
+    searchMeal: async (request, response, next) => {
+        const dishId = request.query.dishId;
+        const kitchenId = request.query.kitchenId;
+        const cityName = request.query.city;
+        const sqlRequest = { where: {online: true, city: cityName, [Op.and]: [
+            sequelize.literal(`(EXISTS(SELECT 1 FROM meal_category_associate WHERE id_meal = "Meal".id AND id_category = ${dishId}))`),
+            sequelize.literal(`(EXISTS(SELECT 1 FROM meal_category_associate WHERE id_meal = "Meal".id AND id_category = ${kitchenId}))`)
+        ]}
+      
+        }  
+
+        if(cityName) {
+            sqlRequest.where = {online: true, city: cityName}
+        } 
+        if (kitchenId) {
+            sqlRequest.where = {online: true, [Op.and]: [
+                sequelize.literal(`(EXISTS(SELECT 1 FROM meal_category_associate WHERE id_meal = "Meal".id AND id_category = ${kitchenId}))`)]
+        }}
+        if (dishId) {
+            sqlRequest.where = {online: true, [Op.and]: [
+                sequelize.literal(`(EXISTS(SELECT 1 FROM meal_category_associate WHERE id_meal = "Meal".id AND id_category = ${dishId}))`)]
+        }}
+        if (cityName, kitchenId) {
+            sqlRequest.where = {online: true, city: cityName, [Op.and]: [
+                sequelize.literal(`(EXISTS(SELECT 1 FROM meal_category_associate WHERE id_meal = "Meal".id AND id_category = ${kitchenId}))`)
+        ]}}
+        if (cityName, dishId) {
+            sqlRequest.where = {online: true, city: cityName, [Op.and]: [
+                sequelize.literal(`(EXISTS(SELECT 1 FROM meal_category_associate WHERE id_meal = "Meal".id AND id_category = ${dishId}))`)
+        ]}}
+        if (kitchenId, dishId) {
+            sqlRequest.where = {online: true, [Op.and]: [
+                sequelize.literal(`(EXISTS(SELECT 1 FROM meal_category_associate WHERE id_meal = "Meal".id AND id_category = ${dishId}))`)
+        ]}}
         
+
         try { 
-            const mealSearch =  await Meal.findAll({ 
-                where: {city: cityName, online: true,
-                    [Op.and]: [
-                        sequelize.literal(`(EXISTS(SELECT 1 FROM meal_category_associate WHERE id_meal = "Meal".id AND id_category = ${dishId}))`),
-                        sequelize.literal(`(EXISTS(SELECT 1 FROM meal_category_associate WHERE id_meal = "Meal".id AND id_category = ${kitchenId}))`)
-                    ]
-                }
-            })
-           
-            response.status(200).json(mealSearch);
+            const mealSearch =  await Meal.findAll(sqlRequest)
+          response.status(200).json(mealSearch);
         } catch (error) {
             console.trace(error);
             response.status(500)
