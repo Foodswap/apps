@@ -57,3 +57,19 @@ export const signUpError = (payload) => ({
   type: SIGNUP_ERROR,
   payload,
 });
+
+// action pour le fichier menu
+// Action pour cliqué sur l'icon menu burger
+export const OPEN_OR_CLOSE_MENU_BURGER = 'OPEN_OR_CLOSE_MENU_BURGER';
+export const openOrCloseMenuBurger = (payload) => ({
+  type: OPEN_OR_CLOSE_MENU_BURGER,
+  payload,
+});
+
+// action pour le fichier menu
+// Action pour mettre à jour le menu au clique
+export const UPDATE_MENU_BURGER_STATUS = 'UPDATE_MENU_BURGER_STATUS';
+export const updateMenuBurgerStatus = (payload) => ({
+  type: UPDATE_MENU_BURGER_STATUS,
+  payload,
+});

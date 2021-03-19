@@ -16,9 +16,11 @@ useEffect(() => {
   return (
   <div> 
     <SearchForm />
+    <div className="results-section">
+
     { dishes && (
     <div className="results">
-    <h2 className="results-title">Le résultat de votre recherche</h2>
+      <h2 className="results-title">Le résultat de votre recherche</h2>
       <div className="results-cards">
         {
         dishes.map((dish) => {
@@ -39,6 +41,7 @@ useEffect(() => {
       </div>
     </div>
     )}
+    </div>
   </div>
   )
 }

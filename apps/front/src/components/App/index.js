@@ -1,10 +1,9 @@
 // Vendors
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
+import { connect } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
-import  'react-toastify/dist/ReactToastify.css';
-
-
+import 'react-toastify/dist/ReactToastify.css';
 
 // Dumb components
 import AppHeader from '../AppHeader';
@@ -13,14 +12,14 @@ import Faces from '../Faces';
 import PrivacyPolicy from '../PrivacyPolicy';
 // import Results from '../Results';
 import Error from '../Error';
-import Description from '../Description'
+import Description from '../Description';
 
 // Container components
 import Menu from '../../containers/Menu';
 import Exchangetracking from '../../containers/ExchangeTracking';
 
 // Container components
-import DescriptionHomepage from '../../containers/DescriptionHomepage';
+import DescriptionHomepage from '../../components/DescriptionHomepage';
 import LoginForm from '../../containers/LoginForm';
 import SignUpForm from '../../containers/SignUpForm';
 import MyDishes from '../../containers/MyDishes';
@@ -42,10 +41,13 @@ import dishes from '../../../dataDishes';
  * App component
  * Application Layout
  */
-const App = () => (
+const App = ({ isLoginOpen, isSignUpOpen }) => (
   <div className="app">
+    {(isLoginOpen || isSignUpOpen) && (
+      <div className="backdrop" />
+    )}
     {/* <AppHeader /> */}
-    
+
     <Menu />
     <Switch>
       <Route exact path="/v1/my-information" component={MyInformation} />
@@ -84,7 +86,7 @@ const App = () => (
       <Route component={Error} />
 
     </Switch>
-    <ToastContainer 
+    <ToastContainer
       position="top-right"
       autoClose={3000}
       hideProgressBar
@@ -98,8 +100,11 @@ const App = () => (
 
     <Footer />
   </div>
-  
 );
 
-// == Export
-export default App;
+const mapStateToProps = (state) => ({
+  isLoginOpen: state.user.isLoginOpen,
+  isSignUpOpen: state.user.isSignUpOpen,
+});
+
+export default connect(mapStateToProps)(App);

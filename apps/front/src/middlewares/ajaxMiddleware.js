@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 
 
 import {
+  OPEN_OR_CLOSE_MENU_BURGER,
   SEND_LOGIN,
   USER_LOGOUT,
   SEND_SIGN_UP,
@@ -13,6 +14,7 @@ import {
   signUpSucces,
   signUpError,
   handleLogoutSuccess,
+  updateMenuBurgerStatus,
 } from '../actions/user';
 
 export default (store) => (next) => (action) => {
@@ -122,6 +124,12 @@ export default (store) => (next) => (action) => {
       }, 1000);
       toast.success(`À bientôt !`);
     } break;
+    case OPEN_OR_CLOSE_MENU_BURGER: {
+      const { menuIsOpen } = store.getState().user;
+
+      const actionToDispatch = updateMenuBurgerStatus(!menuIsOpen);
+      return store.dispatch(actionToDispatch);
+    }
     default:
       return next(action);
   }
