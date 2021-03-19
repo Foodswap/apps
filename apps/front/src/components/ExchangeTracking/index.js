@@ -48,11 +48,11 @@ const ExchangeTracking = ({
                         alt={receivedProposition.mealOffer.name}
                       />
 
-                      <p className="exchangeTracking-textContainer">
+                      <div className="exchangeTracking-textContainer">
                         {receivedProposition.mealOffer.name}
-                        <span className="exchangeTracking-textContainer-text"> en échange de </span>
+                        <p className="exchangeTracking-textContainer-text"> en échange de </p>
                         {receivedProposition.mealRequest.name}
-                      </p>
+                      </div>
 
                       <img
                         className="exchangeTracking-img"
@@ -68,7 +68,7 @@ const ExchangeTracking = ({
                     )}
                     {receivedProposition.status === 1 && (
                     <div className="exchangeTracking-actions-container">
-                      <p className="exchangeTracking-actions-text-accept">Vous avez accepté cet échange
+                      <p className="exchangeTracking-actions-text-accept-reciver">Vous avez accepté cet échange
                         <a href={'mailto:"test@mail.fr"'} className="exchangeTracking-actions-buttonContact">Contact</a>
                       </p>
                     </div>
@@ -78,6 +78,11 @@ const ExchangeTracking = ({
                       <p className="exchangeTracking-actions-textRefuse">Vous avez refusé cet échange</p>
                     </div>
                     )}
+
+                    <div className="exchangeTracking-dateContainer">
+                      <p className="exchangeTracking-dateContainer-text">Demande reçue le</p>
+                      <p className="exchangeTracking-dateContainer-date">{format(new Date(receivedProposition.date), 'dd-MM-yyyy')}</p>
+                    </div>
                   </div>
                 ))
               )}
@@ -104,11 +109,11 @@ const ExchangeTracking = ({
                         alt={askedProposition.mealOffer.name}
                       />
 
-                      <p className="exchangeTracking-textContainer">
-                        {askedProposition.mealOffer.name}<br />
-                        <span className="exchangeTracking-textContainer-text"> en échange de </span><br />
+                      <div className="exchangeTracking-textContainer">
+                        {askedProposition.mealOffer.name}
+                        <p className="exchangeTracking-textContainer-text"> en échange de </p>
                         {askedProposition.mealRequest.name}
-                      </p>
+                      </div>
 
                       <img
                         className="exchangeTracking-img"
@@ -133,7 +138,10 @@ const ExchangeTracking = ({
                       )}
                     </div>
 
-                    <p className="exchangeTracking-date">{format(new Date(askedProposition.date), 'dd-MM-yyyy')}</p>
+                    <div className="exchangeTracking-dateContainer">
+                      <p className="exchangeTracking-dateContainer-text">Demande envoyé le</p>
+                      <p className="exchangeTracking-dateContainer-date">{format(new Date(askedProposition.date), 'dd-MM-yyyy')}</p>
+                    </div>
                   </div>
                 ))
               )}
