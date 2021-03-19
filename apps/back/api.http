@@ -19,7 +19,7 @@ GET {{baseUrl}}/ingredient/1
 GET {{baseUrl}}/meals/online/1
 
 ### Local - route recherche un plat
-GET {{baseUrl}}/meals/asiatique/bordeaux
+GET {{baseUrl}}/meals/?kitchenId=5&city=bordeaux&dishId=2
 
 ### Local - route pour publier un plat
 POST {{baseUrl}}//meals
@@ -78,9 +78,9 @@ POST http://ec2-54-145-80-6.compute-1.amazonaws.com/v1/signup
 Content-Type: application/json
 
 {
-    "username": "jeanbonjour",
-    "email": "pgmdu10@mail.fr",
-    "password": "jenesuispasencorehaché",
+    "username": "edouard",
+    "email": "edouard@mail.fr",
+    "password": "test",
     "city": "bordeaux"
 }
 
