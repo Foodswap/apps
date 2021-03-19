@@ -29,7 +29,7 @@ useEffect(() => {
               <img className="results-card-img" src={dish.picture} alt="" />
               <h3 className="results-card-name">{dish.name}</h3>
               <p className="results-card-potion">{dish.portion} part(s)</p>
-              <p className="results-card-author"> Fait par {dish.author.pseudonym}</p>
+              <p className="results-card-author"> Fait par {dish.author.username}</p>
               <p className="results-card-city">{dish.city}</p>
               <Link to={linkUrl} className="results-card-seemore"> Voir plus </Link>
             </div>

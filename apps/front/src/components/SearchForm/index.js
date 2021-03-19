@@ -42,7 +42,7 @@ const SearchForm = ({
             { dishData && (
               dishData.map((dishObj) => {
                 return (
-                  <option value={dishObj.name} name={dishObj.name}>{dishObj.name}</option>
+                  <option key={dishObj.id} value={dishObj.id} name={dishObj.name}>{dishObj.name}</option>
                 )
               }
               ))
@@ -54,7 +54,7 @@ const SearchForm = ({
         { kitchenData && (
               kitchenData.map((kitchenObj) => {
                 return (
-                  <option value={kitchenObj.name} name={kitchenObj.name}>{kitchenObj.name}</option>
+                  <option key={kitchenObj.id} value={kitchenObj.id} name={kitchenObj.name}>{kitchenObj.name}</option>
                 )
               })
           )}
