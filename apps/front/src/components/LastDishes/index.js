@@ -7,27 +7,32 @@ const LastDishes = ({ dishes, getListDishes }) => {
   useEffect(() => getListDishes(), []);
 
   return (
-    <div className="last-dishes">
-      <h2 className="last-dishes-title">Les derniers plats ajoutés</h2>
+    <div className="last-dishes-section">
+      <div className="last-dishes">
+        <h2 className="last-dishes-title">Les derniers plats ajoutés</h2>
 
-      <div className="last-dishes-cards">
-        { dishes && (
-          dishes.map((dish) => {
-            const linkUrl = `/v1/dish/${dish.id}`;
+        <div className="last-dishes-cards">
+          { dishes && (
+            dishes.map((dish) => {
+              const linkUrl = `/v1/dish/${dish.id}`;
 
-            return (
-              <div className="last-dishes-card" key={dish.id}>
-                <img className="last-dishes-card-img" src={`http://ec2-54-145-80-6.compute-1.amazonaws.com/v1/meals/${dish.id}/picture`} alt="" />
-                <h3 className="last-dishes-card-name">{dish.name}</h3>
-                <p className="last-dishes-card-potion">{dish.portion} part(s)</p>
-                {/* <p className="last-dishes-card-author"> Fait par {dish.author.username}</p> */}
-                <p className="last-dishes-card-city">{dish.city}</p>
-                <Link to={linkUrl} className="last-dishes-card-seemore">Voir plus</Link>
-              </div>
-            );
-          })
-        )}
+              return (
+                <div className="last-dishes-card" key={dish.id}>
+                  <img className="last-dishes-card-img" src={`http://ec2-54-145-80-6.compute-1.amazonaws.com/v1/meals/${dish.id}/picture`} alt="" />
+                  <h3 className="last-dishes-card-name">{dish.name}</h3>
+                  <p className="last-dishes-card-potion">{dish.portion} part(s)</p>
+                  {/* <p className="last-dishes-card-author"> Fait par {dish.author.username}</p> */}
+                  <p className="last-dishes-card-city">
+                    {dish.city}
+                  </p>
+                  <Link to={linkUrl} className="last-dishes-card-seemore">Voir plus</Link>
+                </div>
+              );
+            })
+          )}
+        </div>
       </div>
+
     </div>
   );
 };

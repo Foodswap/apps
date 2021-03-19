@@ -1,15 +1,31 @@
+@use 'src/styles/vars';
+@use 'sass:color';
+@import url(https://fonts.googleapis.com/css?family=Gudea:400,700);
+
+.pin-icon {
+  width: 20px;
+  height: auto;
+}
+.last-dishes-section {
+  background: #262835;
+  padding: 100px 0 155px 0;
+  background-color: #{vars.$coral};
+}
 .last-dishes {
-  margin: 3rem auto;
+  margin: auto;
   border-radius: 5px;
-  padding: 1rem;
-  width: 80%;
-  background-color: #3a3635;
+  padding: 3rem 1em 5rem 1em;
+  width: 70%;
+  background-color: #262835;
+  font-family: 'Gudea', sans-serif;
+  box-shadow: 0 12px 15px 0 #18181ab4, 0 17px 50px #060607b4;
 }
 
 .last-dishes-title {
   font-size: 2em;
   padding: 1rem;
   color: white;
+  text-transform: uppercase;
 }
 
 .last-dishes-cards {
@@ -25,31 +41,51 @@
   margin: 1rem;
   padding: 2rem;
   background-color: white;
-  transition: box-shadow 0.1s linear;
+  transition: transform 0.4s;
+  box-shadow: 0 12px 15px 0 rgb(0, 0, 0);
+  color: black;
 }
 
 .last-dishes-card:hover {
-  box-shadow: 0px 0px 0px 5px #f3a488;
+  box-shadow: 0 12px 15px 0 #030303fa, 0 17px 50px #070707f1;
+  transform: scale(1.1, 1.1);
+  transition: transform 0.4s;
 }
 
 .last-dishes-card-img {
-  width: auto;
-  height: 150px;
+  width: 100%;
+  height: auto;
+  border-radius: 15px;
 }
 
 .last-dishes-card-name {
   margin: 0.5em 0;
   font-size: 1.2em;
-  color: orangered;
+  color: #{vars.$darkBlue};
+  text-transform: uppercase;
 }
 
+.last-dishes-card-city {
+  text-transform: capitalize;
+}
 .last-dishes-card-seemore {
   display: block;
-  background-color: #7D5C50;
-  border-radius: 10px;
-  color: white;
-  padding: 0.7rem;
+  border-radius: 50px;
+  background: transparent;
+  padding: 0.8em 30px;
+  text-transform: uppercase;
+  font-size: 11px;
+  color:black;
+  background:#f8a587 ;
+  cursor:pointer;
+  transition-property:background,color;
+  transition-duration:.5s;
   margin-top: 1rem;
+  font-size: 0.9em;
 }
 
+.last-dishes-card-seemore:hover {
+  background: transparentize(#f8a587, 0.2);
+	transition: all 0.3s ease-in;
+}
 

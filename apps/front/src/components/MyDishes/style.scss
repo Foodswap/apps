@@ -1,44 +1,62 @@
+@use 'src/styles/vars';
+@use 'sass:color';
+@import url(https://fonts.googleapis.com/css?family=Gudea:400,700);
+
+
 .myDishes {
 
+  background-color: #{vars.$coral};
+  height: 80vh; 
+
   &-title {
-    color: orangered;
+    color: #{vars.$darkBlue};
+    font-weight: 700;
     font-size: xx-large;
+    font-size: 2em;
+    padding: 2rem 0 0 0.2rem;
+    //color: white;
+    text-transform: uppercase;
+    font-family: 'Gudea', sans-serif;
+    letter-spacing: 5px;
   }
 
   &-oneDish {
     align-items: center;
-    border: solid 0.1rem #f39508;
-    border-radius: 1rem;
+    border-radius: 15px;
     display: flex;
     flex-direction: inherit;
     justify-content: space-between;
-    margin: 1.5rem 12rem;
+    margin: 3rem auto;
     padding: 0.8rem;
+    background-color: #{vars.$darkBlue};
+    box-shadow: 0 12px 15px 0 #18181ab4, 0 17px 50px #060607b4;
+    width: 50%;
+
   }
 
   &-dishImg {
-    height: 10vh;
-    width: 9%;
+    height: 150px;
+    width: auto;
   }
 
   &-dishText {
     width: 32rem;
+    color: white;
   }
 
   &-dishTitle {
     font-size: 1.6rem;
-    color: coral;
+    color: white;
     margin-bottom: 1.5rem;
-  }
-
-  &-dishDescription {
-
+    text-transform: uppercase;
+    font-family: 'Gudea', sans-serif;
+    letter-spacing: 5px;
   }
 
   &-allButton {
     display: flex;
     align-items: center;
-
+    justify-content: center;
   }
 
   &-buttonContent {
@@ -46,12 +64,25 @@
   }
 
   &-button {
-    padding: 0.5rem;
-    font-size: 0.9rem;
-    background-color: orangered;
-    color: white;
+    border-radius: 50px;
+    background: transparent;
+    padding: 0.8em 30px;
+    text-transform: uppercase;
+    font-size: 11px;
+    color:black;
+    background:#f8a587 ;
+    cursor:pointer;
+    transition-property:background,color;
+    transition-duration:.5s;
+    margin-top: 1rem;
+    font-size: 0.9em;
     border: none;
-    border-radius: 0.2rem;
+  }
+
+  &-button::hover {
+    background: transparentize(#f8a587, 0.2);
+    transition: all 0.3s ease-in;
   }
 
 }
+

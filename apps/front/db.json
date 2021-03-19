@@ -6,19 +6,19 @@
       "description": "un bon moelleux au chocolat",
       "ingredients": [
         {
-          "id":9,
+          "id": 9,
           "name": "chocolat"
         },
         {
-        "id":16,
-        "name": "farine"
+          "id": 16,
+          "name": "farine"
         },
         {
-          "id":19,
+          "id": 19,
           "name": "Oeufs"
         },
         {
-          "id":17,
+          "id": 17,
           "name": "sucre"
         }
       ],
@@ -53,8 +53,8 @@
           "name": "sel"
         },
         {
-        "id": 42,
-        "name": "poivre"
+          "id": 42,
+          "name": "poivre"
         },
         {
           "id": 19,
@@ -308,61 +308,6 @@
   ],
   "dishes": [
     {
-      "id": 1,
-      "file": "https://lh3.google.com/u/0/d/1lll7XWtpAM_tWXcCuHgWfncuFULfwg10=w842-h770-iv1",
-      "name": "Buddha bowl",
-      "description": "une basse riz.\n        Sur le dessus il y a du saumon, avocat, carotte, choux rouge",
-      "ingredients": [
-        {
-          "id": 1,
-          "name": "riz"
-        },
-        {
-          "id": 2,
-          "name": "saumon"
-        },
-        {
-          "id": 3,
-          "name": "carotte"
-        },
-        {
-          "id": 4,
-          "name": "avocat"
-        },
-        {
-          "id": 5,
-          "name": "graine de sésame"
-        },
-        {
-          "id": 6,
-          "name": "choux rouge"
-        },
-        {
-          "id": 7,
-          "name": "citron"
-        }
-      ],
-      "created_date": "12.03.2021",
-      "portion": "1",
-      "city": "marseille",
-      "online": true,
-      "author": {
-        "id": 72,
-        "username": "testeur"
-      },
-      "categories": [
-        {
-          "id": 1,
-          "type": "kitchen",
-          "name": "asiatique"
-        },
-        {
-          "type": "dish",
-          "name": "plat"
-        }
-      ]
-    },
-    {
       "id": 2,
       "file": "https://lh3.google.com/u/0/d/1BZu0wwMKsAsSwxuob8idG-RgMOpLUy9d=w275-h786-iv2",
       "name": "Kimbap et bibimbap",
@@ -370,31 +315,7 @@
       "ingredients": [
         {
           "id": 1,
-          "name": "riz"
-        },
-        {
-          "id": 10,
-          "name": "boeuf haché"
-        },
-        {
-          "id": 3,
-          "name": "carotte"
-        },
-        {
-          "id": 12,
-          "name": "épinard"
-        },
-        {
-          "id": 13,
-          "name": "graine de sésame"
-        },
-        {
-          "id": 19,
-          "name": "oeuf"
-        },
-        {
-          "id": 15,
-          "name": "oignon"
+          "name": "sel"
         }
       ],
       "created_date": "12.03.2021",
@@ -402,7 +323,7 @@
       "city": "paris",
       "online": true,
       "author": {
-        "id": 73,
+        "id": 72,
         "username": "Rodolphe"
       },
       "categories": [
@@ -475,60 +396,7 @@
       ]
     },
     {
-      "id": 4,
-      "file": "https://lh3.google.com/u/0/d/17KI1SHK9GJYZkoesZ9KQmy4e6DLIXXnb=w275-h786-iv1",
-      "name": "Nems",
-      "description": " une basse feuille pour nems.\n       A l'intéreur on retrouve une farce porc haché, carotte, champignon noir et vermicelle",
-      "ingredients": [
-        {
-          "id": 23,
-          "name": "vermicelle"
-        },
-        {
-          "id": 24,
-          "name": "viande de porc haché"
-        },
-        {
-          "id": 25,
-          "name": "carotte"
-        },
-        {
-          "id": 26,
-          "name": "champignon noir"
-        },
-        {
-          "id": 27,
-          "name": "fécule de pomme de terre"
-        },
-        {
-          "id": 28,
-          "name": "fécule de pomme de terre"
-        },
-        {
-          "id": 29,
-          "name": "feuilles de samoussa"
-        }
-      ],
-      "created_date": "03.03.2021",
-      "portion": "6",
-      "city": "Paris",
-      "online": false,
-      "author": {
-        "id": 72,
-        "username": "testeur"
-      },
-      "categories": [
-        {
-          "id": 1,
-          "type": "kitchen",
-          "name": "asiatique"
-        },
-        {
-          "id": 6,
-          "type": "dish",
-          "name": "plat"
-        }
-      ]
+      "id": 4
     },
     {
       "id": 5,
@@ -596,8 +464,8 @@
           "name": "sel"
         },
         {
-        "id": 42,
-        "name": "poivre"
+          "id": 42,
+          "name": "poivre"
         },
         {
           "id": 19,
@@ -635,19 +503,19 @@
       "description": "un bon moelleux au chocolat",
       "ingredients": [
         {
-          "id":9,
+          "id": 9,
           "name": "chocolat"
         },
         {
-        "id":16,
-        "name": "farine"
+          "id": 16,
+          "name": "farine"
         },
         {
-          "id":19,
+          "id": 19,
           "name": "Oeufs"
         },
         {
-          "id":17,
+          "id": 17,
           "name": "sucre"
         }
       ],
@@ -722,66 +590,6 @@
       "id": 10
     },
     {
-      "file": "https://img.icons8.com/carbon-copy/2x/meal.png",
-      "author": {
-        "id": "72",
-        "username": "testeur"
-      },
-      "name": "Bricks à la viande",
-      "description": "feuille de brick garnie de viande de boeuf au épice de l'orient",
-      "ingredients": [
-        {
-          "id": 10,
-          "name": "boeuf haché"
-        },
-        {
-          "id": 14,
-          "name": "poivron"
-        },
-        {
-          "id": 19,
-          "name": "oeuf"
-        },
-        {
-          "id": 35,
-          "name": "pomme de terre"
-        },
-        {
-          "id": 41,
-          "name": "sel"
-        },
-        {
-          "id": 42,
-          "name": "poivre"
-        },
-        {
-          "id": 49,
-          "name": "cannelle"
-        },
-        {
-          "id": 50,
-          "name": "feuilles de bricks"
-        },
-        {
-          "id": 51,
-          "name": "huile de tournesol"
-        }
-      ],
-      "portion": "4",
-      "city": "paris",
-      "categories": [
-        {
-          "id": 3,
-          "type": "kitchen",
-          "name": "orientale"
-        },
-        {
-          "id": 5,
-          "type": "dish",
-          "name": "entrée"
-        }
-      ],
-      "online": true,
       "id": 11
     },
     {

@@ -16,36 +16,33 @@ const DisplayADish = ({
     <div className="displayADish">
       { dish && (
         <div key={dish.id} className="displayADish-container">
-          <header className="displayADish-headerDish">
-            <div className="displayADish-headerDish-container">
-              <h1 className="displayADish-headerDish-title">{dish.name}</h1>
-              <div className="displayADish-headerDish-content">
-                <span className="displayADish-headerDish-author">Fait par {dish.author.username}</span>
-                <span className="displayADish-headerDish-portion">{dish.portion} Parts</span>
-              </div>
-              <p className="displayADish-headerDish-city">{dish.city}</p>
-            </div>
-            <img src={`http://ec2-54-145-80-6.compute-1.amazonaws.com/v1/meals/${dish.id}/picture`} alt={dish.name} className="displayADish-headerDish-img" />
-          </header>
-          <div className="displayADish-ingredients">
-            <ul className="displayADish-ingredients-container">
-              {
-                dish.ingredients.map((ingredient) => (
-                  <li key={ingredient.id} className="displayADish-ingredients-content">
-                    <p className="displayADish-ingredients-text">{ingredient.name}</p>
-                  </li>
-                ))
-              }
-            </ul>
+          <div className="displayADish-img-container">
+            <img src={`http://ec2-54-145-80-6.compute-1.amazonaws.com/v1/meals/${dish.id}/picture`} alt={dish.name} className="displayADish-img" />
           </div>
-          <div className="displayADish-description">
-            <div className="displayADish-description-content">
-              <p className="displayADish-description-text">{dish.description}</p>
+          <div className="displayADish-right">
+            <h1 className="displayADish-right-title">{dish.name} <span className="displayADish-right-portion">{dish.portion} parts</span></h1>
+            <p className="displayADish-right-author">Fait par {dish.author.username} à {dish.city}</p>
+        
+            <div className="displayADish-ingredients">
+              <h3 className="displayADish-ingredients-title">Ingrédients :</h3>
+              <ul className="displayADish-ingredients-container">
+                {
+                  dish.ingredients.map((ingredient) => (
+                    <li key={ingredient.id} className="displayADish-ingredients-text">
+                      {ingredient.name}
+                    </li>
+                  ))
+                }
+              </ul>
             </div>
-          </div>
-          <button type="button" className="displayADish-button" onClick={toggle}>Swap</button>
-          {/* <button type="button" className="displayADish-button" onClick={(event) => { toggle(event); fetchMyDishesSwap(event);}}>Swap</button> */}
-          
+            <div className="displayADish-description">
+                <h1 className="displayADish-description-title">Description du plat :</h1>
+                <p className="displayADish-description-text">{dish.description}</p>
+            </div>
+            <button type="button" className="displayADish-button" onClick={toggle}>Proposer un échange</button>
+            <i></i>
+            {/* <button type="button" className="displayADish-button" onClick={(event) => { toggle(event); fetchMyDishesSwap(event);}}>Swap</button> */}
+          </div>  
           <SwapModal
           isShowing={isShowing}
         hide={toggle}
@@ -63,7 +60,7 @@ DisplayADish.propTypes = {
     name: PropTypes.string,
     description: PropTypes.string,
     ingredients: PropTypes.array,
-    portion: PropTypes.string,
+    portion: PropTypes.number,
     city: PropTypes.string,
     author: PropTypes.shape({
       id: PropTypes.number,

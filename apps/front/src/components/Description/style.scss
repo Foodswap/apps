@@ -1,0 +1,33 @@
+@use 'src/styles/vars';
+@use 'sass:color';
+
+.welcome-container {
+  background-color: #262835;
+  border-bottom: 50px solid #18181a62;
+  border-top: 50px solid #18181a60;
+
+}
+
+.welcome {
+
+  &-blockText {
+    margin: auto;
+    width: 100%;
+    text-align: center;
+    padding: 3rem;
+    z-index: 11;
+    font-family: 'PT Sans', cursive;
+    letter-spacing: 0.2em;
+    line-height: 1.8em;
+    color: white;
+    font-size: 1.3em;
+    transition: 3s;
+    border-radius: 15px;
+  }
+  
+  &-paragraph {
+    position: relative;
+    margin-bottom: 1.4rem;
+    z-index: 11;
+  }
+}

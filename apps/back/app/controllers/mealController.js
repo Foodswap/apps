@@ -5,6 +5,7 @@ const { Op } = require('sequelize');
 const sequelize = require('../database');
 
 
+
 const mealController = {
 
     createMeal: async (request, response) => {
@@ -94,6 +95,7 @@ const mealController = {
         }
     },
 
+
     searchMeal: async (request, response, next) => {
         const dishId = request.query.dishId;
         const kitchenId = request.query.kitchenId;
@@ -173,6 +175,19 @@ const mealController = {
             console.log(error);
             response.status(500);
 
+        }
+    },
+
+    userMealsOnline: async (request, response) => {
+        try {
+            const meal = await Meal.findAll(
+                { where: { online: true, author_id: request.params.author_id}
+
+        });
+            response.status(200).json(meal);
+        } catch (error) {
+            console.trace(error);
+            response.status(500).json("This user doesn't have any meals yet.")
         }
     }
 };

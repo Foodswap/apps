@@ -1,10 +1,15 @@
 .appHeader {
   display: flex;
   padding-left: 1rem;
+  background: #4a4a35;
+  background: linear-gradient(45deg, #35394a 0%, #1f222e 100%);
 
   &-logo {
     width: 15rem;
     margin-top: 1rem;
     margin-left: 1rem;
+    position: absolute;
+    left: 20px;
+    top: 0px;
   }
 }
