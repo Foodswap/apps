@@ -26,7 +26,7 @@ useEffect(() => {
           return (
 
             <div className="results-card" key={dish.id}>
-              <img className="results-card-img" src={dish.picture} alt="" />
+              <img className="results-card-img" src={`http://ec2-54-145-80-6.compute-1.amazonaws.com/v1/meals/${dish.id}/picture`} alt="" />
               <h3 className="results-card-name">{dish.name}</h3>
               <p className="results-card-potion">{dish.portion} part(s)</p>
               <p className="results-card-author"> Fait par {dish.author.username}</p>

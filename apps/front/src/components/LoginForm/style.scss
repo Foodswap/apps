@@ -1,16 +1,23 @@
+@import url(https://fonts.googleapis.com/css?family=Gudea:400,700);
+
 .login-modale {
-  border: solid 3px rgb(243, 149, 8);
-  width: 500px;
+  // width: 850px;
   border-radius: 1rem;
-  padding: 1rem;
   display: flex;
   position: fixed;
-  background-color: rgb(243, 149, 8);
-  top: 150px;
+  background: #35394a;
+  background: linear-gradient(45deg, #35394a 0%, #1f222e 100%);
+  overflow: hidden;
+  top: 110px;
   left: 50%;
-  margin-left: -250px;
+  margin-left: -350px;
   margin-top: 20px;
   z-index: 9999;
+  justify-content: center;
+  perspective: 850px;
+  height: 50vh;
+  font-family: 'Gudea', sans-serif;
+  box-shadow: #f8a587a9 0.5px 1px 2px 1px;
 }
 
 .login-modale-close {
@@ -18,49 +25,94 @@
 } 
 
 .login-title {
-  margin: 1rem;
+  margin: 4em 1rem 1em 1.5em;
+  text-align: left;
   font-size: 1.5rem;
+  color: white;
 }
 
 .login-form {
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
 }
 
+.login-form-input-div {
+  height: 208px;
+
+}
 .login-form-input {
-  width: 90%;
-  border-radius: 5px;
-  border: 1px solid rgba(255, 68, 0, 0.295);
-  padding: 0.5rem;
-  margin-bottom: 0.5rem;
+  width: 100%;
+  border: 1px solid rgba(44, 40, 54, 0.295);
+  padding: 1.5em 2.5rem;
+  cursor: text;
+  color: #f8a587;
+  background-color: #32364a;
+  outline: none;
+  font-family: "Gudea", sans-serif;
+  box-shadow: none;
+  font-size: 1.1em;
 }
 
-.login-form-input:focus {
-  background-color: rgba(245, 217, 141, 0.993);
+input:placeholder{
+  color: #f8a587;
+}
+.login-form-submit {
+  margin: 3em;
+  border-radius: 50px;
+  background: transparent;
+  padding: 1.2em 50px;
+  border: 2px solid #f8a587;
+  color: #f8a587;
+  text-transform: uppercase;
+  font-size: 11px;
+  transition-property: background, color;
+  transition-duration: 0.2s;
 }
 
-.login-form-submit, .logout-button {
-  padding: 0.65em;
-  background-color: orangered;
-  color: white;
-  border-radius: 5px;
-  border: none;
-  margin: 1rem 0;
+.logout-button{
+  position: relative;
+  right: 10px;
+  top: 0;
+  border-radius: 50px;
+  background: transparent;
+  padding: 0.8em 30px;
+  border: 2px solid #f8a587;
+  color: #f8a587;
+  text-transform: uppercase;
+  transition-property: background, color;
+  transition-duration: 0.2s;
+}
+
+.logout-button:hover{
+  color:black;
+  background:#f8a587 ;
+  cursor:pointer;
+  transition-property:background,color;
+  transition-duration:.2s;
+}
+
+.login-form-submit:hover{
+  color:black;
+  background:#f8a587 ;
+  cursor:pointer;
+  transition-property:background,color;
+  transition-duration:.2s;
 }
 
 .login-form-message {
-  color: brown;
+  font-size: 1.5em;
+  color: #d5d8e2;
 }
 
 .login-form-button-close {
   width: 20px;
-  background-color: orangered;
+  background-color: #f8a587;
   color: white;
   border-radius: 50%;
   text-align: center;
   border: none;
-  right: 10px;
+  right: 15px;
+  top: 15px;
   position: absolute;
   padding: 0.2rem;
 }

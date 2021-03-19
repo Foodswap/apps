@@ -1,16 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
+import logo from '../../assets/images/logo-fooswap.png';
 
 import './style.scss';
 
 const Menu = ({
   isLogged, loginFormToggle, signUpFormToggle, userLogout,
 }) => (
+  
   <nav className="menu">
-
+    <a className="appHeader-link" href="/">
+      <img className="appHeader-logo" src={logo} alt="logo de FoodSwap" />
+    </a>
     {!isLogged && (
-    <nav>
+    <nav className="menu-links">
       <NavLink
         exact
         className="menu-link"
@@ -27,7 +31,7 @@ const Menu = ({
     )}
 
     { isLogged && (
-      <nav>
+      <nav className="menu-links">
         <NavLink exact className="menu-link" to="/">
           Accueil
         </NavLink>
@@ -37,7 +41,7 @@ const Menu = ({
         </NavLink>
 
         <NavLink exact className="menu-link" to="/v1/createdish">
-          Créer une nouvelle fiche de plat
+          Créer un plat
         </NavLink>
 
         <NavLink exact className="menu-link" to="/v1/exchange-tracking">

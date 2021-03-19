@@ -18,18 +18,23 @@ router.post('/login', middlewareValidation(schemas.login), authorController.logi
 
 // Meal
 router.get('/meals/:id', mealController.getOneMeal);
+router.get('/meals/online/:author_id', mealController.userMealsOnline);
 router.get('/meals/:id/picture', mealController.getPicture);
 router.get('/meals/author/:author_id', mealController.getMealsByAuthor);
-router.get('/meals');
+router.get('/meals/:kitchenId/:dishId/:city', mealController.searchMeal);
 router.get('/sixMeals', mealController.getSixMeals);
+router.put('/meals/:id', middlewareHandlingFiles, mealController.updateMeal);
 router.post('/meals', middlewareHandlingFiles, mealController.createMeal);
 
-//Category
+// Category
 router.get('/categories/:type', categoryController.getCategories);
 
-//Swap
-router.post('/swaps', middlewareValidation(schemas.swaps), swapController.swapProposal)
-router.get('/swaps', swapController.swapProposal)
+// Swap
+router.post('/swaps', middlewareValidation(schemas.swaps), swapController.swapProposal);
+router.get('/swaps/authorAsker/:id', swapController.getSwapAsker);
+router.get('/swaps/authorReceiver/:id', swapController.getSwapReceiver);
+router.put('/swaps/:id', swapController.updateSwap);
+
 
 // Ingredient
 router.get('/ingredient/:id', ingredientController.getIngredients);

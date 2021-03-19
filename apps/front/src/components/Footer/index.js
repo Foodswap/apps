@@ -4,14 +4,40 @@ import './style.scss';
 
 const Footer = () => (
 
-  <nav className="footer">
-    <NavLink className="footer-link" to="/v1/Qui sommes nous">
-      Qui sommes-nous ?
-    </NavLink>
-    <a className="footer-mention" href="/v1/Mentions legales">
-      Mentions légales
-    </a>
-  </nav>
+  
+  <div className="footer">
+    <div className="footer-content">
+      <span>
+      © 2021 Copyright
+      </span>
+    </div>
+  
+    <div className="footer-content">
+      <NavLink 
+        className="footer-link" 
+        to="/v1/Qui-sommes-nous">
+          <span>
+            Qui sommes-nous ?
+          </span>
+      </NavLink>
+    </div>
+
+    <div className="footer-content">
+      <NavLink 
+        className="footer-mention" 
+        to="/v1/privacy-policy">
+          <span>
+            Mentions légales
+          </span>
+      </NavLink>
+    </div>
+
+    <div className="footer-content">
+      <a href="#" className="footer-haut-de-page">Haut de page</a>
+    </div>
+
+  </div>
+
 
 );
 

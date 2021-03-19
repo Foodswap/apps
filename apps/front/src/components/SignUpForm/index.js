@@ -28,7 +28,7 @@ const SignUp = ({
       { signUpIsValid && (
         <div className="signup-succes-message">
           <p> Bienvenue sur FoodSwap ! </p>
-          <p> Vous pouvez maintenant vous
+          <p> Vous pouvez maintenant vous 
             <a
               className="signup-succes-link"
               href=""
@@ -36,7 +36,7 @@ const SignUp = ({
                 evt.preventDefault();
                 loginFormToggle();
               }}
-            > connecter
+            >connecter
             </a>
           </p>
         </div>
@@ -48,7 +48,6 @@ const SignUp = ({
           <h2 className="signup-title">
             Inscrivez-vous
           </h2>
-          <p>{loggedMessage}</p>
           <form
             className="signup-form-element"
             onSubmit={handleSubmit}
@@ -97,6 +96,7 @@ const SignUp = ({
               value={city}
               required
             />
+            <p className="signup-form-message">{loggedMessage}</p>
             <button className="signup-form-submit" type="submit"> Valider </button>
           </form>
         </div>

@@ -1,0 +1,123 @@
+
+.swap-content-succes{
+  color: white;
+  font-size: 1.2rem;
+  text-align: center;
+  padding: 2rem;
+}
+
+.swap-title {
+  font-size: 1.6rem;
+  color: white;
+  text-transform: uppercase;
+  margin: 1rem 0 0.5rem 0;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+.swap {
+  width: 100%;
+  padding: 0 60px;
+}
+
+.swap-card {
+  line-height: 1.5;
+  border-radius: 10px;
+  margin: 1rem;
+  padding: 2rem;
+  width: 50px;
+  background-color: transparent;
+  transition: box-shadow 0.1s linear;
+}
+
+
+.swap-card-selected:active {
+  box-shadow: none;
+  border: solid 1px white;
+}
+
+.swap-card-img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.swap-card-name {
+  margin: 0.5rem 0;
+  font-size: 1.2rem;
+  color:white;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.swap-button-send {
+  margin: 2rem 35%;
+  border-radius: 50px;
+  padding: 0.8rem 30px;
+  background: transparent;
+  border: 2px solid #f8a587;
+  color: #f8a587;
+  text-transform: uppercase;
+  transition-property: background, color;
+  transition-duration: 0.8s;
+}
+
+.swap-button-send:hover {
+  color:black;
+  background:#f8a587 ;
+  cursor:pointer;
+  transition-property:background,color;
+  transition-duration:.8s;
+}
+
+.slick-list {
+  margin: 2rem;
+}
+
+
+@media screen and (max-width: 1400px) {
+  .swap-title {
+    font-size: 1rem;
+    margin: 1rem 0 0.5rem 0;
+  }
+
+  .swap {
+    width: 100%;
+    padding: 0 30px;
+  }
+} 
+
+@media screen and (max-width: 1300px) {
+  .swap-button-send {
+    margin: 2rem auto;
+    width: 100%;
+    padding: 0.8rem 1rem;
+    font-size: 0.8rem;
+  }
+} 
+
+@media screen and (max-width: 850px) {
+  .swap-card-name {
+    font-size: 0.8rem;
+  }
+
+  .swap-card {
+
+    margin: 0.2rem;
+    padding: 0.2rem;
+
+  }
+} 
+
+@media screen and (max-width: 530px) {
+  .swap-card-name {
+    font-size: 0.8rem;
+  }
+
+  .swap-card {
+    border-radius: 10px;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+} 
