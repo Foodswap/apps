@@ -2,7 +2,7 @@
 @use 'sass:color';
 @import url(https://fonts.googleapis.com/css?family=Gudea:400,700);
 
-@media only screen and (min-device-width: 668px) {
+
   .search-form-div {
     background: #262835;
     height: 200px;
@@ -17,7 +17,7 @@
     color: white;
   }
   .search-form-title {
-    font-size: 2em;
+    font-size: 2.3em;
     color: white;
     margin-bottom: 1.5rem;
   }
@@ -64,20 +64,20 @@
     transition-duration:.2s;
 
   }
-}
 
-@media only screen and (min-device-width: 375px) and (max-device-width: 667px) {
+
+  @media only screen and (max-width: 415px) {
   .search-form-div {
     background: #262835;
-    height: 18rem;
+    height: 23rem;
     margin: auto;
     font-family: Gudea,sans-serif;
-    padding: .8rem 1.4rem;
+    padding: 1.8rem 1.4rem;
   }
 
   .test-text {
     padding-bottom: .7rem;
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: #fff;
   }
   .search-form-title {
@@ -96,29 +96,31 @@
     background-color: #fcc4b0;
     border: none;
     border-radius: 5px;
-    padding: .5rem;
     width: 80%;
+    padding: 0.9rem 0.9rem 0.9rem 0.6rem;
+    margin-right: 0;
   }
 
 
   .search-form-input {
-    font-size: 1.2rem;
-    width: 300px;
+    font-size: 1.1rem;
+    width: 80%;
     background-color: rgb(252, 196, 176);
     border: none;
     border-radius: 5px;
-    padding: 0.5rem;
+    padding: 0.9rem;
+    margin-right: 0;
   }
 
   .search-form-button {
     background: transparent;
-    padding: 0.1em 1em;
-    margin: 0.9em 0px;
-    border: 2px solid #f8a587;
+    padding: 0.5em;
+    margin: .9em 0;
+    border: 0.1em solid #f8a587;
     color: #f8a587;
     text-transform: uppercase;
-    width: 8rem;
-    height: 4vh;
+    width: 11rem;
+    height: 7.7vh;
     font-size: 1.1rem;
     font-weight: 700;
     border-radius: 1rem;

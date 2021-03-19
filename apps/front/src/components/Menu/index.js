@@ -19,19 +19,22 @@ const Menu = ({
   menuIsOpen,
   openOrCloseMenuBurger,
 }) => (
+
   <nav className="menu">
-    <div className="menu-burger" onClick={() => openOrCloseMenuBurger(menuIsOpen)}>
-      {!menuIsOpen && (
+    { isLogged && (
+      <div className="menu-burger" onClick={() => openOrCloseMenuBurger(menuIsOpen)}>
+        {!menuIsOpen && (
         <img className="menu-burger-open icon" src={menuBurger} alt="burger icon" />
-      )}
-      {menuIsOpen && (
+        )}
+        {menuIsOpen && (
         <img className="menu-burger-close icon" src={closeMenuBurger} alt="croix de fermeture" />
-      )}
-    </div>
+        )}
+      </div>
+    )}
 
     <div className="menu-logo">
       <a className="appHeader-link" href="/">
-        <img className="appHeader-logo" src={logo} alt="logo de FoodSwap" />
+        <img className={isLogged ? 'appHeader-logo' : 'appHeader-logo anonymous'} src={logo} alt="logo de FoodSwap" />
       </a>
     </div>
 
@@ -39,14 +42,14 @@ const Menu = ({
     <nav className="menu-links-logout">
       <NavLink
         exact
-        className="menu-link"
+        className="menu-link no-border"
         to=""
         onClick={signUpFormToggle}
       >
         Inscription
       </NavLink>
 
-      <NavLink exact className="menu-link" to="" onClick={loginFormToggle}>
+      <NavLink exact className="menu-link no-border" to="" onClick={loginFormToggle}>
         Connexion
       </NavLink>
     </nav>
@@ -79,7 +82,7 @@ const Menu = ({
 
         <div className="menu-username">
           <img className="menu-userLogo" src={userLogo} alt="icon utilisateur connecté" />
-          <p className="menu-textForUser">Bonjour, {username}</p>
+          <p className="menu-textForUser">Bonjour {username}</p>
           <button className="logout-button" type="button" onClick={userLogout}> Se déconnecter </button>
         </div>
       </nav>

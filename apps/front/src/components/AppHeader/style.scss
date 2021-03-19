@@ -1,4 +1,4 @@
-@media only screen and (min-device-width: 668px) {
+
   .appHeader {
     display: flex;
     background: #4a4a35;
@@ -10,16 +10,21 @@
       margin-left: 6.5rem;
     }
   }
-}
 
-@media only screen and (min-device-width: 375px) and (max-device-width: 667px) {
+
+@media only screen and (max-device-width: 415px) {
   .appHeader {
     display: flex;
-    margin-left: 0.6rem;
+    margin-left: 0;
 
     &-logo {
-      width: 5rem;
+      width: 5.8rem;
       margin-top: 0.6rem;
+      margin-left: 0;
+
+      &.anonymous {
+        margin-left: 1rem;
+      }
     }
   }
 }

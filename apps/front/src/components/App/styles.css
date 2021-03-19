@@ -4,6 +4,17 @@
   text-align: center;
 }
 
+.backdrop {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: black;
+  opacity: 0.5;
+  z-index: 12;
+}
+
 /* .app img {
   max-width: 150px;
 } */

@@ -1,6 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Gudea:400,700);
 
-@media only screen and (min-device-width: 668px) {
+
   .menu {
     background-color: #262835;
     display: flex;
@@ -13,6 +13,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
 
     &-content {
       display: flex;
@@ -65,12 +66,12 @@
       color: #f1bdb0;
     }
   }
-}
 
-@media only screen and (min-device-width: 375px) and (max-device-width: 667px) {
+
+@media only screen and (max-device-width: 415px) {
   .menu {
     background-color: #262835;
-    //box-shadow: #f8a587a9 0.5px 3px 3px 2px;
+    box-shadow: none;
     color: white;
     position: sticky;
     top: 0;
@@ -79,6 +80,7 @@
     justify-content: space-between;
     padding-top: 0.3rem;
     padding-bottom: 0.3rem;
+    height: 60px;
 
     &-burger {
       width: 5rem;
@@ -95,9 +97,10 @@
     &-content {
       display: flex;
       flex-direction: column;
+      align-items: flex-start;
       position: absolute;
       left: 0;
-      top: 3.2rem;
+      top: 3.6rem;
       width: 100vw;
       background-color: #f8a587;
       padding: 0 0.5rem;
@@ -107,7 +110,7 @@
       overflow: hidden;
   
       &.open {
-        height: 176px;
+        height: 350px;
       }
     }
 
@@ -116,40 +119,58 @@
     }
 
     &-userLogo {
-      width: 1rem;
+      width: 1.3rem;
+      margin: 0 0.6rem 0 0;
     }
 
     &-textForUser {
-      font-size: 0.5rem;
+      font-size: 0.9rem;
     }
     
     &-logoutButton {
-      left: 18.7rem;
+      left: 12.7rem;
       top: 0;
-      padding: 1.7em 1.9em;
+      padding: .9em 1.7em;
       position: relative;
       border-radius: 5rem;
       background: transparent;
       border: 2px solid #262835;
       color: #262835;
       text-transform: uppercase;
-      transition-property: background, color;
-      transition-duration: 0.2s;
+      transition-property: background,color;
+      transition-duration: .2s;
       width: fit-content;
-      margin-top: 0.5rem;
+      margin-top: .2rem;
+      font-size: .7rem;
+      margin: 1.6rem 0;
+      font-weight: 700;
+      display: flex;
     }
+
     &-links {
       width: 5rem;
       display: flex;
       justify-content: center;
       align-items: center;
+
+      &-logout {
+        display: flex;
+        align-items: center;
+        padding-right: 0.3rem;
+      }
     }
 
     &-link {
-      border-bottom: 1px solid #daa794;
-      padding: 0.3rem 0;
+      padding: 0 0 .3rem;
+      margin-right: .7rem;
+      font-size: 1.1em;
+      padding-bottom: 0.7rem;
+      border-bottom: .1rem solid #c47d63;
+      padding-top: 0.7rem;
+      padding: 1.1rem 0;
+      width: 90%;
 
-      &:last-child {
+      &:last-child, &.no-border {
         border: none;
       }
     }
