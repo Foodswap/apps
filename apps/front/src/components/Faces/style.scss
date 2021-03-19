@@ -1,13 +1,6 @@
-
-
 @use 'src/styles/vars';
 @use 'sass:color';
-
-
-
 // CSS normal
-
-
 
 .face{
 
@@ -15,7 +8,8 @@
     background-color: #262835;
     // border-bottom: 50px solid #262835;
     // border-top: 50px solid #262835;
-    border:0;
+    height:100%;
+    
   }
 
   &-container{
@@ -306,6 +300,7 @@ figure.effect-zoe:hover p.icon-links a:first-child {
   display: flex;
   flex-wrap: wrap;
   margin:0;
+  padding-bottom: 6rem;
 }
 
 .content {
@@ -330,72 +325,21 @@ figure.effect-zoe:hover p.icon-links a:first-child {
   padding: 0.5em;
 }
 
-
-@media only screen and (min-device-width: 375px) and (max-device-width: 667px) {
-
-
-  .face{
-
-    &-page{
-      background-color: #262835;
-      width: 100vh;
-    }
-  
-    &-container{
-      margin: auto;
-      width: 100%;
-      text-align: center;
-      padding: 3rem;
-      z-index: 11;
-      font-family: 'PT Sans', cursive;
-      letter-spacing: 0.1em;
-      line-height: 1em;
-      color: white;
-      font-size: 1.3em;
-      transition: 3s;
-      border-radius: 15px;
-  
-    }
-  
-    &-paragraph{
-  
-      margin:1rem;
-    }
-    &-paragraph_p{
-  
-      margin:1rem;
-      font-weight: bold;
-    }
-    &-title{
-        font-size: xx-large;
-        margin:20px;
-      }
-    }
-    .bigcontent {
-
-      display: flex;
-      flex-wrap: wrap;
-      justify-content:space-between;
-      margin:0;
-    }
-
-
-}
-@media only screen and (min-device-width: 320px) and (max-device-width: 375px) {
+@media screen and (max-device-width: 415px) {
 
 
   .face{
 
     &-page{
       background-color: #262835;
-      width: 100vh;
+      width: 100%;
     }
   
     &-container{
       margin: auto;
       width: 100%;
       text-align: center;
-      padding: 3rem;
+      padding: 2rem;
       z-index: 11;
       font-family: 'PT Sans', cursive;
       letter-spacing: 0.1em;
