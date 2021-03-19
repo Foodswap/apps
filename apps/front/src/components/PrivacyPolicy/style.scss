@@ -5,7 +5,7 @@
   }
 
   &-page{
-    
+    margin:0 10rem;
   }
 
   &-title{
@@ -14,7 +14,7 @@ margin: 5rem 0rem 5rem;
   }
 
   &-section{
-    margin: 3rem;
+    margin: 4rem;
   }
 
   &-paragraph-title{
@@ -29,4 +29,38 @@ margin: 5rem 0rem 5rem;
     font-size:1.5rem;
     margin-left: 0.5rem;
   }
+}
+
+@media screen and (max-device-width: 415px){
+
+  .mention{
+  
+    
+
+  &-page{
+    margin: auto;
+  
+  }
+  &-title{
+    font-size: 4rem;
+    margin: auto;
+      }
+
+  &-section{
+     margin: 1rem;
+  }
+
+  &-paragraph-title{
+    font-size: 1.2rem;
+    text-align: left;
+    margin:0 0 0.5rem 0.5rem;
+
+  }
+  &-paragraph-content{
+    text-align: left;
+    font-size:0.9rem;
+    margin: 0.5rem;
+  }
+}
+
 }
