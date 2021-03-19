@@ -6,13 +6,13 @@ const Footer = () => (
 
   
   <div className="footer">
-    <div>
+    <div className="footer-content">
       <span>
       © 2021 Copyright
       </span>
     </div>
   
-    <div>
+    <div className="footer-content">
       <NavLink 
         className="footer-link" 
         to="/v1/Qui-sommes-nous">
@@ -22,7 +22,7 @@ const Footer = () => (
       </NavLink>
     </div>
 
-    <div>
+    <div className="footer-content">
       <NavLink 
         className="footer-mention" 
         to="/v1/privacy-policy">
@@ -32,7 +32,7 @@ const Footer = () => (
       </NavLink>
     </div>
 
-    <div>
+    <div className="footer-content">
       <a href="#" className="footer-haut-de-page">Haut de page</a>
     </div>
 
