@@ -1,47 +1,79 @@
-import React from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Link, Redirect, useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import './style.scss';
-const SearchForm = ({handleInputChange, city, handleSearch, kitchen, dish, isSearching, handleSelectDish}) => {
+
+// !! TODO : propTypes 
+
+const SearchForm = ({
+  handleInputChange, 
+  city, 
+  handleSearch, 
+  kitchen, 
+  dish, 
+  isSearching, 
+  handleSelectDish,
+  dishData,
+  kitchenData,
+  fetchTypeDish,
+  fetchTypeKitchen
+}) => {
+  useEffect(() => {
+    fetchTypeDish();
+    fetchTypeKitchen();
+  }, [])
+  ;
   const handleSubmit = (evt) => {
     evt.preventDefault();
+    location.href=`/results/${kitchen}/${dish}/${city}`;
     console.log("submit");
     handleSearch();
   }
   return (
+    
     <div className="search-form-div"> 
     <h2 className="search-form-title">Cherchez un bon petit plat</h2>
-    
       <p className="test-text"> Vous recherchez un(e) {dish}, de type de cuisine {kitchen}, à {city}</p>
     
       <form className="search-form-form" onSubmit={handleSubmit}>
-        <select name="dish" onChange={(evt) => handleSelectDish(evt.target.value, evt.target.name)}>
-          <option value="">Type d'assiette</option>
-          <option value="entree" name="entree">Entrée</option>
-          <option value="plat" name="plat">Plat</option>
-          <option value="dessert" name="dessert">Dessert</option>
+        <select required name="dish" onChange={(evt) => handleSelectDish(evt.target.value, evt.target.name)}>
+        { console.log("dishData : " + dishData)}
+            <option value="">Type d'assiette</option>
+            { dishData && (
+              dishData.map((dishObj) => {
+                return (
+                  <option key={dishObj.id} value={dishObj.id} name={dishObj.name}>{dishObj.name}</option>
+                )
+              }
+              ))
+            }
         </select>
-        <select name="kitchen" onChange={(evt) => handleSelectDish(evt.target.value, evt.target.name)}>
-          <option value="">Type de cuisine</option>
-          <option value="asiatique" name="asiatique">Asiatique</option>
-          <option value="mexicaine" name="mexicaine">Mexicaine</option>
-          <option value="orientale" name="orientale">Orientale</option>
+        <select required name="kitchen" onChange={(evt) => handleSelectDish(evt.target.value, evt.target.name)}>
+        <option value="">Type de cuisine</option>
+
+        { kitchenData && (
+              kitchenData.map((kitchenObj) => {
+                return (
+                  <option key={kitchenObj.id} value={kitchenObj.id} name={kitchenObj.name}>{kitchenObj.name}</option>
+                )
+              })
+          )}
         </select>
         <input 
+          required 
           className="search-form-input" 
           type="text" name="city"
           value={city} placeholder="Ville" 
           onChange={(evt) => {
                 handleInputChange(evt.target.value, evt.target.name);
           }}>
-              
         </input>
-        <Link to="/results">
           <button className="search-form-button" type="submit" onSubmit={(evt) => {
             evt.preventDefault();
-            <Redirect to="/results" />
+            // history.push(`/results/${kitchen}/${dish}/${city}`);
+            handleSubmit();
           }}> Valider </button>
-        </Link>
+         
       </form>
     </div>
   

@@ -136,6 +136,7 @@
           "name": "asiatique"
         },
         {
+          "id": 2,
           "type": "dish",
           "name": "plat"
         }
@@ -386,12 +387,12 @@
         {
           "id": 1,
           "type": "kitchen",
-          "name": "asiatique"
+          "name": "orientale"
         },
         {
           "id": 6,
           "type": "dish",
-          "name": "plat"
+          "name": "entree"
         }
       ]
     },
@@ -723,14 +724,14 @@
       "id": 15
     }
   ],
-  "category": [
+  "categories": [
     {
       "id": 1,
       "type": "kitchen",
       "name": "asiatique"
     },
     {
-      "id": 2,
+      "id": 8,
       "type": "kitchen",
       "name": "francaise"
     },
@@ -740,22 +741,22 @@
       "name": "orientale"
     },
     {
-      "id": 4,
+      "id": 9,
       "type": "kitchen",
       "name": "indien"
     },
     {
       "id": 5,
       "type": "dish",
-      "name": "entrée"
+      "name": "entree"
     },
     {
-      "id": 6,
+      "id": 2,
       "type": "dish",
       "name": "plat"
     },
     {
-      "id": 7,
+      "id": 10,
       "type": "dish",
       "name": "dessert"
     },
@@ -764,6 +765,8 @@
       "type": "kitchen",
       "name": "italien"
     }
+
+
   ],
   "author": [
     {

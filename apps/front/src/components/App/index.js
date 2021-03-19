@@ -10,7 +10,7 @@ import AppHeader from '../AppHeader';
 import Footer from '../Footer';
 import Faces from '../Faces';
 import PrivacyPolicy from '../PrivacyPolicy';
-import Results from '../Results';
+// import Results from '../Results';
 import Error from '../Error';
 import Description from '../Description';
 
@@ -26,6 +26,7 @@ import MyDishes from '../../containers/MyDishes';
 import DisplayADish from '../../containers/DisplayADish';
 import LastDishes from '../../containers/LastDishes';
 import SearchForm from '../../containers/SearchForm';
+import Results from '../../containers/Results';
 import DishesForm from '../../containers/DishesForm';
 
 import MyInformation from '../../containers/MyInformation';
@@ -66,9 +67,7 @@ const App = ({ isLoginOpen, isSignUpOpen }) => (
 
       <Route exact path="/v1/meals/edit/:id" component={DishesForm} />
 
-      <Route exact path="/results">
-        <Results dishes={dishes} />
-      </Route>
+      <Route exact path="/results/:kitchen/:dish/:city" component={Results} />
 
       <Route exact path="/v1/mydishes">
         <MyDishes />
