@@ -11,6 +11,8 @@ import {
   fetchTypeDish,
   fetchTypeKitchen,
   getADishToEdit,
+  handleUpdatePicture,
+  // cancelFormDish,
 } from '../../actions/dishesForm';
 
 const mapStateToProps = (state, ownProps) => ({
@@ -34,6 +36,7 @@ const mapStateToProps = (state, ownProps) => ({
   dishData: state.dishes.dishData,
   kitchenData: state.dishes.kitchenData,
   selectedIngredients: state.dishes.selectedIngredients,
+  previewPicture: state.dishes.previewPicture,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -65,6 +68,13 @@ const mapDispatchToProps = (dispatch) => ({
     const action = getADishToEdit(dishId);
     dispatch(action);
   },
+
+  handleUpdatePicture: (picture) => dispatch(handleUpdatePicture(picture)),
+
+/*   cancelAction: () => {
+    const action = cancelFormDish();
+    dispatch(action);
+  }, */
 });
 
 export default connect(

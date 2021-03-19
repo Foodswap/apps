@@ -25,13 +25,18 @@ export const sendFormRecipeUpError = (payload) => ({
   payload,
 });
 
-// action pour annuler le form de creation de plat
-export const CANCEL_FORM_RECIPE = 'CANCEL_FORM_RECIPE';
-export const cancelFormRecipe = () => ({
-  type: CANCEL_FORM_RECIPE,
+/* // action pour annuler le form de creation de plat
+export const CANCEL_FORM_DISH = 'CANCEL_FORM_DISH';
+export const cancelFormDish = () => ({
+  type: CANCEL_FORM_DISH,
 });
 
 // ajouter deux actions  success et error
+// Action pour le succè de la fermeture
+export const CANCEL_SUCCESS_DISH = 'CANCEL_SUCCESS_DISH';
+export const cancelSuccessDish = () => ({
+  type: CANCEL_SUCCESS_DISH,
+}); */
 
 // Action  pour la réussite de l'annulation
 export const CANCEL_FORM_RECIPE_SUCCESS = 'CANCEL_FORM_RECIPE_SUCCESS';
@@ -150,5 +155,11 @@ export const updateADishToEdit = (payload) => ({
 export const CLEAR_DISH_INFORMATIONS = 'CLEAR_DISH_INFORMATIONS';
 export const clearDishInformations = (payload) => ({
   type: CLEAR_DISH_INFORMATIONS,
+  payload,
+});
+
+export const HANDLE_UPDATE_PICTURE = 'HANDLE_UPDATE_PICTURE';
+export const handleUpdatePicture = (payload) => ({
+  type: HANDLE_UPDATE_PICTURE,
   payload,
 });

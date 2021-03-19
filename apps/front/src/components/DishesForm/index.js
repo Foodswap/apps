@@ -4,15 +4,15 @@ import makeAnimated from 'react-select/animated';
 import { Link, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
-import  'react-toastify/dist/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 // import SelectInputIngredient from '../SelectInputIngredients';
 
 import './style.scss';
 // import image from '../../assets/images/logo-fooswap.png';
-import { cancelFormRecipe, sendFormRecipeUp, setInputValue } from '../../actions/dishesForm';
+import { sendFormRecipeUp, setInputValue } from '../../actions/dishesForm';
 
-toast.configure()
+toast.configure();
 const DishesForm = ({
   dishId,
   picture,
@@ -39,6 +39,9 @@ const DishesForm = ({
   fetchTypeKitchen,
   getADish,
   selectedIngredients,
+  handleUpdatePicture,
+  previewPicture,
+  // cancelAction,
 }) => {
   useEffect(() => {
     console.log('CMP', dishId);
@@ -66,20 +69,22 @@ const DishesForm = ({
   };
   const notify = () => {
     toast.success('Votre plat a bien été créé',
-    {position: "top-right",
-    autoClose: 1000,
-    hideProgressBar: false,
-    closeOnClick: false,
-    pauseOnHover: false,
-    draggable: false,
-    progress: undefined,})
-  }
+      {
+        position: 'top-right',
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+      });
+  };
 
   const customStyles = {
     option: (provided, state) => ({
       ...provided,
       borderBottom: '1px dotted pink',
-      //color: state.isSelected ? 'red' : 'blue',
+      // color: state.isSelected ? 'red' : 'blue',
     }),
     control: () => ({
       // none of react-select's styles are passed to <Control />
@@ -90,8 +95,8 @@ const DishesForm = ({
       const opacity = state.isDisabled ? 0.5 : 1;
       const transition = 'opacity 300ms';
       return { ...provided, opacity, transition };
-    }
-  }
+    },
+  };
   return (
     <div className="meal-page">
       <div className="meal-form-div">
@@ -101,12 +106,11 @@ const DishesForm = ({
           onSubmit={handleSubmit}
         >
           <div className="meal-image-div">
-            <img
-              src={picture}
+            <div
+              style={{ backgroundImage: `url(${previewPicture})` }}
               alt=""
               id="img"
               className="meal-img"
-              onChange={imageHandler}
             />
             <input
               id="picture"
@@ -115,7 +119,10 @@ const DishesForm = ({
               required
               accept="image/*"
               onChange={(evt) => {
-                handleInputChange(evt.target.files[0], evt.target.name);
+                const targetFile = evt.target.files[0];
+                const previewImage = URL.createObjectURL(targetFile);
+                handleUpdatePicture(previewImage);
+                handleInputChange(targetFile, evt.target.name);
               }}
             />
             <div className="meal-online-switch">
@@ -130,7 +137,6 @@ const DishesForm = ({
             </div>
           </div>
 
-          
           <div className="meal-form-right">
 
             <input
@@ -248,7 +254,7 @@ const DishesForm = ({
             <p>Erreur sur votre formulaire </p>
             )}
             <div className="meal-form-buttons">
-              {/* <button className="meal-form-cancel" type="button" onClick={() => cancelFormRecipe()}> Annuler </button> */}
+              <Link className="meal-form-cancel" to="/v1/mydishes"> Annuler </Link>
               <button className="meal-form-submit" type="submit" onClick={() => sendFormRecipeUp()}> Valider </button>
             </div>
           </div>
@@ -262,7 +268,10 @@ DishesForm.propTypes = {
   name: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   // ingredients: PropTypes.string.isRequired,
-  portion: PropTypes.string.isRequired,
+  portion: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]),
   city: PropTypes.string.isRequired,
   online: PropTypes.bool.isRequired,
   author: PropTypes.number,
@@ -280,6 +289,7 @@ DishesForm.propTypes = {
   onSetCategorySelect: PropTypes.func.isRequired,
   getADish: PropTypes.func.isRequired,
   dishId: PropTypes.number,
+  // cancelAction: PropTypes.func.isRequired,
 };
 
 DishesForm.defaultProps = {
@@ -287,5 +297,6 @@ DishesForm.defaultProps = {
   author: null,
   kitchen: null,
   dish: null,
+  portion: null,
 };
 export default DishesForm;

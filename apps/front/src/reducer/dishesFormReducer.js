@@ -1,6 +1,5 @@
 import {
   SET_INPUT_VALUE,
-  CANCEL_FORM_RECIPE,
   SEND_FORM_RECIPE_UP,
   CANCEL_FORM_RECIPE_SUCCESS,
   CANCEL_FORM_RECIPE_ERROR,
@@ -16,6 +15,8 @@ import {
   FETCH_MY_DISHES_SWAP_SUCCES,
   UPDATE_A_DISH_TO_EDIT,
   CLEAR_DISH_INFORMATIONS,
+  // CANCEL_SUCCESS_DISH,
+  HANDLE_UPDATE_PICTURE,
 } from '../actions/dishesForm';
 
 // export const initialState = {};
@@ -23,7 +24,8 @@ import {
 const initialState = {
   dishId: null,
   cancelMessage: '',
-  picture: 'https://img.icons8.com/carbon-copy/2x/meal.png',
+  picture: '',
+  previewPicture: 'https://img.icons8.com/carbon-copy/2x/meal.png',
   name: '',
   portion: '',
   description: '',
@@ -53,12 +55,6 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         [action.name]: action.value,
-      };
-    case CANCEL_FORM_RECIPE:
-      return {
-        ...state,
-        isLogged: false,
-        infos: {},
       };
     case CANCEL_FORM_RECIPE_SUCCESS: return {
       ...state,
@@ -129,12 +125,14 @@ export default (state = initialState, action = {}) => {
         online: action.payload.online,
         myDishesOnline: action.payload.myDishesOnline,
         selectedIngredients: action.payload.ingredients.map((ingredient) => ({ ...ingredient, label: ingredient.name, value: ingredient.id })),
+        previewPicture: `${process.env.API_URL}/meals/${action.payload.id}/picture`,
       };
     case CLEAR_DISH_INFORMATIONS: return {
       ...state,
       dishId: null,
       cancelMessage: '',
-      picture: 'https://img.icons8.com/carbon-copy/2x/meal.png',
+      picture: '',
+      previewPicture: 'https://img.icons8.com/carbon-copy/2x/meal.png',
       name: '',
       portion: '',
       description: '',
@@ -152,6 +150,17 @@ export default (state = initialState, action = {}) => {
       myDishesOnline: null,
       selectedIngredients: [],
     };
+      /*     case CANCEL_SUCCESS_DISH: return {
+      ...state,
+    }; */
+    case HANDLE_UPDATE_PICTURE: {
+      console.log(action);
+
+      return {
+        ...state,
+        previewPicture: action.payload,
+      };
+    }
     default:
       return state;
   }

@@ -19,6 +19,7 @@ import {
 } from '../actions/dishes';
 
 import {
+  CANCEL_FORM_RECIPE,
   SEND_FORM_RECIPE_UP,
   FETCH_INGREDIENTS,
   FETCH_TYPE_KITCHEN,
@@ -34,6 +35,7 @@ import {
   GET_A_DISH_TO_EDIT,
   updateADishToEdit,
   clearDishInformations,
+  // cancelSuccess,
 } from '../actions/dishesForm';
 
 export default (store) => (next) => (action) => {
@@ -276,6 +278,19 @@ export default (store) => (next) => (action) => {
         return store.dispatch(actionToDispatch);
       }
     } break;
+      /*     case CANCEL_FORM_DISH: {
+      .then((res) => {
+        console.log(`response ok : ${res}`);
+        const actionToDispatch = cancelSuccessDish();
+        store.dispatch(actionToDispatch);
+      })
+      .catch((error) => {
+        console.log(`${error} erreur sur l'annulation`);
+      })
+      .finally(() => {
+        console.log('post form done');
+      });
+    } break; */
     default:
       return next(action);
   }

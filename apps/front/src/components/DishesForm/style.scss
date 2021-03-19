@@ -117,13 +117,17 @@ input:checked + .slider:before {
   &-image-div {
     display: flex;
     flex-direction: column;
-    height: 300px;
     padding-right: 3em;
   }
+  
   &-img{
     margin: 1rem;
     border-radius: 5px;
     object-fit: cover;
+    width: 200px;
+    height: 200px; 
+    background-size: cover;
+    background-position: center center;
   }
   
   &-form-labels {
@@ -171,13 +175,19 @@ input:checked + .slider:before {
 
   }
   &-form-cancel {
-    border-radius: 50px;
-    background: transparent;
-    padding: 0.8em 30px;
-    border: 2px solid #f8a587;
-    color: #f8a587;
-    width: 100px;
     text-align: center;
+    display: block;
+    border-radius: 50px;
+    padding: .8em 30px;
+    text-transform: uppercase;
+    color: #000;
+    background: #f8a587;
+    cursor: pointer;
+    margin-top: 4rem;
+    font-size: .9em;
+    border: none;
+    width: 150px;
+    margin-right: 1em;
   }
 
   &-form-buttons {
