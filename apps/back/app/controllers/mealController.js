@@ -103,7 +103,7 @@ const mealController = {
         const sqlRequest = { where: {online: true, city: cityName, [Op.and]: [
             sequelize.literal(`(EXISTS(SELECT 1 FROM meal_category_associate WHERE id_meal = "Meal".id AND id_category = ${dishId}))`),
             sequelize.literal(`(EXISTS(SELECT 1 FROM meal_category_associate WHERE id_meal = "Meal".id AND id_category = ${kitchenId}))`)
-        ]}
+        ]}, include: ['author', {association: 'author', attributes: ['username']}]
       
         }  
         
