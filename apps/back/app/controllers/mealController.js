@@ -1,4 +1,9 @@
-const { Meal, Author } = require('../models');
+const {
+    Meal
+} = require('../models');
+const { Op } = require('sequelize');
+const sequelize = require('../database');
+
 
 
 const mealController = {
@@ -25,7 +30,6 @@ const mealController = {
                 response.status(201).json(meal);
 
             })
-
         } catch (error) {
             console.log(error);
             response.status(500);
@@ -50,7 +54,11 @@ const mealController = {
 
     getMealsByAuthor: async (request, response) => {
         try {
-            const mealsByAuthor = await Meal.findAll({ where: { author_id: request.params.author_id } });
+            const mealsByAuthor = await Meal.findAll({
+                where: {
+                    author_id: request.params.author_id
+                }
+            });
             response.status(200).json(mealsByAuthor)
         } catch (error) {
             console.log(error);
@@ -67,42 +75,106 @@ const mealController = {
             response.sendFile(picturePath);
         } catch (err) {
             console.trace(err);
-            response.status(404).json("Plat non trouvé");
+            response.status(500)
         }
     },
 
     getSixMeals: async (request, response) => {
         try {
             const sixMeals = await Meal.findAll({
-                include: 'author', limit: 6, order: [['created_date', 'DESC']]
+                include: 'author',
+                limit: 6,
+                order: [
+                    ['created_date', 'DESC']
+                ]
             });
             response.status(200).json(sixMeals);
         } catch (error) {
             console.trace(error);
-            response.status(404).json("Couldn't find six or less meals.")
+            response.status(500)
         }
     },
 
-    searchMeal: async (request, response) => {
-        const dishName = request.params.dishName;
-        const kitchen = request.params.kitchenName;
-        const cityName = request.params.city;
-        try {
-            const mealSearch = await Meal.findAll({
-                where: { city: cityName },
-                include: ['ingredients', 'categories', {
-                    association: 'categories',
-                    where: {
-                        name: kitchen
-                    }
-                },
-                    'author']
-            }
-            );
-            response.status(200).json(mealSearch);
+
+    searchMeal: async (request, response, next) => {
+        const dishId = request.query.dishId;
+        const kitchenId = request.query.kitchenId;
+        const cityName = request.query.city;
+        const sqlRequest = { where: {online: true, city: cityName, [Op.and]: [
+            sequelize.literal(`(EXISTS(SELECT 1 FROM meal_category_associate WHERE id_meal = "Meal".id AND id_category = ${dishId}))`),
+            sequelize.literal(`(EXISTS(SELECT 1 FROM meal_category_associate WHERE id_meal = "Meal".id AND id_category = ${kitchenId}))`)
+        ]}
+      
+        }  
+
+        if(cityName) {
+            sqlRequest.where = {online: true, city: cityName}
+        } 
+        if (kitchenId) {
+            sqlRequest.where = {online: true, [Op.and]: [
+                sequelize.literal(`(EXISTS(SELECT 1 FROM meal_category_associate WHERE id_meal = "Meal".id AND id_category = ${kitchenId}))`)]
+        }}
+        if (dishId) {
+            sqlRequest.where = {online: true, [Op.and]: [
+                sequelize.literal(`(EXISTS(SELECT 1 FROM meal_category_associate WHERE id_meal = "Meal".id AND id_category = ${dishId}))`)]
+        }}
+        if (cityName, kitchenId) {
+            sqlRequest.where = {online: true, city: cityName, [Op.and]: [
+                sequelize.literal(`(EXISTS(SELECT 1 FROM meal_category_associate WHERE id_meal = "Meal".id AND id_category = ${kitchenId}))`)
+        ]}}
+        if (cityName, dishId) {
+            sqlRequest.where = {online: true, city: cityName, [Op.and]: [
+                sequelize.literal(`(EXISTS(SELECT 1 FROM meal_category_associate WHERE id_meal = "Meal".id AND id_category = ${dishId}))`)
+        ]}}
+        if (kitchenId, dishId) {
+            sqlRequest.where = {online: true, [Op.and]: [
+                sequelize.literal(`(EXISTS(SELECT 1 FROM meal_category_associate WHERE id_meal = "Meal".id AND id_category = ${dishId}))`)
+        ]}}
+        
+
+        try { 
+            const mealSearch =  await Meal.findAll(sqlRequest)
+          response.status(200).json(mealSearch);
         } catch (error) {
             console.trace(error);
-            response.status(404).json("No match found.")
+            response.status(500)
+        }
+    },
+
+    updateMeal: async (request, response, next) => {
+        const id = Number(request.params.id);
+        const mealToUpdate = request.body;
+        try {
+            const meal = await Meal.findByPk(id);
+            if (!meal) {
+                next();
+            }
+            for (const field in mealToUpdate) {
+                if (typeof meal[field] !== 'undefined') {
+                
+                    meal[field] = mealToUpdate[field];
+                }
+            };
+            meal.picture_path = request.file.filename
+            await meal.setIngredients(mealToUpdate.ingredients.split(','));
+            await meal.setCategories(mealToUpdate.categories.split(','));
+           
+            await meal.save();
+           Meal.findByPk(Number(meal.id), {
+            attributes: {
+                exclude: ['picture_path']
+            },
+            include: ['ingredients', 'categories', 'author']
+        }).then((meal) => {
+            meal.author.password = null;
+            response.status(201).json(meal);
+
+        })
+
+        } catch(error) {
+            console.log(error);
+            response.status(500);
+
         }
     },
 

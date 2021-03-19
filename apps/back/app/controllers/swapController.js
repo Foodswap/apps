@@ -1,6 +1,35 @@
 const Swap = require('../models/swap');
 
+const mealAttributes = ['id', 'name'];
+const authorAttributes = ['id', 'username', 'email'];
 
+const swapService = {
+    buildRequest: (authorId, type) => {
+        let request = {
+            attributes: ['id', 'status', 'date'],
+            include: ['mealOffer', {
+                association: 'mealOffer',
+                attributes: mealAttributes,
+                include: ['asker', {
+                    association: 'asker',
+                    attributes: authorAttributes
+                }]
+            }, 'mealRequest', {
+                association: 'mealRequest',
+                attributes: mealAttributes,
+                include: ['receiver', {
+                    association: 'receiver',
+                    attributes: authorAttributes
+                }]
+
+            }]
+        }
+
+        request.include[type === 'mealOffer' ? 1 : 3].where = {author_id: authorId}
+
+        return request;
+    }
+}
 
 const swapController = {
     swapProposal: async (request, response) => {
@@ -18,30 +47,9 @@ const swapController = {
     },
 
     getSwapAsker: async (request, response) => {
-        const mealAttributes = ['id', 'name'];
-        const authorAttributes = ['id', 'username', 'email'];
         try {
-            const swapOffer = await Swap.findAll(
-             {
-                attributes: ['id', 'status', 'date'],
-                include: ['mealOffer', {
-                    association: 'mealOffer',
-                    attributes: mealAttributes,
-                    where:{author_id: request.params.id},
-                    include: ['asker', {
-                        association: 'asker',
-                        attributes: authorAttributes
-                    }]
-                }, 'mealRequest', {
-                    association: 'mealRequest',
-                    attributes: mealAttributes,
-                    include: ['receiver', {
-                        association: 'receiver',
-                        attributes: authorAttributes
-                    }]
-
-                }]
-            })
+            const sequelizeRequest = swapService.buildRequest(request.params.id, "mealOffer")
+            const swapOffer = await Swap.findAll(sequelizeRequest)
             response.status(200).json(swapOffer)
         } catch (err) {
             console.log(err);
@@ -49,31 +57,11 @@ const swapController = {
         }
     },
     getSwapReceiver: async (request, response) => {
-        const mealAttributes = ['id', 'name'];
-        const authorAttributes = ['id', 'username', 'email'];
-        try {
-            const swapOffer = await Swap.findAll(
-             {
-                attributes: ['id', 'status', 'date'],
-                include: ['mealOffer', {
-                    association: 'mealOffer',
-                    attributes: mealAttributes,
-                    include: ['asker', {
-                        association: 'asker',
-                        attributes: authorAttributes
-                    }]
-                }, 'mealRequest', {
-                    association: 'mealRequest',
-                    where:{author_id: request.params.id},
-                    attributes: mealAttributes,
-                    include: ['receiver', {
-                        association: 'receiver',
-                        attributes: authorAttributes
-                    }]
 
-                }]
-            })
-            response.status(200).json(swapOffer)
+        try {
+            const sequelizeRequest = swapService.buildRequest(request.params.id, "mealRequest")
+            const swapRequest = await Swap.findAll(sequelizeRequest)
+            response.status(200).json(swapRequest)
         } catch (err) {
             console.log(err);
             response.status(500);
@@ -98,7 +86,7 @@ const swapController = {
             response.status(200).json(swap);
 
         } catch (error) {
-            console.log(err);
+            console.log(error);
             response.status(500);
         }
     }

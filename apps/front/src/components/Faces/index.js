@@ -30,32 +30,14 @@ const Faces = () => (
    </div>
     
     
-    {/* <section className="face-pictures">
-      <figure>
-        <img className="face-images" src={image1} alt="Plia" />
-        <figcaption className="face-titre-image">Plia Product Owner</figcaption>
-      </figure>
-      <figure>
-        <img className="face-image" src={image} alt="Marie" />
-        <figcaption className="face-titre-image">Marie Scrum Master</figcaption>
-      </figure>
-      <figure>
-        <img className="face-image" src={image4} alt="Cyril" />
-        <figcaption className="face-titre-image">Cyril Lead Dev Front</figcaption>
-      </figure>
-      <figure>
-        <img className="face-image" src={image3} alt="Edouard" />
-        <figcaption className="face-titre-image">Edouard Lead dev back</figcaption>
-      </figure>
-      </section> */}
-      <div className="bigcontent">
+   <div className="bigcontent">
       <div className="content">
       <h2 className="name">Edouard</h2>
         <div className="grid">
           <figure className="effect-zoe">
             <img src={edouard} alt="Edouard"/>
             <figcaption>
-              <h2>Back-end <span>Lead dev Back</span></h2>
+              <h2>Lead  dev  Back<p className="name-profil">Back-end </p></h2>
               <p className="icon-links">
                 <a href="#"><span className="icon-git"></span><FaGithub /></a>
                 <a href="#"><span className="icon-js"><SiJavascript /></span></a>
@@ -71,12 +53,32 @@ const Faces = () => (
 
 
         <div className="content">
+      <h2>Florian</h2>
+        <div className="grid">
+          <figure className="effect-zoe">
+            <img src={flo} alt="Florian"/>
+            <figcaption>
+              <h2> Git Master<p className="name-profil">Back-end</p></h2>
+              <p className="icon-links">
+                <a href="#"><span className="icon-git"><FaGithub /></span></a>
+                <a href="#"><span className="icon-js"><SiJavascript /></span></a>
+                <a href="#"><span className="icon-sql"><SiPostgresql /></span></a>
+              </p>
+              <p className="description">Florian est un maître dans la maîtrise de Git. Il faut un sang-froid démeusuré pour gérer la lourde responsabilité des merges. Un pilier !</p>
+            </figcaption>     
+          </figure>
+
+        </div>
+
+        </div>  
+
+        <div className="content">
       <h2>Plia</h2>
         <div className="grid">
           <figure className="effect-zoe">
             <img src={plia} alt="Plia"/>
             <figcaption>
-              <h2>Front-end  <span>Product Owner</span></h2>
+              <h2>Product Owner  <p className="name-profil">Front-end </p></h2>
               <p className="icon-links">
                 <a href="#"><span className="icon-react"><FaReact /></span></a>
                 <a href="#"><span className="icon-git"><FaGithub /></span></a>
@@ -85,7 +87,7 @@ const Faces = () => (
               <p className="description">Plia est notre Product Owner.Elle est à l'origine de ce magnifique projet.Son punch et sa débordante imagination nous pousse vers de nouveaux chalenges !</p>
             </figcaption>     
           </figure>
-          
+
         </div>
         </div>
 
@@ -96,9 +98,9 @@ const Faces = () => (
           <figure className="effect-zoe">
             <img src={marie} alt="Marie"/>
             <figcaption>
-              <h2>Front-end <span>Scrum Master</span></h2>
+              <h2>Scrum Master <p className="name-profil"> Front-end</p></h2>
               <p className="icon-links">
-              
+
                 <a href="#"><span className="icon-react"><FaReact /></span></a>
                 <a href="#"><span className="icon-git"><FaGithub /></span></a>
                 <a href="#"><span className="icon-js"><SiJavascript /></span></a>
@@ -106,28 +108,10 @@ const Faces = () => (
               <p className="description">Marie est notre Scrum Master.Elle maîtrise parfaitement le code.Aucune issue ne lui résiste ! Sa douceur apporte la zénitude quand nos esprits bouillonnent !</p>
             </figcaption>     
           </figure>
-          
+
         </div>
         </div>
 
-        <div className="content">
-      <h2>Florian</h2>
-        <div className="grid">
-          <figure className="effect-zoe">
-            <img src={flo} alt="Florian"/>
-            <figcaption>
-              <h2>Back-end <span>Git Master</span></h2>
-              <p className="icon-links">
-                <a href="#"><span className="icon-git"><FaGithub /></span></a>
-                <a href="#"><span className="icon-js"><SiJavascript /></span></a>
-                <a href="#"><span className="icon-sql"><SiPostgresql /></span></a>
-              </p>
-              <p className="description">Florian est un maître dans la maîtrise de Git. Il faut un sang-froid démeusuré pour gérer la lourde responsabilité des merges. Un pilier !</p>
-            </figcaption>     
-          </figure>
-          
-        </div>
-        </div>
 
         <div className="content">
           <h2>Cyril</h2>
@@ -135,7 +119,7 @@ const Faces = () => (
               <figure className="effect-zoe">
                 <img src={cyril} alt="Cyril"/>
                <figcaption>
-                 <h2>Front-end <span>Lead Dev Front</span></h2>
+                 <h2> Lead Dev Front<p className="name-profil">Front-end</p></h2>
                   <p className="icon-links">
                     <a href="#"><span className="icon-react"><FaReact /></span></a>
                     <a href="#"><span className="icon-git"><FaGithub /></span></a>
@@ -149,8 +133,6 @@ const Faces = () => (
         </div>
         </div>
     
-
   </div>
 );
-
 export default Faces;

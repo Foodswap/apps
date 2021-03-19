@@ -19,14 +19,16 @@
 
 
 
-@media only screen and (max-device-width: 768px) {
+
+@media screen and (max-width: 768px) {
+
 
   .footer{
       display: flex;
       justify-content:space-evenly;
       margin: auto;
-      font-size: 0.8rem;
-      //width: 100vh;
+      font-size:0.8rem;
+      // width: 100vh;
       text-align: center;
       background-color: #262835;
       // padding: 2rem;
@@ -35,14 +37,11 @@
     
       &-link {
         margin-right: 2rem;
-      
     }
   }
   }
   
-
-
-@media only screen and (max-device-width: 375px) {
+  @media screen and (max-width: 375px) {
 
 .footer{
   flex-wrap: wrap;
