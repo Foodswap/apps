@@ -17,7 +17,9 @@ import {
   // dishExchange,
   updateAllDishesFromAUser,
 } from '../actions/dishes';
-import { SEND_SEARCH_FORM, FETCH_RESULTS, fetchResultsSucces, FETCH_CATEGORIES, fetchCategoriesSucces } from '../actions/search';
+import {
+  SEND_SEARCH_FORM, FETCH_RESULTS, fetchResultsSucces, FETCH_CATEGORIES, fetchCategoriesSucces,
+} from '../actions/search';
 
 import {
   CANCEL_FORM_RECIPE,
@@ -99,20 +101,20 @@ export default (store) => (next) => (action) => {
     //   return store.dispatch(actionToDispatch);
     // };
     case FETCH_RESULTS: {
-      
       axios({
         method: 'get',
         url: `${process.env.API_URL}/meals/${action.payload.kitchenParam.toLowerCase()}/${action.payload.dishParam.toLowerCase()}/${action.payload.cityParam.toLowerCase()}`,
       })
-      .then((res) => {
-        console.log("ok send search " + res.data);
-        const actionToDispatch = fetchResultsSucces(res.data);
-        return store.dispatch(actionToDispatch);
-      })
-      .catch((error) => {
-        console.log(error)
-      });
-    };
+        .then((res) => {
+          res.data.sort((a, b) => b.id - a.id);
+          console.log(`ok send search ${res.data}`);
+          const actionToDispatch = fetchResultsSucces(res.data);
+          return store.dispatch(actionToDispatch);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
     // case FETCH_CATEGORIES: {
     //   console.log("action payload " + action.payload);
     //   axios({
