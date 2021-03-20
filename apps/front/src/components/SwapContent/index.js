@@ -33,7 +33,7 @@ const SwapContent = ({ dishes, fetchMyDishesSwap, userLogged, getAskerDishId, is
     <p className="swap-content-succes">{succesPropositionMsg}</p>
 
       { !userLogged && (
-        <p>Vous devez vous connecter pour proposer un échange</p>
+        <p className="swap-log-message">Vous devez vous connecter pour proposer un échange</p>
       )}
     { userLogged && (
       <div>
