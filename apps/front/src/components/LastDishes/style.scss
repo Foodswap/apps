@@ -62,6 +62,10 @@
     font-size: 1.2em;
     color: #{vars.$darkBlue};
     text-transform: uppercase;
+    height: 3em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .last-dishes-card-city {
