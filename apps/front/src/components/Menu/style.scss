@@ -48,6 +48,16 @@
         padding-right: 6rem;
       }
     }
+    &-link-logout {
+      color: white;
+      padding: 0 0 .3rem;
+      margin-right: .7rem;
+      font-size: 1.1em;
+      padding-bottom: 0.7rem;
+      padding-top: 0.7rem;
+      padding: 1.1rem 0;
+      width: 90%;
+    }
 
     &-logoutButton {
       display: none;
