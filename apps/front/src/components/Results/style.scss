@@ -50,6 +50,20 @@
 
   .results-card:hover {
     box-shadow: 0 12px 15px 0 #18181ab4, 0 17px 50px #060607b4;
+    animation: bigger 1s ease-out forwards;
+  }
+
+  @keyframes bigger {
+    from {
+      transform: scale(1)
+    }
+    to {
+      transform: scale(1.1)
+    }
+  }
+
+  .results-card:hover {
+    box-shadow: 0 12px 15px 0 #18181ab4, 0 17px 50px #060607b4;
   }
 
   .results-card-img {
