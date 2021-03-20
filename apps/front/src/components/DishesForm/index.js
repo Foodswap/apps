@@ -207,8 +207,9 @@ const DishesForm = ({
                 onChange={(evt) => onSetCategorySelect(evt.target.value, evt.target.name)}
                 className="meal-category"
                 defaultValue={dish || ''}
+                required
               >
-                <option>Type d'assiete</option>
+                <option disabled selected value="">Type d'assiete</option>
                 { dishData && dishData.map((dishObj) => (
                   <option
                     value={dishObj.id}
@@ -227,8 +228,9 @@ const DishesForm = ({
                 onChange={(evt) => onSetCategorySelect(evt.target.value, evt.target.name)}
                 className="meal-category"
                 value={kitchen || ''}
+                required
               >
-                <option>Type de cuisine</option>
+                <option disabled selected value="">Type de cuisine</option>
                 { kitchenData && (
                   kitchenData.map((kitchenObj) => (
                     <option
