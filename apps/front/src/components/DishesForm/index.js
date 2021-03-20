@@ -98,11 +98,11 @@ const DishesForm = ({
     },
   };
 
-  const titleText = dishId ? "Editez votre bon petit plat" : "Ajoutez votre bon petit plat";
+  const titleText = dishId ? 'Editez votre bon petit plat' : 'Ajoutez votre bon petit plat';
   return (
     <div className="meal-page">
       <div className="meal-form-div">
-          <h2 className="meal-title"> {titleText}</h2>
+        <h2 className="meal-title"> {titleText}</h2>
         <form
           className="meal-form-element"
           onSubmit={handleSubmit}
@@ -258,7 +258,7 @@ const DishesForm = ({
             <p>Erreur sur votre formulaire </p>
             )}
             <div className="meal-form-buttons">
-              <Link className="meal-form-cancel" to="/v1/mydishes"> Annuler </Link>
+              <Link className="meal-form-submit fix-flex" to="/v1/mydishes"> Annuler </Link>
               <button className="meal-form-submit" type="submit" onClick={() => sendFormRecipeUp()}> Valider </button>
             </div>
           </div>
