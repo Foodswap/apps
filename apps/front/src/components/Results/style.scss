@@ -50,12 +50,29 @@
 
   .results-card:hover {
     box-shadow: 0 12px 15px 0 #18181ab4, 0 17px 50px #060607b4;
+    animation: bigger 1s ease-out forwards;
+  }
+
+  @keyframes bigger {
+    from {
+      transform: scale(1)
+    }
+    to {
+      transform: scale(1.1)
+    }
+  }
+
+  .results-card:hover {
+    box-shadow: 0 12px 15px 0 #18181ab4, 0 17px 50px #060607b4;
   }
 
   .results-card-img {
     width: 100%;
-    height: auto;
+    height: 9em;
     border-radius: 15px;
+    object-fit: cover;
+    background-size: cover;
+    background-position: center center;
   }
 
   .results-card-name {
@@ -63,6 +80,7 @@
     font-size: 1.2em;
     color: #{vars.$darkBlue};
     text-transform: uppercase;
+    height: 3em;
   }
 
   .results-card-city {
@@ -136,8 +154,11 @@
 
   .results-card-img {
     width: 100%;
-    height: auto;
     border-radius: 15px;
+    height: 9em;
+    object-fit: cover;
+    background-size: cover;
+    background-position: center center;
   }
 
   .results-card-name {
@@ -146,7 +167,7 @@
     color: #{vars.$darkBlue};
     text-transform: uppercase;
   }
-
+  
   .results-card-city {
     text-transform: capitalize;
   }

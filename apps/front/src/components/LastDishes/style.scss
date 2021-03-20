@@ -9,8 +9,9 @@
     height: auto;
   }
   .last-dishes-section {
-    background: #262835;
+    background: #{vars.$coral};
     padding-bottom: 155px;
+    padding-top: 100px;
   }
   .last-dishes {
     margin: auto;
@@ -49,12 +50,25 @@
 
   .last-dishes-card:hover {
     box-shadow: 0 12px 15px 0 #18181ab4, 0 17px 50px #060607b4;
+    animation: bigger 1s ease-out forwards;
+  }
+
+  @keyframes bigger {
+    from {
+      transform: scale(1)
+    }
+    to {
+      transform: scale(1.1)
+    }
   }
 
   .last-dishes-card-img {
     width: 100%;
-    height: auto;
+    height: 9em;
     border-radius: 15px;
+    object-fit: cover;
+    background-size: cover;
+    background-position: center center;
   }
 
   .last-dishes-card-name {
@@ -139,8 +153,11 @@
 
   .last-dishes-card-img {
     width: 100%;
-    height: auto;
     border-radius: 15px;
+    height: 9em;
+    object-fit: cover;
+    background-size: cover;
+    background-position: center center;
   }
 
   .last-dishes-card-name {

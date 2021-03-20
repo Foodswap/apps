@@ -228,13 +228,6 @@
       animation: color-change 3s infinite ease-out forwards;
       margin-left: 15px;
     }
-
-    @keyframes color-change {
-      0% { color: linear-gradient(#f7f2f1, #{vars.$coral});}
-      50% {color: #f3cabb}
-      100%{ color: linear-gradient(#f7f2f1, #{vars.$coral});}
-        
-    }
   }
 }
 
@@ -465,14 +458,12 @@
         animation: color-change 3s infinite ease-out forwards;
         margin-left: Opx;
       }
-  
-      @keyframes color-change {
-        0% { color: linear-gradient(#f7f2f1, #{vars.$coral});}
-        50% {color: #f3cabb}
-        100%{ color: linear-gradient(#f7f2f1, #{vars.$coral});}
-          
-      }
     }
   }
 }
 
+@keyframes color-change {
+  0% { color: linear-gradient(#f7f2f1, #{vars.$coral});}
+  50% {color: #f8a587; }
+  100%{ color: linear-gradient(#f7f2f1, #{vars.$coral});}
+}

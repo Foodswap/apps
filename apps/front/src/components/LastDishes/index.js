@@ -18,7 +18,7 @@ const LastDishes = ({ dishes, getListDishes }) => {
 
               return (
                 <div className="last-dishes-card" key={dish.id}>
-                  <img className="last-dishes-card-img" src={`http://ec2-54-145-80-6.compute-1.amazonaws.com/v1/meals/${dish.id}/picture`} alt="" />
+                  <div className="last-dishes-card-img" style={{ backgroundImage: `url(http://ec2-54-145-80-6.compute-1.amazonaws.com/v1/meals/${dish.id}/picture)` }} />
                   <h3 className="last-dishes-card-name">{dish.name}</h3>
                   <p className="last-dishes-card-potion">{dish.portion} part(s)</p>
                   {/* <p className="last-dishes-card-author"> Fait par {dish.author.username}</p> */}
