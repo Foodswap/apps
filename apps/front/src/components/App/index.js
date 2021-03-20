@@ -35,7 +35,8 @@ import MyInformation from '../../containers/MyInformation';
 import './styles.css';
 
 // Fake data from file
-import dishes from '../../../dataDishes';
+// import dishes from '../../../dataDishes';
+import ScrollToTop from '../ScrollToTop';
 
 /**
  * App component
@@ -49,7 +50,8 @@ const App = ({ isLoginOpen, isSignUpOpen }) => (
     {/* <AppHeader /> */}
 
     <Menu />
-    <Switch>
+    <ScrollToTop />
+    <Switch onUpdate={() => window.scrollTo(0, 0)}>
       <Route exact path="/v1/my-information" component={MyInformation} />
 
       <Route exact path="/v1/exchange-tracking" component={Exchangetracking} />

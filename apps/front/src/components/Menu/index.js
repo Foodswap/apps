@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 
 // import logo and icon
 import logo from '../../assets/images/logo-fooswap.png';
@@ -33,9 +33,9 @@ const Menu = ({
     )}
 
     <div className="menu-logo">
-      <a className="appHeader-link" href="/">
+      <Link className="appHeader-link" to="/">
         <img className={isLogged ? 'appHeader-logo' : 'appHeader-logo anonymous'} src={logo} alt="logo de FoodSwap" />
-      </a>
+      </Link>
     </div>
 
     {!isLogged && (
