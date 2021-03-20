@@ -1,8 +1,7 @@
 import axios from 'axios';
 // // import { APP_INIT } from '../actions';
-import data from '../../dataUser';
 import { toast } from 'react-toastify';
-
+import data from '../../dataUser';
 
 import {
   OPEN_OR_CLOSE_MENU_BURGER,
@@ -112,8 +111,6 @@ export default (store) => (next) => (action) => {
       // });
     } break;
     case USER_LOGOUT: {
-
-      
       localStorage.removeItem('user');
       localStorage.removeItem('token');
       const actionToDispatch = handleLogoutSuccess();
@@ -122,7 +119,7 @@ export default (store) => (next) => (action) => {
         // eslint-disable-next-line no-restricted-globals
         location.href = '/';
       }, 1000);
-      toast.success(`À bientôt !`);
+      toast.success('À bientôt !');
     } break;
     case OPEN_OR_CLOSE_MENU_BURGER: {
       const { menuIsOpen } = store.getState().user;

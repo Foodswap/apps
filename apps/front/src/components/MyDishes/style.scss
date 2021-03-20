@@ -6,8 +6,11 @@
 .myDishes {
 
   background-color: #{vars.$coral};
-  height: 100%; 
+  height: 100%;
   padding-bottom: 1rem;
+  min-height: calc(100vh - 188px);
+
+
 
   &-title {
     color: #{vars.$darkBlue};
@@ -37,7 +40,9 @@
 
   &-dishImg {
     height: 150px;
-    width: auto;
+    width: 250px;
+    background-size: cover;
+    background-position: center center;
   }
 
   &-dishText {
