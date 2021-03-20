@@ -97,10 +97,12 @@ const DishesForm = ({
       return { ...provided, opacity, transition };
     },
   };
+
+  const titleText = dishId ? "Editez votre bon petit plat" : "Ajoutez votre bon petit plat";
   return (
     <div className="meal-page">
       <div className="meal-form-div">
-        <h2 className="meal-title">Ajoutez votre bon petit plat </h2>
+          <h2 className="meal-title"> {titleText}</h2>
         <form
           className="meal-form-element"
           onSubmit={handleSubmit}
