@@ -10,7 +10,7 @@ import {
   getOfExchangeList,
   SEND_PROPOSITION,
   sendPropositionError,
-  sendPropositionSucces 
+  sendPropositionSucces,
 } from '../actions/exchangeTracking';
 
 export default (store) => (next) => (action) => {
@@ -23,7 +23,7 @@ export default (store) => (next) => (action) => {
       })
         .then((res) => {
           console.log(`response asked swaps : ${res.data}`);
-          const actionToDispatch = updateOfExchangeListAsked(res.data);
+          const actionToDispatch = updateOfExchangeListAsked(res.data.reverse());
           return store.dispatch(actionToDispatch);
         })
         .catch((error) => {
@@ -39,7 +39,7 @@ export default (store) => (next) => (action) => {
       })
         .then((res) => {
           console.log(`response get received : ${res.data}`);
-          const actionToDispatch = updateOfExchangeListReceived(res.data);
+          const actionToDispatch = updateOfExchangeListReceived(res.data.reverse());
           return store.dispatch(actionToDispatch);
         })
         .catch((error) => {
@@ -80,35 +80,35 @@ export default (store) => (next) => (action) => {
         })
         .catch((error) => {
           console.log(`${error} error on get one dish`);
-        })
+        });
     } break;
     case SEND_PROPOSITION: {
-
       const { askerDishId } = store.getState().propositions;
       const { dishSelect } = store.getState().recipes;
-      // ! TODO recuperer l'id dans l'url du plat requested 
+      // ! TODO recuperer l'id dans l'url du plat requested
       if (askerDishId) {
         axios({
           method: 'post',
           url: `${process.env.API_URL}/swaps`,
-          data: { 
+          data: {
             offered_meal_id: askerDishId,
             requested_meal_id: dishSelect.id,
-          }
+          },
         })
-        .then((res) => {
-          console.log(`response ok : ${res}`);
-          const actionToDispatch = sendPropositionSucces();
-          store.dispatch(actionToDispatch);
-          setTimeout(() => {
+          .then((res) => {
+            console.log(`response ok : ${res}`);
+            const actionToDispatch = sendPropositionSucces();
+            store.dispatch(actionToDispatch);
+            setTimeout(() => {
             // eslint-disable-next-line no-restricted-globals
-            location.href = '/v1/exchange-tracking';
-          }, 800);
-        })
-        .catch((error) => {
-          console.log(`${error} error on send proposition`);
-        })
-      } else {
+              location.href = '/v1/exchange-tracking';
+            }, 800);
+          })
+          .catch((error) => {
+            console.log(`${error} error on send proposition`);
+          });
+      }
+      else {
         const actionToDispatch = (sendPropositionError());
         return store.dispatch(actionToDispatch);
       }

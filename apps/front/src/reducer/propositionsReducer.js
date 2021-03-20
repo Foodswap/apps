@@ -5,7 +5,7 @@ import {
   UPDATE_ACTIVE_TAB,
   GET_ASKER_DISH_ID,
   SEND_PROPOSITION_SUCCES,
-  SEND_PROPOSITION_ERROR
+  SEND_PROPOSITION_ERROR,
 } from '../actions/exchangeTracking';
 
 const initialState = {
@@ -15,8 +15,8 @@ const initialState = {
   myDishesOnline: null,
   askerDishId: null,
   isSelected: false,
-  succesPropositionMsg: "",
-  errorPropositionMsg: ""
+  succesPropositionMsg: '',
+  errorPropositionMsg: '',
 };
 
 export default (state = initialState, action = {}) => {
@@ -37,20 +37,20 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         myDishesOnline: action.payload,
-        }
+      };
     case GET_ASKER_DISH_ID: return {
       ...state,
       askerDishId: action.payload,
       isSelected: true,
-    }
+    };
     case SEND_PROPOSITION_SUCCES: return {
       ...state,
-      succesPropositionMsg: "Votre proposition à bien été envoyée !"
-    }
+      succesPropositionMsg: 'Votre proposition à bien été envoyée !',
+    };
     case SEND_PROPOSITION_ERROR: return {
       ...state,
-      errorPropositionMsg: "Vous devez choisir un plat à proposer",
-    }
+      errorPropositionMsg: 'Vous devez choisir un plat à proposer',
+    };
     default:
       return state;
   }

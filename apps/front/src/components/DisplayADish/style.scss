@@ -7,7 +7,7 @@
   background-color: #{vars.$darkBlue};
   margin: 0;
   padding: 7% 0;
-  height: 80vh;
+  min-height: calc(100vh - 188px);
   text-align: left;
   font-size: 1.2rem;
 
@@ -20,7 +20,9 @@
   }
 
   &-img-container {
-    width: 60%;
+    width: 50%;
+    background-size: cover;
+    background-position: center center;
   }
 
   &-img {
@@ -34,16 +36,16 @@
     color: white;
 
     &-title {
-      font-size: 2.3rrem;
+      font-size: 2.3rem;
       color: white;
       text-transform: uppercase;
       margin: 1rem 0 0.5rem 0;
-      letter-spacing: 2px;
+      letter-spacing: 0.2em;
+      font-weight: bold;
     }
 
     &-portion {
-      font-size: 0.4rem;
-      margin-left: 2rem;
+      font-size: 0.8rem;
     }
 
     &-author {
@@ -53,14 +55,16 @@
       font-family: 'Gudea', sans-serif;
       font-size: 1.2rem;
       letter-spacing: 1px;
+      margin-top: 1rem;
     }
   }
 
   &-ingredients {
-
     &-title {
       margin: 1.8rem 0 1rem 0;
       font-size: 1.2rem;
+      text-transform: uppercase;
+      font-weight: bold;
     }
 
     &-container {
@@ -68,6 +72,7 @@
       flex-direction: row;
       flex-wrap: wrap;
     }
+
     &-text {
       display: block;
       background-color: #{vars.$coral};
@@ -80,13 +85,17 @@
   }
 
   &-description {
-
-    &-text {
-      margin-left: 2rem;
-    }
     &-title {
       margin: 1rem 0 0.5rem 0;
       font-size: 1.2rem;
+      text-transform: uppercase;
+      font-weight: bold;
+      margin-top: 2rem;
+    }
+
+    &-text {
+      width: 70%;
+      line-height: 1.6em;
     }
   }
 
@@ -110,7 +119,36 @@
     transition-duration:.8s;
   }
 }
+@media screen and (max-width: 415px) {
+  .displayADish {
+    &-img-container {
+      justify-content: center;
+      padding: 1rem;
+      width: 100%;
+      height: 25vh;
+    }
 
+    &-right {
+
+      &-title {
+        font-size: 1.6rem;
+        color: white;
+        text-transform: uppercase;
+        margin: 1rem 0 0.5rem 0;
+        letter-spacing: 0.2em;
+        font-weight: bold;
+      }
+    }
+
+    &-ingredients {
+
+      &-text {
+        font-size: 0.9rem;
+      }
+    }
+  }
+
+}
 
 @media screen and (max-width: 1650px) {
   .displayADish-container {

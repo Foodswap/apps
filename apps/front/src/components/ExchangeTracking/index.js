@@ -42,9 +42,9 @@ const ExchangeTracking = ({
                     <p> Vous n'avez pas encore reçu de proposition </p>
                     )}
                     <div className="exchangeTracking-description">
-                      <img
+                      <div
                         className="exchangeTracking-img"
-                        src={`http://ec2-54-145-80-6.compute-1.amazonaws.com/v1/meals/${receivedProposition.mealOffer.id}/picture`}
+                        style={{ backgroundImage: `url(http://ec2-54-145-80-6.compute-1.amazonaws.com/v1/meals/${receivedProposition.mealOffer.id}/picture)` }}
                         alt={receivedProposition.mealOffer.name}
                       />
 
@@ -54,9 +54,9 @@ const ExchangeTracking = ({
                         {receivedProposition.mealRequest.name}
                       </div>
 
-                      <img
+                      <div
                         className="exchangeTracking-img"
-                        src={`http://ec2-54-145-80-6.compute-1.amazonaws.com/v1/meals/${receivedProposition.mealRequest.id}/picture`}
+                        style={{ backgroundImage: `url(http://ec2-54-145-80-6.compute-1.amazonaws.com/v1/meals/${receivedProposition.mealRequest.id}/picture)` }}
                         alt={receivedProposition.mealRequest.name}
                       />
                     </div>
@@ -103,9 +103,9 @@ const ExchangeTracking = ({
                     )}
 
                     <div className="exchangeTracking-description">
-                      <img
+                      <div
                         className="exchangeTracking-img"
-                        src={`http://ec2-54-145-80-6.compute-1.amazonaws.com/v1/meals/${askedProposition.mealOffer.id}/picture`}
+                        style={{ backgroundImage: `url(http://ec2-54-145-80-6.compute-1.amazonaws.com/v1/meals/${askedProposition.mealOffer.id}/picture)` }}
                         alt={askedProposition.mealOffer.name}
                       />
 
@@ -115,9 +115,9 @@ const ExchangeTracking = ({
                         {askedProposition.mealRequest.name}
                       </div>
 
-                      <img
+                      <div
                         className="exchangeTracking-img"
-                        src={`http://ec2-54-145-80-6.compute-1.amazonaws.com/v1/meals/${askedProposition.mealRequest.id}/picture`}
+                        style={{ backgroundImage: `url(http://ec2-54-145-80-6.compute-1.amazonaws.com/v1/meals/${askedProposition.mealRequest.id}/picture)` }}
                         alt={askedProposition.mealRequest.name}
                       />
                     </div>
