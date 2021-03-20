@@ -18,8 +18,21 @@
   height: 60vh;
   font-family: 'Gudea', sans-serif;
   box-shadow: black 0 2px 25px 3px;
+  animation:modalSlide 0.5s ease-out forwards;
+  transform: translateY(50%);
 }
 
+@keyframes modalSlide {
+from {
+  transform: scale(0.5);
+  opacity: 0;
+}
+
+to {
+  transform: scale(1);
+  opacity: 1;
+}
+}
 .signup-modale-close {
   display: none;
 } 

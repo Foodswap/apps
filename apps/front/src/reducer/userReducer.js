@@ -39,12 +39,16 @@ export default (state = initialState, action = {}) => {
     case MODAL_LOGIN_TOGGLE:
       return {
         ...state,
+        email: '',
+        password: '',
         isSignUpOpen: false,
         isLoginOpen: !state.isLoginOpen,
       };
     case MODAL_SIGN_UP_TOGGLE:
       return {
         ...state,
+        email: '',
+        password: '',
         isSignUpOpen: !state.isSignUpOpen,
         isLoginOpen: false,
         signUpIsValid: false,

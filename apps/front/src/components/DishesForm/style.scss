@@ -68,17 +68,19 @@ input:checked + .slider:before {
 
   &-page {
     background-color: #{vars.$coral};
-    height: 100vh;
+    min-height: calc(100vh - 188px);
     display: flex;
     font-size: 1.2rem;
+    align-items: center;
+    justify-content: center;
   }
 
   &-form-div {
     width: auto;
-    height: 50%;
+    height: fit-content;
+    // position: absolute;
     background-color: #{vars.$darkBlue};
     border-radius: 15px;
-    margin: 6rem auto;
     box-shadow: 0 12px 15px 0 #03030396, 0 17px 50px #0707079a;
   }
   &-title {

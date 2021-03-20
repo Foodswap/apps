@@ -18,11 +18,26 @@
   height: 50vh;
   font-family: 'Gudea', sans-serif;
   box-shadow: black 0 2px 25px 3px;
+  animation:modalSlide 0.5s ease-out forwards;
+  transform: translateY(50%);
+}
+
+@keyframes modalSlide {
+  from {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 .login-modale-close {
   display: none;
 } 
+
 
 .login-title {
   margin: 4em 1rem 1em 1.5em;
