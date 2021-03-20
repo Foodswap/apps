@@ -47,6 +47,8 @@
 @media screen and (max-width: 415px) {
 
   .information{
+    min-height: calc(100vh - 148px);
+    
     &-container {
      
       width: 85%;
