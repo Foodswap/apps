@@ -1,7 +1,7 @@
 import React from 'react';
 
 import './style.scss';
-import video from '../../assets/videos/home.mp4';
+import video from '../../assets/videos/video.mp4';
 import imageHeader from '../../assets/images/man-cooking-fresh-vegetables-on-pan.jpg';
 
 const DescriptionHomepage = () => (
