@@ -1,34 +1,33 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import './style.scss';
-import SearchForm from '../../containers/SearchForm';
 import { Link } from 'react-router-dom';
+import SearchForm from '../../containers/SearchForm';
 
 // !! TODO proptypes
 
-const Results = ({dishes, getResults, kitchenParam, dishParam, cityParam, }) => {
-
-useEffect(() => {
-  getResults(kitchenParam, dishParam, cityParam);
-}, [])
-;
-
+const Results = ({
+  dishes, getResults, kitchenParam, dishParam, cityParam,
+}) => {
+  useEffect(() => {
+    getResults(kitchenParam, dishParam, cityParam);
+  }, []);
   return (
-  <div> 
-    <SearchForm />
-    <div className="results-section">
+    <div>
+      <SearchForm />
+      <div className="results-section">
 
-    { dishes && (
-    <div className="results">
-      <h2 className="results-title">Le résultat de votre recherche</h2>
-      <div className="results-cards">
-        {
+        { dishes && (
+        <div className="results">
+          <h2 className="results-title">Le résultat de votre recherche</h2>
+          <div className="results-cards">
+            {
         dishes.map((dish) => {
           const linkUrl = `/v1/dish/${dish.id}`;
           return (
 
             <div className="results-card" key={dish.id}>
-              <img className="results-card-img" src={`http://ec2-54-145-80-6.compute-1.amazonaws.com/v1/meals/${dish.id}/picture`} alt="" />
+              <div className="results-card-img" style={{ backgroundImage: `url(http://ec2-54-145-80-6.compute-1.amazonaws.com/v1/meals/${dish.id}/picture)` }} />
               <h3 className="results-card-name">{dish.name}</h3>
               <p className="results-card-potion">{dish.portion} part(s)</p>
               <p className="results-card-author"> Fait par {dish.author.username}</p>
@@ -38,12 +37,12 @@ useEffect(() => {
           );
         })
       }
+          </div>
+        </div>
+        )}
       </div>
     </div>
-    )}
-    </div>
-  </div>
-  )
-}
+  );
+};
 Results.propTypes = {};
 export default Results;

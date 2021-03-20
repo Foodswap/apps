@@ -53,8 +53,11 @@
 
   .last-dishes-card-img {
     width: 100%;
-    height: auto;
+    height: 9em;
     border-radius: 15px;
+    object-fit: cover;
+    background-size: cover;
+    background-position: center center;
   }
 
   .last-dishes-card-name {
@@ -139,8 +142,11 @@
 
   .last-dishes-card-img {
     width: 100%;
-    height: auto;
     border-radius: 15px;
+    height: 9em;
+    object-fit: cover;
+    background-size: cover;
+    background-position: center center;
   }
 
   .last-dishes-card-name {
