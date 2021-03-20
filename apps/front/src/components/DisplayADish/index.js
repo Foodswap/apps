@@ -6,23 +6,24 @@ import UseModal from '../UseModale';
 import './style.scss';
 
 const DisplayADish = ({
-  dish, dishSwap, dishId, getOneDish, fetchMyDishesSwap
+  dish, dishSwap, dishId, getOneDish, fetchMyDishesSwap,
 }) => {
   useEffect(() => getOneDish(dishId), []);
   // useEffect(() => fetchMyDishesSwap(author.id), []);
-  const {isShowing, toggle} = UseModal();
+  const { isShowing, toggle } = UseModal();
 
   return (
     <div className="displayADish">
       { dish && (
         <div key={dish.id} className="displayADish-container">
-          <div className="displayADish-img-container">
-            <img src={`http://ec2-54-145-80-6.compute-1.amazonaws.com/v1/meals/${dish.id}/picture`} alt={dish.name} className="displayADish-img" />
-          </div>
+          <div
+            className="displayADish-img-container"
+            style={{ backgroundImage: `url(http://ec2-54-145-80-6.compute-1.amazonaws.com/v1/meals/${dish.id}/picture)` }}
+          />
           <div className="displayADish-right">
-            <h1 className="displayADish-right-title">{dish.name} <span className="displayADish-right-portion">{dish.portion} parts</span></h1>
+            <h1 className="displayADish-right-title">{dish.name} <br /><span className="displayADish-right-portion">{dish.portion} parts</span></h1>
             <p className="displayADish-right-author">Fait par {dish.author.username} à {dish.city}</p>
-        
+
             <div className="displayADish-ingredients">
               <h3 className="displayADish-ingredients-title">Ingrédients :</h3>
               <ul className="displayADish-ingredients-container">
@@ -36,17 +37,17 @@ const DisplayADish = ({
               </ul>
             </div>
             <div className="displayADish-description">
-                <h1 className="displayADish-description-title">Description du plat :</h1>
-                <p className="displayADish-description-text">{dish.description}</p>
+              <h1 className="displayADish-description-title">Description du plat :</h1>
+              <p className="displayADish-description-text">{dish.description}</p>
             </div>
             <button type="button" className="displayADish-button" onClick={toggle}>Proposer un échange</button>
-            <i></i>
+            <i />
             {/* <button type="button" className="displayADish-button" onClick={(event) => { toggle(event); fetchMyDishesSwap(event);}}>Swap</button> */}
-          </div>  
+          </div>
           <SwapModal
-          isShowing={isShowing}
-        hide={toggle}
-      />
+            isShowing={isShowing}
+            hide={toggle}
+          />
         </div>
       )}
     </div>
