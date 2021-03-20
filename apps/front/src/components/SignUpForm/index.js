@@ -78,7 +78,7 @@ const SignUp = ({
               className="signup-form-input"
               type="pseudo"
               name="pseudonym"
-              placeholder="pseudo"
+              placeholder="Votre pseudo"
               onChange={(evt) => {
                 handleInputChange(evt.target.value, evt.target.name);
               }}
@@ -89,7 +89,7 @@ const SignUp = ({
               className="signup-form-input"
               type="city"
               name="city"
-              placeholder="city"
+              placeholder="Votre ville"
               onChange={(evt) => {
                 handleInputChange(evt.target.value, evt.target.name);
               }}

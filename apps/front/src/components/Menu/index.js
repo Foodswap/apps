@@ -42,14 +42,14 @@ const Menu = ({
     <nav className="menu-links-logout">
       <NavLink
         exact
-        className="menu-link no-border"
+        className="menu-link-logout no-border"
         to=""
         onClick={signUpFormToggle}
       >
         Inscription
       </NavLink>
 
-      <NavLink exact className="menu-link no-border" to="" onClick={loginFormToggle}>
+      <NavLink exact className="menu-link-logout no-border" to="" onClick={loginFormToggle}>
         Connexion
       </NavLink>
     </nav>
