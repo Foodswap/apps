@@ -14,11 +14,16 @@
   font-family: 'Gudea', sans-serif;
   font-size: 1.2em;
 
+
   // &-container {
   //   margin-left: auto;
   // }
   &-page {
     background-color: #{vars.$coral};
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 188px);
+    display: flex;
     // min-height: 80vh;
   }
   &-panel {
