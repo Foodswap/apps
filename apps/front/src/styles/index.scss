@@ -5,6 +5,11 @@ body * {
   font-family: "Gudea", sans-serif;
 }
 
+.slick-slide img {
+  max-height: 18em;
+  object-fit: cover;
+}
+
 /* 
   // or you can import your own font
   @font-face {

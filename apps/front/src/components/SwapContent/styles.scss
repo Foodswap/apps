@@ -1,3 +1,6 @@
+@use 'src/styles/vars';
+@use 'sass:color';
+@import url(https://fonts.googleapis.com/css?family=Gudea:400,700);
 
 .swap-content-succes{
   color: white;
@@ -36,13 +39,23 @@
   width: 50px;
   background-color: transparent;
   transition: box-shadow 0.1s linear;
+  user-select: none;
+  cursor: pointer;
 }
 
 
-.swap-card-selected:active {
+.swap-card-selected:focus {
   box-shadow: none;
-  border: solid 1px white;
+  border: none;
+  background-color: #{vars.$coral};
+  outline: none !important;
+
+  .swap-card-name {
+    color: black;
+  }
 }
+
+
 
 .swap-card-img {
   width: 100%;
@@ -122,6 +135,7 @@
     font-size: 0.8rem;
   }
 
+
   .swap-card {
     border-radius: 10px;
     margin: 0;
@@ -134,6 +148,11 @@
   }
 
   .swap {
-    margin-top: 100px;
+    margin-top: 0;
+  }
+
+
+  .slick-slide img {
+    padding: 10px;
   }
 } 
