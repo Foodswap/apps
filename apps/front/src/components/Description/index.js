@@ -33,7 +33,7 @@ const Description = () => (
 
       <div className="welcome-paragraph">
         <p className="welcome-text">
-          Trouvez dès maintenant des plats juste à côté en renseignant la ville ou vous vous trouvez.
+          Trouvez dès maintenant des plats juste à côté en renseignant la ville où vous vous trouvez.
         </p>
       </div>
     </div>

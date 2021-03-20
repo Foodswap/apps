@@ -25,7 +25,7 @@ const ExchangeTracking = ({
 
           <div className="exchangeTracking-menuContainer">
             <ul className="exchangeTracking-menuContent">
-              <li className={activeTab === 'received' ? 'exchangeTracking-tab active' : 'exchangeTracking-tab'} onClick={() => getActiveTab('received')}>Mes demandes envoyés </li>
+              <li className={activeTab === 'received' ? 'exchangeTracking-tab active' : 'exchangeTracking-tab'} onClick={() => getActiveTab('received')}>Mes demandes envoyées </li>
               <li className={activeTab === 'asked' ? 'exchangeTracking-tab active' : 'exchangeTracking-tab'} onClick={() => getActiveTab('asked')}>Mes propositions reçues</li>
             </ul>
           </div>
@@ -128,18 +128,18 @@ const ExchangeTracking = ({
                       )}
                       { askedProposition.status === 1 && (
                       <div>
-                        <p className="exchangeTracking-actions-text-accept">{askedProposition.mealRequest.receiver.username} à accepté cet échange
+                        <p className="exchangeTracking-actions-text-accept">{askedProposition.mealRequest.receiver.username} a accepté cet échange
                           <a href={'mailto:"test@mail.fr"'} className="exchangeTracking-actions-buttonContact">Contact</a>
                         </p>
                       </div>
                       )}
                       {askedProposition.status === 2 && (
-                      <p>{askedProposition.mealRequest.receiver.username} à refusé cet échange</p>
+                      <p>{askedProposition.mealRequest.receiver.username} a refusé cet échange</p>
                       )}
                     </div>
 
                     <div className="exchangeTracking-dateContainer">
-                      <p className="exchangeTracking-dateContainer-text">Demande envoyé le</p>
+                      <p className="exchangeTracking-dateContainer-text">Demande envoyée le</p>
                       <p className="exchangeTracking-dateContainer-date">{format(new Date(askedProposition.date), 'dd-MM-yyyy')}</p>
                     </div>
                   </div>
