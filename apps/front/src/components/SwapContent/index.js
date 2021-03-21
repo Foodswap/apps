@@ -10,20 +10,14 @@ import './styles.scss';
 
 const SwapContent = ({ dishes, fetchMyDishesSwap, userLogged, getAskerDishId, isSelected, sendProposition, succesPropositionMsg, errorPropositionMsg }) => {
   useEffect(() => fetchMyDishesSwap(), []);
-  const styleSelected = isSelected ? "swap-card swap-card-selected" : "swap-card";
+  const styleSelected = isSelected ? 'swap-card swap-card-selected' : 'swap-card';
 
   const settings = {
-    className: "center",
+    className: 'center',
     centerMode: true,
-    centerPadding: "60px",
+    centerPadding: '60px',
     slidesToShow: 1,
-    // speed: 500,
-    // arrows: true,
-    // draggable: true,
-    // focusOnSelect: true,
-    //infinite: true,
-    // swipeToSlide: true,
-    dots: true
+    dots: true,
   };
 
   return (

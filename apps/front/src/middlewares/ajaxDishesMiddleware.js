@@ -255,7 +255,7 @@ export default (store) => (next) => (action) => {
       axios({
         method: 'get',
         // url: `http://localhost:3000/dishes?author.id=${infos.id}`,
-        url: `${process.env.API_URL}/meals/author/${infos.id}`,
+        url: `${process.env.API_URL}/meals/online/${infos.id}`,
       })
         .then((res) => {
           console.log(res.data);
