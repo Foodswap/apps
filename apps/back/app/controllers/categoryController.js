@@ -4,12 +4,20 @@ const categoryController = {
 
     getCategories: async (request, response) => {
         const type = request.params.type
+        const query = { 
+            where: {
+                type: type
+            }
+        };
+        
+        if (type === 'kitchen') {
+            query.order = [
+                ['name', 'ASC']
+            ];
+        }
+        
         try {
-            const categories = await Category.findAll({ 
-                where: {
-                    type:type
-                }
-            });
+            const categories = await Category.findAll(query);
 
             response
                 .status(200)
