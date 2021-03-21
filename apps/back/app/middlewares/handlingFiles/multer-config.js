@@ -24,5 +24,7 @@ module.exports = multer({
     if (!file) {
       cb(null, true)
     }
+    
+    cb(null, true)
   }
 }).single('picture');
