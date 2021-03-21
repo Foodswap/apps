@@ -204,7 +204,7 @@ const DishesForm = ({
             />
 
             <div className="meal-form-select">
-              { ((dishId && dish && dishData) || dishData) && (
+              { ((dishId && dish && dishData) || (!dishId && dishData)) && (
               <select
                 name="dish"
                 onChange={(evt) => onSetCategorySelect(evt.target.value, evt.target.name)}
@@ -225,7 +225,7 @@ const DishesForm = ({
               </select>
               )}
 
-              {((dishId && kitchen && kitchenData) || kitchenData) && (
+              {((dishId && kitchen && kitchenData) || (!dishId && kitchenData)) && (
               <select
                 name="kitchen"
                 onChange={(evt) => onSetCategorySelect(evt.target.value, evt.target.name)}
