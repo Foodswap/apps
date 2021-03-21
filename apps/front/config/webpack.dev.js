@@ -4,7 +4,7 @@ const Dotenv = require('dotenv-webpack');
 const paths = require('./paths');
 const common = require('./webpack.common.js');
 
-const port = 8080;
+const port = 4200;
 
 module.exports = merge(common, {
   mode: 'development',

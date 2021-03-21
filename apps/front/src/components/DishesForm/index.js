@@ -24,6 +24,7 @@ const DishesForm = ({
   author,
   dish,
   kitchen,
+  online,
   handleInputChange,
   onFormSubmit,
   onSetCategorySelect,
@@ -118,7 +119,7 @@ const DishesForm = ({
               id="picture"
               type="file"
               name="picture"
-              required
+              required={!dishId}
               accept="image/*"
               onChange={(evt) => {
                 const targetFile = evt.target.files[0];
@@ -131,7 +132,7 @@ const DishesForm = ({
               <span>Hors ligne</span>
 
               <label className="switch">
-                <input name="online" type="checkbox" onChange={changeOnline} />
+                <input name="online" type="checkbox" checked={online} onChange={changeOnline} />
                 <span className="slider round" />
               </label>
 

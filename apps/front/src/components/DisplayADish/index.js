@@ -18,7 +18,7 @@ const DisplayADish = ({
         <div key={dish.id} className="displayADish-container">
           <div
             className="displayADish-img-container"
-            style={{ backgroundImage: `url(http://ec2-54-145-80-6.compute-1.amazonaws.com/v1/meals/${dish.id}/picture)` }}
+            style={{ backgroundImage: `url(${process.env.API_URL}/meals/${dish.id}/picture)` }}
           />
           <div className="displayADish-right">
             <h1 className="displayADish-right-title">{dish.name} <br /><span className="displayADish-right-portion">{dish.portion} parts</span></h1>
@@ -65,7 +65,7 @@ DisplayADish.propTypes = {
     city: PropTypes.string,
     author: PropTypes.shape({
       id: PropTypes.number,
-      pseudonym: PropTypes.string,
+      username: PropTypes.string,
     }),
   }),
   dishSwap: PropTypes.func.isRequired,

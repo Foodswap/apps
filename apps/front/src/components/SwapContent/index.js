@@ -50,7 +50,7 @@ const SwapContent = ({ dishes, fetchMyDishesSwap, userLogged, getAskerDishId, is
                     console.log(dish.id);
                     getAskerDishId(dish.id);
                   }}>
-                    <img className="swap-card-img" src={`http://ec2-54-145-80-6.compute-1.amazonaws.com/v1/meals/${dish.id}/picture`} alt="" />
+                    <img className="swap-card-img" src={`${process.env.API_URL}/meals/${dish.id}/picture`} alt="" />
                     <h3 className="swap-card-name">{dish.name}</h3>
                     {/* <p className="swap-card-potionxx">{dish.portion} part(s)</p>
                     <p className="swap-card-authorxx"> Fait par {dish.author.pseudonym}</p>
