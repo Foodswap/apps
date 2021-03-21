@@ -81,7 +81,7 @@ const mealController = {
                     online: true
                 },
                 include: 'author',
-                limit: 6,
+                limit: 9,
                 order: [
                     ['created_date', 'DESC']
                 ]
