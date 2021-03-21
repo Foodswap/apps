@@ -1,21 +1,17 @@
-const {
-    Meal
-} = require('../models');
 const { Op } = require('sequelize');
 const sequelize = require('../database');
 
-
+const { Meal } = require('../models');
 
 const mealController = {
-
     createMeal: async (request, response) => {
-
         const mealToCreate = request.body;
 
-
         try {
+            if (request.file && request.file.filename) {
+                mealToCreate.picture_path = request.file.filename;
+            }
 
-            mealToCreate.picture_path = request.file.filename
             const createdMeal = await Meal.create(mealToCreate)
             await createdMeal.addIngredients(mealToCreate.ingredients.split(','));
             await createdMeal.addCategories(mealToCreate.categories.split(','));
@@ -28,7 +24,6 @@ const mealController = {
             }).then((meal) => {
                 meal.author.password = null;
                 response.status(201).json(meal);
-
             })
         } catch (error) {
             console.log(error);
@@ -82,6 +77,9 @@ const mealController = {
     getSixMeals: async (request, response) => {
         try {
             const sixMeals = await Meal.findAll({
+                where: {
+                    online: true
+                },
                 include: 'author',
                 limit: 6,
                 order: [
@@ -100,16 +98,29 @@ const mealController = {
         const dishId = request.params.dishId;
         const kitchenId = request.params.kitchenId;
         const cityName = request.params.city;
-        const sqlRequest = { where: {online: true, city: cityName, [Op.and]: [
-            sequelize.literal(`(EXISTS(SELECT 1 FROM meal_category_associate WHERE id_meal = "Meal".id AND id_category = ${dishId}))`),
-            sequelize.literal(`(EXISTS(SELECT 1 FROM meal_category_associate WHERE id_meal = "Meal".id AND id_category = ${kitchenId}))`)
-        ]}, include: ['author', {association: 'author', attributes: ['username']}]
-      
+        const sqlRequest = { 
+            where: {
+                online: true, 
+                city: {
+                    [Op.iLike]: `%${cityName}%`,
+                },
+                [Op.and]: [
+                    sequelize.literal(`(EXISTS(SELECT 1 FROM meal_category_associate WHERE id_meal = "Meal".id AND id_category = ${dishId}))`),
+                    sequelize.literal(`(EXISTS(SELECT 1 FROM meal_category_associate WHERE id_meal = "Meal".id AND id_category = ${kitchenId}))`)
+                ]
+            }, 
+            include: [
+                'author', 
+                { 
+                    association: 'author', 
+                    attributes: ['username']
+                }
+            ]
         }  
         
         try { 
             const mealSearch =  await Meal.findAll(sqlRequest)
-          response.status(200).json(mealSearch);
+            response.status(200).json(mealSearch);
         } catch (error) {
             console.trace(error);
             response.status(500)
@@ -119,20 +130,34 @@ const mealController = {
     updateMeal: async (request, response, next) => {
         const id = Number(request.params.id);
         const mealToUpdate = request.body;
+        
         try {
             const meal = await Meal.findByPk(id);
+            
             if (!meal) {
                 next();
             }
+
             for (const field in mealToUpdate) {
                 if (typeof meal[field] !== 'undefined') {
                 
                     meal[field] = mealToUpdate[field];
                 }
             };
-            meal.picture_path = request.file.filename
-            await meal.setIngredients(mealToUpdate.ingredients.split(','));
-            await meal.setCategories(mealToUpdate.categories.split(','));
+            
+            if (request.file) {
+                meal.picture_path = request.file.filename
+            }
+
+            if (mealToUpdate.ingredients.split(',').some(value => value)) {
+                await meal.setIngredients([]);
+                await meal.setIngredients(mealToUpdate.ingredients.split(','));
+            }
+            
+            if (mealToUpdate.categories.split(',').some(value => value)) {
+                await meal.setCategories([]);
+                await meal.setCategories(mealToUpdate.categories.split(','));
+            }
            
             await meal.save();
            Meal.findByPk(Number(meal.id), {
@@ -143,13 +168,11 @@ const mealController = {
         }).then((meal) => {
             meal.author.password = null;
             response.status(201).json(meal);
-
         })
 
         } catch(error) {
             console.log(error);
             response.status(500);
-
         }
     },
 

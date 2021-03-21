@@ -120,8 +120,6 @@ export default (state = initialState, action = {}) => {
         ingredients: action.payload.ingredients,
         dish: action.payload.categories.find((category) => category.type === 'dish').id,
         kitchen: action.payload.categories.find((category) => category.type === 'kitchen').id,
-        dishData: action.payload.dishData,
-        kitchenData: action.payload.kitchenData,
         online: action.payload.online,
         myDishesOnline: action.payload.myDishesOnline,
         selectedIngredients: action.payload.ingredients.map((ingredient) => ({ ...ingredient, label: ingredient.name, value: ingredient.id })),

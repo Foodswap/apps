@@ -63,7 +63,6 @@ module.exports = merge(common, {
     builtAt: true,
     hash: true,
   },
-
   optimization: {
     minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
     runtimeChunk: 'single',

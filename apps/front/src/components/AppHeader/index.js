@@ -1,4 +1,5 @@
-import React, { Link } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import './style.scss';
 
 import logo from '../../assets/images/logo-fooswap.png';
