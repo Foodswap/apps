@@ -1,0 +1,40 @@
+version: '3.5'
+
+services:
+  postgres:
+    container_name: foodswap-database
+    image: postgres
+    environment:
+      POSTGRES_USER: foodswap
+      POSTGRES_PASSWORD: 9vHejuf5YuTU2zFt
+      PGDATA: /data/postgres
+    volumes:
+       - postgres:/data/postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - postgres
+    restart: unless-stopped
+
+  pgadmin:
+    container_name: foodswap-pgadmin
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: pgadmin4@pgadmin.org
+      PGADMIN_DEFAULT_PASSWORD: admin
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+    volumes:
+       - pgadmin:/root/.pgadmin
+    networks:
+      - postgres
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+
+networks:
+  postgres:
+    driver: bridge
+    
+volumes:
+    postgres:
+    pgadmin:
