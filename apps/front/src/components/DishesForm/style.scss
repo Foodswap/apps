@@ -240,7 +240,7 @@ input#picture {
   .meal
   {
     &-page {
-      height: 120vh;
+      min-height: 120vh;
       display: flex;
       flex-direction: column;
       padding-bottom: 0.7rem;

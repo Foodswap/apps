@@ -125,18 +125,20 @@
     }
 
     &-username {
-      // padding-right: 1rem;
+      position: absolute;
+      right: 10px;
     }
 
     &-userLogo {
       width: 1.3rem;
-      margin: 0 0.6rem 0 0;
+      margin: 0;
     }
 
     &-textForUser {
-      font-size: 0.9rem;
+      font-size: .9rem;
       margin: 0;
-      padding-right: 2rem;
+      width: 5em;
+      text-align: center;
     }
     
     &-logoutButton {

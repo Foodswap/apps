@@ -114,7 +114,7 @@ export default (store) => (next) => (action) => {
         .catch((error) => {
           console.log(error);
         });
-    }
+    } break;
     // case FETCH_CATEGORIES: {
     //   console.log("action payload " + action.payload);
     //   axios({

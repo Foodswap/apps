@@ -88,6 +88,27 @@
     transition: all 0.3s ease-in;
   }
 
+  &-tag {
+    &-online {
+      background: #80ca80;
+      color: green;
+      font-weight: 700;
+      border-radius: 99px;
+      width: fit-content;
+      margin: 20px auto 0 auto;
+      padding: 10px;
+    }
+    
+    &-offline {
+      background: #ca8080;
+      color: rgb(128, 0, 0);
+      font-weight: 700;
+      border-radius: 99px;
+      width: fit-content;
+      margin: 20px auto 0 auto;
+      padding: 10px;
+    }
+  }
 }
 
 

@@ -27,6 +27,12 @@ const MyDishes = ({
             <div className="myDishes-dishText">
               <h2 className="myDishes-dishTitle">{dish.name}</h2>
               <p className="myDishes-dishDescription">{dish.description}</p>
+              {dish.online && (
+                <p className="myDishes-tag-online">EN LIGNE</p>
+              )}
+              {!dish.online && (
+                <p className="myDishes-tag-offline">HORS LIGNE</p>
+              )}
             </div>
 
             <div className="myDishes-allButton">

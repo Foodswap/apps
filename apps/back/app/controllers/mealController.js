@@ -8,7 +8,10 @@ const mealController = {
         const mealToCreate = request.body;
 
         try {
-            mealToCreate.picture_path = request.file.filename
+            if (request.file && request.file.filename) {
+                mealToCreate.picture_path = request.file.filename;
+            }
+
             const createdMeal = await Meal.create(mealToCreate)
             await createdMeal.addIngredients(mealToCreate.ingredients.split(','));
             await createdMeal.addCategories(mealToCreate.categories.split(','));
@@ -98,7 +101,9 @@ const mealController = {
         const sqlRequest = { 
             where: {
                 online: true, 
-                city: cityName, 
+                city: {
+                    [Op.iLike]: `%${cityName}%`,
+                },
                 [Op.and]: [
                     sequelize.literal(`(EXISTS(SELECT 1 FROM meal_category_associate WHERE id_meal = "Meal".id AND id_category = ${dishId}))`),
                     sequelize.literal(`(EXISTS(SELECT 1 FROM meal_category_associate WHERE id_meal = "Meal".id AND id_category = ${kitchenId}))`)
