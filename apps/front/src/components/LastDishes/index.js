@@ -20,7 +20,7 @@ const LastDishes = ({ dishes, getListDishes }) => {
                 <div className="last-dishes-card" key={dish.id}>
                   <div className="last-dishes-card-img" style={{ backgroundImage: `url(${process.env.API_URL}/meals/${dish.id}/picture)` }} />
                   <h3 className="last-dishes-card-name">{dish.name}</h3>
-                  <p className="last-dishes-card-potion">{dish.portion} part(s)</p>
+                  <p className="last-dishes-card-potion">{dish.portion} part{dish.portion > 1 ? 's' : ''}</p>
                   {/* <p className="last-dishes-card-author"> Fait par {dish.author.username}</p> */}
                   <p className="last-dishes-card-city">
                     {dish.city}

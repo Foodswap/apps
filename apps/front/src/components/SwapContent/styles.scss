@@ -34,7 +34,6 @@
 .swap-card {
   line-height: 1.5;
   border-radius: 10px;
-  margin: 1rem;
   padding: 2rem;
   width: 50px;
   background-color: transparent;
@@ -54,8 +53,6 @@
     color: black;
   }
 }
-
-
 
 .swap-card-img {
   width: 100%;
@@ -123,10 +120,7 @@
   }
 
   .swap-card {
-
-    margin: 0.2rem;
     padding: 0.2rem;
-
   }
 } 
 
@@ -150,9 +144,10 @@
   .swap {
     margin-top: 0;
   }
-
-
+  
   .slick-slide img {
     padding: 10px;
+    height: 11em;
+    max-width: 12em;
   }
 } 

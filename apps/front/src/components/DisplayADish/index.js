@@ -21,7 +21,7 @@ const DisplayADish = ({
             style={{ backgroundImage: `url(${process.env.API_URL}/meals/${dish.id}/picture)` }}
           />
           <div className="displayADish-right">
-            <h1 className="displayADish-right-title">{dish.name} <br /><span className="displayADish-right-portion">{dish.portion} parts</span></h1>
+            <h1 className="displayADish-right-title">{dish.name} <br /><span className="displayADish-right-portion">{dish.portion} part{dish.portion > 1 ? 's' : ''}</span></h1>
             <p className="displayADish-right-author">Fait par {dish.author.username} à {dish.city}</p>
 
             <div className="displayADish-ingredients">
