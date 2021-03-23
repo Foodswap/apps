@@ -65,4 +65,4 @@ jobs:
         SOURCE: apps/front/dist/*
         REMOTE_HOST: ${{ secrets.INT_REMOTE_HOST }}
         REMOTE_USER: ${{ secrets.INT_REMOTE_USER }}
-        TARGET: ${{ secrets.INT_REMOTE_TARGET }}
+        TARGET: ${{ secrets.INT_REMOTE_FRONT_TARGET }}
