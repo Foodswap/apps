@@ -1,6 +1,9 @@
 name: Front - push on dev
 
-on: [push]
+on:
+  push:
+    branches:
+      - dev
 
 jobs:
   lint:
