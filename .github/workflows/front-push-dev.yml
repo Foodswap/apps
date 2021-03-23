@@ -35,7 +35,7 @@ jobs:
       run: cp .env.dist .env
     - uses: cschleiden/replace-tokens@v1
       with:
-        files: '.env'
+        files: './apps/front/.env'
       env:
         API_URL: ${{ secrets.INT_FRONT_API_URL }}
     - name: Run build task
