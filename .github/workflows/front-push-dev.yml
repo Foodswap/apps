@@ -3,21 +3,6 @@ name: Front CI
 on: [push]
 
 jobs:
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v1
-    - name: Install Node.js
-      uses: actions/setup-node@v1
-      with:
-        node-version: '15.x'
-    - name: Install npm dependencies
-      working-directory: ./apps/front
-      run: npm install
-    - name: Check the lint
-      working-directory: ./apps/front
-      run: npm run lint
-
   build:
     needs: lint
     runs-on: ubuntu-latest
