@@ -1,4 +1,4 @@
-name: Front CI
+name: Front - push on dev
 
 on:
   push:
