@@ -8,14 +8,11 @@ import {
   SEND_FORM_RECIPE_UP_ERROR,
   CHANGE_STATUS,
   FETCH_INGREDIENTS_SUCCES,
-  HANDLE_MULTI_SELECT,
   SET_INGREDIENT,
   FETCH_TYPE_DISH_SUCCES,
   FETCH_TYPE_KITCHEN_SUCCES,
-  FETCH_MY_DISHES_SWAP_SUCCES,
   UPDATE_A_DISH_TO_EDIT,
   CLEAR_DISH_INFORMATIONS,
-  // CANCEL_SUCCESS_DISH,
   HANDLE_UPDATE_PICTURE,
 } from '../actions/dishesForm';
 
@@ -42,7 +39,6 @@ const initialState = {
   kitchenData: null,
   myDishesOnline: null,
   selectedIngredients: [],
-  // imgIcon: 'https://img.icons8.com/carbon-copy/2x/meal.png',
 };
 export default (state = initialState, action = {}) => {
   switch (action.type) {
@@ -89,7 +85,11 @@ export default (state = initialState, action = {}) => {
     case FETCH_INGREDIENTS_SUCCES:
       return {
         ...state,
-        ingredientsData: action.payload.map((ingredient) => ({ ...ingredient, label: ingredient.name, value: ingredient.id })),
+        ingredientsData: action.payload.map((ingredient) => ({
+          ...ingredient,
+          label: ingredient.name,
+          value: ingredient.id,
+        })),
       };
     case SET_INGREDIENT:
       return {
@@ -122,7 +122,11 @@ export default (state = initialState, action = {}) => {
         kitchen: action.payload.categories.find((category) => category.type === 'kitchen').id,
         online: action.payload.online,
         myDishesOnline: action.payload.myDishesOnline,
-        selectedIngredients: action.payload.ingredients.map((ingredient) => ({ ...ingredient, label: ingredient.name, value: ingredient.id })),
+        selectedIngredients: action.payload.ingredients.map((ingredient) => ({
+          ...ingredient,
+          label: ingredient.name,
+          value: ingredient.id,
+        })),
         previewPicture: `${process.env.API_URL}/meals/${action.payload.id}/picture`,
       };
     case CLEAR_DISH_INFORMATIONS: return {
@@ -148,12 +152,7 @@ export default (state = initialState, action = {}) => {
       myDishesOnline: null,
       selectedIngredients: [],
     };
-      /*     case CANCEL_SUCCESS_DISH: return {
-      ...state,
-    }; */
     case HANDLE_UPDATE_PICTURE: {
-      console.log(action);
-
       return {
         ...state,
         previewPicture: action.payload,

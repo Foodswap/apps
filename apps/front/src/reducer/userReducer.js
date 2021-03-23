@@ -66,7 +66,7 @@ export default (state = initialState, action = {}) => {
         password: action.payload.password,
         pseudonym: action.payload.username,
         city: action.payload.city,
-     
+
       };
     case LOGIN_SUCCES:
       return {
@@ -77,7 +77,7 @@ export default (state = initialState, action = {}) => {
         password: '',
         isLogged: true,
         isLoginOpen: false,
-        
+
         infos: {
           token: action.payload.token,
           id: action.payload.user.id,
