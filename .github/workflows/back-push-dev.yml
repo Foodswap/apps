@@ -1,4 +1,4 @@
-name: Front - push on dev
+name: Back - push on dev
 
 on: [push]
 
@@ -32,10 +32,10 @@ jobs:
       run: npm install
     - name: Copy the env
       working-directory: ./apps/back
-      run: cp .env.dist .env
+      run: cp .env.dist env
     - uses: cschleiden/replace-tokens@v1
       with:
-        files: '.env'
+        files: 'env'
       env:
         PG_URL: ${{ secrets.INT_BACK_PG_URL }}
         ACCESS_TOKEN_SECRET: ${{ secrets.INT_BACK_ACCESS_TOKEN_SECRET }}
@@ -50,3 +50,11 @@ jobs:
         REMOTE_HOST: ${{ secrets.INT_REMOTE_HOST }}
         REMOTE_USER: ${{ secrets.INT_REMOTE_USER }}
         TARGET: ${{ secrets.INT_REMOTE_BACK_TARGET }}
+        EXCLUDE: '/node_modules/, package-lock.json'
+    - name: Move env and restart pm2
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.INT_REMOTE_HOST }}
+        username: ${{ secrets.INT_REMOTE_USER }}
+        key: ${{ secrets.INT_SSH_PRIVATE_KEY }}
+        script: cd ${{ secrets.INT_REMOTE_BACK_TARGET }} && npm i && mv env .env && pm2 restart all
