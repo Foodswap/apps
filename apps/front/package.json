@@ -1,5 +1,6 @@
 {
   "name": "foodswap",
+  "description": "Front app of FoodSwap",
   "version": "0.0.1",
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack serve --config config/webpack.dev.js",
@@ -52,11 +53,12 @@
     "webpack": "^5.15.0",
     "webpack-cli": "^4.3.1",
     "webpack-dev-server": "^3.11.2",
-    "webpack-merge": "^5.7.3"
-  },
-  "dependencies": {
+    "webpack-merge": "^5.7.3",
     "@commitlint/cli": "^7.5.2",
     "@commitlint/config-conventional": "^7.5.0",
+    "husky": "^5.2.0"
+  },
+  "dependencies": {
     "@material-ui/core": "^4.11.3",
     "axios": "^0.21.1",
     "commitizen": "^4.2.3",
@@ -64,7 +66,6 @@
     "dotenv-webpack": "^7.0.1",
     "express": "^4.17.1",
     "html-loader": "^2.1.2",
-    "husky": "^5.2.0",
     "install": "^0.13.0",
     "npm": "^7.6.3",
     "prop-types": "^15.7.2",

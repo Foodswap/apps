@@ -1,11 +1,13 @@
 {
-  "name": "back",
-  "version": "1.0.0",
+  "name": "foodswap-api",
+  "description": "Api of FoodSwap",
+  "version": "0.0.1",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "deploy": "sqitch deploy db:pg:foodswap",
-    "start": "node index.js"
+    "start": "node index.js",
+    "commit": "cz"
   },
   "keywords": [],
   "author": "",
@@ -26,5 +28,16 @@
     "pg": "^8.5.1",
     "sequelize": "^6.5.0"
   },
-  "description": ""
+  "devDependencies": {
+    "cz-conventional-changelog": "^3.3.0",
+    "git-cz": "^4.7.6",
+    "@commitlint/cli": "^7.5.2",
+    "@commitlint/config-conventional": "^7.5.0",
+    "husky": "^5.2.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  }
 }
