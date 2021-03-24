@@ -1,7 +1,6 @@
 import axios from 'axios';
 // // import { APP_INIT } from '../actions';
 import { toast } from 'react-toastify';
-import data from '../../dataUser';
 
 import {
   OPEN_OR_CLOSE_MENU_BURGER,

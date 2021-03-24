@@ -1,4 +1,4 @@
-version: '3.5'
+version: "3.5"
 
 services:
   postgres:
@@ -9,7 +9,8 @@ services:
       POSTGRES_PASSWORD: 9vHejuf5YuTU2zFt
       PGDATA: /data/postgres
     volumes:
-       - postgres:/data/postgres
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - postgres:/data/postgres
     ports:
       - "5432:5432"
     networks:
@@ -22,9 +23,9 @@ services:
     environment:
       PGADMIN_DEFAULT_EMAIL: pgadmin4@pgadmin.org
       PGADMIN_DEFAULT_PASSWORD: admin
-      PGADMIN_CONFIG_SERVER_MODE: 'False'
+      PGADMIN_CONFIG_SERVER_MODE: "False"
     volumes:
-       - pgadmin:/root/.pgadmin
+      - pgadmin:/root/.pgadmin
     networks:
       - postgres
     ports:
@@ -34,7 +35,7 @@ services:
 networks:
   postgres:
     driver: bridge
-    
+
 volumes:
-    postgres:
-    pgadmin:
+  postgres:
+  pgadmin:
