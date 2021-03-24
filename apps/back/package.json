@@ -1,10 +1,12 @@
 {
-  "name": "back",
-  "version": "1.0.0",
+  "name": "foodswap-api",
+  "description": "Api of FoodSwap",
+  "version": "0.0.1",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "deploy": "sqitch deploy db:pg:foodswap",
+    "commit": "cz",
     "start": "node src/index.js",
     "lint": "eslint src/**/*.js",
     "lint:fix": "eslint --fix src/**/*.js"
@@ -29,11 +31,20 @@
     "pg": "^8.5.1",
     "sequelize": "^6.5.0"
   },
-  "description": "",
   "devDependencies": {
+    "cz-conventional-changelog": "^3.3.0",
+    "git-cz": "^4.7.6",
+    "@commitlint/cli": "^7.5.2",
+    "@commitlint/config-conventional": "^7.5.0",
+    "husky": "^5.2.0",
     "eslint": "^7.22.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-plugin-jsx-a11y": "^6.4.1"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
   }
 }
