@@ -2,11 +2,13 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import './style.scss';
 
+const year = new Date().getFullYear();
+
 const Footer = () => (
   <div className="footer">
     <div className="footer-content">
       <span>
-        © 2021 Copyright
+        © {year} - FoodSwap
       </span>
     </div>
 
