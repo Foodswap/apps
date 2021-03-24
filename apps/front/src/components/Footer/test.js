@@ -10,8 +10,6 @@ describe('<Footer />', () => {
     </MemoryRouter>,
   );
 
-  console.log(container.html());
-
   it('should mount the component', () => {
     expect(container.find('Footer').exists()).toBe(true);
   });
