@@ -3,18 +3,21 @@ const connection = require('../database');
 
 class Category extends Model {}
 
-Category.init({
+Category.init(
+  {
     type: {
-        type: DataTypes.TEXT
+      type: DataTypes.TEXT,
     },
 
     name: {
-        type: DataTypes.TEXT
-    }
-}, {
+      type: DataTypes.TEXT,
+    },
+  },
+  {
     sequelize: connection,
     tableName: 'category',
-    timestamps: false
-});
+    timestamps: false,
+  },
+);
 
 module.exports = Category;
