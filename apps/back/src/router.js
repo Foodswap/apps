@@ -19,6 +19,7 @@ const middlewareHandlingFiles = require('./middlewares/handlingFiles/multer-conf
 /**
  * Users routes
  */
+router.get('/author/:id', authorController.getOneAuthor);
 router.post('/signup', middlewareValidation(schemas.signup), authorController.signup);
 router.post('/login', middlewareValidation(schemas.login), authorController.login);
 

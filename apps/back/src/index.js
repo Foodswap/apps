@@ -18,7 +18,10 @@ const corsOption = {
   optionsSuccessStatus: 204,
   exposedHeaders: 'Authorization',
 };
-const port = process.env.PORT || 3000;
+const port = process.env.NODE_ENV === 'test'
+  ? 5555
+  : process.env.PORT || 3000
+;
 
 // Globals middleware
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms'));
@@ -27,7 +30,11 @@ app.use(express.json());
 
 // Start server
 app.use('/v1', router);
-app.listen(port, () => {
-  // eslint-disable-next-line no-console
-  console.log(`http://localhost:${port}`);
+const server = app.listen(port, () => {
+  if (process.env.NODE_ENV !== 'test') {
+    // eslint-disable-next-line no-console
+    console.log(`http://localhost:${port}`);
+  }
 });
+
+module.exports = server;

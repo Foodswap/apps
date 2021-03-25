@@ -8,6 +8,7 @@ const sequelize = process.env.NODE_ENV === 'test'
   ? new Sequelize({
     dialect: 'sqlite',
     storage: './db.test.sqlite',
+    logging: false,
     define: {
       underscored: true,
       timestamps: false,
