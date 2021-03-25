@@ -4,12 +4,21 @@ const {
   Author, Category, Ingredient, Meal, Swap,
 } = require('./models');
 
-const sequelize = new Sequelize(process.env.PG_URL, {
-  define: {
-    underscored: true,
-    timestamps: false,
-  },
-});
+const sequelize = process.env.production
+  ? new Sequelize(process.env.PG_URL, {
+    define: {
+      underscored: true,
+      timestamps: false,
+    },
+  })
+  : new Sequelize({
+    dialect: 'sqlite',
+    storage: './db.test.sqlite',
+    define: {
+      underscored: true,
+      timestamps: false,
+    },
+  });
 
 const models = {
   Author: Author.init(sequelize, Sequelize),
@@ -26,6 +35,7 @@ Object.values(models)
 const db = {
   ...models,
   sequelize,
+  Sequelize,
 };
 
 module.exports = db;
