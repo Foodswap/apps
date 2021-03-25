@@ -5,10 +5,19 @@ const Author = require('../models/author');
 const authorController = {
   getOneAuthor: async (request, response) => {
     try {
-      const author = await Author.findByPk(Number(request.params.id));
-      response.status(200).json(author);
+      const author = await Author.findByPk(Number(request.params.id), {
+        attributes: {
+          exclude: ['password'],
+        },
+      });
+
+      if (author) {
+        response.status(200).json(author);
+      } else {
+        response.status(404).json({ error: 404, message: 'User not found' });
+      }
     } catch (err) {
-      response.status(404).json('User not found');
+      response.status(500).json(err);
     }
   },
 

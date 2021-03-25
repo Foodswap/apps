@@ -7,9 +7,9 @@ services:
     environment:
       POSTGRES_USER: foodswap
       POSTGRES_PASSWORD: 9vHejuf5YuTU2zFt
+      POSTGRES_DB: foodswap
       PGDATA: /data/postgres
     volumes:
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
       - postgres:/data/postgres
     ports:
       - "5432:5432"

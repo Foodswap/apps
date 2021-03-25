@@ -178,11 +178,10 @@ const DishesForm = ({
               value={city}
             />
 
-            { ((!dishId && ingredientsData.length) || (dishId && ingredientsData.length && selectedIngredients.length)) && (
+            { ingredientsData.length && (
               <Select
                 name="ingredients"
                 placeholder="Ingrédients"
-                // styles={customStyles}
                 components={animatedSelect}
                 options={ingredientsData}
                 isMulti
@@ -204,7 +203,7 @@ const DishesForm = ({
             />
 
             <div className="meal-form-select">
-              { ((dishId && dish && dishData) || (!dishId && dishData)) && (
+              { dishData && (
               <select
                 name="dish"
                 onChange={(evt) => onSetCategorySelect(evt.target.value, evt.target.name)}
@@ -225,12 +224,12 @@ const DishesForm = ({
               </select>
               )}
 
-              {((dishId && kitchen && kitchenData) || (!dishId && kitchenData)) && (
+              { kitchenData && (
               <select
                 name="kitchen"
                 onChange={(evt) => onSetCategorySelect(evt.target.value, evt.target.name)}
                 className="meal-category"
-                value={kitchen || ''}
+                defaultValue={kitchen || ''}
                 required
               >
                 <option disabled selected value="">Type de cuisine</option>
@@ -250,14 +249,10 @@ const DishesForm = ({
               )}
             </div>
 
-            {/* { isSucces &&
-              <Redirect to="/v1/mydishes" />
-            } */}
-
             { isError && (
-
-            <p>Erreur sur votre formulaire </p>
+              <p>Erreur sur votre formulaire </p>
             )}
+
             <div className="meal-form-buttons">
               <Link className="meal-form-submit fix-flex" to="/v1/mydishes"> Annuler </Link>
               <button className="meal-form-submit" type="submit" onClick={() => sendFormRecipeUp()}> Valider </button>

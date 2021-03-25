@@ -118,15 +118,21 @@ export default (state = initialState, action = {}) => {
         city: action.payload.city,
         author: action.payload.author.id,
         ingredients: action.payload.ingredients,
-        dish: action.payload.categories.find((category) => category.type === 'dish').id,
-        kitchen: action.payload.categories.find((category) => category.type === 'kitchen').id,
+        dish: action.payload.categories.length
+          ? action.payload.categories.find((category) => category.type === 'dish').id
+          : '',
+        kitchen: action.payload.categories.length
+          ? action.payload.categories.find((category) => category.type === 'kitchen').id
+          : '',
         online: action.payload.online,
         myDishesOnline: action.payload.myDishesOnline,
-        selectedIngredients: action.payload.ingredients.map((ingredient) => ({
-          ...ingredient,
-          label: ingredient.name,
-          value: ingredient.id,
-        })),
+        selectedIngredients: action.payload.ingredients.length
+          ? action.payload.ingredients.map((ingredient) => ({
+            ...ingredient,
+            label: ingredient.name,
+            value: ingredient.id,
+          }))
+          : [],
         previewPicture: `${process.env.API_URL}/meals/${action.payload.id}/picture`,
       };
     case CLEAR_DISH_INFORMATIONS: return {

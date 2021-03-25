@@ -11,7 +11,9 @@
     "clean:all": "rm -rf dist node_modules yarn.lock package-lock.json",
     "start-fake-api": "json-server --watch db.json",
     "start:prod": "http-server -p 80 -s dist",
-    "commit": "cz"
+    "commit": "cz",
+    "test": "jest",
+    "test:coverage": "jest --collect-coverage"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
@@ -19,6 +21,8 @@
     "@babel/plugin-proposal-object-rest-spread": "^7.12.1",
     "@babel/preset-env": "^7.12.11",
     "@babel/preset-react": "^7.12.10",
+    "@commitlint/cli": "^7.5.2",
+    "@commitlint/config-conventional": "^7.5.0",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.2",
     "bundle-stats-webpack-plugin": "^2.5.0",
@@ -39,6 +43,8 @@
     "git-cz": "^4.7.6",
     "html-webpack-plugin": "^4.5.1",
     "http-server": "^0.12.3",
+    "husky": "^5.2.0",
+    "jest": "^26.6.3",
     "json-server": "^0.16.3",
     "mini-css-extract-plugin": "^1.3.4",
     "optimize-css-assets-webpack-plugin": "^5.0.4",
@@ -52,17 +58,18 @@
     "webpack": "^5.15.0",
     "webpack-cli": "^4.3.1",
     "webpack-dev-server": "^3.11.2",
-    "webpack-merge": "^5.7.3",
-    "@commitlint/cli": "^7.5.2",
-    "@commitlint/config-conventional": "^7.5.0",
-    "husky": "^5.2.0"
+    "webpack-merge": "^5.7.3"
   },
   "dependencies": {
     "@material-ui/core": "^4.11.3",
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.6.0",
     "axios": "^0.21.1",
     "commitizen": "^4.2.3",
     "date-fns": "^2.19.0",
     "dotenv-webpack": "^7.0.1",
+    "enzyme": "^3.11.0",
+    "enzyme-context": "^1.1.2",
+    "enzyme-context-react-router-4": "^2.1.0",
     "express": "^4.17.1",
     "html-loader": "^2.1.2",
     "install": "^0.13.0",
@@ -87,5 +94,18 @@
     "commitizen": {
       "path": "cz-conventional-changelog"
     }
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/tests/__mocks__/fileMock.js",
+      "\\.(css|scss|less)$": "<rootDir>/tests/__mocks__/styleMock.js"
+    },
+    "setupFilesAfterEnv": [
+      "./tests/setup.js"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,ts,tsx}",
+      "!<rootDir>/node_modules/"
+    ]
   }
 }

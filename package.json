@@ -4,14 +4,24 @@
   "main": "index.js",
   "dependencies": {
     "concurrently": "^6.0.0",
-    "wait-on": "^5.3.0"
+    "wait-on": "^5.3.0",
+    "@commitlint/cli": "^7.5.2",
+    "@commitlint/config-conventional": "^7.5.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "git-cz": "^4.7.6",
+    "husky": "^5.2.0"
   },
-  "devDependencies": {},
   "scripts": {
     "start": "concurrently -n docker,api,app \"npm:start:docker\" \"npm:start:back\" \"npm:start:front\"",
     "start:front": "wait-on tcp:3000 && npm start --prefix apps/front",
     "start:back": "wait-on tcp:5432 && npm start --prefix apps/back",
-    "start:docker": "docker-compose up"
+    "start:docker": "docker-compose up",
+    "commit": "cz"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
   },
   "repository": {
     "type": "git",

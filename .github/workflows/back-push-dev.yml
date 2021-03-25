@@ -6,58 +6,42 @@ on:
       - dev
 
 jobs:
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v1
-    - name: Install Node.js
-      uses: actions/setup-node@v1
-      with:
-        node-version: '15.x'
-    - name: Install npm dependencies
-      working-directory: ./apps/back
-      run: npm install
-    - name: Check the lint
-      working-directory: ./apps/back
-      run: npm run lint
-        
   deploy:
-    needs: lint
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
-    - name: Install Node.js
-      uses: actions/setup-node@v1
-      with:
-        node-version: '15.x'
-    - name: Install npm dependencies
-      working-directory: ./apps/back
-      run: npm install
-    - name: Copy the env
-      working-directory: ./apps/back
-      run: cp .env.dist env
-    - uses: cschleiden/replace-tokens@v1
-      with:
-        files: './apps/back/env'
-      env:
-        PG_URL: ${{ secrets.INT_BACK_PG_URL }}
-        ACCESS_TOKEN_SECRET: ${{ secrets.INT_BACK_ACCESS_TOKEN_SECRET }}
-        PATH_PICTURE: ${{ secrets.INT_BACK_PATH_PICTURE }}
-        PORT: ${{ secrets.INT_BACK_PORT }}
-    - name: Deploy to Staging server
-      uses: easingthemes/ssh-deploy@v2.1.5
-      env:
-        SSH_PRIVATE_KEY: ${{ secrets.INT_SSH_PRIVATE_KEY }}
-        ARGS: "-avzr --delete"
-        SOURCE: apps/back/*
-        REMOTE_HOST: ${{ secrets.INT_REMOTE_HOST }}
-        REMOTE_USER: ${{ secrets.INT_REMOTE_USER }}
-        TARGET: ${{ secrets.INT_REMOTE_BACK_TARGET }}
-        EXCLUDE: '/node_modules/, package-lock.json'
-    - name: Move env and restart pm2
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.INT_REMOTE_HOST }}
-        username: ${{ secrets.INT_REMOTE_USER }}
-        key: ${{ secrets.INT_SSH_PRIVATE_KEY }}
-        script: cd ${{ secrets.INT_REMOTE_BACK_TARGET }} && npm i && mv env .env && pm2 restart all
+      - uses: actions/checkout@v1
+      - name: Install Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: "15.x"
+      - name: Install npm dependencies
+        working-directory: ./apps/back
+        run: npm install
+      - name: Copy the env
+        working-directory: ./apps/back
+        run: cp .env.dist env
+      - uses: cschleiden/replace-tokens@v1
+        with:
+          files: "./apps/back/env"
+        env:
+          PG_URL: ${{ secrets.INT_BACK_PG_URL }}
+          ACCESS_TOKEN_SECRET: ${{ secrets.INT_BACK_ACCESS_TOKEN_SECRET }}
+          PATH_PICTURE: ${{ secrets.INT_BACK_PATH_PICTURE }}
+          PORT: ${{ secrets.INT_BACK_PORT }}
+      - name: Deploy to Staging server
+        uses: easingthemes/ssh-deploy@v2.1.5
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.INT_SSH_PRIVATE_KEY }}
+          ARGS: "-avzr --delete"
+          SOURCE: apps/back/*
+          REMOTE_HOST: ${{ secrets.INT_REMOTE_HOST }}
+          REMOTE_USER: ${{ secrets.INT_REMOTE_USER }}
+          TARGET: ${{ secrets.INT_REMOTE_BACK_TARGET }}
+          EXCLUDE: "/node_modules/, package-lock.json"
+      - name: Move env and restart pm2
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.INT_REMOTE_HOST }}
+          username: ${{ secrets.INT_REMOTE_USER }}
+          key: ${{ secrets.INT_SSH_PRIVATE_KEY }}
+          script: cd ${{ secrets.INT_REMOTE_BACK_TARGET }} && npm i && mv env .env && pm2 restart all
