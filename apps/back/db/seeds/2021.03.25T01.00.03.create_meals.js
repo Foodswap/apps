@@ -1,3 +1,5 @@
+const fs = require('fs');
+
 const seedMeals = [
   {
     id: 1, name: 'tartare de saumon', description: 'saumon cru', created_date: '2021-03-21T15:49:31.39882+00:00', portion: 1, city: 'paris', online: true, author_id: 1, picture_path: '1616341771254.jpg',
@@ -99,6 +101,13 @@ const seedMeals = [
 
 async function up({ context: queryInterface }) {
   await queryInterface.bulkInsert('meal', seedMeals);
+
+  seedMeals.forEach((meal) => {
+    fs.copyFile(`${__dirname}/assets/${meal.picture_path}`, `${__dirname}/../../assets/${meal.picture_path}`, (err) => {
+      if (err) throw err;
+      console.log(`${meal.picture_path} was copied for meal ${meal.name}`);
+    });
+  });
 }
 
 async function down({ context: queryInterface }) {
