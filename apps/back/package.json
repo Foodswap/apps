@@ -12,7 +12,7 @@
     "migrate:down": "node db/migrator down",
     "seed:up": "node db/seeder up",
     "seed:down": "node db/seeder down",
-    "test:migrate:clean": "rm db.test.sqlite",
+    "test:migrate:clean": "rm -f db.test.sqlite",
     "test:migrate:up": "NODE_ENV=test node db/migrator up",
     "test:migrate:down": "NODE_ENV=test node db/migrator down",
     "test:seed:up": "NODE_ENV=test node db/seeder up",
