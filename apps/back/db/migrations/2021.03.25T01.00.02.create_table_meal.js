@@ -32,6 +32,10 @@ async function up({ context: queryInterface }) {
       type: Sequelize.BOOLEAN,
       allowNull: false,
     },
+    picture_path: {
+      type: Sequelize.STRING,
+      allowNull: false,
+    },
     author_id: {
       type: Sequelize.INTEGER,
       references: {
