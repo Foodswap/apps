@@ -165,6 +165,18 @@ const seedIngredients = [
   { id: 166, name: 'Ganache montée' },
   { id: 167, name: 'Concombre' },
   { id: 168, name: 'Mayonnaise' },
+  { id: 169, name: 'Parmesan' },
+  { id: 170, name: 'Saint-Jacques' },
+  { id: 171, name: 'Poudre de cacao' },
+  { id: 172, name: 'Lasagne' },
+  { id: 173, name: 'Sauce tomate' },
+  { id: 174, name: 'Choux chinois' },
+  { id: 175, name: 'Radis blanc' },
+  { id: 176, name: 'Pak choi' },
+  { id: 177, name: 'Feuilles de riz' },
+  { id: 178, name: 'Épice à couscous' },
+  { id: 179, name: 'Glutamate' },
+  { id: 180, name: 'Mirin' },
 ];
 
 async function up({ context: queryInterface }) {

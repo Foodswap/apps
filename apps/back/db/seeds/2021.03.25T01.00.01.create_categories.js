@@ -9,7 +9,7 @@ const seedCategories = [
   { id: 8, type: 'kitchen', name: 'Africaine' },
   { id: 9, type: 'kitchen', name: 'Indienne' },
   { id: 10, type: 'kitchen', name: 'Chinoise' },
-  { id: 11, type: 'kitchen', name: 'Indienne' },
+  { id: 11, type: 'kitchen', name: 'Laosienne' },
   { id: 12, type: 'kitchen', name: 'Antillaise' },
   { id: 13, type: 'kitchen', name: 'Française' },
   { id: 14, type: 'kitchen', name: 'Italienne' },
