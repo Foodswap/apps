@@ -26,6 +26,6 @@ const router = require('./router');
 
 app.use('/v1', router);
 
-app.listen(port, (_) => {
+app.listen(port, () => {
   console.log(`http://localhost:${port}`);
 });

@@ -1,5 +1,5 @@
 const { Op } = require('sequelize');
-const sequelize = require('../database');
+const { sequelize } = require('../database');
 
 const { Meal } = require('../models');
 
