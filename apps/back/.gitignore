@@ -1,5 +1,6 @@
 node_modules/
 .env
-/assets/
+/assets/*
+!/assets/.gitkeep
 db.test.sqlite
 db.test.sqlite-journal
