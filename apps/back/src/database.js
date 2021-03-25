@@ -4,16 +4,16 @@ const {
   Author, Category, Ingredient, Meal, Swap,
 } = require('./models');
 
-const sequelize = process.env.production
-  ? new Sequelize(process.env.PG_URL, {
+const sequelize = process.env.NODE_ENV === 'test'
+  ? new Sequelize({
+    dialect: 'sqlite',
+    storage: './db.test.sqlite',
     define: {
       underscored: true,
       timestamps: false,
     },
   })
-  : new Sequelize({
-    dialect: 'sqlite',
-    storage: './db.test.sqlite',
+  : new Sequelize(process.env.PG_URL, {
     define: {
       underscored: true,
       timestamps: false,

@@ -10,11 +10,15 @@
     "start": "nodemon src/index.js",
     "lint": "eslint src/**/*.js",
     "lint:fix": "eslint --fix src/**/*.js",
-    "migrate:clean": "rm db.test.sqlite",
     "migrate:up": "node db/migrator up",
     "migrate:down": "node db/migrator down",
     "seed:up": "node db/seeder up",
-    "seed:down": "node db/seeder down"
+    "seed:down": "node db/seeder down",
+    "test:migrate:clean": "rm db.test.sqlite",
+    "test:migrate:up": "NODE_ENV=test node db/migrator up",
+    "test:migrate:down": "NODE_ENV=test node db/migrator down",
+    "test:seed:up": "NODE_ENV=test node db/seeder up",
+    "test:seed:down": "NODE_ENV=test node db/seeder down"
   },
   "keywords": [],
   "author": "",
