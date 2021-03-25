@@ -10,7 +10,7 @@
     "start": "nodemon src/index.js",
     "lint": "eslint src/**/*.js",
     "lint:fix": "eslint --fix src/**/*.js",
-    "migrate:clean:testdb": "rm db.test.sqlite",
+    "migrate:clean": "rm db.test.sqlite",
     "migrate:up": "node db/migrator up",
     "migrate:down": "node db/migrator down",
     "seed:up": "node db/seeder up",
