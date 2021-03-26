@@ -6,7 +6,7 @@ import UseModal from '../UseModale';
 import './style.scss';
 
 const DisplayADish = ({
-  dish, dishSwap, dishId, getOneDish, fetchMyDishesSwap,
+  dish, dishId, getOneDish,
 }) => {
   useEffect(() => getOneDish(dishId), []);
   // useEffect(() => fetchMyDishesSwap(author.id), []);
@@ -68,7 +68,6 @@ DisplayADish.propTypes = {
       username: PropTypes.string,
     }),
   }),
-  dishSwap: PropTypes.func.isRequired,
   dishId: PropTypes.string.isRequired,
   getOneDish: PropTypes.func.isRequired,
   // fetchMyDishesSwap: PropTypes.func.isRequired,

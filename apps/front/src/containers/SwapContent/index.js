@@ -25,7 +25,7 @@ const mapDispatchToProps = (dispatch) => ({
   sendProposition: () => {
     const action = sendProposition();
     dispatch(action);
-  }
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SwapContent);

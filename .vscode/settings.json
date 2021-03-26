@@ -6,4 +6,6 @@
     "editor.fontFamily": "Fira Code",
     "editor.fontLigatures": true,
     "editor.fontSize": 13,
+    "eslint.debug": true,
+    "eslint.format.enable": true,
 }
