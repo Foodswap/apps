@@ -44,7 +44,7 @@ const ExchangeTracking = ({
                     <div className="exchangeTracking-description">
                       <div
                         className="exchangeTracking-img"
-                        style={{ backgroundImage: `url(${process.env.API_URL}/meals/${receivedProposition.mealOffer.id}/picture)` }}
+                        style={{ backgroundImage: `url(${process.env.API_URL}/dishes/${receivedProposition.mealOffer.id}/picture)` }}
                         alt={receivedProposition.mealOffer.name}
                       />
 
@@ -56,7 +56,7 @@ const ExchangeTracking = ({
 
                       <div
                         className="exchangeTracking-img"
-                        style={{ backgroundImage: `url(${process.env.API_URL}/meals/${receivedProposition.mealRequest.id}/picture)` }}
+                        style={{ backgroundImage: `url(${process.env.API_URL}/dishes/${receivedProposition.mealRequest.id}/picture)` }}
                         alt={receivedProposition.mealRequest.name}
                       />
                     </div>
@@ -105,7 +105,7 @@ const ExchangeTracking = ({
                     <div className="exchangeTracking-description">
                       <div
                         className="exchangeTracking-img"
-                        style={{ backgroundImage: `url(${process.env.API_URL}/meals/${askedProposition.mealOffer.id}/picture)` }}
+                        style={{ backgroundImage: `url(${process.env.API_URL}/dishes/${askedProposition.mealOffer.id}/picture)` }}
                         alt={askedProposition.mealOffer.name}
                       />
 
@@ -117,7 +117,7 @@ const ExchangeTracking = ({
 
                       <div
                         className="exchangeTracking-img"
-                        style={{ backgroundImage: `url(${process.env.API_URL}/meals/${askedProposition.mealRequest.id}/picture)` }}
+                        style={{ backgroundImage: `url(${process.env.API_URL}/dishes/${askedProposition.mealRequest.id}/picture)` }}
                         alt={askedProposition.mealRequest.name}
                       />
                     </div>

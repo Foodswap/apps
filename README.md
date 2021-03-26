@@ -50,7 +50,7 @@ cp apps/front/.env.dev apps/front/.env
 ## Migrate and seed the database the first time
 For migration and seed, we are using `umzug`.     
 The first time you run the project, you need to run `docker-compose up` at the root of the project.     
-After that, go to the `apps/back` folder and run `migrate:up`, that create the schema of the database for each models. Then, run the `migrate:seed` to put data into database.
+After that, go to the `apps/back` folder and run `npm run migrate:up`, that create the schema of the database for each models. Then, run the `npm run seed:up` to put data into database.
 
 ## Run the project
 

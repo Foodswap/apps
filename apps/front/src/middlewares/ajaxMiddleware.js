@@ -44,6 +44,7 @@ export default (store) => (next) => (action) => {
         });
     }
       break;
+
     case SEND_SIGN_UP: {
       const {
         email, password, pseudonym, city,
@@ -72,6 +73,7 @@ export default (store) => (next) => (action) => {
           store.dispatch(actionToDispatch);
         });
     } break;
+
     case USER_LOGOUT: {
       localStorage.removeItem('user');
       localStorage.removeItem('token');
@@ -83,6 +85,7 @@ export default (store) => (next) => (action) => {
       }, 1000);
       toast.success('À bientôt !');
     } break;
+
     case OPEN_OR_CLOSE_MENU_BURGER: {
       const { menuIsOpen } = store.getState().user;
 

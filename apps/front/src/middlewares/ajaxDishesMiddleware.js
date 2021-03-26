@@ -53,33 +53,36 @@ export default (store) => (next) => (action) => {
       const actionToDispatch = deleteOneDishError();
       return store.dispatch(actionToDispatch);
     }
+
     // eslint-disable-next-line no-lone-blocks
     case ONE_DISH_SELECT: {
       axios({
         method: 'get',
-        url: `${process.env.API_URL}/meals/${action.payload}`,
+        url: `${process.env.API_URL}/dishes/${action.payload}`,
       })
         .then((res) => {
           const actionToDispatch = updateSElectedDish(res.data);
           return store.dispatch(actionToDispatch);
         });
     } break;
+
     // eslint-disable-next-line no-lone-blocks
     // get last 6 dishes
     case GET_LIST_OF_DISHES: {
       axios({
         method: 'get',
-        url: `${process.env.API_URL}/sixMeals`,
+        url: `${process.env.API_URL}/lastDishes`,
       })
         .then((res) => {
           const actionToDispatch = updateListOfDishes(res.data);
           return store.dispatch(actionToDispatch);
         });
     } break;
+
     case FETCH_RESULTS: {
       axios({
         method: 'get',
-        url: `${process.env.API_URL}/meals/${action.payload.kitchenParam.toLowerCase()}/${action.payload.dishParam.toLowerCase()}/${action.payload.cityParam.toLowerCase()}`,
+        url: `${process.env.API_URL}/dishes/${action.payload.kitchenParam.toLowerCase()}/${action.payload.dishParam.toLowerCase()}/${action.payload.cityParam.toLowerCase()}`,
       })
         .then((res) => {
           res.data.sort((a, b) => b.id - a.id);
@@ -87,6 +90,7 @@ export default (store) => (next) => (action) => {
           return store.dispatch(actionToDispatch);
         });
     } break;
+
     case SEND_FORM_RECIPE_UP: {
       const {
         dishId,
@@ -115,7 +119,7 @@ export default (store) => (next) => (action) => {
 
       axios({
         method: dishId ? 'put' : 'post',
-        url: dishId ? `${process.env.API_URL}/meals/${dishId}` : `${process.env.API_URL}/meals`,
+        url: dishId ? `${process.env.API_URL}/dishes/${dishId}` : `${process.env.API_URL}/dishes`,
         data: formData,
         headers: {
           'Content-Type': 'multipart/form-data',
@@ -138,6 +142,7 @@ export default (store) => (next) => (action) => {
         });
     }
       break;
+
     // eslint-disable-next-line no-lone-blocks
     case FETCH_INGREDIENTS: {
       axios({
@@ -155,6 +160,7 @@ export default (store) => (next) => (action) => {
           return store.dispatch(actionToDispatch);
         });
     } break;
+
     // eslint-disable-next-line no-lone-blocks
     case FETCH_TYPE_DISH: {
       axios({
@@ -166,6 +172,7 @@ export default (store) => (next) => (action) => {
           return store.dispatch(actionToDispatch);
         });
     } break;
+
     // eslint-disable-next-line no-lone-blocks
     case FETCH_TYPE_KITCHEN: {
       axios({
@@ -178,34 +185,37 @@ export default (store) => (next) => (action) => {
         });
     }
       break;
+
     case FETCH_MY_DISHES_SWAP: {
       const { infos } = store.getState().user;
       axios({
         method: 'get',
-        url: `${process.env.API_URL}/meals/online/${infos.id}`,
+        url: `${process.env.API_URL}/dishes/online/${infos.id}`,
       })
         .then((res) => {
           const actionToDispatch = fetchMyDishesSwapSucces(res.data);
           return store.dispatch(actionToDispatch);
         });
     } break;
+
     case GET_ALL_DISHES_FROM_A_USER: {
       axios({
         method: 'get',
-        url: `${process.env.API_URL}/meals/author/${action.payload}`,
+        url: `${process.env.API_URL}/dishes/author/${action.payload}`,
       })
         .then((res) => {
           const actionToDispatch = updateAllDishesFromAUser(res.data);
           return store.dispatch(actionToDispatch);
         });
     } break;
+
     case GET_A_DISH_TO_EDIT: {
       const dishId = action.payload;
 
       if (dishId) {
         axios({
           method: 'get',
-          url: `${process.env.API_URL}/meals/${action.payload}`,
+          url: `${process.env.API_URL}/dishes/${action.payload}`,
         })
           .then((res) => {
             const actionToDispatch = updateADishToEdit(res.data);
