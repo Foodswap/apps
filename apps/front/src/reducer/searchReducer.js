@@ -22,33 +22,39 @@ export default (state = initialState, action = {}) => {
         ...state,
         [action.name]: action.value,
       };
+
     case SEND_SEARCH_FORM:
       return {
         ...state,
         [action.name]: action.value,
         isSearching: true,
       };
+
     case SET_SELECT_VALUE:
       return {
         ...state,
         [action.name]: action.value,
       };
+
     case FETCH_RESULTS_SUCCES:
       return {
         ...state,
         isSearching: false,
         resultDishes: action.payload,
       };
+
     case FETCH_TYPE_DISH_SUCCES:
       return {
         ...state,
         dishData: action.payload,
       };
+
     case FETCH_TYPE_KITCHEN_SUCCES:
       return {
         ...state,
         kitchenData: action.payload,
       };
+
     default:
       return state;
   }

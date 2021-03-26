@@ -47,41 +47,49 @@ export default (state = initialState, action = {}) => {
         ...state,
         [action.name]: action.value,
       };
+
     case SET_CATEGORY_SELECT:
       return {
         ...state,
         [action.name]: action.value,
       };
+
     case CANCEL_FORM_RECIPE_SUCCESS: return {
       ...state,
       dataFormMeal: [...action.payload],
       cancelMessage: 'votre fiche de création de plat a bien été supprimée',
     };
+
     case CANCEL_FORM_RECIPE_ERROR: return {
       ...state,
       deleteMessage: 'il y a eu un problème, votre fiche de création de plat n\'a pas pu être supprimé',
     };
+
     case SEND_FORM_RECIPE_UP:
       return {
         ...state,
         [action.name]: action.value,
         loggedMessage: 'Votre plat a été crée',
       };
+
     case SEND_FORM_RECIPE_UP_SUCCESS:
       return {
         ...state,
         isSucces: true,
       };
+
     case SEND_FORM_RECIPE_UP_ERROR:
       return {
         ...state,
         isError: true,
       };
+
     case CHANGE_STATUS:
       return {
         ...state,
         online: !state.online,
       };
+
     case FETCH_INGREDIENTS_SUCCES:
       return {
         ...state,
@@ -91,21 +99,25 @@ export default (state = initialState, action = {}) => {
           value: ingredient.id,
         })),
       };
+
     case SET_INGREDIENT:
       return {
         ...state,
         ingredients: action.payload,
       };
+
     case FETCH_TYPE_DISH_SUCCES:
       return {
         ...state,
         dishData: action.payload,
       };
+
     case FETCH_TYPE_KITCHEN_SUCCES:
       return {
         ...state,
         kitchenData: action.payload,
       };
+
       // En cas de success, je recupere mes props dont j'ai besoin
     case UPDATE_A_DISH_TO_EDIT:
       return {
@@ -133,8 +145,9 @@ export default (state = initialState, action = {}) => {
             value: ingredient.id,
           }))
           : [],
-        previewPicture: `${process.env.API_URL}/meals/${action.payload.id}/picture`,
+        previewPicture: `${process.env.API_URL}/dishes/${action.payload.id}/picture`,
       };
+
     case CLEAR_DISH_INFORMATIONS: return {
       ...state,
       dishId: null,
@@ -158,12 +171,14 @@ export default (state = initialState, action = {}) => {
       myDishesOnline: null,
       selectedIngredients: [],
     };
+
     case HANDLE_UPDATE_PICTURE: {
       return {
         ...state,
         previewPicture: action.payload,
       };
     }
+
     default:
       return state;
   }

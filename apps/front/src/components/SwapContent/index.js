@@ -1,14 +1,23 @@
 import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 // import { Link } from 'react-router-dom';
 import './styles.scss';
 
-const SwapContent = ({ dishes, fetchMyDishesSwap, userLogged, getAskerDishId, isSelected, sendProposition, succesPropositionMsg, errorPropositionMsg }) => {
+const SwapContent = ({
+  dishes,
+  fetchMyDishesSwap,
+  userLogged,
+  getAskerDishId,
+  isSelected,
+  sendProposition,
+  succesPropositionMsg,
+  errorPropositionMsg,
+}) => {
   useEffect(() => fetchMyDishesSwap(), []);
   const styleSelected = isSelected ? 'swap-card swap-card-selected' : 'swap-card';
 
@@ -23,13 +32,13 @@ const SwapContent = ({ dishes, fetchMyDishesSwap, userLogged, getAskerDishId, is
   return (
 
     <div className="swap">
-    
-    <p className="swap-content-succes">{succesPropositionMsg}</p>
+
+      <p className="swap-content-succes">{succesPropositionMsg}</p>
 
       { !userLogged && (
         <p className="swap-log-message">Vous devez vous connecter pour proposer un échange</p>
       )}
-    { userLogged && (
+      { userLogged && (
       <div>
         <h2 className="swap-title">Selectionnez un plat parmi votre liste</h2>
 
@@ -40,17 +49,21 @@ const SwapContent = ({ dishes, fetchMyDishesSwap, userLogged, getAskerDishId, is
               const linkUrl = `/v1/dish/${dish.id}`;
               return (
 
-                  <div className={styleSelected} key={dish.id} onClick={(evt) => {
+                <div
+                  className={styleSelected}
+                  key={dish.id}
+                  onClick={(evt) => {
                     console.log(dish.id);
                     getAskerDishId(dish.id);
-                  }}>
-                    <img className="swap-card-img" src={`${process.env.API_URL}/meals/${dish.id}/picture`} alt="" />
-                    <h3 className="swap-card-name">{dish.name}</h3>
-                    {/* <p className="swap-card-potionxx">{dish.portion} part(s)</p>
+                  }}
+                >
+                  <img className="swap-card-img" src={`${process.env.API_URL}/dishes/${dish.id}/picture`} alt="" />
+                  <h3 className="swap-card-name">{dish.name}</h3>
+                  {/* <p className="swap-card-potionxx">{dish.portion} part(s)</p>
                     <p className="swap-card-authorxx"> Fait par {dish.author.pseudonym}</p>
                     <p className="swap-card-cityxx">{dish.city}</p> */}
-                    {/* <Link to={linkUrl} className="swap-card-seemorexx">Voir plus</Link> */}
-                  </div>
+                  {/* <Link to={linkUrl} className="swap-card-seemorexx">Voir plus</Link> */}
+                </div>
               );
             })
           )}
@@ -63,17 +76,18 @@ const SwapContent = ({ dishes, fetchMyDishesSwap, userLogged, getAskerDishId, is
         <p> { errorPropositionMsg} </p>
         <div className="swap-button-container">
           <button
-          type="button"
-          className="swap-button-send"
-          onClick={(evt) => {
-            evt.preventDefault();
-            sendProposition();
-          }}>
+            type="button"
+            className="swap-button-send"
+            onClick={(evt) => {
+              evt.preventDefault();
+              sendProposition();
+            }}
+          >
             Envoyer l'échange
           </button>
         </div>
       </div>
-    )}
+      )}
     </div>
   );
 };

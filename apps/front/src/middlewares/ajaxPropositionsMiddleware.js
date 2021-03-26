@@ -35,6 +35,7 @@ export default (store) => (next) => (action) => {
           return store.dispatch(actionToDispatch);
         });
     } break;
+
     case GET_CLICK_ON_ACCEPT: {
       axios({
         method: 'put',
@@ -46,6 +47,7 @@ export default (store) => (next) => (action) => {
           return store.dispatch(actionToDispatch);
         });
     } break;
+
     case GET_CLICK_ON_REFUSE: {
       axios({
         method: 'put',
@@ -57,6 +59,7 @@ export default (store) => (next) => (action) => {
           return store.dispatch(actionToDispatch);
         });
     } break;
+
     case SEND_PROPOSITION: {
       const { askerDishId } = store.getState().propositions;
       const { dishSelect } = store.getState().recipes;

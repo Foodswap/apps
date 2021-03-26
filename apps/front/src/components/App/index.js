@@ -19,7 +19,7 @@ import Menu from '../../containers/Menu';
 import Exchangetracking from '../../containers/ExchangeTracking';
 
 // Container components
-import DescriptionHomepage from '../../components/DescriptionHomepage';
+import DescriptionHomepage from '../DescriptionHomepage';
 import LoginForm from '../../containers/LoginForm';
 import SignUpForm from '../../containers/SignUpForm';
 import MyDishes from '../../containers/MyDishes';
@@ -67,7 +67,7 @@ const App = ({ isLoginOpen, isSignUpOpen }) => (
 
       <Route exact path="/v1/dish/:id" component={DisplayADish} />
 
-      <Route exact path="/v1/meals/edit/:id" component={DishesForm} />
+      <Route exact path="/v1/dishes/edit/:id" component={DishesForm} />
 
       <Route exact path="/results/:kitchen/:dish/:city" component={Results} />
 
