@@ -22,7 +22,7 @@ const MyDishes = ({
         { userDishes && userDishes.map((dish) => (
           <article key={dish.id} className="myDishes-oneDish">
 
-            <div className="myDishes-dishImg" style={{ backgroundImage: `url(${process.env.API_URL}/meals/${dish.id}/picture)` }} alt={dish.name} />
+            <div className="myDishes-dishImg" style={{ backgroundImage: `url(${process.env.API_URL}/dishes/${dish.id}/picture)` }} alt={dish.name} />
 
             <div className="myDishes-dishText">
               <h2 className="myDishes-dishTitle">{dish.name}</h2>
@@ -38,7 +38,7 @@ const MyDishes = ({
             <div className="myDishes-allButton">
               <div className="myDishes-buttonContent">
                 <Link
-                  to={`/v1/meals/edit/${dish.id}`}
+                  to={`/v1/dishes/edit/${dish.id}`}
                   className="myDishes-button"
                   onClick={() => clearDishInformations()}
                 >

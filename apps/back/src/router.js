@@ -17,39 +17,74 @@ const middlewareHandlingFiles = require('./middlewares/handlingFiles/multer-conf
 // const middlewareAuthentication = require('./middlewares/authorization/authentication');
 
 /**
- * Users routes
+ * USERS ROUTES
+ */
+/**
+ * Routes GET
  */
 router.get('/author/:id', authorController.getOneAuthor);
+
+/**
+ * Routes POST
+ */
 router.post('/signup', middlewareValidation(schemas.signup), authorController.signup);
 router.post('/login', middlewareValidation(schemas.login), authorController.login);
 
 /**
- * Meals routes
+ * DISHES ROUTES
  */
-router.post('/meals', middlewareHandlingFiles, mealController.createMeal);
-router.get('/meals/:id', mealController.getOneMeal);
-router.put('/meals/:id', middlewareHandlingFiles, mealController.updateMeal);
-router.get('/meals/:id/picture', mealController.getPicture);
-router.get('/meals/:kitchenId/:dishId/:city', mealController.searchMeal);
-router.get('/meals/online/:author_id', mealController.userMealsOnline);
-router.get('/meals/author/:author_id', mealController.getMealsByAuthor);
-router.get('/sixMeals', mealController.getSixMeals);
+/**
+ * Routes GET
+ */
+router.get('/dishes/:id', mealController.getOneMeal);
+router.get('/dishes/:id/picture', mealController.getPicture);
+router.get('/dishes/:kitchenId/:dishId/:city', mealController.searchMeal);
+router.get('/dishes/online/:author_id', mealController.userMealsOnline);
+router.get('/dishes/author/:author_id', mealController.getMealsByAuthor);
+router.get('/lastDishes', mealController.getSixMeals);
 
 /**
- * Categories routes
+ * Routes PUT
+ */
+router.post('/dishes', middlewareHandlingFiles, mealController.createMeal);
+
+/**
+ * Routes PUT
+ */
+router.put('/dishes/:id', middlewareHandlingFiles, mealController.updateMeal);
+
+/**
+ * CATEGORIES ROUTES
+ */
+/**
+ * Route GET
  */
 router.get('/categories/:type', categoryController.getCategories);
 
 /**
- * Swaps routes
+ * SWAPS ROUTES
  */
-router.post('/swaps', middlewareValidation(schemas.swaps), swapController.swapProposal);
+/**
+ * Route GET
+ */
 router.get('/swaps/authorAsker/:id', swapController.getSwapAsker);
 router.get('/swaps/authorReceiver/:id', swapController.getSwapReceiver);
+
+/**
+ * Route POST
+ */
+router.post('/swaps', middlewareValidation(schemas.swaps), swapController.swapProposal);
+
+/**
+ * Route PUT
+ */
 router.put('/swaps/:id', swapController.updateSwap);
 
 /**
- * Ingredients routes
+ * INGREDIENTS ROUTES
+ */
+/**
+ * Route GET
  */
 router.get('/ingredient/:id', ingredientController.getIngredients);
 router.get('/ingredients', ingredientController.getAllIngredient);

@@ -1,6 +1,3 @@
-<link href='https://fonts.googleapis.com/css?family=Raleway:400,800,300' rel='stylesheet' type='text/css'></link>
-
-
 import React from 'react';
 import { FaReact, FaGithub } from 'react-icons/fa';
 import { SiPostgresql, SiJavascript } from 'react-icons/si';
@@ -11,6 +8,8 @@ import plia from '../../assets/images/plia.png';
 import flo from '../../assets/images/flo.png';
 import marie from '../../assets/images/marie.png';
 import edouard from '../../assets/images/edouard.png';
+
+  <link href="https://fonts.googleapis.com/css?family=Raleway:400,800,300" rel="stylesheet" type="text/css" />;
 
 const Faces = () => (
 
@@ -27,112 +26,120 @@ const Faces = () => (
       <p className="face-paragraph_p">Nos principaux ingrédients ?</p>
       <p className="face-paragraph">Une touche de Node.JS aux petits oignons pour le back-end et une pinçée de gros sel chez React pour le front-end. </p>
       <p className="face-paragraph">Ajoutez un soupçon de matière grise venant d'une brigade sur-motivée, et vous obtenez ce merveilleux projet d'apothéose !</p>
-   </div>
-    
-    
-   <div className="bigcontent">
+    </div>
+
+    <div className="bigcontent">
       <div className="content">
-      <h2 className="name">Edouard</h2>
+        <h2 className="name">Edouard</h2>
+
         <div className="grid">
           <figure className="effect-zoe">
-            <img src={edouard} alt="Edouard"/>
+            <img src={edouard} alt="Edouard" />
+
             <figcaption>
               <h2>Lead  dev  Back<p className="name-profil">Back-end </p></h2>
+
               <p className="icon-links">
-                <a href="#"><span className="icon-git"></span><FaGithub /></a>
+                <a href="#"><span className="icon-git" /><FaGithub /></a>
                 <a href="#"><span className="icon-js"><SiJavascript /></span></a>
                 <a href="#"><span className="icon-sql"><SiPostgresql /></span></a>
               </p>
+
               <p className="description">Edouard, Lead-Dev Back est un codeur hors pair ! Sa bonne humeur ajoute à cette équipe un parfait équilibre.</p>
-              
-            </figcaption>     
+            </figcaption>
           </figure>
-          
         </div>
-        </div>
+      </div>
 
+      <div className="content">
+        <h2>Florian</h2>
 
-        <div className="content">
-      <h2>Florian</h2>
         <div className="grid">
           <figure className="effect-zoe">
-            <img src={flo} alt="Florian"/>
+            <img src={flo} alt="Florian" />
+
             <figcaption>
               <h2> Git Master<p className="name-profil">Back-end</p></h2>
+
               <p className="icon-links">
                 <a href="#"><span className="icon-git"><FaGithub /></span></a>
                 <a href="#"><span className="icon-js"><SiJavascript /></span></a>
                 <a href="#"><span className="icon-sql"><SiPostgresql /></span></a>
               </p>
+
               <p className="description">Florian est un maître dans la maîtrise de Git. Il faut un sang-froid démeusuré pour gérer la lourde responsabilité des merges. Un pilier !</p>
-            </figcaption>     
+            </figcaption>
           </figure>
-
         </div>
+      </div>
 
-        </div>  
+      <div className="content">
+        <h2>Plia</h2>
 
-        <div className="content">
-      <h2>Plia</h2>
         <div className="grid">
           <figure className="effect-zoe">
-            <img src={plia} alt="Plia"/>
+            <img src={plia} alt="Plia" />
+
             <figcaption>
               <h2>Product Owner  <p className="name-profil">Front-end </p></h2>
+
               <p className="icon-links">
                 <a href="#"><span className="icon-react"><FaReact /></span></a>
                 <a href="#"><span className="icon-git"><FaGithub /></span></a>
                 <a href="#"><span className="icon-js"><SiJavascript /></span></a>
               </p>
+
               <p className="description">Plia est notre Product Owner.Elle est à l'origine de ce magnifique projet.Son punch et sa débordante imagination nous pousse vers de nouveaux chalenges !</p>
-            </figcaption>     
+            </figcaption>
           </figure>
-
         </div>
-        </div>
+      </div>
 
+      <div className="content">
+        <h2>Marie</h2>
 
-        <div className="content">
-      <h2>Marie</h2>
         <div className="grid">
           <figure className="effect-zoe">
-            <img src={marie} alt="Marie"/>
+            <img src={marie} alt="Marie" />
+
             <figcaption>
               <h2>Scrum Master <p className="name-profil"> Front-end</p></h2>
-              <p className="icon-links">
 
+              <p className="icon-links">
                 <a href="#"><span className="icon-react"><FaReact /></span></a>
                 <a href="#"><span className="icon-git"><FaGithub /></span></a>
                 <a href="#"><span className="icon-js"><SiJavascript /></span></a>
               </p>
+
               <p className="description">Marie est notre Scrum Master.Elle maîtrise parfaitement le code.Aucune issue ne lui résiste ! Sa douceur apporte la zénitude quand nos esprits bouillonnent !</p>
-            </figcaption>     
+            </figcaption>
           </figure>
+        </div>
+      </div>
 
-        </div>
-        </div>
+      <div className="content">
+        <h2>Cyril</h2>
 
+        <div className="grid">
+          <figure className="effect-zoe">
+            <img src={cyril} alt="Cyril" />
 
-        <div className="content">
-          <h2>Cyril</h2>
-            <div className="grid">
-              <figure className="effect-zoe">
-                <img src={cyril} alt="Cyril"/>
-               <figcaption>
-                 <h2> Lead Dev Front<p className="name-profil">Front-end</p></h2>
-                  <p className="icon-links">
-                    <a href="#"><span className="icon-react"><FaReact /></span></a>
-                    <a href="#"><span className="icon-git"><FaGithub /></span></a>
-                    <a href="#"><span className="icon-js"><SiJavascript /></span></a>
-                  </p>
-                  <p className="description">Codeur du bout du monde, de part sa détermination et son écoute, Cyril apporte ses idées et suggestions.De tempérament calme, il contribue à une entente détendue.</p>
-               </figcaption>     
-             </figure>
-          
-            </div>
+            <figcaption>
+              <h2> Lead Dev Front<p className="name-profil">Front-end</p></h2>
+
+              <p className="icon-links">
+                <a href="#"><span className="icon-react"><FaReact /></span></a>
+                <a href="#"><span className="icon-git"><FaGithub /></span></a>
+                <a href="#"><span className="icon-js"><SiJavascript /></span></a>
+              </p>
+
+              <p className="description">Codeur du bout du monde, de part sa détermination et son écoute, Cyril apporte ses idées et suggestions.De tempérament calme, il contribue à une entente détendue.</p>
+            </figcaption>
+          </figure>
         </div>
-        </div>
-    
+      </div>
+
+    </div>
   </div>
 );
 export default Faces;

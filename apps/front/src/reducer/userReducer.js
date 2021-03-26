@@ -44,6 +44,7 @@ export default (state = initialState, action = {}) => {
         isSignUpOpen: false,
         isLoginOpen: !state.isLoginOpen,
       };
+
     case MODAL_SIGN_UP_TOGGLE:
       return {
         ...state,
@@ -53,11 +54,13 @@ export default (state = initialState, action = {}) => {
         isLoginOpen: false,
         signUpIsValid: false,
       };
+
     case SET_INPUT_VALUE:
       return {
         ...state,
         [action.name]: action.value,
       };
+
     case SIGNUP_SUCCES:
       return {
         ...state,
@@ -66,8 +69,8 @@ export default (state = initialState, action = {}) => {
         password: action.payload.password,
         pseudonym: action.payload.username,
         city: action.payload.city,
-
       };
+
     case LOGIN_SUCCES:
       return {
         ...state,
@@ -83,16 +86,19 @@ export default (state = initialState, action = {}) => {
           id: action.payload.user.id,
         },
       };
+
     case LOGIN_ERROR:
       return {
         ...state,
         isLogged: false,
         loggedMessage: 'Veuillez réessayer !',
+
         infos: {
           accesToken: '',
           id: '',
         },
       };
+
     case SIGNUP_ERROR:
       return {
         ...state,
@@ -102,6 +108,7 @@ export default (state = initialState, action = {}) => {
           id: '',
         },
       };
+
     case USER_LOGOUT_SUCCESS:
       return {
         ...state,
@@ -115,16 +122,19 @@ export default (state = initialState, action = {}) => {
           id: '',
         },
       };
+
     case SEND_SIGN_UP:
       return {
         ...state,
         [action.name]: action.value,
         loggedMessage: 'inscription ok',
       };
+
     case UPDATE_MENU_BURGER_STATUS: return {
       ...state,
       menuIsOpen: action.payload,
     };
+
     default:
       return state;
   }
