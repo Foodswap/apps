@@ -1,9 +1,9 @@
 @use 'src/styles/vars';
 @use 'sass:color';
- 
+
 @import url(https://fonts.googleapis.com/css?family=Gudea:400,700);
 
-.exchangeTracking{
+.exchangeTracking {
   background: #{vars.$gradientDarkBlue};
   border-radius: 1rem;
   padding: 2rem 5.2rem;
@@ -11,24 +11,20 @@
   width: 70%;
   display: flex;
   flex-direction: column;
-  font-family: 'Gudea', sans-serif;
+  font-family: "Gudea", sans-serif;
   font-size: 1.2em;
 
-
-  // &-container {
-  //   margin-left: auto;
-  // }
   &-page {
     background-color: #{vars.$coral};
     align-items: center;
     justify-content: center;
     min-height: calc(100vh - 188px);
     display: flex;
-    // min-height: 80vh;
   }
+
   &-panel {
     display: none;
-  
+
     &.active {
       display: block;
       border: 1.1px solid #{vars.$coral};
@@ -46,10 +42,11 @@
     flex-direction: column;
     align-items: flex-start;
   }
+
   &-menuContent {
     display: flex;
   }
-  
+
   &-tab {
     padding: 1.5em;
     margin-bottom: 10px;
@@ -69,14 +66,6 @@
     }
   }
 
-  // &-body {
-  //   display: flex;
-  //   justify-content: center;
-  //   border-radius: 1rem;
-  //   background-color: #{vars.$darkBlue};
-  //   width: 100%;
-  // }
-
   &-img {
     height: 100px;
     width: 100px;
@@ -93,10 +82,12 @@
     background-color: #{vars.$darkBlue};
     color: white;
   }
-  
-  &-line, &-description, &-actions {
+
+  &-line,
+  &-description,
+  &-actions {
     align-items: center;
-    justify-content: start;
+    justify-content: flex-start;
     display: flex;
   }
 
@@ -105,7 +96,7 @@
     font-size: 1.2rem;
     width: 220px;
     text-transform: capitalize;
-    
+
     &-text {
       margin: 0.3rem;
       margin: 0.8rem 0.1rem;
@@ -126,9 +117,11 @@
   &-dateContainer {
     display: flex;
     flex-direction: column;
+
     &-text {
       margin-bottom: 1rem;
     }
+
     &-date {
       width: 200px;
       color: #f8a587;
@@ -138,7 +131,6 @@
   &-actions {
     &-container {
       margin-left: 1rem;
-      // padding: 1rem;
       margin: 0 2em;
       width: 100%;
       border-left: 1px solid #242130;
@@ -152,11 +144,11 @@
       border: 2px solid #f8a587;
       text-transform: uppercase;
       font-size: 11px;
-      color:black;
-      background:#f8a587 ;
-      cursor:pointer;
-      transition-property:background,color;
-      transition-duration:.5s;
+      color: black;
+      background: #f8a587;
+      cursor: pointer;
+      transition-property: background, color;
+      transition-duration: 0.5s;
     }
 
     &-buttonAccept:hover {
@@ -185,16 +177,15 @@
     &-text-accept {
       display: flex;
       align-items: baseline;
-      // margin-left: 20px;
       width: 100%;
       margin-left: 3rem;
+
       &-reciver {
         display: flex;
         align-items: baseline;
         width: 100%;
         justify-content: center;
       }
-
     }
 
     &-div-contact {
@@ -217,11 +208,11 @@
     }
 
     &-buttonContact:hover {
-      color:black;
-      background:#f8a587 ;
-      cursor:pointer;
-      transition-property:background,color;
-      transition-duration:.2s;
+      color: black;
+      background: #f8a587;
+      cursor: pointer;
+      transition-property: background, color;
+      transition-duration: 0.2s;
     }
 
     &-waiting {
@@ -232,7 +223,7 @@
 }
 
 @media only screen and (max-device-width: 415px) {
-  .exchangeTracking{
+  .exchangeTracking {
     background: #{vars.$gradientDarkBlue};
     border-radius: 0;
     padding: 0;
@@ -240,42 +231,41 @@
     width: 100%;
     display: flex;
     flex-direction: none;
-    font-family: 'Gudea', sans-serif;
+    font-family: "Gudea", sans-serif;
     font-size: 0.7rem;
-  
-    // &-container {
-    //   margin-left: auto;
-    // }
+
     &-page {
       background-color: #{vars.$coral};
       height: 100%;
       width: 100%;
     }
+
     &-panel {
       display: none;
-    
+
       &.active {
         display: block;
         border: 1.1px solid #{vars.$coral};
       }
     }
-  
+
     &-title {
       color: #fff;
       font-size: 2.5em;
       margin: 0.3em;
       padding: 0.7rem;
     }
-  
+
     &-menuContainer {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
     }
+
     &-menuContent {
       display: flex;
     }
-    
+
     &-tab {
       padding: 1.5em;
       margin-bottom: 10px;
@@ -287,22 +277,14 @@
       top: 10px;
       left: 10px;
       border-radius: 15px 15px 0 0;
-  
+
       &.active {
         background-color: #{vars.$coral};
         color: black;
         transition: 0.1s;
       }
     }
-  
-    // &-body {
-    //   display: flex;
-    //   justify-content: center;
-    //   border-radius: 1rem;
-    //   background-color: #{vars.$darkBlue};
-    //   width: 100%;
-    // }
-  
+
     &-img {
       height: 100px;
       width: 100px;
@@ -311,7 +293,7 @@
       background-size: cover;
       background-position: center center;
     }
-  
+
     &-line {
       width: 100%;
       border-bottom: 1px solid #242130;
@@ -322,26 +304,26 @@
       align-items: center;
       padding: 1rem 0;
     }
-    
-    &-description, &-actions {
+
+    &-description,
+    &-actions {
       align-items: center;
-      // justify-content: start;
       display: flex;
     }
-  
+
     &-textContainer {
       margin: 0 1.6rem;
       font-size: 1rem;
       width: 33vw;
       text-transform: capitalize;
-      
+
       &-text {
         margin: 0.3rem;
         margin: 0.8rem 0.1rem;
         color: #f8a587;
       }
     }
-  
+
     &-informations {
       display: flex;
       justify-content: space-around;
@@ -351,21 +333,23 @@
       border-right: none;
       margin-top: 1rem;
     }
-  
+
     &-dateContainer {
       display: flex;
       flex-direction: row;
       margin-top: 16px;
+
       &-text {
         margin-bottom: 1rem;
       }
+
       &-date {
         width: auto;
         color: #f8a587;
         margin-left: 5px;
       }
     }
-  
+
     &-actions {
       &-container {
         margin: 0;
@@ -374,7 +358,7 @@
         border-left: 1px solid #242130;
         border-right: 1px solid #242130;
       }
-  
+
       &-buttonAccept {
         border-radius: 50px;
         background: transparent;
@@ -382,13 +366,13 @@
         border: 2px solid #f8a587;
         text-transform: uppercase;
         font-size: 11px;
-        color:black;
-        background:#f8a587 ;
-        cursor:pointer;
-        transition-property:background,color;
-        transition-duration:.5s;
+        color: black;
+        background: #f8a587;
+        cursor: pointer;
+        transition-property: background, color;
+        transition-duration: 0.5s;
       }
-  
+
       &-buttonAccept:hover {
         border-radius: 50px;
         background: transparent;
@@ -398,7 +382,7 @@
         transition-property: background, color;
         transition-duration: 0.2s;
       }
-  
+
       &-buttonRefuse {
         margin-left: 1rem;
         border-radius: 50px;
@@ -411,26 +395,26 @@
         transition-property: background, color;
         transition-duration: 0.2s;
       }
-  
+
       &-text-accept {
         display: flex;
         align-items: baseline;
         margin-left: 0;
         width: 100%;
+
         &-reciver {
           display: flex;
           align-items: baseline;
           width: 100%;
           justify-content: center;
         }
-  
       }
-  
+
       &-div-contact {
         display: flex;
         flex-direction: row;
       }
-  
+
       &-buttonContact {
         display: block;
         margin: 0;
@@ -445,15 +429,15 @@
         transition-property: background, color;
         transition-duration: 0.2s;
       }
-  
+
       &-buttonContact:hover {
-        color:black;
-        background:#f8a587 ;
-        cursor:pointer;
-        transition-property:background,color;
-        transition-duration:.2s;
+        color: black;
+        background: #f8a587;
+        cursor: pointer;
+        transition-property: background, color;
+        transition-duration: 0.2s;
       }
-  
+
       &-waiting {
         animation: color-change 3s infinite ease-out forwards;
         margin-left: Opx;
@@ -463,7 +447,13 @@
 }
 
 @keyframes color-change {
-  0% { color: linear-gradient(#f7f2f1, #{vars.$coral});}
-  50% {color: #f8a587; }
-  100%{ color: linear-gradient(#f7f2f1, #{vars.$coral});}
+  0% {
+    color: linear-gradient(#f7f2f1, #{vars.$coral});
+  }
+  50% {
+    color: #f8a587;
+  }
+  100% {
+    color: linear-gradient(#f7f2f1, #{vars.$coral});
+  }
 }
