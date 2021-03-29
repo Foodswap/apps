@@ -15,20 +15,16 @@ import { sendFormRecipeUp, setInputValue } from '../../actions/dishesForm';
 toast.configure();
 const DishesForm = ({
   dishId,
-  picture,
   name,
   description,
-  ingredients,
   portion,
   city,
-  author,
   dish,
   kitchen,
   online,
   handleInputChange,
   onFormSubmit,
   onSetCategorySelect,
-  isSucces,
   isError,
   changeOnline,
   getIngredients,
@@ -211,7 +207,7 @@ const DishesForm = ({
                 defaultValue={dish || ''}
                 required
               >
-                <option disabled selected value="">Type d'assiete</option>
+                <option disabled value="">Type d'assiete</option>
                 { dishData && dishData.map((dishObj) => (
                   <option
                     value={dishObj.id}
@@ -232,7 +228,7 @@ const DishesForm = ({
                 defaultValue={kitchen || ''}
                 required
               >
-                <option disabled selected value="">Type de cuisine</option>
+                <option disabled value="">Type de cuisine</option>
                 { kitchenData && (
                   kitchenData.map((kitchenObj) => (
                     <option
@@ -264,18 +260,14 @@ const DishesForm = ({
   );
 };
 DishesForm.propTypes = {
-  // picture: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  // ingredients: PropTypes.string.isRequired,
   portion: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,
   ]),
   city: PropTypes.string.isRequired,
   online: PropTypes.bool.isRequired,
-  author: PropTypes.number,
-  // : PropTypes.string.isRequired,
   kitchen: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,
@@ -289,14 +281,47 @@ DishesForm.propTypes = {
   onSetCategorySelect: PropTypes.func.isRequired,
   getADish: PropTypes.func.isRequired,
   dishId: PropTypes.number,
-  // cancelAction: PropTypes.func.isRequired,
+  isError: PropTypes.bool.isRequired,
+  changeOnline: PropTypes.func.isRequired,
+  getIngredients: PropTypes.func.isRequired,
+  ingredientsData: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      name: PropTypes.string,
+    }),
+  ).isRequired,
+  handleMultiSelectChange: PropTypes.func.isRequired,
+  fetchTypeDish: PropTypes.func.isRequired,
+  dishData: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      name: PropTypes.string,
+    }),
+  ),
+  kitchenData: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      name: PropTypes.string,
+    }),
+  ),
+  fetchTypeKitchen: PropTypes.func.isRequired,
+  selectedIngredients: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      name: PropTypes.string,
+    }),
+  ),
+  handleUpdatePicture: PropTypes.func.isRequired,
+  previewPicture: PropTypes.string.isRequired,
 };
 
 DishesForm.defaultProps = {
   dishId: null,
-  author: null,
   kitchen: null,
   dish: null,
   portion: null,
+  selectedIngredients: [],
+  dishData: null,
+  kitchenData: null,
 };
 export default DishesForm;

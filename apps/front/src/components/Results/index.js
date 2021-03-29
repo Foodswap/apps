@@ -44,5 +44,30 @@ const Results = ({
     </div>
   );
 };
-Results.propTypes = {};
+Results.propTypes = {
+  dishes: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      picture: PropTypes.string,
+      name: PropTypes.string,
+      description: PropTypes.string,
+      ingredients: PropTypes.array,
+      portion: PropTypes.number,
+      city: PropTypes.string,
+      author: PropTypes.shape({
+        id: PropTypes.number,
+        pseudonym: PropTypes.string,
+      }),
+    }),
+  ),
+  getResults: PropTypes.func.isRequired,
+  kitchenParam: PropTypes.string.isRequired,
+  dishParam: PropTypes.string.isRequired,
+  cityParam: PropTypes.string.isRequired,
+
+};
+
+Results.defaultProps = {
+  dishes: null,
+};
 export default Results;

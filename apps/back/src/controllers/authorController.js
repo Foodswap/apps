@@ -62,7 +62,9 @@ const authorController = {
         },
       });
 
-      if (!author || !bcrypt.compareSync(request.body.password, author.password)) {
+      if (
+        !author || !bcrypt.compareSync(request.body.password, author.password)
+      ) {
         return response.status(401).json('Email ou mdp non valide.');
       }
       author.password = null;

@@ -100,7 +100,10 @@ SwapContent.propTypes = {
       name: PropTypes.string,
       description: PropTypes.string,
       ingredients: PropTypes.array,
-      portion: PropTypes.string,
+      portion: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.number,
+      ]),
       city: PropTypes.string,
       author: PropTypes.shape({
         id: PropTypes.number,
@@ -109,6 +112,12 @@ SwapContent.propTypes = {
     }),
   ),
   fetchMyDishesSwap: PropTypes.func.isRequired,
+  userLogged: PropTypes.number.isRequired,
+  getAskerDishId: PropTypes.func.isRequired,
+  isSelected: PropTypes.bool.isRequired,
+  sendProposition: PropTypes.func.isRequired,
+  succesPropositionMsg: PropTypes.string.isRequired,
+  errorPropositionMsg: PropTypes.string.isRequired,
 };
 
 SwapContent.defaultProps = {

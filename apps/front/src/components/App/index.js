@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import PropTypes from 'prop-types';
 
 // Dumb components
 import AppHeader from '../AppHeader';
@@ -44,9 +45,7 @@ import ScrollToTop from '../ScrollToTop';
  */
 const App = ({ isLoginOpen, isSignUpOpen }) => (
   <div className="app">
-    {(isLoginOpen || isSignUpOpen) && (
-      <div className="backdrop" />
-    )}
+    {(isLoginOpen || isSignUpOpen) && <div className="backdrop" />}
     {/* <AppHeader /> */}
 
     <Menu />
@@ -75,7 +74,11 @@ const App = ({ isLoginOpen, isSignUpOpen }) => (
         <MyDishes />
       </Route>
 
-      <Route exact path="/v1/createdish" render={(props) => <DishesForm {...props} key={Date.now()} />} />
+      <Route
+        exact
+        path="/v1/createdish"
+        render={(props) => <DishesForm {...props} key={Date.now()} />}
+      />
 
       <Route exact path="/v1/Qui-sommes-nous">
         <Faces />
@@ -86,7 +89,6 @@ const App = ({ isLoginOpen, isSignUpOpen }) => (
       </Route>
 
       <Route component={Error} />
-
     </Switch>
     <ToastContainer
       position="top-right"
@@ -109,4 +111,8 @@ const mapStateToProps = (state) => ({
   isSignUpOpen: state.user.isSignUpOpen,
 });
 
+App.propTypes = {
+  isLoginOpen: PropTypes.bool.isRequired,
+  isSignUpOpen: PropTypes.bool.isRequired,
+};
 export default connect(mapStateToProps)(App);
