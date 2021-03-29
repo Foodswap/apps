@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 // import PropTypes from 'prop-types';
 // import { Link } from 'react-router-dom';
-import SwapContent from '../../containers/SwapContent-container';
+import SwapContentContainer from '../../containers/SwapContent-container';
 import './style.scss';
 
 const SwapModal = ({ isShowing, hide }) => (isShowing ? ReactDOM.createPortal(
@@ -13,7 +13,7 @@ const SwapModal = ({ isShowing, hide }) => (isShowing ? ReactDOM.createPortal(
         <button type="button" className="modal-close-button" data-dismiss="modal" aria-label="Close" onClick={hide}>
           <span aria-hidden="true">&times;</span>
         </button>
-        <SwapContent />
+        <SwapContentContainer />
       </div>
     </div>
 
