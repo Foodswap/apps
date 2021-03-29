@@ -1,3 +1,4 @@
+/* eslint-disable no-lone-blocks */
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
@@ -19,6 +20,9 @@ import {
 
 export default (store) => (next) => (action) => {
   switch (action.type) {
+    /**
+     * Create a new dish or edit a selected one
+     */
     case SEND_FORM_RECIPE_UP: {
       const {
         dishId,
@@ -72,14 +76,15 @@ export default (store) => (next) => (action) => {
       break;
 
       // eslint-disable-next-line no-lone-blocks
+    /**
+     * Get the list of all ingredients
+     */
     case FETCH_INGREDIENTS: {
       axios({
         method: 'get',
         url: `${process.env.API_URL}/ingredients`,
       })
         .then((res) => {
-          // console.log("ok send search ingredients " + res.data);
-          // console.dir(res.data);
           const actionToDispatch = fetchIngredientsSucces(res.data);
           return store.dispatch(actionToDispatch);
         })
@@ -89,7 +94,9 @@ export default (store) => (next) => (action) => {
         });
     } break;
 
-      // eslint-disable-next-line no-lone-blocks
+    /**
+     * Get the list of all dish types
+     */
     case FETCH_TYPE_DISH: {
       axios({
         method: 'get',
@@ -101,7 +108,10 @@ export default (store) => (next) => (action) => {
         });
     } break;
 
-      // eslint-disable-next-line no-lone-blocks
+    /**
+     * Get the list of all kitchen types
+     */
+    // eslint-disable-next-line no-lone-blocks
     case FETCH_TYPE_KITCHEN: {
       axios({
         method: 'get',
@@ -112,6 +122,10 @@ export default (store) => (next) => (action) => {
           return store.dispatch(actionToDispatch);
         });
     } break;
+
+    /**
+     * Get all informations of a dish with it's ID, in order to edit it
+     */
     case GET_A_DISH_TO_EDIT: {
       const dishId = action.payload;
 
