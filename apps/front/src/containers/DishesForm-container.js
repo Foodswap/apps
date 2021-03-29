@@ -16,26 +16,26 @@ import {
 
 const mapStateToProps = (state, ownProps) => ({
   dishId: ownProps.match ? +ownProps.match.params.id : null,
-  dataFormMeal: state.dishes.dataFormMeal,
-  isLogged: state.dishes.isLogged,
-  loggedMessage: state.dishes.loggedMessage,
-  picture: state.dishes.picture,
-  name: state.dishes.name,
-  portion: state.dishes.portion,
-  description: state.dishes.description,
-  city: state.dishes.city,
-  author: state.dishes.author,
-  ingredients: state.dishes.ingredients,
-  dish: state.dishes.dish,
-  kitchen: state.dishes.kitchen,
-  online: state.dishes.online,
-  isSucces: state.dishes.isSucces,
-  isError: state.dishes.isError,
-  ingredientsData: state.dishes.ingredientsData,
-  dishData: state.dishes.dishData,
-  kitchenData: state.dishes.kitchenData,
-  selectedIngredients: state.dishes.selectedIngredients,
-  previewPicture: state.dishes.previewPicture,
+  dataFormMeal: state.dishesForm.dataFormMeal,
+  isLogged: state.dishesForm.isLogged,
+  loggedMessage: state.dishesForm.loggedMessage,
+  picture: state.dishesForm.picture,
+  name: state.dishesForm.name,
+  portion: state.dishesForm.portion,
+  description: state.dishesForm.description,
+  city: state.dishesForm.city,
+  author: state.dishesForm.author,
+  ingredients: state.dishesForm.ingredients,
+  dish: state.dishesForm.dish,
+  kitchen: state.dishesForm.kitchen,
+  online: state.dishesForm.online,
+  isSucces: state.dishesForm.isSucces,
+  isError: state.dishesForm.isError,
+  ingredientsData: state.dishesForm.ingredientsData,
+  dishData: state.dishesForm.dishData,
+  kitchenData: state.dishesForm.kitchenData,
+  selectedIngredients: state.dishesForm.selectedIngredients,
+  previewPicture: state.dishesForm.previewPicture,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -49,7 +49,6 @@ const mapDispatchToProps = (dispatch) => ({
 
   getIngredients: () => dispatch(fetchIngredients()),
   handleMultiSelectChange: (ingredients, { action }) => {
-    console.log(action);
     switch (action) {
       case 'select-option':
       case 'remove-value':

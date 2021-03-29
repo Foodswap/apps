@@ -4,7 +4,7 @@ import DisplayADish from '../components/DisplayADish';
 import { oneDishSelect } from '../actions/dishes-actions';
 
 const mapStateToProps = (state, ownProps) => ({
-  dish: state.recipes.dishSelect,
+  dish: state.dishes.dishSelect,
   dishId: ownProps.match.params.id,
 });
 

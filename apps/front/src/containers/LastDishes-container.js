@@ -4,7 +4,7 @@ import LastDishes from '../components/LastDishes';
 import { getListOfDishes } from '../actions/dishes-actions';
 
 const mapStateToProps = (state) => ({
-  dishes: state.recipes.lastDishes,
+  dishes: state.dishes.lastDishes,
 });
 
 const mapDispatchToProps = (dispatch) => ({

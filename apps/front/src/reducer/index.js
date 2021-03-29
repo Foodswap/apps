@@ -1,16 +1,16 @@
 import { combineReducers } from 'redux';
-import recipeReducer from './recipeReducer';
-import userReducer from './userReducer';
-import searchReducer from './searchReducer';
-import dishesFormReducer from './dishesFormReducer';
-import propositionsReducer from './propositionsReducer';
+import dishesReducer from './dishes-reducer';
+import userReducer from './auth-reducer';
+import searchReducer from './search-reducer';
+import dishesFormReducer from './dishesForm-reducer';
+import exchangeTrackingReducer from './exchangeTracking-reducer';
 // exporter le resultat du combineReducer pour l'utiliser
 // dans le createStore
 
 export default combineReducers({
-  recipes: recipeReducer,
+  dishes: dishesReducer,
   user: userReducer,
   search: searchReducer,
-  dishes: dishesFormReducer,
-  propositions: propositionsReducer,
+  dishesForm: dishesFormReducer,
+  propositions: exchangeTrackingReducer,
 });
