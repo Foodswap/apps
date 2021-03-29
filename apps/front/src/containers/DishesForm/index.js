@@ -6,17 +6,18 @@ import {
   sendFormRecipeUp,
   setCategorySelect,
   changeStatus,
-  fetchIngredients,
+  // fetchIngredients,
   handleMultiSelectChange,
-  fetchTypeDish,
-  fetchTypeKitchen,
+  // fetchTypeDish,
+  // fetchTypeKitchen,
   getADishToEdit,
   handleUpdatePicture,
   // cancelFormDish,
 } from '../../actions/dishesForm';
 
 const mapStateToProps = (state, ownProps) => ({
-  dishId: ownProps.match ? +ownProps.match.params.id : null,
+  dishIdToEdit: ownProps.match ? +ownProps.match.params.id : null,
+  dishId: state.dishes.dishId,
   dataFormMeal: state.dishes.dataFormMeal,
   isLogged: state.dishes.isLogged,
   loggedMessage: state.dishes.loggedMessage,
@@ -48,7 +49,7 @@ const mapDispatchToProps = (dispatch) => ({
 
   changeOnline: () => dispatch(changeStatus()),
 
-  getIngredients: () => dispatch(fetchIngredients()),
+  // getIngredients: () => dispatch(fetchIngredients()),
   handleMultiSelectChange: (ingredients, { action }) => {
     console.log(action);
     switch (action) {
@@ -60,9 +61,9 @@ const mapDispatchToProps = (dispatch) => ({
     }
   },
 
-  fetchTypeDish: () => dispatch(fetchTypeDish()),
+  // fetchTypeDish: () => dispatch(fetchTypeDish()),
 
-  fetchTypeKitchen: () => dispatch(fetchTypeKitchen()),
+  // fetchTypeKitchen: () => dispatch(fetchTypeKitchen()),
 
   getADish: (dishId) => {
     const action = getADishToEdit(dishId);

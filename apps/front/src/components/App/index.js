@@ -1,7 +1,6 @@
 // Vendors
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { connect } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import PropTypes from 'prop-types';
@@ -43,9 +42,19 @@ import ScrollToTop from '../ScrollToTop';
  * App component
  * Application Layout
  */
-const App = ({ isLoginOpen, isSignUpOpen }) => (
+const App = ({
+  // eslint-disable-next-line no-shadow
+  isLoginOpen, isSignUpOpen, getIngredients, fetchTypeDish, fetchTypeKitchen,
+}) => (
   <div className="app">
     {(isLoginOpen || isSignUpOpen) && <div className="backdrop" />}
+    {
+      useEffect(() => {
+        getIngredients();
+        fetchTypeDish();
+        fetchTypeKitchen();
+      }, [])
+    }
     {/* <AppHeader /> */}
 
     <Menu />
@@ -106,13 +115,11 @@ const App = ({ isLoginOpen, isSignUpOpen }) => (
   </div>
 );
 
-const mapStateToProps = (state) => ({
-  isLoginOpen: state.user.isLoginOpen,
-  isSignUpOpen: state.user.isSignUpOpen,
-});
-
 App.propTypes = {
   isLoginOpen: PropTypes.bool.isRequired,
   isSignUpOpen: PropTypes.bool.isRequired,
+  getIngredients: PropTypes.func.isRequired,
+  fetchTypeDish: PropTypes.func.isRequired,
+  fetchTypeKitchen: PropTypes.func.isRequired,
 };
-export default connect(mapStateToProps)(App);
+export default App;

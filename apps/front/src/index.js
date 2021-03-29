@@ -9,13 +9,13 @@ import {
 } from 'react-redux';
 
 import store from './store';
-import App from './components/App';
-import  'react-toastify/dist/ReactToastify.css';
+import AppContainer from './containers/App-container';
+import 'react-toastify/dist/ReactToastify.css';
 
 const rootReactElement = (
   <Provider store={store}>
     <Router>
-      <App />
+      <AppContainer />
     </Router>
   </Provider>
 );

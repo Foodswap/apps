@@ -18,6 +18,7 @@ const Menu = ({
   username,
   menuIsOpen,
   openOrCloseMenuBurger,
+  handleClickToCreateDish,
 }) => (
 
   <nav className="menu">
@@ -66,7 +67,7 @@ const Menu = ({
             Mes plats
           </NavLink>
 
-          <NavLink exact className="menu-link" to="/v1/createdish" onClick={() => openOrCloseMenuBurger(menuIsOpen)}>
+          <NavLink exact className="menu-link" to="/v1/createdish" onClick={() => handleClickToCreateDish()}>
             Créer un plat
           </NavLink>
 
@@ -98,6 +99,7 @@ Menu.propTypes = {
   username: PropTypes.string.isRequired,
   menuIsOpen: PropTypes.bool.isRequired,
   openOrCloseMenuBurger: PropTypes.func.isRequired,
+  handleClickToCreateDish: PropTypes.func.isRequired,
 };
 
 export default Menu;

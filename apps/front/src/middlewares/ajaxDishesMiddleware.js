@@ -34,7 +34,6 @@ import {
   fetchMyDishesSwapSucces,
   GET_A_DISH_TO_EDIT,
   updateADishToEdit,
-  clearDishInformations,
 } from '../actions/dishesForm';
 
 export default (store) => (next) => (action) => {
@@ -221,10 +220,6 @@ export default (store) => (next) => (action) => {
             const actionToDispatch = updateADishToEdit(res.data);
             return store.dispatch(actionToDispatch);
           });
-      }
-      else {
-        const actionToDispatch = clearDishInformations();
-        return store.dispatch(actionToDispatch);
       }
     } break;
     default:

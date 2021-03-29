@@ -14,6 +14,7 @@ import { sendFormRecipeUp, setInputValue } from '../../actions/dishesForm';
 
 toast.configure();
 const DishesForm = ({
+  dishIdToEdit,
   dishId,
   name,
   description,
@@ -27,13 +28,13 @@ const DishesForm = ({
   onSetCategorySelect,
   isError,
   changeOnline,
-  getIngredients,
+
   ingredientsData,
   handleMultiSelectChange,
-  fetchTypeDish,
+
   dishData,
   kitchenData,
-  fetchTypeKitchen,
+
   getADish,
   selectedIngredients,
   handleUpdatePicture,
@@ -41,12 +42,11 @@ const DishesForm = ({
   // cancelAction,
 }) => {
   useEffect(() => {
-    console.log('CMP', dishId);
-    getADish(dishId);
-    getIngredients();
-    fetchTypeDish();
-    fetchTypeKitchen();
-    console.log(`ingredient data ${ingredientsData}`);
+    getADish(dishIdToEdit);
+    // getIngredients();
+    // fetchTypeDish();
+    // fetchTypeKitchen();
+    // console.log(`ingredient data ${ingredientsData}`);
   }, []);
 
   const animatedSelect = makeAnimated();
@@ -173,18 +173,19 @@ const DishesForm = ({
               }}
               value={city}
             />
-
-            { ingredientsData.length && (
-              <Select
-                name="ingredients"
-                placeholder="Ingrédients"
-                components={animatedSelect}
-                options={ingredientsData}
-                isMulti
-                defaultValue={selectedIngredients}
-                onChange={(selection, action) => handleMultiSelectChange(selection, action)}
-              />
-            )}
+            {
+              ((dishIdToEdit && dishId) || !dishIdToEdit) && (
+                <Select
+                  name="ingredients"
+                  placeholder="Ingrédients"
+                  components={animatedSelect}
+                  options={ingredientsData}
+                  isMulti
+                  defaultValue={selectedIngredients}
+                  onChange={(selection, action) => handleMultiSelectChange(selection, action)}
+                />
+              )
+            }
 
             <input
               type="text"
@@ -199,7 +200,7 @@ const DishesForm = ({
             />
 
             <div className="meal-form-select">
-              { dishData && (
+              { ((dishIdToEdit && dishId && dishData) || !dishIdToEdit) && (
               <select
                 name="dish"
                 onChange={(evt) => onSetCategorySelect(evt.target.value, evt.target.name)}
@@ -220,7 +221,7 @@ const DishesForm = ({
               </select>
               )}
 
-              { kitchenData && (
+              { ((dishIdToEdit && dishId && kitchenData) || !dishIdToEdit) && (
               <select
                 name="kitchen"
                 onChange={(evt) => onSetCategorySelect(evt.target.value, evt.target.name)}
@@ -229,18 +230,15 @@ const DishesForm = ({
                 required
               >
                 <option disabled value="">Type de cuisine</option>
-                { kitchenData && (
-                  kitchenData.map((kitchenObj) => (
-                    <option
-                      value={kitchenObj.id}
-                      name={kitchenObj.name}
-                      key={`kitchen${kitchenObj.id}`}
-
-                    >
-                      {kitchenObj.name}
-                    </option>
-                  ))
-                )}
+                { kitchenData && kitchenData.map((kitchenObj) => (
+                  <option
+                    value={kitchenObj.id}
+                    name={kitchenObj.name}
+                    key={`kitchen${kitchenObj.id}`}
+                  >
+                    {kitchenObj.name}
+                  </option>
+                ))}
               </select>
               )}
             </div>
@@ -283,7 +281,7 @@ DishesForm.propTypes = {
   dishId: PropTypes.number,
   isError: PropTypes.bool.isRequired,
   changeOnline: PropTypes.func.isRequired,
-  getIngredients: PropTypes.func.isRequired,
+  // getIngredients: PropTypes.func.isRequired,
   ingredientsData: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number,
@@ -291,7 +289,7 @@ DishesForm.propTypes = {
     }),
   ).isRequired,
   handleMultiSelectChange: PropTypes.func.isRequired,
-  fetchTypeDish: PropTypes.func.isRequired,
+  // fetchTypeDish: PropTypes.func.isRequired,
   dishData: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number,
@@ -304,7 +302,7 @@ DishesForm.propTypes = {
       name: PropTypes.string,
     }),
   ),
-  fetchTypeKitchen: PropTypes.func.isRequired,
+  // fetchTypeKitchen: PropTypes.func.isRequired,
   selectedIngredients: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number,
