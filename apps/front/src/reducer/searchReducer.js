@@ -17,12 +17,18 @@ const initialState = {
 
 export default (state = initialState, action = {}) => {
   switch (action.type) {
+    /**
+    * update state whith all controlled inputs from search form
+    */
     case SET_INPUT_VALUE:
       return {
         ...state,
         [action.name]: action.value,
       };
 
+    /**
+    * update state whith all inputs values from search form to be able to send filters data on axios request
+    */
     case SEND_SEARCH_FORM:
       return {
         ...state,
@@ -30,12 +36,18 @@ export default (state = initialState, action = {}) => {
         isSearching: true,
       };
 
+    /**
+    * update state whith value of select inputs
+    */
     case SET_SELECT_VALUE:
       return {
         ...state,
         [action.name]: action.value,
       };
 
+    /**
+    * update state whith all dishes corresponding to filters
+    */
     case FETCH_RESULTS_SUCCES:
       return {
         ...state,
@@ -43,12 +55,18 @@ export default (state = initialState, action = {}) => {
         resultDishes: action.payload,
       };
 
+    /**
+    * update state with all type dish of the api
+    */
     case FETCH_TYPE_DISH_SUCCES:
       return {
         ...state,
         dishData: action.payload,
       };
 
+    /**
+    * update state with all type kitchen of the api
+    */
     case FETCH_TYPE_KITCHEN_SUCCES:
       return {
         ...state,
