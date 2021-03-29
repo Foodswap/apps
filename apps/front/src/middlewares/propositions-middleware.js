@@ -13,8 +13,16 @@ import {
   sendPropositionSucces,
 } from '../actions/exchangeTracking';
 
+import {
+  FETCH_MY_DISHES_SWAP,
+  fetchMyDishesSwapSucces,
+} from '../actions/dishesForm';
+
 export default (store) => (next) => (action) => {
   switch (action.type) {
+    /**
+     * get all propositions received and asked of a user with his ID
+     */
     // eslint-disable-next-line no-lone-blocks
     case GET_OF_EXCHANGE_LIST: {
       axios({
@@ -36,6 +44,9 @@ export default (store) => (next) => (action) => {
         });
     } break;
 
+    /**
+     * update a proposition's status on accept button click
+     */
     case GET_CLICK_ON_ACCEPT: {
       axios({
         method: 'put',
@@ -48,6 +59,9 @@ export default (store) => (next) => (action) => {
         });
     } break;
 
+    /**
+     * update a proposition's status on refuse button click
+     */
     case GET_CLICK_ON_REFUSE: {
       axios({
         method: 'put',
@@ -60,6 +74,9 @@ export default (store) => (next) => (action) => {
         });
     } break;
 
+    /**
+     * send a new proposition using asker dish ID and requested meal ID
+     */
     case SEND_PROPOSITION: {
       const { askerDishId } = store.getState().propositions;
       const { dishSelect } = store.getState().recipes;
@@ -86,6 +103,21 @@ export default (store) => (next) => (action) => {
         const actionToDispatch = (sendPropositionError());
         return store.dispatch(actionToDispatch);
       }
+    } break;
+
+    /**
+     * get all online dishes of a user to allow him to choose one for a new proposition
+     */
+    case FETCH_MY_DISHES_SWAP: {
+      const { infos } = store.getState().user;
+      axios({
+        method: 'get',
+        url: `${process.env.API_URL}/dishes/online/${infos.id}`,
+      })
+        .then((res) => {
+          const actionToDispatch = fetchMyDishesSwapSucces(res.data);
+          return store.dispatch(actionToDispatch);
+        });
     } break;
     default:
       return next(action);
