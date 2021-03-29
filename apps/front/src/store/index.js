@@ -1,8 +1,8 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 
-import ajaxMiddleware from '../middlewares/ajaxMiddleware';
-import ajaxDishesMiddleware from '../middlewares/ajaxDishesMiddleware';
-import ajaxPropositionsMiddleware from '../middlewares/ajaxPropositionsMiddleware';
+import authMiddleware from '../middlewares/auth-middleware';
+import dishesMiddleware from '../middlewares/dishes-middleware';
+import propositionsMiddleware from '../middlewares/propositions-middleware';
 import searchMiddleware from '../middlewares/search-middleware';
 import dishesFormMiddleware from '../middlewares/dishes-form-middleware';
 
@@ -14,10 +14,10 @@ const enhancers = composeEnhancers(
   applyMiddleware(
     // Je mets tous les middlewares que je veux exécuter
     // dans l'ordre où je veux les exécuter
-    ajaxMiddleware,
-    ajaxDishesMiddleware,
+    authMiddleware,
+    dishesMiddleware,
     searchMiddleware,
-    ajaxPropositionsMiddleware,
+    propositionsMiddleware,
     dishesFormMiddleware,
   ),
 );
