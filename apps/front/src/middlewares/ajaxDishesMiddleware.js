@@ -15,6 +15,9 @@ import {
 
 export default (store) => (next) => (action) => {
   switch (action.type) {
+    /**
+     * on delete button click, delete the selected dish
+     */
     case DELETE_ONE_DISH: {
       const { userDishes } = store.getState().recipes;
       const dishIndexToRemove = userDishes.findIndex((dish) => dish.id === action.payload);
@@ -31,6 +34,9 @@ export default (store) => (next) => (action) => {
     }
 
     // eslint-disable-next-line no-lone-blocks
+    /**
+     * get all datas of a dish, using it's ID
+     */
     case ONE_DISH_SELECT: {
       axios({
         method: 'get',
@@ -42,8 +48,10 @@ export default (store) => (next) => (action) => {
         });
     } break;
 
-    // eslint-disable-next-line no-lone-blocks
-    // get last 6 dishes
+      // eslint-disable-next-line no-lone-blocks
+    /**
+     * get list of last online dishes created
+     */
     case GET_LIST_OF_DISHES: {
       axios({
         method: 'get',
@@ -55,6 +63,9 @@ export default (store) => (next) => (action) => {
         });
     } break;
 
+    /**
+     * get all dishes of a user
+     */
     case GET_ALL_DISHES_FROM_A_USER: {
       axios({
         method: 'get',
