@@ -27,7 +27,8 @@ export default (state = initialState, action = {}) => {
       };
 
     /**
-    * update state whith all inputs values from search form to be able to send filters data on axios request
+    * update state whith all inputs values from search form
+    * to be able to send filters data on axios request
     */
     case SEND_SEARCH_FORM:
       return {
