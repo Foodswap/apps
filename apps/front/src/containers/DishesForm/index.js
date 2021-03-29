@@ -72,10 +72,6 @@ const mapDispatchToProps = (dispatch) => ({
 
   handleUpdatePicture: (picture) => dispatch(handleUpdatePicture(picture)),
 
-/*   cancelAction: () => {
-    const action = cancelFormDish();
-    dispatch(action);
-  }, */
 });
 
 export default connect(

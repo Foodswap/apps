@@ -1,8 +1,5 @@
 import {
   SET_INPUT_VALUE,
-  SEND_FORM_RECIPE_UP,
-  CANCEL_FORM_RECIPE_SUCCESS,
-  CANCEL_FORM_RECIPE_ERROR,
   SET_CATEGORY_SELECT,
   SEND_FORM_RECIPE_UP_SUCCESS,
   SEND_FORM_RECIPE_UP_ERROR,
@@ -42,54 +39,54 @@ const initialState = {
 };
 export default (state = initialState, action = {}) => {
   switch (action.type) {
+    /**
+    * input controlled on form to create or edit a dish
+    */
     case SET_INPUT_VALUE:
       return {
         ...state,
         [action.name]: action.value,
       };
 
+    /**
+    * when a category is selected, update state
+    */
     case SET_CATEGORY_SELECT:
       return {
         ...state,
         [action.name]: action.value,
       };
 
-    case CANCEL_FORM_RECIPE_SUCCESS: return {
-      ...state,
-      dataFormMeal: [...action.payload],
-      cancelMessage: 'votre fiche de création de plat a bien été supprimée',
-    };
-
-    case CANCEL_FORM_RECIPE_ERROR: return {
-      ...state,
-      deleteMessage: 'il y a eu un problème, votre fiche de création de plat n\'a pas pu être supprimé',
-    };
-
-    case SEND_FORM_RECIPE_UP:
-      return {
-        ...state,
-        [action.name]: action.value,
-        loggedMessage: 'Votre plat a été crée',
-      };
-
+    /**
+    * update succes message on state
+    */
     case SEND_FORM_RECIPE_UP_SUCCESS:
       return {
         ...state,
         isSucces: true,
       };
 
+    /**
+    * change state isError to true
+    */
     case SEND_FORM_RECIPE_UP_ERROR:
       return {
         ...state,
         isError: true,
       };
 
+    /**
+    * change online status of a dish
+    */
     case CHANGE_STATUS:
       return {
         ...state,
         online: !state.online,
       };
 
+    /**
+    * update ingredients on state when the request is a succes
+    */
     case FETCH_INGREDIENTS_SUCCES:
       return {
         ...state,
@@ -100,25 +97,37 @@ export default (state = initialState, action = {}) => {
         })),
       };
 
+    /**
+    * update state with ingredients selected on form
+    */
     case SET_INGREDIENT:
       return {
         ...state,
         ingredients: action.payload,
       };
 
+    /**
+    * update state with all type dish of the api
+    */
     case FETCH_TYPE_DISH_SUCCES:
       return {
         ...state,
         dishData: action.payload,
       };
 
+    /**
+    * update state with all type kitchen of the api
+    */
     case FETCH_TYPE_KITCHEN_SUCCES:
       return {
         ...state,
         kitchenData: action.payload,
       };
 
-      // En cas de success, je recupere mes props dont j'ai besoin
+    /**
+    * update state with all datas of the selected dish to edit it
+    * and to already have informations on inputs
+    */
     case UPDATE_A_DISH_TO_EDIT:
       return {
         ...state,
@@ -148,6 +157,9 @@ export default (state = initialState, action = {}) => {
         previewPicture: `${process.env.API_URL}/dishes/${action.payload.id}/picture`,
       };
 
+    /**
+    * remove all informations about a dish on state
+    */
     case CLEAR_DISH_INFORMATIONS: return {
       ...state,
       dishId: null,
@@ -168,6 +180,9 @@ export default (state = initialState, action = {}) => {
       selectedIngredients: [],
     };
 
+    /**
+    * get picture url to be able to preview it when we create or edit a dish
+    */
     case HANDLE_UPDATE_PICTURE: {
       return {
         ...state,

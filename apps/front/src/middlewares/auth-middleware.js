@@ -2,7 +2,6 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 
 import {
-  OPEN_OR_CLOSE_MENU_BURGER,
   SEND_LOGIN,
   USER_LOGOUT,
   SEND_SIGN_UP,
@@ -11,11 +10,13 @@ import {
   signUpSucces,
   signUpError,
   handleLogoutSuccess,
-  updateMenuBurgerStatus,
 } from '../actions/user';
 
 export default (store) => (next) => (action) => {
   switch (action.type) {
+    /**
+     * Send login form inputs values to check datas on API and get token
+     */
     case SEND_LOGIN: {
       const { email, password } = store.getState().user;
 
@@ -45,11 +46,13 @@ export default (store) => (next) => (action) => {
     }
       break;
 
+    /**
+     * Send sign up form inputs values to register new user
+     */
     case SEND_SIGN_UP: {
       const {
         email, password, pseudonym, city,
       } = store.getState().user;
-      // push dans le tableau un nouvel obj avec les info entrées dans le input
       const userObj = {
         username: pseudonym,
         email,
@@ -57,7 +60,6 @@ export default (store) => (next) => (action) => {
         city,
       };
 
-      // TODO requete GET pour verifier que le mail ou le pseudo n'existe pas, puis POST
       axios({
         method: 'post',
         url: `${process.env.API_URL}/signup`,
@@ -74,6 +76,9 @@ export default (store) => (next) => (action) => {
         });
     } break;
 
+    /**
+     * On logout button click, remove user and token from localstorage
+     */
     case USER_LOGOUT: {
       localStorage.removeItem('user');
       localStorage.removeItem('token');
@@ -85,16 +90,8 @@ export default (store) => (next) => (action) => {
       }, 1000);
       toast.success('À bientôt !');
     } break;
-
-    case OPEN_OR_CLOSE_MENU_BURGER: {
-      const { menuIsOpen } = store.getState().user;
-
-      const actionToDispatch = updateMenuBurgerStatus(!menuIsOpen);
-      return store.dispatch(actionToDispatch);
-    }
     default:
       return next(action);
   }
-
   return false;
 };

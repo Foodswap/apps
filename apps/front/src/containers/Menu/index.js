@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 import Menu from '../../components/Menu';
 import { modalLoginFormToggle, modalSignUpFormToggle } from '../../actions/modals';
-import { handleLogout, openOrCloseMenuBurger } from '../../actions/user';
 import { clearDishInformations } from '../../actions/dishesForm';
+import { handleLogout, updateMenuBurgerStatus } from '../../actions/user';
 
 const mapStateToProps = (state) => ({
   isLogged: state.user.isLogged,
@@ -21,8 +21,8 @@ const mapDispatchToProps = (dispatch) => ({
   },
   userLogout: () => dispatch(handleLogout()),
 
-  openOrCloseMenuBurger: (menuIsOpen) => {
-    const action = openOrCloseMenuBurger(menuIsOpen);
+  updateMenuBurgerStatus: () => {
+    const action = updateMenuBurgerStatus();
     dispatch(action);
   },
 

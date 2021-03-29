@@ -17,13 +17,13 @@ const Menu = ({
   userLogout,
   username,
   menuIsOpen,
-  openOrCloseMenuBurger,
   handleClickToCreateDish,
+  updateMenuBurgerStatus,
 }) => (
 
   <nav className="menu">
     { isLogged && (
-      <div className="menu-burger" onClick={() => openOrCloseMenuBurger(menuIsOpen)}>
+      <div className="menu-burger" onClick={() => updateMenuBurgerStatus()}>
         {!menuIsOpen && (
         <img className="menu-burger-open icon" src={menuBurger} alt="burger icon" />
         )}
@@ -59,11 +59,11 @@ const Menu = ({
     { isLogged && (
       <nav className="menu-links">
         <div className={menuIsOpen ? 'menu-content open' : 'menu-content'}>
-          <NavLink exact className="menu-link" to="/" onClick={() => openOrCloseMenuBurger(menuIsOpen)}>
+          <NavLink exact className="menu-link" to="/" onClick={() => updateMenuBurgerStatus()}>
             Accueil
           </NavLink>
 
-          <NavLink exact className="menu-link" to="/v1/mydishes" onClick={() => openOrCloseMenuBurger(menuIsOpen)}>
+          <NavLink exact className="menu-link" to="/v1/mydishes" onClick={() => updateMenuBurgerStatus()}>
             Mes plats
           </NavLink>
 
@@ -71,14 +71,14 @@ const Menu = ({
             Créer un plat
           </NavLink>
 
-          <NavLink exact className="menu-link" to="/v1/exchange-tracking" onClick={() => openOrCloseMenuBurger(menuIsOpen)}>
+          <NavLink exact className="menu-link" to="/v1/exchange-tracking" onClick={() => updateMenuBurgerStatus()}>
             Suivi d'échange
           </NavLink>
 
-          <NavLink exact className="menu-link" to="/v1/my-information" onClick={() => openOrCloseMenuBurger(menuIsOpen)}>
+          <NavLink exact className="menu-link" to="/v1/my-information" onClick={() => updateMenuBurgerStatus()}>
             Mes informations
           </NavLink>
-          <button className="menu-logoutButton" type="button" onClick={() => userLogout() && openOrCloseMenuBurger(menuIsOpen)}> Se déconnecter </button>
+          <button className="menu-logoutButton" type="button" onClick={() => userLogout() && updateMenuBurgerStatus()}> Se déconnecter </button>
         </div>
 
         <div className="menu-username">
@@ -98,8 +98,8 @@ Menu.propTypes = {
   userLogout: PropTypes.func.isRequired,
   username: PropTypes.string.isRequired,
   menuIsOpen: PropTypes.bool.isRequired,
-  openOrCloseMenuBurger: PropTypes.func.isRequired,
   handleClickToCreateDish: PropTypes.func.isRequired,
+  updateMenuBurgerStatus: PropTypes.func.isRequired,
 };
 
 export default Menu;
