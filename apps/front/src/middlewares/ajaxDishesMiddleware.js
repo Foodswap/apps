@@ -15,9 +15,6 @@ import {
   // dishExchange,
   updateAllDishesFromAUser,
 } from '../actions/dishes';
-import {
-  FETCH_RESULTS, fetchResultsSucces,
-} from '../actions/search';
 
 import {
   SEND_FORM_RECIPE_UP,
@@ -75,18 +72,6 @@ export default (store) => (next) => (action) => {
       })
         .then((res) => {
           const actionToDispatch = updateListOfDishes(res.data);
-          return store.dispatch(actionToDispatch);
-        });
-    } break;
-
-    case FETCH_RESULTS: {
-      axios({
-        method: 'get',
-        url: `${process.env.API_URL}/dishes/${action.payload.kitchenParam.toLowerCase()}/${action.payload.dishParam.toLowerCase()}/${action.payload.cityParam.toLowerCase()}`,
-      })
-        .then((res) => {
-          res.data.sort((a, b) => b.id - a.id);
-          const actionToDispatch = fetchResultsSucces(res.data);
           return store.dispatch(actionToDispatch);
         });
     } break;
