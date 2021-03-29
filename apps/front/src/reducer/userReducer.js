@@ -36,6 +36,19 @@ const initialState = {
 
 export default (state = initialState, action = {}) => {
   switch (action.type) {
+    /**
+    * change status open or close of burger menu
+    */
+    case UPDATE_MENU_BURGER_STATUS: {
+      return {
+        ...state,
+        menuIsOpen: !state.menuIsOpen,
+      };
+    }
+
+    /**
+    * change status open or close of login modale
+    */
     case MODAL_LOGIN_TOGGLE:
       return {
         ...state,
@@ -45,6 +58,9 @@ export default (state = initialState, action = {}) => {
         isLoginOpen: !state.isLoginOpen,
       };
 
+    /**
+    * change status open or close of signup modale
+    */
     case MODAL_SIGN_UP_TOGGLE:
       return {
         ...state,
@@ -55,12 +71,18 @@ export default (state = initialState, action = {}) => {
         signUpIsValid: false,
       };
 
+    /**
+    * change controlled inputs values in state of signup and login forms
+    */
     case SET_INPUT_VALUE:
       return {
         ...state,
         [action.name]: action.value,
       };
 
+    /**
+    * update user information in state when the signup is a succes
+    */
     case SIGNUP_SUCCES:
       return {
         ...state,
@@ -71,6 +93,9 @@ export default (state = initialState, action = {}) => {
         city: action.payload.city,
       };
 
+    /**
+    * update user information in state when the login is a succes
+    */
     case LOGIN_SUCCES:
       return {
         ...state,
@@ -87,6 +112,9 @@ export default (state = initialState, action = {}) => {
         },
       };
 
+    /**
+    * update user information in state when the login is a not a succes
+    */
     case LOGIN_ERROR:
       return {
         ...state,
@@ -99,6 +127,9 @@ export default (state = initialState, action = {}) => {
         },
       };
 
+    /**
+    * update user information in state when the signup is a not a succes
+    */
     case SIGNUP_ERROR:
       return {
         ...state,
@@ -109,6 +140,9 @@ export default (state = initialState, action = {}) => {
         },
       };
 
+    /**
+    * clear all user informations in state when he logs out
+    */
     case USER_LOGOUT_SUCCESS:
       return {
         ...state,
@@ -123,18 +157,15 @@ export default (state = initialState, action = {}) => {
         },
       };
 
+    /**
+    * update state whit input value of signup form
+    */
     case SEND_SIGN_UP:
       return {
         ...state,
         [action.name]: action.value,
         loggedMessage: 'inscription ok',
       };
-
-    case UPDATE_MENU_BURGER_STATUS: return {
-      ...state,
-      menuIsOpen: action.payload,
-    };
-
     default:
       return state;
   }

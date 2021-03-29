@@ -25,19 +25,6 @@ export const sendFormRecipeUpError = (payload) => ({
   payload,
 });
 
-/* // action pour annuler le form de creation de plat
-export const CANCEL_FORM_DISH = 'CANCEL_FORM_DISH';
-export const cancelFormDish = () => ({
-  type: CANCEL_FORM_DISH,
-});
-
-// ajouter deux actions  success et error
-// Action pour le succè de la fermeture
-export const CANCEL_SUCCESS_DISH = 'CANCEL_SUCCESS_DISH';
-export const cancelSuccessDish = () => ({
-  type: CANCEL_SUCCESS_DISH,
-}); */
-
 // Action  pour la réussite de l'annulation
 export const CANCEL_FORM_RECIPE_SUCCESS = 'CANCEL_FORM_RECIPE_SUCCESS';
 export const cancelFormRecipeSuccess = (payload) => ({
