@@ -1,4 +1,4 @@
-import { FETCH_MY_DISHES_SWAP_SUCCES } from '../actions/dishesForm';
+import { FETCH_MY_DISHES_SWAP_SUCCES } from '../actions/dishesForm-actions';
 import {
   UPDATE_OF_EXCHANGE_LIST_ASKED,
   UPDATE_OF_EXCHANGE_LIST_RECEIVED,
@@ -6,7 +6,7 @@ import {
   GET_ASKER_DISH_ID,
   SEND_PROPOSITION_SUCCES,
   SEND_PROPOSITION_ERROR,
-} from '../actions/exchangeTracking';
+} from '../actions/exchangeTracking-actions';
 
 const initialState = {
   askedPropositions: null,

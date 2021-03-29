@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import DishesForm from '../../components/DishesForm';
+import DishesForm from '../components/DishesForm';
 import {
   setIngredient,
   setInputValue,
@@ -7,13 +7,12 @@ import {
   setCategorySelect,
   changeStatus,
   fetchIngredients,
-  handleMultiSelectChange,
   fetchTypeDish,
   fetchTypeKitchen,
   getADishToEdit,
   handleUpdatePicture,
   // cancelFormDish,
-} from '../../actions/dishesForm';
+} from '../actions/dishesForm-actions';
 
 const mapStateToProps = (state, ownProps) => ({
   dishId: ownProps.match ? +ownProps.match.params.id : null,

@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
-import LoginForm from '../../components/LoginForm';
-import { setInputValue, sendLogin, handleLogout } from '../../actions/user';
-import { modalLoginFormToggle } from '../../actions/modals';
+import LoginForm from '../components/LoginForm';
+import { setInputValue, sendLogin, handleLogout } from '../actions/auth-actions';
+import { modalLoginFormToggle } from '../actions/modals-actions';
 
 const mapStateToProps = (state) => ({
   email: state.user.email,

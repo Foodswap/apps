@@ -16,21 +16,21 @@ import Error from '../Error';
 import Description from '../Description';
 
 // Container components
-import Menu from '../../containers/Menu';
-import Exchangetracking from '../../containers/ExchangeTracking';
+import Menu from '../../containers/Menu-container';
+import Exchangetracking from '../../containers/ExchangeTracking-container';
 
 // Container components
 import DescriptionHomepage from '../DescriptionHomepage';
-import LoginForm from '../../containers/LoginForm';
-import SignUpForm from '../../containers/SignUpForm';
-import MyDishes from '../../containers/MyDishes';
-import DisplayADish from '../../containers/DisplayADish';
-import LastDishes from '../../containers/LastDishes';
-import SearchForm from '../../containers/SearchForm';
-import Results from '../../containers/Results';
-import DishesForm from '../../containers/DishesForm';
+import LoginForm from '../../containers/LoginForm-container';
+import SignUpForm from '../../containers/SignUpForm-container';
+import MyDishes from '../../containers/MyDishes-container';
+import DisplayADish from '../../containers/DisplayADish-container';
+import LastDishes from '../../containers/LastDishes-container';
+import SearchForm from '../../containers/SearchForm-container';
+import Results from '../../containers/Results-container';
+import DishesForm from '../../containers/DishesForm-container';
 
-import MyInformation from '../../containers/MyInformation';
+import MyInformation from '../../containers/MyInformation-container';
 
 // Style
 import './styles.css';

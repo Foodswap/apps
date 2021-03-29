@@ -1,9 +1,8 @@
 import { connect } from 'react-redux';
-import SearchForm from '../../components/SearchForm';
-import { setInputValue } from '../../actions/user';
-import { sendSearchForm, setSelectValue } from '../../actions/search';
-import { fetchTypeDish, fetchTypeKitchen } from '../../actions/dishesForm';
-
+import SearchForm from '../components/SearchForm';
+import { setInputValue } from '../actions/auth-actions';
+import { sendSearchForm, setSelectValue } from '../actions/search-actions';
+import { fetchTypeDish, fetchTypeKitchen } from '../actions/dishesForm-actions';
 
 const mapStateToProps = (state) => ({
   city: state.search.city,

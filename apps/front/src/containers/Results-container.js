@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import Results from '../../components/Results';
-import { fetchResults } from '../../actions/search';
+import Results from '../components/Results';
+import { fetchResults } from '../actions/search-actions';
 
 const mapStateToProps = (state, ownProps) => ({
   dishes: state.search.resultDishes,

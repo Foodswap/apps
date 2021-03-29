@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import MyInformation from '../../components/MyInformation';
+import MyInformation from '../components/MyInformation';
 
 const mapStateToProps = (state) => ({
   username: state.user.pseudonym,

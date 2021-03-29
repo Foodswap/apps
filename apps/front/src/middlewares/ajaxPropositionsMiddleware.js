@@ -11,7 +11,7 @@ import {
   SEND_PROPOSITION,
   sendPropositionError,
   sendPropositionSucces,
-} from '../actions/exchangeTracking';
+} from '../actions/exchangeTracking-actions';
 
 export default (store) => (next) => (action) => {
   switch (action.type) {

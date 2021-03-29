@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
-import LastDishes from '../../components/LastDishes';
+import LastDishes from '../components/LastDishes';
 
-import { getListOfDishes } from '../../actions/dishes';
+import { getListOfDishes } from '../actions/dishes-actions';
 
 const mapStateToProps = (state) => ({
   dishes: state.recipes.lastDishes,

@@ -14,7 +14,7 @@ import {
   UPDATE_A_DISH_TO_EDIT,
   CLEAR_DISH_INFORMATIONS,
   HANDLE_UPDATE_PICTURE,
-} from '../actions/dishesForm';
+} from '../actions/dishesForm-actions';
 
 // export const initialState = {};
 

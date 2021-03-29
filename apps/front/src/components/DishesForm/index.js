@@ -10,7 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import './style.scss';
 // import image from '../../assets/images/logo-fooswap.png';
-import { sendFormRecipeUp, setInputValue } from '../../actions/dishesForm';
+import { sendFormRecipeUp } from '../../actions/dishesForm-actions';
 
 toast.configure();
 const DishesForm = ({

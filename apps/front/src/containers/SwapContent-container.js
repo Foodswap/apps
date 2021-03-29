@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
-import SwapContent from '../../components/SwapContent';
+import SwapContent from '../components/SwapContent';
 
-import { fetchMyDishesSwap } from '../../actions/dishesForm';
-import { getAskerDishId, sendProposition } from '../../actions/exchangeTracking';
+import { fetchMyDishesSwap } from '../actions/dishesForm-actions';
+import { getAskerDishId, sendProposition } from '../actions/exchangeTracking-actions';
 
-const mapStateToProps = (state, ownProps) => ({
+const mapStateToProps = (state) => ({
   dishes: state.propositions.myDishesOnline,
   userLogged: state.user.infos.id,
   isSelected: state.propositions.isSelected,
