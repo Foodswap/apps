@@ -1,6 +1,4 @@
 import axios from 'axios';
-import { toast } from 'react-toastify';
-
 import {
   FETCH_RESULTS, fetchResultsSucces,
 } from '../actions/search';
@@ -10,6 +8,7 @@ export default (store) => (next) => (action) => {
     /**
     * When the search form is submitted, fetch results according to filters
     */
+    // eslint-disable-next-line no-lone-blocks
     case FETCH_RESULTS: {
       axios({
         method: 'get',
@@ -24,6 +23,5 @@ export default (store) => (next) => (action) => {
     default:
       return next(action);
   }
-
   return false;
 };

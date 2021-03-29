@@ -13,6 +13,11 @@ import {
   sendPropositionSucces,
 } from '../actions/exchangeTracking';
 
+import {
+  FETCH_MY_DISHES_SWAP,
+  fetchMyDishesSwapSucces,
+} from '../actions/dishesForm';
+
 export default (store) => (next) => (action) => {
   switch (action.type) {
     // eslint-disable-next-line no-lone-blocks
@@ -86,6 +91,17 @@ export default (store) => (next) => (action) => {
         const actionToDispatch = (sendPropositionError());
         return store.dispatch(actionToDispatch);
       }
+    } break;
+    case FETCH_MY_DISHES_SWAP: {
+      const { infos } = store.getState().user;
+      axios({
+        method: 'get',
+        url: `${process.env.API_URL}/dishes/online/${infos.id}`,
+      })
+        .then((res) => {
+          const actionToDispatch = fetchMyDishesSwapSucces(res.data);
+          return store.dispatch(actionToDispatch);
+        });
     } break;
     default:
       return next(action);

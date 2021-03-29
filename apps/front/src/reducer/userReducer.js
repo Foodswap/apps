@@ -36,6 +36,12 @@ const initialState = {
 
 export default (state = initialState, action = {}) => {
   switch (action.type) {
+    case UPDATE_MENU_BURGER_STATUS: {
+      return {
+        ...state,
+        menuIsOpen: !state.menuIsOpen,
+      };
+    }
     case MODAL_LOGIN_TOGGLE:
       return {
         ...state,
@@ -130,10 +136,10 @@ export default (state = initialState, action = {}) => {
         loggedMessage: 'inscription ok',
       };
 
-    case UPDATE_MENU_BURGER_STATUS: return {
-      ...state,
-      menuIsOpen: action.payload,
-    };
+      // case UPDATE_MENU_BURGER_STATUS: return {
+      //   ...state,
+      //   menuIsOpen: action.payload,
+      // };
 
     default:
       return state;

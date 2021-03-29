@@ -17,12 +17,12 @@ const Menu = ({
   userLogout,
   username,
   menuIsOpen,
-  openOrCloseMenuBurger,
+  updateMenuBurgerStatus,
 }) => (
 
   <nav className="menu">
     { isLogged && (
-      <div className="menu-burger" onClick={() => openOrCloseMenuBurger(menuIsOpen)}>
+      <div className="menu-burger" onClick={() => updateMenuBurgerStatus()}>
         {!menuIsOpen && (
         <img className="menu-burger-open icon" src={menuBurger} alt="burger icon" />
         )}
@@ -97,7 +97,7 @@ Menu.propTypes = {
   userLogout: PropTypes.func.isRequired,
   username: PropTypes.string.isRequired,
   menuIsOpen: PropTypes.bool.isRequired,
-  openOrCloseMenuBurger: PropTypes.func.isRequired,
+  updateMenuBurgerStatus: PropTypes.func.isRequired,
 };
 
 export default Menu;
