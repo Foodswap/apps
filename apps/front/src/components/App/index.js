@@ -7,28 +7,24 @@ import 'react-toastify/dist/ReactToastify.css';
 import PropTypes from 'prop-types';
 
 // Dumb components
-import AppHeader from '../AppHeader';
 import Footer from '../Footer';
 import Faces from '../Faces';
 import PrivacyPolicy from '../PrivacyPolicy';
-// import Results from '../Results';
 import Error from '../Error';
 import Description from '../Description';
-
-// Container components
-import Menu from '../../containers/Menu-container';
-import Exchangetracking from '../../containers/ExchangeTracking-container';
-
-// Container components
 import DescriptionHomepage from '../DescriptionHomepage';
-import LoginForm from '../../containers/LoginForm-container';
-import SignUpForm from '../../containers/SignUpForm-container';
-import MyDishes from '../../containers/MyDishes-container';
-import DisplayADish from '../../containers/DisplayADish-container';
-import LastDishes from '../../containers/LastDishes-container';
-import SearchForm from '../../containers/SearchForm-container';
-import Results from '../../containers/Results-container';
-import DishesForm from '../../containers/DishesForm-container';
+
+// Container components
+import MenuContainer from '../../containers/Menu-container';
+import ExchangetrackingContainer from '../../containers/ExchangeTracking-container';
+import LoginFormContainer from '../../containers/LoginForm-container';
+import SignUpFormContainer from '../../containers/SignUpForm-container';
+import MyDishesContainer from '../../containers/MyDishes-container';
+import DisplayADishContainer from '../../containers/DisplayADish-container';
+import LastDishesContainer from '../../containers/LastDishes-container';
+import SearchFormContainer from '../../containers/SearchForm-container';
+import ResultsContainer from '../../containers/Results-container';
+import DishesFormContainer from '../../containers/DishesForm-container';
 
 import MyInformation from '../../containers/MyInformation-container';
 
@@ -48,36 +44,36 @@ const App = ({ isLoginOpen, isSignUpOpen }) => (
     {(isLoginOpen || isSignUpOpen) && <div className="backdrop" />}
     {/* <AppHeader /> */}
 
-    <Menu />
+    <MenuContainer />
     <ScrollToTop />
     <Switch onUpdate={() => window.scrollTo(0, 0)}>
       <Route exact path="/v1/my-information" component={MyInformation} />
 
-      <Route exact path="/v1/exchange-tracking" component={Exchangetracking} />
+      <Route exact path="/v1/exchange-tracking" component={ExchangetrackingContainer} />
 
       <Route exact path="/">
         <DescriptionHomepage />
         <Description />
-        <SearchForm />
-        <LastDishes />
-        <LoginForm />
-        <SignUpForm />
+        <SearchFormContainer />
+        <LastDishesContainer />
+        <LoginFormContainer />
+        <SignUpFormContainer />
       </Route>
 
-      <Route exact path="/v1/dish/:id" component={DisplayADish} />
+      <Route exact path="/v1/dish/:id" component={DisplayADishContainer} />
 
-      <Route exact path="/v1/dishes/edit/:id" component={DishesForm} />
+      <Route exact path="/v1/dishes/edit/:id" component={DishesFormContainer} />
 
-      <Route exact path="/results/:kitchen/:dish/:city" component={Results} />
+      <Route exact path="/results/:kitchen/:dish/:city" component={ResultsContainer} />
 
       <Route exact path="/v1/mydishes">
-        <MyDishes />
+        <MyDishesContainer />
       </Route>
 
       <Route
         exact
         path="/v1/createdish"
-        render={(props) => <DishesForm {...props} key={Date.now()} />}
+        render={(props) => <DishesFormContainer {...props} key={Date.now()} />}
       />
 
       <Route exact path="/v1/Qui-sommes-nous">
