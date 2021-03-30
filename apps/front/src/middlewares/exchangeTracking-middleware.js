@@ -11,12 +11,12 @@ import {
   SEND_PROPOSITION,
   sendPropositionError,
   sendPropositionSucces,
-} from '../actions/exchangeTracking';
+} from '../actions/exchangeTracking-actions';
 
 import {
   FETCH_MY_DISHES_SWAP,
   fetchMyDishesSwapSucces,
-} from '../actions/dishesForm';
+} from '../actions/dishesForm-actions';
 
 export default (store) => (next) => (action) => {
   switch (action.type) {

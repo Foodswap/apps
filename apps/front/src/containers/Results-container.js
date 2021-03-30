@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import Results from '../../components/Results';
-import { fetchResults } from '../../actions/search';
+import Results from '../components/Results';
+import { fetchResults } from '../actions/search-actions';
 
 const mapStateToProps = (state, ownProps) => ({
   dishes: state.search.resultDishes,
@@ -11,7 +11,6 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   getResults: (kitchenParam, dishParam, cityParam) => {
-    console.log(kitchenParam, dishParam, cityParam);
     const action = fetchResults(kitchenParam, dishParam, cityParam);
     dispatch(action);
   },

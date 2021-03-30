@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
-import Menu from '../../components/Menu';
-import { modalLoginFormToggle, modalSignUpFormToggle } from '../../actions/modals';
-import { handleLogout, updateMenuBurgerStatus } from '../../actions/user';
+import Menu from '../components/Menu';
+import { modalLoginFormToggle, modalSignUpFormToggle } from '../actions/modals-actions';
+import { handleLogout, updateMenuBurgerStatus } from '../actions/auth-actions';
 
 const mapStateToProps = (state) => ({
   isLogged: state.user.isLogged,

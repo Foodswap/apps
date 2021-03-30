@@ -1,12 +1,12 @@
 import { connect } from 'react-redux';
-import ExchangeTracking from '../../components/ExchangeTracking';
+import ExchangeTracking from '../components/ExchangeTracking';
 
 import {
   getOfExchangeList,
   updateActiveTab,
   getClickOnAccept,
   getClickOnRefuse,
-} from '../../actions/exchangeTracking';
+} from '../actions/exchangeTracking-actions';
 
 const mapStateToProps = (state) => ({
   askedPropositions: state.propositions.askedPropositions,

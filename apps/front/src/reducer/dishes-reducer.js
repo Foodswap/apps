@@ -5,7 +5,7 @@ import {
   UPDATE_SELECTED_DISH,
   UPDATE_LIST_OF_DISHES,
   UPDATE_ALL_DISHES_FROM_A_USER,
-} from '../actions/dishes';
+} from '../actions/dishes-actions';
 
 const initialState = {
   lastDishes: null,

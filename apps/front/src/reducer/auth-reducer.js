@@ -7,12 +7,12 @@ import {
   SEND_SIGN_UP,
   SIGNUP_SUCCES,
   SIGNUP_ERROR,
-} from '../actions/user';
+} from '../actions/auth-actions';
 
 import {
   MODAL_LOGIN_TOGGLE,
   MODAL_SIGN_UP_TOGGLE,
-} from '../actions/modals';
+} from '../actions/modals-actions';
 
 const user = localStorage.getItem('user')
   ? JSON.parse(localStorage.getItem('user'))

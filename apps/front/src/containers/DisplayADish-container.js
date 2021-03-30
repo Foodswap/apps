@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
-import DisplayADish from '../../components/DisplayADish';
+import DisplayADish from '../components/DisplayADish';
 
-import { dishExchange, oneDishSelect } from '../../actions/dishes';
+import { oneDishSelect } from '../actions/dishes-actions';
 
 const mapStateToProps = (state, ownProps) => ({
-  dish: state.recipes.dishSelect,
+  dish: state.dishes.dishSelect,
   dishId: ownProps.match.params.id,
 });
 

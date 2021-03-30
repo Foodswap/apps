@@ -1,11 +1,11 @@
 import { connect } from 'react-redux';
-import MyDishes from '../../components/MyDishes';
-import { deleteOneDish, getAllDishesFromAUser } from '../../actions/dishes';
-import { clearDishInformations } from '../../actions/dishesForm';
+import MyDishes from '../components/MyDishes';
+import { deleteOneDish, getAllDishesFromAUser } from '../actions/dishes-actions';
+import { clearDishInformations } from '../actions/dishesForm-actions';
 
 const mapStateToProps = (state) => ({
-  userDishes: state.recipes.userDishes,
-  deleteMessage: state.recipes.deleteMessage,
+  userDishes: state.dishes.userDishes,
+  deleteMessage: state.dishes.deleteMessage,
   userId: state.user.infos.id,
 });
 

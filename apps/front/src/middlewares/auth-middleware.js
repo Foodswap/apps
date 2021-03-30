@@ -10,7 +10,7 @@ import {
   signUpSucces,
   signUpError,
   handleLogoutSuccess,
-} from '../actions/user';
+} from '../actions/auth-actions';
 
 export default (store) => (next) => (action) => {
   switch (action.type) {
