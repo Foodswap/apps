@@ -16,7 +16,7 @@ import {
   GET_A_DISH_TO_EDIT,
   updateADishToEdit,
   clearDishInformations,
-} from '../actions/dishesForm';
+} from '../actions/dishesForm-actions';
 
 export default (store) => (next) => (action) => {
   switch (action.type) {

@@ -11,7 +11,6 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   getResults: (kitchenParam, dishParam, cityParam) => {
-    console.log(kitchenParam, dishParam, cityParam);
     const action = fetchResults(kitchenParam, dishParam, cityParam);
     dispatch(action);
   },
