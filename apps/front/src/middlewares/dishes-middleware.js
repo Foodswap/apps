@@ -30,12 +30,12 @@ export default (store) => (next) => (action) => {
       }
 
       const actionToDispatch = deleteOneDishError();
+
       return store.dispatch(actionToDispatch);
     }
 
-    // eslint-disable-next-line no-lone-blocks
     /**
-     * get all datas of a dish, using it's ID
+     * get all data of a dish, using it's ID
      */
     case ONE_DISH_SELECT: {
       axios({
@@ -44,11 +44,11 @@ export default (store) => (next) => (action) => {
       })
         .then((res) => {
           const actionToDispatch = updateSElectedDish(res.data);
+
           return store.dispatch(actionToDispatch);
         });
     } break;
 
-      // eslint-disable-next-line no-lone-blocks
     /**
      * get list of last online dishes created
      */
@@ -59,6 +59,7 @@ export default (store) => (next) => (action) => {
       })
         .then((res) => {
           const actionToDispatch = updateListOfDishes(res.data);
+
           return store.dispatch(actionToDispatch);
         });
     } break;
@@ -73,6 +74,7 @@ export default (store) => (next) => (action) => {
       })
         .then((res) => {
           const actionToDispatch = updateAllDishesFromAUser(res.data);
+
           return store.dispatch(actionToDispatch);
         });
     } break;

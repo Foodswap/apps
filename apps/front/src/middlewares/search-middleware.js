@@ -17,6 +17,7 @@ export default (store) => (next) => (action) => {
         .then((res) => {
           res.data.sort((a, b) => b.id - a.id);
           const actionToDispatch = fetchResultsSucces(res.data);
+
           return store.dispatch(actionToDispatch);
         });
     } break;
