@@ -9,7 +9,7 @@ import {
 } from 'react-redux';
 
 import store from './store';
-import AppContainer from './containers/App-container';
+import AppContainer from '../src/containers/App-container';
 import 'react-toastify/dist/ReactToastify.css';
 
 const rootReactElement = (

@@ -11,7 +11,7 @@ import {
   updateSElectedDish,
   updateListOfDishes,
   updateAllDishesFromAUser,
-} from '../actions/dishes';
+} from '../actions/dishes-actions';
 
 export default (store) => (next) => (action) => {
   switch (action.type) {

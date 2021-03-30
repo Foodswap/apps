@@ -20,7 +20,6 @@ const Menu = ({
   handleClickToCreateDish,
   updateMenuBurgerStatus,
 }) => (
-
   <nav className="menu">
     { isLogged && (
       <div className="menu-burger" onClick={() => updateMenuBurgerStatus()}>

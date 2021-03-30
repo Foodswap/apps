@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import App from '../components/App';
 
 // Actions
-import { fetchTypeDish, fetchTypeKitchen, fetchIngredients } from '../actions/dishesForm';
+import { fetchTypeDish, fetchTypeKitchen, fetchIngredients } from '../actions/dishesForm-actions';
 
 const mapStateToProps = (state) => ({
   isLoginOpen: state.user.isLoginOpen,

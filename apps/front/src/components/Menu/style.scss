@@ -1,82 +1,91 @@
 @import url(https://fonts.googleapis.com/css?family=Gudea:400,700);
 
+.menu {
+  background-color: #262835;
+  display: flex;
+  justify-content: center;
+  height: 100px;
+  align-items: center;
+  color: white;
+  box-shadow: #f8a587a9 0.5px 3px 3px 2px;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
-  .menu {
-    background-color: #262835;
-    display: flex;
-    justify-content: center;
-    height: 100px;
-    align-items: center;
-    color: white;
-    box-shadow: #f8a587a9 0.5px 3px 3px 2px;
-    position: relative;
+  &-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-
-    &-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    &-username {
-      display: flex;
-      align-items: center;
-    }
-
-    &-userLogo {
-      width: 2rem;
-      margin: 0 0.7rem 0 0;
-    }
-
-    &-textForUser {
-      margin: 0 2rem 0 0;
-      font-size: 1.4rem;
-      font-family: Gudea,sans-serif;
-    }
-
-    &-links {
-      display: flex;
-      align-items: center;
-      width: 80%;
-      justify-content: space-around;
-      padding: 0 2rem;
-
-      &-logout {
-        padding-right: 6rem;
-      }
-    }
-    &-link-logout {
-      color: white;
-      padding: 0 0 .3rem;
-      margin-right: .7rem;
-      font-size: 1.1em;
-      padding-bottom: 0.7rem;
-      padding-top: 0.7rem;
-      padding: 1.1rem 0;
-      width: 90%;
-    }
-
-    &-logoutButton {
-      display: none;
-    }
-
-    &-link {
-      font-size: 1.3rem;
-      padding: 0.5rem;
-      color: rgb(247, 243, 243);
-      margin: 0 1em;
-      font-family: 'Gudea', sans-serif;
-      letter-spacing: 0.1em;
-    }
-
-    &-link:hover {
-      color: #f1bdb0;
-    }
   }
 
+  &-username {
+    display: flex;
+    align-items: center;
+  }
+
+  &-userLogo {
+    width: 2rem;
+    margin: 0 0.7rem 0 0;
+  }
+
+  &-textForUser {
+    margin: 0 2rem 0 0;
+    font-size: 1.4rem;
+    font-family: Gudea, sans-serif;
+  }
+
+  &-links {
+    display: flex;
+    align-items: center;
+    width: 80%;
+    justify-content: space-around;
+    padding: 0 2rem;
+
+    &-logout {
+      padding-right: 6rem;
+    }
+  }
+  &-link-logout {
+    color: white;
+    padding: 0 0 0.3rem;
+    margin-right: 0.7rem;
+    font-size: 1.1em;
+    padding-bottom: 0.7rem;
+    padding-top: 0.7rem;
+    padding: 1.1rem 0;
+    width: 90%;
+  }
+
+  &-logoutButton {
+    display: none;
+  }
+
+  &-link {
+    font-size: 1.3rem;
+    padding: 0.5rem;
+    color: rgb(247, 243, 243);
+    margin: 0 1em;
+    font-family: "Gudea", sans-serif;
+    letter-spacing: 0.1em;
+  }
+
+  &-link:hover {
+    color: #f1bdb0;
+  }
+}
+
+.appHeader {
+  display: flex;
+  background: #4a4a35;
+  background: linear-gradient(45deg, #35394a 0%, #1f222e 100%);
+
+  &-logo {
+    width: 15rem;
+    margin-top: 0.8rem;
+    margin-left: 6.5rem;
+  }
+}
 
 @media only screen and (max-device-width: 415px) {
   .menu {
@@ -118,7 +127,7 @@
       height: 0px;
       transition: height ease 0.5s;
       overflow: hidden;
-  
+
       &.open {
         height: 350px;
       }
@@ -135,27 +144,27 @@
     }
 
     &-textForUser {
-      font-size: .9rem;
+      font-size: 0.9rem;
       margin: 0;
       width: 5em;
       text-align: center;
     }
-    
+
     &-logoutButton {
       left: 12.7rem;
       top: 0;
-      padding: .9em 1.7em;
+      padding: 0.9em 1.7em;
       position: relative;
       border-radius: 5rem;
       background: transparent;
       border: 2px solid #262835;
       color: #262835;
       text-transform: uppercase;
-      transition-property: background,color;
-      transition-duration: .2s;
+      transition-property: background, color;
+      transition-duration: 0.2s;
       width: fit-content;
-      margin-top: .2rem;
-      font-size: .7rem;
+      margin-top: 0.2rem;
+      font-size: 0.7rem;
       margin: 1.6rem 0;
       font-weight: 700;
       display: flex;
@@ -175,8 +184,8 @@
     }
     &-link-logout {
       color: white;
-      padding: 0 0 .3rem;
-      margin-right: .7rem;
+      padding: 0 0 0.3rem;
+      margin-right: 0.7rem;
       font-size: 1.1em;
       padding-bottom: 0.7rem;
       padding-top: 0.7rem;
@@ -184,18 +193,34 @@
       width: 90%;
     }
     &-link {
-      padding: 0 0 .3rem;
-      margin-right: .7rem;
+      padding: 0 0 0.3rem;
+      margin-right: 0.7rem;
       font-size: 1.1em;
       padding-bottom: 0.7rem;
-      border-bottom: .1rem solid #c47d63;
+      border-bottom: 0.1rem solid #c47d63;
       padding-top: 0.7rem;
       padding: 1.1rem 0;
       width: 90%;
       color: #262835;
 
-      &:last-child, &.no-border {
+      &:last-child,
+      &.no-border {
         border: none;
+      }
+    }
+  }
+
+  .appHeader {
+    display: flex;
+    margin-left: 0;
+
+    &-logo {
+      width: 5.8rem;
+      margin-top: 0.6rem;
+      margin-left: 0;
+
+      &.anonymous {
+        margin-left: 1rem;
       }
     }
   }

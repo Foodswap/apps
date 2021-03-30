@@ -10,7 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import './style.scss';
 // import image from '../../assets/images/logo-fooswap.png';
-import { sendFormRecipeUp, setInputValue } from '../../actions/dishesForm';
+import { sendFormRecipeUp } from '../../actions/dishesForm-actions';
 
 toast.configure();
 const DishesForm = ({
@@ -28,13 +28,10 @@ const DishesForm = ({
   onSetCategorySelect,
   isError,
   changeOnline,
-
   ingredientsData,
   handleMultiSelectChange,
-
   dishData,
   kitchenData,
-
   getADish,
   selectedIngredients,
   handleUpdatePicture,
@@ -43,10 +40,6 @@ const DishesForm = ({
 }) => {
   useEffect(() => {
     getADish(dishIdToEdit);
-    // getIngredients();
-    // fetchTypeDish();
-    // fetchTypeKitchen();
-    // console.log(`ingredient data ${ingredientsData}`);
   }, []);
 
   const animatedSelect = makeAnimated();
@@ -173,19 +166,17 @@ const DishesForm = ({
               }}
               value={city}
             />
-            {
-              ((dishIdToEdit && dishId) || !dishIdToEdit) && (
-                <Select
-                  name="ingredients"
-                  placeholder="Ingrédients"
-                  components={animatedSelect}
-                  options={ingredientsData}
-                  isMulti
-                  defaultValue={selectedIngredients}
-                  onChange={(selection, action) => handleMultiSelectChange(selection, action)}
-                />
-              )
-            }
+            { ((dishIdToEdit && dishId) || !dishIdToEdit) && (
+            <Select
+              name="ingredients"
+              placeholder="Ingrédients"
+              components={animatedSelect}
+              options={ingredientsData}
+              isMulti
+              defaultValue={selectedIngredients}
+              onChange={(selection, action) => handleMultiSelectChange(selection, action)}
+            />
+            )}
 
             <input
               type="text"
@@ -281,7 +272,6 @@ DishesForm.propTypes = {
   dishId: PropTypes.number,
   isError: PropTypes.bool.isRequired,
   changeOnline: PropTypes.func.isRequired,
-  // getIngredients: PropTypes.func.isRequired,
   ingredientsData: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number,
@@ -289,7 +279,6 @@ DishesForm.propTypes = {
     }),
   ).isRequired,
   handleMultiSelectChange: PropTypes.func.isRequired,
-  // fetchTypeDish: PropTypes.func.isRequired,
   dishData: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number,
@@ -302,7 +291,6 @@ DishesForm.propTypes = {
       name: PropTypes.string,
     }),
   ),
-  // fetchTypeKitchen: PropTypes.func.isRequired,
   selectedIngredients: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number,
@@ -311,6 +299,7 @@ DishesForm.propTypes = {
   ),
   handleUpdatePicture: PropTypes.func.isRequired,
   previewPicture: PropTypes.string.isRequired,
+  dishIdToEdit: PropTypes.number,
 };
 
 DishesForm.defaultProps = {
@@ -321,5 +310,6 @@ DishesForm.defaultProps = {
   selectedIngredients: [],
   dishData: null,
   kitchenData: null,
+  dishIdToEdit: null,
 };
 export default DishesForm;

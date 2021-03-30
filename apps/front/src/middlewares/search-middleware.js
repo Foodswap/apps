@@ -1,7 +1,7 @@
 import axios from 'axios';
 import {
   FETCH_RESULTS, fetchResultsSucces,
-} from '../actions/search';
+} from '../actions/search-actions';
 
 export default (store) => (next) => (action) => {
   switch (action.type) {

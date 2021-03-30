@@ -2,9 +2,9 @@ import { createStore, applyMiddleware, compose } from 'redux';
 
 import authMiddleware from '../middlewares/auth-middleware';
 import dishesMiddleware from '../middlewares/dishes-middleware';
-import propositionsMiddleware from '../middlewares/propositions-middleware';
+import exchangeTrackingMiddleware from '../middlewares/exchangeTracking-middleware';
 import searchMiddleware from '../middlewares/search-middleware';
-import dishesFormMiddleware from '../middlewares/dishes-form-middleware';
+import dishesFormMiddleware from '../middlewares/dishesForm-middleware';
 
 import reducer from '../reducer';
 
@@ -17,7 +17,7 @@ const enhancers = composeEnhancers(
     authMiddleware,
     dishesMiddleware,
     searchMiddleware,
-    propositionsMiddleware,
+    exchangeTrackingMiddleware,
     dishesFormMiddleware,
   ),
 );
