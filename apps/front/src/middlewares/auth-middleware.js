@@ -77,7 +77,7 @@ export default (store) => (next) => (action) => {
     } break;
 
     /**
-     * On logout button click, remove user and token from localstorage
+     * On logout button click, remove user and token from localStorage
      */
     case USER_LOGOUT: {
       localStorage.removeItem('user');
