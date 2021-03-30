@@ -75,7 +75,6 @@ export default (store) => (next) => (action) => {
     }
       break;
 
-      // eslint-disable-next-line no-lone-blocks
     /**
      * Get the list of all ingredients
      */
@@ -90,6 +89,7 @@ export default (store) => (next) => (action) => {
         })
         .catch(() => {
           const actionToDispatch = fetchIngredientsError();
+
           return store.dispatch(actionToDispatch);
         });
     } break;
@@ -104,6 +104,7 @@ export default (store) => (next) => (action) => {
       })
         .then((res) => {
           const actionToDispatch = fetchTypeDishSucces(res.data);
+
           return store.dispatch(actionToDispatch);
         });
     } break;
@@ -111,7 +112,6 @@ export default (store) => (next) => (action) => {
     /**
      * Get the list of all kitchen types
      */
-    // eslint-disable-next-line no-lone-blocks
     case FETCH_TYPE_KITCHEN: {
       axios({
         method: 'get',
@@ -119,6 +119,7 @@ export default (store) => (next) => (action) => {
       })
         .then((res) => {
           const actionToDispatch = fetchTypeKitchenSucces(res.data);
+
           return store.dispatch(actionToDispatch);
         });
     } break;
@@ -141,6 +142,7 @@ export default (store) => (next) => (action) => {
       }
       else {
         const actionToDispatch = clearDishInformations();
+
         return store.dispatch(actionToDispatch);
       }
     } break;

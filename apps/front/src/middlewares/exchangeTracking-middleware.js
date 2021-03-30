@@ -23,7 +23,6 @@ export default (store) => (next) => (action) => {
     /**
      * get all propositions received and asked of a user with his ID
      */
-    // eslint-disable-next-line no-lone-blocks
     case GET_OF_EXCHANGE_LIST: {
       axios({
         method: 'get',
@@ -31,6 +30,7 @@ export default (store) => (next) => (action) => {
       })
         .then((res) => {
           const actionToDispatch = updateOfExchangeListAsked(res.data.reverse());
+
           return store.dispatch(actionToDispatch);
         });
 
@@ -40,6 +40,7 @@ export default (store) => (next) => (action) => {
       })
         .then((res) => {
           const actionToDispatch = updateOfExchangeListReceived(res.data.reverse());
+
           return store.dispatch(actionToDispatch);
         });
     } break;
@@ -55,6 +56,7 @@ export default (store) => (next) => (action) => {
       })
         .then(() => {
           const actionToDispatch = getOfExchangeList(action.payload.userId);
+
           return store.dispatch(actionToDispatch);
         });
     } break;
@@ -70,6 +72,7 @@ export default (store) => (next) => (action) => {
       })
         .then(() => {
           const actionToDispatch = getOfExchangeList(action.payload.userId);
+
           return store.dispatch(actionToDispatch);
         });
     } break;
@@ -116,6 +119,7 @@ export default (store) => (next) => (action) => {
       })
         .then((res) => {
           const actionToDispatch = fetchMyDishesSwapSucces(res.data);
+
           return store.dispatch(actionToDispatch);
         });
     } break;
