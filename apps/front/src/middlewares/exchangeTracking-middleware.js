@@ -79,7 +79,7 @@ export default (store) => (next) => (action) => {
      */
     case SEND_PROPOSITION: {
       const { askerDishId } = store.getState().propositions;
-      const { dishSelect } = store.getState().recipes;
+      const { dishSelect } = store.getState().dishes;
 
       if (askerDishId) {
         axios({
