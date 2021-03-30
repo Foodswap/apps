@@ -25,8 +25,7 @@ import LastDishesContainer from '../../containers/LastDishes-container';
 import SearchFormContainer from '../../containers/SearchForm-container';
 import ResultsContainer from '../../containers/Results-container';
 import DishesFormContainer from '../../containers/DishesForm-container';
-
-import MyInformation from '../../containers/MyInformation-container';
+import MyInformationContainer from '../../containers/MyInformation-container';
 
 // Style
 import './styles.css';
@@ -47,7 +46,7 @@ const App = ({ isLoginOpen, isSignUpOpen }) => (
     <MenuContainer />
     <ScrollToTop />
     <Switch onUpdate={() => window.scrollTo(0, 0)}>
-      <Route exact path="/v1/my-information" component={MyInformation} />
+      <Route exact path="/v1/my-information" component={MyInformationContainer} />
 
       <Route exact path="/v1/exchange-tracking" component={ExchangetrackingContainer} />
 
