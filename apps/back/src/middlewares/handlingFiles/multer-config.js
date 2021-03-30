@@ -12,7 +12,7 @@ const storage = multer.diskStorage({
   },
   filename: (req, file, callback) => {
     const extension = MIME_TYPES[file.mimetype];
-    callback(null, `${Date.now() + Math.floor(Math.random() * 100)}.${extension}`);
+    callback(null, `dish_cover_${req.params.id}.${extension}`);
   },
 });
 
