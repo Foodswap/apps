@@ -17,9 +17,9 @@ const Menu = ({
   userLogout,
   username,
   menuIsOpen,
+  handleClickToCreateDish,
   updateMenuBurgerStatus,
 }) => (
-
   <nav className="menu">
     { isLogged && (
       <div className="menu-burger" onClick={() => updateMenuBurgerStatus()}>
@@ -66,7 +66,7 @@ const Menu = ({
             Mes plats
           </NavLink>
 
-          <NavLink exact className="menu-link" to="/v1/createdish" onClick={() => updateMenuBurgerStatus()}>
+          <NavLink exact className="menu-link" to="/v1/createdish" onClick={() => handleClickToCreateDish()}>
             Créer un plat
           </NavLink>
 
@@ -97,6 +97,7 @@ Menu.propTypes = {
   userLogout: PropTypes.func.isRequired,
   username: PropTypes.string.isRequired,
   menuIsOpen: PropTypes.bool.isRequired,
+  handleClickToCreateDish: PropTypes.func.isRequired,
   updateMenuBurgerStatus: PropTypes.func.isRequired,
 };
 

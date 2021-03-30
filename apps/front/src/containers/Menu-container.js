@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { clearDishInformations } from '../actions/dishesForm-actions';
 import Menu from '../components/Menu';
 import { modalLoginFormToggle, modalSignUpFormToggle } from '../actions/modals-actions';
 import { handleLogout, updateMenuBurgerStatus } from '../actions/auth-actions';
@@ -20,9 +21,17 @@ const mapDispatchToProps = (dispatch) => ({
   },
   userLogout: () => dispatch(handleLogout()),
 
-  updateMenuBurgerStatus: () => {
-    const action = updateMenuBurgerStatus();
+  updateMenuBurgerStatus: (menuIsOpen) => {
+    const action = updateMenuBurgerStatus(menuIsOpen);
     dispatch(action);
+  },
+
+  handleClickToCreateDish: (menuIsOpen) => {
+    const menuBurgerCloseOrOpen = updateMenuBurgerStatus(menuIsOpen);
+    dispatch(menuBurgerCloseOrOpen);
+
+    const clearInfo = clearDishInformations();
+    dispatch(clearInfo);
   },
 });
 

@@ -71,12 +71,6 @@ export const fetchIngredientsError = () => ({
   type: FETCH_INGREDIENTS_ERROR,
 });
 
-export const HANDLE_MULTI_SELECT = 'HANDLE_MULTI_SELECT';
-export const handleMultiSelectChange = (payload) => ({
-  type: HANDLE_MULTI_SELECT,
-  payload,
-});
-
 export const SET_INGREDIENT = 'SET_INGREDIENT';
 export const setIngredient = (payload) => ({
   type: SET_INGREDIENT,
@@ -138,7 +132,7 @@ export const updateADishToEdit = (payload) => ({
 });
 
 // Action utiliser dans le fichier dishMiddleware
-// Action pour vder les champs du formulaire
+// Action pour vider les champs du formulaire
 export const CLEAR_DISH_INFORMATIONS = 'CLEAR_DISH_INFORMATIONS';
 export const clearDishInformations = (payload) => ({
   type: CLEAR_DISH_INFORMATIONS,
