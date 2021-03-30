@@ -17,7 +17,6 @@ const SignUp = ({
 }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    console.log('handleSubmit');
     handleSignUp();
   };
   const classIsOpen = isSignUpOpen ? 'signup-modale' : 'signup-modale-close';
@@ -28,7 +27,7 @@ const SignUp = ({
       { signUpIsValid && (
         <div className="signup-succes-message">
           <p> Bienvenue sur FoodSwap ! </p>
-          <p> Vous pouvez maintenant vous 
+          <p> Vous pouvez maintenant vous
             <a
               className="signup-succes-link"
               href=""

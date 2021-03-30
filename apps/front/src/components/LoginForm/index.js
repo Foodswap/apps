@@ -16,7 +16,6 @@ const LoginForm = ({
 }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    console.log('handleSubmit');
     handleLogin();
   };
   const classIsOpen = isLoginOpen ? 'login-modale' : 'login-modale-close';
@@ -29,7 +28,7 @@ const LoginForm = ({
           <p className="login-form-message">
             {loggedMessage}
           </p>
-        
+
           <button className="logout-button" type="button" onClick={userLogout}> Se déconnecter </button>
         </div>
       )}
