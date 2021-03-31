@@ -11,6 +11,7 @@ const seedIngredients = [
   { id: 10, name: 'Sucre' },
   { id: 11, name: 'Beurre' },
   { id: 12, name: 'Lait' },
+  { id: 13, name: 'Huile d\'olive' },
   { id: 14, name: 'Vinaigre' },
   { id: 15, name: 'Thon' },
   { id: 16, name: 'Viande hachée' },
@@ -21,6 +22,7 @@ const seedIngredients = [
   { id: 21, name: 'Oignons' },
   { id: 22, name: 'Echalotte' },
   { id: 23, name: 'Fromage' },
+  { id: 24, name: 'Vin rouge' },
   { id: 25, name: 'Tomates' },
   { id: 26, name: 'Moutarde' },
   { id: 27, name: 'Levure' },
@@ -36,6 +38,8 @@ const seedIngredients = [
   { id: 37, name: 'Poisson' },
   { id: 38, name: 'Algues' },
   { id: 39, name: 'Volaille' },
+  { id: 40, name: 'Chocolat noir' },
+  { id: 41, name: 'Olives vertes' },
   { id: 42, name: 'Salade' },
   { id: 43, name: 'Curry' },
   { id: 44, name: 'Poulet' },
@@ -86,7 +90,6 @@ const seedIngredients = [
   { id: 89, name: 'Nuoc-mâm' },
   { id: 90, name: 'Sauce huitre' },
   { id: 91, name: 'Piment doux' },
-  { id: 40, name: 'Chocolat noir' },
   { id: 92, name: 'Chocolat blanc' },
   { id: 93, name: 'Chocolat au lait' },
   { id: 94, name: 'Fraises' },
@@ -117,7 +120,6 @@ const seedIngredients = [
   { id: 119, name: 'Pâte brisée' },
   { id: 120, name: 'Crème liquide' },
   { id: 121, name: 'Vin blanc' },
-  { id: 24, name: 'Vin rouge' },
   { id: 122, name: 'Saké' },
   { id: 123, name: 'Rhum' },
   { id: 124, name: 'Porto' },
@@ -146,20 +148,20 @@ const seedIngredients = [
   { id: 147, name: 'Galette' },
   { id: 148, name: 'Champignons de Paris' },
   { id: 149, name: 'Champignons noir' },
-  { id: 151, name: 'Cèpe' },
   { id: 150, name: 'Shiitake' },
+  { id: 151, name: 'Cèpe' },
   { id: 152, name: 'Girolle' },
   { id: 153, name: 'Olives noires' },
-  { id: 41, name: 'Olives vertes' },
   { id: 154, name: 'Lait de coco' },
-  { id: 13, name: 'Huile d\'olive' },
   { id: 155, name: 'Huile de sésame' },
   { id: 156, name: 'Graines de sésame' },
   { id: 157, name: 'Feuilles d\'algues' },
   { id: 158, name: 'Tofu' },
   { id: 159, name: 'Sauce soja' },
   { id: 160, name: 'Vinaigre de riz' },
+  { id: 161, name: 'Morilles' },
   { id: 162, name: 'Semoule' },
+  { id: 163, name: 'Wasabi' },
   { id: 164, name: 'Pâte à ravioli' },
   { id: 165, name: 'Celeri' },
   { id: 166, name: 'Ganache montée' },
@@ -181,6 +183,10 @@ const seedIngredients = [
 
 async function up({ context: queryInterface }) {
   await queryInterface.bulkInsert('ingredient', seedIngredients);
+  
+  if (process.env.NODE_ENV !== 'test') {
+    await queryInterface.sequelize.query(`ALTER SEQUENCE ingredient_id_seq RESTART WITH ${seedIngredients.length + 1}`);
+  }
 }
 
 async function down({ context: queryInterface }) {
