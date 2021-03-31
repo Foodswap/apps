@@ -34,7 +34,7 @@ export default (store) => (next) => (action) => {
         dish,
         kitchen,
         online,
-      } = store.getState().dishes;
+      } = store.getState().dishesForm;
 
       const { infos } = store.getState().user;
       const formData = new FormData();
