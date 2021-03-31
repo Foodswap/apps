@@ -183,7 +183,10 @@ const seedIngredients = [
 
 async function up({ context: queryInterface }) {
   await queryInterface.bulkInsert('ingredient', seedIngredients);
-  await queryInterface.sequelize.query(`ALTER SEQUENCE ingredient_id_seq RESTART WITH ${seedIngredients.length + 1}`);
+  
+  if (process.env.NODE_ENV !== 'test') {
+    await queryInterface.sequelize.query(`ALTER SEQUENCE ingredient_id_seq RESTART WITH ${seedIngredients.length + 1}`);
+  }
 }
 
 async function down({ context: queryInterface }) {

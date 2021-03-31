@@ -101,7 +101,10 @@ const seedMeals = [
 
 async function up({ context: queryInterface }) {
   await queryInterface.bulkInsert('meal', seedMeals);
-  await queryInterface.sequelize.query(`ALTER SEQUENCE meal_id_seq RESTART WITH ${seedMeals.length + 1}`);
+  
+  if (process.env.NODE_ENV !== 'test') {
+    await queryInterface.sequelize.query(`ALTER SEQUENCE meal_id_seq RESTART WITH ${seedMeals.length + 1}`);
+  }
 
   seedMeals.forEach((meal) => {
     fs.copyFile(`${__dirname}/assets/${meal.picture_path}`, `${__dirname}/../../assets/${meal.picture_path}`, (err) => {

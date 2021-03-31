@@ -39,7 +39,10 @@ const seedSwap = [
 
 async function up({ context: queryInterface }) {
   await queryInterface.bulkInsert('swap', seedSwap);
-  await queryInterface.sequelize.query('ALTER SEQUENCE swap_id_seq RESTART WITH 13');
+
+  if (process.env.NODE_ENV !== 'test') {
+    await queryInterface.sequelize.query('ALTER SEQUENCE swap_id_seq RESTART WITH 13');
+  }
 }
 
 async function down({ context: queryInterface }) {

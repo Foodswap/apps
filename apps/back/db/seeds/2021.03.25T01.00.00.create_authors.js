@@ -31,7 +31,10 @@ const seedAuthors = [
 
 async function up({ context: queryInterface }) {
   await queryInterface.bulkInsert('author', seedAuthors);
-  await queryInterface.sequelize.query(`ALTER SEQUENCE author_id_seq RESTART WITH ${seedAuthors.length + 1}`);
+
+  if (process.env.NODE_ENV !== 'test') {
+    await queryInterface.sequelize.query(`ALTER SEQUENCE author_id_seq RESTART WITH ${seedAuthors.length + 1}`);
+  }
 }
 
 async function down({ context: queryInterface }) {
