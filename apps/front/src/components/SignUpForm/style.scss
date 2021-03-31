@@ -1,7 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Gudea:400,700);
 
 .signup-modale {
-  // width: 850px;
+  width: 850px;
   border-radius: 1rem;
   display: flex;
   position: fixed;
@@ -9,13 +9,13 @@
   background: linear-gradient(45deg, #35394a 0%, #1f222e 100%);
   overflow: hidden;
   top: 120px;
-  left: 53%;
-  margin-left: -550px;
+  left: 50%;
+  margin-left: -425px;
   margin-top: 20px;
   z-index: 9999;
   justify-content: center;
   perspective: 850px;
-  height: 60vh;
+  height: 65vh;
   font-family: 'Gudea', sans-serif;
   box-shadow: black 0 2px 25px 3px;
   animation:modalSlide 0.5s ease-out forwards;
