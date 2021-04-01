@@ -3,12 +3,35 @@ require('dotenv').config();
 const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
+const expressJSDocSwagger = require('express-jsdoc-swagger');
+
+/**
+ * An error message
+ *
+ * @typedef {object} ErrorDto
+ *
+ * @property {number} error - The http status number error
+ * @property {string} message - The information about the error
+ */
+
+const options = {
+  info: {
+    version: '0.0.1',
+    title: 'FoodSwap Api',
+  },
+  filesPattern: './**/*.js',
+  baseDir: __dirname,
+  exposeSwaggerUI: true,
+};
 
 // Router
 const router = require('./router');
 
 // Init app
 const app = express();
+
+// wrap swagger
+expressJSDocSwagger(app)(options);
 
 // CONFIGS
 const corsOption = {

@@ -3,6 +3,34 @@ const jwt = require('jsonwebtoken');
 const Author = require('../models/author');
 
 const authorController = {
+  /**
+   * GET /v1/author/{id}
+   *
+   * @summary Get one Author by id
+   *
+   * @param {string} id.path - id of Author
+   *
+   * @return {AuthorDto} 200 - success response - application/json
+   * @return {ErrorDto} 404 - bad request response
+   * @return {ErrorDto} 500 - error on server
+   *
+   * @example response - 200 - an author returns by api
+   * {
+   *   "username": "John Doe",
+   *   "email": "john@mail.fr",
+   *   "city": "Paris"
+   * }
+   * @example response - 404 - an error of bad request
+   * {
+   *   "error": 404,
+   *   "message": "User not found"
+   * }
+   * @example response - 500 - an error on server
+   * {
+   *   "error": 500,
+   *   "message": "Internal server error"
+   * }
+   */
   getOneAuthor: async (request, response) => {
     try {
       const author = await Author.findByPk(Number(request.params.id), {
@@ -17,10 +45,44 @@ const authorController = {
         response.status(404).json({ error: 404, message: 'User not found' });
       }
     } catch (err) {
-      response.status(500).json(err);
+      response.status(500).json({ error: 500, message: err });
     }
   },
 
+  /**
+   * POST /v1/signup
+   *
+   * @summary Register to the app
+   *
+   * @param {AuthorBody} request.body.required - author info - application/json
+   *
+   * @return {AuthorDto} 201 - success response - application/json
+   * @return {ErrorDto} 409 - bad request response
+   * @return {ErrorDto} 500 - error on server
+   *
+   * @example response - 201 - an author returns by api
+   * {
+   *   "id": 42,
+   *   "username": "John Doe",
+   *   "email": "john@mail.fr",
+   *   "city": "Paris"
+   * }
+   * @example response - 409 - email exists
+   * {
+   *   "error": 404,
+   *   "message": "Email already registered"
+   * }
+   * @example response - 409 - user exists
+   * {
+   *   "error": 404,
+   *   "message": "User already exists"
+   * }
+   * @example response - 500 - an error on server
+   * {
+   *   "error": 500,
+   *   "message": "Internal server error"
+   * }
+   */
   signup: async (request, response) => {
     const author = new Author(request.body);
 
@@ -30,7 +92,7 @@ const authorController = {
       });
 
       if (userEmail) {
-        return response.status(409).json('Email déjà enregistré');
+        return response.status(409).json({ error: 409, message: 'Email already registered' });
       }
 
       const userName = await Author.findOne({
@@ -38,18 +100,20 @@ const authorController = {
       });
 
       if (userName) {
-        return response.status(409).json('Nom utilisateur déjà enregistré');
+        return response.status(409).json({ error: 409, message: 'User already exists' });
       }
 
       author.password = bcrypt.hashSync(request.body.password, 10);
       await author.save();
-      author.password = null;
 
-      return response.status(201).json(author);
+      const authorDto = author.toJSON();
+      delete authorDto.password;
+
+      return response.status(201).json(authorDto);
     } catch (err) {
       return response
         .status(500)
-        .json("Une erreur est survenue lors de l'inscription");
+        .json({ error: 500, message: err });
     }
   },
 
