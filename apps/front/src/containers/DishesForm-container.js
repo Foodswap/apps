@@ -72,10 +72,7 @@ const mapDispatchToProps = (dispatch) => ({
     };
     imageCompression(picture, options)
       .then((compressedFile) => {
-        console.log('compressedFile instanceof Blob', compressedFile instanceof Blob); // true
         dispatch(resizeImage(compressedFile));
-      }).catch((error) => {
-        console.log(error);
       });
   },
 
