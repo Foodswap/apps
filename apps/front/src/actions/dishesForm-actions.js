@@ -144,3 +144,9 @@ export const handleUpdatePicture = (payload) => ({
   type: HANDLE_UPDATE_PICTURE,
   payload,
 });
+
+export const RESIZE_IMAGE = 'RESIZE_IMAGE';
+export const resizeImage = (payload) => ({
+  type: RESIZE_IMAGE,
+  payload,
+});
