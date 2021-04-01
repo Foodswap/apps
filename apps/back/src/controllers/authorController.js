@@ -7,6 +7,7 @@ const authorController = {
    * GET /v1/author/{id}
    *
    * @summary Get one Author by id
+   * @tags Author
    *
    * @param {string} id.path - id of Author
    *
@@ -51,6 +52,8 @@ const authorController = {
 
   /**
    * POST /v1/signup
+   *
+   * @tags Auth
    *
    * @summary Register to the app
    *
