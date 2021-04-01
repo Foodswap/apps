@@ -75,7 +75,6 @@ const mapDispatchToProps = (dispatch) => ({
         dispatch(resizeImage(compressedFile));
       });
   },
-
 });
 
 export default connect(
