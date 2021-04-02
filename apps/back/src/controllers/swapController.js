@@ -47,18 +47,37 @@ const swapController = {
   /**
    * POST /v1/swaps
    *
-   * @summary Get swap proposition
+   * @summary Create a swap proposition
    * @tags swap
    *
    * @param {SwapBody} request.body - status and date of a swap
    *
-   * @return {swap} 201 - success response - application/json
+   * @return {SwapDto} 201 - success response - application/json
    * @return {ErrorDto} 500 - error on server
    *
    * @example response - 201 - status and date created of a swap
    * {
-   *    "status": 0,
-   *    "date": "2021-03-21T15:49:31.39882+00:00"
+   *   "id": 13,
+   *   "status": 0,
+   *   "date": "2021-04-02T16:47:40.510Z",
+   *   "mealOffer": {
+   *     "id": 6,
+   *     "name": "Risotto aux fruits de mer",
+   *     "asker": {
+   *       "id": 2,
+   *       "username": "Anne",
+   *       "email": "anne@mail.fr"
+   *     }
+   *   },
+   *   "mealRequest": {
+   *     "id": 4,
+   *     "name": "Gyoza au porc",
+   *     "receiver": {
+   *       "id": 1,
+   *       "username": "marie",
+   *       "email": "marie@mail.fr"
+   *     }
+   *   }
    * }
    *
    * @example response - 500 - an error on server
@@ -83,7 +102,7 @@ const swapController = {
   /**
    * GET /v1/swaps/authorAsker/{swapId}
    *
-   * @summary make a swap proposal (Asker)
+   * @summary get a swap proposal (Asker)
    * @tags swap
    *
    * @param {number} swapId.path - id exchange
@@ -138,7 +157,7 @@ const swapController = {
   /**
    * GET /v1/swaps/authorReceiver/{swapId}
    *
-   * @summary exchange proposal received (receiver)
+   * @summary get a swap proposal (Receiver)
    * @tags swap
    *
    * @param {number} swapId.path - id exchange
@@ -192,10 +211,11 @@ const swapController = {
   /**
    * PUT /v1/swaps/{swapId}
    *
-   * @summary Update swap proposition
+   * @summary Update a swap proposition
    * @tags swap
    *
    * @param {number} swapId.path - id of a swap
+   * @param {SwapUpdateBody} request.body - status of a swap
    *
    * @return {SwapDto} 200 - success response - application/json
    * @return {ErrorDto} 500 - error on server

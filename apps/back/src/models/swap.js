@@ -5,8 +5,16 @@ const { Model } = require('sequelize');
  *
  * @typedef {object} SwapBody
  *
- * @property {number} status.required - The swap status
- * @property {string} date.required - The date swap
+ * @property {number} offered_meal_id.required - The id of offered swap
+ * @property {number} requested_meal_id.required - The id of requested swap
+ */
+
+/**
+ * Swap update
+ *
+ * @typedef {object} SwapUpdateBody
+ *
+ * @property {number} status.required - The new status of swap
  */
 
 /**

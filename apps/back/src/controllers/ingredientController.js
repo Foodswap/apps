@@ -40,7 +40,7 @@ const ingredient = {
    * @summary Get all ingredients
    * @tags ingredients
    *
-   * @return {array<IngredientsBody>} 200 - success response - application/json
+   * @return {array<IngredientsDto>} 200 - success response - application/json
    * @return {ErrorDto} 404 - bad request response
    *
    * @example response - 200 - an ingredients returns by api

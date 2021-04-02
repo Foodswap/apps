@@ -1,13 +1,6 @@
 const { Model } = require('sequelize');
 
 /**
- * Ingredients
- *
- * @typedef {object} IngredientsBody
- * @property {string} name.required - The ingredients name
- */
-
-/**
  * Ingredient with id
  *
  * @typedef {object} ingredientDto

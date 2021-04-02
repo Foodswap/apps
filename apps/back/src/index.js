@@ -18,6 +18,7 @@ const options = {
   info: {
     version: '0.0.1',
     title: 'FoodSwap Api',
+    description: 'The api of FoodSwap',
   },
   filesPattern: './**/*.js',
   baseDir: __dirname,

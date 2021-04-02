@@ -9,7 +9,7 @@ const authorController = {
    * @summary Get one Author by id
    * @tags Author
    *
-   * @param {string} id.path - id of Author
+   * @param {number} id.path - id of Author
    *
    * @return {AuthorDto} 200 - success response - application/json
    * @return {ErrorDto} 404 - bad request response
@@ -154,7 +154,6 @@ const authorController = {
    *   "message": "Internal server error"
    * }
    */
-
   login: async (request, response) => {
     const accessTokenSecret = process.env.ACCESS_TOKEN_SECRET;
     try {
