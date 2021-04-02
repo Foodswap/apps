@@ -1,4 +1,6 @@
 import { connect } from 'react-redux';
+import imageCompression from 'browser-image-compression';
+
 import DishesForm from '../components/DishesForm';
 import {
   setIngredient,
@@ -8,6 +10,7 @@ import {
   changeStatus,
   getADishToEdit,
   handleUpdatePicture,
+  resizeImage,
 } from '../actions/dishesForm-actions';
 
 const mapStateToProps = (state, ownProps) => ({
@@ -61,6 +64,17 @@ const mapDispatchToProps = (dispatch) => ({
 
   handleUpdatePicture: (picture) => dispatch(handleUpdatePicture(picture)),
 
+  resizeImage: (picture) => {
+    const options = {
+      maxSizeMB: 0.1,
+      maxWidthOrHeight: 650,
+      useWebWorker: true,
+    };
+    imageCompression(picture, options)
+      .then((compressedFile) => {
+        dispatch(resizeImage(compressedFile));
+      });
+  },
 });
 
 export default connect(

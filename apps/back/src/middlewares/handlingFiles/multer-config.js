@@ -1,4 +1,5 @@
 const multer = require('multer');
+const { v4: uuidv4 } = require('uuid');
 
 const MIME_TYPES = {
   'image/jpg': 'jpg',
@@ -12,11 +13,17 @@ const storage = multer.diskStorage({
   },
   filename: (req, file, callback) => {
     const extension = MIME_TYPES[file.mimetype];
-    callback(null, `dish_cover_${req.params.id}.${extension}`);
+    const filename = req.params.id
+      ? `dish_cover_${req.params.id}.${extension}`
+      : `dish_cover_${uuidv4()}.${extension}`;
+    callback(null, filename);
   },
 });
 
 module.exports = multer({
+  limits: {
+    fileSize: 1024 * 100,
+  },
   storage,
   fileFilter: (req, file, cb) => {
     if (!file) {

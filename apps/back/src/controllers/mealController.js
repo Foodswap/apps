@@ -1,4 +1,6 @@
 const { Op } = require('sequelize');
+const fs = require('fs');
+const path = require('path');
 const { sequelize } = require('../database');
 
 const { Meal, Author } = require('../models');
@@ -80,6 +82,15 @@ const mealController = {
       const createdMeal = await Meal.create(mealToCreate);
       await createdMeal.addIngredients(mealToCreate.ingredients.split(','));
       await createdMeal.addCategories(mealToCreate.categories.split(','));
+
+      const newFilename = `dish_cover_${createdMeal.id}${path.extname(createdMeal.picture_path)}`;
+      const oldPath = `${process.env.PATH_PICTURE}/${createdMeal.picture_path}`;
+      const newPath = `${process.env.PATH_PICTURE}/${newFilename}`;
+
+      fs.renameSync(oldPath, newPath);
+
+      createdMeal.picture_path = newFilename;
+      await createdMeal.save();
 
       Meal.findByPk(Number(createdMeal.id), {
         attributes: {
