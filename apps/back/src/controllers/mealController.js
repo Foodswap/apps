@@ -91,8 +91,8 @@ const mealController = {
         delete meal.author.password;
         response.status(201).json(meal);
       });
-    } catch (error) {
-      response.status(500);
+    } catch (err) {
+      response.status({ error: 500, message: error });
     }
   },
 
@@ -178,7 +178,7 @@ const mealController = {
       meal.author.password = null;
       response.status(200).json(meal);
     } catch (err) {
-      response.status(500);
+      response.status({ error: 500, message: err });
     }
   },
   /**
@@ -223,8 +223,8 @@ const mealController = {
         },
       });
       response.status(200).json(mealsByAuthor);
-    } catch (error) {
-      response.status(500);
+    } catch (err) {
+      response.status({ error: 500, message: err });
     }
   },
 
@@ -263,7 +263,7 @@ const mealController = {
       const picturePath = `${process.env.PATH_PICTURE}/${meal.picture_path}`;
       response.sendFile(picturePath);
     } catch (err) {
-      response.status(500);
+      response.status({ error: 500, message: err });
     }
   },
 
@@ -316,8 +316,8 @@ const mealController = {
         order: [['created_date', 'DESC']],
       });
       response.status(200).json(sixMeals);
-    } catch (error) {
-      response.status(500);
+    } catch (err) {
+      response.status({ error: 500, message: error });
     }
   },
 
@@ -391,8 +391,8 @@ const mealController = {
     try {
       const mealSearch = await Meal.findAll(sqlRequest);
       response.status(200).json(mealSearch);
-    } catch (error) {
-      response.status(500);
+    } catch (err) {
+      response.status({ error: 500, message: err });
     }
   },
 
@@ -506,8 +506,8 @@ const mealController = {
 
         response.status(201).json(updatedMeal);
       });
-    } catch (error) {
-      response.status(500);
+    } catch (err) {
+      response.status({ error: 500, message: err });
     }
   },
 
@@ -551,8 +551,8 @@ const mealController = {
         where: { online: true, author_id: request.params.author_id },
       });
       response.status(200).json(meal);
-    } catch (error) {
-      response.status(500).json("This user doesn't have any meals yet.");
+    } catch (err) {
+      response.status(500).json({ error: 500, message: err });
     }
   },
 };
