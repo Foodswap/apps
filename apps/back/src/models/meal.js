@@ -74,6 +74,16 @@ class Meal extends Model {
       as: 'author',
     });
 
+    Meal.belongsTo(models.Author, {
+      foreignKey: 'author_id',
+      as: 'receiver',
+    });
+
+    Meal.belongsTo(models.Author, {
+      foreignKey: 'author_id',
+      as: 'asker',
+    });
+
     Meal.hasMany(models.Swap, {
       foreignKey: 'requested_meal_id',
       as: 'swapsRequest',
