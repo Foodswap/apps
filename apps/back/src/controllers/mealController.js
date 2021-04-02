@@ -97,12 +97,12 @@ const mealController = {
   },
 
   /**
-   * GET /v1/dishes/{id}
+   * GET /v1/dishes/{dishId}
    *
    * @summary Get one Dish by id
    * @tags Dish
    *
-   * @param {string} id.path - id of Dish
+   * @param {string} dishId.path - id of Dish
    *
    * @return {DishDto} 200 - success response - application/json
    * @return {ErrorDto} 404 - bad request response
@@ -182,14 +182,14 @@ const mealController = {
     }
   },
   /**
-   * GET /v1/dishes/author/{id}
+   * GET /v1/dishes/author/{authorId}
    *
-   * @summary Get Dish(es) by author id
+   * @summary Get Dishes by author id
    * @tags Dish
    *
-   * @param {string} id.path - id of the author of a Dish
+   * @param {string} authorId.path - id of the author of a Dish
    *
-   * @return {DishDto} 200 - success response - application/json
+   * @return {array<DishDto>} 200 - success response - application/json
    * @return {ErrorDto} 404 - bad request response
    * @return {ErrorDto} 500 - error on server
    *
@@ -229,21 +229,17 @@ const mealController = {
   },
 
   /**
-   * GET /v1/dishes/{id}/picture
+   * GET /v1/dishes/{dishId}/picture
    *
    * @summary Get the picture of a Dish
    * @tags Dish
    *
-   * @param {string} id.path - id of a Dish
+   * @param {string} dishId.path - id of a Dish
    *
-   * @return {PictureDishDto} 200 - success response - application/json
+   * @return {string} 200 - binary - image/jpeg
    * @return {ErrorDto} 404 - bad request response
    * @return {ErrorDto} 500 - error on server
    *
-   * @example response - 200 - picture of a Dish returned by api
-   * {
-   *    "picture_path": "1616337669356.jpg"
-   * }
    * @example response - 404 - an error of bad request
    * {
    *   "error": 404,
@@ -278,7 +274,7 @@ const mealController = {
    * @return {ErrorDto} 500 - error on server
    *
    * @example response - 200 - last dishes returned by api
-   * {
+   * [{
    *     "id": 75,
    *     "name": " Tartare de saumon",
    *     "description": " Saumon cru",
@@ -293,7 +289,131 @@ const mealController = {
    *         "email": "marie@mail.fr",
    *         "city": "Paris"
    *     }
-   * }
+   * },
+   * {
+   *     "id": 77,
+   *     "name": "string",
+   *     "description": "string",
+   *     "portion": 0,
+   *     "city": "string",
+   *     "online": true,
+   *     "picture_path": "string",
+   *     "author_id": null,
+   *     "author": null
+   * },
+   * {
+   *     "id": 76,
+   *     "name": "string",
+   *     "description": "string",
+   *     "portion": 0,
+   *     "city": "string",
+   *     "online": true,
+   *     "picture_path": "string",
+   *     "author_id": null,
+   *     "author": null
+   * },
+   * {
+   *     "id": 75,
+   *     "name": " Tartare de saumon",
+   *     "description": " Saumon cru",
+   *     "portion": 2,
+   *     "city": " paris",
+   *     "online": true,
+   *     "picture_path": "dish_cover_undefined.jpg",
+   *     "author_id": 1,
+   *     "author": {
+   *         "id": 1,
+   *         "username": "Marie",
+   *         "email": "marie@mail.fr",
+   *         "password": "$2a$10$aZPxUP8fTe1sjWZp10meAu6UEfPysj0pRWcGLEr5QXwRshddkD4c6",
+   *         "city": "Paris"
+   *     }
+   * },
+   * {
+   *     "id": 74,
+   *     "name": " Tartare de saumon",
+   *     "description": " Saumon cru",
+   *     "portion": 2,
+   *     "city": " paris",
+   *     "online": true,
+   *     "picture_path": "dish_cover_74.jpg",
+   *     "author_id": 1,
+   *     "author": {
+   *         "id": 1,
+   *         "username": "Marie",
+   *         "email": "marie@mail.fr",
+   *         "password": "$2a$10$aZPxUP8fTe1sjWZp10meAu6UEfPysj0pRWcGLEr5QXwRshddkD4c6",
+   *         "city": "Paris"
+   *     }
+   * },
+   * {
+   *     "id": 73,
+   *     "name": " Tartare de saumon",
+   *     "description": " Saumon cru",
+   *     "portion": 2,
+   *     "city": " paris",
+   *     "online": true,
+   *     "picture_path": "dish_cover_73.jpg",
+   *     "author_id": 1,
+   *     "author": {
+   *         "id": 1,
+   *         "username": "Marie",
+   *         "email": "marie@mail.fr",
+   *         "password": "$2a$10$aZPxUP8fTe1sjWZp10meAu6UEfPysj0pRWcGLEr5QXwRshddkD4c6",
+   *         "city": "Paris"
+   *     }
+   * },
+   * {
+   *     "id": 72,
+   *     "name": "Tartare de saumon",
+   *     "description": "p",
+   *     "portion": 2,
+   *     "city": "paris",
+   *     "online": true,
+   *     "picture_path": "dish_cover_72.jpg",
+   *     "author_id": 1,
+   *     "author": {
+   *         "id": 1,
+   *         "username": "Marie",
+   *         "email": "marie@mail.fr",
+   *         "password": "$2a$10$aZPxUP8fTe1sjWZp10meAu6UEfPysj0pRWcGLEr5QXwRshddkD4c6",
+   *         "city": "Paris"
+   *     }
+   * },
+   * {
+   *     "id": 37,
+   *     "name": "test",
+   *     "description": "Saumon cru",
+   *     "portion": 2,
+   *     "city": "paris",
+   *     "online": true,
+   *     "picture_path": "dish_cover_undefined.jpg",
+   *     "author_id": 1,
+   *     "author": {
+   *         "id": 1,
+   *         "username": "Marie",
+   *         "email": "marie@mail.fr",
+   *         "password": "$2a$10$aZPxUP8fTe1sjWZp10meAu6UEfPysj0pRWcGLEr5QXwRshddkD4c6",
+   *         "city": "Paris"
+   *     }
+   * },
+   * {
+   *     "id": 36,
+   *     "name": "Tartare de saumon2",
+   *     "description": "saumon",
+   *     "portion": 2,
+   *     "city": "paris",
+   *     "online": true,
+   *     "picture_path": "dish_cover_undefined.jpg",
+   *     "author_id": 1,
+   *     "author": {
+   *         "id": 1,
+   *         "username": "Marie",
+   *         "email": "marie@mail.fr",
+   *         "password": "$2a$10$aZPxUP8fTe1sjWZp10meAu6UEfPysj0pRWcGLEr5QXwRshddkD4c6",
+   *         "city": "Paris"
+   *     }
+   * }]
    * @example response - 404 - an error of bad request
    * {
    *   "error": 404,
@@ -317,14 +437,14 @@ const mealController = {
       });
       response.status(200).json(sixMeals);
     } catch (err) {
-      response.status({ error: 500, message: error });
+      response.status({ error: 500, message: err });
     }
   },
 
   /**
    * GET /v1/dishes/{kitchenId}/{dishId}/{city}
    *
-   * @summary Get Dish results by filters
+   * @summary Get Dishes results by filters
    * @tags Dish
    * @param {string} kitchenId.path - id of the kitchen category of a Dish
    * @param {string} dishId.path - id of the dish category of a Dish
@@ -397,11 +517,11 @@ const mealController = {
   },
 
   /**
-   * PUT /v1/dishes/{id}
+   * PUT /v1/dishes/{dishId}
    *
    * @tags Dish
    *
-   * @param {string} id.path - id of Dish
+   * @param {string} dishId.path - id of Dish
    * @summary Update a Dish
    *
    * @param {DishBody} request.body.required - dish info - application/json
@@ -512,12 +632,12 @@ const mealController = {
   },
 
   /**
-   * GET /v1/dishes/online/{id}
+   * GET /v1/dishes/online/{authorId}
    *
-   * @summary Get online Dish(es) by author id
+   * @summary Get online Dishes by author id
    * @tags Dish
    *
-   * @param {string} id.path - id of the author of a Dish
+   * @param {string} authorId.path - id of the author of a Dish
    *
    * @return {DishDto} 200 - success response - application/json
    * @return {ErrorDto} 404 - bad request response
