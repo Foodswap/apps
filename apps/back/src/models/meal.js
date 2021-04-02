@@ -10,10 +10,10 @@ const { Model } = require('sequelize');
  * @property {number} portion.required - The portion
  * @property {string} city.required - The city
  * @property {boolean} online.required - The online.required
- * @property {array} ingredients.required - The ingredients
- * @property {array} categories.required - The categories
+ * @property {string} ingredients.required - The ingredients
+ * @property {string} categories.required - The kitchen and dish categories
  * @property {string} picture_path.required - The picture path
- * @property {string} author_id.required - The author id
+ * @property {number} author_id.required - The author id
  */
 
 /**
@@ -27,8 +27,8 @@ const { Model } = require('sequelize');
  * @property {number} portion - The portion
  * @property {string} city - The city
  * @property {boolean} online - The online.required
- * @property {array} ingredients - The ingredients
- * @property {array} categories - The categories
+ * @property {string} ingredients - The ingredients
+ * @property {string} categories - The categories
  * @property {string} picture_path.required - The picture path
  */
 

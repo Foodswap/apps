@@ -396,6 +396,72 @@ const mealController = {
     }
   },
 
+  /**
+   * PUT /v1/dishes/{id}
+   *
+   * @tags Dish
+   *
+   * @param {string} id.path - id of Dish
+   * @summary Update a Dish
+   *
+   * @param {DishBody} request.body.required - dish info - application/json
+   *
+   * @return {DishDto} 201 - success response - application/json
+   * @return {ErrorDto} 500 - error on server
+   *
+   * @example response - 201 - a dish edited returns by api
+   * {
+   *     "id": 75,
+   *     "name": " Tartare de saumon",
+   *     "description": " Saumon cru",
+   *     "portion": 2,
+   *     "city": " paris",
+   *     "online": true,
+   *     "author_id": 1,
+   *     "ingredients": [
+   *         {
+   *             "id": 3,
+   *             "name": "Huile",
+   *             "meal_ingredient_associate": {
+   *                 "id_ingredient": 3,
+   *                 "id_meal": 75
+   *             }
+   *         }
+   *     ],
+   *     "categories": [
+   *         {
+   *             "id": 24,
+   *             "type": "kitchen",
+   *             "name": "Espagnole",
+   *             "meal_category_associate": {
+   *                 "id_category": 24,
+   *                 "id_meal": 75
+   *             }
+   *         },
+   *         {
+   *             "id": 2,
+   *             "type": "dish",
+   *             "name": "Plat",
+   *             "meal_category_associate": {
+   *                 "id_category": 2,
+   *                 "id_meal": 75
+   *             }
+   *         }
+   *     ],
+   *     "author": {
+   *         "id": 1,
+   *         "username": "Marie",
+   *         "email": "marie@mail.fr",
+   *         "city": "Paris"
+   *     }
+   * }
+   *
+   * @example response - 500 - an error on server
+   * {
+   *   "error": 500,
+   *   "message": "Internal server error"
+   * }
+   */
   updateMeal: async (request, response, next) => {
     const id = Number(request.params.id);
     const mealToUpdate = request.body;
