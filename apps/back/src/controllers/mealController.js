@@ -97,6 +97,77 @@ const mealController = {
     }
   },
 
+  /**
+   * GET /v1/dish/{id}
+   *
+   * @summary Get one Dish by id
+   * @tags Dish
+   *
+   * @param {string} id.path - id of Dish
+   *
+   * @return {DishDto} 200 - success response - application/json
+   * @return {ErrorDto} 404 - bad request response
+   * @return {ErrorDto} 500 - error on server
+   *
+   * @example response - 200 - a dish returned by api
+   * {
+   *     "id": 75,
+   *     "name": " Tartare de saumon",
+   *     "description": " Saumon cru",
+   *     "portion": 2,
+   *     "city": " paris",
+   *     "online": true,
+   *     "author_id": 1,
+   *     "ingredients": [
+   *         {
+   *             "id": 3,
+   *             "name": "Huile",
+   *             "meal_ingredient_associate": {
+   *                 "id_ingredient": 3,
+   *                 "id_meal": 75
+   *             }
+   *         }
+   *     ],
+   *     "categories": [
+   *         {
+   *             "id": 24,
+   *             "type": "kitchen",
+   *             "name": "Espagnole",
+   *             "meal_category_associate": {
+   *                 "id_category": 24,
+   *                 "id_meal": 75
+   *             }
+   *         },
+   *         {
+   *             "id": 2,
+   *             "type": "dish",
+   *             "name": "Plat",
+   *             "meal_category_associate": {
+   *                 "id_category": 2,
+   *                 "id_meal": 75
+   *             }
+   *         }
+   *     ],
+   *     "author": {
+   *         "id": 1,
+   *         "username": "Marie",
+   *         "email": "marie@mail.fr",
+   *         "password": "$2a$10$aZPxUP8fTe1sjWZp10meAu6UEfPysj0pRWcGLEr5QXwRshddkD4c6",
+   *         "city": "Paris"
+   *     }
+   * }
+   *
+   * @example response - 404 - an error of bad request
+   * {
+   *   "error": 404,
+   *   "message": "Dish not found"
+   * }
+   * @example response - 500 - an error on server
+   * {
+   *   "error": 500,
+   *   "message": "Internal server error"
+   * }
+   */
   getOneMeal: async (request, response) => {
     try {
       const meal = await Meal.findByPk(Number(request.params.id), {
