@@ -30,6 +30,14 @@ const { Model } = require('sequelize');
  * @property {string} categories - The categories
  * @property {string} picture_path.required - The picture path
  */
+
+ /**
+ * The picture of a dish
+ *
+ * @typedef {object} PictureDishDto
+ *
+ * @property {string} picture_path.required - The picture path
+ */
 class Meal extends Model {
   static init(sequelize, DataTypes) {
     return super.init({

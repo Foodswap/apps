@@ -268,6 +268,45 @@ const mealController = {
     }
   },
 
+  /**
+   * GET /v1/lastDishes
+   *
+   * @summary Get last 9 dishes
+   * @tags Dish
+   *
+   * @return {DishDto} 200 - success response - application/json
+   * @return {ErrorDto} 404 - bad request response
+   * @return {ErrorDto} 500 - error on server
+   *
+   * @example response - 200 - last dishes returned by api
+   * {
+   *     "id": 75,
+   *     "name": " Tartare de saumon",
+   *     "description": " Saumon cru",
+   *     "portion": 2,
+   *     "city": " paris",
+   *     "online": true,
+   *     "picture_path": "dish_cover_undefined.jpg",
+   *     "author_id": 1,
+   *     "author": {
+   *         "id": 1,
+   *         "username": "Marie",
+   *         "email": "marie@mail.fr",
+   *         "password": "$2a$10$aZPxUP8fTe1sjWZp10meAu6UEfPysj0pRWcGLEr5QXwRshddkD4c6",
+   *         "city": "Paris"
+   *     }
+   * }
+   * @example response - 404 - an error of bad request
+   * {
+   *   "error": 404,
+   *   "message": "Last Dishes not found"
+   * }
+   * @example response - 500 - an error on server
+   * {
+   *   "error": 500,
+   *   "message": "Internal server error"
+   * }
+   */
   getSixMeals: async (request, response) => {
     try {
       const sixMeals = await Meal.findAll({
