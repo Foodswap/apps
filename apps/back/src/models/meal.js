@@ -12,6 +12,7 @@ const { Model } = require('sequelize');
  * @property {bool} online.required - The online.required
  * @property {string} ingredients.required - The ingredients
  * @property {string} categories.required - The categories
+ * @property {string} picture_path.required - The picture path
  */
 
 /**
@@ -27,6 +28,7 @@ const { Model } = require('sequelize');
  * @property {bool} online - The online.required
  * @property {string} ingredients - The ingredients
  * @property {string} categories - The categories
+ * @property {string} picture_path.required - The picture path
  */
 class Meal extends Model {
   static init(sequelize, DataTypes) {

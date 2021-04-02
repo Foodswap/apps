@@ -98,7 +98,7 @@ const mealController = {
   },
 
   /**
-   * GET /v1/dish/{id}
+   * GET /v1/dishes/{id}
    *
    * @summary Get one Dish by id
    * @tags Dish
@@ -182,7 +182,40 @@ const mealController = {
       response.status(500);
     }
   },
-
+  /**
+   * GET /v1/dishes/author/{id}
+   *
+   * @summary Get Dish(es) by author id
+   * @tags Dish
+   *
+   * @param {string} id.path - id of the author of a Dish
+   *
+   * @return {DishDto} 200 - success response - application/json
+   * @return {ErrorDto} 404 - bad request response
+   * @return {ErrorDto} 500 - error on server
+   *
+   * @example response - 200 - dishes of an author returned by api
+   * {
+   *    "id": 17,
+   *    "name": "Spaghetti aux crevettes",
+   *    "description": "Crevettes sautées et petits légumes",
+   *    "portion": 1,
+   *    "city": "Paris",
+   *    "online": true,
+   *    "picture_path": "1616337669356.jpg",
+   *    "author_id": 5
+   * }
+   * @example response - 404 - an error of bad request
+   * {
+   *   "error": 404,
+   *   "message": "Dishes not found"
+   * }
+   * @example response - 500 - an error on server
+   * {
+   *   "error": 500,
+   *   "message": "Internal server error"
+   * }
+   */
   getMealsByAuthor: async (request, response) => {
     try {
       const mealsByAuthor = await Meal.findAll({
