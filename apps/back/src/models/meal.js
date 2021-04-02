@@ -9,10 +9,11 @@ const { Model } = require('sequelize');
  * @property {string} description.required - The description
  * @property {number} portion.required - The portion
  * @property {string} city.required - The city
- * @property {bool} online.required - The online.required
- * @property {string} ingredients.required - The ingredients
- * @property {string} categories.required - The categories
+ * @property {boolean} online.required - The online.required
+ * @property {array} ingredients.required - The ingredients
+ * @property {array} categories.required - The categories
  * @property {string} picture_path.required - The picture path
+ * @property {string} author_id.required - The author id
  */
 
 /**
@@ -25,19 +26,20 @@ const { Model } = require('sequelize');
  * @property {string} description - The description
  * @property {number} portion - The portion
  * @property {string} city - The city
- * @property {bool} online - The online.required
- * @property {string} ingredients - The ingredients
- * @property {string} categories - The categories
+ * @property {boolean} online - The online.required
+ * @property {array} ingredients - The ingredients
+ * @property {array} categories - The categories
  * @property {string} picture_path.required - The picture path
  */
 
- /**
+/**
  * The picture of a dish
  *
  * @typedef {object} PictureDishDto
  *
  * @property {string} picture_path.required - The picture path
  */
+
 class Meal extends Model {
   static init(sequelize, DataTypes) {
     return super.init({

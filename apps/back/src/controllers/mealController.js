@@ -59,7 +59,6 @@ const mealController = {
    *         "id": 1,
    *         "username": "Marie",
    *         "email": "marie@mail.fr",
-   *         "password": "$2a$10$aZPxUP8fTe1sjWZp10meAu6UEfPysj0pRWcGLEr5QXwRshddkD4c6",
    *         "city": "Paris"
    *     }
    * }
@@ -152,7 +151,7 @@ const mealController = {
    *         "id": 1,
    *         "username": "Marie",
    *         "email": "marie@mail.fr",
-   *         "password": "$2a$10$aZPxUP8fTe1sjWZp10meAu6UEfPysj0pRWcGLEr5QXwRshddkD4c6",
+   *         "password": null,
    *         "city": "Paris"
    *     }
    * }
@@ -292,7 +291,6 @@ const mealController = {
    *         "id": 1,
    *         "username": "Marie",
    *         "email": "marie@mail.fr",
-   *         "password": "$2a$10$aZPxUP8fTe1sjWZp10meAu6UEfPysj0pRWcGLEr5QXwRshddkD4c6",
    *         "city": "Paris"
    *     }
    * }
@@ -323,6 +321,45 @@ const mealController = {
     }
   },
 
+  /**
+   * GET /v1/dishes/{kitchenId}/{dishId}/{city}
+   *
+   * @summary Get Dish results by filters
+   * @tags Dish
+   * @param {string} kitchenId.path - id of the kitchen category of a Dish
+   * @param {string} dishId.path - id of the dish category of a Dish
+   * @param {string} city.path - city name of a Dish
+   *
+   * @return {DishDto} 200 - success response - application/json
+   * @return {ErrorDto} 404 - bad request response
+   * @return {ErrorDto} 500 - error on server
+   *
+   * @example response - 200 - result of Dishes returned by api
+   * {
+   *     "id": 75,
+   *     "name": " Tartare de saumon",
+   *     "description": " Saumon cru",
+   *     "portion": 2,
+   *     "city": " paris",
+   *     "online": true,
+   *     "picture_path": "dish_cover_undefined.jpg",
+   *     "author_id": 1,
+   *     "author": {
+   *         "id": 1,
+   *         "username": "Marie"
+   *     }
+   * }
+   * @example response - 404 - an error of bad request
+   * {
+   *   "error": 404,
+   *   "message": "results of Dishes not found"
+   * }
+   * @example response - 500 - an error on server
+   * {
+   *   "error": 500,
+   *   "message": "Internal server error"
+   * }
+   */
   searchMeal: async (request, response) => {
     const { dishId } = request.params;
     const { kitchenId } = request.params;
@@ -408,6 +445,40 @@ const mealController = {
     }
   },
 
+  /**
+   * GET /v1/dishes/online/{id}
+   *
+   * @summary Get online Dish(es) by author id
+   * @tags Dish
+   *
+   * @param {string} id.path - id of the author of a Dish
+   *
+   * @return {DishDto} 200 - success response - application/json
+   * @return {ErrorDto} 404 - bad request response
+   * @return {ErrorDto} 500 - error on server
+   *
+   * @example response - 200 - online dishes of an author returned by api
+   * {
+   *    "id": 17,
+   *    "name": "Spaghetti aux crevettes",
+   *    "description": "Crevettes sautées et petits légumes",
+   *    "portion": 1,
+   *    "city": "Paris",
+   *    "online": true,
+   *    "picture_path": "1616337669356.jpg",
+   *    "author_id": 5
+   * }
+   * @example response - 404 - an error of bad request
+   * {
+   *   "error": 404,
+   *   "message": "Dishes not found"
+   * }
+   * @example response - 500 - an error on server
+   * {
+   *   "error": 500,
+   *   "message": "Internal server error"
+   * }
+   */
   userMealsOnline: async (request, response) => {
     try {
       const meal = await Meal.findAll({
