@@ -72,12 +72,12 @@ const authorController = {
    * }
    * @example response - 409 - email exists
    * {
-   *   "error": 404,
+   *   "error": 409,
    *   "message": "Email already registered"
    * }
    * @example response - 409 - user exists
    * {
-   *   "error": 404,
+   *   "error": 409,
    *   "message": "User already exists"
    * }
    * @example response - 500 - an error on server
@@ -120,6 +120,41 @@ const authorController = {
     }
   },
 
+  /**
+   * POST /v1/login
+   *
+   * @tags Auth
+   *
+   * @summary login to the app
+   *
+   * @param {LoginBody} request.body.required - author credentials - application/json
+   *
+   * @return {AuthenticatedAuthorDto} 200 - success response - application/json
+   * @return {ErrorDto} 401 - bad request response
+   * @return {ErrorDto} 500 - error on server
+   *
+   * @example response - 200 - authenticated author with jwtoken
+   * {
+   *   "accessToken": "Bearer eyJhbGciOiJIUzI1N...",
+   *   "author": {
+   *     "id": 42,
+   *     "username": "John Doe",
+   *     "email": "john@mail.fr",
+   *     "city": "Paris"
+   *   }
+   * }
+   * @example response - 401 - email or password invalid
+   * {
+   *   "error": 401,
+   *   "message": "there is an error on the email or password"
+   * }
+   * @example response - 500 - an error on server
+   * {
+   *   "error": 500,
+   *   "message": "Internal server error"
+   * }
+   */
+
   login: async (request, response) => {
     const accessTokenSecret = process.env.ACCESS_TOKEN_SECRET;
     try {
@@ -132,7 +167,7 @@ const authorController = {
       if (
         !author || !bcrypt.compareSync(request.body.password, author.password)
       ) {
-        return response.status(401).json('Email ou mdp non valide.');
+        return response.status(401).json({ error: 401, message: 'there is an error on the email or password' });
       }
       author.password = null;
 
@@ -141,13 +176,14 @@ const authorController = {
         accessTokenSecret,
       )}`;
 
-      return response.set('Authorization', accessToken).json({
+      return response.json({
+        accessToken,
         author,
       });
     } catch (err) {
       return response
         .status(500)
-        .json("Une erreur est survenue lors de l'authentification");
+        .json({ error: 500, message: err });
     }
   },
 };

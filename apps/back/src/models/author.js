@@ -21,6 +21,24 @@ const { Model } = require('sequelize');
  * @property {string} email - The email
  * @property {string} city - The city
  */
+
+/**
+ * Author login body
+ *
+ * @typedef {object} LoginBody
+ *
+ * @property {string} email.required - The email
+ * @property {string} password.required - The password
+ */
+
+/**
+ * An authenticated Author
+ *
+ * @typedef {object} AuthenticatedAuthorDto
+ *
+ * @property {string} accessToken - The access token
+ * @property {AuthorDto} author - The author
+ */
 class Author extends Model {
   static init(sequelize, DataTypes) {
     return super.init(
