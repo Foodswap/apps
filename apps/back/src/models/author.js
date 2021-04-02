@@ -23,6 +23,16 @@ const { Model } = require('sequelize');
  */
 
 /**
+ * An Author without password and city
+ *
+ * @typedef {object} AuthorSwapDto
+ *
+ * @property {number} id - The username
+ * @property {string} username - The username
+ * @property {string} email - The email
+ */
+
+/**
  * Author login body
  *
  * @typedef {object} LoginBody

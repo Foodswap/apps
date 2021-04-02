@@ -29,8 +29,28 @@ const { Model } = require('sequelize');
  * @property {boolean} online - The online.required
  * @property {string} ingredients - The ingredients
  * @property {string} categories - The categories
- * @property {string} picture_path.required - The picture path
+ * @property {string} picture_path - The picture path
  */
+
+/**
+ * A Dish with asker Author
+ *
+ * @typedef {object} DishWithAskerDto
+ *
+ * @property {number} id - The id
+ * @property {string} name - The name
+ * @property {AuthorSwapDto} asker - The Author model
+ */
+
+/**
+ * A Dish with receiver Author
+ *
+ * @typedef {object} DishWithReceiverDto
+ *
+ * @property {number} id - The id
+ * @property {string} name - The name
+ * @property {AuthorSwapDto} receiver - The Author model
+ *
 
 /**
  * The picture of a dish

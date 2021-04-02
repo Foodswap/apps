@@ -1,5 +1,20 @@
 const { Model } = require('sequelize');
 
+/**
+ * Ingredients
+ *
+ * @typedef {object} IngredientsBody
+ * @property {string} name.required - The ingredients name
+ */
+
+/**
+ * Ingredient with id
+ *
+ * @typedef {object} ingredientDto
+ *
+ * @property {number} id - The ingredient id
+ * @property {string} name - The ingredient name
+ */
 class Ingredient extends Model {
   static init(sequelize, DataTypes) {
     return super.init({
