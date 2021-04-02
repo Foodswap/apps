@@ -275,108 +275,18 @@ const mealController = {
    *
    * @example response - 200 - last dishes returned by api
    * [{
-   *     "id": 75,
-   *     "name": " Tartare de saumon",
-   *     "description": " Saumon cru",
-   *     "portion": 2,
-   *     "city": " paris",
-   *     "online": true,
-   *     "picture_path": "dish_cover_undefined.jpg",
-   *     "author_id": 1,
-   *     "author": {
-   *         "id": 1,
-   *         "username": "Marie",
-   *         "email": "marie@mail.fr",
-   *         "city": "Paris"
-   *     }
-   * },
-   * {
-   *     "id": 77,
-   *     "name": "string",
-   *     "description": "string",
-   *     "portion": 0,
-   *     "city": "string",
-   *     "online": true,
-   *     "picture_path": "string",
-   *     "author_id": null,
-   *     "author": null
-   * },
-   * {
-   *     "id": 76,
-   *     "name": "string",
-   *     "description": "string",
-   *     "portion": 0,
-   *     "city": "string",
-   *     "online": true,
-   *     "picture_path": "string",
-   *     "author_id": null,
-   *     "author": null
-   * },
-   * {
-   *     "id": 75,
-   *     "name": " Tartare de saumon",
-   *     "description": " Saumon cru",
-   *     "portion": 2,
-   *     "city": " paris",
-   *     "online": true,
-   *     "picture_path": "dish_cover_undefined.jpg",
-   *     "author_id": 1,
-   *     "author": {
-   *         "id": 1,
-   *         "username": "Marie",
-   *         "email": "marie@mail.fr",
-   *         "password": "$2a$10$aZPxUP8fTe1sjWZp10meAu6UEfPysj0pRWcGLEr5QXwRshddkD4c6",
-   *         "city": "Paris"
-   *     }
-   * },
-   * {
-   *     "id": 74,
-   *     "name": " Tartare de saumon",
-   *     "description": " Saumon cru",
-   *     "portion": 2,
-   *     "city": " paris",
-   *     "online": true,
-   *     "picture_path": "dish_cover_74.jpg",
-   *     "author_id": 1,
-   *     "author": {
-   *         "id": 1,
-   *         "username": "Marie",
-   *         "email": "marie@mail.fr",
-   *         "password": "$2a$10$aZPxUP8fTe1sjWZp10meAu6UEfPysj0pRWcGLEr5QXwRshddkD4c6",
-   *         "city": "Paris"
-   *     }
-   * },
-   * {
-   *     "id": 73,
-   *     "name": " Tartare de saumon",
-   *     "description": " Saumon cru",
-   *     "portion": 2,
-   *     "city": " paris",
-   *     "online": true,
-   *     "picture_path": "dish_cover_73.jpg",
-   *     "author_id": 1,
-   *     "author": {
-   *         "id": 1,
-   *         "username": "Marie",
-   *         "email": "marie@mail.fr",
-   *         "password": "$2a$10$aZPxUP8fTe1sjWZp10meAu6UEfPysj0pRWcGLEr5QXwRshddkD4c6",
-   *         "city": "Paris"
-   *     }
-   * },
-   * {
-   *     "id": 72,
-   *     "name": "Tartare de saumon",
-   *     "description": "p",
+   *     "id": 37,
+   *     "name": "test",
+   *     "description": "Saumon cru",
    *     "portion": 2,
    *     "city": "paris",
    *     "online": true,
-   *     "picture_path": "dish_cover_72.jpg",
+   *     "picture_path": "dish_cover_undefined.jpg",
    *     "author_id": 1,
    *     "author": {
    *         "id": 1,
    *         "username": "Marie",
    *         "email": "marie@mail.fr",
-   *         "password": "$2a$10$aZPxUP8fTe1sjWZp10meAu6UEfPysj0pRWcGLEr5QXwRshddkD4c6",
    *         "city": "Paris"
    *     }
    * },
@@ -393,7 +303,86 @@ const mealController = {
    *         "id": 1,
    *         "username": "Marie",
    *         "email": "marie@mail.fr",
-   *         "password": "$2a$10$aZPxUP8fTe1sjWZp10meAu6UEfPysj0pRWcGLEr5QXwRshddkD4c6",
+   *         "city": "Paris"
+   *     }
+   * },
+   * {
+   *     "id": 75,
+   *     "name": " Tartare de saumon",
+   *     "description": " Saumon cru",
+   *     "portion": 2,
+   *     "city": " paris",
+   *     "online": true,
+   *     "picture_path": "dish_cover_undefined.jpg",
+   *     "author_id": 1,
+   *     "author": {
+   *         "id": 1,
+   *         "username": "Marie",
+   *         "email": "marie@mail.fr",
+   *         "city": "Paris"
+   *     }
+   * },
+   * {
+   *     "id": 74,
+   *     "name": " Tartare de saumon",
+   *     "description": " Saumon cru",
+   *     "portion": 2,
+   *     "city": " paris",
+   *     "online": true,
+   *     "picture_path": "dish_cover_74.jpg",
+   *     "author_id": 1,
+   *     "author": {
+   *         "id": 1,
+   *         "username": "Marie",
+   *         "email": "marie@mail.fr",
+   *         "city": "Paris"
+   *     }
+   * },
+   * {
+   *     "id": 73,
+   *     "name": " Tartare de saumon",
+   *     "description": " Saumon cru",
+   *     "portion": 2,
+   *     "city": " paris",
+   *     "online": true,
+   *     "picture_path": "dish_cover_73.jpg",
+   *     "author_id": 1,
+   *     "author": {
+   *         "id": 1,
+   *         "username": "Marie",
+   *         "email": "marie@mail.fr",
+   *         "city": "Paris"
+   *     }
+   * },
+   * {
+   *     "id": 72,
+   *     "name": "Tartare de saumon",
+   *     "description": "p",
+   *     "portion": 2,
+   *     "city": "paris",
+   *     "online": true,
+   *     "picture_path": "dish_cover_72.jpg",
+   *     "author_id": 1,
+   *     "author": {
+   *         "id": 1,
+   *         "username": "Marie",
+   *         "email": "marie@mail.fr",
+   *         "city": "Paris"
+   *     }
+   * },
+   * {
+   *     "id": 37,
+   *     "name": "test",
+   *     "description": "Saumon cru",
+   *     "portion": 2,
+   *     "city": "paris",
+   *     "online": true,
+   *     "picture_path": "dish_cover_undefined.jpg",
+   *     "author_id": 1,
+   *     "author": {
+   *         "id": 1,
+   *         "username": "Marie",
+   *         "email": "marie@mail.fr",
    *         "city": "Paris"
    *     }
    * },
@@ -410,7 +399,6 @@ const mealController = {
    *         "id": 1,
    *         "username": "Marie",
    *         "email": "marie@mail.fr",
-   *         "password": "$2a$10$aZPxUP8fTe1sjWZp10meAu6UEfPysj0pRWcGLEr5QXwRshddkD4c6",
    *         "city": "Paris"
    *     }
    * }]
