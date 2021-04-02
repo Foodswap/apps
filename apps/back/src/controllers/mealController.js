@@ -229,6 +229,33 @@ const mealController = {
     }
   },
 
+  /**
+   * GET /v1/dishes/{id}/picture
+   *
+   * @summary Get the picture of a Dish
+   * @tags Dish
+   *
+   * @param {string} id.path - id of a Dish
+   *
+   * @return {PictureDishDto} 200 - success response - application/json
+   * @return {ErrorDto} 404 - bad request response
+   * @return {ErrorDto} 500 - error on server
+   *
+   * @example response - 200 - picture of a Dish returned by api
+   * {
+   *    "picture_path": "1616337669356.jpg"
+   * }
+   * @example response - 404 - an error of bad request
+   * {
+   *   "error": 404,
+   *   "message": "picture not found"
+   * }
+   * @example response - 500 - an error on server
+   * {
+   *   "error": 500,
+   *   "message": "Internal server error"
+   * }
+   */
   getPicture: async (request, response) => {
     try {
       const meal = await Meal.findByPk(Number(request.params.id), {
