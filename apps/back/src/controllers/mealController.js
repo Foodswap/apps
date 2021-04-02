@@ -1,7 +1,7 @@
 const { Op } = require('sequelize');
 const { sequelize } = require('../database');
 
-const { Meal } = require('../models');
+const { Meal, Author } = require('../models');
 
 const mealController = {
   /**
@@ -173,9 +173,15 @@ const mealController = {
         attributes: {
           exclude: ['picture_path'],
         },
-        include: ['ingredients', 'categories', 'author'],
+        include: ['ingredients', 'categories', {
+          model: Author,
+          as: 'author',
+          attributes: {
+            exclude: ['password'],
+          },
+        }],
       });
-      meal.author.password = null;
+
       response.status(200).json(meal);
     } catch (err) {
       response.status({ error: 500, message: err });
@@ -419,7 +425,13 @@ const mealController = {
         where: {
           online: true,
         },
-        include: 'author',
+        include: [{
+          model: Author,
+          as: 'author',
+          attributes: {
+            exclude: ['password'],
+          },
+        }],
         limit: 9,
         order: [['created_date', 'DESC']],
       });
@@ -607,11 +619,14 @@ const mealController = {
         attributes: {
           exclude: ['picture_path'],
         },
-        include: ['ingredients', 'categories', 'author'],
+        include: ['ingredients', 'categories', {
+          model: Author,
+          as: 'author',
+          attributes: {
+            exclude: ['password'],
+          },
+        }],
       }).then((updatedMeal) => {
-        // eslint-disable-next-line no-param-reassign
-        delete updatedMeal.author.password;
-
         response.status(201).json(updatedMeal);
       });
     } catch (err) {
