@@ -1,5 +1,33 @@
 const { Model } = require('sequelize');
 
+/**
+ * A Dish
+ *
+ * @typedef {object} DishBody
+ *
+ * @property {string} name.required - The name
+ * @property {string} description.required - The description
+ * @property {number} portion.required - The portion
+ * @property {string} city.required - The city
+ * @property {bool} online.required - The online.required
+ * @property {string} ingredients.required - The ingredients
+ * @property {string} categories.required - The categories
+ */
+
+/**
+ * A Dish with id
+ *
+ * @typedef {object} DishDto
+ *
+ * @property {number} id - The id
+ * @property {string} name - The name
+ * @property {string} description - The description
+ * @property {number} portion - The portion
+ * @property {string} city - The city
+ * @property {bool} online - The online.required
+ * @property {string} ingredients - The ingredients
+ * @property {string} categories - The categories
+ */
 class Meal extends Model {
   static init(sequelize, DataTypes) {
     return super.init({

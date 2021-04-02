@@ -4,6 +4,72 @@ const { sequelize } = require('../database');
 const { Meal } = require('../models');
 
 const mealController = {
+  /**
+   * POST /v1/dishes
+   *
+   * @tags Dish
+   *
+   * @summary Create new dish
+   *
+   * @param {DishBody} request.body.required - dish info - application/json
+   *
+   * @return {DishDto} 201 - success response - application/json
+   * @return {ErrorDto} 500 - error on server
+   *
+   * @example response - 201 - a dish returns by api
+   * {
+   *     "id": 75,
+   *     "name": " Tartare de saumon",
+   *     "description": " Saumon cru",
+   *     "portion": 2,
+   *     "city": " paris",
+   *     "online": true,
+   *     "author_id": 1,
+   *     "ingredients": [
+   *         {
+   *             "id": 3,
+   *             "name": "Huile",
+   *             "meal_ingredient_associate": {
+   *                 "id_ingredient": 3,
+   *                 "id_meal": 75
+   *             }
+   *         }
+   *     ],
+   *     "categories": [
+   *         {
+   *             "id": 24,
+   *             "type": "kitchen",
+   *             "name": "Espagnole",
+   *             "meal_category_associate": {
+   *                 "id_category": 24,
+   *                 "id_meal": 75
+   *             }
+   *         },
+   *         {
+   *             "id": 2,
+   *             "type": "dish",
+   *             "name": "Plat",
+   *             "meal_category_associate": {
+   *                 "id_category": 2,
+   *                 "id_meal": 75
+   *             }
+   *         }
+   *     ],
+   *     "author": {
+   *         "id": 1,
+   *         "username": "Marie",
+   *         "email": "marie@mail.fr",
+   *         "password": "$2a$10$aZPxUP8fTe1sjWZp10meAu6UEfPysj0pRWcGLEr5QXwRshddkD4c6",
+   *         "city": "Paris"
+   *     }
+   * }
+   *
+   * @example response - 500 - an error on server
+   * {
+   *   "error": 500,
+   *   "message": "Internal server error"
+   * }
+   */
   createMeal: async (request, response) => {
     const mealToCreate = request.body;
 

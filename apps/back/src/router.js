@@ -44,7 +44,7 @@ router.get('/dishes/author/:author_id', mealController.getMealsByAuthor);
 router.get('/lastDishes', mealController.getSixMeals);
 
 /**
- * Routes PUT
+ * Routes POST
  */
 router.post('/dishes', middlewareHandlingFiles, mealController.createMeal);
 
