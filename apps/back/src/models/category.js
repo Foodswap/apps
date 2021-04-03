@@ -5,7 +5,7 @@ const { Model } = require('sequelize');
  *
  * @typedef {object} CategoryDto
  *
- * @property {number} id - The id of the category
+ * @property {number} id - The id
  * @property {string} type - The type
  * @property {string} name - The name
  */

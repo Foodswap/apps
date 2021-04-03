@@ -9,11 +9,11 @@ const { Model } = require('sequelize');
  * @property {string} description.required - The description
  * @property {number} portion.required - The portion
  * @property {string} city.required - The city
- * @property {boolean} online.required - The online.required
- * @property {string} ingredients.required - The ingredients id separated by comas
- * @property {string} categories.required - The kitchen category id and dish category id separated by comas
+ * @property {boolean} online.required - If the dish is online
+ * @property {string} ingredients.required - Ids of ingredients, separated by coma
+ * @property {string} categories.required - Ids of kitchen/dish categories, separated by coma
  * @property {string} picture.required - The picture path
- * @property {number} author_id.required - The author id
+ * @property {number} author_id.required - Id of Author
  */
 
 /**
@@ -26,9 +26,9 @@ const { Model } = require('sequelize');
  * @property {string} description - The description
  * @property {number} portion - The portion
  * @property {string} city - The city
- * @property {boolean} online - The online.required
- * @property {string} ingredients - The ingredients
- * @property {string} categories - The categories
+ * @property {boolean} online - If the dish is online
+ * @property {array<ingredientDto>} ingredients - The ingredients
+ * @property {array<CategoryDto>} categories - The categories
  * @property {string} picture_path - The picture path
  */
 

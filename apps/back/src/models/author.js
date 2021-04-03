@@ -16,7 +16,7 @@ const { Model } = require('sequelize');
  *
  * @typedef {object} AuthorDto
  *
- * @property {number} id - The username
+ * @property {number} id - The id
  * @property {string} username - The username
  * @property {string} email - The email
  * @property {string} city - The city
@@ -27,7 +27,7 @@ const { Model } = require('sequelize');
  *
  * @typedef {object} AuthorSwapDto
  *
- * @property {number} id - The username
+ * @property {number} id - The id
  * @property {string} username - The username
  * @property {string} email - The email
  */
@@ -47,7 +47,7 @@ const { Model } = require('sequelize');
  * @typedef {object} AuthenticatedAuthorDto
  *
  * @property {string} accessToken - The access token
- * @property {AuthorDto} author - The author
+ * @property {AuthorDto} author - The Author
  */
 class Author extends Model {
   static init(sequelize, DataTypes) {

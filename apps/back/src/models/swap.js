@@ -22,11 +22,11 @@ const { Model } = require('sequelize');
  *
  * @typedef {object} SwapDto
  *
- * @property {number} id - The id swap
+ * @property {number} id - The id
  * @property {number} status - The swap status
- * @property {string} date - The date swap
- * @property {DishWithAskerDto} mealOffer - The proposed
- * @property {DishWithReceiverDto} mealRequest - The received
+ * @property {string} date - The date of the swap request
+ * @property {DishWithAskerDto} mealOffer - The proposed Dish with Asker Author
+ * @property {DishWithReceiverDto} mealRequest - The received Dish with Receiver Author
  */
 class Swap extends Model {
   static init(sequelize, DataTypes) {

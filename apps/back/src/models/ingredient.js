@@ -5,8 +5,8 @@ const { Model } = require('sequelize');
  *
  * @typedef {object} ingredientDto
  *
- * @property {number} id - The ingredient id
- * @property {string} name - The ingredient name
+ * @property {number} id - The id
+ * @property {string} name - The name
  */
 class Ingredient extends Model {
   static init(sequelize, DataTypes) {

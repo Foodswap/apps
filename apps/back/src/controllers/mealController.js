@@ -103,7 +103,7 @@ const mealController = {
         response.status(201).json(meal);
       });
     } catch (err) {
-      response.status({ error: 500, message: error });
+      response.status({ error: 500, message: err });
     }
   },
 
