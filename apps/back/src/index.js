@@ -23,6 +23,18 @@ const options = {
   filesPattern: './**/*.js',
   baseDir: __dirname,
   exposeSwaggerUI: true,
+  servers: [
+    {
+      url: 'http://localhost:3000',
+      description: 'Development server',
+    },
+    {
+      url: 'http://int.foodswap.fr:3000',
+      description: 'Staging server',
+    },
+  ],
+  exposeApiDocs: true,
+  apiDocsPath: '/api-docs.json',
 };
 
 // Router
@@ -44,8 +56,7 @@ const corsOption = {
 };
 const port = process.env.NODE_ENV === 'test'
   ? 5555
-  : process.env.PORT || 3000
-;
+  : process.env.PORT || 3000;
 
 // Globals middleware
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms'));
