@@ -48,7 +48,7 @@ const swapController = {
    * POST /v1/swaps
    *
    * @summary Create a swap proposition
-   * @tags swap
+   * @tags Swap
    *
    * @param {SwapBody} request.body - status and date of a swap
    *
@@ -103,7 +103,7 @@ const swapController = {
    * GET /v1/swaps/authorAsker/{swapId}
    *
    * @summary get a swap proposal (Asker)
-   * @tags swap
+   * @tags Swap
    *
    * @param {number} swapId.path - id exchange
    *
@@ -158,7 +158,7 @@ const swapController = {
    * GET /v1/swaps/authorReceiver/{swapId}
    *
    * @summary get a swap proposal (Receiver)
-   * @tags swap
+   * @tags Swap
    *
    * @param {number} swapId.path - id exchange
    *
@@ -212,7 +212,7 @@ const swapController = {
    * PUT /v1/swaps/{swapId}
    *
    * @summary Update a swap proposition
-   * @tags swap
+   * @tags Swap
    *
    * @param {number} swapId.path - id of a swap
    * @param {SwapUpdateBody} request.body - status of a swap

@@ -7,7 +7,7 @@ const categoryController = {
    * @summary Get Category by type
    * @tags Category
    *
-   * @param {string} type.path - type of Category
+   * @param {string} type.path - type of Category (kitchen or dish)
    *
    * @return {AuthorDto} 200 - success response - application/json
    * @return {ErrorDto} 404 - bad request response

@@ -4,12 +4,12 @@ const Author = require('../models/author');
 
 const authorController = {
   /**
-   * GET /v1/author/{id}
+   * GET /v1/author/{authorId}
    *
    * @summary Get one Author by id
    * @tags Author
    *
-   * @param {number} id.path - id of Author
+   * @param {number} authorId.path - id of Author
    *
    * @return {AuthorDto} 200 - success response - application/json
    * @return {ErrorDto} 404 - bad request response

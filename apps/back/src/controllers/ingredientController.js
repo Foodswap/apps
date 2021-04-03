@@ -5,7 +5,7 @@ const ingredient = {
    * GET /v1/ingredient/{ingredientId}
    *
    * @summary Get one ingredient by id
-   * @tags ingredients
+   * @tags Ingredients
    *
    * @param {number} ingredientId.path - id of ingredient
    *
@@ -38,7 +38,7 @@ const ingredient = {
    * GET /v1/ingredients
    *
    * @summary Get all ingredients
-   * @tags ingredients
+   * @tags Ingredients
    *
    * @return {array<IngredientsDto>} 200 - success response - application/json
    * @return {ErrorDto} 404 - bad request response
