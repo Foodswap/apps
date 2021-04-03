@@ -2,9 +2,75 @@ const { Op } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
 const { sequelize } = require('../database');
-const { Meal } = require('../models');
+
+const { Meal, Author } = require('../models');
 
 const mealController = {
+  /**
+   * POST /v1/dishes
+   *
+   * @tags Dish
+   *
+   * @summary Create new dish
+   *
+   * @param {DishBody} request.body.required - dish info - application/json
+   *
+   * @return {DishDto} 201 - success response - application/json
+   * @return {ErrorDto} 500 - error on server
+   *
+   * @example response - 201 - a dish returns by api
+   * {
+   *     "id": 75,
+   *     "name": " Tartare de saumon",
+   *     "description": " Saumon cru",
+   *     "portion": 2,
+   *     "city": " paris",
+   *     "online": true,
+   *     "author_id": 1,
+   *     "ingredients": [
+   *         {
+   *             "id": 3,
+   *             "name": "Huile",
+   *             "meal_ingredient_associate": {
+   *                 "id_ingredient": 3,
+   *                 "id_meal": 75
+   *             }
+   *         }
+   *     ],
+   *     "categories": [
+   *         {
+   *             "id": 24,
+   *             "type": "kitchen",
+   *             "name": "Espagnole",
+   *             "meal_category_associate": {
+   *                 "id_category": 24,
+   *                 "id_meal": 75
+   *             }
+   *         },
+   *         {
+   *             "id": 2,
+   *             "type": "dish",
+   *             "name": "Plat",
+   *             "meal_category_associate": {
+   *                 "id_category": 2,
+   *                 "id_meal": 75
+   *             }
+   *         }
+   *     ],
+   *     "author": {
+   *         "id": 1,
+   *         "username": "Marie",
+   *         "email": "marie@mail.fr",
+   *         "city": "Paris"
+   *     }
+   * }
+   *
+   * @example response - 500 - an error on server
+   * {
+   *   "error": 500,
+   *   "message": "Internal server error"
+   * }
+   */
   createMeal: async (request, response) => {
     const mealToCreate = request.body;
 
@@ -36,26 +102,136 @@ const mealController = {
         delete meal.author.password;
         response.status(201).json(meal);
       });
-    } catch (error) {
-      response.status(500);
+    } catch (err) {
+      response.status({ error: 500, message: err });
     }
   },
 
+  /**
+   * GET /v1/dishes/{dishId}
+   *
+   * @summary Get one Dish by id
+   * @tags Dish
+   *
+   * @param {string} dishId.path - id of Dish
+   *
+   * @return {DishDto} 200 - success response - application/json
+   * @return {ErrorDto} 404 - bad request response
+   * @return {ErrorDto} 500 - error on server
+   *
+   * @example response - 200 - a dish returned by api
+   * {
+   *     "id": 75,
+   *     "name": " Tartare de saumon",
+   *     "description": " Saumon cru",
+   *     "portion": 2,
+   *     "city": " paris",
+   *     "online": true,
+   *     "author_id": 1,
+   *     "ingredients": [
+   *         {
+   *             "id": 3,
+   *             "name": "Huile",
+   *             "meal_ingredient_associate": {
+   *                 "id_ingredient": 3,
+   *                 "id_meal": 75
+   *             }
+   *         }
+   *     ],
+   *     "categories": [
+   *         {
+   *             "id": 24,
+   *             "type": "kitchen",
+   *             "name": "Espagnole",
+   *             "meal_category_associate": {
+   *                 "id_category": 24,
+   *                 "id_meal": 75
+   *             }
+   *         },
+   *         {
+   *             "id": 2,
+   *             "type": "dish",
+   *             "name": "Plat",
+   *             "meal_category_associate": {
+   *                 "id_category": 2,
+   *                 "id_meal": 75
+   *             }
+   *         }
+   *     ],
+   *     "author": {
+   *         "id": 1,
+   *         "username": "Marie",
+   *         "email": "marie@mail.fr",
+   *         "password": null,
+   *         "city": "Paris"
+   *     }
+   * }
+   *
+   * @example response - 404 - an error of bad request
+   * {
+   *   "error": 404,
+   *   "message": "Dish not found"
+   * }
+   * @example response - 500 - an error on server
+   * {
+   *   "error": 500,
+   *   "message": "Internal server error"
+   * }
+   */
   getOneMeal: async (request, response) => {
     try {
       const meal = await Meal.findByPk(Number(request.params.id), {
         attributes: {
           exclude: ['picture_path'],
         },
-        include: ['ingredients', 'categories', 'author'],
+        include: ['ingredients', 'categories', {
+          model: Author,
+          as: 'author',
+          attributes: {
+            exclude: ['password'],
+          },
+        }],
       });
-      meal.author.password = null;
+
       response.status(200).json(meal);
     } catch (err) {
-      response.status(500);
+      response.status({ error: 500, message: err });
     }
   },
-
+  /**
+   * GET /v1/dishes/author/{authorId}
+   *
+   * @summary Get Dishes by author id
+   * @tags Dish
+   *
+   * @param {string} authorId.path - id of the author of a Dish
+   *
+   * @return {array<DishDto>} 200 - success response - application/json
+   * @return {ErrorDto} 404 - bad request response
+   * @return {ErrorDto} 500 - error on server
+   *
+   * @example response - 200 - dishes of an author returned by api
+   * {
+   *    "id": 17,
+   *    "name": "Spaghetti aux crevettes",
+   *    "description": "Crevettes sautées et petits légumes",
+   *    "portion": 1,
+   *    "city": "Paris",
+   *    "online": true,
+   *    "picture_path": "1616337669356.jpg",
+   *    "author_id": 5
+   * }
+   * @example response - 404 - an error of bad request
+   * {
+   *   "error": 404,
+   *   "message": "Dishes not found"
+   * }
+   * @example response - 500 - an error on server
+   * {
+   *   "error": 500,
+   *   "message": "Internal server error"
+   * }
+   */
   getMealsByAuthor: async (request, response) => {
     try {
       const mealsByAuthor = await Meal.findAll({
@@ -64,11 +240,34 @@ const mealController = {
         },
       });
       response.status(200).json(mealsByAuthor);
-    } catch (error) {
-      response.status(500);
+    } catch (err) {
+      response.status({ error: 500, message: err });
     }
   },
 
+  /**
+   * GET /v1/dishes/{dishId}/picture
+   *
+   * @summary Get the picture of a Dish
+   * @tags Dish
+   *
+   * @param {string} dishId.path - id of a Dish
+   *
+   * @return {string} 200 - binary - image/jpeg
+   * @return {ErrorDto} 404 - bad request response
+   * @return {ErrorDto} 500 - error on server
+   *
+   * @example response - 404 - an error of bad request
+   * {
+   *   "error": 404,
+   *   "message": "picture not found"
+   * }
+   * @example response - 500 - an error on server
+   * {
+   *   "error": 500,
+   *   "message": "Internal server error"
+   * }
+   */
   getPicture: async (request, response) => {
     try {
       const meal = await Meal.findByPk(Number(request.params.id), {
@@ -77,26 +276,221 @@ const mealController = {
       const picturePath = `${process.env.PATH_PICTURE}/${meal.picture_path}`;
       response.sendFile(picturePath);
     } catch (err) {
-      response.status(500);
+      response.status({ error: 500, message: err });
     }
   },
 
+  /**
+   * GET /v1/lastDishes
+   *
+   * @summary Get last 9 dishes
+   * @tags Dish
+   *
+   * @return {DishDto} 200 - success response - application/json
+   * @return {ErrorDto} 404 - bad request response
+   * @return {ErrorDto} 500 - error on server
+   *
+   * @example response - 200 - last dishes returned by api
+   * [{
+   *     "id": 37,
+   *     "name": "test",
+   *     "description": "Saumon cru",
+   *     "portion": 2,
+   *     "city": "paris",
+   *     "online": true,
+   *     "picture_path": "dish_cover_undefined.jpg",
+   *     "author_id": 1,
+   *     "author": {
+   *         "id": 1,
+   *         "username": "Marie",
+   *         "email": "marie@mail.fr",
+   *         "city": "Paris"
+   *     }
+   * },
+   * {
+   *     "id": 37,
+   *     "name": "test",
+   *     "description": "Saumon cru",
+   *     "portion": 2,
+   *     "city": "paris",
+   *     "online": true,
+   *     "picture_path": "dish_cover_undefined.jpg",
+   *     "author_id": 1,
+   *     "author": {
+   *         "id": 1,
+   *         "username": "Marie",
+   *         "email": "marie@mail.fr",
+   *         "city": "Paris"
+   *     }
+   * },
+   * {
+   *     "id": 75,
+   *     "name": " Tartare de saumon",
+   *     "description": " Saumon cru",
+   *     "portion": 2,
+   *     "city": " paris",
+   *     "online": true,
+   *     "picture_path": "dish_cover_undefined.jpg",
+   *     "author_id": 1,
+   *     "author": {
+   *         "id": 1,
+   *         "username": "Marie",
+   *         "email": "marie@mail.fr",
+   *         "city": "Paris"
+   *     }
+   * },
+   * {
+   *     "id": 74,
+   *     "name": " Tartare de saumon",
+   *     "description": " Saumon cru",
+   *     "portion": 2,
+   *     "city": " paris",
+   *     "online": true,
+   *     "picture_path": "dish_cover_74.jpg",
+   *     "author_id": 1,
+   *     "author": {
+   *         "id": 1,
+   *         "username": "Marie",
+   *         "email": "marie@mail.fr",
+   *         "city": "Paris"
+   *     }
+   * },
+   * {
+   *     "id": 73,
+   *     "name": " Tartare de saumon",
+   *     "description": " Saumon cru",
+   *     "portion": 2,
+   *     "city": " paris",
+   *     "online": true,
+   *     "picture_path": "dish_cover_73.jpg",
+   *     "author_id": 1,
+   *     "author": {
+   *         "id": 1,
+   *         "username": "Marie",
+   *         "email": "marie@mail.fr",
+   *         "city": "Paris"
+   *     }
+   * },
+   * {
+   *     "id": 72,
+   *     "name": "Tartare de saumon",
+   *     "description": "p",
+   *     "portion": 2,
+   *     "city": "paris",
+   *     "online": true,
+   *     "picture_path": "dish_cover_72.jpg",
+   *     "author_id": 1,
+   *     "author": {
+   *         "id": 1,
+   *         "username": "Marie",
+   *         "email": "marie@mail.fr",
+   *         "city": "Paris"
+   *     }
+   * },
+   * {
+   *     "id": 37,
+   *     "name": "test",
+   *     "description": "Saumon cru",
+   *     "portion": 2,
+   *     "city": "paris",
+   *     "online": true,
+   *     "picture_path": "dish_cover_undefined.jpg",
+   *     "author_id": 1,
+   *     "author": {
+   *         "id": 1,
+   *         "username": "Marie",
+   *         "email": "marie@mail.fr",
+   *         "city": "Paris"
+   *     }
+   * },
+   * {
+   *     "id": 36,
+   *     "name": "Tartare de saumon2",
+   *     "description": "saumon",
+   *     "portion": 2,
+   *     "city": "paris",
+   *     "online": true,
+   *     "picture_path": "dish_cover_undefined.jpg",
+   *     "author_id": 1,
+   *     "author": {
+   *         "id": 1,
+   *         "username": "Marie",
+   *         "email": "marie@mail.fr",
+   *         "city": "Paris"
+   *     }
+   * }]
+   * @example response - 404 - an error of bad request
+   * {
+   *   "error": 404,
+   *   "message": "Last Dishes not found"
+   * }
+   * @example response - 500 - an error on server
+   * {
+   *   "error": 500,
+   *   "message": "Internal server error"
+   * }
+   */
   getSixMeals: async (request, response) => {
     try {
       const sixMeals = await Meal.findAll({
         where: {
           online: true,
         },
-        include: 'author',
+        include: [{
+          model: Author,
+          as: 'author',
+          attributes: {
+            exclude: ['password'],
+          },
+        }],
         limit: 9,
         order: [['created_date', 'DESC']],
       });
       response.status(200).json(sixMeals);
-    } catch (error) {
-      response.status(500);
+    } catch (err) {
+      response.status({ error: 500, message: err });
     }
   },
 
+  /**
+   * GET /v1/dishes/{kitchenId}/{dishId}/{city}
+   *
+   * @summary Get Dishes results by filters
+   * @tags Dish
+   * @param {string} kitchenId.path - id of the kitchen category of a Dish
+   * @param {string} dishId.path - id of the dish category of a Dish
+   * @param {string} city.path - city name of a Dish
+   *
+   * @return {DishDto} 200 - success response - application/json
+   * @return {ErrorDto} 404 - bad request response
+   * @return {ErrorDto} 500 - error on server
+   *
+   * @example response - 200 - result of Dishes returned by api
+   * {
+   *     "id": 75,
+   *     "name": " Tartare de saumon",
+   *     "description": " Saumon cru",
+   *     "portion": 2,
+   *     "city": " paris",
+   *     "online": true,
+   *     "picture_path": "dish_cover_undefined.jpg",
+   *     "author_id": 1,
+   *     "author": {
+   *         "id": 1,
+   *         "username": "Marie"
+   *     }
+   * }
+   * @example response - 404 - an error of bad request
+   * {
+   *   "error": 404,
+   *   "message": "results of Dishes not found"
+   * }
+   * @example response - 500 - an error on server
+   * {
+   *   "error": 500,
+   *   "message": "Internal server error"
+   * }
+   */
   searchMeal: async (request, response) => {
     const { dishId } = request.params;
     const { kitchenId } = request.params;
@@ -128,11 +522,77 @@ const mealController = {
     try {
       const mealSearch = await Meal.findAll(sqlRequest);
       response.status(200).json(mealSearch);
-    } catch (error) {
-      response.status(500);
+    } catch (err) {
+      response.status({ error: 500, message: err });
     }
   },
 
+  /**
+   * PUT /v1/dishes/{dishId}
+   *
+   * @tags Dish
+   *
+   * @param {string} dishId.path - id of Dish
+   * @summary Update a Dish
+   *
+   * @param {DishBody} request.body.required - dish info - application/json
+   *
+   * @return {DishDto} 201 - success response - application/json
+   * @return {ErrorDto} 500 - error on server
+   *
+   * @example response - 201 - a dish edited returns by api
+   * {
+   *     "id": 75,
+   *     "name": " Tartare de saumon",
+   *     "description": " Saumon cru",
+   *     "portion": 2,
+   *     "city": " paris",
+   *     "online": true,
+   *     "author_id": 1,
+   *     "ingredients": [
+   *         {
+   *             "id": 3,
+   *             "name": "Huile",
+   *             "meal_ingredient_associate": {
+   *                 "id_ingredient": 3,
+   *                 "id_meal": 75
+   *             }
+   *         }
+   *     ],
+   *     "categories": [
+   *         {
+   *             "id": 24,
+   *             "type": "kitchen",
+   *             "name": "Espagnole",
+   *             "meal_category_associate": {
+   *                 "id_category": 24,
+   *                 "id_meal": 75
+   *             }
+   *         },
+   *         {
+   *             "id": 2,
+   *             "type": "dish",
+   *             "name": "Plat",
+   *             "meal_category_associate": {
+   *                 "id_category": 2,
+   *                 "id_meal": 75
+   *             }
+   *         }
+   *     ],
+   *     "author": {
+   *         "id": 1,
+   *         "username": "Marie",
+   *         "email": "marie@mail.fr",
+   *         "city": "Paris"
+   *     }
+   * }
+   *
+   * @example response - 500 - an error on server
+   * {
+   *   "error": 500,
+   *   "message": "Internal server error"
+   * }
+   */
   updateMeal: async (request, response, next) => {
     const id = Number(request.params.id);
     const mealToUpdate = request.body;
@@ -170,26 +630,63 @@ const mealController = {
         attributes: {
           exclude: ['picture_path'],
         },
-        include: ['ingredients', 'categories', 'author'],
+        include: ['ingredients', 'categories', {
+          model: Author,
+          as: 'author',
+          attributes: {
+            exclude: ['password'],
+          },
+        }],
       }).then((updatedMeal) => {
-        // eslint-disable-next-line no-param-reassign
-        delete updatedMeal.author.password;
-
         response.status(201).json(updatedMeal);
       });
-    } catch (error) {
-      response.status(500);
+    } catch (err) {
+      response.status({ error: 500, message: err });
     }
   },
 
+  /**
+   * GET /v1/dishes/online/{authorId}
+   *
+   * @summary Get online Dishes by author id
+   * @tags Dish
+   *
+   * @param {string} authorId.path - id of the author of a Dish
+   *
+   * @return {DishDto} 200 - success response - application/json
+   * @return {ErrorDto} 404 - bad request response
+   * @return {ErrorDto} 500 - error on server
+   *
+   * @example response - 200 - online dishes of an author returned by api
+   * {
+   *    "id": 17,
+   *    "name": "Spaghetti aux crevettes",
+   *    "description": "Crevettes sautées et petits légumes",
+   *    "portion": 1,
+   *    "city": "Paris",
+   *    "online": true,
+   *    "picture_path": "1616337669356.jpg",
+   *    "author_id": 5
+   * }
+   * @example response - 404 - an error of bad request
+   * {
+   *   "error": 404,
+   *   "message": "Dishes not found"
+   * }
+   * @example response - 500 - an error on server
+   * {
+   *   "error": 500,
+   *   "message": "Internal server error"
+   * }
+   */
   userMealsOnline: async (request, response) => {
     try {
       const meal = await Meal.findAll({
         where: { online: true, author_id: request.params.author_id },
       });
       response.status(200).json(meal);
-    } catch (error) {
-      response.status(500).json("This user doesn't have any meals yet.");
+    } catch (err) {
+      response.status(500).json({ error: 500, message: err });
     }
   },
 };
