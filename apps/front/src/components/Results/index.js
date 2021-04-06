@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import ContentLoader from 'react-content-loader';
+
 import './style.scss';
 import { Link } from 'react-router-dom';
 import SearchForm from '../../containers/SearchForm-container';
@@ -37,6 +39,60 @@ const Results = ({
                 );
               })
             }
+          </div>
+        </div>
+        )}
+        { !dishes && (
+        <div className="results">
+          <div className="results-cards">
+            <div className="results-card" style={{ padding: '0.6em' }}>
+              <ContentLoader
+                speed={2}
+                viewBox="30 30 295 300"
+                backgroundColor="#454a5f"
+                foregroundColor="#9a95ad"
+                style={{ width: '100%' }}
+              >
+                <rect x="88" y="174" rx="2" ry="2" width="183" height="22" />
+                <rect x="131" y="212" rx="2" ry="2" width="98" height="7" />
+                <rect x="58" y="15" rx="2" ry="2" width="236" height="146" />
+                <rect x="110" y="229" rx="2" ry="2" width="140" height="10" />
+                <rect x="130" y="248" rx="2" ry="2" width="98" height="7" />
+                <rect x="116" y="270" rx="2" ry="2" width="134" height="22" />
+              </ContentLoader>
+            </div>
+            <div className="results-card" style={{ padding: '0.6em' }}>
+              <ContentLoader
+                speed={2}
+                viewBox="30 30 295 300"
+                backgroundColor="#454a5f"
+                foregroundColor="#9a95ad"
+                style={{ width: '100%' }}
+              >
+                <rect x="88" y="174" rx="2" ry="2" width="183" height="22" />
+                <rect x="131" y="212" rx="2" ry="2" width="98" height="7" />
+                <rect x="58" y="15" rx="2" ry="2" width="236" height="146" />
+                <rect x="110" y="229" rx="2" ry="2" width="140" height="10" />
+                <rect x="130" y="248" rx="2" ry="2" width="98" height="7" />
+                <rect x="116" y="270" rx="2" ry="2" width="134" height="22" />
+              </ContentLoader>
+            </div>
+            <div className="results-card" style={{ padding: '0.6em' }}>
+              <ContentLoader
+                speed={2}
+                viewBox="30 30 295 300"
+                backgroundColor="#454a5f"
+                foregroundColor="#9a95ad"
+                style={{ width: '100%' }}
+              >
+                <rect x="88" y="174" rx="2" ry="2" width="183" height="22" />
+                <rect x="131" y="212" rx="2" ry="2" width="98" height="7" />
+                <rect x="58" y="15" rx="2" ry="2" width="236" height="146" />
+                <rect x="110" y="229" rx="2" ry="2" width="140" height="10" />
+                <rect x="130" y="248" rx="2" ry="2" width="98" height="7" />
+                <rect x="116" y="270" rx="2" ry="2" width="134" height="22" />
+              </ContentLoader>
+            </div>
           </div>
         </div>
         )}
