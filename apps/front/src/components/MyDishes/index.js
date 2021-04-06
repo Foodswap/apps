@@ -60,21 +60,20 @@ const MyDishes = ({
           </article>
         ))}
         { !userDishes && (
-        <article className="myDishes-oneDish">
 
+        <article className="myDishes-oneDish">
           <ContentLoader
             speed={1.2}
-            viewBox="0 0 900 660"
+            viewBox="0 0 600 220"
             backgroundColor="#454a5f"
             foregroundColor="#9a95ad"
-            style={{ width: '100%', height: '250px' }}
           >
-            <rect x="361" y="126" rx="2" ry="2" width="234" height="27" />
-            <rect x="366" y="204" rx="2" ry="2" width="135" height="15" />
-            <rect x="10" y="122" rx="2" ry="2" width="339" height="232" />
-            <rect x="440" y="300" rx="2" ry="2" width="106" height="31" />
-            <rect x="514" y="202" rx="2" ry="2" width="82" height="34" />
-            <rect x="366" y="224" rx="2" ry="2" width="135" height="15" />
+            <rect x="363" y="50" rx="2" ry="2" width="335" height="14" />
+            <rect x="369" y="83" rx="2" ry="2" width="158" height="9" />
+            <rect x="-20" y="48" rx="2" ry="2" width="375" height="134" />
+            <rect x="378" y="158" rx="2" ry="2" width="131" height="17" />
+            <rect x="371" y="106" rx="2" ry="2" width="135" height="6" />
+            <rect x="533" y="158" rx="2" ry="2" width="131" height="17" />
           </ContentLoader>
         </article>
         )}
