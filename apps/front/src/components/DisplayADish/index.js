@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import ContentLoader from 'react-content-loader';
 import SwapModal from '../SwapModal';
 import UseModal from '../UseModale';
 
@@ -42,7 +43,6 @@ const DisplayADish = ({
             </div>
             <button type="button" className="displayADish-button" onClick={toggle}>Proposer un échange</button>
             <i />
-            {/* <button type="button" className="displayADish-button" onClick={(event) => { toggle(event); fetchMyDishesSwap(event);}}>Swap</button> */}
           </div>
           <SwapModal
             isShowing={isShowing}
@@ -50,7 +50,26 @@ const DisplayADish = ({
           />
         </div>
       )}
+      { !dish && (
+      <ContentLoader
+        speed={1.2}
+        style={{ width: '100%' }}
+        viewBox="0 0 400 460"
+        backgroundColor="#454a5f"
+        foregroundColor="#9a95ad"
+      >
+        <rect x="241" y="64" rx="2" ry="2" width="154" height="18" />
+        <rect x="242" y="101" rx="2" ry="2" width="125" height="9" />
+        <rect x="11" y="62" rx="2" ry="2" width="212" height="148" />
+        <rect x="244" y="131" rx="2" ry="2" width="110" height="12" />
+        <rect x="245" y="174" rx="2" ry="2" width="110" height="8" />
+        <rect x="245" y="195" rx="2" ry="2" width="110" height="8" />
+        <rect x="246" y="155" rx="2" ry="2" width="43" height="8" />
+        <rect x="302" y="155" rx="2" ry="2" width="43" height="8" />
+      </ContentLoader>
+      )}
     </div>
+
   );
 };
 

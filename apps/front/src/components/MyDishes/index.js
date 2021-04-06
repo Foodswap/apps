@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import ContentLoader from 'react-content-loader';
 
 import './style.scss';
 
@@ -58,7 +59,25 @@ const MyDishes = ({
 
           </article>
         ))}
+        { !userDishes && (
+        <article className="myDishes-oneDish">
 
+          <ContentLoader
+            speed={1.2}
+            viewBox="0 0 900 660"
+            backgroundColor="#454a5f"
+            foregroundColor="#9a95ad"
+            style={{ width: '100%', height: '250px' }}
+          >
+            <rect x="361" y="126" rx="2" ry="2" width="234" height="27" />
+            <rect x="366" y="204" rx="2" ry="2" width="135" height="15" />
+            <rect x="10" y="122" rx="2" ry="2" width="339" height="232" />
+            <rect x="440" y="300" rx="2" ry="2" width="106" height="31" />
+            <rect x="514" y="202" rx="2" ry="2" width="82" height="34" />
+            <rect x="366" y="224" rx="2" ry="2" width="135" height="15" />
+          </ContentLoader>
+        </article>
+        )}
       </section>
     </div>
   );
