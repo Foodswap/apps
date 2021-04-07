@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { format } from 'date-fns';
+import ContentLoader from 'react-content-loader';
 
 import './style.scss';
 
@@ -148,6 +149,45 @@ const ExchangeTracking = ({
             </div>
           </div>
         </div>
+        {(!receivedPropositions && !askedPropositions) && (
+          <div className="swap-loading-desktop">
+            <ContentLoader
+              speed={1.5}
+              viewBox="0 0 800 200"
+              style={{ width: '100%', height: 'auto' }}
+              backgroundColor="#454a5f"
+              foregroundColor="#9a95ad"
+            >
+              <rect x="5" y="50" rx="0" ry="0" width="100" height="100" />
+              <rect x="230" y="50" rx="0" ry="0" width="100" height="100" />
+              <rect x="350" y="50" rx="0" ry="0" width="421" height="100" />
+              <rect x="121" y="60" rx="0" ry="0" width="81" height="6" />
+              <rect x="121" y="130" rx="0" ry="0" width="81" height="6" />
+              <rect x="131" y="96" rx="0" ry="0" width="62" height="5" />
+            </ContentLoader>
+          </div>
+        )}
+
+        {(!receivedPropositions && !askedPropositions) && (
+          <div className="swap-loading-mobile">
+            <ContentLoader
+              speed={1.5}
+              viewBox="0 0 800 500"
+              style={{ width: '100%', height: 'auto' }}
+              backgroundColor="#454a5f"
+              foregroundColor="#9a95ad"
+            >
+              <rect x="10" y="99" rx="0" ry="0" width="180" height="180" />
+              <rect x="608" y="98" rx="0" ry="0" width="180" height="180" />
+              <rect x="222" y="98" rx="0" ry="0" width="345" height="46" />
+              <rect x="268" y="170" rx="0" ry="0" width="250" height="25" />
+              <rect x="296" y="213" rx="0" ry="0" width="200" height="20" />
+              <rect x="268" y="250" rx="0" ry="0" width="250" height="25" />
+              <rect x="235" y="380" rx="0" ry="0" width="300" height="30" />
+              <rect x="135" y="300" rx="0" ry="0" width="500" height="70" />
+            </ContentLoader>
+          </div>
+        )}
       </div>
     </div>
   );

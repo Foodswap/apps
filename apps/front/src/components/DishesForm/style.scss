@@ -25,8 +25,8 @@
   right: 0;
   bottom: 0;
   background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
 .slider:before {
@@ -37,8 +37,8 @@
   left: 4px;
   bottom: 4px;
   background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
 input:checked + .slider {
@@ -65,7 +65,6 @@ input:checked + .slider:before {
 }
 
 .meal {
-
   &-page {
     background-color: #{vars.$coral};
     min-height: calc(100vh - 188px);
@@ -88,7 +87,7 @@ input:checked + .slider:before {
     font-weight: 600;
     margin-top: 2rem;
     color: white;
-    font-family: 'Gudea', sans-serif;
+    font-family: "Gudea", sans-serif;
     text-transform: uppercase;
     letter-spacing: 5px;
   }
@@ -97,9 +96,8 @@ input:checked + .slider:before {
     display: flex;
     flex-direction: column;
     align-items: center;
-   // border-left: 2px solid #{vars.$coral};
-   // padding-left: 3em;
-
+    // border-left: 2px solid #{vars.$coral};
+    // padding-left: 3em;
   }
   &-input {
     border-radius: 4px;
@@ -122,35 +120,34 @@ input:checked + .slider:before {
     flex-direction: column;
     padding-right: 3em;
   }
-  
-  &-img{
+
+  &-img {
     margin: 1rem;
     border-radius: 5px;
     object-fit: cover;
     width: 200px;
-    height: 200px; 
+    height: 200px;
     background-size: cover;
     background-position: center center;
   }
-  
+
   &-form-labels {
     width: 176px;
     display: block;
   }
 
-  &-category{
+  &-category {
     padding: 0.65em;
-  color: white;
-  border-radius: 5px;
-  border: none;
-  margin: 1rem 0;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    margin: 1rem 0;
   }
 
-  &-form-element{
+  &-form-element {
     display: flex;
     padding: 3rem;
     margin: 1em;
-
   }
   &-form-submit {
     display: block;
@@ -158,11 +155,11 @@ input:checked + .slider:before {
     background: transparent;
     padding: 0.8em 30px;
     text-transform: uppercase;
-    color:black;
-    background:#f8a587 ;
-    cursor:pointer;
-    transition-property:background,color;
-    transition-duration:.5s;
+    color: black;
+    background: #f8a587;
+    cursor: pointer;
+    transition-property: background, color;
+    transition-duration: 0.5s;
     margin-top: 4rem;
     font-size: 0.9em;
     border: none;
@@ -173,9 +170,8 @@ input:checked + .slider:before {
     background: transparent;
     border: 2px solid #f8a587;
     color: #f8a587;
-    transition-duration:.5s;
-    transition-property:background,color;
-
+    transition-duration: 0.5s;
+    transition-property: background, color;
   }
   &-form-cancel {
     text-align: center;
@@ -187,7 +183,7 @@ input:checked + .slider:before {
     background: #f8a587;
     cursor: pointer;
     margin-top: 4rem;
-    font-size: .9em;
+    font-size: 0.9em;
     border: none;
     width: 150px;
     margin-right: 1em;
@@ -210,11 +206,9 @@ input:checked + .slider:before {
     width: 250px;
     color: black;
   }
-
 }
 input#picture {
   background-color: #{vars.$coral};
-
 }
 
 .meal-online-switch {
@@ -233,12 +227,17 @@ input#picture {
   margin-bottom: 0.5rem;
   color: black;
 }
+.loading-desktop {
+  width: 60rem;
+  height: auto;
+}
 
+.loading-mobile {
+  display: none;
+}
 
 @media screen and (max-width: 415px) {
-
-  .meal
-  {
+  .meal {
     &-page {
       min-height: 120vh;
       display: flex;
@@ -246,45 +245,41 @@ input#picture {
       padding-bottom: 0.7rem;
     }
     &-title {
-      margin:0.4rem;
+      margin: 0.4rem;
     }
-  
+
     &-form-div {
-      display:flex;
+      display: flex;
       flex-direction: column;
-      margin:1rem;
+      margin: 1rem;
       width: 90%;
       height: 100%;
       background-color: #{vars.$darkBlue};
       border-radius: 15px;
       // margin: 6rem auto;
       box-shadow: 0 12px 15px 0 #03030396, 0 17px 50px #0707079a;
-      
     }
-  
+
     &-category {
       width: 100%;
       margin: 0;
-      margin-bottom: .5rem;
+      margin-bottom: 0.5rem;
     }
- 
-    &-form-element{
+
+    &-form-element {
       display: flex;
       flex-direction: column;
-      padding:0.3rem;
-      
+      padding: 0.3rem;
+
       margin: 0;
-      
     }
- 
-    
+
     &-image-div {
       display: flex;
       flex-direction: column;
       height: 100%;
       margin: auto;
       padding-right: 0.5rem;
-      
     }
     &-img {
       margin: 0.2rem auto;
@@ -292,49 +287,45 @@ input#picture {
       object-fit: cover;
       width: 150px;
     }
- 
+
     &-input {
-    border-radius: 4px;
-    height: 38px;
-    line-height: 38px;
-    padding-left: 0.5em;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    margin-bottom: 0.5rem;
-    width: 90%;
-    font-size: 1.1rem;
-  }
-
-  &-input:focus {
-    border: none;
-    background-color: #facfc0;
-  }
-  &-form-select{
-    flex-direction: column;
-    width: 90%;
-    margin:0;
-  }
-  &-form-submit{
-    margin:0.2rem;
-  }
-  &-buttons{
-    margin:0px;
-   text-align: center;
-  }
-  &-form-cancel{
-    margin:0.1rem auto;
-    align-items:center;
-    padding-bottom: 15px;
-  }
-
-    
+      border-radius: 4px;
+      height: 38px;
+      line-height: 38px;
+      padding-left: 0.5em;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      margin-bottom: 0.5rem;
+      width: 90%;
+      font-size: 1.1rem;
     }
-   
-    
+
+    &-input:focus {
+      border: none;
+      background-color: #facfc0;
+    }
+    &-form-select {
+      flex-direction: column;
+      width: 90%;
+      margin: 0;
+    }
+    &-form-submit {
+      margin: 0.2rem;
+    }
+    &-buttons {
+      margin: 0px;
+      text-align: center;
+    }
+    &-form-cancel {
+      margin: 0.1rem auto;
+      align-items: center;
+      padding-bottom: 15px;
+    }
+  }
 
   input#picture {
     background-color: #{vars.$coral};
   }
-  
+
   .meal-online-switch {
     display: flex;
     justify-content: space-between;
@@ -343,7 +334,7 @@ input#picture {
     margin: 0.5em auto;
     color: white;
   }
-  
+
   // select ingredients Input
   .css-2b097c-container {
     width: 90%;
@@ -352,8 +343,16 @@ input#picture {
     color: black;
   }
 
+  .loading-mobile {
+    width: 60rem;
+    height: auto;
+    display: block;
   }
-  
+  .loading-desktop {
+    display: none;
+  }
+}
+
 .fix-flex {
   display: flex;
   justify-content: center;

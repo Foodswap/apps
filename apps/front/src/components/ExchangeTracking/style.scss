@@ -221,6 +221,13 @@
     }
   }
 }
+.swap-loading-desktop {
+  width: 100%;
+  height: auto;
+}
+.swap-loading-mobile {
+  display: none;
+}
 
 @media only screen and (max-device-width: 415px) {
   .exchangeTracking {
@@ -443,6 +450,14 @@
         margin-left: Opx;
       }
     }
+  }
+  .swap-loading-desktop {
+    display: none;
+  }
+  .swap-loading-mobile {
+    width: 100%;
+    height: auto;
+    display: block;
   }
 }
 
