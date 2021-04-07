@@ -5,6 +5,7 @@ import { Link, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ContentLoader from 'react-content-loader';
 
 // import SelectInputIngredient from '../SelectInputIngredients';
 
@@ -85,11 +86,16 @@ const DishesForm = ({
   return (
     <div className="meal-page">
       <div className="meal-form-div">
+        {((dishIdToEdit && dishId) || !dishIdToEdit) && (
         <h2 className="meal-title"> {titleText}</h2>
+        )}
+
+        {((dishIdToEdit && dishId) || !dishIdToEdit) && (
         <form
           className="meal-form-element"
           onSubmit={handleSubmit}
         >
+
           <div className="meal-image-div">
             <div
               style={{ backgroundImage: `url(${previewPicture})` }}
@@ -238,6 +244,56 @@ const DishesForm = ({
             </div>
           </div>
         </form>
+        )}
+        {(dishIdToEdit && !dishId) && (
+          <div className="loading-desktop">
+            <ContentLoader
+              speed={1.2}
+              viewBox="0 0 600 350"
+              style={{ width: '100%', height: 'auto' }}
+              backgroundColor="#454a5f"
+              foregroundColor="#9a95ad"
+            >
+              <rect x="40" y="63" rx="0" ry="0" width="145" height="129" />
+              <rect x="213" y="62" rx="0" ry="0" width="346" height="16" />
+              <rect x="213" y="86" rx="0" ry="0" width="346" height="16" />
+              <rect x="213" y="112" rx="0" ry="0" width="346" height="16" />
+              <rect x="213" y="136" rx="0" ry="0" width="346" height="55" />
+              <rect x="213" y="199" rx="0" ry="0" width="346" height="16" />
+              <rect x="248" y="238" rx="0" ry="0" width="119" height="18" />
+              <rect x="403" y="238" rx="0" ry="0" width="119" height="18" />
+              <rect x="305" y="306" rx="0" ry="0" width="65" height="25" />
+              <rect x="403" y="306" rx="0" ry="0" width="68" height="25" />
+              <rect x="40" y="204" rx="0" ry="0" width="145" height="18" />
+              <rect x="42" y="280" rx="0" ry="0" width="145" height="34" />
+              <rect x="40" y="20" rx="0" ry="0" width="517" height="29" />
+            </ContentLoader>
+          </div>
+        )}
+
+        {(dishIdToEdit && !dishId) && (
+          <div className="loading-mobile">
+            <ContentLoader
+              speed={1.5}
+              viewBox="0 0 900 550"
+              style={{ width: '100%', height: 'auto' }}
+              backgroundColor="#454a5f"
+              foregroundColor="#9a95ad"
+            >
+              <rect x="84" y="59" rx="0" ry="0" width="185" height="155" />
+              <rect x="34" y="321" rx="0" ry="0" width="279" height="16" />
+              <rect x="102" y="235" rx="0" ry="0" width="145" height="18" />
+              <rect x="102" y="270" rx="0" ry="0" width="145" height="34" />
+              <rect x="34" y="14" rx="0" ry="0" width="279" height="29" />
+              <rect x="34" y="372" rx="0" ry="0" width="279" height="16" />
+              <rect x="34" y="347" rx="0" ry="0" width="279" height="16" />
+              <rect x="34" y="398" rx="0" ry="0" width="279" height="45" />
+              <rect x="34" y="451" rx="0" ry="0" width="279" height="25" />
+              <rect x="34" y="483" rx="0" ry="0" width="279" height="16" />
+              <rect x="34" y="507" rx="0" ry="0" width="279" height="16" />
+            </ContentLoader>
+          </div>
+        )}
       </div>
     </div>
   );

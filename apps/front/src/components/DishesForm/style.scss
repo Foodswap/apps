@@ -121,6 +121,11 @@ input:checked + .slider:before {
   }
 
   &-img {
+    margin: 1rem;
+    border-radius: 5px;
+    object-fit: cover;
+    width: 200px;
+    height: 200px;
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -229,6 +234,14 @@ input#picture {
   margin-bottom: 0.5rem;
   color: black;
 }
+.loading-desktop {
+  width: 60rem;
+  height: auto;
+}
+
+.loading-mobile {
+  display: none;
+}
 
 @media screen and (max-width: 415px) {
   .meal {
@@ -332,6 +345,15 @@ input#picture {
     margin-bottom: 0.5rem;
     color: black;
   }
+}
+
+.loading-mobile {
+  width: 60rem;
+  height: auto;
+  display: block;
+}
+.loading-desktop {
+  display: none;
 }
 
 .fix-flex {
