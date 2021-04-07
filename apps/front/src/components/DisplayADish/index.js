@@ -51,16 +51,15 @@ const DisplayADish = ({
         </div>
       )}
       { !dish && (
-      <div className="skeletons">
+      <div className="displayADish-skeletons">
 
-        <div className="skeleton-desktop">
+        <div className="displayADish-skeleton-desktop">
           <ContentLoader
             speed={1.2}
             style={{ width: '100%' }}
             viewBox="0 0 400 460"
             backgroundColor="#454a5f"
             foregroundColor="#9a95ad"
-            className="skeleton-desktop"
           >
             <rect x="241" y="64" rx="2" ry="2" width="154" height="18" />
             <rect x="242" y="101" rx="2" ry="2" width="125" height="9" />
@@ -72,7 +71,7 @@ const DisplayADish = ({
             <rect x="302" y="155" rx="2" ry="2" width="43" height="8" />
           </ContentLoader>
         </div>
-        <div className="skeleton-mobile">
+        <div className="displayADish-skeleton-mobile">
 
           <ContentLoader
             speed={2}

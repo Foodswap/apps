@@ -60,22 +60,39 @@ const MyDishes = ({
           </article>
         ))}
         { !userDishes && (
+        <div className="displayADish-skeletons">
 
-        <article className="myDishes-oneDish">
-          <ContentLoader
-            speed={1.2}
-            viewBox="0 0 600 220"
-            backgroundColor="#454a5f"
-            foregroundColor="#9a95ad"
-          >
-            <rect x="363" y="50" rx="2" ry="2" width="335" height="14" />
-            <rect x="369" y="83" rx="2" ry="2" width="158" height="9" />
-            <rect x="-20" y="48" rx="2" ry="2" width="375" height="134" />
-            <rect x="378" y="158" rx="2" ry="2" width="131" height="17" />
-            <rect x="371" y="106" rx="2" ry="2" width="135" height="6" />
-            <rect x="533" y="158" rx="2" ry="2" width="131" height="17" />
-          </ContentLoader>
-        </article>
+          <article className="myDishes-oneDish-desktop">
+            <ContentLoader
+              speed={1.2}
+              viewBox="0 0 600 220"
+              backgroundColor="#454a5f"
+              foregroundColor="#9a95ad"
+            >
+              <rect x="363" y="50" rx="2" ry="2" width="335" height="14" />
+              <rect x="369" y="83" rx="2" ry="2" width="158" height="9" />
+              <rect x="-20" y="48" rx="2" ry="2" width="375" height="134" />
+              <rect x="378" y="158" rx="2" ry="2" width="131" height="17" />
+              <rect x="371" y="106" rx="2" ry="2" width="135" height="6" />
+              <rect x="533" y="158" rx="2" ry="2" width="131" height="17" />
+            </ContentLoader>
+          </article>
+          <article className="myDishes-oneDish-mobile">
+            <ContentLoader
+              speed={1.2}
+              viewBox="0 0 400 460"
+              backgroundColor="#454a5f"
+              foregroundColor="#9a95ad"
+            >
+              <rect x="96" y="228" rx="2" ry="2" width="205" height="34" />
+              <rect x="39" y="4" rx="2" ry="2" width="316" height="196" />
+              <rect x="94" y="291" rx="2" ry="2" width="205" height="14" />
+              <rect x="92" y="367" rx="2" ry="2" width="94" height="34" />
+              <rect x="210" y="367" rx="2" ry="2" width="94" height="35" />
+              <rect x="158" y="327" rx="2" ry="2" width="76" height="28" />
+            </ContentLoader>
+          </article>
+        </div>
         )}
       </section>
     </div>
