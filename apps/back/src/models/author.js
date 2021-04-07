@@ -65,6 +65,12 @@ class Author extends Model {
         city: {
           type: DataTypes.TEXT,
         },
+        latitude: {
+          type: DataTypes.TEXT,
+        },
+        longitude: {
+          type: DataTypes.TEXT,
+        },
       },
       {
         sequelize,

@@ -13,6 +13,10 @@ const mapDispatchToProps = (dispatch) => ({
   getIngredients: () => dispatch(fetchIngredients()),
   fetchTypeDish: () => dispatch(fetchTypeDish()),
   fetchTypeKitchen: () => dispatch(fetchTypeKitchen()),
+  saveLocation: (position) => {
+    console.log(position.coords.latitude, position.coords.longitude);
+  },
+
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
