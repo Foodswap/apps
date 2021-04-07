@@ -11,6 +11,7 @@ import {
   UPDATE_A_DISH_TO_EDIT,
   CLEAR_DISH_INFORMATIONS,
   HANDLE_UPDATE_PICTURE,
+  RESIZE_IMAGE,
 } from '../actions/dishesForm-actions';
 
 // export const initialState = {};
@@ -187,6 +188,13 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         previewPicture: action.payload,
+      };
+    }
+
+    case RESIZE_IMAGE: {
+      return {
+        ...state,
+        picture: action.payload,
       };
     }
 

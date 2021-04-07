@@ -2,9 +2,7 @@
 @use 'sass:color';
 @import url(https://fonts.googleapis.com/css?family=Gudea:400,700);
 
-
 .myDishes {
-
   background-color: #{vars.$coral};
   height: 100%;
   padding-bottom: 1rem;
@@ -18,7 +16,7 @@
     padding: 2rem 0 0 0.2rem;
     //color: white;
     text-transform: uppercase;
-    font-family: 'Gudea', sans-serif;
+    font-family: "Gudea", sans-serif;
     letter-spacing: 5px;
   }
 
@@ -33,14 +31,13 @@
     background-color: #{vars.$darkBlue};
     box-shadow: 0 12px 15px 0 #18181ab4, 0 17px 50px #060607b4;
     width: 50%;
-
   }
 
   &-oneDish-mobile {
     display: none;
   }
 
-  &-oneDish-desktop {
+  &-oneDish-desktop  {
     margin: 3rem auto;
     padding: 0.8rem;
     background-color: #{vars.$darkBlue};
@@ -52,6 +49,7 @@
   &-dishImg {
     height: 150px;
     width: 250px;
+    border-radius: 5px;
     background-size: cover;
     background-position: center center;
   }
@@ -66,7 +64,7 @@
     color: white;
     margin-bottom: 1.5rem;
     text-transform: uppercase;
-    font-family: 'Gudea', sans-serif;
+    font-family: "Gudea", sans-serif;
     letter-spacing: 5px;
   }
 
@@ -86,11 +84,11 @@
     padding: 0.8em 30px;
     text-transform: uppercase;
     font-size: 11px;
-    color:black;
-    background:#f8a587 ;
-    cursor:pointer;
-    transition-property:background,color;
-    transition-duration:.5s;
+    color: black;
+    background: #f8a587;
+    cursor: pointer;
+    transition-property: background, color;
+    transition-duration: 0.5s;
     margin-top: 1rem;
     font-size: 0.9em;
     border: none;
@@ -111,7 +109,7 @@
       margin: 20px auto 0 auto;
       padding: 10px;
     }
-    
+
     &-offline {
       background: #ca8080;
       color: rgb(128, 0, 0);
@@ -124,22 +122,18 @@
   }
 }
 
-
-@media screen and (max-width: 415px){
-
-  .myDishes{
-
-    // width: 100%;
+@media screen and (max-width: 415px) {
+  .myDishes {
     height: 100%;
     padding-bottom: 1rem;
-    
-    &-oneDish{
+
+    &-oneDish {
       display: flex;
       flex-wrap: wrap;
       width: 95%;
     }
 
-    &-oneDish-desktop{
+    &-oneDish-desktop {
       display: none;
     }
 
@@ -152,29 +146,23 @@
       width: 95%;
       //text-align: center;
     }
-    &-dishImg{
+    &-dishImg {
       margin: 3px auto;
     }
 
-    &-dishText{
+    &-dishText {
       margin: 8px auto;
     }
-    &-dishDescription{
-      font-size:1.5rem;
-
+    &-dishDescription {
+      font-size: 1.5rem;
     }
 
     &-button {
-      
       display: flex;
-      justify-content:center;
+      justify-content: center;
     }
-    &-allButton{
+    &-allButton {
       margin: auto;
     }
-    
-
   }
-
-
 }

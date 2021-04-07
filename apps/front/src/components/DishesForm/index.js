@@ -37,6 +37,7 @@ const DishesForm = ({
   selectedIngredients,
   handleUpdatePicture,
   previewPicture,
+  resizeImage,
   // cancelAction,
 }) => {
   useEffect(() => {
@@ -44,15 +45,7 @@ const DishesForm = ({
   }, []);
 
   const animatedSelect = makeAnimated();
-  const imageHandler = (evt) => {
-    const reader = new FileReader();
-    reader.onload = () => {
-      if (reader.readyState === 2) {
-        this.setState({ dataFormMeal: reader.result });
-      }
-    };
-    reader.readAsDataURL(evt.target.files[0]);
-  };
+
   const handleSubmit = (evt) => {
     evt.preventDefault();
     onFormSubmit();
@@ -120,6 +113,7 @@ const DishesForm = ({
                 const targetFile = evt.target.files[0];
                 const previewImage = URL.createObjectURL(targetFile);
                 handleUpdatePicture(previewImage);
+                resizeImage(targetFile);
                 handleInputChange(targetFile, evt.target.name);
               }}
             />
@@ -354,6 +348,7 @@ DishesForm.propTypes = {
     }),
   ),
   handleUpdatePicture: PropTypes.func.isRequired,
+  resizeImage: PropTypes.func.isRequired,
   previewPicture: PropTypes.string.isRequired,
   dishIdToEdit: PropTypes.number,
 };

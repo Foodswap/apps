@@ -29,6 +29,10 @@ const seedCategories = [
 
 async function up({ context: queryInterface }) {
   await queryInterface.bulkInsert('category', seedCategories);
+
+  if (process.env.NODE_ENV !== 'test') {
+    await queryInterface.sequelize.query(`ALTER SEQUENCE category_id_seq RESTART WITH ${seedCategories.length + 1}`);
+  }
 }
 
 async function down({ context: queryInterface }) {

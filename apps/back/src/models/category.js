@@ -1,5 +1,15 @@
 const { Model } = require('sequelize');
 
+/**
+ * A Category
+ *
+ * @typedef {object} CategoryDto
+ *
+ * @property {number} id - The id
+ * @property {string} type - The type
+ * @property {string} name - The name
+ */
+
 class Category extends Model {
   static init(sequelize, DataTypes) {
     return super.init(
