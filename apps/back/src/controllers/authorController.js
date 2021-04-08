@@ -185,6 +185,66 @@ const authorController = {
         .json({ error: 500, message: err });
     }
   },
+
+  /**
+   * PUT /v1/author/update/{authorId}
+   *
+   * @tags Auth
+   *
+   * @param {string} authorId.path - id of the Author
+   * @summary update informations of an Author
+   *
+   * @param {AuthorBody} request.body.required - author info - application/json
+   * @return {AuthorLocationDto} 201 - success response - application/json
+   * @return {ErrorDto} 500 - error on server
+   *
+   * @example response - 201 - author with new informations
+   * {
+   *   "username": "John Doe",
+   *   "email": "john@mail.fr",
+   *   "city": "Paris",
+   *   "latitude": 42.452,
+   *   "longitude": 1.451
+   * }
+   *
+   * @example response - 500 - an error on server
+   * {
+   *   "error": 500,
+   *   "message": "Internal server error"
+   * }
+   */
+  updateInformations: async (request, response, next) => {
+    const informationsToUpdate = request.body;
+    // on recupere l'id dans la route pour l'instant
+    const id = Number(request.params.id);
+
+    try {
+      const author = await Author.findByPk(id);
+
+      if (!author) {
+        next();
+      }
+
+      Object.keys(informationsToUpdate).forEach((info) => {
+        if (author[info]) {
+          author[info] = informationsToUpdate[info];
+        }
+      });
+
+      await author.save();
+
+      Author.findByPk(Number(author.id), {
+        attributes: {
+          exclude: ['password'],
+        },
+      }).then((updatedAuthor) => {
+        response.status(201).json(updatedAuthor);
+      });
+    } catch (err) {
+      response.status({ error: 500, message: err });
+    }
+  },
+
 };
 
 module.exports = authorController;

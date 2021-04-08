@@ -9,6 +9,8 @@ const { Model } = require('sequelize');
  * @property {string} email.required - The email
  * @property {string} password.required - The password
  * @property {string} city.required - The city
+ * @property {number} latitude - The latitude
+ * @property {number} longitude - The longitude
  */
 
 /**
@@ -20,6 +22,19 @@ const { Model } = require('sequelize');
  * @property {string} username - The username
  * @property {string} email - The email
  * @property {string} city - The city
+ */
+
+/**
+ * An Author with his location
+ *
+ * @typedef {object} AuthorLocationDto
+ *
+ * @property {number} id - The id
+ * @property {string} username - The username
+ * @property {string} email - The email
+ * @property {string} city - The city
+ * @property {number} latitude - The latitude
+ * @property {number} longitude - The longitude
  */
 
 /**
@@ -66,10 +81,10 @@ class Author extends Model {
           type: DataTypes.TEXT,
         },
         latitude: {
-          type: DataTypes.TEXT,
+          type: DataTypes.INTEGER,
         },
         longitude: {
-          type: DataTypes.TEXT,
+          type: DataTypes.INTEGER,
         },
       },
       {
