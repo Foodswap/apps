@@ -36,7 +36,7 @@ const authorController = {
     try {
       const author = await Author.findByPk(Number(request.params.id), {
         attributes: {
-          exclude: ['password'],
+          exclude: ['password', 'role'],
         },
       });
 
@@ -107,6 +107,7 @@ const authorController = {
       }
 
       author.password = bcrypt.hashSync(request.body.password, 10);
+      author.role = 2;
       await author.save();
 
       const authorDto = author.toJSON();
