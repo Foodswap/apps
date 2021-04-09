@@ -32,6 +32,8 @@ const initialState = {
     accesToken: localStorage.getItem('token'),
     id: user.id || '',
   },
+  latitude: null,
+  longitude: null,
 };
 
 export default (state = initialState, action = {}) => {
@@ -166,6 +168,7 @@ export default (state = initialState, action = {}) => {
         [action.name]: action.value,
         loggedMessage: 'inscription ok',
       };
+
     default:
       return state;
   }

@@ -10,6 +10,7 @@ import {
   signUpSucces,
   signUpError,
   handleLogoutSuccess,
+  SAVE_LOCATION,
 } from '../actions/auth-actions';
 
 export default (store) => (next) => (action) => {
@@ -90,6 +91,32 @@ export default (store) => (next) => (action) => {
       }, 1000);
       toast.success('À bientôt !');
     } break;
+
+    /**
+     * If user accepts geolocation, save it on API and localStorage
+     */
+    case SAVE_LOCATION: {
+      localStorage.setItem('latitude', action.payload.coords.latitude);
+      localStorage.setItem('longitude', action.payload.coords.longitude);
+      console.log(`latitude localstorage: ${localStorage.getItem('latitude')}`);
+
+      const { id } = store.getState().user.infos;
+      const locationObj = {
+        latitude: localStorage.getItem('latitude'),
+        longitude: localStorage.getItem('longitude'),
+      };
+      if (id) {
+        axios({
+          method: 'put',
+          url: `${process.env.API_URL}/author/update/${id}`,
+          data: locationObj,
+        })
+          .then((res) => {
+            console.log('location saved on api !');
+          });
+      }
+    } break;
+
     default:
       return next(action);
   }
