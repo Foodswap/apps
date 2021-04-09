@@ -9,6 +9,7 @@ async function up({ context: queryInterface }) {
         type: Sequelize.FLOAT,
         allowNull: true,
         UNIQUE: false,
+        defaultValue: null,
       },
     ),
     queryInterface.addColumn(
@@ -18,6 +19,7 @@ async function up({ context: queryInterface }) {
         type: Sequelize.FLOAT,
         allowNull: true,
         UNIQUE: false,
+        defaultValue: null,
       },
     ),
   ]);

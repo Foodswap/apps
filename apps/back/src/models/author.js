@@ -81,10 +81,10 @@ class Author extends Model {
           type: DataTypes.TEXT,
         },
         latitude: {
-          type: DataTypes.INTEGER,
+          type: DataTypes.FLOAT,
         },
         longitude: {
-          type: DataTypes.INTEGER,
+          type: DataTypes.FLOAT,
         },
       },
       {

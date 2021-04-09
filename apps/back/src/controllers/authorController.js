@@ -220,13 +220,13 @@ const authorController = {
 
     try {
       const author = await Author.findByPk(id);
-
       if (!author) {
         next();
       }
 
       Object.keys(informationsToUpdate).forEach((info) => {
-        if (author[info]) {
+        // eslint-disable-next-line no-prototype-builtins
+        if (author.get({ plain: true }).hasOwnProperty(info)) {
           author[info] = informationsToUpdate[info];
         }
       });
