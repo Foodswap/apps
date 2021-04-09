@@ -78,6 +78,10 @@ class Author extends Model {
       foreignKey: 'author_id',
       as: 'meals',
     });
+
+    Author.belongsTo(models.Role, {
+      foreignKey: 'role',
+    });
   }
 }
 

@@ -188,7 +188,7 @@ const mealController = {
           model: Author,
           as: 'author',
           attributes: {
-            exclude: ['password'],
+            exclude: ['password', 'role'],
           },
         }],
       });
@@ -440,7 +440,7 @@ const mealController = {
           model: Author,
           as: 'author',
           attributes: {
-            exclude: ['password'],
+            exclude: ['password', 'role'],
           },
         }],
         limit: 9,
@@ -634,7 +634,7 @@ const mealController = {
           model: Author,
           as: 'author',
           attributes: {
-            exclude: ['password'],
+            exclude: ['password', 'role'],
           },
         }],
       }).then((updatedMeal) => {
