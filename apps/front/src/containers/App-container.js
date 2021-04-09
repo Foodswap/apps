@@ -3,7 +3,7 @@ import App from '../components/App';
 
 // Actions
 import { fetchTypeDish, fetchTypeKitchen, fetchIngredients } from '../actions/dishesForm-actions';
-import { saveLocation, saveLocationOnApi } from '../actions/auth-actions';
+import { saveLocation } from '../actions/auth-actions';
 
 const mapStateToProps = (state) => ({
   isLoginOpen: state.user.isLoginOpen,
@@ -15,7 +15,6 @@ const mapDispatchToProps = (dispatch) => ({
   fetchTypeDish: () => dispatch(fetchTypeDish()),
   fetchTypeKitchen: () => dispatch(fetchTypeKitchen()),
   saveLocation: (position) => {
-    console.log(position.coords.latitude, position.coords.longitude);
     dispatch(saveLocation(position));
   },
 
