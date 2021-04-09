@@ -1,0 +1,15 @@
+  "bumpFiles": [
+    {
+      "filename": "package.json",
+      "type": "json"
+    },
+    {
+      "filename": "app/front/package.json",
+      "type": "json"
+    },
+    {
+      "filename": "app/back/package.json",
+      "type": "json"
+    }
+  ],
+}
