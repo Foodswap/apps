@@ -39,6 +39,20 @@ export default (store) => (next) => (action) => {
 
           const actionToDispatch = loginSucces({ user, token });
           store.dispatch(actionToDispatch);
+
+          // if there is a location in localStorage, we update api
+          const { id } = store.getState().user.infos;
+          const locationObj = {
+            latitude: Number(localStorage.getItem('latitude')),
+            longitude: Number(localStorage.getItem('longitude')),
+          };
+          if (locationObj.latitude && locationObj.longitude) {
+            axios({
+              method: 'put',
+              url: `${process.env.API_URL}/author/update/${id}`,
+              data: locationObj,
+            });
+          }
         })
         .catch(() => {
           const actionToDispatch = loginError();
@@ -98,22 +112,18 @@ export default (store) => (next) => (action) => {
     case SAVE_LOCATION: {
       localStorage.setItem('latitude', action.payload.coords.latitude);
       localStorage.setItem('longitude', action.payload.coords.longitude);
-      console.log(`latitude localstorage: ${localStorage.getItem('latitude')}`);
 
       const { id } = store.getState().user.infos;
       const locationObj = {
-        latitude: localStorage.getItem('latitude'),
-        longitude: localStorage.getItem('longitude'),
+        latitude: Number(localStorage.getItem('latitude')),
+        longitude: Number(localStorage.getItem('longitude')),
       };
       if (id) {
         axios({
           method: 'put',
           url: `${process.env.API_URL}/author/update/${id}`,
           data: locationObj,
-        })
-          .then((res) => {
-            console.log('location saved on api !');
-          });
+        });
       }
     } break;
 

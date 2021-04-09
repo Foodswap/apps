@@ -32,8 +32,6 @@ const initialState = {
     accesToken: localStorage.getItem('token'),
     id: user.id || '',
   },
-  latitude: null,
-  longitude: null,
 };
 
 export default (state = initialState, action = {}) => {
