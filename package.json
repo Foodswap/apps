@@ -1,6 +1,6 @@
 {
   "name": "foodswap",
-  "version": "0.0.2",
+  "version": "0.0.1",
   "main": "index.js",
   "dependencies": {
     "@commitlint/cli": "^12.1.1",
@@ -21,7 +21,8 @@
     "start:back": "wait-on tcp:5432 && npm start --prefix apps/back",
     "start:docker": "docker-compose up",
     "commit": "cz",
-    "update:version": "standard-version -a"
+    "update:version": "standard-version -a && git push --follow-tags",
+    "publish:release": "./scripts/publish-release.sh"
   },
   "config": {
     "commitizen": {
