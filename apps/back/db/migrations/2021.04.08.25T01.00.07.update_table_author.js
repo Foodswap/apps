@@ -24,6 +24,7 @@ async function up({ context: queryInterface }) {
     ),
   ]);
 }
+
 async function down({ context: queryInterface }) {
   await queryInterface.removeColumn('author', 'latitude');
   await queryInterface.removeColumn('author', 'longitude');

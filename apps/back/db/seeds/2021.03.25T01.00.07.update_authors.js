@@ -11,7 +11,18 @@ const locationAuthors = [
   {
     id: 4, latitude: 7.245, longitude: 8.75,
   },
-
+  {
+    id: 5, latitude: 12.25, longitude: 18.5,
+  },
+  {
+    id: 6, latitude: 14.4, longitude: 3.63,
+  },
+  {
+    id: 7, latitude: 8.02, longitude: 9.345,
+  },
+  {
+    id: 8, latitude: 7.5, longitude: 13.7565,
+  },
 ];
 
 async function up({ context: queryInterface }) {

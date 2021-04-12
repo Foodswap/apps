@@ -195,7 +195,7 @@ const authorController = {
    * @summary update informations of an Author
    *
    * @param {AuthorBody} request.body.required - author info - application/json
-   * @return {AuthorLocationDto} 201 - success response - application/json
+   * @return {AuthorDto} 201 - success response - application/json
    * @return {ErrorDto} 500 - error on server
    *
    * @example response - 201 - author with new informations

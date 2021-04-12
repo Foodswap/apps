@@ -22,17 +22,6 @@ const { Model } = require('sequelize');
  * @property {string} username - The username
  * @property {string} email - The email
  * @property {string} city - The city
- */
-
-/**
- * An Author with his location
- *
- * @typedef {object} AuthorLocationDto
- *
- * @property {number} id - The id
- * @property {string} username - The username
- * @property {string} email - The email
- * @property {string} city - The city
  * @property {number} latitude - The latitude
  * @property {number} longitude - The longitude
  */
