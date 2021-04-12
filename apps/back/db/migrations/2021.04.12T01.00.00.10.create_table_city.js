@@ -8,7 +8,7 @@ async function up({ context: queryInterface }) {
       primaryKey: true,
     },
     county: {
-      type: Sequelize.INTEGER,
+      type: Sequelize.STRING,
       autoIncrement: false,
     },
     slug: {
@@ -18,7 +18,7 @@ async function up({ context: queryInterface }) {
       type: Sequelize.STRING,
     },
     zip_code: {
-      type: Sequelize.INTEGER,
+      type: Sequelize.STRING,
     },
     district: {
       type: Sequelize.INTEGER,
