@@ -46,6 +46,7 @@ export default (store) => (next) => (action) => {
             latitude: Number(localStorage.getItem('latitude')),
             longitude: Number(localStorage.getItem('longitude')),
           };
+
           if (locationObj.latitude && locationObj.longitude) {
             axios({
               method: 'put',
@@ -113,11 +114,13 @@ export default (store) => (next) => (action) => {
       localStorage.setItem('latitude', action.payload.coords.latitude);
       localStorage.setItem('longitude', action.payload.coords.longitude);
 
+      const { latitude, longitude } = action.payload.coords;
       const { id } = store.getState().user.infos;
       const locationObj = {
-        latitude: Number(localStorage.getItem('latitude')),
-        longitude: Number(localStorage.getItem('longitude')),
+        latitude: Number(latitude),
+        longitude: Number(longitude),
       };
+
       if (id) {
         axios({
           method: 'put',
