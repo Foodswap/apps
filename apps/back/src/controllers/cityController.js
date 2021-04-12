@@ -1,20 +1,23 @@
-const City = require('../models/city');
-const { sequelize } = require('../database');
+const { Op } = require('sequelize');
+const City = require('../models');
 
 const cityController = {
 
+  // GET /city/par
+
   autoCompleteCity: async (request, response) => {
     const { letters } = request.params;
+    console.log(letters);
 
-    if (letters.length >= 3) {
-      try {
-        City.findAll({
-          where: ['MATCH (text_idx) AGAINST(?)', [letters]],
-        });
-      } catch (err) {
-        response.status({ error: 500, message: err });
-      }
-    }
+    const cities = await City.findAll({
+      where: {
+        name: {
+          [Op.iLike]: `%${letters.toLowerCase()}%`,
+        },
+      },
+    });
+
+    response.status(200).json(cities);
   },
 };
 

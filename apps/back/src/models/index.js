@@ -4,6 +4,7 @@ const Ingredient = require('./ingredient');
 const Meal = require('./meal');
 const Swap = require('./swap');
 const Role = require('./role');
+const City = require('./city');
 
 module.exports = {
   Author,
@@ -12,4 +13,5 @@ module.exports = {
   Meal,
   Swap,
   Role,
+  City,
 };

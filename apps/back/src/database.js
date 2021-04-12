@@ -1,7 +1,7 @@
 require('dotenv').config();
 const { Sequelize } = require('sequelize');
 const {
-  Author, Category, Ingredient, Meal, Swap, Role,
+  Author, Category, Ingredient, Meal, Swap, Role, City,
 } = require('./models');
 
 const sequelize = process.env.NODE_ENV === 'test'
@@ -28,6 +28,7 @@ const models = {
   Meal: Meal.init(sequelize, Sequelize),
   Swap: Swap.init(sequelize, Sequelize),
   Role: Role.init(sequelize, Sequelize),
+  City: City.init(sequelize, Sequelize),
 };
 
 Object.values(models)

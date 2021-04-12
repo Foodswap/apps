@@ -15,7 +15,7 @@ const { Model } = require('sequelize');
  */
 
 class City extends Model {
-  static ini(sequelize, DataTypes) {
+  static init(sequelize, DataTypes) {
     return super.init(
       {
         county: {
@@ -41,13 +41,9 @@ class City extends Model {
         },
       },
       {
-        indexes: [
-          { type: 'FULLTEXT', name: 'text_idx', fields: ['name'] },
-        ],
-      },
-      {
         sequelize,
         tableName: 'city',
+        timestamps: false,
       },
     );
   }

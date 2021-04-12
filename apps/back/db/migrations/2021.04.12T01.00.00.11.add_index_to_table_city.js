@@ -1,5 +1,3 @@
-const { Sequelize } = require('sequelize');
-
 async function up({ context: queryInterface }) {
   await queryInterface.addIndex('city', ['name'], {
     type: 'FULLTEXT',
