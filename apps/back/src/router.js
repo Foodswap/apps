@@ -7,6 +7,7 @@ const mealController = require('./controllers/mealController');
 const swapController = require('./controllers/swapController');
 const categoryController = require('./controllers/categoryController');
 const ingredientController = require('./controllers/ingredientController');
+const cityController = require('./controllers/cityController');
 
 const schemas = require('./middlewares/validation/schemas');
 
@@ -88,5 +89,13 @@ router.put('/swaps/:id', swapController.updateSwap);
  */
 router.get('/ingredient/:id', ingredientController.getIngredients);
 router.get('/ingredients', ingredientController.getAllIngredient);
+
+/**
+ * CITY ROUTES
+ */
+/**
+ * Routes GET
+ */
+router.get('/city/:letters', cityController.autoCompleteCity);
 
 module.exports = router;
