@@ -41,6 +41,11 @@ class City extends Model {
         },
       },
       {
+        indexes: [
+          { type: 'FULLTEXT', name: 'text_idx', fields: ['name'] },
+        ],
+      },
+      {
         sequelize,
         tableName: 'city',
       },
