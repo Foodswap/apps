@@ -37,7 +37,7 @@ import ScrollToTop from '../ScrollToTop';
  */
 const App = ({
   // eslint-disable-next-line no-shadow
-  isLoginOpen, isSignUpOpen, getIngredients, fetchTypeDish, fetchTypeKitchen,
+  isLoginOpen, isSignUpOpen, getIngredients, fetchTypeDish, fetchTypeKitchen, saveLocation,
 }) => (
   <div className="app">
     {(isLoginOpen || isSignUpOpen) && <div className="backdrop" />}
@@ -46,6 +46,12 @@ const App = ({
         getIngredients();
         fetchTypeDish();
         fetchTypeKitchen();
+        const getLocation = () => {
+          if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(saveLocation);
+          }
+        };
+        getLocation();
       }, [])
     }
 
@@ -113,5 +119,6 @@ App.propTypes = {
   getIngredients: PropTypes.func.isRequired,
   fetchTypeDish: PropTypes.func.isRequired,
   fetchTypeKitchen: PropTypes.func.isRequired,
+  saveLocation: PropTypes.func.isRequired,
 };
 export default App;

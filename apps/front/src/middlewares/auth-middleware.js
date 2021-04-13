@@ -10,6 +10,7 @@ import {
   signUpSucces,
   signUpError,
   handleLogoutSuccess,
+  SAVE_LOCATION,
 } from '../actions/auth-actions';
 
 export default (store) => (next) => (action) => {
@@ -38,6 +39,21 @@ export default (store) => (next) => (action) => {
 
           const actionToDispatch = loginSucces({ user, token });
           store.dispatch(actionToDispatch);
+
+          // if there is a location in localStorage, we update api
+          const { id } = store.getState().user.infos;
+          const locationObj = {
+            latitude: Number(localStorage.getItem('latitude')),
+            longitude: Number(localStorage.getItem('longitude')),
+          };
+
+          if (locationObj.latitude && locationObj.longitude) {
+            axios({
+              method: 'put',
+              url: `${process.env.API_URL}/author/update/${id}`,
+              data: locationObj,
+            });
+          }
         })
         .catch(() => {
           const actionToDispatch = loginError();
@@ -90,6 +106,30 @@ export default (store) => (next) => (action) => {
       }, 1000);
       toast.success('À bientôt !');
     } break;
+
+    /**
+     * If user accepts geolocation, save it on API and localStorage
+     */
+    case SAVE_LOCATION: {
+      localStorage.setItem('latitude', action.payload.coords.latitude);
+      localStorage.setItem('longitude', action.payload.coords.longitude);
+
+      const { latitude, longitude } = action.payload.coords;
+      const { id } = store.getState().user.infos;
+      const locationObj = {
+        latitude: Number(latitude),
+        longitude: Number(longitude),
+      };
+
+      if (id) {
+        axios({
+          method: 'put',
+          url: `${process.env.API_URL}/author/update/${id}`,
+          data: locationObj,
+        });
+      }
+    } break;
+
     default:
       return next(action);
   }

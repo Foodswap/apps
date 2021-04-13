@@ -166,6 +166,7 @@ export default (state = initialState, action = {}) => {
         [action.name]: action.value,
         loggedMessage: 'inscription ok',
       };
+
     default:
       return state;
   }

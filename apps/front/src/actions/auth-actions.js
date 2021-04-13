@@ -65,3 +65,10 @@ export const updateMenuBurgerStatus = (payload) => ({
   type: UPDATE_MENU_BURGER_STATUS,
   payload,
 });
+
+// save location on localStorage or Database on app first load
+export const SAVE_LOCATION = 'SAVE_LOCATION';
+export const saveLocation = (payload) => ({
+  type: SAVE_LOCATION,
+  payload,
+});
