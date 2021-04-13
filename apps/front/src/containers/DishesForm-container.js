@@ -11,6 +11,9 @@ import {
   getADishToEdit,
   handleUpdatePicture,
   resizeImage,
+  dishFetchCities,
+  dishClearCitiesInput,
+  dishSaveSelectedCity,
 } from '../actions/dishesForm-actions';
 
 const mapStateToProps = (state, ownProps) => ({
@@ -36,6 +39,8 @@ const mapStateToProps = (state, ownProps) => ({
   kitchenData: state.dishesForm.kitchenData,
   selectedIngredients: state.dishesForm.selectedIngredients,
   previewPicture: state.dishesForm.previewPicture,
+  citiesData: state.dishesForm.citiesData,
+
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -75,6 +80,11 @@ const mapDispatchToProps = (dispatch) => ({
         dispatch(resizeImage(compressedFile));
       });
   },
+  dishFetchCities: (value) => {
+    dispatch(dishFetchCities(value));
+  },
+  dishClearCitiesInput: () => dispatch(dishClearCitiesInput()),
+  dishSaveSelectedCity: (value) => dispatch(dishSaveSelectedCity(value)),
 });
 
 export default connect(

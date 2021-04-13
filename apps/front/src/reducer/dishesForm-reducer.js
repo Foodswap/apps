@@ -12,6 +12,10 @@ import {
   CLEAR_DISH_INFORMATIONS,
   HANDLE_UPDATE_PICTURE,
   RESIZE_IMAGE,
+  DISH_FORM_SAVE_SELECTED_CITY,
+  DISH_FORM_FETCH_CITIES_SUCCES,
+  DISH_FORM_CLEAR_CITIES_INPUT,
+
 } from '../actions/dishesForm-actions';
 
 // export const initialState = {};
@@ -37,6 +41,8 @@ const initialState = {
   kitchenData: null,
   myDishesOnline: null,
   selectedIngredients: [],
+  citiesData: [],
+  selectedCity: null,
 };
 export default (state = initialState, action = {}) => {
   switch (action.type) {
@@ -197,6 +203,24 @@ export default (state = initialState, action = {}) => {
         picture: action.payload,
       };
     }
+
+    case DISH_FORM_FETCH_CITIES_SUCCES:
+      return {
+        ...state,
+        citiesData: action.payload,
+      };
+
+    case DISH_FORM_CLEAR_CITIES_INPUT:
+      return {
+        ...state,
+        // citiesData: null,
+      };
+
+    case DISH_FORM_SAVE_SELECTED_CITY:
+      return {
+        ...state,
+        selectedCity: action.payload,
+      };
 
     default:
       return state;
