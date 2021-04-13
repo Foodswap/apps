@@ -1,5 +1,5 @@
 const { Op } = require('sequelize');
-const City = require('../models');
+const { City } = require('../models');
 
 const cityController = {
 
@@ -7,14 +7,23 @@ const cityController = {
 
   autoCompleteCity: async (request, response) => {
     const { letters } = request.params;
-    console.log(letters);
 
     const cities = await City.findAll({
       where: {
-        name: {
-          [Op.iLike]: `%${letters.toLowerCase()}%`,
-        },
+        [Op.or]: [
+          {
+            name: {
+              [Op.iLike]: `%${letters.toLowerCase()}%`,
+            },
+          },
+          {
+            zip_code: {
+              [Op.iLike]: `%${letters.toLowerCase()}%`,
+            },
+          },
+        ],
       },
+      limit: 20,
     });
 
     response.status(200).json(cities);
