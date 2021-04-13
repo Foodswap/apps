@@ -26,9 +26,17 @@ class City extends Model {
         },
         name: {
           type: DataTypes.STRING,
+          indexes: [{
+            fields: ['name'],
+            using: 'gin',
+          }],
         },
         zip_code: {
           type: DataTypes.STRING,
+          indexes: [{
+            fields: ['zip_code'],
+            using: 'gin',
+          }],
         },
         district: {
           type: DataTypes.INTEGER,
