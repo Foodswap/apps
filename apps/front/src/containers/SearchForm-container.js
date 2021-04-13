@@ -1,7 +1,9 @@
 import { connect } from 'react-redux';
 import SearchForm from '../components/SearchForm';
 import { setInputValue } from '../actions/auth-actions';
-import { sendSearchForm, setSelectValue } from '../actions/search-actions';
+import {
+  sendSearchForm, setSelectValue, fetchCities, clearCitiesInput, saveSelectedCity,
+} from '../actions/search-actions';
 import { fetchTypeDish, fetchTypeKitchen } from '../actions/dishesForm-actions';
 
 const mapStateToProps = (state) => ({
@@ -11,6 +13,7 @@ const mapStateToProps = (state) => ({
   isSearching: state.search.isSearching,
   dishData: state.search.dishData,
   kitchenData: state.search.kitchenData,
+  citiesData: state.search.citiesData,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -19,6 +22,11 @@ const mapDispatchToProps = (dispatch) => ({
   handleSelectDish: (value, name) => dispatch(setSelectValue(value, name)),
   fetchTypeDish: () => dispatch(fetchTypeDish()),
   fetchTypeKitchen: () => dispatch(fetchTypeKitchen()),
+  fetchCities: (value) => {
+    dispatch(fetchCities(value));
+  },
+  clearCitiesInput: () => dispatch(clearCitiesInput()),
+  saveSelectedCity: (value) => dispatch(saveSelectedCity(value)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchForm);

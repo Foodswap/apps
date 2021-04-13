@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
 import { Link, Redirect, useHistory } from 'react-router-dom';
+import Autosuggest from 'react-autosuggest';
+
 import PropTypes from 'prop-types';
 import './style.scss';
 
@@ -16,6 +18,10 @@ const SearchForm = ({
   kitchenData,
   fetchTypeDish,
   fetchTypeKitchen,
+  fetchCities,
+  citiesData,
+  clearCitiesInput,
+  saveSelectedCity,
 }) => {
   useEffect(() => {
     fetchTypeDish();
@@ -24,9 +30,37 @@ const SearchForm = ({
   const handleSubmit = (evt) => {
     evt.preventDefault();
     location.href = `/results/${kitchen}/${dish}/${city}`;
-    console.log('submit');
     handleSearch();
   };
+
+  const getSuggestion = (suggestion) => {
+    handleInputChange(suggestion.name, 'city');
+    saveSelectedCity(suggestion);
+  };
+
+  const inputProps = {
+    placeholder: 'Votre ville',
+    value: city,
+    type: 'search',
+    name: 'city',
+    className: 'search-form-input',
+    onChange: (evt) => {
+      handleInputChange(evt.target.value, evt.target.name);
+      fetchCities(evt.target.value);
+    },
+  };
+
+  const onSuggestionsFetchRequested = (value, reason) => {
+    // console.log(value, reason);
+  };
+
+  const renderSuggestion = (suggestion) => (
+    <div>
+      {suggestion.name}
+    </div>
+  );
+
+
   return (
 
     <div className="search-form-div">
@@ -34,7 +68,6 @@ const SearchForm = ({
       <h2 className="search-form-title">Cherchez un bon petit plat</h2>
       <form className="search-form-form" onSubmit={handleSubmit}>
         <select required name="dish" onChange={(evt) => handleSelectDish(evt.target.value, evt.target.name)}>
-          { console.log(`dishData : ${dishData}`)}
           <option value="">Type d'assiette</option>
           { dishData && (
             dishData.map((dishObj) => (
@@ -50,16 +83,14 @@ const SearchForm = ({
             ))
           )}
         </select>
-        <input
+        <Autosuggest
           required
-          className="search-form-input"
-          type="text"
-          name="city"
-          value={city}
-          placeholder="Ville"
-          onChange={(evt) => {
-            handleInputChange(evt.target.value, evt.target.name);
-          }}
+          suggestions={citiesData}
+          inputProps={inputProps}
+          onSuggestionsFetchRequested={onSuggestionsFetchRequested}
+          onSuggestionsClearRequested={clearCitiesInput}
+          getSuggestionValue={getSuggestion}
+          renderSuggestion={renderSuggestion}
         />
         <button
           className="search-form-button"
@@ -97,8 +128,17 @@ SearchForm.propTypes = {
       name: PropTypes.string,
     }),
   ),
+  citiesData: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      name: PropTypes.string,
+    }),
+  ),
   fetchTypeDish: PropTypes.func.isRequired,
   fetchTypeKitchen: PropTypes.func.isRequired,
+  fetchCities: PropTypes.func.isRequired,
+  clearCitiesInput: PropTypes.func.isRequired,
+  saveSelectedCity: PropTypes.func.isRequired,
 };
 
 SearchForm.defaultProps = {
@@ -107,6 +147,7 @@ SearchForm.defaultProps = {
   city: '',
   dishData: null,
   kitchenData: null,
+  citiesData: null,
 };
 
 export default SearchForm;
