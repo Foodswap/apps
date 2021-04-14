@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { Link, Redirect, useHistory } from 'react-router-dom';
 import Autosuggest from 'react-autosuggest';
+import Highlighter from 'react-highlight-words';
 
 import PropTypes from 'prop-types';
 import './style.scss';
@@ -52,13 +53,22 @@ const SearchForm = ({
     },
   };
 
+  const citiesDataNames = citiesData.map((obj) => obj.name);
+  const citiesNameToString = citiesDataNames.toString();
+
   const onSuggestionsFetchRequested = (value, reason) => {
     // console.log(value, reason);
   };
 
   const renderSuggestion = (suggestion) => (
     <div>
-      {suggestion.name}
+      <Highlighter
+          highlightClassName="YourHighlightClass"
+          searchWords={[city]}
+          autoEscape
+          caseSensitive={false}
+          textToHighlight={suggestion.name}
+        />
     </div>
   );
 
@@ -93,6 +103,7 @@ const SearchForm = ({
           renderSuggestion={renderSuggestion}
           inputProps={inputProps}
         />
+
         <button
           className="search-form-button"
           type="submit"
