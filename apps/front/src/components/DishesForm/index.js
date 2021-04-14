@@ -7,6 +7,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ContentLoader from 'react-content-loader';
 import Autosuggest from 'react-autosuggest';
+import Highlighter from 'react-highlight-words';
 
 // import SelectInputIngredient from '../SelectInputIngredients';
 
@@ -110,7 +111,13 @@ const DishesForm = ({
 
   const renderSuggestion = (suggestion) => (
     <div>
-      {suggestion.name}
+      <Highlighter
+        highlightClassName="YourHighlightClass"
+        searchWords={[city]}
+        autoEscape
+        caseSensitive={false}
+        textToHighlight={suggestion.name}
+      />
     </div>
   );
 

@@ -53,9 +53,6 @@ const SearchForm = ({
     },
   };
 
-  const citiesDataNames = citiesData.map((obj) => obj.name);
-  const citiesNameToString = citiesDataNames.toString();
-
   const onSuggestionsFetchRequested = (value, reason) => {
     // console.log(value, reason);
   };
@@ -63,12 +60,12 @@ const SearchForm = ({
   const renderSuggestion = (suggestion) => (
     <div>
       <Highlighter
-          highlightClassName="YourHighlightClass"
-          searchWords={[city]}
-          autoEscape
-          caseSensitive={false}
-          textToHighlight={suggestion.name}
-        />
+        highlightClassName="YourHighlightClass"
+        searchWords={[city]}
+        autoEscape
+        caseSensitive={false}
+        textToHighlight={suggestion.name}
+      />
     </div>
   );
 
