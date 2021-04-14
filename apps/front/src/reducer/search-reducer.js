@@ -84,24 +84,36 @@ export default (state = initialState, action = {}) => {
         kitchenData: action.payload,
       };
 
+    /**
+    * When the user type in city input, fetch cities in api and if succes, save the result in state
+    */
     case FETCH_CITIES_SUCCES:
       return {
         ...state,
         citiesData: action.payload,
       };
 
+    /**
+    * clear autocomplete city input
+    */
     case CLEAR_CITIES_INPUT:
       return {
         ...state,
         citiesData: [],
       };
 
+    /**
+    * when user click on suggestion in autocomplete input, save his selection on state
+    */
     case SAVE_SELECTED_CITY:
       return {
         ...state,
         selectedCity: action.payload,
       };
 
+    /**
+    * clear all inputs of search form
+    */
     case CLEAR_INPUTS:
       return {
         ...state,

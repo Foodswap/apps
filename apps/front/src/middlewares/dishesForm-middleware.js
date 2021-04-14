@@ -143,15 +143,20 @@ export default (store) => (next) => (action) => {
       }
     } break;
 
+    /**
+    * When the user type in city input, fetch cities in api
+    */
     case DISH_FORM_FETCH_CITIES: {
-      axios({
-        method: 'get',
-        url: `${process.env.API_URL}/city/${action.payload}`,
-      })
-        .then((res) => {
-          const actionToDispatch = dishFetchCitiesSucces(res.data);
-          return store.dispatch(actionToDispatch);
-        });
+      if (action.payload.length >= 3) {
+        axios({
+          method: 'get',
+          url: `${process.env.API_URL}/city/${action.payload}`,
+        })
+          .then((res) => {
+            const actionToDispatch = dishFetchCitiesSucces(res.data);
+            return store.dispatch(actionToDispatch);
+          });
+      }
     } break;
     default:
       return next(action);

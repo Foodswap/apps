@@ -197,6 +197,9 @@ export default (state = initialState, action = {}) => {
       };
     }
 
+    /**
+    * save on state new size of image
+    */
     case RESIZE_IMAGE: {
       return {
         ...state,
@@ -204,18 +207,27 @@ export default (state = initialState, action = {}) => {
       };
     }
 
+    /**
+    * When the user type in city input, fetch cities in api and if succes, save the result in state
+    */
     case DISH_FORM_FETCH_CITIES_SUCCES:
       return {
         ...state,
         citiesData: action.payload,
       };
 
+    /**
+    * clear autocomplete city input
+    */
     case DISH_FORM_CLEAR_CITIES_INPUT:
       return {
         ...state,
         citiesData: [],
       };
 
+    /**
+    * when user click on suggestion in autocomplete input, save his selection on state
+    */
     case DISH_FORM_SAVE_SELECTED_CITY:
       return {
         ...state,

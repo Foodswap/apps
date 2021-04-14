@@ -8,25 +8,30 @@ const cityController = {
   autoCompleteCity: async (request, response) => {
     const { letters } = request.params;
 
-    const cities = await City.findAll({
-      where: {
-        [Op.or]: [
-          {
-            name: {
-              [Op.iLike]: `%${letters.toLowerCase()}%`,
-            },
+    if (letters.length >= 3) {
+      try {
+        const cities = await City.findAll({
+          where: {
+            [Op.or]: [
+              {
+                name: {
+                  [Op.iLike]: `%${letters.toLowerCase()}%`,
+                },
+              },
+              {
+                zip_code: {
+                  [Op.iLike]: `%${letters.toLowerCase()}%`,
+                },
+              },
+            ],
           },
-          {
-            zip_code: {
-              [Op.iLike]: `%${letters.toLowerCase()}%`,
-            },
-          },
-        ],
-      },
-      limit: 20,
-    });
-
-    response.status(200).json(cities);
+          limit: 20,
+        });
+        response.status(200).json(cities);
+      } catch (error) {
+        response.status(404).json({ error: 404 });
+      }
+    }
   },
 };
 
