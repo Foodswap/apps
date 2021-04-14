@@ -2,7 +2,15 @@ import {
   SET_INPUT_VALUE,
 } from '../actions/auth-actions';
 
-import { SEND_SEARCH_FORM, SET_SELECT_VALUE, FETCH_RESULTS_SUCCES } from '../actions/search-actions';
+import {
+  SEND_SEARCH_FORM,
+  SET_SELECT_VALUE,
+  FETCH_RESULTS_SUCCES,
+  FETCH_CITIES_SUCCES,
+  CLEAR_CITIES_INPUT,
+  SAVE_SELECTED_CITY,
+  CLEAR_INPUTS,
+} from '../actions/search-actions';
 import { FETCH_TYPE_DISH_SUCCES, FETCH_TYPE_KITCHEN_SUCCES } from '../actions/dishesForm-actions';
 
 const initialState = {
@@ -13,6 +21,8 @@ const initialState = {
   resultDishes: null,
   dishData: null,
   kitchenData: null,
+  citiesData: [],
+  selectedCity: null,
 };
 
 export default (state = initialState, action = {}) => {
@@ -74,6 +84,42 @@ export default (state = initialState, action = {}) => {
         kitchenData: action.payload,
       };
 
+    /**
+    * When the user type in city input, fetch cities in api and if succes, save the result in state
+    */
+    case FETCH_CITIES_SUCCES:
+      return {
+        ...state,
+        citiesData: action.payload,
+      };
+
+    /**
+    * clear autocomplete city input
+    */
+    case CLEAR_CITIES_INPUT:
+      return {
+        ...state,
+        citiesData: [],
+      };
+
+    /**
+    * when user click on suggestion in autocomplete input, save his selection on state
+    */
+    case SAVE_SELECTED_CITY:
+      return {
+        ...state,
+        selectedCity: action.payload,
+      };
+
+    /**
+    * clear all inputs of search form
+    */
+    case CLEAR_INPUTS:
+      return {
+        ...state,
+        citiesData: [],
+        city: '',
+      };
     default:
       return state;
   }

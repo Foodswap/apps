@@ -6,6 +6,8 @@ import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ContentLoader from 'react-content-loader';
+import Autosuggest from 'react-autosuggest';
+import Highlighter from 'react-highlight-words';
 
 // import SelectInputIngredient from '../SelectInputIngredients';
 
@@ -38,6 +40,10 @@ const DishesForm = ({
   handleUpdatePicture,
   previewPicture,
   resizeImage,
+  citiesData,
+  dishClearCitiesInput,
+  dishSaveSelectedCity,
+  dishFetchCities,
   // cancelAction,
 }) => {
   useEffect(() => {
@@ -81,6 +87,39 @@ const DishesForm = ({
       return { ...provided, opacity, transition };
     },
   };
+
+  const getSuggestion = (suggestion) => {
+    handleInputChange(suggestion.name, 'city');
+    dishSaveSelectedCity(suggestion);
+  };
+
+  const inputProps = {
+    placeholder: 'Votre ville',
+    value: city,
+    type: 'search',
+    name: 'city',
+    className: 'meal-input',
+    onChange: (evt) => {
+      handleInputChange(evt.target.value, evt.target.name);
+      dishFetchCities(evt.target.value);
+    },
+  };
+
+  const onSuggestionsFetchRequested = (value, reason) => {
+    // console.log(value, reason);
+  };
+
+  const renderSuggestion = (suggestion) => (
+    <div>
+      <Highlighter
+        highlightClassName="YourHighlightClass"
+        searchWords={[city]}
+        autoEscape
+        caseSensitive={false}
+        textToHighlight={suggestion.name}
+      />
+    </div>
+  );
 
   const titleText = dishId ? 'Editez votre bon petit plat' : 'Ajoutez votre bon petit plat';
   return (
@@ -155,16 +194,14 @@ const DishesForm = ({
               }}
               value={portion}
             />
-            <input
+            <Autosuggest
               required
-              className="meal-input"
-              type="text"
-              name="city"
-              placeholder="Votre ville"
-              onChange={(evt) => {
-                handleInputChange(evt.target.value, evt.target.name);
-              }}
-              value={city}
+              suggestions={citiesData}
+              inputProps={inputProps}
+              onSuggestionsFetchRequested={onSuggestionsFetchRequested}
+              onSuggestionsClearRequested={dishClearCitiesInput}
+              getSuggestionValue={getSuggestion}
+              renderSuggestion={renderSuggestion}
             />
             { ((dishIdToEdit && dishId) || !dishIdToEdit) && (
             <Select
@@ -351,6 +388,15 @@ DishesForm.propTypes = {
   resizeImage: PropTypes.func.isRequired,
   previewPicture: PropTypes.string.isRequired,
   dishIdToEdit: PropTypes.number,
+  citiesData: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      name: PropTypes.string,
+    }),
+  ),
+  dishClearCitiesInput: PropTypes.func.isRequired,
+  dishSaveSelectedCity: PropTypes.func.isRequired,
+  dishFetchCities: PropTypes.func.isRequired,
 };
 
 DishesForm.defaultProps = {
@@ -362,5 +408,6 @@ DishesForm.defaultProps = {
   dishData: null,
   kitchenData: null,
   dishIdToEdit: null,
+  citiesData: null,
 };
 export default DishesForm;

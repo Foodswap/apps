@@ -150,3 +150,27 @@ export const resizeImage = (payload) => ({
   type: RESIZE_IMAGE,
   payload,
 });
+
+// fetch cities in API on Input change
+export const DISH_FORM_FETCH_CITIES = 'DISH_FORM_FETCH_CITIES';
+export const dishFetchCities = (payload) => ({
+  type: DISH_FORM_FETCH_CITIES,
+  payload,
+});
+
+export const DISH_FORM_FETCH_CITIES_SUCCES = 'DISH_FORM_FETCH_CITIES_SUCCES';
+export const dishFetchCitiesSucces = (payload) => ({
+  type: DISH_FORM_FETCH_CITIES_SUCCES,
+  payload,
+});
+
+export const DISH_FORM_CLEAR_CITIES_INPUT = 'DISH_FORM_CLEAR_CITIES_INPUT';
+export const dishClearCitiesInput = () => ({
+  type: DISH_FORM_CLEAR_CITIES_INPUT,
+});
+
+export const DISH_FORM_SAVE_SELECTED_CITY = 'DISH_FORM_SAVE_SELECTED_CITY';
+export const dishSaveSelectedCity = (payload) => ({
+  type: DISH_FORM_SAVE_SELECTED_CITY,
+  payload,
+});

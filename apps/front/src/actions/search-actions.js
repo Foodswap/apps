@@ -52,3 +52,32 @@ export const FETCH_CATEGORIES_ERROR = 'FETCH_CATEGORIES_ERROR';
 export const fetchCategoriesError = () => ({
   type: FETCH_CATEGORIES_ERROR,
 });
+
+// fetch cities in API on Input change
+export const FETCH_CITIES = 'FETCH_CITIES';
+export const fetchCities = (payload) => ({
+  type: FETCH_CITIES,
+  payload,
+});
+
+export const FETCH_CITIES_SUCCES = 'FETCH_CITIES_SUCCES';
+export const fetchCitiesSucces = (payload) => ({
+  type: FETCH_CITIES_SUCCES,
+  payload,
+});
+
+export const CLEAR_CITIES_INPUT = 'CLEAR_CITIES_INPUT';
+export const clearCitiesInput = () => ({
+  type: CLEAR_CITIES_INPUT,
+});
+
+export const SAVE_SELECTED_CITY = 'SAVE_SELECTED_CITY';
+export const saveSelectedCity = (payload) => ({
+  type: SAVE_SELECTED_CITY,
+  payload,
+});
+
+export const CLEAR_INPUTS = 'CLEAR_INPUTS';
+export const clearInputs = () => ({
+  type: CLEAR_INPUTS,
+});

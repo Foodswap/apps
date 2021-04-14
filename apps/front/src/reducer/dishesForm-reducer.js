@@ -12,6 +12,10 @@ import {
   CLEAR_DISH_INFORMATIONS,
   HANDLE_UPDATE_PICTURE,
   RESIZE_IMAGE,
+  DISH_FORM_SAVE_SELECTED_CITY,
+  DISH_FORM_FETCH_CITIES_SUCCES,
+  DISH_FORM_CLEAR_CITIES_INPUT,
+
 } from '../actions/dishesForm-actions';
 
 // export const initialState = {};
@@ -37,6 +41,8 @@ const initialState = {
   kitchenData: null,
   myDishesOnline: null,
   selectedIngredients: [],
+  citiesData: [],
+  selectedCity: null,
 };
 export default (state = initialState, action = {}) => {
   switch (action.type) {
@@ -191,12 +197,42 @@ export default (state = initialState, action = {}) => {
       };
     }
 
+    /**
+    * save on state new size of image
+    */
     case RESIZE_IMAGE: {
       return {
         ...state,
         picture: action.payload,
       };
     }
+
+    /**
+    * When the user type in city input, fetch cities in api and if succes, save the result in state
+    */
+    case DISH_FORM_FETCH_CITIES_SUCCES:
+      return {
+        ...state,
+        citiesData: action.payload,
+      };
+
+    /**
+    * clear autocomplete city input
+    */
+    case DISH_FORM_CLEAR_CITIES_INPUT:
+      return {
+        ...state,
+        citiesData: [],
+      };
+
+    /**
+    * when user click on suggestion in autocomplete input, save his selection on state
+    */
+    case DISH_FORM_SAVE_SELECTED_CITY:
+      return {
+        ...state,
+        selectedCity: action.payload,
+      };
 
     default:
       return state;

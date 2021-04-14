@@ -362,3 +362,10 @@ input#picture {
   align-items: center;
   margin-right: 1rem;
 }
+
+.meal-page .react-autosuggest__suggestions-container {
+  background: #fcc4b0fa;
+  position: absolute;
+  margin-top: -15px;
+  z-index: 999;
+}

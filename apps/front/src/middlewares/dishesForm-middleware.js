@@ -15,6 +15,8 @@ import {
   fetchTypeKitchenSucces,
   GET_A_DISH_TO_EDIT,
   updateADishToEdit,
+  DISH_FORM_FETCH_CITIES,
+  dishFetchCitiesSucces,
 } from '../actions/dishesForm-actions';
 
 export default (store) => (next) => (action) => {
@@ -136,6 +138,22 @@ export default (store) => (next) => (action) => {
         })
           .then((res) => {
             const actionToDispatch = updateADishToEdit(res.data);
+            return store.dispatch(actionToDispatch);
+          });
+      }
+    } break;
+
+    /**
+    * When the user type in city input, fetch cities in api
+    */
+    case DISH_FORM_FETCH_CITIES: {
+      if (action.payload.length >= 3) {
+        axios({
+          method: 'get',
+          url: `${process.env.API_URL}/city/${action.payload}`,
+        })
+          .then((res) => {
+            const actionToDispatch = dishFetchCitiesSucces(res.data);
             return store.dispatch(actionToDispatch);
           });
       }

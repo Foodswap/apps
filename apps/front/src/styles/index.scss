@@ -21,3 +21,24 @@ body * {
     font-family: 'Roboto', sans-serif;
   }
 */
+
+.react-autosuggest__suggestions-container {
+  background: #fcc4b0fa;
+  width: 300px;
+  position: absolute;
+}
+
+.react-autosuggest__suggestion {
+  font-size: 1.2em;
+  padding: 0.3em;
+}
+
+.react-autosuggest__suggestion:hover {
+  background-color: #{vars.$darkBlue};
+  color: white;
+  cursor: pointer;
+
+  .YourHighlightClass {
+    color: white;
+  }
+}
