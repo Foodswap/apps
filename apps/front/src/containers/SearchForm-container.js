@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import SearchForm from '../components/SearchForm';
 import { setInputValue } from '../actions/auth-actions';
 import {
-  sendSearchForm, setSelectValue, fetchCities, clearCitiesInput, saveSelectedCity,
+  sendSearchForm, setSelectValue, fetchCities, clearCitiesInput, clearInputs, saveSelectedCity,
 } from '../actions/search-actions';
 import { fetchTypeDish, fetchTypeKitchen } from '../actions/dishesForm-actions';
 
@@ -27,6 +27,7 @@ const mapDispatchToProps = (dispatch) => ({
   },
   clearCitiesInput: () => dispatch(clearCitiesInput()),
   saveSelectedCity: (value) => dispatch(saveSelectedCity(value)),
+  clearInputs: () => dispatch(clearInputs()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchForm);

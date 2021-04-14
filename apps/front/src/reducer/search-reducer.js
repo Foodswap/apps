@@ -3,7 +3,7 @@ import {
 } from '../actions/auth-actions';
 
 import {
-  SEND_SEARCH_FORM, SET_SELECT_VALUE, FETCH_RESULTS_SUCCES, FETCH_CITIES_SUCCES, CLEAR_CITIES_INPUT, SAVE_SELECTED_CITY,
+  SEND_SEARCH_FORM, SET_SELECT_VALUE, FETCH_RESULTS_SUCCES, FETCH_CITIES_SUCCES, CLEAR_CITIES_INPUT, SAVE_SELECTED_CITY, CLEAR_INPUTS,
 } from '../actions/search-actions';
 import { FETCH_TYPE_DISH_SUCCES, FETCH_TYPE_KITCHEN_SUCCES } from '../actions/dishesForm-actions';
 
@@ -87,13 +87,20 @@ export default (state = initialState, action = {}) => {
     case CLEAR_CITIES_INPUT:
       return {
         ...state,
-        // citiesData: null,
+        citiesData: [],
       };
 
     case SAVE_SELECTED_CITY:
       return {
         ...state,
         selectedCity: action.payload,
+      };
+
+    case CLEAR_INPUTS:
+      return {
+        ...state,
+        citiesData: [],
+        city: '',
       };
     default:
       return state;

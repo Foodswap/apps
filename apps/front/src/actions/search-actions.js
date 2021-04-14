@@ -76,3 +76,8 @@ export const saveSelectedCity = (payload) => ({
   type: SAVE_SELECTED_CITY,
   payload,
 });
+
+export const CLEAR_INPUTS = 'CLEAR_INPUTS';
+export const clearInputs = () => ({
+  type: CLEAR_INPUTS,
+});

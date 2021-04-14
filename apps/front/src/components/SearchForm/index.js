@@ -22,10 +22,12 @@ const SearchForm = ({
   citiesData,
   clearCitiesInput,
   saveSelectedCity,
+  clearInputs,
 }) => {
   useEffect(() => {
     fetchTypeDish();
     fetchTypeKitchen();
+    clearInputs();
   }, []);
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -60,7 +62,6 @@ const SearchForm = ({
     </div>
   );
 
-
   return (
 
     <div className="search-form-div">
@@ -86,11 +87,11 @@ const SearchForm = ({
         <Autosuggest
           required
           suggestions={citiesData}
-          inputProps={inputProps}
           onSuggestionsFetchRequested={onSuggestionsFetchRequested}
           onSuggestionsClearRequested={clearCitiesInput}
           getSuggestionValue={getSuggestion}
           renderSuggestion={renderSuggestion}
+          inputProps={inputProps}
         />
         <button
           className="search-form-button"

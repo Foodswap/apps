@@ -213,7 +213,7 @@ export default (state = initialState, action = {}) => {
     case DISH_FORM_CLEAR_CITIES_INPUT:
       return {
         ...state,
-        // citiesData: null,
+        citiesData: [],
       };
 
     case DISH_FORM_SAVE_SELECTED_CITY:
