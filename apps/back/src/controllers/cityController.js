@@ -31,7 +31,7 @@ const cityController = {
       } catch (error) {
         response.status(404).json({ error: 404 });
       }
-    }
+    } response.status(500);
   },
 };
 
