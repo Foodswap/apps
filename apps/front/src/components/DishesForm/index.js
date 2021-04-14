@@ -97,7 +97,7 @@ const DishesForm = ({
     value: city,
     type: 'search',
     name: 'city',
-    className: 'search-form-input',
+    className: 'meal-input',
     onChange: (evt) => {
       handleInputChange(evt.target.value, evt.target.name);
       dishFetchCities(evt.target.value);

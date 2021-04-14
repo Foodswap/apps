@@ -27,6 +27,9 @@
 
   .search-form-form {
     padding-bottom: 2em;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
   }
   .search-form-form select{
     font-size: 1.2rem;
@@ -58,6 +61,7 @@
     transition-property: background, color;
     transition-duration: 0.2s;
     border-radius: 6px;
+    margin: 1em;
   }
 
   .search-form-button:hover {
@@ -139,3 +143,4 @@
 
   }
 }
+
