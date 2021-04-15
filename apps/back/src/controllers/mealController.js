@@ -1,11 +1,8 @@
 const { Op } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
-const { count } = require('console');
 const { sequelize } = require('../database');
-
 const { Meal, Author } = require('../models');
-const { restore } = require('../models/author');
 
 const mealController = {
   /**
