@@ -2,7 +2,6 @@ const { Op } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
 const { sequelize } = require('../database');
-
 const { Meal, Author } = require('../models');
 
 const mealController = {
@@ -689,6 +688,63 @@ const mealController = {
       response.status(500).json({ error: 500, message: err });
     }
   },
+  /**
+   * DELETE /v1/dishes/{dishId}
+   *
+   * @summary User delete a dish
+   * @tags Dish
+   *
+   * @param {string} dishId.path - id of Dish
+   *
+   * @return {DishDto} 200 - success response - application/json
+   * @return {ErrorDto} 403 - request response forbidden
+   * @return {ErrorDto} 500 - error on server
+   *
+   *  @example response - 200 - a dish returned by api
+   * {
+   * "message": "Success"
+   * }
+   * @example response - 403 - an error of bad request
+   * {
+   *   "error": 403,
+   *   "message": "Forbidden"
+   * }
+   * @example response - 500 - an error on server
+   * {
+   *   "error": 500,
+   *   "message": "Internal server error"
+   * }
+   */
+  deleteDish: async (request, response) => {
+    // recovery of user information by the token
+    const { author } = request;
+
+    try {
+      // find a dish by the ID by targeting the author_id field
+      const dish = await Meal.findByPk(Number(request.params.id), {
+        attributes: ['author_id'],
+      });
+
+      // condition if the author's id on the dish is equal to the connected user or
+      // if the role id is equal to 1 (1 = admin, 2 = user)
+      if (dish.author_id === author.id || author.role === 1) {
+        // deletion can do this
+        await Meal.destroy({
+          where: {
+            id: request.params.id,
+          },
+        });
+
+        response.status(200).json({ message: 'Success' });
+      }
+
+      // otherwise not allowed, the user cannot delete the dishes because he is not the author
+      response.status(403).json({ message: 'Forbidden' });
+    } catch (error) {
+      response.status({ error: 500, message: error });
+    }
+  },
+
 };
 
 module.exports = mealController;

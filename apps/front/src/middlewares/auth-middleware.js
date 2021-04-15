@@ -29,7 +29,7 @@ export default (store) => (next) => (action) => {
         },
       })
         .then((res) => {
-          const token = res.headers.authorization;
+          const token = res.data.accessToken;
           const user = res.data.author;
           const pseudo = res.data.author.username;
 
