@@ -492,32 +492,32 @@ const mealController = {
    * }
    */
   searchMeal: async (request, response) => {
-    const { dishId } = request.params;
-    const { kitchenId } = request.params;
-    const cityName = request.params.city;
+    const { dishId, kitchenId, city } = request.query;
+
+    const reqFilters = [];
+
+    if (dishId) {
+      reqFilters.push(sequelize.literal(
+        `(EXISTS(SELECT 1 FROM meal_category_associate WHERE id_meal = "Meal".id AND id_category = ${dishId}))`,
+      ));
+    }
+
+    if (kitchenId) {
+      reqFilters.push(sequelize.literal(
+        `(EXISTS(SELECT 1 FROM meal_category_associate WHERE id_meal = "Meal".id AND id_category = ${kitchenId}))`,
+      ));
+    }
+
     const sqlRequest = {
       where: {
         online: true,
-        city: {
-          [Op.iLike]: `%${cityName}%`,
-        },
-        [Op.and]: [
-          sequelize.literal(
-            `(EXISTS(SELECT 1 FROM meal_category_associate WHERE id_meal = "Meal".id AND id_category = ${dishId}))`,
-          ),
-          sequelize.literal(
-            `(EXISTS(SELECT 1 FROM meal_category_associate WHERE id_meal = "Meal".id AND id_category = ${kitchenId}))`,
-          ),
-        ],
+        [Op.and]: reqFilters,
       },
-      include: [
-        'author',
-        {
-          association: 'author',
-          attributes: ['username'],
-        },
-      ],
     };
+
+    if (city) {
+      sqlRequest.where.city = { [Op.iLike]: `%${city}%` };
+    }
 
     try {
       const mealSearch = await Meal.findAll(sqlRequest);

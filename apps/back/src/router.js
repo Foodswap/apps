@@ -40,7 +40,7 @@ router.post('/login', middlewareValidation(schemas.login), authorController.logi
 router.get('/dishes/:id', mealController.getOneMeal);
 router.get('/dishes/:id/picture', mealController.getPicture);
 router.get('/dishes/:kitchenId/:dishId/:city', mealController.searchMeal);
-router.get('/dishes/online/:author_id', mealController.userMealsOnline);
+router.get('/search', mealController.searchMeal);
 router.get('/dishes/author/:author_id', mealController.getMealsByAuthor);
 router.get('/lastDishes', mealController.getSixMeals);
 

@@ -12,7 +12,7 @@ export default (store) => (next) => (action) => {
     case FETCH_RESULTS: {
       axios({
         method: 'get',
-        url: `${process.env.API_URL}/dishes/${action.payload.kitchenParam.toLowerCase()}/${action.payload.dishParam.toLowerCase()}/${action.payload.cityParam.toLowerCase()}`,
+        url: `${process.env.API_URL}/search?kitchenId=${action.payload.kitchenParam.toLowerCase()}&dishId=${action.payload.dishParam.toLowerCase()}&city=${action.payload.cityParam.toLowerCase()}`,
       })
         .then((res) => {
           res.data.sort((a, b) => b.id - a.id);
