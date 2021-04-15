@@ -172,7 +172,11 @@ const authorController = {
       author.password = null;
 
       const accessToken = `Bearer ${jwt.sign(
-        { username: author.username },
+        {
+          username: author.username,
+          id: author.id,
+          role: author.role,
+        },
         accessTokenSecret,
       )}`;
 
