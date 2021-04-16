@@ -129,6 +129,11 @@ class Meal extends Model {
       timestamps: false,
       hooks: true,
     });
+
+    Meal.belongsTo(models.City, {
+      foreignKey: 'city_id',
+      as: 'city',
+    });
   }
 }
 
