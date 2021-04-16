@@ -72,9 +72,6 @@ class Meal extends Model {
       portion: {
         type: DataTypes.INTEGER,
       },
-      city: {
-        type: DataTypes.TEXT,
-      },
       online: {
         type: DataTypes.BOOLEAN,
       },
