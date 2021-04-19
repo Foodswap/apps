@@ -1,6 +1,7 @@
 const { Op } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
+const { QueryTypes } = require('sequelize');
 const { sequelize } = require('../database');
 
 const { Meal, Author } = require('../models');
@@ -492,7 +493,9 @@ const mealController = {
    * }
    */
   searchMeal: async (request, response) => {
-    const { dishId, kitchenId, city } = request.query;
+    const {
+      dishId, kitchenId, city,
+    } = request.query;
 
     const reqFilters = [];
 
@@ -508,6 +511,12 @@ const mealController = {
       ));
     }
 
+    if (city) {
+      reqFilters.push(sequelize.literal(
+        `(EXISTS(SELECT * FROM meal FULL JOIN city ON "Meal".city_id = "City".id WHERE "City".id IS "City".slug = ${city})`,
+      ));
+    }
+
     const sqlRequest = {
       where: {
         online: true,
@@ -515,9 +524,25 @@ const mealController = {
       },
     };
 
-    if (city) {
-      sqlRequest.where.city = { [Op.iLike]: `%${city}%` };
-    }
+    // if (city) {
+    //   sqlRequest.where.city = { [Op.iLike]: `%${city}%` };
+    // }
+    // if (city) {
+    //   const cityId = sequelize.query(`
+    //           SELECT * FROM CITY WHERE slug = '${city.toLowerCase()}';
+    //       `, {
+    //     type: QueryTypes.SELECT,
+    //     raw: true,
+    //   });
+
+    //   console.log('cityId : ', cityId);
+
+    //   const result = sequelize.literal(
+    //     `SELECT * FROM meal WHERE city_id = ${cityId.id}))`,
+    //   );
+
+    //   sqlRequest.where.city_id = result;
+    // }
 
     try {
       const mealSearch = await Meal.findAll(sqlRequest);
