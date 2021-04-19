@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { Link, Redirect, useHistory } from 'react-router-dom';
 import Autosuggest from 'react-autosuggest';
 import Highlighter from 'react-highlight-words';
+import Slider, { Range } from 'rc-slider';
+import 'rc-slider/assets/index.css';
 
 import PropTypes from 'prop-types';
 import './style.scss';
@@ -24,6 +26,10 @@ const SearchForm = ({
   clearCitiesInput,
   saveSelectedCity,
   clearInputs,
+  handleCheck,
+  aroundChecked,
+  handleAroundValue,
+  aroundValue,
 }) => {
   useEffect(() => {
     fetchTypeDish();
@@ -91,15 +97,37 @@ const SearchForm = ({
             ))
           )}
         </select>
-        <Autosuggest
-          required
-          suggestions={citiesData}
-          onSuggestionsFetchRequested={onSuggestionsFetchRequested}
-          onSuggestionsClearRequested={clearCitiesInput}
-          getSuggestionValue={getSuggestion}
-          renderSuggestion={renderSuggestion}
-          inputProps={inputProps}
-        />
+
+        {!aroundChecked && (
+          <Autosuggest
+            required
+            suggestions={citiesData}
+            onSuggestionsFetchRequested={onSuggestionsFetchRequested}
+            onSuggestionsClearRequested={clearCitiesInput}
+            getSuggestionValue={getSuggestion}
+            renderSuggestion={renderSuggestion}
+            inputProps={inputProps}
+          />
+        )}
+        <input type="checkbox" id="around" name="around" onClick={handleCheck} />
+        <label htmlFor="around" className="search-form-label">Autour de moi</label>
+        { aroundValue !== null && (
+          <p className="search-form-around-value"> { aroundValue } km</p>
+        )}
+
+        {aroundChecked && (
+          <Slider
+            min={0}
+            max={100}
+            defaultValue={0}
+            overlay={`${aroundValue} km`}
+            className="search-form-around-slider"
+            onChange={(value) => {
+              console.log(value);
+              handleAroundValue(value);
+            }}
+          />
+        )}
 
         <button
           className="search-form-button"
