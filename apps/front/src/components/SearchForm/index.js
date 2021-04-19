@@ -36,6 +36,8 @@ const SearchForm = ({
     fetchTypeKitchen();
     clearInputs();
   }, []);
+
+  const latitudeStorage = localStorage.getItem('latitude');
   const handleSubmit = (evt) => {
     evt.preventDefault();
     location.href = `/results/${kitchen}/${dish}/${city}`;
@@ -109,24 +111,30 @@ const SearchForm = ({
             inputProps={inputProps}
           />
         )}
-        <input type="checkbox" id="around" name="around" onClick={handleCheck} />
-        <label htmlFor="around" className="search-form-label">Autour de moi</label>
-        { aroundValue !== null && (
-          <p className="search-form-around-value"> { aroundValue } km</p>
-        )}
 
-        {aroundChecked && (
-          <Slider
-            min={0}
-            max={100}
-            defaultValue={0}
-            overlay={`${aroundValue} km`}
-            className="search-form-around-slider"
-            onChange={(value) => {
-              console.log(value);
-              handleAroundValue(value);
-            }}
-          />
+        { latitudeStorage && (
+          <div className="search-around-container">
+            <input type="checkbox" id="around" name="around" onClick={handleCheck} />
+            <label htmlFor="around" className="search-form-label">Autour de moi</label>
+            { aroundValue !== null && (
+              <p className="search-form-around-value"> { aroundValue } km</p>
+            )}
+
+            {aroundChecked && (
+              <Slider
+                min={0}
+                max={100}
+                defaultValue={0}
+                overlay={`${aroundValue} km`}
+                className="search-form-around-slider"
+                onChange={(value) => {
+                  console.log(value);
+                  handleAroundValue(value);
+                }}
+              />
+            )}
+          </div>
+
         )}
 
         <button
