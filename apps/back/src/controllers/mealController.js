@@ -603,11 +603,10 @@ const mealController = {
         next();
       }
 
-      Object.keys(mealToUpdate).forEach((field) => {
-        if (meal[field]) {
-          meal[field] = mealToUpdate[field];
-        }
-      });
+      meal.online = mealToUpdate.online;
+      meal.name = mealToUpdate.name;
+      meal.description = mealToUpdate.description;
+      meal.portion = mealToUpdate.portion;
 
       if (request.file) {
         meal.picture_path = request.file.filename;
@@ -681,13 +680,14 @@ const mealController = {
   userMealsOnline: async (request, response) => {
     try {
       const meal = await Meal.findAll({
-        where: { online: true, author_id: request.params.author_id },
+        where: { online: true, author_id: request.author.id },
       });
       response.status(200).json(meal);
     } catch (err) {
       response.status(500).json({ error: 500, message: err });
     }
   },
+
   /**
    * DELETE /v1/dishes/{dishId}
    *
