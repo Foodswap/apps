@@ -20,13 +20,11 @@ const mapDispatchToProps = (dispatch) => ({
   updateOpenDeleteModal: (openDeleteModal) => {
     const action = updateOpenDeleteModal(openDeleteModal);
     dispatch(action);
-    console.log(`modal delete ${openDeleteModal}`);
   },
 
   updateDishIdSelect: (dishIdSelect) => {
     const action = updateDishIdSelect(dishIdSelect);
     dispatch(action);
-    console.log(`dish Id select ${dishIdSelect}`);
   },
 
   canceldeletion: () => {
@@ -39,7 +37,6 @@ const mapDispatchToProps = (dispatch) => ({
   agreeToDelete: (dishIdSelect) => {
     const action = deleteOneDish(dishIdSelect);
     dispatch(action);
-    console.log(`delete dish select is ${dishIdSelect}`);
   },
 
   getAListAllDishes: (userId) => {

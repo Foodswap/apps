@@ -91,7 +91,7 @@
     transition-duration: 0.5s;
     margin-top: 1rem;
     font-size: 0.9em;
-    border: none;
+    border: #f8a587 solid 1px;
   }
 
   &-button:hover {
@@ -171,6 +171,7 @@
       text-transform: uppercase;
       border: none;
     }
+
     &-Confirm:hover {
       background-color: #1f222e;
       color: #f8a587;
@@ -205,6 +206,7 @@
       width: 95%;
       //text-align: center;
     }
+
     &-dishImg {
       margin: 3px auto;
     }
@@ -254,6 +256,7 @@
         font-size: 1.3rem;
         margin-bottom: 1.6rem;
       }
+
       &-Confirm:hover {
         color: #1f222e;
         background-color: whitesmoke;

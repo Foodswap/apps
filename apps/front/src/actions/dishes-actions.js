@@ -12,7 +12,7 @@ export const updateOpenDeleteModal = (payload) => ({
   payload,
 });
 
-// Action for update state for the property dishIdSelect, openDeleteModal
+// Action for close modal
 export const CANCEL_DELETION = 'CANCEL_DELETION';
 export const canceldeletion = (payload) => ({
   type: CANCEL_DELETION,

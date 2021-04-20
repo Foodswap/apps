@@ -61,7 +61,7 @@ const DishesForm = ({
     toast.success('Votre plat a bien été créé',
       {
         position: 'top-right',
-        autoClose: 1000,
+        autoClose: 2000,
         hideProgressBar: false,
         closeOnClick: false,
         pauseOnHover: false,

@@ -21,7 +21,7 @@ const initialState = {
 export default (state = initialState, action = {}) => {
   switch (action.type) {
     /**
-    * update property openDeleteModal on true
+    * the opening and closing of the modal depends on the status of openDeleteModal (true or false)
     */
     case UPDATE_OPEN_DELETE_MODAL: return {
       ...state,
@@ -60,7 +60,6 @@ export default (state = initialState, action = {}) => {
       userDishes: [...state.userDishes.filter((element) => element.id !== action.payload)],
       openDeleteModal: false,
       dishIdSelect: action.payload,
-      deleteMessage: 'votre fiche de plat a bien été supprimée',
     };
 
     /**

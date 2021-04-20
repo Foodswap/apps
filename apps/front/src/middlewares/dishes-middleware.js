@@ -1,5 +1,6 @@
 /* eslint-disable no-lone-blocks */
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 import {
   DELETE_ONE_DISH,
@@ -20,7 +21,6 @@ export default (store) => (next) => (action) => {
      */
     case DELETE_ONE_DISH: {
       const token = localStorage.getItem('token');
-      console.log(`DELETE ONE DISH ${action.payload}`);
       axios({
         method: 'delete',
         url: `${process.env.API_URL}/dishes/${action.payload}`,
@@ -29,6 +29,7 @@ export default (store) => (next) => (action) => {
         },
       })
         .then(() => {
+          toast.success('Votre plat a bien été supprimée !');
           const actionToDispatch = deleteOneDishSuccess(action.payload);
           return store.dispatch(actionToDispatch);
         })
