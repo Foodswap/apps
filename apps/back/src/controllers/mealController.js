@@ -494,7 +494,7 @@ const mealController = {
    */
   searchMeal: async (request, response) => {
     const {
-      dishId, kitchenId, city,
+      dishId, kitchenId, city, latitude, longitude, around,
     } = request.query;
 
     const reqFilters = [];
@@ -511,16 +511,6 @@ const mealController = {
       ));
     }
 
-    const citiesIds = await City.findAll({
-      select: ['id'],
-      where: {
-        slug: {
-          [Op.iLike]: `%${city}%`,
-        },
-      },
-      raw: true,
-    });
-
     const sqlRequest = {
       where: {
         online: true,
@@ -529,7 +519,27 @@ const mealController = {
     };
 
     if (city) {
+      const citiesIds = await City.findAll({
+        select: ['id'],
+        where: {
+          slug: {
+            [Op.iLike]: `%${city}%`,
+          },
+        },
+        raw: true,
+      });
       sqlRequest.where.city_id = { [Op.in]: citiesIds.map((cityObj) => cityObj.id) };
+    }
+
+    if (latitude && longitude && around) {
+      const citiesIds = await sequelize.literal(
+        `(SELECT id, point(${longitude}, ${latitude}) <@> point(longitude, latitude)::point as distance 
+        FROM city
+        WHERE (point(${longitude}, ${latitude}) <@> point(longitude, latitude)) < ${around}
+        ORDER BY distance)`, { raw: true, type: QueryTypes.SELECT },
+      );
+      console.log(`res : ${citiesIds[0]}`);
+      // sqlRequest.where.city_id = { [Op.in]: citiesIds.map((cityObj) => cityObj.id) };
     }
 
     try {
