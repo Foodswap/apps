@@ -84,19 +84,21 @@
     padding: 0.8em 30px;
     text-transform: uppercase;
     font-size: 11px;
-    color: black;
+    color: #1f222e;
     background: #f8a587;
     cursor: pointer;
     transition-property: background, color;
     transition-duration: 0.5s;
     margin-top: 1rem;
     font-size: 0.9em;
-    border: none;
+    border: #f8a587 solid 1px;
   }
 
-  &-button::hover {
-    background: transparentize(#f8a587, 0.2);
+  &-button:hover {
+    background-color: #1f222e;
+    color: #f8a587;
     transition: all 0.3s ease-in;
+    border: #f8a587 solid 1px;
   }
 
   &-tag {
@@ -120,8 +122,66 @@
       padding: 10px;
     }
   }
+
+  &-modal-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99999;
+  }
+
+  &-modal {
+    border-radius: 1rem;
+    background: linear-gradient(45deg, #35394a, #1f222e);
+    overflow: hidden;
+    animation: modalSlide 0.5s ease-out forwards;
+    width: 50rem;
+    height: 31vh;
+  }
+
+  &-content {
+    &-textModal {
+      font-weight: bolder;
+      font-size: 1.7rem;
+      color: white;
+      margin: 4rem 1rem 4rem;
+      padding: 0.5rem;
+    }
+  }
+
+  &-buttonModal {
+    display: flex;
+    justify-content: center;
+    margin: 6rem 1rem 1rem 1rem;
+
+    &-Confirm {
+      width: 14rem;
+      height: 7vh;
+      margin-right: 2em;
+      text-decoration: none;
+      background-color: #f8a587;
+      border-radius: 5rem;
+      color: #1f222e;
+      font-size: 1.3rem;
+      text-transform: uppercase;
+      border: none;
+    }
+
+    &-Confirm:hover {
+      background-color: #1f222e;
+      color: #f8a587;
+      transition: all 0.3s ease-in;
+      border: #f8a587 solid 1px;
+    }
+  }
 }
 
+//version mobile
 @media screen and (max-width: 415px) {
   .myDishes {
     height: 100%;
@@ -146,6 +206,7 @@
       width: 95%;
       //text-align: center;
     }
+
     &-dishImg {
       margin: 3px auto;
     }
@@ -163,6 +224,44 @@
     }
     &-allButton {
       margin: auto;
+    }
+
+    &-modal {
+      width: 24.6rem;
+      height: 40vh;
+    }
+
+    &-content {
+      &-textModal {
+        font-size: 1.4rem;
+        color: #fff;
+        margin: 0.5rem 1rem;
+        padding: 1.3rem;
+      }
+    }
+
+    &-buttonModal {
+      flex-direction: column;
+      margin: 2rem 0em 1rem 0;
+      margin-left: 5rem;
+
+      &-Confirm {
+        width: 14rem;
+        height: 7vh;
+        margin-right: 2em;
+        text-decoration: none;
+        background-color: #f8a587;
+        border-radius: 5rem;
+        color: white;
+        font-size: 1.3rem;
+        margin-bottom: 1.6rem;
+      }
+
+      &-Confirm:hover {
+        color: #1f222e;
+        background-color: whitesmoke;
+        transition: all 0.3s ease-in;
+      }
     }
   }
 }

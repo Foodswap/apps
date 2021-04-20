@@ -8,6 +8,7 @@ import { saveLocation } from '../actions/auth-actions';
 const mapStateToProps = (state) => ({
   isLoginOpen: state.user.isLoginOpen,
   isSignUpOpen: state.user.isSignUpOpen,
+  openDeleteModal: state.dishes.openDeleteModal,
 });
 
 const mapDispatchToProps = (dispatch) => ({
