@@ -19,20 +19,24 @@ export default (store) => (next) => (action) => {
      * on delete button click, delete the selected dish
      */
     case DELETE_ONE_DISH: {
-      const { userDishes } = store.getState().recipes;
-      const dishIndexToRemove = userDishes.findIndex((dish) => dish.id === action.payload);
-
-      if (dishIndexToRemove !== -1) {
-        userDishes.splice(dishIndexToRemove, 1);
-        const actionToDispatch = deleteOneDishSuccess(userDishes);
-
-        return store.dispatch(actionToDispatch);
-      }
-
-      const actionToDispatch = deleteOneDishError();
-
-      return store.dispatch(actionToDispatch);
-    }
+      const token = localStorage.getItem('token');
+      console.log(`DELETE ONE DISH ${action.payload}`);
+      axios({
+        method: 'delete',
+        url: `${process.env.API_URL}/dishes/${action.payload}`,
+        headers: {
+          Authorization: token,
+        },
+      })
+        .then(() => {
+          const actionToDispatch = deleteOneDishSuccess(action.payload);
+          return store.dispatch(actionToDispatch);
+        })
+        .catch(() => {
+          const actionToDispatch = deleteOneDishError();
+          store.dispatch(actionToDispatch);
+        });
+    } break;
 
     /**
      * get all data of a dish, using it's ID
