@@ -4,8 +4,6 @@ const authenticateJWT = (request, response, next) => {
   const authHeader = request.headers.authorization;
   const accessTokenSecret = process.env.ACCESS_TOKEN_SECRET;
 
-  console.log(authHeader);
-
   if (authHeader) {
     const token = authHeader.split(' ')[1];
 
