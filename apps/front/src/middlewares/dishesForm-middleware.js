@@ -51,6 +51,7 @@ export default (store) => (next) => (action) => {
       formData.append('online', online);
 
       const token = localStorage.getItem('token');
+
       axios({
         method: dishId ? 'put' : 'post',
         url: dishId ? `${process.env.API_URL}/dishes/${dishId}` : `${process.env.API_URL}/dishes`,
@@ -69,7 +70,11 @@ export default (store) => (next) => (action) => {
             location.href = '/v1/mydishes';
           }, 200);
 
-          dishId ? toast.success('Votre plat a bien été modifié') : toast.success('Votre plat a bien été créé');
+          if (dishId) {
+            return toast.success('Votre plat a bien été modifié');
+          }
+
+          toast.success('Votre plat a bien été créé');
         })
         .catch(() => {
           const actionToDispatch = sendFormRecipeUpError();
