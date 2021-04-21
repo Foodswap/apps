@@ -74,7 +74,7 @@ export default (store) => (next) => (action) => {
             return toast.success('Votre plat a bien été modifié');
           }
 
-          toast.success('Votre plat a bien été créé');
+          return toast.success('Votre plat a bien été créé');
         })
         .catch(() => {
           const actionToDispatch = sendFormRecipeUpError();
