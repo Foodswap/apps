@@ -53,7 +53,7 @@ router.post('/dishes', middlewareHandlingFiles, mealController.createMeal);
 /**
  * Routes PUT
  */
-router.put('/dishes/:id', middlewareHandlingFiles, mealController.updateMeal);
+router.put('/dishes/:id', middlewareAuthenticateJWT, middlewareHandlingFiles, mealController.updateMeal);
 router.put('/author/update/:id', authorController.updateInformations);
 
 /**
