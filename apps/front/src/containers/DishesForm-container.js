@@ -50,7 +50,10 @@ const mapDispatchToProps = (dispatch) => ({
 
   onSetCategorySelect: (value, name) => dispatch(setCategorySelect(value, name)),
 
-  changeOnline: () => dispatch(changeStatus()),
+  changeOnline: (online) => {
+    const action = changeStatus(online);
+    dispatch(action);
+  },
 
   handleMultiSelectChange: (ingredients, { action }) => {
     switch (action) {

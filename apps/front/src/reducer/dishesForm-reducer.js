@@ -88,7 +88,7 @@ export default (state = initialState, action = {}) => {
     case CHANGE_STATUS:
       return {
         ...state,
-        online: !state.online,
+        online: action.payload,
       };
 
     /**
