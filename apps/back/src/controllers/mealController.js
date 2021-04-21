@@ -532,14 +532,36 @@ const mealController = {
     }
 
     if (latitude && longitude && around) {
-      const citiesIds = await sequelize.literal(
-        `(SELECT id, point(${longitude}, ${latitude}) <@> point(longitude, latitude)::point as distance 
-        FROM city
-        WHERE (point(${longitude}, ${latitude}) <@> point(longitude, latitude)) < ${around}
-        ORDER BY distance)`, { raw: true, type: QueryTypes.SELECT },
-      );
-      console.log(`res : ${citiesIds[0]}`);
-      // sqlRequest.where.city_id = { [Op.in]: citiesIds.map((cityObj) => cityObj.id) };
+      // const citiesIds = await sequelize.literal(
+      //   `(SELECT id,
+      //   ST_Distance(
+      //     ST_MakePoint(city.longitude, city.latitude)::geography,
+      //     ST_MakePoint(${longitude}, ${latitude})::geography
+      //   ) as distance
+      //   FROM city,
+      //   WHERE distance < ${around}
+      //   ORDER BY distance)`, { raw: true },
+      // );
+      const cityLocation = sequelize.literal('ST_MakePoint("City"."longitude", "City"."latitude")');
+      const userLocation = sequelize.literal(`ST_MakePoint(${parseFloat(longitude)}, ${parseFloat(latitude)})`);
+      const distance = sequelize.fn('ST_DistanceSphere', userLocation, cityLocation);
+      const distanceLimit = around * 100;
+      const citiesIds = await City.findAll({
+        attributes: {
+          include: [
+            [distance, 'distance'],
+          ],
+        },
+        where: sequelize.where('distance', '<=', +distanceLimit),
+        order: sequelize.literal('distance ASC'),
+        limit: 30,
+      }, {
+        // raw: true,
+      });
+
+      return response.status(200).json(citiesIds);
+
+      sqlRequest.where.city_id = { [Op.in]: citiesIds.map((cityObj) => cityObj.id) };
     }
 
     try {
