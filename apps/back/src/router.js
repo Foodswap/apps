@@ -48,7 +48,7 @@ router.get('/lastDishes', mealController.getSixMeals);
 /**
  * Routes POST
  */
-router.post('/dishes', middlewareHandlingFiles, mealController.createMeal);
+router.post('/dishes', middlewareAuthenticateJWT, middlewareHandlingFiles, mealController.createMeal);
 
 /**
  * Routes PUT
