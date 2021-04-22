@@ -2,7 +2,8 @@ const { Op } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
 const { sequelize } = require('../database');
-const { Meal, Author } = require('../models');
+
+const { Meal, Author, City } = require('../models');
 
 const mealController = {
   /**
@@ -491,31 +492,68 @@ const mealController = {
    * }
    */
   searchMeal: async (request, response) => {
-    const { dishId } = request.params;
-    const { kitchenId } = request.params;
-    const cityName = request.params.city;
-    const sqlRequest = {
-      where: {
-        online: true,
-        city: {
-          [Op.iLike]: `%${cityName}%`,
+    const {
+      dishId, kitchenId, city, latitude, longitude, around,
+    } = request.query;
+
+    const reqFilters = [];
+
+    if (dishId) {
+      reqFilters.push(sequelize.literal(
+        `(EXISTS(SELECT 1 FROM meal_category_associate WHERE id_meal = "Meal".id AND id_category = ${dishId}))`,
+      ));
+    }
+
+    if (kitchenId) {
+      reqFilters.push(sequelize.literal(
+        `(EXISTS(SELECT 1 FROM meal_category_associate WHERE id_meal = "Meal".id AND id_category = ${kitchenId}))`,
+      ));
+    }
+
+    const sqlRequest = {};
+
+    if (city) {
+      const citiesIds = await City.findAll({
+        select: ['id'],
+        where: {
+          slug: {
+            [Op.iLike]: `%${city}%`,
+          },
         },
-        [Op.and]: [
-          sequelize.literal(
-            `(EXISTS(SELECT 1 FROM meal_category_associate WHERE id_meal = "Meal".id AND id_category = ${dishId}))`,
-          ),
-          sequelize.literal(
-            `(EXISTS(SELECT 1 FROM meal_category_associate WHERE id_meal = "Meal".id AND id_category = ${kitchenId}))`,
-          ),
+        raw: true,
+      });
+      reqFilters.push({ city_id: { [Op.in]: citiesIds.map((cityObj) => cityObj.id) } });
+    }
+
+    if (latitude && longitude && around) {
+      const cityLocation = sequelize.literal('ST_MakePoint(city.latitude, city.longitude)');
+      const userLocation = sequelize.literal(`ST_MakePoint(${parseFloat(latitude)}, ${parseFloat(longitude)})`);
+      const distance = sequelize.fn('ST_DistanceSphere', userLocation, cityLocation);
+      const distanceLimit = around * 100;
+      sqlRequest.include = [{
+        model: City,
+        as: 'city',
+      }];
+      sqlRequest.attributes = {
+        include: [
+          [sequelize.literal('city.latitude'), 'latitude'],
+          [sequelize.literal('city.longitude'), 'longitude'],
+          [distance, 'distance'],
         ],
-      },
-      include: [
-        'author',
-        {
-          association: 'author',
-          attributes: ['username'],
-        },
-      ],
+      };
+
+      reqFilters.push(sequelize.where(distance, '<=', distanceLimit));
+      sqlRequest.order = sequelize.literal('distance ASC');
+    } else {
+      sqlRequest.include = [{
+        model: City,
+        as: 'city',
+      }];
+    }
+
+    sqlRequest.where = {
+      online: true,
+      [Op.and]: reqFilters,
     };
 
     try {

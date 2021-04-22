@@ -76,6 +76,8 @@
     "npm": "^7.7.5",
     "prop-types": "^15.7.2",
     "proptypes": "^1.1.0",
+    "query-string": "^7.0.0",
+    "rc-slider": "^9.7.2",
     "react": "^17.0.2",
     "react-autocomplete-input": "^1.0.17",
     "react-autosuggest": "^10.1.0",

@@ -10,6 +10,8 @@ import {
   CLEAR_CITIES_INPUT,
   SAVE_SELECTED_CITY,
   CLEAR_INPUTS,
+  HANDLE_CHECK,
+  HANDLE_AROUND_VALUE,
 } from '../actions/search-actions';
 import { FETCH_TYPE_DISH_SUCCES, FETCH_TYPE_KITCHEN_SUCCES } from '../actions/dishesForm-actions';
 
@@ -23,6 +25,8 @@ const initialState = {
   kitchenData: null,
   citiesData: [],
   selectedCity: null,
+  aroundChecked: false,
+  aroundValue: null,
 };
 
 export default (state = initialState, action = {}) => {
@@ -119,6 +123,27 @@ export default (state = initialState, action = {}) => {
         ...state,
         citiesData: [],
         city: '',
+        aroundChecked: false,
+        aroundValue: null,
+      };
+    /**
+    * change value of aroundChecked onClick on input
+    */
+    case HANDLE_CHECK:
+      return {
+        ...state,
+        aroundChecked: !state.aroundChecked,
+        aroundValue: null,
+        city: '',
+      };
+
+    /**
+    * change value of around slider input
+    */
+    case HANDLE_AROUND_VALUE:
+      return {
+        ...state,
+        aroundValue: action.payload,
       };
     default:
       return state;
