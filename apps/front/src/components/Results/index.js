@@ -32,8 +32,8 @@ const Results = ({
                     <div className="results-card-img" style={{ backgroundImage: `url(${process.env.API_URL}/dishes/${dish.id}/picture)` }} />
                     <h3 className="results-card-name">{dish.name}</h3>
                     <p className="results-card-potion">{dish.portion} part{dish.portion > 1 ? 's' : ''}</p>
-                    <p className="results-card-author"> Fait par {dish.author.username}</p>
-                    <p className="results-card-city">{dish.city}</p>
+                    {/* <p className="results-card-author"> Fait par {dish.author.username}</p> */}
+                    <p className="results-card-city">{dish.city.name}</p>
                     <Link to={linkUrl} className="results-card-seemore"> Voir plus </Link>
                   </div>
                 );

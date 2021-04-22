@@ -10,9 +10,18 @@ export default (store) => (next) => (action) => {
     */
     // eslint-disable-next-line no-lone-blocks
     case FETCH_RESULTS: {
+      const {
+        aroundValue,
+      } = store.getState().search;
+      const { latitude } = Number(localStorage.getItem('latitude'));
+      const { longitude } = Number(localStorage.getItem('longitude'));
+      const dishId = action.payload.dishParam;
+      const kitchenId = action.payload.kitchenParam;
+      const city = action.payload.cityParam;
+
       axios({
         method: 'get',
-        url: `${process.env.API_URL}/search?kitchenId=${action.payload.kitchenParam.toLowerCase()}&dishId=${action.payload.dishParam.toLowerCase()}&city=${action.payload.cityParam.toLowerCase()}`,
+        url: `${process.env.API_URL}/search?${kitchenId ? `kitchenId=${kitchenId}` : ''}&${dishId ? `dishId=${dishId}` : ''}&${city ? `city=${city}` : ''}&${aroundValue ? `around=${aroundValue}` : ''}&${latitude ? `latitude=${latitude}` : ''}&${longitude ? `longitude=${longitude}` : ''}`,
       })
         .then((res) => {
           res.data.sort((a, b) => b.id - a.id);

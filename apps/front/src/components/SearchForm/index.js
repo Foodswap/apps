@@ -40,7 +40,7 @@ const SearchForm = ({
   const latitudeStorage = localStorage.getItem('latitude');
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    location.href = `/results/${kitchen}/${dish}/${city}`;
+    location.href = `/v1/results?${kitchen || ''}${dish ? `&${dish}` : ''}${city ? `&${city}` : ''}`;
     handleSearch();
   };
 
@@ -83,14 +83,14 @@ const SearchForm = ({
 
       <h2 className="search-form-title">Cherchez un bon petit plat</h2>
       <form className="search-form-form" onSubmit={handleSubmit}>
-        <select required name="dish" onChange={(evt) => handleSelectDish(evt.target.value, evt.target.name)}>
+        <select name="dish" onChange={(evt) => handleSelectDish(evt.target.value, evt.target.name)}>
           <option value="">Type d'assiette</option>
           { dishData && (
             dishData.map((dishObj) => (
               <option key={dishObj.id} value={dishObj.id} name={dishObj.name}>{dishObj.name}</option>
             )))}
         </select>
-        <select required name="kitchen" onChange={(evt) => handleSelectDish(evt.target.value, evt.target.name)}>
+        <select name="kitchen" onChange={(evt) => handleSelectDish(evt.target.value, evt.target.name)}>
           <option value="">Type de cuisine</option>
 
           { kitchenData && (
@@ -102,7 +102,6 @@ const SearchForm = ({
 
         {!aroundChecked && (
           <Autosuggest
-            required
             suggestions={citiesData}
             onSuggestionsFetchRequested={onSuggestionsFetchRequested}
             onSuggestionsClearRequested={clearCitiesInput}
@@ -122,7 +121,7 @@ const SearchForm = ({
 
             {aroundChecked && (
               <Slider
-                min={0}
+                min={1}
                 max={100}
                 defaultValue={0}
                 overlay={`${aroundValue} km`}

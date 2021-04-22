@@ -37,7 +37,7 @@ import ScrollToTop from '../ScrollToTop';
  */
 const App = ({
   // eslint-disable-next-line no-shadow
-  isLoginOpen, isSignUpOpen, getIngredients, fetchTypeDish, fetchTypeKitchen, saveLocation,
+  isLoginOpen, isSignUpOpen, getIngredients, fetchTypeDish, fetchTypeKitchen, saveLocation, kitchenId, dishId, city,
 }) => (
   <div className="app">
     {(isLoginOpen || isSignUpOpen) && <div className="backdrop" />}
@@ -75,7 +75,10 @@ const App = ({
 
       <Route exact path="/v1/dishes/edit/:id" component={DishesFormContainer} />
 
-      <Route exact path="/results/:kitchen/:dish/:city" component={ResultsContainer} />
+      <Route path={`/v1/results?kitchenId=${kitchenId}&dishId=${dishId}&city=${city}`} component={ResultsContainer} />
+      {/* <Route path={`/v1/results?${kitchenId ? `kitchenId=${kitchenId}` : ''}${dishId ? `&dishId=${dishId}` : ''}${city ? `&city=${city}` : ''}`} component={ResultsContainer} /> */}
+      {/* <Route path="/v1/results?kitchenId&dishId&city" component={ResultsContainer} /> */}
+      {/* <Route path="/v1/results?:kitchenId&:dishId&:city" component={ResultsContainer} />  */}
 
       <Route exact path="/v1/mydishes">
         <MyDishesContainer />

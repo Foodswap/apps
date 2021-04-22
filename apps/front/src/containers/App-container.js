@@ -8,6 +8,9 @@ import { saveLocation } from '../actions/auth-actions';
 const mapStateToProps = (state) => ({
   isLoginOpen: state.user.isLoginOpen,
   isSignUpOpen: state.user.isSignUpOpen,
+  kitchenId: state.search.kitchen,
+  dishId: state.search.dish,
+  city: state.search.city,
 });
 
 const mapDispatchToProps = (dispatch) => ({
