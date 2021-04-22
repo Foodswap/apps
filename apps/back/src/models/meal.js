@@ -129,6 +129,7 @@ class Meal extends Model {
 
     Meal.belongsTo(models.City, {
       foreignKey: 'city_id',
+      as: 'city',
     });
   }
 }

@@ -511,12 +511,7 @@ const mealController = {
       ));
     }
 
-    const sqlRequest = {
-      where: {
-        online: true,
-        [Op.and]: reqFilters,
-      },
-    };
+    const sqlRequest = {};
 
     if (city) {
       const citiesIds = await City.findAll({
@@ -528,30 +523,39 @@ const mealController = {
         },
         raw: true,
       });
-      sqlRequest.where.city_id = { [Op.in]: citiesIds.map((cityObj) => cityObj.id) };
+      reqFilters.push({ city_id: { [Op.in]: citiesIds.map((cityObj) => cityObj.id) } });
     }
 
     if (latitude && longitude && around) {
-      const cityLocation = sequelize.literal('ST_MakePoint("City"."longitude", "City"."latitude")');
-      const userLocation = sequelize.literal(`ST_MakePoint(${parseFloat(longitude)}, ${parseFloat(latitude)})`);
+      const cityLocation = sequelize.literal('ST_MakePoint(city.latitude, city.longitude)');
+      const userLocation = sequelize.literal(`ST_MakePoint(${parseFloat(latitude)}, ${parseFloat(longitude)})`);
       const distance = sequelize.fn('ST_DistanceSphere', userLocation, cityLocation);
       const distanceLimit = around * 100;
-      const citiesIds = await City.findAll({
-        group: ['City.id'],
-        attributes: {
-          include: [
-            [distance, 'distance'],
-          ],
-        },
-        where: sequelize.where(distance, '<=', distanceLimit),
-        order: sequelize.literal('distance ASC'),
-        limit: 30,
-      }, {
-        raw: true,
-      });
+      sqlRequest.include = [{
+        model: City,
+        as: 'city',
+      }];
+      sqlRequest.attributes = {
+        include: [
+          [sequelize.literal('city.latitude'), 'latitude'],
+          [sequelize.literal('city.longitude'), 'longitude'],
+          [distance, 'distance'],
+        ],
+      };
 
-      sqlRequest.where.city_id = { [Op.in]: citiesIds.map((cityObj) => cityObj.id) };
+      reqFilters.push(sequelize.where(distance, '<=', distanceLimit));
+      sqlRequest.order = sequelize.literal('distance ASC');
+    } else {
+      sqlRequest.include = [{
+        model: City,
+        as: 'city',
+      }];
     }
+
+    sqlRequest.where = {
+      online: true,
+      [Op.and]: reqFilters,
+    };
 
     try {
       const mealSearch = await Meal.findAll(sqlRequest);
