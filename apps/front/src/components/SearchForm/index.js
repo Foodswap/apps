@@ -94,7 +94,9 @@ const SearchForm = ({
           <option value="">Type d'assiette</option>
           { dishData && (
             dishData.map((dishObj) => (
-              <option key={dishObj.id} value={dishObj.id} name={dishObj.name}>{dishObj.name}</option>
+              <option key={dishObj.id} value={dishObj.id} name={dishObj.name}>
+                {dishObj.name}
+              </option>
             )))}
         </select>
         <select name="kitchen" onChange={(evt) => handleSelectDish(evt.target.value, evt.target.name)}>
@@ -102,7 +104,9 @@ const SearchForm = ({
 
           { kitchenData && (
             kitchenData.map((kitchenObj) => (
-              <option key={kitchenObj.id} value={kitchenObj.id} name={kitchenObj.name}>{kitchenObj.name}</option>
+              <option key={kitchenObj.id} value={kitchenObj.id} name={kitchenObj.name}>
+                {kitchenObj.name}
+              </option>
             ))
           )}
         </select>
@@ -121,7 +125,7 @@ const SearchForm = ({
         { latitudeStorage && (
           <div className="search-around-container">
             <input type="checkbox" id="around" name="around" onClick={handleCheck} />
-            <label htmlFor="around" className="search-form-label">Autour de moi</label>
+            <label htmlFor="around" className="search-form-around-label">Autour de moi</label>
             { aroundValue !== null && (
               <p className="search-form-around-value"> { aroundValue } km</p>
             )}

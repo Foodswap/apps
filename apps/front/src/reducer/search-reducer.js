@@ -123,6 +123,8 @@ export default (state = initialState, action = {}) => {
         ...state,
         citiesData: [],
         city: '',
+        aroundChecked: false,
+        aroundValue: null,
       };
     /**
     * change value of aroundChecked onClick on input
