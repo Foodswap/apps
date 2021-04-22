@@ -75,10 +75,7 @@ const App = ({
 
       <Route exact path="/v1/dishes/edit/:id" component={DishesFormContainer} />
 
-      <Route path={`/v1/results?kitchenId=${kitchenId}&dishId=${dishId}&city=${city}`} component={ResultsContainer} />
-      {/* <Route path={`/v1/results?${kitchenId ? `kitchenId=${kitchenId}` : ''}${dishId ? `&dishId=${dishId}` : ''}${city ? `&city=${city}` : ''}`} component={ResultsContainer} /> */}
-      {/* <Route path="/v1/results?kitchenId&dishId&city" component={ResultsContainer} /> */}
-      {/* <Route path="/v1/results?:kitchenId&:dishId&:city" component={ResultsContainer} />  */}
+      <Route path="/v1/results" component={ResultsContainer} />
 
       <Route exact path="/v1/mydishes">
         <MyDishesContainer />

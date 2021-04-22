@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { Link, Redirect, useHistory } from 'react-router-dom';
 import Autosuggest from 'react-autosuggest';
 import Highlighter from 'react-highlight-words';
 import Slider, { Range } from 'rc-slider';
@@ -40,7 +39,15 @@ const SearchForm = ({
   const latitudeStorage = localStorage.getItem('latitude');
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    location.href = `/v1/results?${kitchen || ''}${dish ? `&${dish}` : ''}${city ? `&${city}` : ''}`;
+    const data = {
+      kitchen,
+      dish,
+      city,
+    };
+
+    const searchParams = new URLSearchParams(data);
+
+    location.href = `/v1/results?${searchParams}`;
     handleSearch();
   };
 
