@@ -13,6 +13,7 @@ const schemas = require('./middlewares/validation/schemas');
 
 const middlewareValidation = require('./middlewares/validation/validation');
 const middlewareHandlingFiles = require('./middlewares/handlingFiles/multer-config');
+const middlewareAuthenticateJWT = require('./middlewares/authorization/authentication');
 
 // TODO : use this middleware for logged routes
 // const middlewareAuthentication = require('./middlewares/authorization/authentication');
@@ -37,6 +38,7 @@ router.post('/login', middlewareValidation(schemas.login), authorController.logi
 /**
  * Routes GET
  */
+router.get('/dishes/online', middlewareAuthenticateJWT, mealController.userMealsOnline);
 router.get('/dishes/:id', mealController.getOneMeal);
 router.get('/dishes/:id/picture', mealController.getPicture);
 router.get('/dishes/:kitchenId/:dishId/:city', mealController.searchMeal);
@@ -54,6 +56,11 @@ router.post('/dishes', middlewareHandlingFiles, mealController.createMeal);
  */
 router.put('/dishes/:id', middlewareHandlingFiles, mealController.updateMeal);
 router.put('/author/update/:id', authorController.updateInformations);
+
+/**
+ * Routes DELETE
+ */
+router.delete('/dishes/:id', middlewareAuthenticateJWT, mealController.deleteDish);
 /**
  * CATEGORIES ROUTES
  */

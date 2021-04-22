@@ -1,3 +1,24 @@
+// action to select id dish for delete
+export const UPDATE_DISH_ID_SELECT = 'UPDATE_DISH_ID_SELECT';
+export const updateDishIdSelect = (payload) => ({
+  type: UPDATE_DISH_ID_SELECT,
+  payload,
+});
+
+// Action to have modal confirm
+export const UPDATE_OPEN_DELETE_MODAL = 'UPDATE_OPEN_DELETE_MODAL';
+export const updateOpenDeleteModal = (payload) => ({
+  type: UPDATE_OPEN_DELETE_MODAL,
+  payload,
+});
+
+// Action for close modal
+export const CANCEL_DELETION = 'CANCEL_DELETION';
+export const canceldeletion = (payload) => ({
+  type: CANCEL_DELETION,
+  payload,
+});
+
 // Action utiliser dans les fichiers MyDishes
 // Action pour supprimer un plat (une fiche de plat)
 export const DELETE_ONE_DISH = 'DELETE_ONE_DISH';

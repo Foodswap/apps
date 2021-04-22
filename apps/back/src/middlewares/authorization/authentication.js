@@ -9,14 +9,14 @@ const authenticateJWT = (request, response, next) => {
 
     jwt.verify(token, accessTokenSecret, (err, author) => {
       if (err) {
-        return response.sendStatus(403);
+        return response.status(403).json({ message: 'Forbidden' });
       }
 
       request.author = author;
       next();
     });
   } else {
-    response.sendStatus(401);
+    response.status(401).json({ message: 'Unauthorized' });
   }
 };
 

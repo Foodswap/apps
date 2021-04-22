@@ -1,7 +1,7 @@
 import React, { useEffect, Component, useState } from 'react';
 import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -61,7 +61,7 @@ const DishesForm = ({
     toast.success('Votre plat a bien été créé',
       {
         position: 'top-right',
-        autoClose: 1000,
+        autoClose: 2000,
         hideProgressBar: false,
         closeOnClick: false,
         pauseOnHover: false,
@@ -160,7 +160,15 @@ const DishesForm = ({
               <span>Hors ligne</span>
 
               <label className="switch">
-                <input name="online" type="checkbox" checked={online} onChange={changeOnline} />
+                <input
+                  name="online"
+                  type="checkbox"
+                  checked={online}
+                  onChange={(e) => {
+                    const switchTarget = e.target.checked;
+                    changeOnline(switchTarget);
+                  }}
+                />
                 <span className="slider round" />
               </label>
 
@@ -343,7 +351,7 @@ DishesForm.propTypes = {
     PropTypes.number,
   ]),
   city: PropTypes.string.isRequired,
-  online: PropTypes.bool.isRequired,
+  online: PropTypes.bool,
   kitchen: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,
@@ -409,5 +417,6 @@ DishesForm.defaultProps = {
   kitchenData: null,
   dishIdToEdit: null,
   citiesData: null,
+  online: null,
 };
 export default DishesForm;

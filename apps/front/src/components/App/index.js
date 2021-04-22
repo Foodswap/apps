@@ -37,10 +37,16 @@ import ScrollToTop from '../ScrollToTop';
  */
 const App = ({
   // eslint-disable-next-line no-shadow
-  isLoginOpen, isSignUpOpen, getIngredients, fetchTypeDish, fetchTypeKitchen, saveLocation, kitchenId, dishId, city,
+  isLoginOpen,
+  isSignUpOpen,
+  getIngredients,
+  fetchTypeDish,
+  fetchTypeKitchen,
+  saveLocation,
+  openDeleteModal,
 }) => (
   <div className="app">
-    {(isLoginOpen || isSignUpOpen) && <div className="backdrop" />}
+    {(isLoginOpen || isSignUpOpen || openDeleteModal) && <div className="backdrop" />}
     {
       useEffect(() => {
         getIngredients();
@@ -120,5 +126,6 @@ App.propTypes = {
   fetchTypeDish: PropTypes.func.isRequired,
   fetchTypeKitchen: PropTypes.func.isRequired,
   saveLocation: PropTypes.func.isRequired,
+  openDeleteModal: PropTypes.bool.isRequired,
 };
 export default App;

@@ -112,10 +112,13 @@ export default (store) => (next) => (action) => {
      * get all online dishes of a user to allow him to choose one for a new proposition
      */
     case FETCH_MY_DISHES_SWAP: {
-      const { infos } = store.getState().user;
+      const token = localStorage.getItem('token');
       axios({
         method: 'get',
-        url: `${process.env.API_URL}/dishes/online/${infos.id}`,
+        url: `${process.env.API_URL}/dishes/online`,
+        headers: {
+          Authorization: token,
+        },
       })
         .then((res) => {
           const actionToDispatch = fetchMyDishesSwapSucces(res.data);
