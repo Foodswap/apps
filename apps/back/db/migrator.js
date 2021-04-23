@@ -23,7 +23,7 @@ const umzug = new Umzug({
   migrations: { glob: 'db/migrations/*.js' },
   context: sequelize.getQueryInterface(),
   storage: new SequelizeStorage({ sequelize }),
-  logger: process.env.NODE_ENV !== 'test' ? console : undefined,
+  logger: console,
 });
 
 if (require.main === module) {
