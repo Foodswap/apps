@@ -15,10 +15,10 @@
   },
   "scripts": {
     "prepare": "husky install",
-    "install": "npm i --prefix apps/front && npm i --prefix apps/back",
-    "start": "concurrently -n docker,api,app \"npm:start:docker\" \"npm:start:back\" \"npm:start:front\"",
+    "install": "npm i --prefix apps/front && npm i --prefix apps/api",
+    "start": "concurrently -n docker,api,app \"npm:start:docker\" \"npm:start:api\" \"npm:start:front\"",
     "start:front": "wait-on tcp:3000 && npm start --prefix apps/front",
-    "start:back": "wait-on tcp:5432 && npm start --prefix apps/back",
+    "start:api": "wait-on tcp:5432 && npm start --prefix apps/api",
     "start:docker": "docker-compose up",
     "commit": "cz",
     "update:version": "standard-version -a && git push --follow-tags",

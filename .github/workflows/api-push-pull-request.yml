@@ -1,4 +1,4 @@
-name: Back - push a pull request
+name: Api - push a pull request
 
 on: [pull_request]
 
@@ -12,10 +12,10 @@ jobs:
         with:
           node-version: "15.x"
       - name: Install npm dependencies
-        working-directory: ./apps/back
+        working-directory: ./apps/api
         run: npm ci
       - name: Check the lint
-        working-directory: ./apps/back
+        working-directory: ./apps/api
         run: npm run lint
 
   test:
@@ -28,8 +28,8 @@ jobs:
         with:
           node-version: "15.x"
       - name: Install npm dependencies
-        working-directory: ./apps/back
+        working-directory: ./apps/api
         run: npm ci
       - name: Check the test
-        working-directory: ./apps/back
+        working-directory: ./apps/api
         run: npm run test

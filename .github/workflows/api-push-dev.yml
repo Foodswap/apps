@@ -1,4 +1,4 @@
-name: Back - push on dev
+name: Api - push on dev
 
 on:
   push:
@@ -15,14 +15,14 @@ jobs:
         with:
           node-version: "15.x"
       - name: Install npm dependencies
-        working-directory: ./apps/back
+        working-directory: ./apps/api
         run: npm ci
       - name: Copy the env
-        working-directory: ./apps/back
+        working-directory: ./apps/api
         run: cp .env.dist env
       - uses: cschleiden/replace-tokens@v1
         with:
-          files: "./apps/back/env"
+          files: "./apps/api/env"
         env:
           PG_URL: ${{ secrets.INT_BACK_PG_URL }}
           ACCESS_TOKEN_SECRET: ${{ secrets.INT_BACK_ACCESS_TOKEN_SECRET }}
@@ -33,7 +33,7 @@ jobs:
         env:
           SSH_PRIVATE_KEY: ${{ secrets.INT_SSH_PRIVATE_KEY }}
           ARGS: "-avzr --delete"
-          SOURCE: apps/back/*
+          SOURCE: apps/api/*
           REMOTE_HOST: ${{ secrets.INT_REMOTE_HOST }}
           REMOTE_USER: ${{ secrets.INT_REMOTE_USER }}
           TARGET: ${{ secrets.INT_REMOTE_BACK_TARGET }}
