@@ -11,6 +11,7 @@ const sequelize = process.env.NODE_ENV === 'test'
       underscored: true,
       timestamps: false,
     },
+    logging: false,
   })
   : new Sequelize(process.env.PG_URL, {
     define: {
@@ -22,7 +23,7 @@ const umzug = new Umzug({
   migrations: { glob: 'db/seeds/*.js' },
   context: sequelize.getQueryInterface(),
   storage: new SequelizeStorage({ sequelize }),
-  logger: console,
+  logger: process.env.NODE_ENV !== 'test' ? console : undefined,
 });
 
 if (require.main === module) {
