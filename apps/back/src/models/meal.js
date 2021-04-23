@@ -72,9 +72,6 @@ class Meal extends Model {
       portion: {
         type: DataTypes.INTEGER,
       },
-      city: {
-        type: DataTypes.TEXT,
-      },
       online: {
         type: DataTypes.BOOLEAN,
       },
@@ -128,6 +125,11 @@ class Meal extends Model {
       as: 'ingredients',
       timestamps: false,
       hooks: true,
+    });
+
+    Meal.belongsTo(models.City, {
+      foreignKey: 'city_id',
+      as: 'city',
     });
   }
 }

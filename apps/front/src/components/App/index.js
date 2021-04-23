@@ -81,7 +81,7 @@ const App = ({
 
       <Route exact path="/v1/dishes/edit/:id" component={DishesFormContainer} />
 
-      <Route exact path="/results/:kitchen/:dish/:city" component={ResultsContainer} />
+      <Route path="/v1/results" component={ResultsContainer} />
 
       <Route exact path="/v1/mydishes">
         <MyDishesContainer />

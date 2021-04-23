@@ -39,6 +39,8 @@ export default (store) => (next) => (action) => {
       } = store.getState().dishesForm;
 
       const { infos } = store.getState().user;
+      const token = localStorage.getItem('token');
+
       const formData = new FormData();
       formData.append('picture', picture);
       formData.append('author_id', infos.id);

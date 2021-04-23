@@ -81,3 +81,16 @@ export const CLEAR_INPUTS = 'CLEAR_INPUTS';
 export const clearInputs = () => ({
   type: CLEAR_INPUTS,
 });
+
+// action when the around me input is check
+export const HANDLE_CHECK = 'HANDLE_CHECK';
+export const handleCheck = () => ({
+  type: HANDLE_CHECK,
+});
+
+// action to save around value
+export const HANDLE_AROUND_VALUE = 'HANDLE_AROUND_VALUE';
+export const handleAroundValue = (payload) => ({
+  type: HANDLE_AROUND_VALUE,
+  payload,
+});

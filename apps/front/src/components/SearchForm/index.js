@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
-import { Link, Redirect, useHistory } from 'react-router-dom';
 import Autosuggest from 'react-autosuggest';
 import Highlighter from 'react-highlight-words';
+import Slider, { Range } from 'rc-slider';
+import 'rc-slider/assets/index.css';
 
 import PropTypes from 'prop-types';
 import './style.scss';
@@ -24,15 +25,29 @@ const SearchForm = ({
   clearCitiesInput,
   saveSelectedCity,
   clearInputs,
+  handleCheck,
+  aroundChecked,
+  handleAroundValue,
+  aroundValue,
 }) => {
   useEffect(() => {
     fetchTypeDish();
     fetchTypeKitchen();
     clearInputs();
   }, []);
+
+  const latitudeStorage = localStorage.getItem('latitude');
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    location.href = `/results/${kitchen}/${dish}/${city}`;
+    const data = {
+      kitchen,
+      dish,
+      city,
+    };
+
+    const searchParams = new URLSearchParams(data);
+
+    location.href = `/v1/results?${searchParams}`;
     handleSearch();
   };
 
@@ -75,31 +90,62 @@ const SearchForm = ({
 
       <h2 className="search-form-title">Cherchez un bon petit plat</h2>
       <form className="search-form-form" onSubmit={handleSubmit}>
-        <select required name="dish" onChange={(evt) => handleSelectDish(evt.target.value, evt.target.name)}>
+        <select name="dish" onChange={(evt) => handleSelectDish(evt.target.value, evt.target.name)}>
           <option value="">Type d'assiette</option>
           { dishData && (
             dishData.map((dishObj) => (
-              <option key={dishObj.id} value={dishObj.id} name={dishObj.name}>{dishObj.name}</option>
+              <option key={dishObj.id} value={dishObj.id} name={dishObj.name}>
+                {dishObj.name}
+              </option>
             )))}
         </select>
-        <select required name="kitchen" onChange={(evt) => handleSelectDish(evt.target.value, evt.target.name)}>
+        <select name="kitchen" onChange={(evt) => handleSelectDish(evt.target.value, evt.target.name)}>
           <option value="">Type de cuisine</option>
 
           { kitchenData && (
             kitchenData.map((kitchenObj) => (
-              <option key={kitchenObj.id} value={kitchenObj.id} name={kitchenObj.name}>{kitchenObj.name}</option>
+              <option key={kitchenObj.id} value={kitchenObj.id} name={kitchenObj.name}>
+                {kitchenObj.name}
+              </option>
             ))
           )}
         </select>
-        <Autosuggest
-          required
-          suggestions={citiesData}
-          onSuggestionsFetchRequested={onSuggestionsFetchRequested}
-          onSuggestionsClearRequested={clearCitiesInput}
-          getSuggestionValue={getSuggestion}
-          renderSuggestion={renderSuggestion}
-          inputProps={inputProps}
-        />
+
+        {!aroundChecked && (
+          <Autosuggest
+            suggestions={citiesData}
+            onSuggestionsFetchRequested={onSuggestionsFetchRequested}
+            onSuggestionsClearRequested={clearCitiesInput}
+            getSuggestionValue={getSuggestion}
+            renderSuggestion={renderSuggestion}
+            inputProps={inputProps}
+          />
+        )}
+
+        { latitudeStorage && (
+          <div className="search-around-container">
+            <input type="checkbox" id="around" name="around" onClick={handleCheck} />
+            <label htmlFor="around" className="search-form-around-label">Autour de moi</label>
+            { aroundValue !== null && (
+              <p className="search-form-around-value"> { aroundValue } km</p>
+            )}
+
+            {aroundChecked && (
+              <Slider
+                min={1}
+                max={100}
+                defaultValue={0}
+                overlay={`${aroundValue} km`}
+                className="search-form-around-slider"
+                onChange={(value) => {
+                  console.log(value);
+                  handleAroundValue(value);
+                }}
+              />
+            )}
+          </div>
+
+        )}
 
         <button
           className="search-form-button"

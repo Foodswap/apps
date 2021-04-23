@@ -24,6 +24,7 @@ For the front, we are using:
   - React-slick && slick-carousel
   - React-suggest
   - React-highlight-words
+  - rc-slider
 
 For the api, we are using:
   - Node.js

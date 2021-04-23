@@ -42,13 +42,14 @@ router.get('/dishes/online', middlewareAuthenticateJWT, mealController.userMeals
 router.get('/dishes/:id', mealController.getOneMeal);
 router.get('/dishes/:id/picture', mealController.getPicture);
 router.get('/dishes/:kitchenId/:dishId/:city', mealController.searchMeal);
+router.get('/search', mealController.searchMeal);
 router.get('/dishes/author/:author_id', mealController.getMealsByAuthor);
 router.get('/lastDishes', mealController.getSixMeals);
 
 /**
  * Routes POST
  */
-router.post('/dishes', middlewareHandlingFiles, mealController.createMeal);
+router.post('/dishes', middlewareAuthenticateJWT, middlewareHandlingFiles, mealController.createMeal);
 
 /**
  * Routes PUT
