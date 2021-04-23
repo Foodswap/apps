@@ -16,7 +16,7 @@ jobs:
           node-version: "15.x"
       - name: Install npm dependencies
         working-directory: ./apps/back
-        run: npm install
+        run: npm ci
       - name: Copy the env
         working-directory: ./apps/back
         run: cp .env.dist env

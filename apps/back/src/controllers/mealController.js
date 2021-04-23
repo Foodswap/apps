@@ -641,6 +641,7 @@ const mealController = {
         next();
       }
 
+      meal.author_id = request.author.id;
       meal.online = mealToUpdate.online;
       meal.name = mealToUpdate.name;
       meal.description = mealToUpdate.description;

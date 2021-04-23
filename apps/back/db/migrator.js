@@ -11,6 +11,7 @@ const sequelize = process.env.NODE_ENV === 'test'
       underscored: true,
       timestamps: false,
     },
+    logging: false,
   })
   : new Sequelize(process.env.PG_URL, {
     define: {

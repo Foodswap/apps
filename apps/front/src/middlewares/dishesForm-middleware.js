@@ -70,7 +70,11 @@ export default (store) => (next) => (action) => {
             location.href = '/v1/mydishes';
           }, 200);
 
-          toast.success('Votre plat a bien été créé');
+          if (dishId) {
+            return toast.success('Votre plat a bien été modifié');
+          }
+
+          return toast.success('Votre plat a bien été créé');
         })
         .catch(() => {
           const actionToDispatch = sendFormRecipeUpError();
