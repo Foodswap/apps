@@ -52,8 +52,6 @@ export default (store) => (next) => (action) => {
       formData.append('categories', `${kitchen},${dish}`);
       formData.append('online', online);
 
-      const token = localStorage.getItem('token');
-
       axios({
         method: dishId ? 'put' : 'post',
         url: dishId ? `${process.env.API_URL}/dishes/${dishId}` : `${process.env.API_URL}/dishes`,
