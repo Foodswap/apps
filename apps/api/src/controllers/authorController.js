@@ -220,8 +220,8 @@ const authorController = {
    */
   updateInformations: async (request, response, next) => {
     const informationsToUpdate = request.body;
-    // on recupere l'id dans la route pour l'instant
-    const id = Number(request.params.id);
+
+    const { id } = request.author;
 
     try {
       const author = await Author.findByPk(id);

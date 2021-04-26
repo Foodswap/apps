@@ -41,17 +41,16 @@ export default (store) => (next) => (action) => {
           store.dispatch(actionToDispatch);
 
           // if there is a location in localStorage, we update api
-          const { id } = store.getState().user.infos;
-          const locationObj = {
+          const dataObj = {
             latitude: Number(localStorage.getItem('latitude')),
             longitude: Number(localStorage.getItem('longitude')),
           };
 
-          if (locationObj.latitude && locationObj.longitude) {
+          if (dataObj.latitude && dataObj.longitude) {
             axios({
               method: 'put',
-              url: `${process.env.API_URL}/author/update/${id}`,
-              data: locationObj,
+              url: `${process.env.API_URL}/author/update`,
+              data: dataObj,
             });
           }
         })
@@ -116,7 +115,8 @@ export default (store) => (next) => (action) => {
 
       const { latitude, longitude } = action.payload.coords;
       const { id } = store.getState().user.infos;
-      const locationObj = {
+      const token = localStorage.getItem('token');
+      const dataObj = {
         latitude: Number(latitude),
         longitude: Number(longitude),
       };
@@ -124,8 +124,11 @@ export default (store) => (next) => (action) => {
       if (id) {
         axios({
           method: 'put',
-          url: `${process.env.API_URL}/author/update/${id}`,
-          data: locationObj,
+          url: `${process.env.API_URL}/author/update`,
+          data: dataObj,
+          headers: {
+            Authorization: token,
+          },
         });
       }
     } break;
