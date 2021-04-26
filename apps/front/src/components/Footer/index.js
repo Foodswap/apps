@@ -35,6 +35,17 @@ const Footer = () => (
     </div>
 
     <div className="footer-content">
+      <NavLink
+        className="footer-mention"
+        to="/v1/conditions-generales-utilisation"
+      >
+        <span>
+          Conditions générales d'utilisation
+        </span>
+      </NavLink>
+    </div>
+
+    <div className="footer-content">
       <a href="#" className="footer-haut-de-page">Haut de page</a>
     </div>
   </div>
