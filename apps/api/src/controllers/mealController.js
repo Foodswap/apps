@@ -453,6 +453,37 @@ const mealController = {
   },
 
   /**
+   * GET/v1/footerLastDish
+   * @param {*} request
+   * @param {*} response
+   */
+  getFooterLastDishes: async (request, response) => {
+    try {
+      const footerDishes = await Meal.findAll({
+        where: {
+          online: true,
+        },
+        include: [{
+          model: Author,
+          as: 'author',
+          attributes: {
+            exclude: ['password', 'role'],
+          },
+        },
+        {
+          model: City,
+          as: 'city',
+        }],
+        limit: 10,
+        order: [['created_date', 'DESC']],
+      });
+      response.status(200).json(footerDishes);
+    } catch (err) {
+      response.status({ error: 500, message: err });
+    }
+  },
+
+  /**
    * GET /v1/dishes/{kitchenId}/{dishId}/{city}
    *
    * @summary Get Dishes results by filters

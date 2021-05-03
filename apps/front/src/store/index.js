@@ -5,6 +5,7 @@ import dishesMiddleware from '../middlewares/dishes-middleware';
 import exchangeTrackingMiddleware from '../middlewares/exchangeTracking-middleware';
 import searchMiddleware from '../middlewares/search-middleware';
 import dishesFormMiddleware from '../middlewares/dishesForm-middleware';
+import footerMiddleware from '../middlewares/footer-middleware';
 
 import reducer from '../reducer';
 
@@ -19,6 +20,7 @@ const enhancers = composeEnhancers(
     searchMiddleware,
     exchangeTrackingMiddleware,
     dishesFormMiddleware,
+    footerMiddleware,
   ),
 );
 
