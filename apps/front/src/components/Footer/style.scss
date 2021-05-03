@@ -1,6 +1,6 @@
-.footer{
+.footer {
   display: flex;
-  justify-content:space-evenly;
+  justify-content: space-evenly;
   width: 100%;
   margin: auto;
   text-align: center;
@@ -8,21 +8,29 @@
   padding: 2rem;
   color: rgb(238, 229, 229);
   border-top: 1px solid #191a20;
-  font-family: 'PT Sans', cursive;
+  font-family: "PT Sans", cursive;
   letter-spacing: 0.1em;
   font-size: 1.4rem;
-  height: 88px;
+  height: 517px;
 
   &-link {
     margin-right: 2rem;
   }
+
+  &- &-logo-social {
+    width: 1.8rem;
+    height: 50vw;
+    &-instagram {
+    }
+    &-facebook-square {
+    }
+
+    &-twitter-square {
+    }
+  }
 }
 
-
-
-
 // @media screen and (max-width: 768px) {
-
 
 //   .footer{
 //       display: flex;
@@ -35,29 +43,26 @@
 //       // padding: 2rem;
 //       color: white;
 //       border-top: 1px solid #191a20;
-    
+
 //       &-link {
 //         margin-right: 2rem;
 //     }
 //   }
 //   }
-  
-  @media screen and (max-width: 415px) {
 
-.footer{
-  flex-wrap: wrap;
-  font-size: 0.6rem;
-  flex-direction: column;
-  align-items: center;
-  padding:1rem;
-  &-link
-  {
-        margin: auto;
-      }
-    
-      &-content{
-        padding:2px;
-      }
-}
-}
+@media screen and (max-width: 415px) {
+  .footer {
+    flex-wrap: wrap;
+    font-size: 0.6rem;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    &-link {
+      margin: auto;
+    }
 
+    &-content {
+      padding: 2px;
+    }
+  }
+}
