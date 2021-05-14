@@ -55,7 +55,7 @@ router.post('/dishes', middlewareAuthenticateJWT, middlewareHandlingFiles, mealC
  * Routes PUT
  */
 router.put('/dishes/:id', middlewareAuthenticateJWT, middlewareHandlingFiles, mealController.updateMeal);
-router.put('/author/update/:id', authorController.updateInformations);
+router.put('/author/update', middlewareAuthenticateJWT, authorController.updateInformations);
 
 /**
  * Routes DELETE
