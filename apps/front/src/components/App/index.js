@@ -6,7 +6,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import PropTypes from 'prop-types';
 
 // Dumb components
-// import Footer from '../Footer';
 import Faces from '../Faces';
 import PrivacyPolicy from '../PrivacyPolicy';
 import Error from '../Error';

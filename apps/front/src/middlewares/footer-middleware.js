@@ -15,7 +15,6 @@ export default (store) => (next) => (action) => {
       })
         .then((res) => {
           const actionToDispatch = updateLastDishes(res.data);
-          console.log(`footer dishes${res.data}`);
           return store.dispatch(actionToDispatch);
         });
     } break;

@@ -1,4 +1,4 @@
-// action pour récupérer la liste des 10 derniers plat du footer
+// Action for get ten last dishes for footer
 export const GET_LAST_DISHES = 'GET_LAST_DISHES';
 export const getLastDishes = (payload) => ({
   type: GET_LAST_DISHES,
