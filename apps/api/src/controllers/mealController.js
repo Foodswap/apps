@@ -454,14 +454,221 @@ const mealController = {
 
   /**
    * GET/v1/footerLastDish
-   * @param {*} request
-   * @param {*} response
+   *
+   * @summary Get last 10 dishes for footer
+   * @tags Dish
+   *
+   * @return {DishDto} 200 - success response - application/json
+   * @return {ErrorDto} 404 - bad request response
+   * @return {ErrorDto} 500 - error on server
+   *
+   * @example response - 200 - last dishes returned by api
+   * [{
+   *     "id": 37,
+   *     "name": "test",
+   *     "description": "Saumon cru",
+   *     "portion": 2,
+   *     "city": {
+   *         "count": 75,
+   *         "district": 1,
+   *         "id": 30438,
+   *         "latitude": 48.86,
+   *         "longitude": 2.34445,
+   *         "name": "Paris",
+   *         "slug": "Paris",
+   *     }
+   *     "online": true,
+   *     "picture_path": "dish_cover_undefined.jpg",
+   *     "author_id": 1,
+   *     "author": {
+   *         "id": 1,
+   *         "username": "Marie",
+   *         "email": "marie@mail.fr",
+   *         "city": "Paris"
+   *     }
+   * },
+   * {
+   *     "id": 37,
+   *     "name": "test",
+   *     "description": "Saumon cru",
+   *     "portion": 2,
+   *     "city": {
+   *         "count": 75,
+   *         "district": 1,
+   *         "id": 30438,
+   *         "latitude": 48.86,
+   *         "longitude": 2.34445,
+   *         "name": "Paris",
+   *         "slug": "Paris",
+   *     }
+   *     "online": true,
+   *     "picture_path": "dish_cover_undefined.jpg",
+   *     "author_id": 1,
+   *     "author": {
+   *         "id": 1,
+   *         "username": "Marie",
+   *         "email": "marie@mail.fr",
+   *         "city": "Paris"
+   *     }
+   * },
+   * {
+   *     "id": 75,
+   *     "name": " Tartare de saumon",
+   *     "description": " Saumon cru",
+   *     "portion": 2,
+   *     "city": {
+   *         "count": 75,
+   *         "district": 1,
+   *         "id": 30438,
+   *         "latitude": 48.86,
+   *         "longitude": 2.34445,
+   *         "name": "Paris",
+   *         "slug": "Paris",
+   *     }
+   *     "online": true,
+   *     "picture_path": "dish_cover_undefined.jpg",
+   *     "author_id": 1,
+   *     "author": {
+   *         "id": 1,
+   *         "username": "Marie",
+   *         "email": "marie@mail.fr",
+   *         "city": "Paris"
+   *     }
+   * },
+   * {
+   *     "id": 74,
+   *     "name": " Tartare de saumon",
+   *     "description": " Saumon cru",
+   *     "portion": 2,
+   *     "city": {
+   *         "count": 75,
+   *         "district": 1,
+   *         "id": 30438,
+   *         "latitude": 48.86,
+   *         "longitude": 2.34445,
+   *         "name": "Paris",
+   *         "slug": "Paris",
+   *     }
+   *     "online": true,
+   *     "picture_path": "dish_cover_74.jpg",
+   *     "author_id": 1,
+   *     "author": {
+   *         "id": 1,
+   *         "username": "Marie",
+   *         "email": "marie@mail.fr",
+   *         "city": "Paris"
+   *     }
+   * },
+   * {
+   *     "id": 73,
+   *     "name": " Tartare de saumon",
+   *     "description": " Saumon cru",
+   *     "portion": 2,
+   *     "city": {
+   *         "count": 75,
+   *         "district": 1,
+   *         "id": 30438,
+   *         "latitude": 48.86,
+   *         "longitude": 2.34445,
+   *         "name": "Paris",
+   *         "slug": "Paris",
+   *     }
+   *     "online": true,
+   *     "picture_path": "dish_cover_73.jpg",
+   *     "author_id": 1,
+   *     "author": {
+   *         "id": 1,
+   *         "username": "Marie",
+   *         "email": "marie@mail.fr",
+   *         "city": "Paris"
+   *     }
+   * },
+   * {
+   *     "id": 72,
+   *     "name": "Tartare de saumon",
+   *     "description": "p",
+   *     "portion": 2,
+   *     "city": {
+   *         "count": 75,
+   *         "district": 1,
+   *         "id": 30438,
+   *         "latitude": 48.86,
+   *         "longitude": 2.34445,
+   *         "name": "Paris",
+   *         "slug": "Paris",
+   *     }
+   *     "online": true,
+   *     "picture_path": "dish_cover_72.jpg",
+   *     "author_id": 1,
+   *     "author": {
+   *         "id": 1,
+   *         "username": "Marie",
+   *         "email": "marie@mail.fr",
+   *         "city": "Paris"
+   *     }
+   * },
+   * {
+   *     "id": 37,
+   *     "name": "test",
+   *     "description": "Saumon cru",
+   *     "portion": 2,
+   *     "city": {
+   *         "count": 75,
+   *         "district": 1,
+   *         "id": 30438,
+   *         "latitude": 48.86,
+   *         "longitude": 2.34445,
+   *         "name": "Paris",
+   *         "slug": "Paris",
+   *     }
+   *     "online": true,
+   *     "picture_path": "dish_cover_undefined.jpg",
+   *     "author_id": 1,
+   *     "author": {
+   *         "id": 1,
+   *         "username": "Marie",
+   *         "email": "marie@mail.fr",
+   *         "city": "Paris"
+   *     }
+   * },
+   * {
+   *     "id": 36,
+   *     "name": "Tartare de saumon2",
+   *     "description": "saumon",
+   *     "portion": 2,
+   *     "city": {
+   *         "count": 75,
+   *         "district": 1,
+   *         "id": 30438,
+   *         "latitude": 48.86,
+   *         "longitude": 2.34445,
+   *         "name": "Paris",
+   *         "slug": "Paris",
+   *     }
+   *     "online": true,
+   *     "picture_path": "dish_cover_undefined.jpg",
+   *     "author_id": 1,
+   *     "author": {
+   *         "id": 1,
+   *         "username": "Marie",
+   *         "email": "marie@mail.fr",
+   *         "city": "Paris"
+   *     }
+   * }]
+   * @example response - 500 - an error on server
+   * {
+   *   "error": 500,
+   *   "message": "Internal server error"
+   * }
    */
   getFooterLastDishes: async (request, response) => {
     try {
       const footerDishes = await Meal.findAll({
         where: {
           online: true,
+          city_id: {
+            [Op.not]: null,
+          },
         },
         include: [{
           model: Author,
