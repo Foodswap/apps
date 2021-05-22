@@ -6,7 +6,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import PropTypes from 'prop-types';
 
 // Dumb components
-import Footer from '../Footer';
 import Faces from '../Faces';
 import PrivacyPolicy from '../PrivacyPolicy';
 import Error from '../Error';
@@ -26,6 +25,7 @@ import SearchFormContainer from '../../containers/SearchForm-container';
 import ResultsContainer from '../../containers/Results-container';
 import DishesFormContainer from '../../containers/DishesForm-container';
 import MyInformationContainer from '../../containers/MyInformation-container';
+import Footer from '../../containers/Footer-container';
 
 // Style
 import './styles.css';

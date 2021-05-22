@@ -45,6 +45,7 @@ router.get('/dishes/:kitchenId/:dishId/:city', mealController.searchMeal);
 router.get('/search', mealController.searchMeal);
 router.get('/dishes/author/:author_id', mealController.getMealsByAuthor);
 router.get('/lastDishes', mealController.getSixMeals);
+router.get('/footerLastDishes', mealController.getFooterLastDishes);
 
 /**
  * Routes POST

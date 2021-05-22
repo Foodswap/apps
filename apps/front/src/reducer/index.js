@@ -4,6 +4,7 @@ import userReducer from './auth-reducer';
 import searchReducer from './search-reducer';
 import dishesFormReducer from './dishesForm-reducer';
 import exchangeTrackingReducer from './exchangeTracking-reducer';
+import footerReducer from './Footer-reducer';
 // exporter le resultat du combineReducer pour l'utiliser
 // dans le createStore
 
@@ -13,4 +14,5 @@ export default combineReducers({
   search: searchReducer,
   dishesForm: dishesFormReducer,
   propositions: exchangeTrackingReducer,
+  footer: footerReducer,
 });

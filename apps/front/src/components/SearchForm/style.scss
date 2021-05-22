@@ -2,135 +2,129 @@
 @use 'sass:color';
 @import url(https://fonts.googleapis.com/css?family=Gudea:400,700);
 
+.search-form-div {
+  background: rgb(38, 40, 53);
+  height: 320px;
+  margin: auto;
+  padding: 3rem;
+  font-family: "Gudea", sans-serif;
+}
 
+.test-text {
+  padding-bottom: 0.5rem;
+  font-size: 1.2rem;
+  color: white;
+}
+.search-form-title {
+  font-size: 2em;
+  padding: 1rem;
+  color: white;
+  text-transform: uppercase;
+  margin-bottom: 1.2em;
+}
+
+.search-form-form {
+  padding-bottom: 2em;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: center;
+}
+.search-form-form select {
+  font-size: 1.2rem;
+  width: 300px;
+  margin-right: 3rem;
+  background-color: rgb(252, 196, 176);
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem;
+}
+
+.search-form-input {
+  font-size: 1.2rem;
+  width: 300px;
+  margin-right: 3rem;
+  background-color: rgb(252, 196, 176);
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem;
+}
+
+.search-form-label {
+  color: white;
+  margin-right: 1em;
+}
+
+.search-around-container {
+  align-items: center;
+}
+
+.search-form-around-slider {
+  width: 100%;
+  cursor: pointer;
+  color: white;
+  margin-top: 1em;
+}
+
+.search-form-around-label {
+  font-size: 1.4rem;
+  color: white;
+  margin: 0 0.8em 0 0.2em;
+}
+
+.search-form-around-value {
+  color: white;
+  margin: 0.5em 0 0 0;
+  font-size: 1.2rem;
+}
+
+.search-form-button {
+  background: transparent;
+  padding: 0.8em 30px;
+  border: 2px solid rgb(248, 165, 135);
+  color: rgb(248, 165, 135);
+  text-transform: uppercase;
+  transition-property: background, color;
+  transition-duration: 0.2s;
+  border-radius: 6px;
+  margin: 1em;
+}
+
+.search-form-button:hover {
+  color: black;
+  background: rgb(248, 165, 135);
+  cursor: pointer;
+  transition-property: background, color;
+  transition-duration: 0.2s;
+}
+
+@media only screen and (max-width: 415px) {
   .search-form-div {
-    background: #262835;
-    height: 320px;
-    margin: auto;
-    padding: 3rem;
-    font-family: 'Gudea', sans-serif;
-  }
-
-
-  .test-text {
-    padding-bottom: 0.5rem;
-    font-size: 1.2rem;
-    color: white;
-  }
-  .search-form-title {
-    font-size: 2em;
-    padding: 1rem;
-    color: white;
-    text-transform: uppercase;
-    margin-bottom: 1.2em;
-  }
-
-  .search-form-form {
-    padding-bottom: 2em;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    justify-content: center;
-  }
-  .search-form-form select{
-    font-size: 1.2rem;
-    width: 300px;
-    margin-right: 3rem;
-    background-color: rgb(252, 196, 176);
-    border: none;
-    border-radius: 5px;
-    padding: 0.5rem;
-  }
-
-
-  .search-form-input {
-    font-size: 1.2rem;
-    width: 300px;
-    margin-right: 3rem;
-    background-color: rgb(252, 196, 176);
-    border: none;
-    border-radius: 5px;
-    padding: 0.5rem;
-  }
-
-  .search-form-label {
-    color: white;
-    margin-right: 1em;
-  }
-
-  .search-around-container {
-    align-items: center;
-  }
-
-  .search-form-around-slider {
-    width: 100%;
-    cursor: pointer;
-    color: white;
-    margin-top: 1em;
-  }
-
-  .search-form-around-label {
-    font-size: 1.4rem;
-    color: white;
-    margin: 0 0.8em 0 0.2em;
-  }
-
-  .search-form-around-value {
-    color: white;
-    margin: 0.5em 0 0 0;
-    font-size: 1.2rem;
-  }
-
-  .search-form-button {
-    background: transparent;
-    padding: 0.8em 30px;
-    border: 2px solid #f8a587;
-    color: #f8a587;
-    text-transform: uppercase;
-    transition-property: background, color;
-    transition-duration: 0.2s;
-    border-radius: 6px;
-    margin: 1em;
-  }
-
-  .search-form-button:hover {
-    color:black;
-    background:#f8a587 ;
-    cursor:pointer;
-    transition-property:background,color;
-    transition-duration:.2s;
-
-  }
-
-
-  @media only screen and (max-width: 415px) {
-  .search-form-div {
-    background: #262835;
+    background: rgb(38, 40, 53);
     height: 60vh;
     margin: auto;
-    font-family: Gudea,sans-serif;
+    font-family: Gudea, sans-serif;
     padding: 1.8rem 1.4rem;
   }
 
   .test-text {
-    padding-bottom: .7rem;
+    padding-bottom: 0.7rem;
     font-size: 1rem;
-    color: #fff;
+    color: rgb(255, 255, 255);
   }
   .search-form-title {
     font-size: 1.8em;
-    color: #fff;
+    color: rgb(255, 255, 255);
     margin-bottom: 1rem;
-
   }
 
   .search-form-form {
     padding-bottom: 2em;
     width: 91vw;
   }
-  .search-form-form select{
+  .search-form-form select {
     margin-bottom: 0.6rem;
-    background-color: #fcc4b0;
+    background-color: rgb(252, 196, 176);
     border: none;
     border-radius: 5px;
     width: 80%;
@@ -138,10 +132,9 @@
     margin-right: 0;
   }
 
-
   .search-form-input {
     font-size: 1.1rem;
-    width: 80%;
+    width: 18.8rem;
     background-color: rgb(252, 196, 176);
     border: none;
     border-radius: 5px;
@@ -152,9 +145,9 @@
   .search-form-button {
     background: transparent;
     padding: 0.5em;
-    margin: .9em 0;
-    border: 0.1em solid #f8a587;
-    color: #f8a587;
+    margin: 0.9em 0;
+    border: 0.1em solid rgb(248, 165, 135);
+    color: rgb(248, 165, 135);
     text-transform: uppercase;
     width: 11rem;
     height: 7.7vh;
@@ -164,12 +157,11 @@
   }
 
   .search-form-button:hover {
-    color:black;
-    background:#f8a587 ;
-    cursor:pointer;
-    transition-property:background,color;
-    transition-duration:.2s;
-
+    color: black;
+    background: rgb(248, 165, 135);
+    cursor: pointer;
+    transition-property: background, color;
+    transition-duration: 0.2s;
   }
 }
 
@@ -177,4 +169,3 @@
   font-weight: bold;
   background: none;
 }
-
