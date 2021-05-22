@@ -7,8 +7,6 @@ import facebookLogo from '../../assets/logo-social/facebook-white-square-brands.
 import twitterLogo from '../../assets/logo-social/twitter-white-square-brands.svg';
 import logoFoodSwap from '../../assets/images/logo-fooswap.png';
 
-import arrowUp from '../../assets/arrow-up-blanc.svg';
-
 import './style.scss';
 
 const year = new Date().getFullYear();

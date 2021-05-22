@@ -4,9 +4,21 @@ import { MemoryRouter } from 'react-router';
 import Footer from './index';
 
 describe('<Footer />', () => {
+  const dishes = [
+    {
+      id: 999,
+      name: 'test',
+      city: {
+        name: 'test',
+      },
+    },
+  ];
+
+  const getLastDishes = () => {};
+
   const container = mount(
     <MemoryRouter initialEntries={['/']}>
-      <Footer />
+      <Footer dishes={dishes} getLastDishes={getLastDishes} />
     </MemoryRouter>,
   );
 
@@ -20,7 +32,7 @@ describe('<Footer />', () => {
 
   it('should display the copyright', () => {
     const year = new Date().getFullYear();
-    expect(container.find('.footer-content').at(0).text()).toEqual(`© ${year} - FoodSwap`);
+    expect(container.find('.footer-content').at(4).text()).toEqual(`© ${year} - FoodSwap`);
   });
 
   it('should have the first link on qui-sommes-nous', () => {
