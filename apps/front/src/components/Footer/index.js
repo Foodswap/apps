@@ -130,6 +130,17 @@ const Footer = ({ dishes, getLastDishes }) => {
             </span>
           </NavLink>
         </div>
+
+        <div className="footer-content">
+          <NavLink
+            className="footer-cgu"
+            to="/v1/conditions-generales-utilisation"
+          >
+            <span>
+              Conditions générales d'utilisation
+            </span>
+          </NavLink>
+        </div>
       </div>
 
       <div className="footer-nav">

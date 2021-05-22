@@ -11,6 +11,7 @@ import PrivacyPolicy from '../PrivacyPolicy';
 import Error from '../Error';
 import Description from '../Description';
 import DescriptionHomepage from '../DescriptionHomepage';
+import Cgu from '../Cgu';
 
 // Container components
 import MenuContainer from '../../containers/Menu-container';
@@ -99,6 +100,10 @@ const App = ({
 
       <Route exact path="/v1/privacy-policy">
         <PrivacyPolicy />
+      </Route>
+
+      <Route exact path="/v1/conditions-generales-utilisation">
+        <Cgu />
       </Route>
 
       <Route component={Error} />

@@ -15,7 +15,7 @@ describe('<Footer />', () => {
   });
 
   it('should display 4 spaces', () => {
-    expect(container.find('.footer-content').length).toEqual(4);
+    expect(container.find('.footer-content').length).toEqual(5);
   });
 
   it('should display the copyright', () => {
@@ -29,6 +29,10 @@ describe('<Footer />', () => {
 
   it('should have the second link on privacy-policy', () => {
     expect(container.find('.footer-mention').at(0).props().to).toEqual('/v1/privacy-policy');
+  });
+
+  it('should have the third link on conditions-generales-utilisation', () => {
+    expect(container.find('.footer-cgu').at(0).props().to).toEqual('/v1/conditions-generales-utilisation');
   });
 
   it('should have the third link on #', () => {
