@@ -93,12 +93,17 @@ const Footer = ({ dishes, getLastDishes }) => {
 
               return (
                 <div className="footer-lastDishes-dish" key={dish.id}>
-                  <Link to={dishLinkUrl} className="footer-lastDishes-dishInfos">
+                  <a
+                    onClick={() => {
+                      window.location.href = dishLinkUrl;
+                    }}
+                    className="footer-lastDishes-dishInfos"
+                  >
                     <h3 className="footer-lastDishes-name">{dish.name}</h3>
                     <p className="footer-lastDishes-city">
                       , à {dish.city.name}
                     </p>
-                  </Link>
+                  </a>
                 </div>
               );
             })
