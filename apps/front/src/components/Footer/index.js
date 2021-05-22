@@ -36,7 +36,7 @@ const Footer = () => (
 
     <div className="footer-content">
       <NavLink
-        className="footer-mention"
+        className="footer-cgu"
         to="/v1/conditions-generales-utilisation"
       >
         <span>
