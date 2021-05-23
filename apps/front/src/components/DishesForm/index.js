@@ -1,4 +1,4 @@
-import React, { useEffect, Component, useState } from 'react';
+import React, { useEffect } from 'react';
 import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
 import { Link } from 'react-router-dom';
@@ -55,37 +55,6 @@ const DishesForm = ({
   const handleSubmit = (evt) => {
     evt.preventDefault();
     onFormSubmit();
-    console.log('handleSubmit');
-  };
-  const notify = () => {
-    toast.success('Votre plat a bien été créé',
-      {
-        position: 'top-right',
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: false,
-        pauseOnHover: false,
-        draggable: false,
-        progress: undefined,
-      });
-  };
-
-  const customStyles = {
-    option: (provided, state) => ({
-      ...provided,
-      borderBottom: '1px dotted pink',
-      // color: state.isSelected ? 'red' : 'blue',
-    }),
-    control: () => ({
-      // none of react-select's styles are passed to <Control />
-      // width: "100%",
-      backgroundColor: 'white',
-    }),
-    singleValue: (provided, state) => {
-      const opacity = state.isDisabled ? 0.5 : 1;
-      const transition = 'opacity 300ms';
-      return { ...provided, opacity, transition };
-    },
   };
 
   const getSuggestion = (suggestion) => {
@@ -105,13 +74,7 @@ const DishesForm = ({
     },
   };
 
-  const onSuggestionsFetchRequested = (value, reason) => {
-    // console.log(value, reason);
-  };
-
-  const suggestionSelected = (value, { suggestion }) => {
-    console.log(suggestion);
-  };
+  const onSuggestionsFetchRequested = () => { };
 
   const renderSuggestion = (suggestion) => (
     <div>
@@ -295,7 +258,8 @@ const DishesForm = ({
           </div>
         </form>
         )}
-        {(dishIdToEdit && !dishId) && (
+        { (dishIdToEdit && !dishId)
+          && (
           <div className="loading-desktop">
             <ContentLoader
               speed={1.2}
@@ -319,9 +283,10 @@ const DishesForm = ({
               <rect x="40" y="20" rx="0" ry="0" width="517" height="29" />
             </ContentLoader>
           </div>
-        )}
+          )}
 
-        {(dishIdToEdit && !dishId) && (
+        { (dishIdToEdit && !dishId)
+          && (
           <div className="loading-mobile">
             <ContentLoader
               speed={1.5}
@@ -343,7 +308,7 @@ const DishesForm = ({
               <rect x="34" y="507" rx="0" ry="0" width="279" height="16" />
             </ContentLoader>
           </div>
-        )}
+          )}
       </div>
     </div>
   );

@@ -17,7 +17,7 @@ import {
 } from '../actions/dishesForm-actions';
 
 const mapStateToProps = (state, ownProps) => ({
-  dishIdToEdit: ownProps.match ? +ownProps.match.params.id : null,
+  dishIdToEdit: ownProps.match && ownProps.match.params.id ? +ownProps.match.params.id : null,
   dishId: state.dishesForm.dishId,
   dataFormMeal: state.dishesForm.dataFormMeal,
   isLogged: state.dishesForm.isLogged,

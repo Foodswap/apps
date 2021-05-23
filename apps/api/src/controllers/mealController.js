@@ -885,6 +885,10 @@ const mealController = {
       meal.description = mealToUpdate.description;
       meal.portion = mealToUpdate.portion;
 
+      if (mealToUpdate.city_id) {
+        meal.city_id = mealToUpdate.city_id;
+      }
+
       if (request.file) {
         meal.picture_path = request.file.filename;
       }
