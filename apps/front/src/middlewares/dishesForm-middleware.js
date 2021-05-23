@@ -32,7 +32,7 @@ export default (store) => (next) => (action) => {
         description,
         ingredients,
         portion,
-        city,
+        selectedCity,
         dish,
         kitchen,
         online,
@@ -48,7 +48,11 @@ export default (store) => (next) => (action) => {
       formData.append('description', description);
       formData.append('ingredients', ingredients.map((ingredient) => ingredient.value || ingredient.id).join(','));
       formData.append('portion', portion);
-      formData.append('city', city);
+
+      if (selectedCity) {
+        formData.append('city_id', selectedCity.id);
+      }
+
       formData.append('categories', `${kitchen},${dish}`);
       formData.append('online', online);
 
@@ -144,6 +148,7 @@ export default (store) => (next) => (action) => {
           url: `${process.env.API_URL}/dishes/${action.payload}`,
         })
           .then((res) => {
+            res.data.city = res.data.city.name;
             const actionToDispatch = updateADishToEdit(res.data);
             return store.dispatch(actionToDispatch);
           });
@@ -154,7 +159,7 @@ export default (store) => (next) => (action) => {
     * When the user type in city input, fetch cities in api
     */
     case DISH_FORM_FETCH_CITIES: {
-      if (action.payload.length >= 3) {
+      if (action.payload && action.payload.length >= 3) {
         axios({
           method: 'get',
           url: `${process.env.API_URL}/city/${action.payload}`,

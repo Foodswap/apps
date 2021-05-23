@@ -109,6 +109,10 @@ const DishesForm = ({
     // console.log(value, reason);
   };
 
+  const suggestionSelected = (value, { suggestion }) => {
+    console.log(suggestion);
+  };
+
   const renderSuggestion = (suggestion) => (
     <div>
       <Highlighter
@@ -210,6 +214,7 @@ const DishesForm = ({
               onSuggestionsClearRequested={dishClearCitiesInput}
               getSuggestionValue={getSuggestion}
               renderSuggestion={renderSuggestion}
+              // onSuggestionSelected={getSuggestion}
             />
             { ((dishIdToEdit && dishId) || !dishIdToEdit) && (
             <Select

@@ -23,7 +23,7 @@ const DisplayADish = ({
           />
           <div className="displayADish-right">
             <h1 className="displayADish-right-title">{dish.name} <br /><span className="displayADish-right-portion">{dish.portion} part{dish.portion > 1 ? 's' : ''}</span></h1>
-            <p className="displayADish-right-author">Fait par {dish.author.username} à {dish.city}</p>
+            <p className="displayADish-right-author">Fait par {dish.author.username} à {dish.city.name}</p>
 
             <div className="displayADish-ingredients">
               <h3 className="displayADish-ingredients-title">Ingrédients :</h3>
@@ -91,7 +91,6 @@ const DisplayADish = ({
       </div>
       )}
     </div>
-
   );
 };
 
@@ -103,7 +102,16 @@ DisplayADish.propTypes = {
     description: PropTypes.string,
     ingredients: PropTypes.array,
     portion: PropTypes.number,
-    city: PropTypes.string,
+    city: PropTypes.shape({
+      id: PropTypes.number,
+      county: PropTypes.string,
+      slug: PropTypes.string,
+      name: PropTypes.string,
+      zip_code: PropTypes.string,
+      district: PropTypes.number,
+      longitude: PropTypes.number,
+      latitude: PropTypes.number,
+    }),
     author: PropTypes.shape({
       id: PropTypes.number,
       username: PropTypes.string,

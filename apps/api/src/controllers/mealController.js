@@ -184,7 +184,7 @@ const mealController = {
         attributes: {
           exclude: ['picture_path'],
         },
-        include: ['ingredients', 'categories', {
+        include: ['ingredients', 'categories', 'city', {
           model: Author,
           as: 'author',
           attributes: {
