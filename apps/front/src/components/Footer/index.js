@@ -39,21 +39,21 @@ const Footer = ({ dishes, getLastDishes }) => {
         <h2 className="footer-city-entreesLink-title">Les dernières entrées</h2>
         <div className="footer-city-entreesLink-list">
 
-          <a className="footer-city-entreesLink-tenLastDishes" href="#">les 10 derniers entrées à Paris</a>
-          <a className="footer-city-entreesLink-tenLastDishes" href="#">les 10 derniers entrées à Rouen</a>
-          <a className="footer-city-entreesLink-tenLastDishes" href="#">les 10 derniers entrées à Lille</a>
-          <a className="footer-city-entreesLink-tenLastDishes" href="#">les 10 derniers entrées à Rennes</a>
-          <a className="footer-city-entreesLink-tenLastDishes" href="#">les 10 derniers entrées à Nantes</a>
-          <a className="footer-city-entreesLink-tenLastDishes" href="#">les 10 derniers entrées à Angers</a>
-          <a className="footer-city-entreesLink-tenLastDishes" href="#">les 10 derniers entrées à Tours</a>
-          <a className="footer-city-entreesLink-tenLastDishes" href="#">les 10 derniers entrées à Orléans</a>
-          <a className="footer-city-entreesLink-tenLastDishes" href="#">les 10 derniers entrées à Strasbourg</a>
-          <a className="footer-city-entreesLink-tenLastDishes" href="#">les 10 derniers entrées à Dijon</a>
+          <a className="footer-city-entreesLink-tenLastDishes" href="#">les 10 dernières entrées à Paris</a>
+          <a className="footer-city-entreesLink-tenLastDishes" href="#">les 10 dernières entrées à Rouen</a>
+          <a className="footer-city-entreesLink-tenLastDishes" href="#">les 10 dernières entrées à Lille</a>
+          <a className="footer-city-entreesLink-tenLastDishes" href="#">les 10 dernières entrées à Rennes</a>
+          <a className="footer-city-entreesLink-tenLastDishes" href="#">les 10 dernières entrées à Nantes</a>
+          <a className="footer-city-entreesLink-tenLastDishes" href="#">les 10 dernières entrées à Angers</a>
+          <a className="footer-city-entreesLink-tenLastDishes" href="#">les 10 dernières entrées à Tours</a>
+          <a className="footer-city-entreesLink-tenLastDishes" href="#">les 10 dernières entrées à Orléans</a>
+          <a className="footer-city-entreesLink-tenLastDishes" href="#">les 10 dernières entrées à Strasbourg</a>
+          <a className="footer-city-entreesLink-tenLastDishes" href="#">les 10 dernières entrées à Dijon</a>
         </div>
       </div>
 
       <div className="footer-city-dishesLink">
-        <h2 className="footer-city-dishesLink-title">Les dernières plats</h2>
+        <h2 className="footer-city-dishesLink-title">Les derniers plats</h2>
 
         <div className="footer-city-dishesLink-list">
           <a className="footer-city-dishesLink-tenLastDishes" href="#">les 10 derniers plats à Clermont-Ferrand</a>
@@ -69,7 +69,7 @@ const Footer = ({ dishes, getLastDishes }) => {
       </div>
 
       <div className="footer-city-dessertLink">
-        <h2 className="footer-city-dessertLink-title">Les dernières dessert</h2>
+        <h2 className="footer-city-dessertLink-title">Les derniers dessert</h2>
 
         <div className="footer-city-dessertLink-list">
           <a className="footer-city-dessertLink-tenLastDishes" href="#">les 10 derniers desserts à Paris</a>
